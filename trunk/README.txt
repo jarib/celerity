@@ -42,6 +42,7 @@ NOTE: RJB currently has problems with threading. Use JRuby if you want to run yo
 == LICENSE:
 
 Celerity - JRuby wrapper for HtmlUnit
+Copyright (c) 2008 FinnTech AS
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
