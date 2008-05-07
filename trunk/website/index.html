@@ -31,19 +31,19 @@
                 <a href="http://rubyforge.org/frs/?group_id=6198" id="download" title="Latest version: 0.0.1">Download &#x2192;</a>
 
                 <h2>What is Celerity?</h2>
-                <p>Celerity is a Ruby library for easy and fast automation of web application testing. Celerity wraps <a href="http://htmlunit.sourceforge.net/">HtmlUnit</a> via <a href="http://jruby.codehaus.org/">JRuby</a> and is supposed to provide the same API and functionality as <a href="http://wtr.rubyforge.org/">Watir</a>.</p>
+                <p>Celerity is a <a href="http://jruby.codehaus.org/">JRuby</a> library for easy and fast automation of web application testing. It is a wrapper around the <a href="http://htmlunit.sourceforge.net/">HtmlUnit</a> Java library and is aimed at providing the same API and functionality as <a href="http://wtr.rubyforge.org/">Watir</a>.</p>
                 
                 <h2>Features</h2>
                 <ul>
                     <li>Fast: No time-consuming GUI rendering or unessential downloads</li>
-                    <li>Scalable: Enables distributed multithreading</li>
-                    <li>Unintrusive: No browser window interrupting your workflow (runs in background)</li>
+                    <li>Scalable: Java threads lets you run tests in parallel</li>
                     <li>Easy to use: Simple API</li>
                     <li>Portable: Cross-platform</li>
+                    <li>Unintrusive: No browser window interrupting your workflow (runs in background)</li>
                 </ul>
                 
                 <h2>Background</h2>
-                <p><a href="http://www.finn.no/">FINN.no</a> is a top provider of online classifieds in Europe. Consequently automated web testing is an essential part of our quality assurance effort. As of spring 2008 our Watir test suite, consisting of 340 test cases (which didn't really cover a substantial part of our web application), completed in 11 hours. Obviously, not optimal for an agile development environment.</p>
+                <p><a href="http://www.finn.no/">FINN.no</a> is a top provider of online classifieds in Europe. Consequently automated web testing is an essential part of our quality assurance effort. As of spring 2008 our Watir test suite, consisting of 340 test cases (which only covers part of our application), completed in 3 hours. Obviously, not optimal for an agile development environment.</p>
                 <p>We needed a faster alternative. At the same time, we enjoyed working with Watir's API. By wrapping the Java library HtmlUnit to Watir's API, we got rid of time-consuming GUI rendering and unessential downloads, while avoiding rewriting the existing test suite.</p>
                 
                 <h2>Installing Celerity</h2>
@@ -58,12 +58,12 @@ sudo gem install celerity
                 <code>
 require "celerity" 
 
-@browser = Celerity.new
-@browser.goto('http://www.google.com')
-@browser.text_field(:name, 'q').value = "Celerity" 
-@browser.button(:name, 'btnG').click
+browser = Celerity::IE.new
+browser.goto('http://www.google.com')
+browser.text_field(:name, 'q').value = "Celerity" 
+browser.button(:name, 'btnG').click
 
-assert(@browser.text.include?('celerity.rubyforge.org'))
+puts "yay" if browser.text.include? 'celerity.rubyforge.org'
                 </code>
                 </pre>
 
