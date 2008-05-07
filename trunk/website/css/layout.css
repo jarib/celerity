@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+
+}
+
+a:hover {
+
+}
+
+body {
+	padding: 2em;
+}
+
+/*
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+*/
+
+#container {
+	margin: 0 auto;
+	width: 100%;
+}
+
+#header {
+	width: 100%;
+	height: 193px;
+	position: relative;
+	overflow: hidden;
+}
+
+#header #leftSlice {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 269px;
+	height: 193px;
+}
+
+#header #rightSlice {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 492px;
+	height: 193px;
+}
+
+#header h1 {
+	position: absolute;
+	left: 170px;
+	top: 20px;
+}
+
+#header #tagline {
+	position: absolute;
+	left: 255px;
+	top: 60px;
+}
+
+#nav {
+	height: 121px;
+	overflow: auto;
+}
+
+#nav ul {
+	text-align: center;	
+}
+
+#nav ul li {
+	display: inline;
+	white-space: nowrap;
+}
+
+#nav ul li a {
+	display: inline;
+	margin: 0 1em;
+	height: 40px;
+	line-height: 40px;
+	white-space: nowrap;
+	padding-top: 6px;
+}
+
+#nav ul li a:hover {
+	padding-top: 3px;
+}
+
+#nav ul li a.active {
+	padding-top: 0;
+}
+
+#nav ul li a:hover.active {
+	padding-top: 0;
+}
+
+#content {
+	padding: 0 1em 1em 1em;
+}
+
+#content ul {
+	list-style-position: inside;
+}
+
+#content ul li {
+	margin: 0.2em;
+}
+
+#content ul li ul li {
+	margin-left: 1.5em;
+}
+
+#footer {
+	margin-top: 1.25em;
+	padding: 1em;
+}
+
+#footer .w3cbutton {
+	line-height: 2em;
+}
+
+#footer .w3cbutton span.w3c {
+	padding: 0 0.4em;
+}
+
+#footer .w3cbutton span.spec {
+	padding: 0 0.2em;
+}
+
+
+ul.projectlist {
+	width: 100%;
+	list-style: none;
+}
+
+.project {
+	float: left;
+	width: 100%;
+	display: block;
+	padding-bottom: 1em;
+}
+
+.project img {
+	float: left;
+}
+
+.project a.img {
+	padding: 0.5em;
+}
+
+
+.project.left a.img {
+	float: left;
+	margin: 0 1em 0 0;
+}
+
+.project.right a.img {
+	float: right;
+	margin: 0 0 0 1em;
+}
