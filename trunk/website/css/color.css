@@ -135,3 +135,10 @@ abbr, acronym {
 .project a:hover.img {
 	border: 1px solid rgb(80,80,80);
 }
+
+#download {
+    background: url(gfx/button_bg.jpg) repeat-x top left;
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+}

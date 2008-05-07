@@ -11,8 +11,12 @@ q {
 	font-style: italic;
 }
 
-#content > ul, #content table, #content fieldset {
+#content ul, #content table, #content fieldset {
 	margin-bottom: 1.5em;
+}
+
+#content ul ul {
+    margin-bottom: 0;
 }
 
 ul {

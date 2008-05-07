@@ -164,3 +164,9 @@ ul.projectlist {
 	float: right;
 	margin: 0 0 0 1em;
 }
+
+#download {
+    display: block;
+    padding: 0.2em 0.4em;
+    float: right;
+}
