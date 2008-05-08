@@ -69,7 +69,7 @@ task :simple_ci do
     abort("Run `(jruby -S) gem install mongrel` to use this task.")
   end
   @server.register("/result", Mongrel::DirHandler.new(CI_ROOT))
-  @server.register("/coverage", Mongrel::DirHandler.new(CI_ROOT + "/coverage"))
+  @server.register("/coverage", Mongrel::DirHandler.new(CI_ROOT + "/coverage/coverage"))
   @server.register("/", SimpleCI.new(@results))
   Thread.new { @server.run.join }
   puts "simple_ci started on #{@server.host}:#{@server.port}"
@@ -82,7 +82,7 @@ task :simple_ci do
     puts "*** running rcov at #{Time.now}"
     puts %x{jruby -S rake --silent spec > #{CI_ROOT}/index2.html}
     FileUtils.mv(CI_ROOT + "/index2.html", CI_ROOT + "/index.html", :verbose => true)
- #   FileUtils.rm_r(CI_ROOT + "/coverage", :verbose => true)
+    Dir[CI_ROOT + "/coverage/*"].each { |f| FileUtils.rm_r(f, :verbose => true) }
     FileUtils.mv(CI_ROOT + "/../coverage", CI_ROOT + "/coverage", :verbose => true)
     puts "\n*** sleeping #{Time.now}"
     sleep(INTERVAL)

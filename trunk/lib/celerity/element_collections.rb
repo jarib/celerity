@@ -4,42 +4,38 @@ module Celerity
   class ElementCollections
     include Enumerable
     
-    # presumes element_class or element_tag is defined
-    # for subclasses of ElementCollections
-    module CommonCollection
-      def element_tags
-        element_class::TAGS
-      end
-      def length
-        if @object
-          @object.length
-        elsif Element::Identifier === element_tags.first
-          idents = element_tags
-          tags   = idents.map { |e| e.tag }    
-          tags.map! { |t| t.downcase }
-          elements = @container.object.getAllHtmlChildElements.iterator.to_a.select do |elem|
-            tags.include?(elem.getTagName)
-          end
-          elements = elements.select do |e| 
-            idents.any? do |ident| 
-              next unless ident.tag == e.getTagName
-              if ident.attributes.empty?
-                true
-              else
-                ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) } 
-              end
+    def element_tags
+      element_class::TAGS
+    end
+    
+    def length
+      if @object
+        @object.length
+      elsif Element::Identifier === element_tags.first
+        idents = element_tags
+        tags   = idents.map { |e| e.tag }    
+        tags.map! { |t| t.downcase }
+        elements = @container.object.getAllHtmlChildElements.iterator.to_a.select do |elem|
+          tags.include?(elem.getTagName)
+        end
+        elements = elements.select do |e| 
+          idents.any? do |ident| 
+            next unless ident.tag == e.getTagName
+            if ident.attributes.empty?
+              true
+            else
+              ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) } 
             end
           end
-          return elements.length
-        else
-          length = 0
-          element_tags.each { |element_tag| length =+ @container.object.getHtmlElementsByTagName(element_tag).toArray.size }
-          return length
         end
+        return elements.length
+      else
+        length = 0
+        element_tags.each { |element_tag| length += @container.object.getHtmlElementsByTagName(element_tag).toArray.size }
+        return length
       end
-      alias_method :size, :length
     end
-    include CommonCollection
+    alias_method :size, :length
     
     def initialize(container, how = nil, what = nil)
       @container = container
@@ -68,5 +64,4 @@ module Celerity
     end
   
   end # ElementCollections
-    
 end # Celerity
