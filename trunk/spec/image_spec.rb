@@ -181,7 +181,7 @@ describe "Image" do
     it "should save an image to file" do
       file = "sample.img.dat"
       @ie.image(:index, 2).save(file)
-      File.exist?(file) 
+      File.exist?(file).should be_true 
       File.delete(file)
     end
   end
