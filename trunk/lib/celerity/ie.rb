@@ -1,7 +1,7 @@
 module Celerity
   class IE
     include Container
-    attr_accessor :page, :object
+    attr_accessor :page, :object, :webclient
     
     def self.start(uri)
       browser = new
