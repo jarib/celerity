@@ -226,106 +226,61 @@ module Celerity
       Labels.new(self)
     end
     
-    #
-    #                Locator Methods
-    #
 
-    # Returns the specified ole object for input elements on a web page.
-    #
-    # This method is used internally by Watir and should not be used externally. It cannot be marked as private because of the way mixins and inheritance work in watir
-    #   * element_instance - an Element subclass instance
-    #   * how - symbol - the way we look for the object. Supported values are
-    #                  - :name
-    #                  - :id
-    #                  - :index
-    #                  - :value etc
-    #   * what  - string that we are looking for, ex. the name, or id tag attribute or index of the object we are looking for.
-    #   * value - used for objects that have one name, but many values. ex. radio lists and checkboxes
+    protected
+
     def locate_input_element(element_instance, how, what, value = nil)
       idents = element_instance.class::TAGS
       tags = idents.map { |e| e.tag }
       begin
         case how
         when :id
-          case what
-          when Regexp
-            elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
-          when String
-            @object.getHtmlElementById(what)
-          else
-            raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
-          end
+          locate_input_by_id(tags, what)
         when :name, :value
-          elements_by_idents(idents).find do |e|
-            matches?(e.getAttribute(how.to_s), what) && (value ? matches?(e.getValueAttribute, value) : true)
-          end
+          locate_input_by_name_or_value(idents, how, what, value)
         when :caption
-          elements_by_idents(idents).find { |e| matches?(e.getValueAttribute, what) }
+          locate_input_by_caption(idents, what)
         when :class
-          elements_by_idents(idents).find { |e| matches?(e.getClassAttribute, what) }
+          locate_input_by_class(idents, what)
         when :text
-          elements_by_idents(idents).find { |e| matches?(e.asText, what) }
+          locate_input_by_text(idents, what)
         when :index
-          elements_by_idents(idents)[what.to_i - 1]
+          locate_input_by_index(idents, what)
         when :xpath
-          what = ".#{what}" if what[0] == ?/
-          @object.getByXPath(what).to_a.first
+          locate_by_xpath(what)
         else
           raise MissingWayOfFindingObjectException
         end
       rescue HtmlUnit::ElementNotFoundException
       end
     end
-
+    
     def locate_tagged_element(element_instance, how, what)
       tags = element_instance.class::TAGS
       begin
         case how
         when :id
-          case what
-          when Regexp
-            elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
-          when String
-            @object.getHtmlElementById(what)
-          else
-            raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
-          end
+          locate_tag_by_id(tags, what)
         when :name, :value, :title
-          elements_by_tag_names(tags).find { |elem| matches?(elem.getAttributeValue(how.to_s), what) }
+          locate_tag_by_name_or_value_or_title(how, tags, what)
         when :class
-          elements_by_tag_names(tags).find { |elem| matches?(elem.getClassAttribute, what)}
+          locate_tag_by_class(tags, what)
         when :text
-          elements_by_tag_names(tags).find { |elem| matches?(elem.asText, what) }
+          locate_tag_by_text(tags, what)
         when :index
-          elements_by_tag_names(tags)[what.to_i-1]
+          locate_tag_by_index(tags, what)
         when :xpath
-          what = ".#{what}" if what[0] == ?/
-          @object.getByXPath(what).to_a.first
+          locate_by_xpath(what)
         when :url
-          case element_instance
-          when Celerity::Link, Celerity::Map, Celerity::Area
-            elements_by_tag_names(tags).find { |elem| matches?(elem.getHrefAttribute, what) }
-          end
+          locate_tag_by_url(element_instance, tags, what)
         when :src
-          case element_instance
-          when Celerity::Image
-            elements_by_tag_names(tags).find { |elem| matches?(elem.getSrcAttribute, what) }
-          end
+          locate_tag_by_src(element_instance, tags, what)
         when :alt
-          case element_instance
-          when Celerity::Image
-            elements_by_tag_names(tags).find { |elem| matches?(elem.getAltAttribute, what) }
-          end
+          locate_tag_by_alt(element_instance, tags, what)
         when :action
-          case element_instance
-          when Celerity::Form
-            elements_by_tag_names(tags).find { |elem| matches?(elem.getActionAttribute, what) }
-          end
+          locate_tag_by_action(element_instance, tags, what)
         when :method
-          case element_instance
-          when Celerity::Form
-            elements_by_tag_names(tags).find { |elem| matches?(elem.getMethodAttribute, what) }
-          end
+          locate_tag_by_method(element_instance, tags, what)
         else
           raise MissingWayOfFindingObjectException, "No how #{how.inspect}"
         end
@@ -333,7 +288,7 @@ module Celerity
       end
     end
     
-    private
+    private 
     
     # this could be optimized when iterating - we don't need to check the class of 'what' for each element
     # perhaps something like this
@@ -362,6 +317,112 @@ module Celerity
             ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) } 
           end
         end
+      end
+    end
+
+    # ======================== common locators ===============================
+
+    def locate_by_xpath(what)
+      what = ".#{what}" if what[0] == ?/
+      @object.getByXPath(what).to_a.first
+    end
+
+    # ======================== input locators ===============================
+    
+    def locate_input_by_id(tags, what)
+      case what
+      when Regexp
+        elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
+      when String
+        @object.getHtmlElementById(what)
+      else
+        raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
+      end
+    end
+    
+    def locate_input_by_name_or_value(idents, how, what, value = nil)
+      elements_by_idents(idents).find do |e|
+        matches?(e.getAttribute(how.to_s), what) && (value ? matches?(e.getValueAttribute, value) : true)
+      end
+    end
+    
+    def locate_input_by_caption(idents, what)
+      elements_by_idents(idents).find { |e| matches?(e.getValueAttribute, what) }
+    end
+    
+    def locate_input_by_class(idents, what)
+      elements_by_idents(idents).find { |e| matches?(e.getClassAttribute, what) }
+    end
+    
+    def locate_input_by_text(idents, what)
+      elements_by_idents(idents).find { |e| matches?(e.asText, what) }
+    end
+    
+    def locate_input_by_index(idents, what)
+      elements_by_idents(idents)[what.to_i - 1]
+    end
+    
+    # ======================== tagged locators ===============================
+
+    def locate_tag_by_id(tags, what)
+      case what
+      when Regexp
+        elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
+      when String
+        @object.getHtmlElementById(what)
+      else
+        raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
+      end
+    end
+    
+    def locate_tag_by_name_or_value_or_title(how, tags, what)
+      elements_by_tag_names(tags).find { |elem| matches?(elem.getAttributeValue(how.to_s), what) }
+    end
+    
+    def locate_tag_by_class(tags, what)
+      elements_by_tag_names(tags).find { |elem| matches?(elem.getClassAttribute, what)}
+    end
+    
+    def locate_tag_by_text(tags, what)
+      elements_by_tag_names(tags).find { |elem| matches?(elem.asText, what) }
+    end
+    
+    def locate_tag_by_index(tags, what)
+      elements_by_tag_names(tags)[what.to_i-1]
+    end
+        
+    def locate_tag_by_url(element_instance, tags, what)
+      case element_instance
+      when Celerity::Link, Celerity::Map, Celerity::Area
+        elements_by_tag_names(tags).find { |elem| matches?(elem.getHrefAttribute, what) }
+      end
+    end
+    
+    def locate_tag_by_src(element_instance, tags, what)
+      case element_instance
+      when Celerity::Image
+        elements_by_tag_names(tags).find { |elem| matches?(elem.getSrcAttribute, what) }
+      end
+    end
+    
+    def locate_tag_by_alt(element_instance, tags, what)
+      case element_instance
+      when Celerity::Image
+        elements_by_tag_names(tags).find { |elem| matches?(elem.getAltAttribute, what) }
+      end
+    end
+    
+    def locate_tag_by_action(element_instance, tags, what)
+      case element_instance
+      when Celerity::Form
+        elements_by_tag_names(tags).find { |elem| matches?(elem.getActionAttribute, what) }
+      end
+    end
+    
+    def locate_tag_by_method(element_instance, tags, what)
+      case element_instance
+      when Celerity::Form
+        elements_by_tag_names(tags).find { |elem| matches?(elem.getMethodAttribute, what) }
       end
     end
     
