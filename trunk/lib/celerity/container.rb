@@ -1,7 +1,6 @@
 module Celerity
   module Container
     include Celerity::Exception
-    
     attr_accessor :page_container
 
     def set_container(container)
@@ -225,7 +224,6 @@ module Celerity
       assert_exists
       Labels.new(self)
     end
-    
 
     protected
 
@@ -272,15 +270,15 @@ module Celerity
         when :xpath
           locate_by_xpath(what)
         when :url
-          locate_tag_by_url(element_instance, tags, what)
+          locate_tag_by_url(tags, what) if [Celerity::Link, Celerity::Map, Celerity::Area].include?(element_instance.class)
         when :src
-          locate_tag_by_src(element_instance, tags, what)
+          locate_tag_by_src(tags, what) if Celerity::Image === element_instance
         when :alt
-          locate_tag_by_alt(element_instance, tags, what)
+          locate_tag_by_alt(tags, what) if Celerity::Image === element_instance
         when :action
-          locate_tag_by_action(element_instance, tags, what)
+          locate_tag_by_action(tags, what) if Celerity::Form === element_instance
         when :method
-          locate_tag_by_method(element_instance, tags, what)
+          locate_tag_by_method(tags, what) if Celerity::Form === element_instance
         else
           raise MissingWayOfFindingObjectException, "No how #{how.inspect}"
         end
@@ -391,39 +389,24 @@ module Celerity
       elements_by_tag_names(tags)[what.to_i-1]
     end
         
-    def locate_tag_by_url(element_instance, tags, what)
-      case element_instance
-      when Celerity::Link, Celerity::Map, Celerity::Area
-        elements_by_tag_names(tags).find { |elem| matches?(elem.getHrefAttribute, what) }
-      end
+    def locate_tag_by_url(tags, what)
+      elements_by_tag_names(tags).find { |elem| matches?(elem.getHrefAttribute, what) }
     end
     
-    def locate_tag_by_src(element_instance, tags, what)
-      case element_instance
-      when Celerity::Image
-        elements_by_tag_names(tags).find { |elem| matches?(elem.getSrcAttribute, what) }
-      end
+    def locate_tag_by_src(tags, what)
+      elements_by_tag_names(tags).find { |elem| matches?(elem.getSrcAttribute, what) }
     end
     
-    def locate_tag_by_alt(element_instance, tags, what)
-      case element_instance
-      when Celerity::Image
-        elements_by_tag_names(tags).find { |elem| matches?(elem.getAltAttribute, what) }
-      end
+    def locate_tag_by_alt(tags, what)
+      elements_by_tag_names(tags).find { |elem| matches?(elem.getAltAttribute, what) }
     end
     
-    def locate_tag_by_action(element_instance, tags, what)
-      case element_instance
-      when Celerity::Form
-        elements_by_tag_names(tags).find { |elem| matches?(elem.getActionAttribute, what) }
-      end
+    def locate_tag_by_action(tags, what)
+      elements_by_tag_names(tags).find { |elem| matches?(elem.getActionAttribute, what) }
     end
     
-    def locate_tag_by_method(element_instance, tags, what)
-      case element_instance
-      when Celerity::Form
-        elements_by_tag_names(tags).find { |elem| matches?(elem.getMethodAttribute, what) }
-      end
+    def locate_tag_by_method(tags, what)
+      elements_by_tag_names(tags).find { |elem| matches?(elem.getMethodAttribute, what) }
     end
     
   end # Container
