@@ -8,7 +8,7 @@ module Celerity
     def find_by_attribute(attribute, what, value = nil)
       if value
         @collection.find do |e|
-          matches?(e.getAttribute(attribute), what) && (value ? matches?(e.getValueAttribute, value) : true)
+          matches?(e.getAttribute(attribute), what) && matches?(e.getValueAttribute, value))
         end
       else
         @collection.find { |e| matches?(e.getAttributeValue(attribute), what) }

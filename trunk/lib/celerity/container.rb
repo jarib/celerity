@@ -103,7 +103,7 @@ module Celerity
     
     def check_box(how, what, value = nil)
       assert_exists
-      CheckBox.new(self, how, what, ["checkbox"], value)
+      CheckBox.new(self, how, what, value)
     end
     alias_method :checkbox, :check_box
     alias_method :checkBox, :check_box
@@ -115,7 +115,7 @@ module Celerity
     
     def radio(how, what, value = nil)
       assert_exists
-      Radio.new(self, how, what, ["radio"], value)
+      Radio.new(self, how, what, value)
     end
     def radios
       assert_exists

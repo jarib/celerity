@@ -2,7 +2,9 @@ module Celerity
   class Frame < Element
     include Container
     attr_accessor :page
-    TAGS = {'frame' => nil, 'iframe' => nil}
+    
+    TAGS = {'frame' => nil, 'iframe' => nil}  # not in use?
+    
     ATTRIBUTES = BASE_ATTRIBUTES | [:longdesc, :name, :src, :frameborder, :marginwidth, :marginheight, :noresize, :scrolling]
     DEFAULT_HOW = :name
     

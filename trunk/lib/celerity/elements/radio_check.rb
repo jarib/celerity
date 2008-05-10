@@ -35,6 +35,10 @@ module Celerity
   class Radio < RadioCheckCommon
     TAGS = [Identifier.new('input', :type => %w(radio))]
 
+    def initialize(container, how, what, value)
+      super(container, how, what, ['radio'], value)
+    end
+
     def set(value = true)
       assert_exists
       assert_enabled
@@ -46,6 +50,10 @@ module Celerity
   # This class is the celerity representation of a check box.
   class CheckBox < RadioCheckCommon
     TAGS = [Identifier.new('input', :type => %w(checkbox))]
+
+    def initialize(container, how, what, value)
+      super(container, how, what, ['checkbox'], value)
+    end
 
     def set(value = true)
       assert_exists

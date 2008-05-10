@@ -19,6 +19,7 @@ describe "Button" do
       @ie.button(:name, "new_user_reset").should exist
       @ie.button(:name, /new_user_reset/).should exist
       # we need to figure out what :text and :value/:caption means on input type="button" and <button /> elements
+      # it should return the value attribute for <input> elements, and the inner text for <button> elements - Jari 2008-05-10
       @ie.button(:value, "Button 2").should exist
       @ie.button(:value, /Button 2/).should exist
       @ie.button(:text, "Button 2").should exist

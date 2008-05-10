@@ -4,6 +4,9 @@ module Celerity
     include Container
     attr_accessor :container, :object
     
+    # number of spaces that separate the property from the value in the create_string method
+    TO_S_SIZE = 14
+    
     # HTML 4.01 Transitional DTD
     CELLHALIGN_ATTRIBUTES = [:align, :char, :charoff]
     CELLVALIGN_ATTRIBUTES = [:valign]
@@ -35,7 +38,7 @@ module Celerity
     end
     
     def locate
-        @object = @container.locate_tagged_element(self, @how, @what)
+      @object = @container.locate_tagged_element(self, @how, @what)
     end
     
     def to_s
@@ -43,9 +46,6 @@ module Celerity
       create_string(@object)
     end
 
-    # number of spaces that separate the property from the value in the create_string method
-    TO_S_SIZE = 14
-    
     def create_string(element)
       n = []
       n << "tag:".ljust(TO_S_SIZE) + element.getTagName if element.getTagName.length > 0

@@ -29,7 +29,6 @@ module Celerity
     end
 
     def set_page(value)
-      # Log.debug(value.pretty_inspect)
       @page = value
       @object = @page.getDocumentElement
       run_error_checks
@@ -41,6 +40,7 @@ module Celerity
     end
     
     def base_url
+      # FIXME: base_url HTTPS
       "http://" + URI.parse( url() ).host
     end
 
