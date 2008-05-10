@@ -233,17 +233,16 @@ module Celerity
       begin
         case how
         when :id
-          locate_input_by_id(tags, what)
-        when :name, :value
-          locate_input_by_name_or_value(idents, how, what, value)
-        when :caption
-          locate_input_by_caption(idents, what)
-        when :class
-          locate_input_by_class(idents, what)
+          locate_by_id(tags, what)
+        when :name, :value, :caption, :class
+          locator = ElementLocator.new( elements_by_idents(idents) )
+          locator.find_by_attribute(how.to_s, what, value)
         when :text
-          locate_input_by_text(idents, what)
+          locator = ElementLocator.new( elements_by_idents(idents) )
+          locator.find_by_text(what)
         when :index
-          locate_input_by_index(idents, what)
+          locator = ElementLocator.new( elements_by_idents(idents) )
+          locator.find_by_index(what.to_i)
         when :xpath
           locate_by_xpath(what)
         else
@@ -255,30 +254,38 @@ module Celerity
     
     def locate_tagged_element(element_instance, how, what)
       tags = element_instance.class::TAGS
+
       begin
         case how
         when :id
-          locate_tag_by_id(tags, what)
-        when :name, :value, :title
-          locate_tag_by_name_or_value_or_title(how, tags, what)
-        when :class
-          locate_tag_by_class(tags, what)
-        when :text
-          locate_tag_by_text(tags, what)
-        when :index
-          locate_tag_by_index(tags, what)
+          locate_by_id(tags, what)
         when :xpath
           locate_by_xpath(what)
+        when :name, :value, :title, :class
+          locator = ElementLocator.new( elements_by_tag_names(tags) )
+          # if element_instance
+          locator.find_by_attribute(how.to_s, what)
+        when :text
+          locator = ElementLocator.new( elements_by_tag_names(tags) )
+          locator.find_by_text(what)
+        when :index
+          locator = ElementLocator.new( elements_by_tag_names(tags) )
+          locator.find_by_index(what.to_i)
         when :url
-          locate_tag_by_url(tags, what) if [Celerity::Link, Celerity::Map, Celerity::Area].include?(element_instance.class)
-        when :src
-          locate_tag_by_src(tags, what) if Celerity::Image === element_instance
-        when :alt
-          locate_tag_by_alt(tags, what) if Celerity::Image === element_instance
-        when :action
-          locate_tag_by_action(tags, what) if Celerity::Form === element_instance
-        when :method
-          locate_tag_by_method(tags, what) if Celerity::Form === element_instance
+          if [Celerity::Link, Celerity::Map, Celerity::Area].include?(element_instance.class)
+            locator = ElementLocator.new( elements_by_tag_names(tags) )
+            locator.find_by_attribute('href', what)
+          end
+        when :src, :alt
+          if Celerity::Image === element_instance
+            locator = ElementLocator.new( elements_by_tag_names(tags) )
+            locator.find_by_attribute(how.to_s, what)
+          end
+        when :action, :method
+          if Celerity::Form === element_instance
+            locator = ElementLocator.new( elements_by_tag_names(tags) )
+            locator.find_by_attribute(how.to_s, what)
+          end
         else
           raise MissingWayOfFindingObjectException, "No how #{how.inspect}"
         end
@@ -288,6 +295,22 @@ module Celerity
     
     private 
     
+    def locate_by_xpath(what)
+      what = ".#{what}" if what[0] == ?/
+      @object.getByXPath(what).to_a.first
+    end
+    
+    def locate_by_id(tags, what)
+      case what
+      when Regexp
+        elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
+      when String
+        @object.getHtmlElementById(what)
+      else
+        raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
+      end
+    end
+
     # this could be optimized when iterating - we don't need to check the class of 'what' for each element
     # perhaps something like this
     # find_matching_element(collection, method = :to_s, what)
@@ -316,97 +339,7 @@ module Celerity
         end
       end
     end
-
-    # ======================== common locators ===============================
-
-    def locate_by_xpath(what)
-      what = ".#{what}" if what[0] == ?/
-      @object.getByXPath(what).to_a.first
-    end
-
-    # ======================== input locators ===============================
-    
-    def locate_input_by_id(tags, what)
-      case what
-      when Regexp
-        elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
-      when String
-        @object.getHtmlElementById(what)
-      else
-        raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
-      end
-    end
-    
-    def locate_input_by_name_or_value(idents, how, what, value = nil)
-      elements_by_idents(idents).find do |e|
-        matches?(e.getAttribute(how.to_s), what) && (value ? matches?(e.getValueAttribute, value) : true)
-      end
-    end
-    
-    def locate_input_by_caption(idents, what)
-      elements_by_idents(idents).find { |e| matches?(e.getValueAttribute, what) }
-    end
-    
-    def locate_input_by_class(idents, what)
-      elements_by_idents(idents).find { |e| matches?(e.getClassAttribute, what) }
-    end
-    
-    def locate_input_by_text(idents, what)
-      elements_by_idents(idents).find { |e| matches?(e.asText, what) }
-    end
-    
-    def locate_input_by_index(idents, what)
-      elements_by_idents(idents)[what.to_i - 1]
-    end
-    
-    # ======================== tagged locators ===============================
-
-    def locate_tag_by_id(tags, what)
-      case what
-      when Regexp
-        elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
-      when String
-        @object.getHtmlElementById(what)
-      else
-        raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
-      end
-    end
-    
-    def locate_tag_by_name_or_value_or_title(how, tags, what)
-      elements_by_tag_names(tags).find { |elem| matches?(elem.getAttributeValue(how.to_s), what) }
-    end
-    
-    def locate_tag_by_class(tags, what)
-      elements_by_tag_names(tags).find { |elem| matches?(elem.getClassAttribute, what)}
-    end
-    
-    def locate_tag_by_text(tags, what)
-      elements_by_tag_names(tags).find { |elem| matches?(elem.asText, what) }
-    end
-    
-    def locate_tag_by_index(tags, what)
-      elements_by_tag_names(tags)[what.to_i-1]
-    end
-        
-    def locate_tag_by_url(tags, what)
-      elements_by_tag_names(tags).find { |elem| matches?(elem.getHrefAttribute, what) }
-    end
-    
-    def locate_tag_by_src(tags, what)
-      elements_by_tag_names(tags).find { |elem| matches?(elem.getSrcAttribute, what) }
-    end
-    
-    def locate_tag_by_alt(tags, what)
-      elements_by_tag_names(tags).find { |elem| matches?(elem.getAltAttribute, what) }
-    end
-    
-    def locate_tag_by_action(tags, what)
-      elements_by_tag_names(tags).find { |elem| matches?(elem.getActionAttribute, what) }
-    end
-    
-    def locate_tag_by_method(tags, what)
-      elements_by_tag_names(tags).find { |elem| matches?(elem.getMethodAttribute, what) }
-    end
-    
+ 
+            
   end # Container
 end # Celerity

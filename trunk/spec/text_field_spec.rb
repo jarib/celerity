@@ -29,12 +29,15 @@ describe "TextField" do
       @ie.text_field(:index, 1).should exist
       @ie.text_field(:xpath, "//input[@id='new_user_email']").should exist
      end
-    it "should retun true if the element exists (no type attribute)" do
+
+    it "should return true if the element exists (no type attribute)" do
       @ie.text_field(:id, 'new_user_first_name').should exist
     end
-    it "should retun true if the element exists (invalid type attribute)" do
+
+    it "should return true if the element exists (invalid type attribute)" do
       @ie.text_field(:id, 'new_user_last_name').should exist
     end
+
     it "should return false if the element does not exist" do
       @ie.text_field(:id, 'no_such_id').should_not exist
       @ie.text_field(:id, /no_such_id/).should_not exist
@@ -49,9 +52,11 @@ describe "TextField" do
       @ie.text_field(:index, 1337).should_not exist
       @ie.text_field(:xpath, "//input[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when what argument is invalid" do
       lambda { @ie.text_field(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
       lambda { @ie.text_field(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
