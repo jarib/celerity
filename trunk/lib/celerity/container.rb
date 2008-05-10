@@ -305,7 +305,6 @@ module Celerity
     
     def elements_by_idents(idents)
       elements = elements_by_tag_names(idents.map { |i| i.tag })
-      # Log.debug elements.inspect
       elements.select do |e| 
         idents.any? do |ident| 
           next unless ident.tag == e.getTagName

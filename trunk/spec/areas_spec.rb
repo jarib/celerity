@@ -18,7 +18,7 @@ describe "Areas" do
   end
   
   describe "#[]" do
-    it "should return the p at the given index" do
+    it "should return the area at the given index" do
       @ie.areas[1].id.should == "NCE"
     end
   end

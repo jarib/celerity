@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe "P" do
+describe "Area" do
   
   before :all do
     @ie = IE.new
@@ -13,7 +13,7 @@ describe "P" do
 
   # Exists method
   describe "#exist?" do
-    it "should return true if the 'area' exists" do
+    it "should return true if the area exists" do
       @ie.area(:id, "NCE").should exist
       @ie.area(:id, /NCE/).should exist
       @ie.area(:name, "NCE").should exist
@@ -25,7 +25,7 @@ describe "P" do
       @ie.area(:index, 1).should exist
       @ie.area(:xpath, "//area[@id='NCE']").should exist
     end
-    it "should return false if the 'area' doesn't exist" do
+    it "should return false if the area doesn't exist" do
       @ie.area(:id, "no_such_id").should_not exist
       @ie.area(:id, /no_such_id/).should_not exist
       @ie.area(:name, "no_such_id").should_not exist
@@ -37,7 +37,7 @@ describe "P" do
       @ie.area(:index, 1337).should_not exist
       @ie.area(:xpath, "//area[@id='no_such_id']").should_not exist
     end
-    it "should raise ArgumentError when what argument is invalid" do
+    it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @ie.area(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
     it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
@@ -53,7 +53,7 @@ describe "P" do
     it "should return an empty string if the element exists and the attribute doesn't" do
       @ie.area(:index, 3).id.should == ''
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the area doesn't exist" do
       lambda { @ie.area(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda { @ie.area(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
@@ -66,7 +66,7 @@ describe "P" do
     it "should return an empty string if the element exists and the attribute doesn't" do
       @ie.area(:index, 3).name.should == ''
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the area doesn't exist" do
       lambda { @ie.area(:id, "no_such_id").name }.should raise_error(UnknownObjectException)
       lambda { @ie.area(:index, 1337).name }.should raise_error(UnknownObjectException)
     end

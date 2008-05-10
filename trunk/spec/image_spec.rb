@@ -172,7 +172,7 @@ describe "Image" do
   end
   
   describe "#html" do
-    it "should return the image as a string of html" do
+    it "should return the image element as a string of html" do
       @ie.image(:id, 'triangle').html.chomp.should == '<img src="images/triangle.jpg" id="triangle" usemap="#triangle_map" />'
     end
   end
@@ -185,23 +185,6 @@ describe "Image" do
       File.delete(file)
     end
   end
-  
-  # Image elements can't be disabled - the element doesn't get disabled when clicking the button in Firefox.
-  # describe "#disabled?" do
-  #   it "should return true if the image is disabled" do
-  #     @ie.text_field(:name, 'text1').clear
-  #     @ie.button(:value, /Pos/).click
-  #     @ie.text_field(:name, 'text1').value.should == 'clicked'
-  #     @ie.image(:name, 'disabler_test').should_not be_disabled
-  # 
-  #     @ie.button(:name, 'disable_img').click
-  #     @ie.image(:name, 'disabler_test').should be_disabled
-  # 
-  #     @ie.button(:name, 'disable_img').click
-  #     @ie.image(:src, /button/).click
-  #     @ie.text.include?('PASS').should be_true
-  #   end
-  # end
   
   after :all do
     @ie.close

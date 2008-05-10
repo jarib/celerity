@@ -191,6 +191,9 @@ describe "TextField" do
     it "should set the value of the element" do
       @ie.text_field(:id, 'new_user_email').value = 'Hello Cruel World'
       @ie.text_field(:id, "new_user_email").value.should == 'Hello Cruel World'
+    end
+    
+    it "should set the value of a textarea element" do
       @ie.text_field(:id, 'delete_user_comment').value = 'Hello Cruel World'
       @ie.text_field(:id, "delete_user_comment").value.should == 'Hello Cruel World'
     end
@@ -200,6 +203,9 @@ describe "TextField" do
     it "should set the value of the element" do
       @ie.text_field(:id, 'new_user_email').set('Bye Cruel World')
       @ie.text_field(:id, "new_user_email").value.should == 'Bye Cruel World'
+    end
+    
+    it "should set the value of a textarea element" do
       @ie.text_field(:id, 'delete_user_comment').set('Hello Cruel World')
       @ie.text_field(:id, "delete_user_comment").value.should == 'Hello Cruel World'
     end

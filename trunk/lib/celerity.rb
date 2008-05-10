@@ -34,7 +34,6 @@ require "celerity/non_control_elements"
 Dir[File.dirname(__FILE__) + "/celerity/elements/*.rb"].each { |f| require(f) }
 require "celerity/ie"
 
-
 require "logger"
 require "uri"
 require "pp"
@@ -45,3 +44,4 @@ Log.level = Logger::DEBUG
 # undefine deprecated methods to use them for Element attributes
 Object.send :undef_method, :id
 Object.send :undef_method, :type
+

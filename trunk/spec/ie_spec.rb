@@ -14,7 +14,7 @@ describe "IE" do
       @ie.goto(TEST_HOST + "/non_control_elements.html")
       @ie.should exist
     end
-    it "should not exist after closing" do
+    it "should return false after IE#close" do
       @ie.close
       @ie.should_not exist
     end
@@ -88,19 +88,23 @@ describe "IE" do
     before :each do
       @ie.goto(TEST_HOST + "/non_control_elements.html")
     end
+
     it "should raise ArgumentError when called with no or wrong arguments" do
       lambda { @ie.contains_text }.should raise_error(ArgumentError)
       lambda { @ie.contains_text(nil) }.should raise_error(ArgumentError)
       lambda { @ie.contains_text(42) }.should raise_error(ArgumentError)
     end
+
     it "should return the index if the given text exists" do
         @ie.contains_text('Dubito, ergo cogito, ergo sum.').should be_instance_of(Fixnum)
         @ie.contains_text(/Dubito.*sum./).should_not be_nil
     end
+
     it "should return nil if the text doesn't exist" do
       @ie.contains_text('no_such_text').should be_nil
       @ie.contains_text(/no_such_text/).should be_nil
     end
+
     it "should not raise error on a blank page" do
       @ie = IE.new
       lambda { @ie.contains_text('') }.should_not raise_error

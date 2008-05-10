@@ -78,7 +78,7 @@ module Celerity
     end
     
     def contains_text(expected_text)
-      return "" unless exist?
+      return nil unless exist?
       case expected_text
       when Regexp
         text().match(expected_text)
@@ -124,3 +124,5 @@ module Celerity
     
   end # IE
 end # Celerity
+
+Celerity::Browser = Celerity::IE
