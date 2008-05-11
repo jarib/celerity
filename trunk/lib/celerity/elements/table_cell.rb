@@ -4,7 +4,7 @@ module Celerity
     include Celerity::Exception
     include Container
 
-    TAGS = ['td']
+    TAGS = [ Identifier.new('td') ]
     ATTRIBUTES = BASE_ATTRIBUTES | [:abbr, :axis, :headers, :scope, :rowspan, :colspan] | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES
     
     def locate

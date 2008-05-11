@@ -1,7 +1,7 @@
 module Celerity
   
   class TableRow < Element
-    TAGS = ['tr']
+    TAGS = [ Identifier.new('tr') ]
 
     def locate
       if @how == :object

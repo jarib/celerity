@@ -20,31 +20,31 @@ module Celerity
   end
     
   class Pre < NonControlElement
-    TAGS = ['pre']
+    TAGS = [ Identifier.new('pre')] 
   end
   
   class P < NonControlElement
-    TAGS = ['p']
+    TAGS = [ Identifier.new('p') ]
   end
   
   class Div < NonControlElement
-    TAGS = ['div']   
+    TAGS = [ Identifier.new('div')] 
   end
   
   class Span < NonControlElement
-    TAGS = ['span']  
+    TAGS = [ Identifier.new('span') ]
   end
 
   class Li < NonControlElement
-    TAGS = ['li']    
+    TAGS = [ Identifier.new('li') ]
   end
     
   class Map < NonControlElement
-    TAGS = ['map']
+    TAGS = [ Identifier.new('map') ]
   end
 
   class Area < NonControlElement
-    TAGS = ['area']
+    TAGS = [ Identifier.new('area') ]
   end
   
 end

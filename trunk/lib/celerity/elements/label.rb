@@ -1,7 +1,7 @@
 module Celerity
   
   class Label < Element
-    TAGS = ['label']
+    TAGS = [ Identifier.new('label') ]
     ATTRIBUTES = BASE_ATTRIBUTES | [:for, :accesskey, :onfocus, :onblur]
     
     

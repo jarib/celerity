@@ -228,23 +228,19 @@ module Celerity
     protected
 
     def locate_input_element(element_instance, how, what, value = nil)
-      idents = element_instance.class::TAGS
-      tags = idents.map { |e| e.tag }
+      locator = ElementLocator.new(@object, element_instance.class::TAGS)
       begin
         case how
         when :id
-          locate_by_id(tags, what)
+          locator.find_by_id(what)
+        when :xpath
+          locator.find_by_xpath(what)
         when :name, :value, :caption, :class
-          locator = ElementLocator.new( elements_by_idents(idents) )
           locator.find_by_attribute(how.to_s, what, value)
         when :text
-          locator = ElementLocator.new( elements_by_idents(idents) )
           locator.find_by_text(what)
         when :index
-          locator = ElementLocator.new( elements_by_idents(idents) )
           locator.find_by_index(what.to_i)
-        when :xpath
-          locate_by_xpath(what)
         else
           raise MissingWayOfFindingObjectException
         end
@@ -253,37 +249,29 @@ module Celerity
     end
     
     def locate_tagged_element(element_instance, how, what)
-      tags = element_instance.class::TAGS
-
+      locator = ElementLocator.new(@object, element_instance.class::TAGS)
       begin
         case how
         when :id
-          locate_by_id(tags, what)
+          locator.find_by_id(what)
         when :xpath
-          locate_by_xpath(what)
+          locator.find_by_xpath(what)
         when :name, :value, :title, :class
-          locator = ElementLocator.new( elements_by_tag_names(tags) )
-          # if element_instance
           locator.find_by_attribute(how.to_s, what)
         when :text
-          locator = ElementLocator.new( elements_by_tag_names(tags) )
           locator.find_by_text(what)
         when :index
-          locator = ElementLocator.new( elements_by_tag_names(tags) )
           locator.find_by_index(what.to_i)
         when :url
           if [Celerity::Link, Celerity::Map, Celerity::Area].include?(element_instance.class)
-            locator = ElementLocator.new( elements_by_tag_names(tags) )
             locator.find_by_attribute('href', what)
           end
         when :src, :alt
           if Celerity::Image === element_instance
-            locator = ElementLocator.new( elements_by_tag_names(tags) )
             locator.find_by_attribute(how.to_s, what)
           end
         when :action, :method
           if Celerity::Form === element_instance
-            locator = ElementLocator.new( elements_by_tag_names(tags) )
             locator.find_by_attribute(how.to_s, what)
           end
         else
@@ -295,21 +283,21 @@ module Celerity
     
     private 
     
-    def locate_by_xpath(what)
-      what = ".#{what}" if what[0] == ?/
-      @object.getByXPath(what).to_a.first
-    end
+    # def locate_by_xpath(what)
+    #   what = ".#{what}" if what[0] == ?/
+    #   @object.getByXPath(what).to_a.first
+    # end
     
-    def locate_by_id(tags, what)
-      case what
-      when Regexp
-        elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
-      when String
-        @object.getHtmlElementById(what)
-      else
-        raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
-      end
-    end
+    # def locate_by_id(tags, what)
+    #   case what
+    #   when Regexp
+    #     elements_by_tag_names(tags).find { |elem| elem.getIdAttribute =~ what }
+    #   when String
+    #     @object.getHtmlElementById(what)
+    #   else
+    #     raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
+    #   end
+    # end
 
     # this could be optimized when iterating - we don't need to check the class of 'what' for each element
     # perhaps something like this
@@ -326,20 +314,35 @@ module Celerity
       end
     end
     
-    def elements_by_idents(idents)
-      elements = elements_by_tag_names(idents.map { |i| i.tag })
-      elements.select do |e| 
-        idents.any? do |ident| 
-          next unless ident.tag == e.getTagName
-          if ident.attributes.empty?
-            true
-          else
-            ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) } 
-          end
-        end
-      end
-    end
- 
+    # def elements_by_idents(idents)
+    #   elements = elements_by_tag_names(idents.map { |i| i.tag })
+    #   elements.select do |e| 
+    #     idents.any? do |ident| 
+    #       next unless ident.tag == e.getTagName
+    #       if ident.attributes.empty?
+    #         true
+    #       else
+    #         ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) } 
+    #       end
+    #     end
+    #   end
+    # end
+    
+    # def elements_by_idents(idents)
+    #   tags = idents.map { |e| e.tag }
+    #   @object.getAllHtmlChildElements.iterator.to_a.select do |e|
+    #     if tags.include?(e.getTagName)
+    #       idents.any? do |ident|
+    #         next unless ident.tag == e.getTagName
+    #         if ident.attributes.empty?
+    #           true
+    #         else
+    #           ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) }
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
             
   end # Container
 end # Celerity

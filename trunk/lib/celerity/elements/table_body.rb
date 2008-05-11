@@ -1,7 +1,7 @@
 module Celerity
   
   class TableBody < Element
-    TAGS = ['tbody']
+    TAGS = [ Identifier.new('tbody') ]
 
     def locate
       if @how == :object

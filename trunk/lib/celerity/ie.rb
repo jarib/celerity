@@ -106,7 +106,7 @@ module Celerity
     def disable_checker(checker)
       @error_checkers.delete(checker)
     end
-        
+    
     # these are just for Watir compatability - should we keep them?
     class << self
       attr_accessor :speed, :attach_timeout, :visible

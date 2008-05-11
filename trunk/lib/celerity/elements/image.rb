@@ -9,7 +9,7 @@ module Celerity
     include ClickableElement
     include DisabledElement
     
-    TAGS = ['img']
+    TAGS = [ Identifier.new('img') ]
     ATTRIBUTES = BASE_ATTRIBUTES | [:src, :alt, :longdesc, :name, :height, :width, :usemap, :ismap, :align, :border, :hspace, :vspace]
     
     # this method returns the file created date of the image
