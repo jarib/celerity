@@ -17,33 +17,27 @@ module Celerity
     BASE_ATTRIBUTES = CORE_ATTRIBUTES | I18N_ATTRIBUTES | EVENT_ATTRIBUTES | SLOPPY_ATTRIBUTES
     ATTRIBUTES = BASE_ATTRIBUTES
     
-    class Identifier < Struct.new(:tag, :attributes)
-      def initialize(t, a={}); super(t, a); end
-      def deep_clone; Marshal::load(Marshal.dump(self)); end
-    end
-
     def initialize(container, *args)
       set_container container
       if args.size == 1
         if Hash === args.first
-          @locator_conditions = args.first
+          @conditions = args.first
         else
           raise ArgumentError, "wrong number of arguments (1 for 2), DEFAULT_HOW not defined" unless defined? self.class::DEFAULT_HOW
           @how = self.class::DEFAULT_HOW
           @what = args.shift
+          @conditions = {@how => @what}
         end
       else
         @how, @what = *args
+        @conditions = {@how => @what} # Hash[*args] not working because TableBodies.new(...) ???
       end
+      
+      @conditions[:value] = @value if @value
     end
     
     def locate
-      locator = ElementLocator.new(@container.object, self)
-      if @locator_conditions
-        @object = locator.find_by_conditions(@locator_conditions)
-      else
-        @object = locator.locate(@how, @what, @value)
-      end
+      @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
     end
     
     def to_s

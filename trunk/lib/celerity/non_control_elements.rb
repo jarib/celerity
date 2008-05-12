@@ -36,10 +36,14 @@ module Celerity
   end
     
   class Map < NonControlElement
+    # double-check my DTD reading here! :) 
+    ATTRIBUTES = BASE_ATTRIBUTES | [:id, :class, :style, :title, :name]
     TAGS = [ Identifier.new('map') ]
   end
 
   class Area < NonControlElement
+    # double-check my DTD reading here! :) 
+    ATTRIBUTES = BASE_ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt]
     TAGS = [ Identifier.new('area') ]
   end
   

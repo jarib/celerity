@@ -6,67 +6,62 @@ module Celerity
   # Jari - 2008-05-11
   class ElementLocator
     
-    def initialize(object, element)
+    def initialize(object, element_class)
       @object = object
-      @element = element
-      @idents = element.class::TAGS.map { |e| e.deep_clone }
+      @element_class = element_class
+      @idents = @element_class::TAGS
       @tags = @idents.map { |e| e.tag.downcase }
     end
 
-    def locate(how, what, value = nil)
-      begin
-        case how
-        when :id
-          find_by_id(what)
-        when :xpath
-          find_by_xpath(what)
-        when :name, :value, :title, :caption, :class
-          @idents.each do |ident|
-            (ident.attributes[how.to_s] ||= []) << what
-            (ident.attributes['value'] ||= []) << value if value
-          end
-          elements_by_idents.first
-        when :text
-          find_by_text(what)
-        when :index
-          find_by_index(what.to_i)
-        when :url # shouldn't we also have :href here?
-          find_by_attribute('href', what) if [Celerity::Link, Celerity::Map, Celerity::Area].include?(@element.class)
-        when :src, :alt
-          find_by_attribute(how.to_s, what) if Celerity::Image === @element
-        when :action, :method
-          find_by_attribute(how.to_s, what) if Celerity::Form === @element
-        else
-          raise MissingWayOfFindingObjectException, "No how #{how.inspect}"
-        end
-      rescue HtmlUnit::ElementNotFoundException
-      end
-    end
-
     def find_by_conditions(conditions)
-      raise NotImplementedError
-    end
-    
-    def find_by_attribute(attribute, what, value = nil)
-      if value
-        collection.find do |e|
-          matches?(e.getAttribute(attribute), what) && matches?(e.getValueAttribute, value)
+      @identifiers = []
+      attributes = Hash.new { |h, k| h[k] = [] }
+      index = 0 # by default, return the first matching element
+      text = nil 
+      
+      begin 
+        conditions.each do |how, what|
+          how = :class if how == :class_name
+          how = :href  if how == :url
+          how = :text  if how == :caption
+        
+          if how == :id
+            return find_by_id(what)
+          elsif how == :xpath
+            return find_by_xpath(what)
+          elsif @element_class::ATTRIBUTES.include?(how)
+            attributes[how] << what  
+          elsif how == :index
+            index = what.to_i - 1
+          elsif how == :text
+            text = what
+          else
+            raise MissingWayOfFindingObjectException, "No how #{how.inspect}"
+          end
+
         end
-      else
-        collection.find { |e| matches?(e.getAttributeValue(attribute), what) }
+
+        @idents.each do |ident|
+          id = Identifier.new(ident.tag, attributes.merge(ident.attributes))
+          id.text = text if text
+          @identifiers << id
+        end
+        
+        if index == 0
+          element_by_idents(@identifiers)
+        else
+          elements_by_idents(@identifiers)[index]
+        end
+
+      rescue HtmlUnit::ElementNotFoundException
+        nil # for rcov
       end
-    end
-  
-    def find_by_text(text)
-      collection.find { |e| matches?(e.asText, text) }
     end
     
     def find_by_id(what)
       case what
       when Regexp
         elements_by_tag_names.find { |elem| elem.getIdAttribute =~ what }
-        # collection.find { |elem| elem.getIdAttribute =~ what } # seems slower
-        # find_by_attribute('id', what)
       when String
         @object.getHtmlElementById(what)
       else
@@ -79,45 +74,36 @@ module Celerity
       @object.getByXPath(what).to_a.first
     end
 
-    def [](idx)
-      collection[idx - 1]
+    def elements_by_idents(idents = nil)
+      get_by_idents(:select, idents || @idents)
     end
-    alias_method :find_by_index, :[]
     
-    def collection
-      @collection ||= elements_by_idents
+    def element_by_idents(idents = nil)
+      get_by_idents(:find, idents || @idents)
     end
 
     private 
 
-    def elements_by_idents(idents = nil)
-      idents ||= @idents
-      @object.getAllHtmlChildElements.iterator.to_a.select do |e|
+    def get_by_idents(meth, idents)
+      @object.getAllHtmlChildElements.iterator.to_a.send(meth) do |e|
         if @tags.include?(e.getTagName)
           idents.any? do |ident|
             next unless ident.tag == e.getTagName
-            ident.attributes.all? { |key, value| value.any? { |val| matches?(e.getAttributeValue(key.to_s), val) } }
+            attr_result = ident.attributes.all? do |key, value| 
+              value.any? { |val| matches?(e.getAttributeValue(key.to_s), val) } 
+            end 
+            
+            if ident.text
+              attr_result && matches?(e.asText, ident.text) 
+            else
+              attr_result
+            end
+            
           end
         end
       end
     end
 
-    # just keeping this around for speed comparisons
-    # def elements_by_idents_alt(idents)
-    #   tags = idents.map { |e| e.tag }
-    #   elements_by_tag_names(tags).select do |e|
-    #     idents.any? do |ident|
-    #       next unless ident.tag == e.getTagName
-    #       if ident.attributes.empty?
-    #         true
-    #       else
-    #         ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) }
-    #       end
-    #     end
-    #   end
-    # end
-
-    # this could be optimized when iterating - we don't need to check the class of 'what' for each element
     def matches?(string, what)
       Regexp === what ? string.match(what) : string == what.to_s
     end

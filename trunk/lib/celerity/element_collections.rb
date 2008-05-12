@@ -11,28 +11,11 @@ module Celerity
     def length
       if @object
         @object.length
-      elsif Element::Identifier === element_tags.first
-        idents = element_tags
-        tags   = idents.map { |e| e.tag }    
-        tags.map! { |t| t.downcase }
-        elements = @container.object.getAllHtmlChildElements.iterator.to_a.select do |elem|
-          tags.include?(elem.getTagName)
-        end
-        elements = elements.select do |e| 
-          idents.any? do |ident| 
-            next unless ident.tag == e.getTagName
-            if ident.attributes.empty?
-              true
-            else
-              ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) } 
-            end
-          end
-        end
-        return elements.length
+      elsif Identifier === element_tags.first
+        elems = ElementLocator.new(@container.object, element_class).elements_by_idents
+        elems.size
       else
-        length = 0
-        element_tags.each { |element_tag| length += @container.object.getHtmlElementsByTagName(element_tag).toArray.size }
-        return length
+        element_tags.inject(0) { |sum, element_tag| sum + @container.object.getHtmlElementsByTagName(element_tag).toArray.size }
       end
     end
     alias_method :size, :length
