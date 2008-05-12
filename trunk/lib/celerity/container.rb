@@ -101,9 +101,9 @@ module Celerity
       SelectLists.new(self)
     end
 
-    def check_box(how, what, value = nil)
+    def check_box(*args)
       assert_exists
-      CheckBox.new(self, how, what, value)
+      CheckBox.new(self, *args)
     end
     alias_method :checkbox, :check_box
     alias_method :checkBox, :check_box
@@ -113,9 +113,9 @@ module Celerity
       CheckBoxes.new(self)
     end
 
-    def radio(how, what, value = nil)
+    def radio(*args)
       assert_exists
-      Radio.new(self, how, what, value)
+      Radio.new(self, *args)
     end
     def radios
       assert_exists

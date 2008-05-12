@@ -45,7 +45,7 @@ module Celerity
     end
 
     def title
-      @page.getTitleText
+      @page ? @page.getTitleText : ''
     end
 
     def html
@@ -54,8 +54,7 @@ module Celerity
 
     def text
       # nicer way to do this?
-      assert_exists
-      @page.getFirstByXPath("//body").asText
+      @page ? @page.getFirstByXPath("//body").asText : ''
     end
     
     def back
@@ -99,7 +98,7 @@ module Celerity
       elsif Proc === checker
         @error_checkers << checker
       else
-        raise ArgumentError, "argument must be a Proc or a block"
+        raise ArgumentError, "argument must be a Proc or block"
       end
     end
     

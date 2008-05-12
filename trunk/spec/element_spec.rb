@@ -10,6 +10,10 @@ describe "Element" do
   before :each do
     @ie.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
+  
+  it "should find elements given a hash of :how => 'what' arguments" do
+    @ie.checkbox(:name => 'new_user_interests', :title => 'Dancing is fun!').value.should == 'dancing'
+  end
 
   describe "#method_missing" do
     it "should magically return the requested attribute if the attribute is defined in the attribute list" do

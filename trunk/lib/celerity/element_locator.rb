@@ -38,6 +38,10 @@ module Celerity
       rescue HtmlUnit::ElementNotFoundException
       end
     end
+
+    def find_by_conditions(conditions)
+      raise NotImplementedError
+    end
     
     def find_by_attribute(attribute, what, value = nil)
       if value

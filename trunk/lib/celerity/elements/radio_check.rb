@@ -6,10 +6,14 @@ module Celerity
   # most of the methods available to this element are inherited from the Element class
   #
   class RadioCheckCommon < InputElement
-    def initialize(container, how, what, type, value = nil)
+    def initialize(container, type, *args)
       @type = type
-      @value = value
-      super(container, how, what)
+      if [2,3].include?(args.size)
+        @value = args[2]
+        super(container, args[0], args[1])
+      else
+        super(container, *args)
+      end
     end
     
     def set?
@@ -31,8 +35,8 @@ module Celerity
   class Radio < RadioCheckCommon
     TAGS = [Identifier.new('input', :type => %w(radio))]
 
-    def initialize(container, how, what, value)
-      super(container, how, what, ['radio'], value)
+    def initialize(container, *args)
+      super(container, ['radio'], *args)
     end
 
     def set(value = true)
@@ -47,8 +51,8 @@ module Celerity
   class CheckBox < RadioCheckCommon
     TAGS = [Identifier.new('input', :type => %w(checkbox))]
 
-    def initialize(container, how, what, value)
-      super(container, how, what, ['checkbox'], value)
+    def initialize(container, *args)
+      super(container, ['checkbox'], *args)
     end
 
     def set(value = true)

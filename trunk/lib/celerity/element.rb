@@ -23,19 +23,26 @@ module Celerity
 
     def initialize(container, *args)
       set_container container
-
       if args.size == 1
-        raise NotImplementedError if Hash === args.first
-        raise ArgumentError, "wrong number of arguments (1 for 2), DEFAULT_HOW not defined" unless defined? self.class::DEFAULT_HOW
-        @how = self.class::DEFAULT_HOW
-        @what = args.shift
+        if Hash === args.first
+          @locator_conditions = args.first
+        else
+          raise ArgumentError, "wrong number of arguments (1 for 2), DEFAULT_HOW not defined" unless defined? self.class::DEFAULT_HOW
+          @how = self.class::DEFAULT_HOW
+          @what = args.shift
+        end
       else
         @how, @what = *args
       end
     end
     
     def locate
-      @object = ElementLocator.new(@container.object, self).locate(@how, @what, @value)
+      locator = ElementLocator.new(@container.object, self)
+      if @locator_conditions
+        @object = locator.find_by_conditions(@locator_conditions)
+      else
+        @object = locator.locate(@how, @what, @value)
+      end
     end
     
     def to_s

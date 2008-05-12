@@ -49,6 +49,13 @@ describe "IE" do
     end
   end
   
+  describe "#base_url" do
+    it "should return the base URL of the current page" do
+      @ie.goto(TEST_HOST + "/non_control_elements.html")
+      @ie.base_url.should == "http://localhost" 
+    end
+  end
+  
   
   # Manipulation methods
   describe ".start" do
