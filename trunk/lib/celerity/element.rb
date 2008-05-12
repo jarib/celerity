@@ -19,6 +19,7 @@ module Celerity
     
     class Identifier < Struct.new(:tag, :attributes)
       def initialize(t, a={}); super(t, a); end
+      def deep_clone; Marshal::load(Marshal.dump(self)); end
     end
 
     def initialize(container, *args)

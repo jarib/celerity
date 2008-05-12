@@ -9,7 +9,7 @@ module Celerity
     def initialize(object, element)
       @object = object
       @element = element
-      @idents = element.class::TAGS
+      @idents = element.class::TAGS.map { |e| e.deep_clone }
       @tags = @idents.map { |e| e.tag.downcase }
     end
 
@@ -21,7 +21,11 @@ module Celerity
         when :xpath
           find_by_xpath(what)
         when :name, :value, :title, :caption, :class
-          find_by_attribute(how.to_s, what, value)
+          @idents.each do |ident|
+            (ident.attributes[how.to_s] ||= []) << what
+            (ident.attributes['value'] ||= []) << value if value
+          end
+          elements_by_idents.first
         when :text
           find_by_text(what)
         when :index
@@ -86,16 +90,13 @@ module Celerity
 
     private 
 
-    def elements_by_idents
+    def elements_by_idents(idents = nil)
+      idents ||= @idents
       @object.getAllHtmlChildElements.iterator.to_a.select do |e|
         if @tags.include?(e.getTagName)
-          @idents.any? do |ident|
+          idents.any? do |ident|
             next unless ident.tag == e.getTagName
-            if ident.attributes.empty?
-              true
-            else
-              ident.attributes.any? { |key, value| value.include?(e.getAttributeValue(key.to_s)) }
-            end
+            ident.attributes.all? { |key, value| value.any? { |val| matches?(e.getAttributeValue(key.to_s), val) } }
           end
         end
       end
