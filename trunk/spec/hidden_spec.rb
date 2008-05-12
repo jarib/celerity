@@ -44,10 +44,10 @@ describe "Hidden" do
       @ie.hidden(:index, 1337).should_not exist
       @ie.hidden(:xpath, "//input[@id='no_such_id']").should_not exist
     end
-    it "should raise ArgumentError when what argument is invalid" do
+    it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @ie.hidden(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
-    it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @ie.hidden(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end

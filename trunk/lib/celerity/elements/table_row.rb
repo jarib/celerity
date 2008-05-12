@@ -7,7 +7,7 @@ module Celerity
       if @how == :object
         @object = @what
       else
-          @object = @container.locate_tagged_element(self, @how, @what)
+        super
       end
       if @object # cant call the assert_exists here, as an exists? method call will fail
         @cells = @object.getCells

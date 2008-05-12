@@ -52,10 +52,10 @@ describe "Button" do
       @ie.button(:index, 1337).should_not exist
       @ie.button(:xpath, "//input[@id='no_such_id']").should_not exist
     end
-    it "should raise ArgumentError when what argument is invalid" do
+    it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @ie.button(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
-    it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @ie.button(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end

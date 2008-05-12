@@ -7,8 +7,8 @@ module Celerity
     DEFAULT_HOW = :name
     
     def locate
-      @object = @container.locate_tagged_element(self, @how, @what)
-      if @object # cant call the assert_exists here, as an exists? method call will fail
+      super
+      if @object # cant call assert_exists here, as an exists? method call will fail
         @rows = @object.getRows
         @cells = []
         @rows.each do |row| 

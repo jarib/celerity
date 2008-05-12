@@ -33,10 +33,10 @@ describe "Span" do
       @ie.span(:index, 1337).should_not exist
       @ie.span(:xpath, "//span[@id='no_such_id']").should_not exist
     end
-    it "should raise ArgumentError when what argument is invalid" do
+    it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @ie.span(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
-    it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @ie.span(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
@@ -122,9 +122,9 @@ describe "Span" do
   # Other
   describe "#click" do
     it "should fire events" do
-      @ie.span(:id, 'footer').text.include?('Javascript').should_not be_true
+      @ie.span(:id, 'footer').text.should_not include('Javascript')
       @ie.span(:id, 'footer').click
-      @ie.span(:id, 'footer').text.include?('Javascript').should be_true
+      @ie.span(:id, 'footer').text.should include('JavaScript')
     end
     it "should raise UnknownObjectException if the span doesn't exist" do
       lambda { @ie.span(:id, "no_such_id").click }.should raise_error(UnknownObjectException)

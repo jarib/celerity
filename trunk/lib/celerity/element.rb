@@ -23,13 +23,10 @@ module Celerity
 
     def initialize(container, *args)
       set_container container
-      process_arguments(*args)
-    end
-    
-    def process_arguments(*args)
-      if args.size == 1 #&& !args.first.kind_of?(Hash) #(support multiple attributes)
+
+      if args.size == 1
+        raise NotImplementedError if Hash === args.first
         raise ArgumentError, "wrong number of arguments (1 for 2), DEFAULT_HOW not defined" unless defined? self.class::DEFAULT_HOW
-        raise NotImplementedError if args[0].class == Hash
         @how = self.class::DEFAULT_HOW
         @what = args.shift
       else
@@ -38,7 +35,7 @@ module Celerity
     end
     
     def locate
-      @object = @container.locate_tagged_element(self, @how, @what)
+      @object = ElementLocator.new(@container.object, self).locate(@how, @what, @value)
     end
     
     def to_s
@@ -46,25 +43,13 @@ module Celerity
       create_string(@object)
     end
 
-    def create_string(element)
-      n = []
-      n << "tag:".ljust(TO_S_SIZE) + element.getTagName if element.getTagName.length > 0
-      iterator = element.getAttributeEntriesIterator
-      while (iterator.hasNext)
-        attribute = iterator.next
-        n << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
-      end
-      n << "  text:".ljust(TO_S_SIZE+2) + element.asText if element.asText.length > 0
-      return n.join("\n")
-    end
-    
     def attribute_value(attribute)
       assert_exists
       @object.getAttribute(attribute)
     end
 
     def assert_exists
-      locate if defined?(locate)
+      locate
       unless @object
         raise UnknownObjectException, "Unable to locate object, using #{@how.inspect} and #{@what.inspect}"
       end
@@ -98,16 +83,30 @@ module Celerity
     
     # used to get attributes
     def method_missing(meth, *args, &blk)
-      assert_exists
       meth = :class if meth == :class_name
       meth = :value if meth == :caption
-      
+
       if self.class::ATTRIBUTES.include?(meth)
+        assert_exists
         @object.getAttributeValue(meth.to_s)
       else
-        Log.info "Element\#method_missing calling super with #{meth.inspect}"
+        Log.warn "Element\#method_missing calling super with #{meth.inspect}"
         super
       end
+    end
+
+    private
+    
+    def create_string(element)
+      n = []
+      n << "tag:".ljust(TO_S_SIZE) + element.getTagName if element.getTagName.length > 0
+      iterator = element.getAttributeEntriesIterator
+      while (iterator.hasNext)
+        attribute = iterator.next
+        n << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
+      end
+      n << "  text:".ljust(TO_S_SIZE+2) + element.asText if element.asText.length > 0
+      return n.join("\n")
     end
     
   end # Element

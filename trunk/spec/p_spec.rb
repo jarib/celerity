@@ -36,7 +36,7 @@ describe "P" do
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @ie.p(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
-    it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @ie.p(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end

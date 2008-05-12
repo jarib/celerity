@@ -63,11 +63,11 @@ describe "Checkbox" do
       @ie.checkbox(:name, 'new_user_interests', 'cars').should exist
     end
     
-    it "should raise ArgumentError when what argument is invalid" do
+    it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @ie.checkbox(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
 
-    it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @ie.checkbox(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end

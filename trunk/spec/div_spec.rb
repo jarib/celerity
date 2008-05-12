@@ -37,10 +37,10 @@ describe "Div" do
       @ie.div(:index, 1337).should_not exist
       @ie.div(:xpath, "//div[@id='no_such_id']").should_not exist
     end 
-    it "should raise ArgumentError when what argument is invalid" do
+    it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @ie.div(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
-    it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @ie.div(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end

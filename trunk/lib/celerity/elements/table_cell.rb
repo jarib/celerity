@@ -11,7 +11,7 @@ module Celerity
       if @how == :object
         @object = @what
       else
-          @object = @container.locate_tagged_element(self, @how, @what)
+        super
       end
     end
 

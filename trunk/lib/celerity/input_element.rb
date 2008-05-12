@@ -7,10 +7,6 @@ module Celerity
                                     :src, :alt, :usemap, :ismap, :tabindex, :accesskey, :onfocus, :onblur, 
                                     :onselect, :onchange, :accept, :align]    
     
-    def locate
-      @object = @container.locate_input_element(self, @how, @what)
-    end
-
     def readonly?
       assert_exists
       @object.isAttributeDefined('readonly')

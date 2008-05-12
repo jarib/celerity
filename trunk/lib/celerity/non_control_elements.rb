@@ -13,10 +13,6 @@ module Celerity
       assert_exists
       @container.update_page(@object.click)
     end
-
-    # # These elements can't be disabled 
-    # def disabled?; false; end
-    # alias_method :disabled, :disabled?
   end
     
   class Pre < NonControlElement

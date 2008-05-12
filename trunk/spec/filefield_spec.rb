@@ -36,11 +36,11 @@ describe "FileField" do
       @ie.file_field(:xpath, "//input[@id='no_such_id']").should_not exist
     end
     
-    it "should raise ArgumentError when what argument is invalid" do
+    it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @ie.file_field(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
 
-    it "should raise MissingWayOfFindingObjectException when how argument is invalid" do
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @ie.file_field(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
