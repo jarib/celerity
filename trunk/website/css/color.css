@@ -19,6 +19,15 @@ abbr, acronym {
     cursor: help;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+table th {
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+}
+
 #container {
 	border: 1px solid rgb(220,220,208);
 }
