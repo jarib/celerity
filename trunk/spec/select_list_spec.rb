@@ -86,10 +86,6 @@ describe "SelectList" do
     end
   end
   
-  it "should should raise UnknownObjectException when the select list does not exist" do
-    lambda { @ie.select_list(:index, 1337).disabled? }.should raise_error(UnknownObjectException)
-  end
-  
   describe "#type" do
     it "should return the type of the element" do
       @ie.select_list(:index, 1).type.should == "select-one"
@@ -133,6 +129,10 @@ describe "SelectList" do
     it "should return false if the select list is enabled" do
       @ie.select_list(:index, 1).should_not be_disabled
     end
+    
+    it "should should raise UnknownObjectException when the select list does not exist" do
+      lambda { @ie.select_list(:index, 1337).disabled? }.should raise_error(UnknownObjectException)
+    end
   end
   
   
@@ -166,7 +166,6 @@ describe "SelectList" do
     
     it "should be able to get attributes" do
       @ie.select_list(:name, "new_user_country").option(:text , 'Sweden').class_name.should == "scandinavia"
-      lambda { @ie.select_list(:name, "new_user_country").option(:text, "no_such_text").class_name }.should raise_error(UnknownObjectException)
     end
   end
     

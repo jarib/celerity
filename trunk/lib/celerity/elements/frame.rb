@@ -9,9 +9,6 @@ module Celerity
     DEFAULT_HOW = :name
     
     def locate
-      # alternative:
-      # frame_elements = ElementLocator.new(@container.object, self).collection.map { |frame| frame.getEnclosedWindow.getFrameElement }
-      
       frame_elements = @container.object.getByXPath(".//iframe | .//frame").collect { |frame| frame.getEnclosedWindow.getFrameElement }
       unless frame_elements.empty?
         case @how

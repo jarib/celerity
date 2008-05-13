@@ -29,14 +29,17 @@ describe "Button" do
       @ie.button(:index, 1).should exist
       @ie.button(:xpath, "//input[@id='new_user_submit']").should exist
     end
+    
     it "should return true if the button exists (how = :caption)" do
       # we need to figure out what :text and :value/:caption means on input type="button" and <button /> elements
       @ie.button(:caption, "Button 2").should exist
       @ie.button(:caption, /Button 2/).should exist
     end
+    
     it "should return true if the button exists (default how = :value)" do
       @ie.button("Submit").should exist
     end
+    
     it "should return false if the button doesn't exist" do
       @ie.button(:id, "no_such_id").should_not exist
       @ie.button(:id, /no_such_id/).should_not exist

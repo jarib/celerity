@@ -13,7 +13,7 @@ describe "Labels" do
 
   describe "#length" do
     it "should return the number of labels" do
-      @ie.labels.length.should == 25
+      @ie.labels.length.should == 26 # changed this from 25 - Jari
     end
   end
   

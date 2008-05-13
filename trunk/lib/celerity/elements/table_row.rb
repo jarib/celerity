@@ -9,7 +9,7 @@ module Celerity
       else
         super
       end
-      if @object # cant call the assert_exists here, as an exists? method call will fail
+      if @object # cant call assert_exists here, as an exists? method call will fail
         @cells = @object.getCells
       end
     end

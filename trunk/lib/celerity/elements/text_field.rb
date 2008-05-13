@@ -43,6 +43,16 @@ module Celerity
         @object.setValueAttribute(value.to_s)
       end
     end
+    
+    def value
+      assert_exists
+      case @object.getTagName
+      when 'textarea'
+        @object.getText
+      when 'input'
+        @object.getValueAttribute
+      end
+    end
 
     def append(value)
       assert_enabled

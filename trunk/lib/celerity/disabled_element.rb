@@ -5,7 +5,7 @@ module Celerity
     end
 
     def disabled?
-      assert_exists
+      assert_exists unless @object
       @object.isDisabled
     end
     alias_method :disabled, :disabled?

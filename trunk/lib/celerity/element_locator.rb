@@ -5,16 +5,19 @@ module Celerity
   # everything in our 'query'. 
   # Jari - 2008-05-11
   class ElementLocator
+    attr_accessor :idents
+    
     
     def initialize(object, element_class)
       @object = object
       @element_class = element_class
+      @attributes = @element_class::ATTRIBUTES # could check for 'strict' here?
       @idents = @element_class::TAGS
       @tags = @idents.map { |e| e.tag.downcase }
     end
 
     def find_by_conditions(conditions)
-      @identifiers = []
+      @condition_idents = []
       attributes = Hash.new { |h, k| h[k] = [] }
       index = 0 # by default, return the first matching element
       text = nil 
@@ -29,7 +32,7 @@ module Celerity
             return find_by_id(what)
           elsif how == :xpath
             return find_by_xpath(what)
-          elsif @element_class::ATTRIBUTES.include?(how)
+          elsif @attributes.include?(how)
             attributes[how] << what  
           elsif how == :index
             index = what.to_i - 1
@@ -42,15 +45,19 @@ module Celerity
         end
 
         @idents.each do |ident|
-          id = Identifier.new(ident.tag, attributes.merge(ident.attributes))
-          id.text = text if text
-          @identifiers << id
+          merged = attributes.merge(ident.attributes) do |key, v1, v2|
+            attributes[key] = v1 | v2
+          end
+            
+          id = Identifier.new(ident.tag, merged)
+          id.text = ident.text || text
+          @condition_idents << id
         end
         
         if index == 0
-          element_by_idents(@identifiers)
+          element_by_idents(@condition_idents)
         else
-          elements_by_idents(@identifiers)[index]
+          elements_by_idents(@condition_idents)[index]
         end
 
       rescue HtmlUnit::ElementNotFoundException

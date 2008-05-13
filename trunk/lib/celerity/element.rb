@@ -53,7 +53,7 @@ module Celerity
     def assert_exists
       locate
       unless @object
-        raise UnknownObjectException, "Unable to locate object, using #{@how.inspect} and #{@what.inspect}"
+        raise UnknownObjectException, "Unable to locate object, using #{identifier_string}"
       end
     end
 
@@ -101,14 +101,22 @@ module Celerity
     
     def create_string(element)
       n = []
-      n << "tag:".ljust(TO_S_SIZE) + element.getTagName if element.getTagName.length > 0
+      n << "tag:".ljust(TO_S_SIZE) + element.getTagName unless element.getTagName.empty?
       iterator = element.getAttributeEntriesIterator
       while (iterator.hasNext)
         attribute = iterator.next
         n << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
       end
-      n << "  text:".ljust(TO_S_SIZE+2) + element.asText if element.asText.length > 0
+      n << "  text:".ljust(TO_S_SIZE+2) + element.asText unless element.asText.empty?
       return n.join("\n")
+    end
+    
+    def identifier_string
+      if @how
+        "#{@how.inspect} and #{@what.inspect}"
+      else
+        "#{@conditions.inspect}"
+      end
     end
     
   end # Element

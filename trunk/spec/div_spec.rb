@@ -143,11 +143,12 @@ describe "Div" do
   
   describe "#to_s" do
     it "should return a human readable representation of the element" do
-      @ie.div(:id, 'footer').to_s.should ==  "tag:          div\n" +
-                                            "  id:           footer\n" +
-                                            "  title:        Closing remarks\n" +
-                                            "  class:        profile\n" +
-                                            "  text:         This is a footer."
+      @ie.div(:id, 'footer').to_s.should == 
+%q{tag:          div
+  id:           footer
+  title:        Closing remarks
+  class:        profile
+  text:         This is a footer.}
     end
   end
   
