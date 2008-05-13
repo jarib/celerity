@@ -97,8 +97,8 @@ describe "FileField" do
     it "should be able to set a file path in the field and click the upload button" do
       @ie.file_field(:name, "new_user_portrait").set(__FILE__)
       @ie.file_field(:name, "new_user_portrait").value.should == __FILE__
-      # @ie.button(:name, "new_user_submit").click
-      pending
+      @ie.button(:name, "new_user_submit").click
+      #pending
     end
   end
 

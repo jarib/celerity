@@ -39,13 +39,7 @@ module Celerity
       assert_exists
       @object.getHeight
     end
-    
-    def disabled?
-      assert_exists
-      raise NotImplementedError
-    end
-    alias_method :disabled, :disabled?
-    
+        
     def loaded?
       assert_exists
       begin 
