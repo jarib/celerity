@@ -62,7 +62,9 @@ module Celerity
     end
     
     def refresh
-      raise NotImplementedError
+      assert_exists
+      # @page.refresh   - doesn't work
+      goto(url)
     end
 
     def exist?

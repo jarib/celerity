@@ -74,7 +74,15 @@ describe "IE" do
   
   describe "#refresh" do
     it "should refresh the page" do
+      file = File.dirname(__FILE__) + "/html/refresh_test.html"
+      File.open(file, "w") { |f| f << "<html><body></body></html>"  }
+      @ie.goto(TEST_HOST + "/#{File.basename file}")
+      @ie.text.should_not include("refreshed")
+      File.open(file, "w") { |f| f << "<html><body>refreshed</body></html>"  }
       @ie.refresh
+      @ie.text.should include("refreshed")
+      
+      File.delete(file)
     end
   end
   
