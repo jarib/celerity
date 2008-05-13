@@ -198,6 +198,11 @@ describe "TextField" do
       @ie.text_field(:id, "new_user_email").value.should == 'Hello Cruel World'
     end
     
+    it "should be able to set chinese characters" do
+      @ie.text_field(:name, "new_user_occupation").value = "ĳĳ"
+      @ie.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
+    end
+    
     it "should set the value of a textarea element" do
       @ie.text_field(:id, 'delete_user_comment').value = 'Hello Cruel World'
       @ie.text_field(:id, "delete_user_comment").value.should == 'Hello Cruel World'
