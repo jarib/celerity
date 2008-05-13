@@ -2,8 +2,7 @@ require "benchmark"
 
 require File.dirname(__FILE__) + "/../spec/spec_helper"
 
-
-TESTS = 1 # 1 run: ~8 s
+TESTS = 5 # 1 Celerity run: ~8 s
 res = Benchmark.bmbm do |results|
   results.report("Diggs on front page") do
     TESTS.times do

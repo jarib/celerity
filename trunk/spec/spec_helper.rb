@@ -63,6 +63,7 @@ if RUBY_PLATFORM =~ /java/ || ENV['WATIR_SPEC']
   end
 else
   puts "Remember to run \"rake testserver\" before running these tests!"
+  TEST_HOST = "http://localhost:2000"
 end
 
 # ===========================
@@ -73,6 +74,7 @@ begin
     WEB_VIEWER = DRbObject.new_with_uri("druby://127.0.0.1:1337")
   end
 rescue IOError
+rescue Errno::ENOENT
 end
 
 # ================

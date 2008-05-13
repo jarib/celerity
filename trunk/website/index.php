@@ -42,6 +42,12 @@
                     <li>Unintrusive: No browser window interrupting your workflow (runs in background)</li>
                 </ul>
                 
+                <h2>Requirements</h2>
+                <ul>
+                    <li>JRuby 1.1</li>
+                    <li>Java 6</li>
+                </ul>
+                
                 <h2>Background</h2>
                 <p><a href="http://www.finn.no/">FINN.no</a> is a top provider of online classifieds in Europe. Consequently automated functional testing is an essential part of our quality assurance effort. As of spring 2008 our Watir test suite, consisting of 340 test cases (which only covers part of our application), completes in 3 hours. Obviously, not optimal for an agile development environment.</p>
                 <p>We need a faster alternative. At the same time, we enjoy working with Ruby and Watir's API. By providing this API on top of HtmlUnit, we hope to significantly speed up test suite execution, while avoiding a rewrite of our existing test suite.</p>
@@ -52,12 +58,6 @@
 jruby -S gem install celerity
                 </code>
                 </pre>
-
-                <h2>Requirements</h2>
-                <ul>
-                    <li>JRuby 1.1</li>
-                    <li>Java 6</li>
-                </ul>
 
                 <h2>Code example</h2>
                 <pre>
@@ -96,7 +96,6 @@ puts "yay" if browser.text.include? 'celerity.rubyforge.org'
                     <a href="http://validator.w3.org/check?uri=referer" title="Valid XHTML 1.0 Strict" hreflang="en">
                             <span class="w3c">W3C</span>
                             <span class="spec">XHTML 1.0</span>
-
                     </a>
                 </span>
                 &nbsp;
@@ -111,12 +110,11 @@ puts "yay" if browser.text.include? 'celerity.rubyforge.org'
                     <a href="http://www.w3.org/WAI/WCAG1AAA-Conformance" title="Conforming with the highest level (AAA) of the Web Content Accessibility Guidelines 1.0" hreflang="en">
                             <span class="w3c">W3C</span>
                             <span class="spec">WAI&#8209;<span class="red">AAA</span>&nbsp;WCAG&nbsp;1.0</span>
-
                     </a>
                 </span>
             </p>
             <address>
-                <a href="mailto:tinius.alexander@lystadonline.no">T. Alexander Lystad</a>, 8th May 2008
+                <a href="mailto:tinius.alexander@lystadonline.no">T. Alexander Lystad</a>, 13th May 2008
             </address>
         </div>
     </body>

@@ -3,9 +3,9 @@ require "benchmark"
 require File.dirname(__FILE__) + "/../spec/spec_helper"
 
 
-TESTS = 1 # 1 run: ~20 s
+TESTS = 5 # 1 Celerity run: ~20 s
 res = Benchmark.bmbm do |results|
-  results.report("Diggs on front page") do
+  results.report("Google image search results") do
     TESTS.times do
       # Create browser object
       browser = Celerity::IE.new
