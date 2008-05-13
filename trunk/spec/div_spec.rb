@@ -135,7 +135,7 @@ describe "Div" do
     it "should return the HTML of the element" do
       html = @ie.div(:id, 'footer').html
       html.should include('<div id="footer" title="Closing remarks" class="profile">')
-      html.should include('<span class="footer">This is a footer.</span>')
+      html.should include('This is a footer.')
       html.should_not include('<div id="content">')
       html.should_not include('</body>')
     end
