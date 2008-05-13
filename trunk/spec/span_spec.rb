@@ -122,9 +122,9 @@ describe "Span" do
   # Other
   describe "#click" do
     it "should fire events" do
-      @ie.span(:id, 'footer').text.should_not include('Javascript')
-      @ie.span(:id, 'footer').click
-      @ie.span(:id, 'footer').text.should include('JavaScript')
+      @ie.span(:name, 'footer').text.should_not include('Javascript')
+      @ie.span(:name, 'footer').click
+      @ie.span(:name, 'footer').text.should include('Javascript')
     end
     it "should raise UnknownObjectException if the span doesn't exist" do
       lambda { @ie.span(:id, "no_such_id").click }.should raise_error(UnknownObjectException)
