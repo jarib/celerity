@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+    <head>
+        <title>Celerity</title>
+        <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+    </head>
+    <body>
+    	<div id="container">
+            <div id="header">
+                <h1><a href=".">Celerity</a></h1>
+                <div id="tagline">
+                    { French célérité > Latin celeritas > Latin celer, fast, swift. <br />
+                    Rapidity of motion; quickness; swiftness. }
+                </div>
+                <div id="leftSlice"></div>
+                <div id="rightSlice"></div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a accesskey="h" title="Front page" href="." hreflang="en">Home</a></li>
+                    <li><a accesskey="p" title="Celerity at Rubyforge" href="http://rubyforge.org/projects/celerity/" hreflang="en">Rubyforge project</a></li>
+                    <li><a accesskey="d" title="Download Celerity" href="http://rubyforge.org/frs/?group_id=6198" hreflang="en">Download</a></li>
+                    <li><a accesskey="f" title="Discuss Celerity" href="http://rubyforge.org/forum/?group_id=6198" hreflang="en">Forum</a></li>
+                    <li><a accesskey="m" title="Stay up-to-date" href="http://rubyforge.org/mail/?group_id=6198" hreflang="en">Mailing lists</a></li>
+                    <li><a accesskey="s" title="We've proved the infinite monkey theorem" href="http://celerity.rubyforge.org/svn/" hreflang="en">Browse source</a></li>
+                    <li><a accesskey="b" title="Report and browse bugs" href="http://rubyforge.org/tracker/?atid=24033&amp;group_id=6198&amp;func=browse" hreflang="en">Bug tracker</a></li>
+                    <li><a accesskey="e" title="Request and browse new features" href="http://rubyforge.org/tracker/?atid=24036&amp;group_id=6198&amp;func=browse" hreflang="en">Feature tracker</a></li>
+                    <li><a accesskey="n" title="Benchmarks" href="benchmarks.html" hreflang="en">Benchmarks</a></li>
+                </ul>
+            </div>
+            <div id="content">
+                <h2>Benchmarks</h2>
+                <p>We've played a little with some early crude benchmarking. Three scenarios were benchmarked in Celerity and Watir.</p>
+                <ul>
+                    <li><a href="http://celerity.rubyforge.org/svn/trunk/benchmark/bm_2000_spans.rb">Scenario 1: Local HTML file with 2000 span elements </a></li>
+                    <li><a href="http://celerity.rubyforge.org/svn/trunk/benchmark/bm_google_images.rb">Scenario 2: Looping a Google image search result</a></li>
+                    <li><a href="http://celerity.rubyforge.org/svn/trunk/benchmark/bm_digg.rb">Scenario 3: Counting the number of "diggs" on digg.com's front page</a></li>
+                </ul>
+                
+                <h2>Results: Overview</h2>
+                <p>This table provides a quick overview. For more accurate information, see below.</p>
+                <table>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Watir (total)</th>
+                        <th>Celerity (total)</th>
+                        <th>Time reduction</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>24.41 s</td>
+                        <td>0.68 s</td>
+                        <td>97.23 %</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>276.06 s</td>
+                        <td>116.72 s</td>
+                        <td>57.72 %</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>178.59 s</td>
+                        <td>40.01 s</td>
+                        <td>77.60 %</td>
+                    </tr>
+                </table>
+                <h2>Results: Actual output from benchmark scripts</h2>
+                <p></p>
+<h3>Watir on Ruby: Scenario 1</h3>
+<pre>
+n = 20
+                               user     system      total        real
+Loop through all spans     0.344000   0.000000   0.344000 (  0.407000)
+Last span by id (String)   3.359000   1.062000   4.421000 ( 12.031000)
+Last span by id (Regexp)   3.297000   1.266000   4.563000 ( 11.969000)
+
+total  : 24.4070000648499
+average: 8.13566668828329
+
+</pre>
+
+<h3>Celerity on JRuby: Scenario 1</h3>
+<pre>
+n = 20
+                               user     system      total        real
+Loop through all spans     0.656000   0.000000   0.656000 (  0.652584)
+Last span by id (String)   0.000000   0.000000   0.000000 (  0.002165)
+Last span by id (Regexp)   0.031000   0.000000   0.031000 (  0.020777)
+
+total  : 0.6755261421203613
+average: 0.2251753807067871
+
+</pre>
+
+<h3>Watir on Ruby: Scenario 2</h3>
+<pre>
+n = 5
+                                  user     system      total        real
+Google image search results  41.109000  11.672000  52.781000 (276.062000)
+total  : 276.06200003624
+average: 276.06200003624
+
+</pre>
+
+<h3>Celerity on JRuby: Scenario 2</h3>
+<pre>
+n = 5
+                                  user     system      total        real
+Google image search results 116.703000   0.000000 116.703000 (116.715138)
+
+total  : 116.71513795852661
+average: 116.71513795852661
+
+</pre>
+
+<h3>Watir on Ruby: Scenario 3</h3>
+<pre>
+n = 5
+                          user     system      total        real
+Diggs on front page   6.406000   1.828000   8.234000 (178.594000)
+
+total  : 178.593999862671
+average: 178.593999862671
+
+</pre>
+
+<h3>Celerity on JRuby: Scenario 3</h3>
+<pre>
+n = 5
+                           user     system      total        real
+Diggs on front page   40.016000   0.000000  40.016000 ( 40.006166)
+
+total  : 40.006165981292725
+average: 40.006165981292725 
+
+</pre>
+        </div>
+        <div id="footer">
+            <p>
+                <span class="w3cbutton">
+                    <a href="http://validator.w3.org/check?uri=referer" title="Valid XHTML 1.0 Strict" hreflang="en">
+                            <span class="w3c">W3C</span>
+                            <span class="spec">XHTML 1.0</span>
+                    </a>
+                </span>
+                &nbsp;
+                <span class="w3cbutton">
+                    <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS" hreflang="en">
+                            <span class="w3c">W3C</span>
+                            <span class="spec">CSS</span>
+                    </a>
+                </span>
+                &nbsp;
+                <span class="w3cbutton">
+                    <a href="http://www.w3.org/WAI/WCAG1AAA-Conformance" title="Conforming with the highest level (AAA) of the Web Content Accessibility Guidelines 1.0" hreflang="en">
+                            <span class="w3c">W3C</span>
+                            <span class="spec">WAI&#8209;<span class="red">AAA</span>&nbsp;WCAG&nbsp;1.0</span>
+                    </a>
+                </span>
+            </p>
+            <address>
+                <a href="mailto:tinius.alexander@lystadonline.no">T. Alexander Lystad</a>, 13th May 2008
+            </address>
+        </div>
+    </body>
+</html>
