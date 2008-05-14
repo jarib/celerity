@@ -9,7 +9,7 @@ module Celerity
     def submit
       assert_exists
       raise NotImplementedError      
-      # waiting for HtmlUnit ?
+      # waiting for HtmlUnit fix?
     end
 
   end  

@@ -61,7 +61,7 @@ module Celerity
       begin
         assert_exists
         true
-      rescue UnknownObjectException
+      rescue UnknownObjectException, UnknownFrameException
         false
       end
     end

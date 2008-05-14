@@ -50,7 +50,7 @@ describe "Label" do
   end
   
   describe "#for" do
-    it "should return the id attribute if the label exists" do
+    it "should return the 'for' attribute if the label exists" do
       @ie.label(:index, 1).for.should == "new_user_first_name"
     end
     it "should raise UnknownObjectException if the label doesn't exist" do

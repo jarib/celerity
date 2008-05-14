@@ -9,25 +9,22 @@ module Celerity
     DEFAULT_HOW = :name
     
     def locate
-      frame_elements = @container.object.getByXPath(".//iframe | .//frame").collect { |frame| frame.getEnclosedWindow.getFrameElement }
-      unless frame_elements.empty?
-        case @how
-        when :id, :name, :src, :class
-          matching_frame_elements = frame_elements.select { |frame_element| matches?(frame_element.getAttribute(@how.to_s), @what) }
-          if @frame_element = matching_frame_elements.first
-            @object = @frame_element.getEnclosedPage.getDocumentElement  
-          end
-        when :index
-          if @frame_element = frame_elements[@what-1]
-            @object = @frame_element.getEnclosedPage.getDocumentElement
-          end
-        when :xpath
-          raise NotImplementedError
+      super
+      if @object
+        @inline_frame_object = @object.getEnclosedWindow.getFrameElement
+        if (frame = @object.getEnclosedPage.getDocumentElement)
+          @object = frame
         else
-          raise MissingWayOfFindingObjectException
+          @object = nil
         end
       end
-      raise UnknownFrameException unless @object
+    end
+    
+    def assert_exists
+      locate
+      unless @object
+        raise UnknownFrameException, "unable to locate frame, using #{identifier_string}"
+      end
     end
     
     def update_page(value)
@@ -37,7 +34,7 @@ module Celerity
 
     def to_s
       assert_exists
-      create_string(@frame_element)
+      create_string(@inline_frame_object)
     end
     
   end
