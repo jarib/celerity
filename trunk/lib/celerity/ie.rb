@@ -60,14 +60,13 @@ module Celerity
     end
     
     def back
-      # FIXME: this is naive, need HtmlUnit capability 
+      # FIXME: this is naive, need capability from HtmlUnit  
       goto(@last_url) if @last_url
     end
     
     def refresh
       assert_exists
-      # HtmlUnit's @page.refresh doesn't work
-      goto(url)
+      set_page(@page.refresh)
     end
 
     def exist?
@@ -91,6 +90,11 @@ module Celerity
       else
         raise ArgumentError, "Argument #{expected_text.inspect} should be a String or Regexp."
       end
+    end
+    
+    def execute_script(source)
+      assert_exists
+      @page.executeJavaScript(source.to_s)
     end
     
     def run_error_checks

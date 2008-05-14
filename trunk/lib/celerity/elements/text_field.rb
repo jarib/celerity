@@ -22,7 +22,7 @@ module Celerity
       assert_enabled
       assert_not_readonly
       clear
-      # not sure what else to do here
+      # workaround for bug in HtmlPasswordInput - should be fixed soon (Jari - 2008-05-14)
       if @object.class == com.gargoylesoftware.htmlunit.html.HtmlPasswordInput
         @object.setValueAttribute(value.to_s)
       else
