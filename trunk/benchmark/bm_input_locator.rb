@@ -1,9 +1,6 @@
-require "benchmark"
+require File.dirname(__FILE__) + "/loader"
 
-require File.dirname(__FILE__) + "/../spec/spec_helper"
-
-
-browser = Celerity::IE.new
+browser = FRAMEWORK::IE.new
 browser.goto(TEST_HOST + "/forms_with_input_elements.html")
 
 TESTS = 5000

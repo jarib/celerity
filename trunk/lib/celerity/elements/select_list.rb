@@ -43,7 +43,7 @@ module Celerity
   
     def selected?(value)
       assert_exists
-      # This should probably raise NoValueFoundException as well?
+      # This should probably raise NoValueFoundException?
       raise UnknownObjectException, "unknown option with value #{value.inspect}" unless include?(value)
       !!@object.getOptions.find { |e| matches?(e.asText, value) && e.isSelected }
     end

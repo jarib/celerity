@@ -75,6 +75,18 @@ module Celerity
     alias_method :innerText, :text
     alias_method :inner_text, :text
 
+    def contains_text(expected_text)
+      assert_exists
+      case expected_text
+      when Regexp
+        text().match(expected_text)
+      when String
+        text().index(expected_text)
+      else
+        raise ArgumentError, "Argument #{expected_text.inspect} should be a String or Regexp."
+      end
+    end
+
     def to_xml
       assert_exists
       @object.asXml

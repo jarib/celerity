@@ -12,18 +12,6 @@ module Celerity
       @page_container.set_page(page)
     end
 
-    def contains_text(expected_text)
-      assert_exists
-      case expected_text
-      when Regexp
-        text().match(expected_text)
-      when String
-        text().index(expected_text)
-      else
-        raise ArgumentError, "Argument #{expected_text.inspect} should be a String or Regexp."
-      end
-    end
-
     def frame(*args)
       assert_exists
       Frame.new(self, *args)
@@ -225,9 +213,9 @@ module Celerity
 
     private
 
-    # just keeping this around for now because it's used in frame.rb
     def matches?(string, what)
       Regexp === what ? string.match(what) : string == what.to_s
     end
+    
   end # Container
 end # Celerity

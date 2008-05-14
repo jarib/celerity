@@ -1,16 +1,14 @@
-require "benchmark"
-
-require File.dirname(__FILE__) + "/../spec/spec_helper"
+require File.dirname(__FILE__) + "/loader"
 
 # Create browser object
-browser = Watir::IE.new
+browser = FRAMEWORK::IE.new
 browser.goto(TEST_HOST + "/2000_spans.html")
 
 TESTS = 20 # 1000 Celerity runs: ~20 s | 20 Watir runs: ~24 s
 res = Benchmark.bmbm do |results|
   results.report("Loop through all spans") do
     TESTS.times do
-      browser.spans.each do |span|
+      browser.spans do |span|
         span
       end
     end

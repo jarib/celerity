@@ -1,13 +1,11 @@
-require "benchmark"
-
-require File.dirname(__FILE__) + "/../spec/spec_helper"
+require File.dirname(__FILE__) + "/loader"
 
 TESTS = 5 # 1 Celerity run: ~8 s
 res = Benchmark.bmbm do |results|
   results.report("Diggs on front page") do
     TESTS.times do
       # Create browser object
-      browser = Celerity::IE.new
+      browser = FRAMEWORK::IE.new
       
       # Go to digg.com
       browser.goto('http://digg.com/')

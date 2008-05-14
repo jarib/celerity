@@ -1,14 +1,11 @@
-require "benchmark"
-
-require File.dirname(__FILE__) + "/../spec/spec_helper"
-
+require File.dirname(__FILE__) + "/loader"
 
 TESTS = 5 # 1 Celerity run: ~20 s
 res = Benchmark.bmbm do |results|
   results.report("Google image search results") do
     TESTS.times do
       # Create browser object
-      browser = Celerity::IE.new
+      browser = FRAMEWORK::IE.new
       
       # Goto images.google.com
       browser.goto('http://images.google.com/ncr')
