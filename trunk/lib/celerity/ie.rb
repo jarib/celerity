@@ -51,7 +51,7 @@ module Celerity
     end
 
     def html
-      @page ? @page.getDocumentElement.asXml : ''
+      @page ? @page.getWebResponse.getContentAsString : ''
     end
 
     def text

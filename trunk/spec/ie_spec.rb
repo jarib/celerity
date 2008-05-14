@@ -24,7 +24,7 @@ describe "IE" do
   describe "#html" do
     it "should return the html of the page" do
       @ie.goto(TEST_HOST + "/non_control_elements.html")
-      @ie.html.should include('<meta http-equiv="Content-Type"')
+      @ie.html.should == File.read(File.dirname(__FILE__) + "/html/non_control_elements.html")
     end
   end
   
