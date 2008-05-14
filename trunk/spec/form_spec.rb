@@ -18,8 +18,8 @@ describe "Form" do
       @ie.form(:class, /user/).should exist
       @ie.form(:method, 'post').should exist
       @ie.form(:method, /post/).should exist
-      @ie.form(:action, 'forms_with_input_elements.html').should exist
-      @ie.form(:action, /forms_with_input_elements.html/).should exist
+      @ie.form(:action, 'post_to_me').should exist
+      @ie.form(:action, /to_me/).should exist
       @ie.form(:index, 1).should exist
       @ie.form(:xpath, "//form[@id='new_user']").should exist
     end

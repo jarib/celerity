@@ -153,7 +153,7 @@ describe "TextField" do
       @ie.text_field(:name, "new_user_occupation").append(" Append This")
       @ie.text_field(:name, "new_user_occupation").get_contents.should == "Developer Append This"
     end
-    it "should append Chinese characters" do
+    it "should append multi-byte characters" do
       @ie.text_field(:name, "new_user_occupation").append(" ĳĳ")
       @ie.text_field(:name, "new_user_occupation").get_contents.should == "Developer ĳĳ"
     end
@@ -198,7 +198,7 @@ describe "TextField" do
       @ie.text_field(:id, "new_user_email").value.should == 'Hello Cruel World'
     end
     
-    it "should be able to set chinese characters" do
+    it "should be able to set multi-byte characters" do
       @ie.text_field(:name, "new_user_occupation").value = "ĳĳ"
       @ie.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
     end
@@ -226,7 +226,7 @@ describe "TextField" do
       @ie.text_field(:name , 'new_user_password').set('secret')
       @ie.text_field(:name , 'new_user_password').value.should == 'secret'
     end
-    it "should be able to set chinese characters" do
+    it "should be able to set multi-byte characters" do
       @ie.text_field(:name, "new_user_occupation").set("ĳĳ")
       @ie.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
     end

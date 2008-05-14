@@ -10,9 +10,6 @@ describe "FileField" do
     @ie.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
   
-  
-  # Exist method
-  
   describe "#exist?" do
     it "should return true if the file field exists" do
       @ie.file_field(:id, 'new_user_portrait').should exist
@@ -44,7 +41,6 @@ describe "FileField" do
       lambda { @ie.file_field(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
   
   # Attribute methods
 
@@ -98,7 +94,6 @@ describe "FileField" do
       @ie.file_field(:name, "new_user_portrait").set(__FILE__)
       @ie.file_field(:name, "new_user_portrait").value.should == __FILE__
       @ie.button(:name, "new_user_submit").click
-      #pending
     end
   end
 

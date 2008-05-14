@@ -19,7 +19,7 @@ describe "Forms" do
   
   describe "#[]n" do
     it "should provide access to the nth form" do
-      @ie.forms[1].action.should == 'forms_with_input_elements.html'
+      @ie.forms[1].action.should == 'post_to_me'
       @ie.forms[1].attribute_value('method').should == 'post'     
     end
   end

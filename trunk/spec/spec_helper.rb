@@ -60,14 +60,16 @@ if RUBY_PLATFORM =~ /java/ || ENV['WATIR_SPEC']
     
     class PostServlet < WEBrick::HTTPServlet::AbstractServlet
       def do_POST(req, resp)
-        resp['content-type'] = 'text/plain'
+        resp['content-type'] = 'text/html'
+        resp.body << "<html><body>"
         resp.body << "You posted the following content:\n"
         resp.body << req.body
+        resp.body << "</body></html>"
       end
     end
     
     server.mount("/", WEBrick::HTTPServlet::FileHandler, doc_root, {:FancyIndexing=>true})
-    server.mount("/post", PostServlet)
+    server.mount("/post_to_me", PostServlet)
     WEBRICK_SERVER = Thread.new { server.start }
   end
 else

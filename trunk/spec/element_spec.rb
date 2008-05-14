@@ -25,7 +25,7 @@ describe "Element" do
   
   describe "#method_missing" do
     it "should magically return the requested attribute if the attribute is defined in the attribute list" do
-      @ie.form(:index, 1).action.should == 'forms_with_input_elements.html'
+      @ie.form(:index, 1).action.should == 'post_to_me'
     end
     it "should raise NoMethodError if the requested method isn't among the attributes" do
       lambda { @ie.button(:index, 1).no_such_attribute_or_method }.should raise_error(NoMethodError)

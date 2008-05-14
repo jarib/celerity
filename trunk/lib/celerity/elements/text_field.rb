@@ -26,7 +26,7 @@ module Celerity
       if @object.class == com.gargoylesoftware.htmlunit.html.HtmlPasswordInput
         @object.setValueAttribute(value.to_s)
       else
-        value.to_s.to_java_bytes.each do |char| 
+        java.lang.String.new(value.to_s).toCharArray.each do |char| 
           @container.update_page @object.type(char) 
         end
       end
@@ -57,7 +57,9 @@ module Celerity
     def append(value)
       assert_enabled
       assert_not_readonly
-      value.to_s.to_java_bytes.each { |char| @container.update_page @object.type(char) }
+      java.lang.String.new(value.to_s).toCharArray.each do |char| 
+        @container.update_page @object.type(char) 
+      end
     end
 
     # This bascially just moves the text to the other text field using TextField#append
