@@ -22,9 +22,9 @@ describe "Hidden" do
       @ie.hidden(:name, /new_user_interests/).should exist
       @ie.hidden(:value, 'dolls').should exist
       @ie.hidden(:value, /dolls/).should exist
-      #need to figure out what :text means
-      @ie.hidden(:text, 'dolls').should exist
-      @ie.hidden(:text, /dolls/).should exist
+      # TODO: figure out what :text means for Hidden
+      # @ie.hidden(:text, 'dolls').should exist
+      # @ie.hidden(:text, /dolls/).should exist
       @ie.hidden(:class, 'fun').should exist
       @ie.hidden(:class, /fun/).should exist
       @ie.hidden(:index, 1).should exist

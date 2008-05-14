@@ -24,9 +24,14 @@ module Celerity
       
       begin 
         conditions.each do |how, what|
-          how = :class if how == :class_name
-          how = :href  if how == :url
-          how = :text  if how == :caption
+          case how
+          when :class_name
+            how = :class
+          when :url
+            how = :href
+          when :caption
+            how = :text
+          end
         
           if how == :id
             return find_by_id(what)

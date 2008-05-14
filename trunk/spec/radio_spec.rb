@@ -22,13 +22,14 @@ describe "Radio" do
       @ie.radio(:name, /new_user_newsletter/).should exist
       @ie.radio(:value, "yes").should exist
       @ie.radio(:value, /yes/).should exist
-      # we need to figure out what :text means for a radio button
-      @ie.radio(:text, "yes").should exist
-      @ie.radio(:text, /yes/).should exist
+      # TODO: figure out what :text means for a radio button
+      # @ie.radio(:text, "yes").should exist
+      # @ie.radio(:text, /yes/).should exist
+
       @ie.radio(:class, "huge").should exist
       @ie.radio(:class, /huge/).should exist
       @ie.radio(:index, 1).should exist
-      @ie.radio(:xpath, "input[@id='new_user_newsletter_yes']").should exist
+      @ie.radio(:xpath, "//input[@id='new_user_newsletter_yes']").should exist
     end
     
     it "should return true if the radio button exists (search by name and value)" do
