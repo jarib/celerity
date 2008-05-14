@@ -16,6 +16,7 @@ module Celerity
       @webclient.setCssEnabled(false) if opts[:disable_css] 
       @page_container = self
       @error_checkers = []
+      @last_url = nil
     end
 
     def goto(uri)
@@ -29,6 +30,7 @@ module Celerity
     end
 
     def set_page(value)
+      @last_url = url() if exist?
       @page = value
       @object = @page.getDocumentElement
       run_error_checks
@@ -58,12 +60,13 @@ module Celerity
     end
     
     def back
-      raise NotImplementedError
+      # FIXME: this is naive, need HtmlUnit capability 
+      goto(@last_url) if @last_url
     end
     
     def refresh
       assert_exists
-      # @page.refresh   - doesn't work
+      # HtmlUnit's @page.refresh doesn't work
       goto(url)
     end
 

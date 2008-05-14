@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 
 # TODO: specs for exceptions
 
-describe "TextField" do
+describe "Label" do
   
   before :all do
     @ie = IE.new
@@ -41,19 +41,19 @@ describe "TextField" do
   
   # Attribute methods
   describe "#id" do
-    it "should return the id attribute if the text field exists" do
+    it "should return the id attribute if the label exists" do
       @ie.label(:index, 1).id.should == "first_label"
     end
-    it "should raise UnknownObjectException if the text field doesn't exist" do
+    it "should raise UnknownObjectException if the label doesn't exist" do
       lambda { @ie.label(:index, 1337).id }.should raise_error(UnknownObjectException)  
     end
   end
   
   describe "#for" do
-    it "should return the id attribute if the text field exists" do
+    it "should return the id attribute if the label exists" do
       @ie.label(:index, 1).for.should == "new_user_first_name"
     end
-    it "should raise UnknownObjectException if the text field doesn't exist" do
+    it "should raise UnknownObjectException if the label doesn't exist" do
       lambda { @ie.label(:index, 1337).for }.should raise_error(UnknownObjectException)  
     end
   end
