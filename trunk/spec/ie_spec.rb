@@ -20,7 +20,6 @@ describe "IE" do
     end
   end
   
-  # Attribute methods
   describe "#html" do
     it "should return the html of the page" do
       @ie.goto(TEST_HOST + "/non_control_elements.html")
