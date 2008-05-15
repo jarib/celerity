@@ -78,6 +78,7 @@ describe "Frame" do
     lambda { @browser.frame(:index, 1).p(:index, 1337).id }.should raise_error(UnknownObjectException)
   end
   it "should be able to send a value to another frame by using Javascript" do
+    pending
   end
   
   describe "#contains_text" do

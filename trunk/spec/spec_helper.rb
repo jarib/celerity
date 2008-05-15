@@ -1,3 +1,5 @@
+require "fileutils"
+
 begin
   require 'spec'
 rescue LoadError
@@ -40,6 +42,11 @@ if RUBY_PLATFORM =~ /java/ || ENV['WATIR_SPEC']
     require 'webrick'
     doc_root = File.join(File.dirname(__FILE__), "html")
     log_file = File.join(File.dirname(__FILE__), "..", "log", "webrick_log.txt")
+    unless File.exist?(log_file)
+      FileUtils.mkdir_p(File.dirname(log_file))
+      FileUtils.touch(log_file)
+    end
+    
     server_port = 2000
     tries = 0
     begin

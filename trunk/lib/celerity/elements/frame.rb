@@ -21,7 +21,7 @@ module Celerity
     end
     
     def assert_exists
-      locate
+      locate unless @object
       unless @object
         raise UnknownFrameException, "unable to locate frame, using #{identifier_string}"
       end
