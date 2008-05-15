@@ -4,6 +4,12 @@ module Celerity
   class ElementCollections
     include Enumerable
     
+    def initialize(container, how = nil, what = nil)
+      @container = container
+      @object = (how == :object ? what : nil)
+      @length = length # defined by subclasses
+    end
+
     def element_tags
       element_class::TAGS
     end
@@ -11,37 +17,32 @@ module Celerity
     def length
       if @object
         @object.length
-      elsif Identifier === element_tags.first
-        elems = ElementLocator.new(@container.object, element_class).elements_by_idents
-        elems.size
       else
-        element_tags.inject(0) { |sum, element_tag| sum + @container.object.getHtmlElementsByTagName(element_tag).toArray.size }
+        @elements = ElementLocator.new(@container.object, element_class).elements_by_idents
+        @elements.size
       end
     end
     alias_method :size, :length
     
-    def initialize(container, how = nil, what = nil)
-      @container = container
-      if how == :object
-        @object = what
-      end
-      @length = length # defined by subclasses
-    end
-    
     def each
-      0.upto(@length-1) { |i| yield iterator_object(i) }
+      if @elements
+        @elements.each { |e| yield(element_class.new(@container, :object, e)) }
+      else
+        0.upto(@length - 1) { |i| yield iterator_object(i) }
+      end
     end
     
     def [](n)
-      return iterator_object(n-1)
+      @elements ? element_class.new(@container, :object, @elements[n - 1]) : iterator_object(n-1)
     end
     
     def to_s
       return self.collect { |i| i.to_s }.join("\n")
     end
     
-    # this method creates an object of the correct type that the iterators use
     private
+
+    # this method creates an object of the correct type that the iterators use
     def iterator_object(i)
       element_class.new(@container, :index, i+1)
     end

@@ -73,7 +73,7 @@ module Celerity
     
     def body(how, what)
       assert_exists
-      return TableBody.new(@container, how, what, self)
+      return TableBody.new(@container, how, what)
     end
     
     def bodies

@@ -25,6 +25,12 @@ module Celerity
       begin 
         conditions.each do |how, what|
           case how
+          when :object
+            return what
+          when :id
+            return find_by_id(what)
+          when :xpath
+            return find_by_xpath(what)
           when :class_name
             how = :class
           when :url
@@ -33,11 +39,7 @@ module Celerity
             how = :text
           end
         
-          if how == :id
-            return find_by_id(what)
-          elsif how == :xpath
-            return find_by_xpath(what)
-          elsif @attributes.include?(how)
+          if @attributes.include?(how)
             attributes[how] << what  
           elsif how == :index
             index = what.to_i - 1
@@ -55,6 +57,7 @@ module Celerity
           end
             
           id = Identifier.new(ident.tag, merged)
+          # «original» identifier takes precedence for :text
           id.text = ident.text || text
           @condition_idents << id
         end

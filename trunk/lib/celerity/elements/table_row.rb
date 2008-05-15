@@ -4,19 +4,13 @@ module Celerity
     TAGS = [ Identifier.new('tr') ]
 
     def locate
-      if @how == :object
-        @object = @what
-      else
-        super
-      end
-      if @object # cant call assert_exists here, as an exists? method call will fail
-        @cells = @object.getCells
-      end
+      super
+      @cells = @object.getCells if @object
     end
 
     def each
       locate
-      0.upto(@cells.length-1) { |index| yield TableCell.new(self, :object, @cells[index]) }
+      @cells.each { |cell| yield TableCell.new(self, :object, cell) }
     end
 
     def [](index)

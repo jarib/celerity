@@ -8,32 +8,35 @@ module Celerity
     TO_S_SIZE = 14
     
     # HTML 4.01 Transitional DTD
-    CELLHALIGN_ATTRIBUTES = [:align, :char, :charoff]
-    CELLVALIGN_ATTRIBUTES = [:valign]
-    CORE_ATTRIBUTES = [:class, :id, :style, :title] # Not valid in base, head, html, meta, param, script, style, and title elements.
-    I18N_ATTRIBUTES = [:dir, :lang] # Not valid in base, br, frame, frameset, hr, iframe, param, and script elements.
-    EVENT_ATTRIBUTES = [:onclick, :ondblclick, :onmousedown, :onmouseup, :onmouseover, :onmousemove, :onmouseout, :onkeypress, :onkeydown, :onkeyup]
-    SLOPPY_ATTRIBUTES = [:name, :value]
-    BASE_ATTRIBUTES = CORE_ATTRIBUTES | I18N_ATTRIBUTES | EVENT_ATTRIBUTES | SLOPPY_ATTRIBUTES
-    ATTRIBUTES = BASE_ATTRIBUTES
+    HTML_401_TRANSITIONAL = { 
+      :core        => [:class, :id, :style, :title], # Not valid in base, head, html, meta, param, script, style, and title elements.
+      :cell_halign => [:align, :char, :charoff],
+      :cell_valign => [:valign],
+      :i18n        => [:dir, :lang],  # Not valid in base, br, frame, frameset, hr, iframe, param, and script elements.
+      :event       => [:onclick, :ondblclick, :onmousedown, :onmouseup, :onmouseover, :onmousemove, :onmouseout, :onkeypress, :onkeydown, :onkeyup],
+      :sloppy      => [:name, :value]
+    }
+    
+    CELLHALIGN_ATTRIBUTES = HTML_401_TRANSITIONAL[:cell_halign]
+    CELLVALIGN_ATTRIBUTES = HTML_401_TRANSITIONAL[:cell_valign]
+    BASE_ATTRIBUTES       = HTML_401_TRANSITIONAL.values_at(:core, :i18n, :event, :sloppy).flatten
+    ATTRIBUTES            = BASE_ATTRIBUTES
     
     def initialize(container, *args)
       set_container container
-      if args.size == 1
+      
+      case args.size
+      when 2
+        @conditions = {args[0] => args[1]}
+      when 1
         if Hash === args.first
           @conditions = args.first
+        elsif defined?(self.class::DEFAULT_HOW)
+          @conditions = {self.class::DEFAULT_HOW => args.first}
         else
-          raise ArgumentError, "wrong number of arguments (1 for 2), DEFAULT_HOW not defined" unless defined? self.class::DEFAULT_HOW
-          @how = self.class::DEFAULT_HOW
-          @what = args.shift
-          @conditions = {@how => @what}
+          raise ArgumentError, "wrong number of arguments (1 for 2)"
         end
-      else
-        @how, @what = *args
-        @conditions = {@how => @what} # Hash[*args] not working because TableBodies.new(...) ???
       end
-      
-      @conditions[:value] = @value if @value
     end
     
     def locate
@@ -97,8 +100,14 @@ module Celerity
     
     # used to get attributes
     def method_missing(meth, *args, &blk)
-      meth = :class if meth == :class_name
-      meth = :value if meth == :caption
+      case meth
+      when :class_name
+        meth = :class
+      when :caption
+        meth = :value
+      when :url
+        meth = :href
+      end
 
       if self.class::ATTRIBUTES.include?(meth)
         assert_exists
@@ -124,10 +133,11 @@ module Celerity
     end
     
     def identifier_string
-      if @how
-        "#{@how.inspect} and #{@what.inspect}"
+      if @conditions.size == 1
+        how, what = @conditions.shift
+        "#{how.inspect} and #{what.inspect}"
       else
-        "#{@conditions.inspect}"
+        @conditions.inspect
       end
     end
     

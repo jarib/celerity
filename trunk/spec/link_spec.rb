@@ -73,6 +73,12 @@ describe "Link" do
     end
   end
   
+  describe "#url" do
+    it "should return the href attribute" do
+      @ie.link(:index, 2).url.should match(/non_control_elements/)
+    end
+  end
+    
   describe "#id" do
     it "should return the id attribute if the link exists" do
       @ie.link(:index, 2).id.should == "link_2"

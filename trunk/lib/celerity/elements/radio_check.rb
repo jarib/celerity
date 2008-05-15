@@ -8,9 +8,12 @@ module Celerity
   class RadioCheckCommon < InputElement
     def initialize(container, type, *args)
       @type = type
-      if [2,3].include?(args.size)
-        @value = args[2]
-        super(container, args[0], args[1])
+
+      case args.size
+      when 2
+        super(container, args[0] => args[1])
+      when 3
+        super(container, args[0] => args[1], :value => args[2])
       else
         super(container, *args)
       end

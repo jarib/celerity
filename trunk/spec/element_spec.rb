@@ -11,15 +11,15 @@ describe "Element" do
     @ie.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
   
-  describe "given a hash of :how => 'what' arguments" do
-    it "should find elements matching the conditions" do
+  describe "#new" do
+    it "should find elements matching the conditions when given a hash of :how => 'what' arguments" do
       @ie.checkbox(:name => 'new_user_interests', :title => 'Dancing is fun!').value.should == 'dancing'
       @ie.text_field(:class_name => 'name', :index => 2).id.should == 'new_user_last_name'
     end
     
-    it "should raise UnknownObjectException with a sane error message if the element doesn't exist" do
-      conditions = {:index => 100}
-      lambda { @ie.text_field(conditions).id }.should raise_error(UnknownObjectException, "Unable to locate object, using #{conditions.inspect}")
+    it "should raise UnknownObjectException with a sane error message when given a hash of :how => 'what' arguments" do
+      conditions = {:index => 100, :name => "foo"}
+      lambda { @ie.text_field(conditions).id }.should raise_error(UnknownObjectException, /Unable to locate object, using (\{:name=>"foo", :index=>100\}|\{:index=>100, :name=>"foo"\})/)
     end
   end
   

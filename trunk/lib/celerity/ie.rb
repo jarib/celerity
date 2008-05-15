@@ -10,13 +10,14 @@ module Celerity
     end
     
     def initialize(opts = {})
+      @page_container  = self
+      @error_checkers  = []
+      @last_url, @page = nil
+
       browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
       @webclient = ::HtmlUnit::WebClient.new(browser)
       @webclient.setThrowExceptionOnScriptError(false) unless $DEBUG || opts[:enable_javascript_exceptions]
       @webclient.setCssEnabled(false) if opts[:disable_css] 
-      @page_container = self
-      @error_checkers = []
-      @last_url = nil
     end
 
     def goto(uri)

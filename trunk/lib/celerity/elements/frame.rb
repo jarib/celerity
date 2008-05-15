@@ -28,7 +28,6 @@ module Celerity
     end
     
     def update_page(value)
-      # Log.debug(value.asXml) 
       @page_container.set_page(value.getEnclosingWindow.getTopWindow.getEnclosedPage)
     end
 

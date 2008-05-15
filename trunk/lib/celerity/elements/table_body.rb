@@ -4,13 +4,9 @@ module Celerity
     TAGS = [ Identifier.new('tbody') ]
 
     def locate
-      if @how == :object
-        @object = @what
-      else
-        super
-      end
-      
-      if @object # cant call the assert_exists here, as an exists? method call will fail
+      super
+      # can't call the assert_exists here, as an exists? method call will fail
+      if @object 
         @rows = @object.getRows
         @cells = []
         @rows.each do |row| 
@@ -32,7 +28,8 @@ module Celerity
     end
     
     def each
-      0.upto(length-1) { |index| yield TableRow.new(self, :object, @rows[index]) }
+      assert_exists
+      @rows.each { |row| yield TableRow.new(self, :object, row) }
     end
 
   end

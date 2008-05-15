@@ -62,6 +62,7 @@ describe "TableBody" do
           r.value.should == body.row(:index, index).value
           index += 1
         end
+        index.should_not == 1
       end      
     end
   
