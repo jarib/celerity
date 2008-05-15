@@ -7,9 +7,14 @@
 	Celerity is a JRuby/RJB wrapper around the HtmlUnit Java library (http://htmlunit.sourceforge.net/).
 	The goal of the project is to implement the Watir API (http://wtf.rubyforge.org/) on top of HtmlUnit.
 
-== FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+== FEATURES:
+
+* Fast: No time-consuming GUI rendering or unessential downloads
+* Scalable: Java threads lets you run tests in parallel
+* Easy to use: Simple API
+* Portable: Cross-platform
+* Unintrusive: No browser window interrupting your workflow (runs in background)
 
 == SYNOPSIS:
 
@@ -25,19 +30,11 @@
 
 * JRuby 1.1
 	
-	or 
-
-* Ruby Java Bridge (on MRI)
-
-NOTE: RJB currently has problems with threading. Use JRuby if you want to run your tests concurrently. 
+* Java 6
 
 == INSTALL:
 
 * jruby -S gem install celerity
-
-	or
-	
-* (sudo) gem install rjb celerity
 
 == LICENSE:
 

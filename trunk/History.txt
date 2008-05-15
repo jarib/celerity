@@ -1,3 +1,13 @@
+== 0.0.2 2008-05-15
+* 3 major enhancements:
+  * Support for multiple how => what conditions
+  * Fixed performance issue with collections
+  * Specs will now run on Windows
+* 3 minor enhancements:
+  * Benchmark scripts
+  * Method generator
+  * Fixed multi-byte characters issue for text fields
+
 == 0.0.1 2008-05-07
 
 * 1 major enhancement:
