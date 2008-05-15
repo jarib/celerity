@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/loader"
 
-TESTS = 5 # 1 Celerity run: ~8 s
+TESTS = 5
 res = Benchmark.bmbm do |results|
   results.report("Diggs on front page") do
     TESTS.times do

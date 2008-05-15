@@ -23,7 +23,7 @@
                     <li><a accesskey="d" title="Download Celerity" href="http://rubyforge.org/frs/?group_id=6198" hreflang="en">Download</a></li>
                     <li><a accesskey="f" title="Discuss Celerity" href="http://rubyforge.org/forum/?group_id=6198" hreflang="en">Forum</a></li>
                     <li><a accesskey="m" title="Stay up-to-date" href="http://rubyforge.org/mail/?group_id=6198" hreflang="en">Mailing lists</a></li>
-                    <li><a accesskey="s" title="We've proved the infinite monkey theorem" href="http://celerity.rubyforge.org/svn/" hreflang="en">Browse source</a></li>
+                    <li><a accesskey="s" title="Infinite monkey theorem" href="http://celerity.rubyforge.org/svn/" hreflang="en">Browse source</a></li>
                     <li><a accesskey="b" title="Report and browse bugs" href="http://rubyforge.org/tracker/?atid=24033&amp;group_id=6198&amp;func=browse" hreflang="en">Bug tracker</a></li>
                     <li><a accesskey="e" title="Request and browse new features" href="http://rubyforge.org/tracker/?atid=24036&amp;group_id=6198&amp;func=browse" hreflang="en">Feature tracker</a></li>
                     <li><a accesskey="n" title="Benchmarks" href="benchmarks.html" hreflang="en">Benchmarks</a></li>
@@ -31,15 +31,16 @@
             </div>
             <div id="content">
                 <h2>Benchmarks</h2>
-                <p>We've played a little with some early crude benchmarking. Three scenarios were benchmarked in Celerity and Watir.</p>
+                <p>We've played a little with some early crude benchmarking. <del datetime="20080515">Three</del> <ins datetime="20080515">Four</ins> scenarios were benchmarked in Celerity and Watir.</p>
                 <ul>
                     <li><a href="http://celerity.rubyforge.org/svn/trunk/benchmark/bm_2000_spans.rb">Scenario 1: Local HTML file with 2000 span elements </a></li>
                     <li><a href="http://celerity.rubyforge.org/svn/trunk/benchmark/bm_google_images.rb">Scenario 2: Looping a Google image search result</a></li>
                     <li><a href="http://celerity.rubyforge.org/svn/trunk/benchmark/bm_digg.rb">Scenario 3: Counting the number of "diggs" on digg.com's front page</a></li>
+                    <li><a href="http://celerity.rubyforge.org/svn/trunk/benchmark/bm_input_locator.rb">Scenario 4: Locating HTML elements</a></li>
                 </ul>
                 
                 <h2>Results: Overview</h2>
-                <p>This table provides a quick overview. For more accurate information, see below.</p>
+                <p>This table provides a quick overview. For more accurate numbers, see below.</p>
                 <table>
                     <tr>
                         <th>Scenario</th>
@@ -49,48 +50,59 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>24.41 s</td>
-                        <td>0.68 s</td>
-                        <td>97.23 %</td>
+                        <td>316,97 s</td>
+                        <td>0,59 s</td>
+                        <td>99,81 %</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>276.06 s</td>
-                        <td>116.72 s</td>
-                        <td>57.72 %</td>
+                        <td>278 s</td>
+                        <td>86 s</td>
+                        <td>69 %</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>178.59 s</td>
-                        <td>40.01 s</td>
-                        <td>77.60 %</td>
+                        <td>128 s</td>
+                        <td>33 s</td>
+                        <td>74 %</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>185,00 s</td>
+                        <td>4,67 s</td>
+                        <td>97,48 %</td>
                     </tr>
                 </table>
+                <h2>Notes</h2>
+                <ul>
+                    <li>Celerity 0.0.2 and Watir 1.5.4 was used.</li>
+                    <li>Neither Watir nor Celerity downloaded any images in these scenarios. Watir (IE) had them cached, and disabling images in IE did not seem to affect the benchmarks (compared to when they are cached).</li>
+                </ul>
                 <h2>Results: Actual output from benchmark scripts</h2>
                 <p></p>
 <h3>Watir on Ruby: Scenario 1</h3>
 <pre>
-n = 20
-                               user     system      total        real
-Loop through all spans     0.344000   0.000000   0.344000 (  0.407000)
-Last span by id (String)   3.359000   1.062000   4.421000 ( 12.031000)
-Last span by id (Regexp)   3.297000   1.266000   4.563000 ( 11.969000)
+n = 100
+                                     user     system      total        real
+Loop through all spans (n = 1)  62.469000  16.312000  78.781000 (198.016000)
+Last span by id (String)        15.968000   4.953000  20.921000 ( 59.500000)
+Last span by id (Regexp)        17.140000   5.015000  22.155000 ( 59.454000)
 
-total  : 24.4070000648499
-average: 8.13566668828329
+total  : 316.97000002861
+average: 105.656666676203
 
 </pre>
 
 <h3>Celerity on JRuby: Scenario 1</h3>
 <pre>
-n = 20
-                               user     system      total        real
-Loop through all spans     0.656000   0.000000   0.656000 (  0.652584)
-Last span by id (String)   0.000000   0.000000   0.000000 (  0.002165)
-Last span by id (Regexp)   0.031000   0.000000   0.031000 (  0.020777)
+n = 100
+                                     user     system      total        real
+Loop through all spans (n = 1)   0.438000   0.000000   0.438000 (  0.446355)
+Last span by id (String)         0.016000   0.000000   0.016000 (  0.013113)
+Last span by id (Regexp)         0.141000   0.000000   0.141000 (  0.132035)
 
-total  : 0.6755261421203613
-average: 0.2251753807067871
+total  : 0.5915031433105469
+average: 0.19716771443684897
 
 </pre>
 
@@ -98,9 +110,10 @@ average: 0.2251753807067871
 <pre>
 n = 5
                                   user     system      total        real
-Google image search results  41.109000  11.672000  52.781000 (276.062000)
-total  : 276.06200003624
-average: 276.06200003624
+Google image search results  44.234000  11.047000  55.281000 (277.734000)
+
+total  : 277.733999967575
+average: 277.733999967575
 
 </pre>
 
@@ -108,10 +121,10 @@ average: 276.06200003624
 <pre>
 n = 5
                                   user     system      total        real
-Google image search results 116.703000   0.000000 116.703000 (116.715138)
+Google image search results  86.016000   0.000000  86.016000 ( 86.005572)
 
-total  : 116.71513795852661
-average: 116.71513795852661
+total  : 86.00557208061218
+average: 86.00557208061218
 
 </pre>
 
@@ -119,21 +132,74 @@ average: 116.71513795852661
 <pre>
 n = 5
                           user     system      total        real
-Diggs on front page   6.406000   1.828000   8.234000 (178.594000)
+Diggs on front page   7.344000   2.000000   9.344000 (127.907000)
 
-total  : 178.593999862671
-average: 178.593999862671
+total  : 127.90700006485
+average: 127.90700006485
 
 </pre>
 
 <h3>Celerity on JRuby: Scenario 3</h3>
 <pre>
 n = 5
-                           user     system      total        real
-Diggs on front page   40.016000   0.000000  40.016000 ( 40.006166)
+                          user     system      total        real
+Diggs on front page  33.422000   0.000000  33.422000 ( 33.427076)
 
-total  : 40.006165981292725
-average: 40.006165981292725 
+total  : 33.4270761013031
+average: 33.4270761013031
+
+</pre>
+
+<h3>Watir on Ruby: Scenario 4</h3>
+<pre>
+n = 1000
+                                                   user     system      total        real
+text input by id (String)                      1.093000   0.281000   1.374000 (  2.765000)
+text input by id (Regexp)                      1.063000   0.250000   1.313000 (  2.766000)
+text input by name (String)                    1.625000   0.281000   1.906000 (  4.282000)
+text input by name (Regexp)                    1.594000   0.281000   1.875000 (  4.266000)
+select list by id (String)                     1.813000   0.328000   2.141000 (  4.704000)
+select list by id (Regexp)                     1.766000   0.235000   2.001000 (  4.672000)
+select list by name (String)                   1.671000   0.312000   1.983000 (  4.656000)
+select list by name (Regexp)                   1.797000   0.313000   2.110000 (  4.671000)
+checkbox by id (String)                        5.844000   1.203000   7.047000 ( 14.047000)
+checkbox by id (Regexp)                        5.515000   1.203000   6.718000 ( 13.937000)
+checkbox by name (String)                      5.578000   1.063000   6.641000 ( 14.031000)
+checkbox by name (Regexp)                      5.328000   1.062000   6.390000 ( 14.359000)
+checkbox by id (String) and value (String)     9.406000   2.188000  11.594000 ( 28.578000)
+checkbox by id (Regexp) and value (Regexp)     9.718000   2.078000  11.796000 ( 25.437000)
+checkbox by name (String) and value (String)   6.390000   1.203000   7.593000 ( 16.453000)
+checkbox by name (Regexp) and value (Regexp)   9.578000   1.719000  11.297000 ( 25.375000)
+
+total  : 184.998999834061
+average: 11.5624374896288
+
+</pre>
+
+<h3>Celerity on JRuby: Scenario 4</h3>
+<pre>
+n = 1000
+                                                   user     system      total        real
+                                                   user     system      total        real
+text input by id (String)                      0.063000   0.000000   0.063000 (  0.053699)
+text input by id (Regexp)                      0.360000   0.000000   0.360000 (  0.357198)
+text input by name (String)                    0.313000   0.000000   0.313000 (  0.322434)
+text input by name (Regexp)                    0.297000   0.000000   0.297000 (  0.298454)
+select list by id (String)                     0.031000   0.000000   0.031000 (  0.028299)
+select list by id (Regexp)                     0.297000   0.000000   0.297000 (  0.303616)
+select list by name (String)                   0.219000   0.000000   0.219000 (  0.228946)
+select list by name (Regexp)                   0.250000   0.000000   0.250000 (  0.242370)
+checkbox by id (String)                        0.031000   0.000000   0.031000 (  0.032020)
+checkbox by id (Regexp)                        0.360000   0.000000   0.360000 (  0.348517)
+checkbox by name (String)                      0.469000   0.000000   0.469000 (  0.469942)
+checkbox by name (Regexp)                      0.485000   0.000000   0.485000 (  0.495507)
+checkbox by id (String) and value (String)     0.015000   0.000000   0.015000 (  0.029422)
+checkbox by id (Regexp) and value (Regexp)     0.312000   0.000000   0.312000 (  0.322679)
+checkbox by name (String) and value (String)   0.547000   0.000000   0.547000 (  0.536925)
+checkbox by name (Regexp) and value (Regexp)   0.609000   0.000000   0.609000 (  0.600956)
+
+total  : 4.670983791351318
+average: 0.2919364869594574
 
 </pre>
         </div>
@@ -161,7 +227,7 @@ average: 40.006165981292725
                 </span>
             </p>
             <address>
-                <a href="mailto:tinius.alexander@lystadonline.no">T. Alexander Lystad</a>, 13th May 2008
+                <a href="mailto:tinius.alexander@lystadonline.no">T. Alexander Lystad</a>, 15th May 2008
             </address>
         </div>
     </body>

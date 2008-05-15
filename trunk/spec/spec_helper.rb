@@ -14,7 +14,7 @@ if RUBY_PLATFORM =~ /java/
   require 'celerity'
   include Celerity
   include Celerity::Exception  
-elsif ENV['WATIR_SPEC']
+else
   require 'watir'
   include Watir
   include Watir::Exception  

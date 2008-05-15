@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/loader"
 
-TESTS = 5 # 1 Celerity run: ~20 s
+TESTS = 5
 res = Benchmark.bmbm do |results|
   results.report("Google image search results") do
     TESTS.times do

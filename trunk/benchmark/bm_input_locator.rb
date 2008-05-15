@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/loader"
 browser = FRAMEWORK::IE.new
 browser.goto(TEST_HOST + "/forms_with_input_elements.html")
 
-TESTS = 5000
+TESTS = 1000
 res = Benchmark.bmbm do |results|
   results.report("text input by id (String)") do
     TESTS.times { browser.text_field(:id, "new_user_first_name").exists? }
@@ -32,31 +32,31 @@ res = Benchmark.bmbm do |results|
   end
   
   results.report("checkbox by id (String)") do
-    TESTS.times { browser.check_box(:id, 'new_user_interests_books').exists? }
+    TESTS.times { browser.checkbox(:id, 'new_user_interests_books').exists? }
   end
   results.report("checkbox by id (Regexp)") do
-    TESTS.times { browser.check_box(:id, /interests_books/).exists? }
+    TESTS.times { browser.checkbox(:id, /interests_books/).exists? }
   end
   
   results.report("checkbox by name (String)") do
-    TESTS.times { browser.check_box(:name, 'new_user_interests').exists? }
+    TESTS.times { browser.checkbox(:name, 'new_user_interests').exists? }
   end
   results.report("checkbox by name (Regexp)") do
-    TESTS.times { browser.check_box(:name, /user_interests/).exists? }
+    TESTS.times { browser.checkbox(:name, /user_interests/).exists? }
   end
   
   results.report("checkbox by id (String) and value (String)") do
-    TESTS.times { browser.check_box(:id, 'new_user_interests_books', 'cars').exists? }
+    TESTS.times { browser.checkbox(:id, 'new_user_interests_books', 'cars').exists? }
   end
   results.report("checkbox by id (Regexp) and value (Regexp)") do
-    TESTS.times { browser.check_box(:id, /interests_books/, /car/).exists? }
+    TESTS.times { browser.checkbox(:id, /interests_books/, /car/).exists? }
   end
   
   results.report("checkbox by name (String) and value (String)") do
-    TESTS.times { browser.check_box(:name, 'new_user_interests', 'dancing').exists? }
+    TESTS.times { browser.checkbox(:name, 'new_user_interests', 'dancing').exists? }
   end
   results.report("checkbox by name (Regexp) and value (Regexp)") do
-    TESTS.times { browser.check_box(:name, /user_interests/, /danc/).exists? }
+    TESTS.times { browser.checkbox(:name, /user_interests/, /danc/).exists? }
   end
 
   

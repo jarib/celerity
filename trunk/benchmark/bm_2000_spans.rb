@@ -4,15 +4,29 @@ require File.dirname(__FILE__) + "/loader"
 browser = FRAMEWORK::IE.new
 browser.goto(TEST_HOST + "/2000_spans.html")
 
-TESTS = 20 # 1000 Celerity runs: ~20 s | 20 Watir runs: ~24 s
+TESTS = 100
 res = Benchmark.bmbm do |results|
-  results.report("Loop through all spans") do
-    TESTS.times do
-      browser.spans do |span|
-        span
+  results.report("Loop through all spans (n = 1)") do
+    1.times do # Hard coded 1 run
+      browser.spans.each do |span|
+        span.text
       end
     end
   end
+  
+#  results.report("Loop through all spans (raw)") do
+#    TESTS.times do
+#      if RUBY_PLATFORM =~ /java/
+#        browser.document.getHtmlElementsByTagName("span").each do |span|
+#          span.asText
+#        end
+#      else
+#        browser.document.getElementsByTagName("span").each do |span|
+#          span.innerText
+#        end
+#      end
+#    end
+#  end
   
   results.report("Last span by id (String)") do
     TESTS.times do

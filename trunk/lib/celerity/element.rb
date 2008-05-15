@@ -40,7 +40,7 @@ module Celerity
     end
     
     def locate
-      @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
+      @object ||= ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
     end
     
     def to_s
