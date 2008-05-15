@@ -100,9 +100,9 @@ end
 # ================
 
 # define a checker that is run on every page
-def add_spec_checker(ie)
+def add_spec_checker(browser)
   if defined? WEB_VIEWER
-    ie.add_checker { WEB_VIEWER.render_html(ie.object.asXml, ie.base_url) }
+    ie.add_checker { WEB_VIEWER.render_html(browser.html, ie.base_url) }
   end
 end
 

@@ -123,4 +123,7 @@ spec/table_spec.rb
 spec/tables_spec.rb
 spec/text_field_spec.rb
 spec/text_fields_spec.rb
+tasks/environment.rake
 tasks/rspec.rake
+tasks/testserver.rake
+tasks/benchmark.rake

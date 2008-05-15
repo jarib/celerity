@@ -4,6 +4,11 @@ task :testserver do
   require 'webrick'
   doc_root = File.join(File.dirname(__FILE__),"..", "spec", "html")
   log_file = File.join(File.dirname(__FILE__), "..", "log", "webrick_log.txt")
+  unless File.exist?(log_file)
+    FileUtils.mkdir_p(File.dirname(log_file))
+    FileUtils.touch(log_file)
+  end
+  
   server_port = 2000
   TEST_HOST = "http://localhost:#{server_port.to_s}"
 
