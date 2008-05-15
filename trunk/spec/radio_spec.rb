@@ -205,7 +205,13 @@ describe "Radio" do
       @browser.radio(:xpath, "//input[@id='new_user_newsletter_no']").should be_set
     end
 
-    it "should fire the onclick event"
+    it "should fire the onclick event" do
+      @browser.div(:id, "wants_newsletter").text.should be_empty
+      @browser.radio(:id, "new_user_newsletter_no").set
+      @browser.div(:id, "wants_newsletter").text.should == @browser.radio(:id, "new_user_newsletter_no").title
+      @browser.radio(:id, "new_user_newsletter_yes").set
+      @browser.div(:id, "wants_newsletter").text.should be_empty
+    end
 
     it "should raise UnknownObjectException if the radio button doesn't exist" do
       lambda { @browser.radio(:name, "no_such_name").set  }.should raise_error(UnknownObjectException)

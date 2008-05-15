@@ -220,7 +220,10 @@ describe "TextField" do
       @browser.text_field(:id, "delete_user_comment").value.should == 'Hello Cruel World'
     end
     
-    it "should fire events"
+    it "should fire events" do
+      @browser.text_field(:id, "new_user_username").set("Hello World")
+      @browser.span(:id, "current_length").text.should == "11"
+    end
     
     it "should be able to set the value of a password field" do
       @browser.text_field(:name , 'new_user_password').set('secret')

@@ -154,7 +154,8 @@ describe "Button" do
   # Manipulation methods
   describe "#click" do
     it "should click the button if it exists" do
-      pending
+      @browser.button(:id, 'new_user_submit').click
+      @browser.text.should include("You posted the following content:")
     end
     it "should fire events" do
       @browser.button(:id, 'new_user_button').click

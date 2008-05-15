@@ -12,7 +12,7 @@ describe "CheckBoxes" do
 
   describe "#length" do
     it "should return the number of checkboxes" do
-      @browser.checkboxes.length.should == 6
+      @browser.checkboxes.length.should == 7
     end
   end
   

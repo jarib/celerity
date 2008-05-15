@@ -20,7 +20,7 @@ task :testserver do
                                    :Logger => WEBrick::Log.new(log_file, WEBrick::BasicLog::WARN),
                                    :AccessLog => [])
   server.mount("/", WEBrick::HTTPServlet::FileHandler, doc_root, {:FancyIndexing=>true})
-  server.mount("/post", PostServlet)
+  server.mount("/post_to_me", PostServlet)
 
   WEBRICK_SERVER = Thread.new { server.start }
   WEBRICK_SERVER.join

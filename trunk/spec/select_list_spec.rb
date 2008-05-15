@@ -255,9 +255,22 @@ describe "SelectList" do
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").get_selected_items.should == ["Danish", "English", "Swedish"]
     end
     
-    it "should fire onchange event when selecting an item"
+    it "should fire onchange event when selecting an item" do
+      @browser.div(:id, "changed_language").text.should be_empty
+      @browser.select_list(:id, "new_user_languages").select("Danish")
+      @browser.div(:id, "changed_language").text.should == "changed language"
+      @browser.refresh # to reset js
+    end
 
-    it "should not fire onchange event when selecting an already selected item"
+    it "should not fire onchange event when selecting an already selected item" do
+      @browser.select_list(:id, "new_user_languages").clear_selection # removes two options
+      @browser.div(:id, "changed_language").text.should == "changed languagechanged language"
+      @browser.select_list(:id, "new_user_languages").select("English")
+      @browser.div(:id, "changed_language").text.should == "changed languagechanged languagechanged language"
+
+      @browser.select_list(:id, "new_user_languages").select("English")
+      @browser.div(:id, "changed_language").text.should == "changed languagechanged languagechanged language"
+    end
 
     it "should raise NoValueFoundException if the option doesn't exist" do
       lambda { @browser.select_list(:name, "new_user_country").select("missing_option") }.should raise_error(NoValueFoundException)

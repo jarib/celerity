@@ -204,7 +204,13 @@ describe "Checkbox" do
       @browser.checkbox(:xpath, "//input[@id='new_user_interests_cars']").should be_set
     end
 
-    it "should fire the onclick event"
+    it "should fire the onclick event" do
+      @browser.button(:id, "disabled_button").should be_disabled
+      @browser.checkbox(:id, "toggle_button_checkbox").set
+      @browser.button(:id, "disabled_button").should_not be_disabled
+      @browser.checkbox(:id, "toggle_button_checkbox").clear
+      @browser.button(:id, "disabled_button").should be_disabled
+    end
 
     it "should raise UnknownObjectException if the checkbox button doesn't exist" do
       lambda { @browser.checkbox(:name, "no_such_name").set  }.should raise_error(UnknownObjectException)

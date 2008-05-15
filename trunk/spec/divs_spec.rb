@@ -12,7 +12,7 @@ describe "Divs" do
   
   describe "#length" do
     it "should return the number of divs" do
-      @browser.divs.length.should == 6
+      @browser.divs.length.should == 7
     end
   end
   
