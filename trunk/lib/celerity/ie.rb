@@ -60,6 +60,10 @@ module Celerity
       @page ? @page.getFirstByXPath("//body").asText : ''
     end
     
+    def document
+      @object
+    end
+    
     def back
       # FIXME: this is naive, need capability from HtmlUnit  
       goto(@last_url) if @last_url
