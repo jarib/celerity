@@ -48,6 +48,17 @@ describe "IE" do
     end
   end
   
+  describe "#document" do
+    it "should return the underlying object" do
+      @ie.goto(TEST_HOST + "/non_control_elements.html")
+      if RUBY_PLATFORM =~ /java/
+        @ie.document.should be_instance_of(Java::ComGargoylesoftwareHtmlunitHtml::HtmlHtml)
+      else 
+        @ie.document.should be_instance_of(WIN32OLE)
+      end
+    end
+  end
+  
   describe "#base_url" do
     it "should return the base URL of the current page" do
       @ie.goto(TEST_HOST + "/non_control_elements.html")
