@@ -3,19 +3,19 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "TableBody" do
   
   before :all do
-    @ie = IE.new
-    add_spec_checker(@ie)
+    @browser = IE.new
+    add_spec_checker(@browser)
   end
 
   before :each do
-    @ie = IE.new
-    @ie.goto(TEST_HOST + "/tables.html")
+    @browser = IE.new
+    @browser.goto(TEST_HOST + "/tables.html")
   end
   
   describe "#length" do
     it "should return the number of table bodies" do
-      @ie.table(:index, 1).bodies.length.should == 2
-      @ie.table(:index, 2).bodies.length.should == 0
+      @browser.table(:index, 1).bodies.length.should == 2
+      @browser.table(:index, 2).bodies.length.should == 0
     end
   end
   
@@ -27,14 +27,14 @@ describe "TableBody" do
 
   describe "#each" do
     it "should iterate through table bodies correctly" do
-      #@ie.table(:index, 1).bodies.each_with_index do |body, index|
+      #@browser.table(:index, 1).bodies.each_with_index do |body, index|
       #end
       pending
     end
   end
   
   after :all do
-    @ie.close
+    @browser.close
   end
   
 end

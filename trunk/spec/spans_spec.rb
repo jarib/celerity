@@ -2,40 +2,40 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Spans" do
   before :all do
-    @ie = IE.new
-    add_spec_checker(@ie)    
+    @browser = IE.new
+    add_spec_checker(@browser)    
   end
 
   before :each do
-    @ie.goto(TEST_HOST + "/non_control_elements.html")
+    @browser.goto(TEST_HOST + "/non_control_elements.html")
   end
 
 
   describe "#length" do
     it "should return the number of spans" do
-      @ie.spans.length.should == 6
+      @browser.spans.length.should == 6
     end
   end
   
   describe "#[]" do
     it "should return the p at the given index" do
-      @ie.spans[1].id.should == "lead"
+      @browser.spans[1].id.should == "lead"
     end
   end
 
   describe "#each" do
     it "should iterate through spans correctly" do
-      @ie.spans.each_with_index do |s, index|
-        s.name.should == @ie.span(:index, index+1).name
-        s.id.should == @ie.span(:index, index+1).id
-        s.value.should == @ie.span(:index, index+1).value
+      @browser.spans.each_with_index do |s, index|
+        s.name.should == @browser.span(:index, index+1).name
+        s.id.should == @browser.span(:index, index+1).id
+        s.value.should == @browser.span(:index, index+1).value
       end
     end
   end
   
   describe "#to_s" do
     it "should return a human readable representation of the collection" do
-      @ie.spans.to_s.should == "tag:          span\n" +
+      @browser.spans.to_s.should == "tag:          span\n" +
                               "  id:           lead\n" +
                               "  class:        lead\n" +
                               "  title:        Lorem ipsum\n" +
@@ -58,7 +58,7 @@ describe "Spans" do
   end
   
   after :all do
-    @ie.close
+    @browser.close
   end
 
 end

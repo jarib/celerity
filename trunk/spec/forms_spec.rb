@@ -3,39 +3,39 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "Forms" do
   
   before :all do
-    @ie = IE.new
-    add_spec_checker(@ie)    
+    @browser = IE.new
+    add_spec_checker(@browser)    
   end
 
   before :each do
-    @ie.goto(TEST_HOST + "/forms_with_input_elements.html")
+    @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
 
   describe "#length" do
     it "should return the number of forms in the container" do
-      @ie.forms.length.should == 2
+      @browser.forms.length.should == 2
     end
   end
   
   describe "#[]n" do
     it "should provide access to the nth form" do
-      @ie.forms[1].action.should == 'post_to_me'
-      @ie.forms[1].attribute_value('method').should == 'post'     
+      @browser.forms[1].action.should == 'post_to_me'
+      @browser.forms[1].attribute_value('method').should == 'post'     
     end
   end
   
   describe "#each" do
     it "should iterate through forms correctly" do
-      @ie.forms.each_with_index do |f, index|
-        f.name.should == @ie.form(:index, index+1).name
-        f.id.should == @ie.form(:index, index+1).id
-        f.class_name.should == @ie.form(:index, index+1).class_name
+      @browser.forms.each_with_index do |f, index|
+        f.name.should == @browser.form(:index, index+1).name
+        f.id.should == @browser.form(:index, index+1).id
+        f.class_name.should == @browser.form(:index, index+1).class_name
       end
     end
   end
   
   after :all do
-    @ie.close
+    @browser.close
   end
 
 end
