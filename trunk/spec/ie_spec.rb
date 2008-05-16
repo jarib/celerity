@@ -151,7 +151,8 @@ describe "IE" do
     end
     it "should run the given proc on each page load" do
       output = ''
-      @browser.add_checker(Proc.new { |ie| output << ie.text })
+      proc = Proc.new { |ie| output << ie.text }
+      @browser.add_checker(proc)
       @browser.goto(TEST_HOST + "/non_control_elements.html")
       output.should include('Dubito, ergo cogito, ergo sum')
     end

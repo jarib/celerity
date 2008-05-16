@@ -10,18 +10,10 @@ module Celerity
 
   class CheckBoxes < ElementCollections
     def element_class; CheckBox; end
-    private
-    def iterator_object(i)
-      element_class.new(@container, :index, i+1, nil)
-    end
   end
 
   class Radios < ElementCollections
     def element_class; Radio; end
-    private
-    def iterator_object(i)
-      element_class.new(@container, :index, i+1, nil)
-    end
   end
 
   class SelectLists < ElementCollections

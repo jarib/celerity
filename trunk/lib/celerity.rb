@@ -1,26 +1,27 @@
 $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
-HTMLUNIT_JARS = Dir[File.dirname(__FILE__) + '/celerity/htmlunit/*.jar']
+module Celerity
+  Jars = Dir[File.dirname(__FILE__) + '/celerity/htmlunit/*.jar']
+end
 
 if RUBY_PLATFORM =~ /java/
   require 'java'
-  HTMLUNIT_JARS.each { |jar| require(jar) }
+  Celerity::Jars.each { |jar| require(jar) }
 
   module HtmlUnit
     include_package 'com.gargoylesoftware.htmlunit'
   end
-  ArrayList = java.util.ArrayList
+  JavaString = java.lang.String
 else
-  require "rjb"
-  require "watir"
-  Rjb::load(HTMLUNIT_JARS.join(";"))
-  module HtmlUnit
-    WebClient = Rjb::import('com.gargoylesoftware.htmlunit.WebClient')
-    BrowserVersion = Rjb::import('com.gargoylesoftware.htmlunit.BrowserVersion')
-  end
+  abort("Celerity only works on JRuby at the moment.")
+  # require "rjb"
+  # Rjb::load(Celerity::Jars.join(";"))
+  # module HtmlUnit
+  #   WebClient      = Rjb::import('com.gargoylesoftware.htmlunit.WebClient')
+  #   BrowserVersion = Rjb::import('com.gargoylesoftware.htmlunit.BrowserVersion')
+  # end
 end
 
-module Celerity; end
 require "celerity/version"
 require "celerity/exception"
 require "celerity/clickable_element"

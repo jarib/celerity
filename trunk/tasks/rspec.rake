@@ -15,10 +15,16 @@ EOS
   exit(0)
 end
 
-desc "Run the specs under spec/models"
+desc "Run the specs under spec/"
 Spec::Rake::SpecTask.new do |t|
   t.spec_opts = ['--options', "spec/spec.opts"]
   t.spec_files = FileList['spec/**/*_spec.rb']
-  # t.rcov = true
-  # t.rcov_opts = ['--exclude', 'spec,fcntl,path_helper']
+  
+  begin 
+    require 'rcov'
+    t.rcov = true
+    t.rcov_opts = ['--exclude', 'spec,fcntl,path_helper', '--no-rcovrt']
+  rescue LoadError
+  end
+  
 end

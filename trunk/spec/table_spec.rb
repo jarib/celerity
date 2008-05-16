@@ -88,7 +88,7 @@ describe "Table" do
       @browser.table(:id, 'outer')[3].id.should == "outer_last"
     end
   end
-
+  
   describe "#each" do
     it "should iterate through the table's rows" do
       index = 1

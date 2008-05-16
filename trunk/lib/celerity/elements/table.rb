@@ -66,11 +66,6 @@ module Celerity
       return y
     end
     
-    def table_body(index = 1)
-      return @object.getBodies.get(index)
-    end
-    private :table_body
-    
     def body(how, what)
       assert_exists
       return TableBody.new(@container, how, what)
@@ -88,6 +83,12 @@ module Celerity
     def row_values(rownumber)
       return (1..column_count(rownumber)).collect { |index| self[rownumber][index].text }
     end
+
+    # not in use? (Jari - 2008-05-16)
+    # private 
+    # def table_body(index = 1)
+    #   return @object.getBodies.get(index)
+    # end
     
   end
   

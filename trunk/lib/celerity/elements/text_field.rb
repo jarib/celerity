@@ -26,7 +26,7 @@ module Celerity
       if @object.class == com.gargoylesoftware.htmlunit.html.HtmlPasswordInput
         @object.setValueAttribute(value.to_s)
       else
-        java.lang.String.new(value.to_s).toCharArray.each do |char| 
+        JavaString.new(value.to_s).toCharArray.each do |char| 
           @container.update_page @object.type(char) 
         end
       end
@@ -57,7 +57,7 @@ module Celerity
     def append(value)
       assert_enabled
       assert_not_readonly
-      java.lang.String.new(value.to_s).toCharArray.each do |char| 
+      JavaString.new(value.to_s).toCharArray.each do |char| 
         @container.update_page @object.type(char) 
       end
     end
