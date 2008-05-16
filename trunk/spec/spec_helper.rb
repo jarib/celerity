@@ -46,7 +46,7 @@ if RUBY_PLATFORM =~ /java/ || ENV['WATIR_SPEC']
     TEST_HOST = s.host
   end
 else
-  puts "Remember to run \"rake testserver\" before running these tests!"
+  puts "Remember to run \"rake specserver\" before running these tests!"
   TEST_HOST = "http://localhost:2000"
 end
 

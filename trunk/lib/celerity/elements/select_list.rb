@@ -11,19 +11,16 @@ module Celerity
       assert_exists
       @object.getOptions.map { |e| e.asText }
     end
-    alias_method :getAllContents, :get_all_contents
   
     def get_selected_items
       assert_exists
       @object.getSelectedOptions.map { |e| e.asText }
     end
-    alias_method :getSelectedItems, :get_selected_items
   
     def clear_selection
       # assert_exists called by SelectList#type here
       @object.getSelectedOptions.each { |e| e.setSelected(false) } unless type() == 'select-one'
     end
-    alias_method :clearSelection, :clear_selection
   
     def select(value)
       assert_exists
@@ -32,7 +29,6 @@ module Celerity
         @container.update_page(option.click)
       end
     end
-    alias_method :select_value, :select
     alias_method :set, :select
   
     def include?(value)

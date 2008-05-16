@@ -23,10 +23,6 @@ module Celerity
       assert_exists
       @object.isChecked
     end
-    alias_method :is_set?, :set?
-    alias_method :isSet?, :set?
-    alias_method :get_state, :set?
-    alias_method :getState, :set?
     alias_method :checked?, :set?
     
     def clear

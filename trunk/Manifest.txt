@@ -7,6 +7,8 @@ benchmark/bm_digg.rb
 benchmark/bm_google_images.rb
 benchmark/bm_input_locator.rb
 benchmark/loader.rb
+config/hoe.rb
+config/requirements.rb
 lib/celerity.rb
 lib/celerity/clickable_element.rb
 lib/celerity/collections.rb
@@ -39,6 +41,7 @@ lib/celerity/htmlunit/commons-io-1.4.jar
 lib/celerity/htmlunit/commons-lang-2.4.jar
 lib/celerity/htmlunit/commons-logging-1.1.1.jar
 lib/celerity/htmlunit/cssparser-0.9.5.jar
+lib/celerity/htmlunit/htmlunit-2.1.jar.not_used
 lib/celerity/htmlunit/htmlunit-2.2-SNAPSHOT.jar
 lib/celerity/htmlunit/js-1.7R1.jar
 lib/celerity/htmlunit/nekohtml-1.9.7.jar
@@ -51,6 +54,7 @@ lib/celerity/ie.rb
 lib/celerity/input_element.rb
 lib/celerity/non_control_elements.rb
 lib/celerity/version.rb
+lib/celerity/watir_compatability.rb
 setup.rb
 spec/area_spec.rb
 spec/areas_spec.rb
@@ -100,6 +104,8 @@ spec/links_spec.rb
 spec/lis_spec.rb
 spec/map_spec.rb
 spec/maps_spec.rb
+spec/meta_spec.rb
+spec/option_spec.rb
 spec/p_spec.rb
 spec/pre_spec.rb
 spec/pres_spec.rb
@@ -123,7 +129,9 @@ spec/table_spec.rb
 spec/tables_spec.rb
 spec/text_field_spec.rb
 spec/text_fields_spec.rb
-tasks/environment.rake
-tasks/rspec.rake
-tasks/testserver.rake
 tasks/benchmark.rake
+tasks/environment.rake
+tasks/rdoc.rake
+tasks/rspec.rake
+tasks/simple_ci.rake
+tasks/specserver.rake

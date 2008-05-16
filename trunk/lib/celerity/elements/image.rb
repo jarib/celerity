@@ -18,7 +18,6 @@ module Celerity
       web_response = @object.getWebResponse(true)      
       return Time.parse(web_response.getResponseHeaderValue("Last-Modified").to_s)    
     end
-    alias_method :fileCreatedDate, :file_created_date
     
     # this method returns the filesize of the image
     def file_size
@@ -26,7 +25,6 @@ module Celerity
       web_response = @object.getWebResponse(true)      
       return web_response.getResponseBody().length  
     end
-    alias_method :fileSize, :file_size
     
     # returns the width in pixels of the image, as a string
     def width
@@ -49,8 +47,6 @@ module Celerity
         return false
       end
     end
-    alias_method :hasLoaded?, :loaded?
-    alias_method :has_loaded?, :loaded?
     
     def save(filename)
       assert_exists

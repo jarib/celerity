@@ -137,20 +137,6 @@ module Celerity
       @error_checkers.delete(checker)
     end
     
-    # these are just for Watir compatability - should we keep them?
-    class << self
-      attr_accessor :speed, :attach_timeout, :visible
-      alias_method :start_window, :start
-      def reset_attach_timeout; @attach_timeout = 2.0; end
-      def each; end
-      def quit; end
-      def set_fast_speed; @speed = :fast; end
-      def set_slow_speed; @speed = :slow; end  
-    end
-
-    attr_accessor :visible
-    def bring_to_front; true; end
-    def speed=(s); end
     
   end # IE
 end # Celerity

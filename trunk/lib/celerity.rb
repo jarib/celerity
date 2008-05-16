@@ -14,13 +14,13 @@ if RUBY_PLATFORM =~ /java/
   JavaString = java.lang.String
 else
   abort("Celerity only works on JRuby at the moment.")
+end
   # require "rjb"
   # Rjb::load(Celerity::Jars.join(";"))
   # module HtmlUnit
   #   WebClient      = Rjb::import('com.gargoylesoftware.htmlunit.WebClient')
   #   BrowserVersion = Rjb::import('com.gargoylesoftware.htmlunit.BrowserVersion')
   # end
-end
 
 require "celerity/version"
 require "celerity/exception"
@@ -36,6 +36,8 @@ require "celerity/input_element"
 require "celerity/non_control_elements"
 Dir[File.dirname(__FILE__) + "/celerity/elements/*.rb"].each { |f| require(f) }
 require "celerity/ie"
+
+require "celerity/watir_compatability"
 
 require "logger"
 require "uri"

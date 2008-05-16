@@ -70,12 +70,10 @@ module Celerity
       self.value = ''
       @container.text_field(how, what).append(val)
     end
-    alias_method :dragContentsTo, :drag_contents_to
   
     def get_contents
       self.value
     end
-    alias_method :getContents, :get_contents
 
     def verify_contains(expected)
       assert_exists
