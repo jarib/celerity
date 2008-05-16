@@ -10,10 +10,6 @@ module Celerity
       @length = length # defined by subclasses
     end
 
-    def element_tags
-      element_class::TAGS
-    end
-    
     def length
       if @object
         @object.length

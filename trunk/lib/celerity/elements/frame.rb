@@ -14,8 +14,6 @@ module Celerity
         @inline_frame_object = @object.getEnclosedWindow.getFrameElement
         if (frame = @object.getEnclosedPage.getDocumentElement)
           @object = frame
-        else
-          @object = nil
         end
       end
     end

@@ -35,14 +35,14 @@ module Celerity
     # This exception is thrown if an http error, such as a 404, 500 etc is encountered while navigating
     class NavigationException < CelerityException; end
       
-    # This exception is raised if a timeout is exceeded
-    class TimeOutException < CelerityException
-      def initialize(duration, timeout)
-        @duration, @timeout = duration, timeout
-        super
-      end 
-      attr_reader :duration, :timeout
-    end
+    # # This exception is raised if a timeout is exceeded
+    # class TimeOutException < CelerityException
+    #   def initialize(duration, timeout)
+    #     @duration, @timeout = duration, timeout
+    #     super
+    #   end 
+    #   attr_reader :duration, :timeout
+    # end
     
   end
 end
