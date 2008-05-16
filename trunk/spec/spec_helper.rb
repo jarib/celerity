@@ -39,45 +39,11 @@ end
 
 if RUBY_PLATFORM =~ /java/ || ENV['WATIR_SPEC']
   unless defined? WEBRICK_SERVER
-    require 'webrick'
-    doc_root = File.join(File.dirname(__FILE__), "html")
-    log_file = File.join(File.dirname(__FILE__), "..", "log", "webrick_log.txt")
-    unless File.exist?(log_file)
-      FileUtils.mkdir_p(File.dirname(log_file))
-      FileUtils.touch(log_file)
-    end
-    
-    server_port = 2000
-    tries = 0
-    begin
-      TEST_HOST = "http://localhost:#{server_port}"
-      server = WEBrick::HTTPServer.new(:Port => server_port,
-                                       :DocumentRoot => doc_root,
-                                       :Logger => WEBrick::Log.new(log_file, WEBrick::BasicLog::WARN),
-                                       :AccessLog => [])
-    rescue Errno::EADDRINUSE => e
-      server_port += 5
-      if tries < 3
-        tries += 1
-        retry 
-      else
-        raise e
-      end
-    end
-    
-    class PostServlet < WEBrick::HTTPServlet::AbstractServlet
-      def do_POST(req, resp)
-        resp['content-type'] = 'text/html'
-        resp.body << "<html><body>"
-        resp.body << "You posted the following content:\n"
-        resp.body << req.body
-        resp.body << "</body></html>"
-      end
-    end
-    
-    server.mount("/", WEBrick::HTTPServlet::FileHandler, doc_root, {:FancyIndexing=>true})
-    server.mount("/post_to_me", PostServlet)
-    WEBRICK_SERVER = Thread.new { server.start }
+    # cleaner way to do this?
+    require File.dirname(__FILE__) + "/../support/spec_server"
+    s = Celerity::SpecServer.new
+    s.run
+    TEST_HOST = s.host
   end
 else
   puts "Remember to run \"rake testserver\" before running these tests!"
@@ -102,7 +68,7 @@ end
 # define a checker that is run on every page
 def add_spec_checker(browser)
   if defined? WEB_VIEWER
-    ie.add_checker { WEB_VIEWER.render_html(browser.html, ie.base_url) }
+    browser.add_checker { WEB_VIEWER.render_html(browser.html, browser.base_url) }
   end
 end
 

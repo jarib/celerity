@@ -27,6 +27,7 @@ module Celerity
     def each
       if @elements
         @elements.each { |e| yield(element_class.new(@container, :object, e)) }
+        @length
       else
         0.upto(@length - 1) { |i| yield iterator_object(i) }
       end

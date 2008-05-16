@@ -4,6 +4,7 @@ rescue LoadError
   require 'rubygems'
   require 'spec'
 end
+
 begin
   require 'spec/rake/spectask'
 rescue LoadError
@@ -13,6 +14,8 @@ To use rspec for testing you must install rspec gem:
 EOS
   exit(0)
 end
+
+require 'ci/reporter/rake/rspec'
 
 desc "Run the specs under spec/models"
 Spec::Rake::SpecTask.new do |t|

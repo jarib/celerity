@@ -4,11 +4,12 @@ require "drb/acl"
 DRb.install_acl(ACL.new(%w{deny all allow 127.0.0.1}))
 
 class DistributedViewer
+  attr_reader :web_view
   
   def initialize(web_view)
     @web_view = web_view
   end
-  
+    
   def render_html(html, base_url = nil)
     @web_view.mainFrame.loadHTMLString_baseURL(html, NSURL.URLWithString(base_url))
   end

@@ -9,6 +9,22 @@ module Celerity
       browser
     end
     
+    
+    # Creates a browser object. 
+    #
+    # ==== Options (opts)
+    # :javascript_exceptions<true, false, nil>::
+    #   Throw exceptions on script errors.
+    # :css<true, false, nil>::
+    #   Enable CSS. Disabled by default.
+    # :secure_ssl<true, false, nil>::
+    #   Disable secure SSL. Enabled by default.
+    #
+    # ==== Returns
+    # An instance of Celerity::IE
+    #
+    #-- 
+    # @public
     def initialize(opts = {})
       @page_container  = self
       @error_checkers  = []
@@ -16,12 +32,13 @@ module Celerity
 
       browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
       @webclient = ::HtmlUnit::WebClient.new(browser)
-      @webclient.setThrowExceptionOnScriptError(false) unless $DEBUG || opts[:enable_javascript_exceptions]
-      @webclient.setCssEnabled(false) if opts[:disable_css] 
+      @webclient.setThrowExceptionOnScriptError(false) unless $DEBUG || opts[:javascript_exceptions]
+      @webclient.setCssEnabled(false) if opts[:css] == false
+      @webclient.setUseInsecureSSL(true) if opts[:secure_ssl] 
     end
 
     def goto(uri)
-      uri = "http://#{uri}" unless uri =~ %r{^http://}
+      uri = "http://#{uri}" unless uri =~ %r{^https?://}
       set_page @webclient.getPage(uri)
       uri
     end

@@ -126,8 +126,8 @@ module Celerity
   end # MethodGenerator
   
   class IE
-    def generate_method
-      MethodGenerator.new(self).parse
+    def generate_method(opts = {})
+      MethodGenerator.new(self, opts).parse
     end
   end
    
