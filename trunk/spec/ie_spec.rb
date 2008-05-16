@@ -77,6 +77,9 @@ describe "IE" do
   end
   
   describe "#goto" do
+    it "should handle HTTPS" do
+      pending
+    end
     it "should go to the given url without raising errors" do
       lambda { @browser.goto(TEST_HOST + "/non_control_elements.html") }.should_not raise_error
     end
