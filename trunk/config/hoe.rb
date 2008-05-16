@@ -40,7 +40,9 @@ RDOC_OPTS = [ '--quiet',  '--title', 'Celerity Documentation',
               "--opname", "index.html",
               "--line-numbers", 
               "--main", "README",
-              "--inline-source"]
+              "--inline-source",
+              "--exclude", "jar$"
+              ]
 
 class Hoe
   def extra_deps 
