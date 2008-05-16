@@ -3,8 +3,7 @@ require 'celerity/version'
 AUTHORS = ["T. Alexander Lystad", "Knut Johannes Dahle", "Jari Bakken"]
 EMAIL = "alexander.lystad@finntech.no"
 DESCRIPTION = <<DESC
-  Celerity is a JRuby wrapper around the HtmlUnit Java library (http://htmlunit.sourceforge.net/).
-  The goal of the project is to duplicate the Watir API (http://wtf.rubyforge.org/) using HtmlUnit as the underlying engine.
+  Celerity is a JRuby library for easy and fast functional test automation for web applications. It is a wrapper around the HtmlUnit Java library and is currently aimed at providing the same API and functionality as Watir.
 DESC
 
 GEM_NAME = 'celerity'
@@ -36,13 +35,6 @@ REV = nil
 # UNCOMMENT IF REQUIRED: 
 # REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
 VERS = Celerity::VERSION::STRING + (REV ? ".#{REV}" : "")
-RDOC_OPTS = [ '--quiet',  '--title', 'Celerity Documentation',
-              "--opname", "index.html",
-              "--line-numbers", 
-              "--main", "README",
-              "--inline-source",
-              "--exclude", "jar$"
-              ]
 
 class Hoe
   def extra_deps 
