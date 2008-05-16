@@ -2,7 +2,10 @@ require "rubygems"
 require "uri"
 require "active_support"
 
+#--
 # http://api.rubyonrails.com/classes/Inflector.html#M001621
+#++
+
 class String
   def underscore
      gsub(/::/, '/').
