@@ -90,8 +90,20 @@ describe "Button" do
       @browser.button(:index, 2).name.should == 'new_user_reset'
       @browser.button(:index, 3).name.should == 'new_user_button'
     end
-    it "should raise UnknownObjectException if button does not exist" do
+    it "should raise UnknownObjectException if the button does not exist" do
       lambda { @browser.button(:name, "no_such_name").name }.should raise_error(UnknownObjectException)
+    end
+  end
+  
+  describe "#style" do
+    it "should return the style attribute if the button exists" do
+      @browser.button(:id, 'delete_user_submit').style.should == "border: 4px solid red;"
+    end
+    it "should return an empty string if the element exists and the attribute doesn't" do
+      @browser.button(:id, 'new_user_submit').style.should == ""
+    end
+    it "should raise UnknownObjectException if the button does not exist" do
+      lambda { @browser.button(:name, "no_such_name").style }.should raise_error(UnknownObjectException)
     end
   end
   

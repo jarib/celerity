@@ -83,9 +83,21 @@ describe "Div" do
       @browser.div(:index, 1).name.should == ""
     end
     it "should raise UnknownObjectException if the element does not exist" do
-      lambda {@browser.div(:id, "div77").name }.should raise_error(UnknownObjectException)
-      lambda {@browser.div(:title, "div77").name }.should raise_error(UnknownObjectException)
-      lambda {@browser.div(:index, 44).name }.should raise_error(UnknownObjectException)
+      lambda {@browser.div(:id, "no_such_id").name }.should raise_error(UnknownObjectException)
+      lambda {@browser.div(:title, "no_such_title").name }.should raise_error(UnknownObjectException)
+      lambda {@browser.div(:index, 1337).name }.should raise_error(UnknownObjectException)
+    end
+  end
+  
+  describe "#style" do
+    it "should return the style attribute if the element exists" do
+      @browser.div(:id, 'best_language').style.should == "color: red; text-decoration: underline; cursor: pointer;"
+    end
+    it "should return an empty string if the element exists but the attribute doesn't" do
+      @browser.div(:id, 'promo').style.should == ""
+    end
+    it "should raise UnknownObjectException if the element does not exist" do
+      lambda {@browser.div(:id, "no_such_id").style }.should raise_error(UnknownObjectException)
     end
   end
   
@@ -155,21 +167,6 @@ describe "Div" do
   text:         This is a footer.}
     end
   end
-  
-  # Divs can't be disabled
-  # describe "#disabled?" do
-  #   it "should raise UnknownObjectException if the element does not exist" do
-  #     lambda {@browser.div(:id , "div77").disabled? }.should raise_error(UnknownObjectException)
-  #     lambda {@browser.div(:title , "div77").disabled? }.should raise_error(UnknownObjectException)
-  #     lambda {@browser.div(:index , 44).disabled? }.should raise_error(UnknownObjectException)
-  #   end
-  #   
-  #   it "should return false if the element is enabled" do
-  #     @browser.div(:index , 2).should_not be_disabled
-  #   end
-  #   
-  #   it "should return true if the element is disabled" 
-  # end
   
   after :all do
     @browser.close
