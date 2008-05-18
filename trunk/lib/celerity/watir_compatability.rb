@@ -1,5 +1,4 @@
 module Celerity
-  
   class IE
     # these are just for Watir compatability - should we keep them?
     class << self
@@ -13,15 +12,16 @@ module Celerity
     end
 
     attr_accessor :visible
+   
     def bring_to_front; true; end
     def speed=(s); end
     def wait; end
   end
   
-  class Button
+  module ClickableElement
     alias_method :click_no_wait, :click
   end
-  
+    
   class Image
     alias_method :hasLoaded?, :loaded?
     alias_method :has_loaded?, :loaded?
@@ -29,9 +29,9 @@ module Celerity
     alias_method :fileCreatedDate, :file_created_date
   end
   
-  class Link
-    alias_method :click_no_wait, :click
-  end
+  # class Link
+  #   alias_method :click_no_wait, :click
+  # end
   
   class RadioCheckCommon
     alias_method :is_set?, :set?
@@ -51,5 +51,4 @@ module Celerity
     alias_method :dragContentsTo, :drag_contents_to
     alias_method :getContents, :get_contents
   end
-  
 end
