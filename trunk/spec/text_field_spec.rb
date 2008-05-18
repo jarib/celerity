@@ -1,7 +1,5 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-# TODO: specs for exceptions
-
 describe "TextField" do
   
   before :all do
@@ -93,6 +91,7 @@ describe "TextField" do
   
   describe "#type" do
     #TODO: What if the type attribute is non-existent or invalid?
+    # Should probably just return the empty string, like HtmlUnit? (Jari - 2008-05-16)
     it "should return the type attribute if the text field exists" do
       @browser.text_field(:index, 4).type.should == "text"
     end
@@ -121,6 +120,7 @@ describe "TextField" do
     it "should return false for disabled text fields" do
       @browser.text_field(:name, "new_user_species").should_not be_enabled
     end
+    it "should raise UnknownObjectException if the text field doesn't exist"
   end
   
   describe "#disabled?" do
@@ -143,6 +143,7 @@ describe "TextField" do
     it "should return false for writeable text fields" do
       @browser.text_field(:name, "new_user_email").should_not be_readonly
     end
+    it "should raise UnknownObjectException if the text field doesn't exist"
   end
   
   
@@ -175,6 +176,7 @@ describe "TextField" do
       @browser.text_field(:id, "delete_user_comment").clear
       @browser.text_field(:id, "delete_user_comment").get_contents.should be_empty
     end
+    it "should raise UnknownObjectException if the text field doesn't exist"
   end
   
   describe "#drag_contents_to" do
@@ -184,12 +186,15 @@ describe "TextField" do
       @browser.text_field(:name, "new_user_first_name").value.should be_empty
       @browser.text_field(:id, "new_user_last_name").value.should == "Smith"
     end
+    it "should raise UnknownObjectException if either of the text fields doesn't exist"
   end
   
   describe "#get_contents" do
     it "should raise UnknownObjectException when accessing a non-existing element" do
       lambda { @browser.text_field(:name, "no_such_name").get_contents }.should raise_error(UnknownObjectException)
     end
+    
+    it "should raise UnknownObjectException if the text field doesn't exist"
   end
   
   describe "#value=" do
@@ -207,6 +212,8 @@ describe "TextField" do
       @browser.text_field(:id, 'delete_user_comment').value = 'Hello Cruel World'
       @browser.text_field(:id, "delete_user_comment").value.should == 'Hello Cruel World'
     end
+    
+    it "should raise UnknownObjectException if the text field doesn't exist"
   end
 
   describe "#set" do
@@ -233,6 +240,8 @@ describe "TextField" do
       @browser.text_field(:name, "new_user_occupation").set("ĳĳ")
       @browser.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
     end
+    
+    it "should raise UnknownObjectException if the text field doesn't exist"
   end
 
   describe "#verify_contains" do
@@ -244,6 +253,8 @@ describe "TextField" do
       @browser.text_field(:name, "new_user_email").verify_contains("no_such_text").should be_false
       @browser.text_field(:name, "new_user_email").verify_contains(/no_such_text/).should be_false
     end
+    
+    it "should raise UnknownObjectException if the text field doesn't exist"
   end
 
   after :all do

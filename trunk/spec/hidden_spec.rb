@@ -1,7 +1,5 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-# TODO: specs for exceptions
-
 describe "Hidden" do
   
   before :all do
@@ -96,6 +94,8 @@ describe "Hidden" do
       @browser.hidden(:id, 'new_user_interests_dolls').value = 'guns'
       @browser.hidden(:id, "new_user_interests_dolls").value.should == 'guns'
     end
+    
+    it "should raise UnknownObjectException if the text field doesn't exist"
   end
 
   after :all do

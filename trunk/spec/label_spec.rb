@@ -1,6 +1,5 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-# TODO: specs for exceptions
 
 describe "Label" do
   

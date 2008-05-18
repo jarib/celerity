@@ -44,7 +44,6 @@ describe "Frame" do
       @browser.frame(:index, 1).should exist
       @browser.frame(:xpath, "//iframe[@id='frame_1']").should exist
     end
-    #TODO: default how = name
     it "should return false if the frame doesn't exist" do
       @browser.frame(:id, "no_such_id").should_not exist
       @browser.frame(:id, /no_such_id/).should_not exist
