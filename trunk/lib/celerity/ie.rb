@@ -60,8 +60,8 @@ module Celerity
     end
     
     def base_url
-      # FIXME: base_url HTTPS
-      "http://" + URI.parse( url() ).host
+      uri = URI.parse( url() )
+      "#{uri.scheme}://#{uri.host}"
     end
 
     def title
