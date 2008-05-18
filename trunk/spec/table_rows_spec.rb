@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe "TableRows" do
+describe TableRows do
   
   before :all do
     @browser = IE.new

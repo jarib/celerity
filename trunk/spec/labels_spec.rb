@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe "Labels" do
+describe Labels do
   
   before :all do
     @browser = IE.new

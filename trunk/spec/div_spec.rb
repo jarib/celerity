@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe "Div" do
+describe Div do
   before :all do
     @browser = IE.new
     add_spec_checker(@browser)    

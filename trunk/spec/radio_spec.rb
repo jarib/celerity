@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe "Radio" do
+describe Radio do
   
   before :all do
     @browser = IE.new
@@ -175,7 +175,7 @@ describe "Radio" do
   
   # Manipulation methods
   
-  describe "clear" do
+  describe "#clear" do
     it "should clear the radio button if it is set" do
       @browser.radio(:id, "new_user_newsletter_yes").clear
       @browser.radio(:id, "new_user_newsletter_yes").should_not be_set

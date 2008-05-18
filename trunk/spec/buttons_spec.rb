@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe "Buttons" do
+describe Buttons do
   
   before :all do
     @browser = IE.new
