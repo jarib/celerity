@@ -22,13 +22,8 @@ module Celerity
       assert_enabled
       assert_not_readonly
       clear
-      # workaround for bug in HtmlPasswordInput - should be fixed soon (Jari - 2008-05-14)
-      if @object.class == com.gargoylesoftware.htmlunit.html.HtmlPasswordInput
-        @object.setValueAttribute(value.to_s)
-      else
-        JavaString.new(value.to_s).toCharArray.each do |char| 
-          @container.update_page @object.type(char) 
-        end
+      JavaString.new(value.to_s).toCharArray.each do |char| 
+        @container.update_page @object.type(char) 
       end
     end
     
