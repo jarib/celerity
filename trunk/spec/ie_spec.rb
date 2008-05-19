@@ -37,7 +37,18 @@ describe IE do
   describe "#text" do
     it "should return the text of the page" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
-      @browser.text.include?("Dubito, ergo cogito, ergo sum.").should be_true
+      @browser.text.should include("Dubito, ergo cogito, ergo sum.")
+    end
+    
+    it "should return text in the correct charset (utf-8)" do
+      # utf-8
+      @browser.goto(TEST_HOST + "/utf8_text.html")
+      @browser.text.strip.should == "\303\246\303\245\303\270"
+    end
+    
+    it "should return text in the correct charset (latin-1)" do
+      @browser.goto(TEST_HOST + "/latin1_text.html")
+      @browser.text.strip.should == "\370\345\346"
     end
   end
 

@@ -57,8 +57,7 @@ begin
   if `uname`.chomp == "Darwin" && `ps ax`[/CelerityViewer/]
     WEB_VIEWER = DRbObject.new_with_uri("druby://127.0.0.1:1337")
   end
-rescue IOError
-rescue Errno::ENOENT
+rescue IOError, Errno::ENOENT
 end
 
 # ================
