@@ -1,6 +1,7 @@
 module Celerity
-  
   class TableRow < Element
+    include Enumerable # specs for this?
+    
     TAGS = [ Identifier.new('tr') ]
 
     def locate
@@ -9,7 +10,7 @@ module Celerity
     end
 
     def each
-      locate
+      assert_exists
       @cells.each { |cell| yield TableCell.new(self, :object, cell) }
     end
 
@@ -20,7 +21,7 @@ module Celerity
     end
 
     def column_count
-      locate
+      assert_exists
       @cells.length
     end
 

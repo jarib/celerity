@@ -1,6 +1,7 @@
 module Celerity
 
   class Table < Element
+    include Enumerable # specs for this?
     include Container
     TAGS = [ Identifier.new('table') ]
     ATTRIBUTES = BASE_ATTRIBUTES | [:summary, :width, :border, :frame, :rules, :cellspacing, :cellpadding, :align, :bgcolor]
@@ -31,7 +32,7 @@ module Celerity
     
     def each
       assert_exists
-      0.upto(@object.getRowCount-1) { |index| yield TableRow.new(self, :object, @rows[index]) }
+      @rows.each { |row| yield TableRow.new(self, :object, row)  }
     end
     
     def [](index)
@@ -68,28 +69,22 @@ module Celerity
     
     def body(how, what)
       assert_exists
-      return TableBody.new(@container, how, what)
+      TableBody.new(@container, how, what)
     end
     
     def bodies
       assert_exists
-      return TableBodies.new(self)
+      TableBodies.new(self)
     end
     
     def column_values(columnnumber)
-      return (1..row_count).collect { |index| self[index][columnnumber].text }
+      (1..row_count).collect { |index| self[index][columnnumber].text }
     end
     
     def row_values(rownumber)
-      return (1..column_count(rownumber)).collect { |index| self[rownumber][index].text }
+      (1..column_count(rownumber)).collect { |index| self[rownumber][index].text }
     end
 
-    # not in use? (Jari - 2008-05-16)
-    # private 
-    # def table_body(index = 1)
-    #   return @object.getBodies.get(index)
-    # end
-    
   end
   
 end

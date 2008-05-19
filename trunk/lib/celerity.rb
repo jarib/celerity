@@ -37,7 +37,7 @@ require "celerity/non_control_elements"
 Dir[File.dirname(__FILE__) + "/celerity/elements/*.rb"].each { |f| require(f) }
 require "celerity/ie"
 
-require "celerity/watir_compatability"
+require "celerity/watir_compatibility"
 
 require "logger"
 require "uri"

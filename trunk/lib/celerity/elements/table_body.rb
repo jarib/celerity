@@ -1,20 +1,12 @@
 module Celerity
-  
   class TableBody < Element
+    include Enumerable # specs for this? 
+    
     TAGS = [ Identifier.new('tbody') ]
 
     def locate
       super
-      # can't call the assert_exists here, as an exists? method call will fail
-      if @object 
-        @rows = @object.getRows
-        @cells = []
-        @rows.each do |row| 
-          row.getCells.each do |c|
-            @cells << c
-          end 
-        end
-      end
+      @rows = @object.getRows if @object 
     end
 
     def [](index)
