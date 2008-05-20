@@ -75,6 +75,8 @@ table th, table td {
 }
 
 #nav ul {
+        height: 90px;
+        overflow: auto;
 	text-align: center;	
 }
 
@@ -85,9 +87,9 @@ table th, table td {
 
 #nav ul li a {
 	display: inline;
-	margin: 0 1em;
+	margin: 0 0.6em;
 	height: 40px;
-	line-height: 40px;
+	line-height: 2.05em;
 	white-space: nowrap;
 	padding-top: 6px;
 }
