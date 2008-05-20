@@ -10,6 +10,13 @@ module Celerity
       resp.body << req.body
     end
   end
+  
+  class PlainTextHandler < WEBrick::HTTPServlet::AbstractServlet
+    def do_GET(req, resp)
+      resp['content-type'] = 'text/plain'
+      resp.body << "This is text/plain"
+    end
+  end
 
   class SpecServer
     attr_reader :host, :thread, :log_file
@@ -49,6 +56,7 @@ module Celerity
       server = WEBrick::HTTPServer.new(server_options)
       server.mount("/", WEBrick::HTTPServlet::FileHandler, @doc_root, {:FancyIndexing=>true})
       server.mount("/post_to_me", PostHandler)
+      server.mount("/plain_text", PlainTextHandler)
 
       @thread = Thread.new { server.start }
     end

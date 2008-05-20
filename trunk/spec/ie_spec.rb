@@ -40,6 +40,12 @@ describe IE do
       @browser.text.should include("Dubito, ergo cogito, ergo sum.")
     end
     
+    it "should return the text also if the content-type is text/plain" do
+      # more specs for text/plain? what happens if we call other methods?
+      @browser.goto(TEST_HOST + "/plain_text")
+      @browser.text.strip.should == 'This is text/plain'
+    end
+    
     it "should return text in the correct charset (utf-8)" do
       # utf-8
       @browser.goto(TEST_HOST + "/utf8_text.html")
