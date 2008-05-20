@@ -14,7 +14,9 @@ module Celerity
     #
     # ==== Options (opts)
     # :javascript_exceptions<true, false, nil>::
-    #   Throw exceptions on script errors.
+    #   Throw exceptions on script errors. Disabled by default.
+    # :status_code_exceptions<true, false, nil>::
+    #   Throw exceptions on failing status codes (404++). Disabled by default.
     # :css<true, false, nil>::
     #   Enable CSS. Disabled by default.
     # :secure_ssl<true, false, nil>::
@@ -26,15 +28,16 @@ module Celerity
     #-- 
     # @public
     def initialize(opts = {})
-      @page_container  = self
-      @error_checkers  = []
-      @last_url, @page = nil
-
       browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
       @webclient = ::HtmlUnit::WebClient.new(browser)
-      @webclient.setThrowExceptionOnScriptError(false) unless $DEBUG || opts[:javascript_exceptions]
-      @webclient.setCssEnabled(false) if opts[:css] == false
+      @webclient.setThrowExceptionOnScriptError(false) unless opts[:javascript_exceptions]
+      @webclient.setThrowExceptionOnFailingStatusCode(false) unless opts[:status_code_exceptions]
+      @webclient.setCssEnabled(false) unless opts[:css]
       @webclient.setUseInsecureSSL(true) if opts[:secure_ssl] 
+
+      @last_url, @page = nil
+      @page_container  = self
+      @error_checkers  = []
     end
 
     def goto(uri)
