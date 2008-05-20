@@ -81,6 +81,29 @@ module Celerity
       @object
     end
     
+    def collection_string(collection_method)
+      buffer = ''
+      collection = eval "self.#{collection_method}"
+      buffer = "Found #{collection.size} divs\n"
+      collection.each_with_index do |div, index|
+        buffer += "#{index+1}: #{div.attribute_string}\n"
+      end
+      return buffer
+    end
+    
+    def method_missing(meth, *args)
+      match_data = /^show_(.*)$/.match(meth.to_s)
+      if match_data
+        begin
+          puts collection_string(match_data[1])
+        rescue NoMethodError
+          super
+        end
+      else
+        super
+      end
+    end
+    
     def back
       # FIXME: this is naive, need capability from HtmlUnit  
       goto(@last_url) if @last_url

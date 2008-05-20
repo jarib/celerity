@@ -47,7 +47,7 @@ module Celerity
       assert_exists
       create_string(@object)
     end
-
+    
     def attribute_value(attribute)
       assert_exists
       @object.getAttribute(attribute)
@@ -117,6 +117,17 @@ module Celerity
         super
       end
     end
+    
+    def attribute_string
+      assert_exists
+      n = ''
+      iterator = @object.getAttributeEntriesIterator
+      while iterator.hasNext
+        attribute = iterator.next
+        n += "#{attribute.getName}=\"#{attribute.getHtmlValue.to_s}\" "
+      end
+      return n
+    end
 
     private
     
@@ -124,7 +135,7 @@ module Celerity
       n = []
       n << "tag:".ljust(TO_S_SIZE) + element.getTagName unless element.getTagName.empty?
       iterator = element.getAttributeEntriesIterator
-      while (iterator.hasNext)
+      while iterator.hasNext
         attribute = iterator.next
         n << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
       end
