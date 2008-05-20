@@ -82,7 +82,6 @@ module Celerity
     end
     
     def collection_string(collection_method)
-      buffer = ''
       collection = self.send collection_method
       buffer = "Found #{collection.size} divs\n"
       collection.each_with_index do |div, index|
