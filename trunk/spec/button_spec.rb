@@ -18,8 +18,6 @@ describe Button do
       @browser.button(:id, /new_user_submit/).should exist
       @browser.button(:name, "new_user_reset").should exist
       @browser.button(:name, /new_user_reset/).should exist
-      # we need to figure out what :text and :value/:caption means on input type="button" and <button /> elements
-      # it should return the value attribute for <input> elements, and the inner text for <button> elements - Jari 2008-05-10
       @browser.button(:value, "Button 2").should exist
       @browser.button(:value, /Button 2/).should exist
       @browser.button(:text, "Button 2").should exist
@@ -45,7 +43,6 @@ describe Button do
       @browser.button(:id, /no_such_id/).should_not exist
       @browser.button(:name, "no_such_name").should_not exist
       @browser.button(:name, /no_such_name/).should_not exist
-      # we need to figure out what :text and :value/:caption means on input type="button" and <button /> elements
       @browser.button(:value, "no_such_value").should_not exist
       @browser.button(:value, /no_such_value/).should_not exist
       @browser.button(:text, "no_such_text").should_not exist
