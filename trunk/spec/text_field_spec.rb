@@ -208,12 +208,19 @@ describe TextField do
       @browser.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
     end
     
+    it "should be able to set Latin 1 characters" do
+      @browser.text_field(:name, "new_user_occupation").value = "B\370rsmegler"
+      @browser.text_field(:name, "new_user_occupation").value.should == "B\370rsmegler"
+    end
+    
     it "should set the value of a textarea element" do
       @browser.text_field(:id, 'delete_user_comment').value = 'Hello Cruel World'
       @browser.text_field(:id, "delete_user_comment").value.should == 'Hello Cruel World'
     end
     
-    it "should raise UnknownObjectException if the text field doesn't exist"
+    it "should raise UnknownObjectException if the text field doesn't exist" do
+      lambda { @browser.text_field(:name, "no_such_name").value = 'yo' }.should raise_error(UnknownObjectException)
+    end
   end
 
   describe "#set" do
