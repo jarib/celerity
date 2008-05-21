@@ -22,7 +22,9 @@ module Celerity
     #   Enable CSS. Disabled by default.
     # :secure_ssl<true, false, nil>::
     #   Disable secure SSL. Enabled by default.
-    #
+    # :log_level<:trace, :debug, :info, :warn, :error, or :fatal>::
+    #   Set the log level for Apache Jakarta commons logging system (used by HtmlUnit)
+    #   Defaults to :warn. (Doesn't seem to work?!)
     # ==== Returns
     # An instance of Celerity::IE
     #
@@ -35,6 +37,7 @@ module Celerity
       @webclient.setThrowExceptionOnFailingStatusCode(false) unless opts[:status_code_exceptions]
       @webclient.setCssEnabled(false)                        unless opts[:css]
       @webclient.setUseInsecureSSL(true)                     if opts[:secure_ssl] 
+      java.lang.System.getProperties.put("org.apache.commons.logging.simplelog.defaultlog", opts[:log_level] ? opts[:log_level].to_s : "warn")
 
       @last_url, @page = nil
       @page_container  = self
