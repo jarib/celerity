@@ -230,7 +230,7 @@ describe SelectList do
     end
 
     it "should not fire onchange event when selecting an already selected item" do
-      @browser.select_list(:id, "new_user_languages").clear_selection # removes two options
+      @browser.select_list(:id, "new_user_languages").clear_selection # removes the two pre-selected options
       @browser.div(:id, "changed_language").text.should == "changed languagechanged language"
       @browser.select_list(:id, "new_user_languages").select("English")
       @browser.div(:id, "changed_language").text.should == "changed languagechanged languagechanged language"

@@ -25,6 +25,7 @@ module Celerity
     def select(value)
       assert_exists
       raise NoValueFoundException, "unknown option with value #{value.inspect}" unless include?(value)
+#      Log.debug @object
       @object.getOptions.select { |e| matches?(e.asText, value) }.each do |option|
         @container.update_page(option.click)
       end

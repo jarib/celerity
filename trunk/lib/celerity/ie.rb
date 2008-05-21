@@ -1,7 +1,8 @@
 module Celerity
   class IE
     include Container
-    attr_accessor :page, :object, :webclient
+    attr_accessor :page, :object
+    attr_reader :charset, :webclient
     
     def self.start(uri)
       browser = new
@@ -30,14 +31,15 @@ module Celerity
     def initialize(opts = {})
       browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
       @webclient = ::HtmlUnit::WebClient.new(browser)
-      @webclient.setThrowExceptionOnScriptError(false) unless opts[:javascript_exceptions]
+      @webclient.setThrowExceptionOnScriptError(false)       unless opts[:javascript_exceptions]
       @webclient.setThrowExceptionOnFailingStatusCode(false) unless opts[:status_code_exceptions]
-      @webclient.setCssEnabled(false) unless opts[:css]
-      @webclient.setUseInsecureSSL(true) if opts[:secure_ssl] 
+      @webclient.setCssEnabled(false)                        unless opts[:css]
+      @webclient.setUseInsecureSSL(true)                     if opts[:secure_ssl] 
 
       @last_url, @page = nil
       @page_container  = self
       @error_checkers  = []
+      find_viewer 
     end
 
     def goto(uri)
@@ -53,7 +55,9 @@ module Celerity
     def set_page(value)
       @last_url = url() if exist?
       @page = value
+      @page.getEnclosingWindow.getThreadManager.joinAll(10000)
       @object = @page.getDocumentElement
+      call_viewer
       run_error_checks
     end
 
@@ -160,7 +164,23 @@ module Celerity
       else
         super
       end
+    end
+    
+    private
+    
+    def call_viewer
+      @viewer.render_html(html, base_url) if @viewer
     end    
+    
+    def find_viewer
+      begin
+        if `uname`.chomp == "Darwin" && `ps ax`[/CelerityViewer/]
+          require "drb"
+          @viewer = DRbObject.new_with_uri("druby://127.0.0.1:1337")
+        end
+      rescue IOError, Errno::ENOENT
+      end
+    end
     
   end # IE
 end # Celerity

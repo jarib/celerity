@@ -209,6 +209,7 @@ describe TextField do
     end
     
     it "should be able to set Latin 1 characters" do
+      @browser.goto(TEST_HOST + "/latin1_text.html")
       @browser.text_field(:name, "new_user_occupation").value = "B\370rsmegler"
       @browser.text_field(:name, "new_user_occupation").value.should == "B\370rsmegler"
     end

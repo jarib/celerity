@@ -22,9 +22,7 @@ module Celerity
       assert_enabled
       assert_not_readonly
       clear
-      JavaString.new(value.to_s).toCharArray.each do |char| 
-        @container.update_page @object.type(char) 
-      end
+      type_string(value.to_s)
     end
     
     def value=(value)
@@ -52,9 +50,7 @@ module Celerity
     def append(value)
       assert_enabled
       assert_not_readonly
-      JavaString.new(value.to_s).toCharArray.each do |char| 
-        @container.update_page @object.type(char) 
-      end
+      type_string(value)
     end
 
     # This bascially just moves the text to the other text field using TextField#append
@@ -73,6 +69,14 @@ module Celerity
     def verify_contains(expected)
       assert_exists
       !!contains_text(expected)
+    end
+    
+    
+    private 
+    def type_string(value)
+      JavaString.new(value.to_java_bytes, @container.page.getPageEncoding).toCharArray.each do |char| 
+        @container.update_page @object.type(char) 
+      end
     end
   end
   

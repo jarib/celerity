@@ -58,6 +58,7 @@ module Celerity
       assert_exists
       assert_enabled
       if (value && !set?) || (!value && set?)
+        Log.debug(@object.inspect)
         @container.update_page(@object.click)
       end
     end

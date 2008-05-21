@@ -1,5 +1,7 @@
 module Celerity
   module DisabledElement
+    include Celerity::Exception
+    
     def enabled?
       !disabled?
     end

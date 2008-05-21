@@ -27,12 +27,12 @@ module Celerity
       
       case args.size
       when 2
-        @conditions = {args[0] => args[1]}
+        @conditions = { args[0] => args[1] }
       when 1
         if Hash === args.first
           @conditions = args.first
         elsif defined?(self.class::DEFAULT_HOW)
-          @conditions = {self.class::DEFAULT_HOW => args.first}
+          @conditions = { self.class::DEFAULT_HOW => args.first }
         else
           raise ArgumentError, "wrong number of arguments (1 for 2)"
         end
@@ -40,7 +40,7 @@ module Celerity
     end
     
     def locate
-      @object ||= ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
+      @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
     end
     
     def to_s
