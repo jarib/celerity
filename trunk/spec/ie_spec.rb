@@ -55,11 +55,6 @@ describe IE do
       @browser.goto(TEST_HOST + "/latin1_text.html")
       @browser.text.strip.should == "\370\345\346"
     end
-    
-    # HtmlUnit bug 1968686: https://sourceforge.net/tracker/index.php?func=detail&aid=1968686&group_id=47038&atid=448266
-    # it "should not raise NativeException: java.lang.StackOverflowError when going to a page where Javascripts prints a <body> tag inside another <body> tag" do
-    #   lambda { @browser.goto(TEST_HOST + "/javascript_bug_00001.html") }.should_not raise_error(NativeException)
-    # end
   end
 
   describe "#url" do
