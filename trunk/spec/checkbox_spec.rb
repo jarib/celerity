@@ -212,13 +212,6 @@ describe CheckBox do
       @browser.button(:id, "disabled_button").should be_disabled
     end
     
-    it "should fire the onclick event with more complex javascript" do
-      @browser.goto(TEST_HOST + "/ocn_js.html")
-      @browser.button(:id, 'nextButtonID').should be_disabled
-      @browser.checkbox(:index, 1).set
-      @browser.button(:id, 'nextButtonID').should be_enabled      
-    end
-
     it "should raise UnknownObjectException if the checkbox button doesn't exist" do
       lambda { @browser.checkbox(:name, "no_such_name").set  }.should raise_error(UnknownObjectException)
       lambda { @browser.checkbox(:xpath, "//input[@name='no_such_name']").set  }.should raise_error(UnknownObjectException)
