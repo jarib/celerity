@@ -55,8 +55,9 @@ module Celerity
     def set_page(value)
       @last_url = url() if exist?
       @page = value
-      @page.getEnclosingWindow.getThreadManager.joinAll(10000)
-      @object = @page.getDocumentElement
+      if @page.respond_to?("getDocumentElement")
+        @object = @page.getDocumentElement
+      end
       call_viewer
       run_error_checks
     end
@@ -80,8 +81,11 @@ module Celerity
     end
 
     def text
-      # nicer way to do this?
-      @page ? @page.getFirstByXPath("//body").asText : ''
+      if @page.respond_to?("getContent")
+        @page.getContent
+      else
+        @page ? @page.getFirstByXPath("//body").asText : ''
+      end
     end
     
     def document
