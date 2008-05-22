@@ -8,8 +8,7 @@ module Celerity
   
     def submit
       assert_exists
-      raise NotImplementedError      
-      # waiting for HtmlUnit fix?
+      @container.update_page @object.submit(nil)
     end
 
   end  
