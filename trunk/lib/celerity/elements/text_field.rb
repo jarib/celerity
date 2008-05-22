@@ -7,6 +7,7 @@ module Celerity
   class TextField < InputElement
     TAGS = [ Identifier.new('textarea'), 
              Identifier.new('input', :type => ["text", "password", /^(?!(file|radio|checkbox|submit|reset|image|button|hidden)$)/])  ]
+    DEFAULT_HOW = :name
 
     def clear
       assert_exists
@@ -84,6 +85,7 @@ module Celerity
   # Normally a user would not need to create this object as it is returned by the Watir::Container#hidden method
   class Hidden < TextField
     TAGS = [ Identifier.new('input', :type => %w(hidden)) ]
+    DEFAULT_HOW = :name
   end
   
 end

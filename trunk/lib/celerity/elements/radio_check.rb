@@ -6,9 +6,10 @@ module Celerity
   # most of the methods available to this element are inherited from the Element class
   #
   class RadioCheckCommon < InputElement
+    DEFAULT_HOW = :name
+    
     def initialize(container, type, *args)
       @type = type
-
       case args.size
       when 2
         super(container, args[0] => args[1])

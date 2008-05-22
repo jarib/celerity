@@ -3,6 +3,7 @@ module Celerity
     include Enumerable # specs for this?
     
     TAGS = [ Identifier.new('tr') ]
+    DEFAULT_HOW = :id
 
     def locate
       super

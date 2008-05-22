@@ -4,7 +4,6 @@ module Celerity
     attr_accessor :page
     
     TAGS = [Identifier.new('frame'), Identifier.new('iframe')]
-    
     ATTRIBUTES = BASE_ATTRIBUTES | [:longdesc, :name, :src, :frameborder, :marginwidth, :marginheight, :noresize, :scrolling]
     DEFAULT_HOW = :name
     

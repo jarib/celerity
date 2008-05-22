@@ -9,10 +9,10 @@ module Celerity
     
     # HTML 4.01 Transitional DTD
     HTML_401_TRANSITIONAL = { 
-      :core        => [:class, :id, :style, :title], # Not valid in base, head, html, meta, param, script, style, and title elements.
+      :core        => [:class, :id, :style, :title],
       :cell_halign => [:align, :char, :charoff],
       :cell_valign => [:valign],
-      :i18n        => [:dir, :lang],  # Not valid in base, br, frame, frameset, hr, iframe, param, and script elements.
+      :i18n        => [:dir, :lang],
       :event       => [:onclick, :ondblclick, :onmousedown, :onmouseup, :onmouseover, :onmousemove, :onmouseout, :onkeypress, :onkeydown, :onkeyup],
       :sloppy      => [:name, :value]
     }
@@ -31,7 +31,7 @@ module Celerity
       when 1
         if Hash === args.first
           @conditions = args.first
-        elsif defined?(self.class::DEFAULT_HOW)
+        elsif self.class::DEFAULT_HOW
           @conditions = { self.class::DEFAULT_HOW => args.first }
         else
           raise ArgumentError, "wrong number of arguments (1 for 2)"

@@ -6,6 +6,7 @@ module Celerity
   # Normally a user would not need to create this object as it is returned by the Watir::Container#select_list method
   class SelectList < InputElement
     TAGS = [ Identifier.new('select') ]
+    DEFAULT_HOW = :name
   
     def get_all_contents
       assert_exists

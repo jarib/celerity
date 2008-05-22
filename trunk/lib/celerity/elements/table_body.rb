@@ -3,6 +3,8 @@ module Celerity
     include Enumerable # specs for this? 
     
     TAGS = [ Identifier.new('tbody') ]
+    ATTRIBUTES = BASE_ATTRIBUTES | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES
+    DEFAULT_HOW = :id
 
     def locate
       super

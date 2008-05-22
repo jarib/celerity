@@ -7,6 +7,8 @@ module Celerity
   #
   class NonControlElement < Element
     include Exception
+    ATTRIBUTES = BASE_ATTRIBUTES
+    DEFAULT_HOW = :id
 
     # Can't use ClickableElement as it does assert_enabled - maybe we don't need the module after all?
     def click
@@ -36,14 +38,11 @@ module Celerity
   end
     
   class Map < NonControlElement
-    # double-check my DTD reading here! :) 
-    ATTRIBUTES = BASE_ATTRIBUTES | [:id, :class, :style, :title, :name]
     TAGS = [ Identifier.new('map') ]
   end
 
   class Area < NonControlElement
-    # double-check my DTD reading here! :) 
-    ATTRIBUTES = BASE_ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt]
+    ATTRIBUTES = ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt, :tabindex, :accesskey, :onfocus, :onblur]
     TAGS = [ Identifier.new('area') ]
   end
   

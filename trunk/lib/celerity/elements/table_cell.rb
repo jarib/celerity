@@ -6,6 +6,7 @@ module Celerity
 
     TAGS = [ Identifier.new('td') ]
     ATTRIBUTES = BASE_ATTRIBUTES | [:abbr, :axis, :headers, :scope, :rowspan, :colspan] | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES
+    DEFAULT_HOW = :id
     
     alias_method :to_s, :text
 

@@ -3,9 +3,10 @@ module Celerity
   class Table < Element
     include Enumerable # specs for this?
     include Container
+    
     TAGS = [ Identifier.new('table') ]
     ATTRIBUTES = BASE_ATTRIBUTES | [:summary, :width, :border, :frame, :rules, :cellspacing, :cellpadding, :align, :bgcolor]
-    DEFAULT_HOW = :name
+    DEFAULT_HOW = :id
     
     def locate
       super
@@ -67,9 +68,9 @@ module Celerity
       return y
     end
     
-    def body(how, what)
+    def body(*args)
       assert_exists
-      TableBody.new(@container, how, what)
+      TableBody.new(@container, *args)
     end
     
     def bodies
