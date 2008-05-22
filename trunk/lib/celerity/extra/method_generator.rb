@@ -2,6 +2,8 @@ require "rubygems"
 require "uri"
 require "active_support"
 
+# test by tom
+
 #--
 # http://api.rubyonrails.com/classes/Inflector.html#M001621
 #++
