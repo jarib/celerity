@@ -8,7 +8,7 @@ module Celerity
     TAGS = [ Identifier.new('button'), 
              Identifier.new('input', :type => %w(submit reset image button)) ]
     # A little wierd attribute list due to button being both <button> and <input type="submit|reset|image|button" />
-    ATTRIBUTES = BASE_ATTRIBUTES | [:type, :disabled, :tabindex, :accesskey, :onfocus, :onblur] | [:usemap, :ismap]
+    ATTRIBUTES = BASE_ATTRIBUTES | [:type, :disabled, :tabindex, :accesskey, :onfocus, :onblur] | [:src, :usemap, :ismap]
     DEFAULT_HOW = :value
 
     def locate

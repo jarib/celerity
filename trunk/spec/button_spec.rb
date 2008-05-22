@@ -20,7 +20,8 @@ describe Button do
       @browser.button(:name, /new_user_reset/).should exist
       @browser.button(:value, "Button 2").should exist
       @browser.button(:value, /Button 2/).should exist
-      @browser.button(:text, "Button 2").should exist
+      @browser.button(:src, "images/button.jpg").should exist
+      @browser.button(:src, /button.jpg/).should exist
       @browser.button(:text, /Button 2/).should exist
       @browser.button(:class, "image").should exist
       @browser.button(:class, /image/).should exist
@@ -41,6 +42,8 @@ describe Button do
       @browser.button(:name, /no_such_name/).should_not exist
       @browser.button(:value, "no_such_value").should_not exist
       @browser.button(:value, /no_such_value/).should_not exist
+      @browser.button(:src, "no_such_src").should_not exist
+      @browser.button(:src, /no_such_src/).should_not exist
       @browser.button(:text, "no_such_text").should_not exist
       @browser.button(:text, /no_such_text/).should_not exist
       @browser.button(:class, "no_such_class").should_not exist
@@ -85,6 +88,15 @@ describe Button do
     end
     it "should raise UnknownObjectException if the button does not exist" do
       lambda { @browser.button(:name, "no_such_name").name }.should raise_error(UnknownObjectException)
+    end
+  end
+  
+  describe "#src" do
+    it "should return the url for the button image" do
+      @browser.button(:name, "new_user_image").src.should == "images/button.jpg"
+    end
+    it "should raise UnknownObjectException if the button does not exist" do
+      lambda { @browser.button(:name, "no_such_name").src }.should raise_error(UnknownObjectException)
     end
   end
   
