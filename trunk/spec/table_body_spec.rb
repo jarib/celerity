@@ -21,6 +21,9 @@ describe TableBody do
       @browser.table(:index, 1).body(:index, 1).should exist
       @browser.table(:index, 1).body(:xpath, "//tbody[@id='first']").should exist
     end
+    it "should return true if the element exists (default how = :id)" do
+      @browser.table(:index, 1).body("first").should exist
+    end
     it "should return false if the table body exists" do
       @browser.table(:index, 1).body(:id, 'no_such_id').should_not exist
       @browser.table(:index, 1).body(:id, /no_such_id/).should_not exist

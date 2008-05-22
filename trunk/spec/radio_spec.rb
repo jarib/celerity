@@ -25,18 +25,18 @@ describe Radio do
       # TODO: figure out what :text means for a radio button
       # @browser.radio(:text, "yes").should exist
       # @browser.radio(:text, /yes/).should exist
-
       @browser.radio(:class, "huge").should exist
       @browser.radio(:class, /huge/).should exist
       @browser.radio(:index, 1).should exist
       @browser.radio(:xpath, "//input[@id='new_user_newsletter_yes']").should exist
     end
-    
+    it "should return true if the element exists (default how = :name)" do
+      @browser.radio("new_user_newsletter").should exist
+    end
     it "should return true if the radio button exists (search by name and value)" do
       @browser.radio(:name, "new_user_newsletter", 'yes').should exist
       @browser.radio(:xpath, "//input[@name='new_user_newsletter' and @value='yes']").set
     end
-    
     it "should return false if the radio button does not exist" do
       @browser.radio(:id, "no_such_id").should_not exist
       @browser.radio(:id, /no_such_id/).should_not exist
@@ -51,23 +51,19 @@ describe Radio do
       @browser.radio(:index, 1337).should_not exist
       @browser.radio(:xpath, "input[@id='no_such_id']").should_not exist
     end
-    
     it "should return false if the radio button does not exist (search by name and value)" do
       @browser.radio(:name, "new_user_newsletter", 'no_such_value').should_not exist
       @browser.radio(:xpath, "//input[@name='new_user_newsletter' and @value='no_such_value']").should_not exist
       @browser.radio(:name, "no_such_name", 'yes').should_not exist
       @browser.radio(:xpath, "//input[@name='no_such_name' and @value='yes']").should_not exist
     end
-    
     it "should return true for radios with a string value" do
       @browser.radio(:name, 'new_user_newsletter', 'yes').should exist
       @browser.radio(:name, 'new_user_newsletter', 'no').should exist
     end
-    
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.radio(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
-
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.radio(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end

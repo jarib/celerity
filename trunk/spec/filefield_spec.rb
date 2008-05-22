@@ -21,7 +21,9 @@ describe FileField do
       @browser.file_field(:index, 1).should exist
       @browser.file_field(:xpath, "//input[@id='new_user_portrait']").should exist
     end
-    
+    it "should return true if the element exists (default how = :name)" do
+      @browser.file_field("new_user_portrait").should exist
+    end
     it "should return false if the file field doesn't exist" do
       @browser.file_field(:id, 'no_such_id').should_not exist
       @browser.file_field(:id, /no_such_id/).should_not exist

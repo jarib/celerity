@@ -13,7 +13,7 @@ describe Li do
 
   # Exists method
   describe "#exist?" do
-    it "should return true if the 'p' exists" do
+    it "should return true if the 'li' exists" do
       @browser.li(:id, "non_link_1").should exist
       @browser.li(:id, /non_link_1/).should exist
       @browser.li(:text, "Non-link 3").should exist
@@ -23,7 +23,10 @@ describe Li do
       @browser.li(:index, 1).should exist
       @browser.li(:xpath, "//li[@id='non_link_1']").should exist
     end
-    it "should return false if the 'p' doesn't exist" do
+    it "should return true if the element exists (default how = :id)" do
+      @browser.li("non_link_1").should exist
+    end
+    it "should return false if the 'li' doesn't exist" do
       @browser.li(:id, "no_such_id").should_not exist
       @browser.li(:id, /no_such_id/).should_not exist
       @browser.li(:text, "no_such_text").should_not exist

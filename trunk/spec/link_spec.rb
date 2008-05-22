@@ -26,6 +26,9 @@ describe Link do
       @browser.link(:index, 2).should exist
       @browser.link(:xpath, "//a[@id='link_2']").should exist
     end
+    it "should return true if the element exists (default how = :href)" do
+      @browser.link(/input_elements/).should exist
+    end
     it "should return false if the link doesn't exist" do
       @browser.link(:id, 'no_such_id').should_not exist
       @browser.link(:id, /no_such_id/).should_not exist

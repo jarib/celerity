@@ -22,6 +22,9 @@ describe Label do
       @browser.label(:index, 1).should exist
       @browser.label(:xpath, "//label[@id='first_label']").should exist
      end
+    it "should return true if the element exists (default how = :text)" do
+      @browser.label("First name").should exist
+    end
     it "should return false if the element does not exist" do
       @browser.label(:id, 'no_such_id').should_not exist
       @browser.label(:id, /no_such_id/).should_not exist

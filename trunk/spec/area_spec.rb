@@ -25,6 +25,9 @@ describe Area do
       @browser.area(:index, 1).should exist
       @browser.area(:xpath, "//area[@id='NCE']").should exist
     end
+    it "should return true if the element exists (default how = :id)" do
+      @browser.area("NCE").should exist
+    end
     it "should return false if the area doesn't exist" do
       @browser.area(:id, "no_such_id").should_not exist
       @browser.area(:id, /no_such_id/).should_not exist

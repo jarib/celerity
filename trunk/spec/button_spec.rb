@@ -29,7 +29,6 @@ describe Button do
     end
     
     it "should return true if the button exists (how = :caption)" do
-      # we need to figure out what :text and :value/:caption means on input type="button" and <button /> elements
       @browser.button(:caption, "Button 2").should exist
       @browser.button(:caption, /Button 2/).should exist
     end

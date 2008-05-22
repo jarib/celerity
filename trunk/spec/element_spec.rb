@@ -21,10 +21,6 @@ describe Element do
       conditions = {:index => 100, :name => "foo"}
       lambda { @browser.text_field(conditions).id }.should raise_error(UnknownObjectException, /Unable to locate object, using (\{:name=>"foo", :index=>100\}|\{:index=>100, :name=>"foo"\})/)
     end
-    
-    it "should raise ArgumentError when given a bad argument" do
-      lambda { @browser.div(:foo) }.should raise_error(ArgumentError)
-    end
   end
   
   describe "#method_missing" do

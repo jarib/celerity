@@ -27,15 +27,15 @@ describe TextField do
       @browser.text_field(:index, 1).should exist
       @browser.text_field(:xpath, "//input[@id='new_user_email']").should exist
      end
-
+    it "should return true if the element exists (default how = :name)" do
+      @browser.text_field("new_user_email").should exist
+    end
     it "should return true if the element exists (no type attribute)" do
       @browser.text_field(:id, 'new_user_first_name').should exist
     end
-
     it "should return true if the element exists (invalid type attribute)" do
       @browser.text_field(:id, 'new_user_last_name').should exist
     end
-
     it "should return false if the element does not exist" do
       @browser.text_field(:id, 'no_such_id').should_not exist
       @browser.text_field(:id, /no_such_id/).should_not exist
@@ -210,8 +210,8 @@ describe TextField do
     
     it "should be able to set Latin 1 characters" do
       @browser.goto(TEST_HOST + "/latin1_text.html")
-      @browser.text_field(:name, "new_user_occupation").value = "B\370rsmegler"
-      @browser.text_field(:name, "new_user_occupation").value.should == "B\370rsmegler"
+      @browser.text_field(:id, "charset").value = "B\370rsmegler"
+      @browser.text_field(:id, "charset").value.should == "B\370rsmegler"
     end
     
     it "should set the value of a textarea element" do

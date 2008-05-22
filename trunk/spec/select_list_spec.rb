@@ -18,17 +18,18 @@ describe SelectList do
       @browser.select_list(:id, /new_user_country/).should exist
       @browser.select_list(:name, 'new_user_country').should exist
       @browser.select_list(:name, /new_user_country/).should exist
-      
       # check behaviour in Watir
       # @browser.select_list(:value, 'Norway').should exist
       # @browser.select_list(:value, /Norway/).should exist
       # @browser.select_list(:text, 'Norway').should exist
       # @browser.select_list(:text, /Norway/).should exist
-      
       @browser.select_list(:class, 'country').should exist
       @browser.select_list(:class, /country/).should exist
       @browser.select_list(:index, 1).should exist
       @browser.select_list(:xpath, "//select[@id='new_user_country']").should exist
+    end
+    it "should return true if the element exists (default how = :name)" do
+      @browser.select_list("new_user_country").should exist
     end
     it "should return false if the select list doesn't exist" do
       @browser.select_list(:id, 'no_such_id').should_not exist
@@ -44,11 +45,9 @@ describe SelectList do
       @browser.select_list(:index, 1337).should_not exist
       @browser.select_list(:xpath, "//select[@id='no_such_id']").should_not exist
     end
-    
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.select_list(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
-    
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.select_list(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end

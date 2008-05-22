@@ -22,6 +22,9 @@ describe TableCell do
       @browser.cell(:index, 1).should exist
       @browser.cell(:xpath, "//td[@id='t1_r2_c1']").should exist
     end
+    it "should return true if the element exists (default how = :id)" do
+      @browser.cell("t1_r2_c1").should exist
+    end
     it "should return false when the table cell does not exist" do
       @browser.cell(:id, 'no_such_id').should_not exist
       @browser.cell(:id, /no_such_id/).should_not exist

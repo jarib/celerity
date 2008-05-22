@@ -22,7 +22,7 @@ describe CheckBox do
       @browser.checkbox(:name, /new_user_interests/).should exist
       @browser.checkbox(:value, "books").should exist
       @browser.checkbox(:value, /books/).should exist
-      # unsure what :text is supposed to represent here
+      # not sure what :text is supposed to represent here
       # @browser.checkbox(:text, "books").should exist
       # @browser.checkbox(:text, /books/).should exist
       @browser.checkbox(:class, "fun").should exist
@@ -30,7 +30,9 @@ describe CheckBox do
       @browser.checkbox(:index, 1).should exist
       @browser.checkbox(:xpath, "//input[@id='new_user_interests_books']").should exist
     end
-    
+    it "should return true if the element exists (default how = :name)" do
+      @browser.checkbox("new_user_interests").should exist
+    end
     it "should return true if the checkbox button exists (search by name and value)" do
       @browser.checkbox(:name, "new_user_interests", 'cars').should exist
       @browser.checkbox(:xpath, "//input[@name='new_user_interests' and @value='cars']").set

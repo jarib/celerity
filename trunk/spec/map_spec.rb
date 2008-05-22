@@ -21,6 +21,9 @@ describe "P" do
       @browser.map(:index, 1).should exist
       @browser.map(:xpath, "//map[@id='triangle_map']").should exist
     end
+    it "should return true if the element exists (default how = :id)" do
+      @browser.map("triangle_map").should exist
+    end
     it "should return false if the 'map' doesn't exist" do
       @browser.map(:id, "no_such_id").should_not exist
       @browser.map(:id, /no_such_id/).should_not exist

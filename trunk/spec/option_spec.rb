@@ -11,6 +11,24 @@ describe Option do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
   
+  describe "#exists?" do
+    it "should return true if the option exists" do
+      
+    end
+    it "should return true if the element exists (default how = :text)" do
+      #@browser.option("Swedish").should exist
+    end
+    it "should return false if the table row exists" do
+      
+    end
+    it "should raise ArgumentError when 'what' argument is invalid" do
+      #lambda { @browser.option(:id, 3.14).exists? }.should raise_error(ArgumentError)
+    end
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
+      #lambda { @browser.option(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
+    end
+  end
+  
   describe "#select" do
     it "should should be able to select the chosen option" do
       @browser.select_list(:name, "new_user_country").clear_selection

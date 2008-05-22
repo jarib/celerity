@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe Div do
+  
   before :all do
     @browser = IE.new
     add_spec_checker(@browser)    
@@ -24,6 +25,9 @@ describe Div do
       @browser.div(:class, /profile/).should exist
       @browser.div(:index, 1).should exist
       @browser.div(:xpath, "//div[@id='header']").should exist
+    end
+    it "should return true if the element exists (default how = :id)" do
+      @browser.div("header").should exist
     end
     it "should return false if the element does not exist" do
       @browser.div(:id, "no_such_id").should_not exist

@@ -24,6 +24,9 @@ describe Image do
       @browser.image(:alt, /cir/).should exist
       @browser.image(:title, 'Circle').should exist
     end
+    it "should return true if the element exists (default how = :id)" do
+      @browser.image("images/circle.jpg").should exist
+    end
     it "should return false when the image exists" do
       @browser.image(:id, 'no_such_id').should_not exist
       @browser.image(:id, /no_such_id/).should_not exist

@@ -12,6 +12,24 @@ describe TableRow do
     @browser.goto(TEST_HOST + "/tables.html")
   end
   
+  describe "#exists?" do
+    it "should return true if the table row exists" do
+      
+    end
+    it "should return true if the element exists (default how = :id)" do
+      @browser.row("outer_last").should exist
+    end
+    it "should return false if the table row exists" do
+      
+    end
+    it "should raise ArgumentError when 'what' argument is invalid" do
+      lambda { @browser.row(:id, 3.14).exists? }.should raise_error(ArgumentError)
+    end
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
+      lambda { @browser.row(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
+    end
+  end
+  
   describe "#column_count" do
     it "should return the number of columns (cells) in the row" do
       @browser.table(:id, 'outer').rows[1].column_count.should == 2
