@@ -196,6 +196,9 @@ describe TextField do
   end
   
   describe "#get_contents" do
+    it "should return the contents of the text field" do
+      @browser.text_field(:name, "new_user_occupation").get_contents.should == "Developer"
+    end
     it "should raise UnknownObjectException when accessing a non-existing element" do
       lambda { @browser.text_field(:name, "no_such_name").get_contents }.should raise_error(UnknownObjectException)
     end

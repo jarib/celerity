@@ -29,9 +29,9 @@ module Celerity
     alias_method :fileCreatedDate, :file_created_date
   end
   
-  # class Link
-  #   alias_method :click_no_wait, :click
-  # end
+   class Link
+     alias_method :click_no_wait, :click
+   end
   
   class RadioCheckCommon
     alias_method :is_set?, :set?
