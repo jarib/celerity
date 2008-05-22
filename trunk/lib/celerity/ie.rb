@@ -24,7 +24,7 @@ module Celerity
     #   Disable secure SSL. Enabled by default.
     # :log_level<:trace, :debug, :info, :warn, :error, or :fatal>::
     #   Set the log level for Apache Jakarta commons logging system (used by HtmlUnit)
-    #   Defaults to :warn. (Doesn't seem to work?!)
+    #   Defaults to :warn. (not working..)
     # ==== Returns
     # An instance of Celerity::IE
     #

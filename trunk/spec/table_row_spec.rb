@@ -29,8 +29,8 @@ describe TableRow do
     end
   end
   
-  describe "#[]n" do
-    it "should " do
+  describe "#[]" do
+    it "should " do # FIXME: description
       @browser.table(:id, 'outer').row(:index, 1)[1].text.should == "Table 1, Row 1, Cell 1"
       @browser.table(:id, 'outer')[1][1].text.should == "Table 1, Row 1, Cell 1"
       @browser.table(:id, 'outer')[3][1].text.should == "Table 1, Row 3, Cell 1"
@@ -38,7 +38,7 @@ describe TableRow do
   end
   
   describe "#each" do
-    it "should " do
+    it "should " do # FIXME: description
       index = 1
       @browser.table(:id, 'outer')[2].each do |c|
         case index
