@@ -31,13 +31,14 @@ module Celerity
     #-- 
     # @public
     def initialize(opts = {})
+      java.lang.System.getProperties.put("org.apache.commons.logging.simplelog.defaultlog", opts[:log_level] ? opts[:log_level].to_s : "warn")
+
       browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
       @webclient = ::HtmlUnit::WebClient.new(browser)
       @webclient.setThrowExceptionOnScriptError(false)       unless opts[:javascript_exceptions]
       @webclient.setThrowExceptionOnFailingStatusCode(false) unless opts[:status_code_exceptions]
       @webclient.setCssEnabled(false)                        unless opts[:css]
       @webclient.setUseInsecureSSL(true)                     if opts[:secure_ssl] 
-      java.lang.System.getProperties.put("org.apache.commons.logging.simplelog.defaultlog", opts[:log_level] ? opts[:log_level].to_s : "warn")
 
       @last_url, @page = nil
       @page_container  = self
@@ -176,7 +177,13 @@ module Celerity
     private
     
     def call_viewer
-      @viewer.render_html(html, base_url) if @viewer
+      if @viewer
+        begin
+          @viewer.render_html(html, base_url) 
+        rescue Errno::ECONNREFUSED => e
+          puts e.message
+        end
+      end
     end    
     
     def find_viewer

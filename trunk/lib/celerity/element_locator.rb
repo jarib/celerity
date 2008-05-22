@@ -5,6 +5,7 @@ module Celerity
   # everything in our 'query'. 
   # Jari - 2008-05-11
   class ElementLocator
+    include Celerity::Exception
     attr_accessor :idents
     
     
