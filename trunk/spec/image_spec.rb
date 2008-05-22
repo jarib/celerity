@@ -175,8 +175,8 @@ describe Image do
   end
 
   describe "#html" do
-    it "should return the image element as a string of html" do
-      @browser.image(:id, 'triangle').html.chomp.should == '<img src="images/triangle.jpg" id="triangle" usemap="#triangle_map" />'
+    it "should return the normative (actual) html for the image element" do
+      @browser.image(:id, 'non_self_closing').html.chomp.should == '<img src="images/1.gif" alt="1" id="non_self_closing"></img>'
     end
   end
 

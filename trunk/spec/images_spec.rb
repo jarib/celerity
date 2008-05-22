@@ -12,7 +12,7 @@ describe Images do
   
   describe "#length" do
     it "should return the number of images" do
-      @browser.images.length.should == 8
+      @browser.images.length.should == 9
     end
   end
   
