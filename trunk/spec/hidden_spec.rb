@@ -87,7 +87,7 @@ describe Hidden do
       @browser.hidden(:index, 1).value.should == "dolls"
     end
     it "should raise UnknownObjectException if the text field doesn't exist" do
-      lambda { @browser.hidden(:index, 1337).value }.should raise_error(UnknownObjectException)  
+      lambda { @browser.hidden(:index, 1337).value }.should raise_error(UnknownObjectException)
     end
   end
   
@@ -97,8 +97,9 @@ describe Hidden do
       @browser.hidden(:id, 'new_user_interests_dolls').value = 'guns'
       @browser.hidden(:id, "new_user_interests_dolls").value.should == 'guns'
     end
-    
-    it "should raise UnknownObjectException if the text field doesn't exist"
+    it "should raise UnknownObjectException if the text field doesn't exist" do
+      lambda { @browser.hidden(:id, 'no_such_id').value = 'guns' }.should raise_error(UnknownObjectException)
+    end
   end
 
   after :all do
