@@ -36,6 +36,8 @@ module Celerity
         else
           raise ArgumentError, "wrong number of arguments (1 for 2)"
         end
+      else
+        raise ArgumentError, "wrong number of arguments (#{args.size} for 2)"
       end
     end
     

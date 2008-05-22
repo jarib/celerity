@@ -251,6 +251,11 @@ describe TextField do
       @browser.text_field(:name, "new_user_occupation").set("ĳĳ")
       @browser.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
     end
+    it "should be able to set Latin 1 characters" do
+      @browser.goto(TEST_HOST + "/latin1_text.html")
+      @browser.text_field(:id, "charset").set("B\370rsmegler")
+      @browser.text_field(:id, "charset").get_contents.should == "B\370rsmegler"
+    end
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.text_field(:id, "no_such_id").set('secret') }.should raise_error(UnknownObjectException)
     end

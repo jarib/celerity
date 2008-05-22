@@ -13,13 +13,15 @@ module Celerity
 
     def locate
       # ugly..
-      if (val = @conditions.delete(:value))
+      if (val = @conditions[:value])
         locator = ElementLocator.new(@container.object, self.class)
         button_ident = Identifier.new('button')
         button_ident.text = val
         input_ident = Identifier.new('input', :type => %w(submit reset image button), :value => [val])
         locator.idents = [button_ident, input_ident]
-        @object = locator.find_by_conditions(@conditions)
+        conditions = @conditions.dup
+        conditions.delete(:value)
+        @object = locator.find_by_conditions(conditions)
       else
         super
       end
