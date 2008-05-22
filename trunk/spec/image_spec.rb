@@ -174,12 +174,6 @@ describe Image do
     end
   end
 
-  describe "#html" do
-    it "should return the normative (actual) html for the image element" do
-      @browser.image(:id, 'non_self_closing').html.chomp.should == '<img src="images/1.gif" alt="1" id="non_self_closing"></img>'
-    end
-  end
-
   describe "#save" do
     it "should save an image to file" do
       file = "sample.img.dat"
