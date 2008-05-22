@@ -123,7 +123,6 @@ describe SelectList do
     it "should return false if the select list is enabled" do
       @browser.select_list(:index, 1).should_not be_disabled
     end
-    
     it "should should raise UnknownObjectException when the select list does not exist" do
       lambda { @browser.select_list(:index, 1337).disabled? }.should raise_error(UnknownObjectException)
     end
@@ -220,24 +219,20 @@ describe SelectList do
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").select(/ish/)
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").get_selected_items.should == ["Danish", "English", "Swedish"]
     end
-    
     it "should fire onchange event when selecting an item" do
       @browser.div(:id, "changed_language").text.should be_empty
       @browser.select_list(:id, "new_user_languages").select("Danish")
       @browser.div(:id, "changed_language").text.should == "changed language"
       @browser.refresh # to reset js
     end
-
     it "should not fire onchange event when selecting an already selected item" do
       @browser.select_list(:id, "new_user_languages").clear_selection # removes the two pre-selected options
       @browser.div(:id, "changed_language").text.should == "changed languagechanged language"
       @browser.select_list(:id, "new_user_languages").select("English")
       @browser.div(:id, "changed_language").text.should == "changed languagechanged languagechanged language"
-
       @browser.select_list(:id, "new_user_languages").select("English")
       @browser.div(:id, "changed_language").text.should == "changed languagechanged languagechanged language"
     end
-
     it "should raise NoValueFoundException if the option doesn't exist" do
       lambda { @browser.select_list(:name, "new_user_country").select("missing_option") }.should raise_error(NoValueFoundException)
       lambda { @browser.select_list(:name, "new_user_country").select(/missing_option/) }.should raise_error(NoValueFoundException)
@@ -261,4 +256,3 @@ describe SelectList do
   end
 
 end
-

@@ -39,18 +39,15 @@ describe IE do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
       @browser.text.should include("Dubito, ergo cogito, ergo sum.")
     end
-    
     it "should return the text also if the content-type is text/plain" do
       # more specs for text/plain? what happens if we call other methods?
       @browser.goto(TEST_HOST + "/plain_text")
       @browser.text.strip.should == 'This is text/plain'
     end
-    
     it "should return text in the correct charset (utf-8)" do
       @browser.goto(TEST_HOST + "/utf8_text.html")
       @browser.text.strip.should == "\303\246\303\245\303\270"
     end
-    
     it "should return text in the correct charset (latin-1)" do
       @browser.goto(TEST_HOST + "/latin1_text.html")
       @browser.text.strip.should == "\370\345\346"
@@ -166,23 +163,19 @@ describe IE do
     before :each do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
     end
-
     it "should raise ArgumentError when called with no or wrong arguments" do
       lambda { @browser.contains_text }.should raise_error(ArgumentError)
       lambda { @browser.contains_text(nil) }.should raise_error(ArgumentError)
       lambda { @browser.contains_text(42) }.should raise_error(ArgumentError)
     end
-
     it "should return the index if the given text exists" do
         @browser.contains_text('Dubito, ergo cogito, ergo sum.').should be_instance_of(Fixnum)
         @browser.contains_text(/Dubito.*sum./).should_not be_nil
     end
-
     it "should return nil if the text doesn't exist" do
       @browser.contains_text('no_such_text').should be_nil
       @browser.contains_text(/no_such_text/).should be_nil
     end
-
     it "should not raise error on a blank page" do
       @browser = IE.new
       lambda { @browser.contains_text('') }.should_not raise_error
@@ -215,7 +208,6 @@ describe IE do
       @browser.add_checker(checker)
       @browser.goto(TEST_HOST + "/non_control_elements.html")
       output.should include('Dubito, ergo cogito, ergo sum')
-
       @browser.disable_checker(checker)
       @browser.goto(TEST_HOST + "/non_control_elements.html")
       output.should include('Dubito, ergo cogito, ergo sum')

@@ -249,7 +249,7 @@ describe TextField do
       @browser.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
     end
     it "should raise UnknownObjectException if the text field doesn't exist" do
-      lambda { @browser.text_field(:name, "new_user_password").set('secret') }.should raise_error(UnknownObjectException)
+      lambda { @browser.text_field(:id, "no_such_id").set('secret') }.should raise_error(UnknownObjectException)
     end
   end
 
