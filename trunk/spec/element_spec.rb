@@ -35,6 +35,11 @@ describe Element do
     it "should return the normative (actual) html for the image element" do
       @browser.goto(TEST_HOST + "/images.html")
       @browser.image(:id, 'non_self_closing').html.chomp.should == '<img src="images/1.gif" alt="1" id="non_self_closing"></img>'
+      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.div(:id, 'html_test').html.chomp.should ==
+'<div id="html_test" class=some_class title = "This is a title">
+    asdf
+</div>' #TODO: This expected value might be off
     end
   end
   
