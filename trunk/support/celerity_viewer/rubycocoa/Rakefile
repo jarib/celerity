@@ -9,7 +9,8 @@ require 'pathname'
 # Application own Settings
 APPNAME   = "CelerityViewer"
 TARGET    = "#{APPNAME}.app"
-VERSION   = "rev#{`svn info`[/Revision: (\d+)/, 1]}"
+v = "rev#{`svn info`[/Revision: (\d+)/, 1]}"
+APP_VERSION = (v == 'rev' ? "rev#{`git-svn info`[/Revision: (\d+)/, 1]}" : v)
 RESOURCES = ['*.rb', '*.lproj', 'Credits.*', '*.icns']
 PKGINC    = [TARGET, 'README', 'html', 'client']
 LOCALENIB = [] #['Japanese.lproj/Main.nib']
@@ -30,7 +31,7 @@ end
 
 desc 'Create .dmg file for Publish'
 task :package => [:clean, 'pkg', TARGET] do
-	name = "#{APPNAME}.#{VERSION}"
+	name = "#{APPNAME}.#{APP_VERSION}"
 	sh %{
 	mkdir image
 	cp -r #{PKGINC.join(' ')} image
@@ -53,7 +54,7 @@ task :publish => [:package] do
 	path = Pathname.new path
 	puts "Publish: Host: %s, Path: %s" % [host, path]
 	sh %{
-	scp pkg/IIrcv.#{VERSION}.dmg #{PUBLISH}/pkg
+	scp pkg/IIrcv.#{APP_VERSION}.dmg #{PUBLISH}/pkg
 	scp CHANGES #{PUBLISH}/pkg
 	scp -r html/* #{PUBLISH}
 	}
@@ -79,7 +80,7 @@ file TARGET => [:clean, APPNAME] + LOCALENIB do
 	cp -rp #{RESOURCES.join(' ')} "#{APPNAME}.app/Contents/Resources"
 	cp '#{APPNAME}' "#{APPNAME}.app/Contents/MacOS"
 	echo -n "APPL????" > "#{APPNAME}.app/Contents/PkgInfo"
-	echo -n #{VERSION} > "#{APPNAME}.app/Contents/Resources/VERSION"
+	echo #{APP_VERSION} > "#{APPNAME}.app/Contents/Resources/VERSION"
 	}
 	File.open("#{APPNAME}.app/Contents/Info.plist", "w") do |f|
 		f.puts ERB.new(File.read("Info.plist.erb")).result
@@ -91,5 +92,9 @@ file APPNAME => ['main.m'] do
 	sh %{gcc -arch ppc -arch i386 -Wall -lobjc -framework RubyCocoa main.m -o '#{APPNAME}'}
 end
 
+desc 'Install the application bundle in /Applications'
+task :install => [TARGET] do
+   sh "cp -R #{APPNAME}.app /Applications", :verbose => true
+end
 directory 'pkg'
 

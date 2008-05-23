@@ -72,13 +72,6 @@ describe IE do
     end
   end
   
-  describe "#base_url" do
-    it "should return the base URL of the current page" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
-      @browser.base_url.should == "http://localhost" 
-    end
-  end
-  
   # Show methods
   describe "#method_missing" do
     it "should return all div elements on the page in a human readable format" do

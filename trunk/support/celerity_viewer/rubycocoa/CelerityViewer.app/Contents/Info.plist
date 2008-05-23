@@ -3,15 +3,15 @@
 <plist version="0.9">
 	<dict>
 		<key>CFBundleExecutable</key>
-		<string><%=APPNAME%></string>
+		<string>CelerityViewer</string>
 		<key>CFBundleIdentifier</key>
-		<string><%=BUNDLEID%></string>
+		<string>no.finntech.celerityviewer</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleSignature</key>
 		<string>????</string>
 		<key>NSHumanReadableCopyright</key>
-		<string><%=COPYRIGHT%></string>
+		<string>Copyright © 2008 FinnTech AS</string>
 		<key>CFBundleIconFile</key>
 		<string>CelerityViewer</string>
 

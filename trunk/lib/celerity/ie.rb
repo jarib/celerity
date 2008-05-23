@@ -62,7 +62,7 @@ module Celerity
       if @page.respond_to?("getDocumentElement")
         @object = @page.getDocumentElement
       end
-      call_viewer
+      render if @viewer
       run_error_checks
     end
 
@@ -71,11 +71,6 @@ module Celerity
       @page.getWebResponse.getUrl.toString
     end
     
-    def base_url
-      uri = URI.parse( url() )
-      "#{uri.scheme}://#{uri.host}"
-    end
-
     def title
       @page ? @page.getTitleText : ''
     end
@@ -176,13 +171,11 @@ module Celerity
     
     private
     
-    def call_viewer
-      if @viewer
-        begin
-          @viewer.render_html(html, base_url) 
-        rescue Errno::ECONNREFUSED => e
-          puts e.message
-        end
+    def render
+      begin
+        @viewer.render_html(html, url) 
+      rescue Errno::ECONNREFUSED => e
+        puts e.message
       end
     end    
     
