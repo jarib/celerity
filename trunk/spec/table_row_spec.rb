@@ -14,7 +14,10 @@ describe TableRow do
   
   describe "#exists?" do
     it "should return true if the table row exists" do
-      
+      @browser.row(:id, "outer_first").should exist
+      @browser.row(:id, /outer_first/).should exist
+      @browser.row(:index, 1).should exist
+      @browser.row(:xpath, "//tr[@id='outer_first']")
     end
     it "should return true if the element exists (default how = :id)" do
       @browser.row("outer_last").should exist

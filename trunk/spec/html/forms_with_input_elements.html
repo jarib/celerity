@@ -18,11 +18,11 @@
             <input type="text" name="new_user_email" id="new_user_email" /> <br />
             <label for="new_user_country">Country</label>
             <select name="new_user_country" id="new_user_country" class="country">
-                <option class="scandinavia">Denmark</option>
-                <option class="scandinavia" selected="selected">Norway</option>
-                <option class="scandinavia">Sweden</option>
-                <option >United Kingdom</option>
-                <option >USA</option>
+                <option class="scandinavia" value="1">Denmark</option>
+                <option id="nor" class="scandinavia" value="2" selected="selected">Norway</option>
+                <option class="scandinavia" value="3">Sweden</option>
+                <option value="4">United Kingdom</option>
+                <option value="5">USA</option>
             </select> <br />
             <label for="new_user_occupation">Occupation</label>
             <input type="text" name="new_user_occupation" id="new_user_occupation" value="Developer" /> <br />
@@ -32,7 +32,7 @@
             <input type="text" title="Your personal code" name="new_user_code" id="new_user_code" value="HE2FF8" readonly="readonly" /> <br  />
             <label for="new_user_languages">Languages</label>
             <select name="new_user_languages" id="new_user_languages" multiple="multiple" onchange="document.getElementById('changed_language').innerHTML += 'changed language'">
-                <option>Danish</option>
+                <option id="danish">Danish</option>
                 <option selected="selected">English</option>
                 <option selected="selected">Norwegian</option>
                 <option>Swedish</option>

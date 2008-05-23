@@ -18,7 +18,7 @@ describe SelectList do
       @browser.select_list(:id, /new_user_country/).should exist
       @browser.select_list(:name, 'new_user_country').should exist
       @browser.select_list(:name, /new_user_country/).should exist
-      # check behaviour in Watir
+      # TODO: check behaviour in Watir
       # @browser.select_list(:value, 'Norway').should exist
       # @browser.select_list(:value, /Norway/).should exist
       # @browser.select_list(:text, 'Norway').should exist
@@ -94,12 +94,12 @@ describe SelectList do
 
   describe "#value" do      
     it "should return the value of the selected option" do
-      @browser.select_list(:index, 1).value.should == "Norway"
+      @browser.select_list(:index, 1).value.should == "2"
       @browser.select_list(:index, 1).select(/Sweden/)
-      @browser.select_list(:index, 1).value.should == "Sweden"
+      @browser.select_list(:index, 1).value.should == "3"
     end
     it "should raise UnknownObjectException if the select list doesn't exist" do
-      lambda { @browser.select_list(:index, 1337).value  }.should raise_error(UnknownObjectException)
+      lambda { @browser.select_list(:index, 1337).value }.should raise_error(UnknownObjectException)
     end
   end
   
@@ -131,7 +131,9 @@ describe SelectList do
   # Other
   describe "#option" do
     it "should return an instance of Option" do
-      @browser.select_list(:name, "new_user_country").option(:text, "Denmark").should be_instance_of(Celerity::Option)
+      option = @browser.select_list(:name, "new_user_country").option(:text, "Denmark")
+      option.should be_instance_of(Option)
+      option.value.should == "1"
     end    
   end
   

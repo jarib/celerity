@@ -51,9 +51,8 @@ module Celerity
       @object.getRow(index-1).getCells.length
     end
     
-    # This method returns the table as a 2 dimensional array. Dont expect too much if there are nested tables, colspan etc.
+    # This method returns the table as a 2 dimensional array.
     # Raises an UnknownObjectException if the table doesn't exist.
-    # http://www.w3.org/TR/html4/struct/tables.html
     def to_a
       assert_exists
       y = []
@@ -66,16 +65,6 @@ module Celerity
         y << x
       end
       return y
-    end
-    
-    def body(*args)
-      assert_exists
-      TableBody.new(@container, *args)
-    end
-    
-    def bodies
-      assert_exists
-      TableBodies.new(self)
     end
     
     def column_values(columnnumber)

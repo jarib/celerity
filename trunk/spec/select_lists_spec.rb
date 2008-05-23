@@ -18,7 +18,7 @@ describe SelectLists do
   
   describe "#[]" do
     it "should return the correct item" do
-      @browser.select_lists[1].value.should == "Norway"
+      @browser.select_lists[1].value.should == "2"
       @browser.select_lists[1].name.should == "new_user_country"
       @browser.select_lists[1].type.should == "select-one"
       @browser.select_lists[2].type.should == "select-multiple"

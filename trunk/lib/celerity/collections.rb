@@ -87,5 +87,9 @@ module Celerity
   class Forms < ElementCollections
     def element_class; Form; end
   end
+  
+  class Options < ElementCollections
+    def element_class; Option; end
+  end
 
 end

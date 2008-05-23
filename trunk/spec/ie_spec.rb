@@ -92,14 +92,15 @@ describe IE do
         $stdout = old_stdout
       end
       temp_stdout.string.should ==
-'Found 7 divs
+'Found 8 divs
 1: 
 2: id="outer_container" 
 3: id="header" title="Header and primary navigation" class="profile" 
 4: id="promo" name="invalid_attribute" value="invalid_attribute" 
 5: id="content" 
 6: id="best_language" onclick="this.innerHTML = \'Ruby!\'" style="color: red; text-decoration: underline; cursor: pointer;" 
-7: id="footer" title="Closing remarks" class="profile" 
+7: id="html_test" class="some_class" title="This is a title" 
+8: id="footer" title="Closing remarks" class="profile" 
 '
     end
     it "should raise NoMethodError if the collection does not exist" do

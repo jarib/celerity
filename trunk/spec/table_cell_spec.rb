@@ -60,5 +60,4 @@ describe TableCell do
     @browser.close
   end
   
-  
 end

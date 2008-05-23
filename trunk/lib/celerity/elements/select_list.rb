@@ -26,7 +26,6 @@ module Celerity
     def select(value)
       assert_exists
       raise NoValueFoundException, "unknown option with value #{value.inspect}" unless include?(value)
-#      Log.debug @object
       @object.getOptions.select { |e| matches?(e.asText, value) }.each do |option|
         @container.update_page(option.click)
       end
@@ -41,11 +40,12 @@ module Celerity
   
     def selected?(value)
       assert_exists
-      # This should probably raise NoValueFoundException?
+      # TODO: Check Watir. This should probably raise NoValueFoundException?
       raise UnknownObjectException, "unknown option with value #{value.inspect}" unless include?(value)
       !!@object.getOptions.find { |e| matches?(e.asText, value) && e.isSelected }
     end
 
+    # TODO: Move to watir_compatibility or delete it 2008-05-23 Alexander
     def type
       assert_exists
       'select-' + (@object.isAttributeDefined('multiple') ? 'multiple' : 'one')
@@ -57,10 +57,6 @@ module Celerity
         optn.getValueAttribute
       end
     end
-  
-    def option(attribute, value)
-      assert_exists
-      Option.new(self, attribute, value)
-    end
+
   end
 end

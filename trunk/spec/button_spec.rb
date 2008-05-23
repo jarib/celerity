@@ -22,6 +22,7 @@ describe Button do
       @browser.button(:value, /Button 2/).should exist
       @browser.button(:src, "images/button.jpg").should exist
       @browser.button(:src, /button.jpg/).should exist
+      @browser.button(:text, "Button 2").should exist
       @browser.button(:text, /Button 2/).should exist
       @browser.button(:class, "image").should exist
       @browser.button(:class, /image/).should exist

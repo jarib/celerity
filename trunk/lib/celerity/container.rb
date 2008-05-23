@@ -25,6 +25,15 @@ module Celerity
       assert_exists
       Tables.new(self)
     end
+    
+    def body(*args)
+      assert_exists
+      TableBody.new(self, *args)
+    end
+    def bodies
+      assert_exists
+      TableBodies.new(self)
+    end
 
     def cell(*args)
       assert_exists
@@ -88,6 +97,11 @@ module Celerity
       assert_exists
       SelectLists.new(self)
     end
+    
+    def option(*args)
+      assert_exists
+      Option.new(self, *args)
+    end
 
     def check_box(*args)
       assert_exists
@@ -95,6 +109,7 @@ module Celerity
     end
     alias_method :checkbox, :check_box
     alias_method :checkBox, :check_box
+    # TODO: Move to watir_compatibility? 2008-05-23 Alexander
 
     def checkboxes
       assert_exists
@@ -160,7 +175,6 @@ module Celerity
       assert_exists
       Div.new(self, *args)
     end
-
     def divs
       assert_exists
       Divs.new(self)

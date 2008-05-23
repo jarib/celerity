@@ -107,6 +107,23 @@ describe Table do
     end
   end
   
+  describe "#body" do
+    it "should return the correct instance of TableBody" do
+      body = @browser.table(:index, 1).body(:id, 'first')
+      body.instance_of?(TableBody).should be_true
+      body[1][1].text.should == "March 2008"
+    end
+  end
+  
+  describe "#bodies" do
+    it "should return the correct instance of TableBodies" do
+      bodies = @browser.table(:index, 1).bodies
+      bodies.instance_of?(TableBodies).should be_true
+      bodies[1].id.should == "first"
+      bodies[2].id.should == "second"
+    end
+  end
+  
   after :all do
     @browser.close
   end
