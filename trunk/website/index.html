@@ -32,7 +32,7 @@
                 </ul>
             </div>
             <div id="content">
-                <a href="http://rubyforge.org/frs/?group_id=6198" id="download" title="Latest version: 0.0.2">Download &#x2192;</a>
+                <a href="http://rubyforge.org/frs/?group_id=6198" id="download" title="Latest version: 0.0.3">Download &#x2192;</a>
 
                 <h2>What is Celerity?</h2>
                 <p>Celerity is a <a href="http://jruby.codehaus.org/">JRuby</a> library for easy and fast functional test automation for web applications. It is a wrapper around the <a href="http://htmlunit.sourceforge.net/">HtmlUnit</a> Java library and is currently aimed at providing the same <acronym title="Application Programming Interface">API</acronym> and functionality as <a href="http://wtr.rubyforge.org/">Watir</a>.</p>
@@ -68,9 +68,9 @@ jruby -S gem install celerity
                 <code>
 require "celerity" 
 
-browser = Celerity::IE.new
+browser = Celerity::Browser.new
 browser.goto('http://www.google.com')
-browser.text_field(:name, 'q').value = "Celerity" 
+browser.text_field(:name, 'q').value = 'Celerity'
 browser.button(:name, 'btnG').click
 
 puts "yay" if browser.text.include? 'celerity.rubyforge.org'
@@ -78,7 +78,7 @@ puts "yay" if browser.text.include? 'celerity.rubyforge.org'
                 </pre>
 
                 <h2>How to submit patches</h2>
-                <p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people&#8217;s code</a>. The trunk repository is <a href="svn://rubyforge.org/var/svn/celerity/trunk"><code>svn://rubyforge.org/var/svn/celerity/trunk</code></a> for anonymous access. Failing specs for issues/features you don't know how to implement yourself are most welcome.</p>
+                <p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people's code</a>. The trunk repository is <a href="svn://rubyforge.org/var/svn/celerity/trunk"><code>svn://rubyforge.org/var/svn/celerity/trunk</code></a> for anonymous access. Failing specs for issues/features you don't know how to implement yourself are most welcome.</p>
 
                 <h2>License</h2>
                 <p>Celerity is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GPLv3 license</a>.</p>
@@ -118,7 +118,7 @@ puts "yay" if browser.text.include? 'celerity.rubyforge.org'
                 </span>-->
             </p>
             <address>
-                <a href="mailto:tinius.alexander@lystadonline.no">T. Alexander Lystad</a>, 22th May 2008
+                <a href="mailto:tinius.alexander@lystadonline.no">T. Alexander Lystad</a>, 26th May 2008
             </address>
         </div>
     </body>

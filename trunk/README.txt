@@ -4,8 +4,8 @@
 
 == DESCRIPTION:
 
-        Celerity is a JRuby library for easy and fast functional test automation for web applications.
-        It is a wrapper around the HtmlUnit Java library and is currently aimed at providing the same API and functionality as Watir.
+Celerity is a JRuby library for easy and fast functional test automation for web applications.
+It is a wrapper around the HtmlUnit Java library and is currently aimed at providing the same API and functionality as Watir.
 
 == FEATURES:
 
@@ -17,13 +17,13 @@
 
 == SYNOPSIS:
 
-	require 'rubygems'
-	require 'celerity'
-	
-	browser = Celerity::IE.new
-	browser.goto("google.com")
-	browser.text_field(:name, 'q').set("celerity")
-	browser.button(:name, 'btnG').submit
+require 'rubygems'
+require 'celerity'
+
+browser = Celerity::IE.new
+browser.goto("google.com")
+browser.text_field(:name, 'q').set("celerity")
+browser.button(:name, 'btnG').submit
 	
 == REQUIREMENTS:
 
@@ -34,6 +34,16 @@
 == INSTALL:
 
 * jruby -S gem install celerity
+
+== EXAMPLE:
+require "celerity" 
+
+browser = Celerity::Browser.new
+browser.goto('http://www.google.com')
+browser.text_field(:name, 'q').value = 'Celerity'
+browser.button(:name, 'btnG').click
+
+puts "yay" if browser.text.include? 'celerity.rubyforge.org'
 
 == LICENSE:
 
