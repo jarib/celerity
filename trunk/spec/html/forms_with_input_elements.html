@@ -38,7 +38,7 @@
                 <option>Swedish</option>
             </select> <br />
             <label for="new_user_portrait">Portrait</label>
-            <input type="file" name="new_user_portrait" id="new_user_portrait" class="portrait" title="Smile!" /> <br />
+            <input type="file" name="new_user_portrait" id="new_user_portrait" class="portrait" title="Smile!" onchange="document.getElementById('changed_language').innerHTML = 'File onchange triggered'" /> <br />
             <label for="new_user_portrait">Dental records</label>
             <input type="file" name="new_user_teeth" id="new_user_teeth" title="Smile here too!" />
         </fieldset>

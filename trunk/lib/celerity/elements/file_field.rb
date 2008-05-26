@@ -6,7 +6,6 @@ module Celerity
   
     def set(value)
       assert_exists
-      # TODO: trigger events?
       @object.setValueAttribute(value.to_s)
     end
   end
