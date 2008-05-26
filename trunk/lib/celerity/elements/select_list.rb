@@ -40,7 +40,6 @@ module Celerity
   
     def selected?(value)
       assert_exists
-      # TODO: Check Watir. This should probably raise NoValueFoundException?
       raise UnknownObjectException, "unknown option with value #{value.inspect}" unless include?(value)
       !!@object.getOptions.find { |e| matches?(e.asText, value) && e.isSelected }
     end

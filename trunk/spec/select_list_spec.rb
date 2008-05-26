@@ -21,8 +21,8 @@ describe SelectList do
       # TODO: check behaviour in Watir
       # @browser.select_list(:value, 'Norway').should exist
       # @browser.select_list(:value, /Norway/).should exist
-      # @browser.select_list(:text, 'Norway').should exist
-      # @browser.select_list(:text, /Norway/).should exist
+      @browser.select_list(:text, 'Norway').should exist
+      @browser.select_list(:text, /Norway/).should exist
       @browser.select_list(:class, 'country').should exist
       @browser.select_list(:class, /country/).should exist
       @browser.select_list(:index, 1).should exist

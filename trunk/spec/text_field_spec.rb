@@ -92,6 +92,12 @@ describe TextField do
     it "should return the type attribute if the text field exists" do
       @browser.text_field(:index, 4).type.should == "text"
     end
+    it "should return text if the type attribute is invalid" do
+      @browser.text_field(:id, 'new_user_last_name').type.should == "text"
+    end
+    it "should return text if the type attribute does not exist" do
+      @browser.text_field(:id, 'new_user_first_name').type.should == "text"
+    end
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.text_field(:index, 1337).type }.should raise_error(UnknownObjectException)  
     end
