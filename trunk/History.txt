@@ -1,6 +1,6 @@
 == 0.0.3 2008-05-26
 * 3 major enhancements:
-  * Added support for <ul>, <ol>, <thead>, <tfoot>, <h1>, <h2>, <h3>, <h4>, <h5> and <h6>
+  * Added support for <ul>, <ol>, <thead>, <tfoot>, <h1>, <h2>, <h3>, <h4>, <h5> and <h6> elements
   * Better support for <tbody>, <tr> and <option> elements. They are now accessible from the top level in the same way as every other element, meaning you can do ie.option(:id, 'some_id'), or ie.row(:index, 1).
   * Better HTTPS support
 * 8 minor enhancements:
