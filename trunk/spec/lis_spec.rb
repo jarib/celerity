@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe Lis do
+  
   before :all do
     @browser = IE.new
     add_spec_checker(@browser)    
@@ -12,7 +13,7 @@ describe Lis do
 
   describe "#length" do
     it "should return the number of lis" do
-      @browser.lis.length.should == 7
+      @browser.lis.length.should == 18
     end
   end
   

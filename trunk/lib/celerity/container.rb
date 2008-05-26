@@ -26,14 +26,33 @@ module Celerity
       Tables.new(self)
     end
     
-    def body(*args)
+    def thead(*args)
+      assert_exists
+      TableHeader.new(self, *args)
+    end
+    def theads
+      assert_exists
+      TableHeaders.new(self)
+    end
+    
+    def tbody(*args)
       assert_exists
       TableBody.new(self, *args)
     end
-    def bodies
+    def tbodies
       assert_exists
       TableBodies.new(self)
     end
+    
+    def tfoot(*args)
+      assert_exists
+      TableFooter.new(self, *args)
+    end
+    def tfoots
+      assert_exists
+      TableFooters.new(self)
+    end
+    alias_method :tfeet, :tfoots # :-)
 
     def cell(*args)
       assert_exists
@@ -107,9 +126,6 @@ module Celerity
       assert_exists
       CheckBox.new(self, *args)
     end
-    alias_method :checkbox, :check_box
-    alias_method :checkBox, :check_box
-    # TODO: Move to watir_compatibility? 2008-05-23 Alexander
 
     def checkboxes
       assert_exists
@@ -133,6 +149,24 @@ module Celerity
     def links
       assert_exists
       Links.new(self)
+    end
+    
+    def ul(*args)
+      assert_exists
+      Ul.new(self, *args)
+    end
+    def uls
+      assert_exists
+      Uls.new(self)
+    end
+    
+    def ol(*args)
+      assert_exists
+      Ol.new(self, *args)
+    end
+    def ols
+      assert_exists
+      Ols.new(self)
     end
 
     def li(*args)
@@ -223,6 +257,55 @@ module Celerity
     def labels
       assert_exists
       Labels.new(self)
+    end
+    
+    def h1(*args)
+      assert_exists
+      H1.new(self, *args)
+    end
+    def h2(*args)
+      assert_exists
+      H2.new(self, *args)
+    end
+    def h3(*args)
+      assert_exists
+      H3.new(self, *args)
+    end
+    def h4(*args)
+      assert_exists
+      H4.new(self, *args)
+    end
+    def h5(*args)
+      assert_exists
+      H5.new(self, *args)
+    end
+    def h6(*args)
+      assert_exists
+      H6.new(self, *args)
+    end
+    def h1s
+      assert_exists
+      H1s.new(self)
+    end
+    def h2s
+      assert_exists
+      H2s.new(self)
+    end
+    def h3s
+      assert_exists
+      H3s.new(self)
+    end
+    def h4s
+      assert_exists
+      H4s.new(self)
+    end
+    def h5s
+      assert_exists
+      H5s.new(self)
+    end
+    def h6s
+      assert_exists
+      H6s.new(self)
     end
 
     private

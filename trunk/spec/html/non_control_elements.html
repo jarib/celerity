@@ -8,8 +8,8 @@
     <div></div>
     <div id="outer_container">
         <div id="header" title="Header and primary navigation" class="profile">
-            <h1>Header 1</h1>
-            <ul id="navbar">
+            <h1 id="first_header" class="primary">Header 1</h1>
+            <ul id="navbar" class="navigation">
                 <li><a></a></li>
                 <li><a id="link_2" title="link_title_2" href="non_control_elements.html" class="external">Link 2</a></li>
                 <li><a id="link_3" title="link_title_3" href="forms_with_input_elements.html" name="bad_attribute" value="bad_attribute" class="external">Link 3</a></li>
@@ -20,13 +20,33 @@
             </ul>
         </div>
         <div id="promo" name="invalid_attribute" value="invalid_attribute">
+            <h2>Promo</h2>
             <span id="lead" class="lead" title="Lorem ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur eu pede. Ut justo. Praesent feugiat, elit in feugiat iaculis, sem risus rutrum justo, eget fermentum dolor arcu non nunc.</span>
             <span name="invalid_attribute" value="invalid_attribute">Sed pretium metus et quam. Nullam odio dolor, vestibulum non, tempor ut, vehicula sed, sapien. Vestibulum placerat ligula at quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</span>
             <span>Suspendisse at ipsum a turpis viverra venenatis. Praesent ut nibh. Nullam eu odio. Donec tempor, elit ut lacinia porttitor, augue neque vehicula diam, in elementum ligula nisi a tellus. Aliquam vestibulum ultricies tortor. </span>
             <span>Dubito, ergo cogito, ergo sum.</span>
             <span></span>
+            <h3>Chemical compunds</h3>
+            <ul>
+                <li>Abietic acid, C20H30O2</li>
+                <li>Acenaphthene, C12H10</li>
+                <li>Acenaphthoquinone, C12H6O2</li>
+                <li>Acenaphthylene, C12H8</li>
+                <li>Acetaldehyde (ethanal), CH3CHO</li>
+            </ul>
+            <ol id="favorite_compounds" class="chemistry">
+                <li>Propanol, CH3CH2CH2OH</li>
+                <li>Ethane, C2H6</li>
+                <li>Hexene, C6H12</li>
+                <li>Acetone, CH3COCH3</li>
+                <li>Ethanol, CH3CH2OH</li>
+            </ol>
+            <ol>
+                <li></li>
+            </ol>
         </div>
         <div id="content">
+            <h2>Content</h2>
             <p id="lead" class="lead" title="Lorem ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur eu pede. Ut justo. Praesent feugiat, elit in feugiat iaculis, sem risus rutrum justo, eget fermentum dolor arcu non nunc.</p>
             <p name="invalid_attribute" value="invalid_attribute">Sed pretium metus et quam. Nullam odio dolor, vestibulum non, tempor ut, vehicula sed, sapien. Vestibulum placerat ligula at quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
             <p>Suspendisse at ipsum a turpis viverra venenatis. Praesent ut nibh. Nullam eu odio. Donec tempor, elit ut lacinia porttitor, augue neque vehicula diam, in elementum ligula nisi a tellus. Aliquam vestibulum ultricies tortor. </p>
@@ -79,7 +99,9 @@
             </pre>
         </div>
         <div id="html_test" class=some_class title = "This is a title">
+            <h1>Something new</h1>
             asdf
+            <h6></h6>
         </div>
         <div id="footer" title="Closing remarks" class="profile">
             <span class="footer" name="footer" onclick="this.innerHTML = 'This is a footer with text set by Javascript.'">This is a footer.</span>

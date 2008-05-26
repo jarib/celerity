@@ -52,7 +52,7 @@ describe Li do
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.li(:index, 1).class_name.should == ''
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
   end
@@ -64,7 +64,7 @@ describe Li do
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.li(:index, 1).id.should == ''
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda { @browser.li(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
@@ -77,7 +77,7 @@ describe Li do
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.li(:index, 1).title.should == ''
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:id, 'no_such_id').title }.should raise_error( UnknownObjectException)
       lambda { @browser.li(:xpath, "//li[@id='no_such_id']").title }.should raise_error( UnknownObjectException)
     end
@@ -90,7 +90,7 @@ describe Li do
     it "should return an empty string if the element doesn't contain any text" do
       @browser.li(:index, 1).text.should == ''
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:id, 'no_such_id').text }.should raise_error( UnknownObjectException)
       lambda { @browser.li(:xpath , "//li[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
     end
@@ -105,7 +105,7 @@ describe Li do
                                       "  title:        This is not a link!\n" +
                                       "  text:         Non-link 1"
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:xpath, "//li[@id='no_such_id']").to_s }.should raise_error( UnknownObjectException)
     end
   end

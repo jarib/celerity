@@ -24,6 +24,14 @@ module Celerity
     def element_class; Link; end
   end
 
+  class Uls < ElementCollections
+    def element_class; Ul; end
+  end
+  
+  class Ols < ElementCollections
+    def element_class; Ol; end
+  end
+  
   class Lis < ElementCollections
     def element_class; Li; end
   end
@@ -52,8 +60,14 @@ module Celerity
     def element_class; Table; end
   end
   
+  class TableHeaders < ElementCollections
+    def element_class; TableHeader; end
+  end
   class TableBodies < ElementCollections
     def element_class; TableBody; end
+  end
+  class TableFooters < ElementCollections
+    def element_class; TableFooter; end
   end
 
   class TableRows < ElementCollections
@@ -90,6 +104,25 @@ module Celerity
   
   class Options < ElementCollections
     def element_class; Option; end
+  end
+  
+  class H1s < ElementCollections
+    def element_class; H1; end
+  end
+  class H2s < ElementCollections
+    def element_class; H2; end
+  end
+  class H3s < ElementCollections
+    def element_class; H3; end
+  end
+  class H4s < ElementCollections
+    def element_class; H4; end
+  end
+  class H5s < ElementCollections
+    def element_class; H5; end
+  end
+  class H6s < ElementCollections
+    def element_class; H6; end
   end
 
 end

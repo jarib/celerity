@@ -11,7 +11,7 @@ describe TextField do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
   
-  # Exist method
+  # Exists method
   describe "#exists?" do
     it "should return true if the element exists" do
       @browser.text_field(:id, 'new_user_email').should exist
@@ -87,15 +87,13 @@ describe TextField do
   end
   
   describe "#type" do
-    #TODO: What if the type attribute is non-existent or invalid?
-    # Should probably just return the empty string, like HtmlUnit? (Jari - 2008-05-16)
     it "should return the type attribute if the text field exists" do
       @browser.text_field(:index, 4).type.should == "text"
     end
-    it "should return text if the type attribute is invalid" do
+    it "should return 'text' if the type attribute is invalid" do
       @browser.text_field(:id, 'new_user_last_name').type.should == "text"
     end
-    it "should return text if the type attribute does not exist" do
+    it "should return 'text' if the type attribute does not exist" do
       @browser.text_field(:id, 'new_user_first_name').type.should == "text"
     end
     it "should raise UnknownObjectException if the text field doesn't exist" do
@@ -155,7 +153,6 @@ describe TextField do
   
   
   # Manipulation methods
-  
   describe "#append" do
     it "should append the text to the text field" do
       @browser.text_field(:name, "new_user_occupation").append(" Append This")

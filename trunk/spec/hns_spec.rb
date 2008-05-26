@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe Ps do
+describe H1s, H2s, H3s, H4s, H5s, H6s do
   
   before :all do
     @browser = IE.new
@@ -12,23 +12,23 @@ describe Ps do
   end
 
   describe "#length" do
-    it "should return the number of ps" do
-      @browser.ps.length.should == 5
+    it "should return the number of h1s" do
+      @browser.h2s.length.should == 8
     end
   end
   
   describe "#[]" do
     it "should return the p at the given index" do
-      @browser.ps[1].id.should == "lead"
+      @browser.h1s[1].id.should == "first_header"
     end
   end
 
   describe "#each" do
     it "should iterate through ps correctly" do
-      @browser.ps.each_with_index do |p, index|
-        p.name.should == @browser.p(:index, index+1).name
-        p.id.should == @browser.p(:index, index+1).id
-        p.value.should == @browser.p(:index, index+1).value
+      @browser.h2s.each_with_index do |h, index|
+        h.name.should == @browser.h2(:index, index+1).name
+        h.id.should == @browser.h2(:index, index+1).id
+        h.value.should == @browser.h2(:index, index+1).value
       end
     end
   end

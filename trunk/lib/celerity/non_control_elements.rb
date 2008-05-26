@@ -32,6 +32,14 @@ module Celerity
   class Span < NonControlElement
     TAGS = [ Identifier.new('span') ]
   end
+  
+  class Ul < NonControlElement
+    TAGS = [ Identifier.new('ul') ]
+  end
+  
+  class Ol < NonControlElement
+    TAGS = [ Identifier.new('ol') ]
+  end
 
   class Li < NonControlElement
     TAGS = [ Identifier.new('li') ]
@@ -44,6 +52,25 @@ module Celerity
   class Area < NonControlElement
     ATTRIBUTES = ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt, :tabindex, :accesskey, :onfocus, :onblur]
     TAGS = [ Identifier.new('area') ]
+  end
+  
+  class H1 < NonControlElement
+    TAGS = [ Identifier.new('h1') ]
+  end
+  class H2 < NonControlElement
+    TAGS = [ Identifier.new('h2') ]
+  end
+  class H3 < NonControlElement
+    TAGS = [ Identifier.new('h3') ]
+  end
+  class H4 < NonControlElement
+    TAGS = [ Identifier.new('h4') ]
+  end
+  class H5 < NonControlElement
+    TAGS = [ Identifier.new('h5') ]
+  end
+  class H6 < NonControlElement
+    TAGS = [ Identifier.new('h6') ]
   end
   
 end

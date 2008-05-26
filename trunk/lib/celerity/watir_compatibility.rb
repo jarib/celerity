@@ -21,6 +21,13 @@ module Celerity
   module ClickableElement
     alias_method :click_no_wait, :click
   end
+  
+  module Container
+    alias_method :checkbox, :check_box
+    alias_method :checkBox, :check_box
+    alias_method :body, :tbody
+    alias_method :bodies, :tbodies
+  end
     
   class Image
     alias_method :hasLoaded?, :loaded?

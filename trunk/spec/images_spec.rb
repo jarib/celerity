@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe Images do
+  
   before :all do
     @browser = IE.new
     add_spec_checker(@browser)    

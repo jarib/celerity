@@ -13,7 +13,7 @@ describe Span do
 
   # Exists method
   describe "#exist?" do
-    it "should return true if the 'p' exists" do
+    it "should return true if the 'span' exists" do
       @browser.span(:id, "lead").should exist
       @browser.span(:id, /lead/).should exist
       @browser.span(:text, "Dubito, ergo cogito, ergo sum.").should exist
@@ -90,14 +90,14 @@ describe Span do
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.span(:index, 3).title.should == ''
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the span doesn't exist" do
       lambda { @browser.span(:id, 'no_such_id').title }.should raise_error( UnknownObjectException)
       lambda { @browser.span(:xpath, "//span[@id='no_such_id']").title }.should raise_error( UnknownObjectException)
     end
   end
   
   describe "#text" do
-    it "should return the text of the p" do
+    it "should return the text of the span" do
       @browser.span(:index, 2).text.should == 'Sed pretium metus et quam. Nullam odio dolor, vestibulum non, tempor ut, vehicula sed, sapien. Vestibulum placerat ligula at quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
     end
     it "should return an empty string if the element doesn't contain any text" do
@@ -116,7 +116,7 @@ describe Span do
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.span(:index, 3).value.should == ''
     end
-    it "should raise UnknownObjectException if the p doesn't exist" do
+    it "should raise UnknownObjectException if the span doesn't exist" do
       lambda { @browser.span(:id , "no_such_id").value }.should raise_error(UnknownObjectException)
       lambda { @browser.span(:index , 1337).value }.should raise_error(UnknownObjectException)
     end

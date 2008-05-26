@@ -53,6 +53,12 @@ module Celerity
       assert_not_readonly
       type_string(value)
     end
+    
+    def type
+      assert_exists
+      type = @object.getAttributeValue('type')
+      return ['file', 'radio', 'checkbox', 'submit', 'reset', 'image', 'button', 'hidden'].include?(type) ? type : 'text'
+    end
 
     # This bascially just moves the text to the other text field using TextField#append
     # Should check if the HtmlUnit API supports some kind of dragging.

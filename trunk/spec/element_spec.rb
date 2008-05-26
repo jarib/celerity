@@ -39,7 +39,7 @@ describe Element do
       @browser.div(:id, 'html_test').html.chomp.should ==
 '<div id="html_test" class=some_class title = "This is a title">
     asdf
-</div>' #TODO: This expected value might be off
+</div>' #TODO: This expected value might be a little off, whitespace-wise
     end
   end
   
