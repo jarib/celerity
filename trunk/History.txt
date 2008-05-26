@@ -1,8 +1,9 @@
 == 0.0.3 2008-05-26
-* 2 major enhancements:
+* 3 major enhancements:
+  * Added support for <ul>, <ol>, <thead>, <tfoot>, <h1>, <h2>, <h3>, <h4>, <h5> and <h6>
   * Better support for <tbody>, <tr> and <option> elements. They are now accessible from the top level in the same way as every other element, meaning you can do ie.option(:id, 'some_id'), or ie.row(:index, 1).
   * Better HTTPS support
-* 7 minor enhancements:
+* 8 minor enhancements:
   * Improved CelerityViewer
   * Watir-like show methods (IE#show_divs, IE#show_tables, etc.)
   * All HTML elements now has a default how parameter, see http://celerity.rubyforge.org/wiki/wiki.pl?ListOfSupportedHtmlElementsAndTheirDefaultHowParameter
@@ -10,6 +11,7 @@
   * Separated out Watir compatibility specific stuff
   * Form#submit implemented
   * Updated ATTRIBUTES constants for all element classes
+  * TextField#type bug fixed
 
 == 0.0.2 2008-05-15
 * 3 major enhancements:
