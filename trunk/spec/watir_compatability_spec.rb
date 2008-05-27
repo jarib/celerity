@@ -59,6 +59,12 @@ describe IE do
     end
   end
   
+  describe "#checkBox" do
+    it "should behave like #checkbox" do
+      
+    end
+  end
+  
 end
 
 describe Button do

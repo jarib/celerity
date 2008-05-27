@@ -18,6 +18,10 @@ module Celerity
     def wait; end
   end
   
+  class Container
+    alias_method :checkBox, :check_box
+  end
+  
   module ClickableElement
     alias_method :click_no_wait, :click
   end
