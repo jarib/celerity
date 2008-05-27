@@ -13,7 +13,7 @@ if RUBY_PLATFORM =~ /java/
   end
   JavaString = java.lang.String
 else
-  abort("Celerity only works on JRuby at the moment.")
+  raise "Celerity only works on JRuby at the moment."
 end
   # require "rjb"
   # Rjb::load(Celerity::Jars.join(";"))
