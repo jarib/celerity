@@ -15,10 +15,17 @@ describe Element do
       @browser.checkbox(:name => 'new_user_interests', :title => 'Dancing is fun!').value.should == 'dancing'
       @browser.text_field(:class_name => 'name', :index => 2).id.should == 'new_user_last_name'
     end
-    it "should raise UnknownObjectException with a sane error message when given a hash of :how => 'what' arguments" do
+    it "should raise UnknownObjectException with a sane error message when given a hash of :how => 'what' arguments (non-existing object)" do
       conditions = {:index => 100, :name => "foo"}
       lambda { @browser.text_field(conditions).id }.should raise_error(UnknownObjectException, /Unable to locate object, using (\{:name=>"foo", :index=>100\}|\{:index=>100, :name=>"foo"\})/)
     end
+    it "should raise ArgumentError if given the wrong number of arguments" do
+      container = mock("container", :null_object => true)
+      # container.should_receive(:page_container)
+      lambda { Element.new(container, 1,2,3,4) }.should raise_error(ArgumentError, "wrong number of arguments (4 for 2)")
+      lambda { Element.new(container, "foo") }.should raise_error(ArgumentError, "wrong number of arguments (1 for 2)")
+    end
+    
   end
   
   describe "#method_missing" do

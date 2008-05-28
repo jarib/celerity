@@ -31,7 +31,7 @@ module Celerity
       when 1
         if Hash === args.first
           @conditions = args.first
-        elsif self.class::DEFAULT_HOW
+        elsif defined? self.class::DEFAULT_HOW
           @conditions = { self.class::DEFAULT_HOW => args.first }
         else
           raise ArgumentError, "wrong number of arguments (1 for 2)"
