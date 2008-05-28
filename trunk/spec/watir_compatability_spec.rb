@@ -1,10 +1,8 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe IE do
-  
   before :each do
     @browser = IE.new
-    add_spec_checker(@browser)
   end
   
   # Class methods
@@ -61,7 +59,7 @@ describe IE do
   
   describe "#checkBox" do
     it "should behave like #checkbox" do
-      
+      pending
     end
   end
   
@@ -71,7 +69,7 @@ describe Button do
   
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)
+    
   end
 
   before :each do
@@ -91,7 +89,7 @@ describe Link do
   
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)    
+    
   end
 
   before :each do
@@ -106,13 +104,12 @@ describe Link do
   end
   
 end
-
   
 describe Image do
   
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)
+    
   end
 
   before :each do
@@ -148,10 +145,9 @@ describe Image do
 end
 
 describe RadioCheckCommon do
-  
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)    
+    
   end
 
   before :each do
@@ -185,10 +181,8 @@ describe RadioCheckCommon do
 end
 
 describe SelectList do
-  
   before :all do
     @browser = Celerity::IE.new
-    add_spec_checker(@browser)    
   end
 
   before :each do
@@ -225,10 +219,8 @@ describe SelectList do
 end
 
 describe TextField do
-  
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)    
   end
 
   before :each do

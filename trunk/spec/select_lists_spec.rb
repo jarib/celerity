@@ -4,7 +4,6 @@ describe SelectLists do
   
   before :all do
     @browser = Celerity::IE.new
-    add_spec_checker(@browser)    
   end
 
   before :each do

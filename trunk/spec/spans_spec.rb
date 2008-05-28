@@ -4,13 +4,11 @@ describe Spans do
   
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)    
   end
 
   before :each do
     @browser.goto(TEST_HOST + "/non_control_elements.html")
   end
-
 
   describe "#length" do
     it "should return the number of spans" do

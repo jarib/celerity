@@ -4,7 +4,6 @@ describe Tables do
   
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)    
   end
 
   before :each do

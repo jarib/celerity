@@ -4,7 +4,6 @@ describe Span do
   
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)    
   end
   
   before :each do
@@ -147,10 +146,6 @@ describe Span do
     end
   end
 
-
-  
- 
-  
   after :all do
     @browser.close
   end

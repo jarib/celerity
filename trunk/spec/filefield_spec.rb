@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe FileField do
   before :all do
     @browser = IE.new
-    add_spec_checker(@browser)
   end
 
   before :each do

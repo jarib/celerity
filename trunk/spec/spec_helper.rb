@@ -49,27 +49,3 @@ else
   puts "Remember to run \"rake specserver\" before running these tests!"
   TEST_HOST = "http://localhost:2000"
 end
-
-# ===========================
-# = RubyCocoa CelerityViewer =
-# ===========================
-begin
-  if `uname`.chomp == "Darwin" && `ps ax`[/CelerityViewer/]
-    WEB_VIEWER = DRbObject.new_with_uri("druby://127.0.0.1:1337")
-  end
-rescue IOError, Errno::ENOENT
-end
-
-# ================
-# = Spec Checker =
-# ================
-
-# define a checker that is run on every page
-def add_spec_checker(browser)
-  if defined? WEB_VIEWER
-    browser.add_checker { WEB_VIEWER.render_html(browser.html, browser.base_url) }
-  end
-end
-
-
-
