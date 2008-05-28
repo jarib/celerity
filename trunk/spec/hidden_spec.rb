@@ -27,9 +27,11 @@ describe Hidden do
       @browser.hidden(:index, 1).should exist
       @browser.hidden(:xpath, "//input[@id='new_user_interests_dolls']").should exist
      end
+
     it "should return true if the element exists (default how = :name)" do
       @browser.hidden("new_user_interests").should exist
     end
+
     it "should return false if the element does not exist" do
       @browser.hidden(:id, 'no_such_id').should_not exist
       @browser.hidden(:id, /no_such_id/).should_not exist
@@ -44,9 +46,11 @@ describe Hidden do
       @browser.hidden(:index, 1337).should_not exist
       @browser.hidden(:xpath, "//input[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.hidden(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.hidden(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
@@ -58,6 +62,7 @@ describe Hidden do
     it "should return the id attribute if the text field exists" do
       @browser.hidden(:index, 1).id.should == "new_user_interests_dolls"
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:index, 1337).id }.should raise_error(UnknownObjectException)  
     end
@@ -67,6 +72,7 @@ describe Hidden do
     it "should return the name attribute if the text field exists" do
       @browser.hidden(:index, 1).name.should == "new_user_interests"
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:index, 1337).name }.should raise_error(UnknownObjectException)  
     end
@@ -76,6 +82,7 @@ describe Hidden do
     it "should return the type attribute if the text field exists" do
       @browser.hidden(:index, 1).type.should == "hidden"
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:index, 1337).type }.should raise_error(UnknownObjectException)  
     end
@@ -85,6 +92,7 @@ describe Hidden do
     it "should return the value attribute if the text field exists" do
       @browser.hidden(:index, 1).value.should == "dolls"
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:index, 1337).value }.should raise_error(UnknownObjectException)
     end
@@ -96,6 +104,7 @@ describe Hidden do
       @browser.hidden(:id, 'new_user_interests_dolls').value = 'guns'
       @browser.hidden(:id, "new_user_interests_dolls").value.should == 'guns'
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:id, 'no_such_id').value = 'guns' }.should raise_error(UnknownObjectException)
     end

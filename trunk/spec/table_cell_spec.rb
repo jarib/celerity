@@ -21,9 +21,11 @@ describe TableCell do
       @browser.cell(:index, 1).should exist
       @browser.cell(:xpath, "//td[@id='t1_r2_c1']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.cell("t1_r2_c1").should exist
     end
+
     it "should return false when the table cell does not exist" do
       @browser.cell(:id, 'no_such_id').should_not exist
       @browser.cell(:id, /no_such_id/).should_not exist
@@ -32,9 +34,11 @@ describe TableCell do
       @browser.cell(:index, 1337).should_not exist
       @browser.cell(:xpath, "//td[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.cell(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.cell(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end

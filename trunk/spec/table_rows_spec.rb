@@ -16,6 +16,7 @@ describe TableRows do
       @browser.table(:id, 'inner').rows.length.should == 1
       @browser.table(:id, 'outer').rows.length.should == 3
     end
+
     it "should return the correct number of cells (page context)" do
       @browser.rows.length.should == 14
     end
@@ -25,6 +26,7 @@ describe TableRows do
     it "should return the row at the given index (table context)" do
       @browser.table(:id, 'outer').rows[1].text.should == "Table 1, Row 1, Cell 1 Table 1, Row 1, Cell 2"
     end
+
     it "should return the row at the given index (page context)" do
       @browser.rows[1].text.should == "Before income tax Income tax After income tax"
     end

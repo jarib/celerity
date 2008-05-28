@@ -24,9 +24,11 @@ describe Area do
       @browser.area(:index, 1).should exist
       @browser.area(:xpath, "//area[@id='NCE']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.area("NCE").should exist
     end
+
     it "should return false if the area doesn't exist" do
       @browser.area(:id, "no_such_id").should_not exist
       @browser.area(:id, /no_such_id/).should_not exist
@@ -39,9 +41,11 @@ describe Area do
       @browser.area(:index, 1337).should_not exist
       @browser.area(:xpath, "//area[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.area(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.area(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
@@ -52,9 +56,11 @@ describe Area do
     it "should return the id attribute" do
       @browser.area(:index, 1).id.should == "NCE"
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.area(:index, 3).id.should == ''
     end
+
     it "should raise UnknownObjectException if the area doesn't exist" do
       lambda { @browser.area(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda { @browser.area(:index, 1337).id }.should raise_error(UnknownObjectException)
@@ -65,9 +71,11 @@ describe Area do
     it "should return the name attribute" do
       @browser.area(:index, 1).name.should == "NCE"
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.area(:index, 3).name.should == ''
     end
+
     it "should raise UnknownObjectException if the area doesn't exist" do
       lambda { @browser.area(:id, "no_such_id").name }.should raise_error(UnknownObjectException)
       lambda { @browser.area(:index, 1337).name }.should raise_error(UnknownObjectException)

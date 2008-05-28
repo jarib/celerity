@@ -9,33 +9,43 @@ describe IE do
   it "should respond to .speed" do
     IE.should respond_to("speed")
   end
+
   it "should respond to .speed=" do
     IE.should respond_to("speed=")
   end
+
   it "should respond to .set_fast_speed" do
     IE.should respond_to("set_fast_speed")
   end
+
   it "should respond to .set_slow_speed" do
     IE.should respond_to("set_slow_speed")
   end
+
   it "should respond to .attach_timeout" do
     IE.should respond_to("attach_timeout")
   end
+
   it "should respond to .attach_timeout=" do
     IE.should respond_to("attach_timeout=")
   end
+
   it "should respond to .reset_attach_timeout" do
     IE.should respond_to("reset_attach_timeout")
   end
+
   it "should respond to .visible" do
     IE.should respond_to("visible")
   end
+
   it "should respond to .each" do
     IE.should respond_to("each")
   end
+
   it "should respond to .quit" do
     IE.should respond_to("quit")
   end
+
   it "should alias .start_window to .start" do
     IE.should respond_to("start")
   end
@@ -44,9 +54,11 @@ describe IE do
   it "should respond to #visible" do
     @browser.should respond_to("visible")
   end
+
   it "should respond to #visible=" do
     @browser.should respond_to("visible=")
   end
+
   it "should respond to #wait" do
     @browser.should respond_to("wait")
   end

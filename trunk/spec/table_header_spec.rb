@@ -18,32 +18,38 @@ describe TableHeader do
       @browser.thead(:index, 1).should exist
       @browser.thead(:xpath, "//thead[@id='tax_headers']").should exist
     end
+
     it "should return true if the table theader exists (table context)" do
       @browser.table(:index, 1).thead(:id, 'tax_headers').should exist
       @browser.table(:index, 1).thead(:id, /tax_headers/).should exist
       @browser.table(:index, 1).thead(:index, 1).should exist
       @browser.table(:index, 1).thead(:xpath, "//thead[@id='tax_headers']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.thead("tax_headers").should exist
       @browser.table(:index, 1).thead("tax_headers").should exist
     end
+
     it "should return false if the table theader exists (page context)" do
       @browser.thead(:id, 'no_such_id').should_not exist
       @browser.thead(:id, /no_such_id/).should_not exist
       @browser.thead(:index, 1337).should_not exist
       @browser.thead(:xpath, "//thead[@id='no_such_id']").should_not exist
     end
+
     it "should return false if the table theader exists (table context)" do
       @browser.table(:index, 1).thead(:id, 'no_such_id').should_not exist
       @browser.table(:index, 1).thead(:id, /no_such_id/).should_not exist
       @browser.table(:index, 1).thead(:index, 1337).should_not exist
       @browser.table(:index, 1).thead(:xpath, "//thead[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.thead(:id, 3.14).exists? }.should raise_error(ArgumentError)
       lambda { @browser.table(:index, 1).thead(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.thead(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
       lambda { @browser.table(:index, 1).thead(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
@@ -54,6 +60,7 @@ describe TableHeader do
     it "should return the correct number of table bodies (page context)" do
       @browser.thead(:id, 'tax_headers').length.should == 1
     end
+
     it "should return the correct number of table bodies (table context)" do
       @browser.table(:index, 1).thead(:id, 'tax_headers').length.should == 1
     end
@@ -65,6 +72,7 @@ describe TableHeader do
       @browser.thead(:id, 'tax_headers')[1][2].text.should == 'Before income tax'
       @browser.thead(:id, 'tax_headers')[1][3].text.should == 'Income tax'
     end
+
     it "should return the row at the given index (table context)" do
       @browser.table(:index, 1).thead(:id, 'tax_headers')[1].text.should == 'Before income tax Income tax After income tax'
       @browser.table(:index, 1).thead(:id, 'tax_headers')[1][2].text.should == 'Before income tax'

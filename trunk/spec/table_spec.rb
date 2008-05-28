@@ -19,18 +19,22 @@ describe Table do
       @browser.table(:index, 1).should exist
       @browser.table(:xpath, "//table[@id='axis_example']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.table("axis_example").should exist
     end
+
     it "should return false if the table does not exist" do
       @browser.table(:id, 'no_such_id').should_not exist
       @browser.table(:id, /no_such_id/).should_not exist
       @browser.table(:index, 1337).should_not exist
       @browser.table(:xpath, "//table[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.table(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.table(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
@@ -48,6 +52,7 @@ describe Table do
       @browser.table(:id, 'inner').row_count.should == 1
       @browser.table(:id, 'outer').row_count.should == 3
     end
+
     it "should raise an UnknownObjectException if the table doesn't exist" do
       lambda { @browser.table(:id, 'no_such_id').row_count }.should raise_error(UnknownObjectException)
       lambda { @browser.table(:index, 1337).row_count }.should raise_error(UnknownObjectException)
@@ -67,6 +72,7 @@ describe Table do
       @browser.table(:id, 'inner').column_count.should == 2
       @browser.table(:id, 'outer').column_count.should == 2
     end
+
     it "should raise an UnknownObjectException if the table doesn't exist" do
       lambda { @browser.table(:id, 'no_such_id').column_count }.should raise_error(UnknownObjectException)
       lambda { @browser.table(:index, 1337).column_count }.should raise_error(UnknownObjectException)
@@ -78,6 +84,7 @@ describe Table do
       @browser.table(:id, 'inner').column_values(1).should == ["Table 2, Row 1, Cell 1"]
       @browser.table(:id, 'outer').column_values(1).should == ["Table 1, Row 1, Cell 1", "Table 1, Row 2, Cell 1", "Table 1, Row 3, Cell 1"]
     end
+
     it "should raise UnknownCellException when trying to locate non-existing cell" do
       lambda { @browser.table(:id, 'inner').column_values(1337) }.should raise_error(UnknownCellException)
     end

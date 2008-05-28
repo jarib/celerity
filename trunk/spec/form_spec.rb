@@ -22,9 +22,11 @@ describe Form do
       @browser.form(:index, 1).should exist
       @browser.form(:xpath, "//form[@id='new_user']").should exist
     end
+
     it "should return true if the element exists (default how = :name)" do
       @browser.form("user_new").should exist
     end
+
     it "should return false if the form doesn't exist" do
       @browser.form(:id, 'no_such_id').should_not exist
       @browser.form(:id, /no_such_id/).should_not exist
@@ -37,9 +39,11 @@ describe Form do
       @browser.form(:index, 1337).should_not exist
       @browser.form(:xpath, "//form[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.form(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.form(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end

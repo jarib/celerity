@@ -20,9 +20,11 @@ describe FileField do
       @browser.file_field(:index, 1).should exist
       @browser.file_field(:xpath, "//input[@id='new_user_portrait']").should exist
     end
+
     it "should return true if the element exists (default how = :name)" do
       @browser.file_field("new_user_portrait").should exist
     end
+
     it "should return false if the file field doesn't exist" do
       @browser.file_field(:id, 'no_such_id').should_not exist
       @browser.file_field(:id, /no_such_id/).should_not exist
@@ -33,7 +35,7 @@ describe FileField do
       @browser.file_field(:index, 1337).should_not exist
       @browser.file_field(:xpath, "//input[@id='no_such_id']").should_not exist
     end
-    
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.file_field(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
@@ -49,6 +51,7 @@ describe FileField do
     it "should return the class attribute if the text field exists" do
       @browser.file_field(:index, 1).class_name.should == "portrait"
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.file_field(:index, 1337).class_name }.should raise_error(UnknownObjectException)
     end
@@ -58,6 +61,7 @@ describe FileField do
     it "should return the id attribute if the text field exists" do
       @browser.file_field(:index, 1).id.should == "new_user_portrait"
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.file_field(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
@@ -67,6 +71,7 @@ describe FileField do
     it "should return the name attribute if the text field exists" do
       @browser.file_field(:index, 1).name.should == "new_user_portrait"
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.file_field(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
@@ -82,6 +87,7 @@ describe FileField do
     it "should return the type attribute if the text field exists" do
       @browser.file_field(:index, 1).type.should == "file"
     end
+
     it "should raise UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.file_field(:index, 1337).type }.should raise_error(UnknownObjectException)
     end

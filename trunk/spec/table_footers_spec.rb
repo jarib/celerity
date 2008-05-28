@@ -15,6 +15,7 @@ describe TableFooters do
     it "should return the correct number of table tfoots (page context)" do
       @browser.tfoots.length.should == 1
     end
+
     it "should return the correct number of table tfoots (table context)" do
       @browser.table(:index, 1).tfoots.length.should == 1
     end
@@ -24,6 +25,7 @@ describe TableFooters do
     it "should return the row at the given index (page context)" do
       @browser.tfoots[1].id.should == "tax_totals"
     end
+
     it "should return the row at the given index (table context)" do
       @browser.table(:index, 1).tfoots[1].id.should == "tax_totals"
     end
@@ -35,7 +37,8 @@ describe TableFooters do
           tfoot.name.should == @browser.tfoot(:index, index+1).name
           tfoot.id.should == @browser.tfoot(:index, index+1).id
         end
-      end    
+      end
+
       it "should iterate through table tfoots correctly (table context)" do
         table = @browser.table(:index, 1)
         table.tfoots.each_with_index do |tfoot, index|

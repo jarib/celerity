@@ -18,32 +18,38 @@ describe TableFooter do
       @browser.tfoot(:index, 1).should exist
       @browser.tfoot(:xpath, "//tfoot[@id='tax_totals']").should exist
     end
+
     it "should return true if the table tfoot exists (table context)" do
       @browser.table(:index, 1).tfoot(:id, 'tax_totals').should exist
       @browser.table(:index, 1).tfoot(:id, /tax_totals/).should exist
       @browser.table(:index, 1).tfoot(:index, 1).should exist
       @browser.table(:index, 1).tfoot(:xpath, "//tfoot[@id='tax_totals']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.tfoot("tax_totals").should exist
       @browser.table(:index, 1).tfoot("tax_totals").should exist
     end
+
     it "should return false if the table tfoot exists (page context)" do
       @browser.tfoot(:id, 'no_such_id').should_not exist
       @browser.tfoot(:id, /no_such_id/).should_not exist
       @browser.tfoot(:index, 1337).should_not exist
       @browser.tfoot(:xpath, "//tfoot[@id='no_such_id']").should_not exist
     end
+
     it "should return false if the table tfoot exists (table context)" do
       @browser.table(:index, 1).tfoot(:id, 'no_such_id').should_not exist
       @browser.table(:index, 1).tfoot(:id, /no_such_id/).should_not exist
       @browser.table(:index, 1).tfoot(:index, 1337).should_not exist
       @browser.table(:index, 1).tfoot(:xpath, "//tfoot[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.tfoot(:id, 3.14).exists? }.should raise_error(ArgumentError)
       lambda { @browser.table(:index, 1).tfoot(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.tfoot(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
       lambda { @browser.table(:index, 1).tfoot(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
@@ -54,6 +60,7 @@ describe TableFooter do
     it "should return the correct number of table bodies (page context)" do
       @browser.tfoot(:id, 'tax_totals').length.should == 1
     end
+
     it "should return the correct number of table bodies (table context)" do
       @browser.table(:index, 1).tfoot(:id, 'tax_totals').length.should == 1
     end
@@ -65,6 +72,7 @@ describe TableFooter do
       @browser.tfoot(:id, 'tax_totals')[1][2].text.should == '24 349'
       @browser.tfoot(:id, 'tax_totals')[1][3].text.should == '5 577'
     end
+
     it "should return the row at the given index (table context)" do
       @browser.table(:index, 1).tfoot(:id, 'tax_totals')[1].text.should == 'Sum 24 349 5 577 18 722'
       @browser.table(:index, 1).tfoot(:id, 'tax_totals')[1][2].text.should == '24 349'

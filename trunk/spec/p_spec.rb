@@ -22,9 +22,11 @@ describe P do
       @browser.p(:index, 1).should exist
       @browser.p(:xpath, "//p[@id='lead']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.p("lead").should exist
     end
+
     it "should return false if the 'p' doesn't exist" do
       @browser.p(:id, "no_such_id").should_not exist
       @browser.p(:id, /no_such_id/).should_not exist
@@ -35,9 +37,11 @@ describe P do
       @browser.p(:index, 1337).should_not exist
       @browser.p(:xpath, "//p[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.p(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.p(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
@@ -48,9 +52,11 @@ describe P do
     it "should return the class attribute" do
       @browser.p(:index, 1).class_name.should == 'lead'
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.p(:index, 3).class_name.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.p(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
@@ -60,9 +66,11 @@ describe P do
     it "should return the id attribute" do
       @browser.p(:index, 1).id.should == "lead"
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.p(:index, 3).id.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.p(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda { @browser.p(:index, 1337).id }.should raise_error(UnknownObjectException)
@@ -73,9 +81,11 @@ describe P do
     it "should return the name attribute" do
       @browser.p(:index, 2).name.should == "invalid_attribute"
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.p(:index, 3).name.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.p(:id, "no_such_id").name }.should raise_error(UnknownObjectException)
       lambda { @browser.p(:index, 1337).name }.should raise_error(UnknownObjectException)
@@ -86,9 +96,11 @@ describe P do
     it "should return the title attribute" do
       @browser.p(:index, 1).title.should == 'Lorem ipsum'
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.p(:index, 3).title.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.p(:id, 'no_such_id').title }.should raise_error( UnknownObjectException)
       lambda { @browser.p(:xpath, "//p[@id='no_such_id']").title }.should raise_error( UnknownObjectException)
@@ -99,9 +111,11 @@ describe P do
     it "should return the text of the p" do
       @browser.p(:index, 2).text.should == 'Sed pretium metus et quam. Nullam odio dolor, vestibulum non, tempor ut, vehicula sed, sapien. Vestibulum placerat ligula at quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
     end
+
     it "should return an empty string if the element doesn't contain any text" do
       @browser.p(:index, 5).text.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.p(:id, 'no_such_id').text }.should raise_error( UnknownObjectException)
       lambda { @browser.p(:xpath , "//p[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
@@ -112,9 +126,11 @@ describe P do
     it "should return the value attribute" do
       @browser.p(:index, 2).value.should == "invalid_attribute"
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.p(:index, 3).value.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.p(:id , "no_such_id").value }.should raise_error(UnknownObjectException)
       lambda { @browser.p(:index , 1337).value }.should raise_error(UnknownObjectException)
@@ -130,6 +146,7 @@ describe P do
                                       "  title:        Lorem ipsum\n" +
                                       "  text:         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur eu pede. Ut justo. Praesent feugiat, elit in feugiat iaculis, sem risus rutrum justo, eget fermentum dolor arcu non nunc."
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.p(:xpath, "//p[@id='no_such_id']").to_s }.should raise_error( UnknownObjectException)
     end

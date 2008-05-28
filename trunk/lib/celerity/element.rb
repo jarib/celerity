@@ -21,6 +21,8 @@ module Celerity
     CELLVALIGN_ATTRIBUTES = HTML_401_TRANSITIONAL[:cell_valign]
     BASE_ATTRIBUTES       = HTML_401_TRANSITIONAL.values_at(:core, :i18n, :event, :sloppy).flatten
     ATTRIBUTES            = BASE_ATTRIBUTES
+
+    DEFAULT_HOW = nil
     
     def initialize(container, *args)
       set_container container
@@ -31,7 +33,7 @@ module Celerity
       when 1
         if Hash === args.first
           @conditions = args.first
-        elsif defined? self.class::DEFAULT_HOW
+        elsif self.class::DEFAULT_HOW
           @conditions = { self.class::DEFAULT_HOW => args.first }
         else
           raise ArgumentError, "wrong number of arguments (1 for 2)"

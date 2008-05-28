@@ -20,9 +20,11 @@ describe Label do
       @browser.label(:index, 1).should exist
       @browser.label(:xpath, "//label[@id='first_label']").should exist
      end
+
     it "should return true if the element exists (default how = :text)" do
       @browser.label("First name").should exist
     end
+
     it "should return false if the element does not exist" do
       @browser.label(:id, 'no_such_id').should_not exist
       @browser.label(:id, /no_such_id/).should_not exist
@@ -31,9 +33,11 @@ describe Label do
       @browser.label(:index, 1337).should_not exist
       @browser.label(:xpath, "//input[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.label(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.label(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
@@ -44,6 +48,7 @@ describe Label do
     it "should return the id attribute if the label exists" do
       @browser.label(:index, 1).id.should == "first_label"
     end
+
     it "should raise UnknownObjectException if the label doesn't exist" do
       lambda { @browser.label(:index, 1337).id }.should raise_error(UnknownObjectException)  
     end
@@ -53,6 +58,7 @@ describe Label do
     it "should return the 'for' attribute if the label exists" do
       @browser.label(:index, 1).for.should == "new_user_first_name"
     end
+
     it "should raise UnknownObjectException if the label doesn't exist" do
       lambda { @browser.label(:index, 1337).for }.should raise_error(UnknownObjectException)  
     end

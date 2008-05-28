@@ -22,9 +22,11 @@ describe Li do
       @browser.li(:index, 1).should exist
       @browser.li(:xpath, "//li[@id='non_link_1']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.li("non_link_1").should exist
     end
+
     it "should return false if the 'li' doesn't exist" do
       @browser.li(:id, "no_such_id").should_not exist
       @browser.li(:id, /no_such_id/).should_not exist
@@ -35,9 +37,11 @@ describe Li do
       @browser.li(:index, 1337).should_not exist
       @browser.li(:xpath, "//li[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.li(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.li(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
@@ -48,9 +52,11 @@ describe Li do
     it "should return the class attribute" do
       @browser.li(:id, 'non_link_1').class_name.should == 'nonlink'
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.li(:index, 1).class_name.should == ''
     end
+
     it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
@@ -60,9 +66,11 @@ describe Li do
     it "should return the id attribute" do
       @browser.li(:class, 'nonlink').id.should == "non_link_1"
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.li(:index, 1).id.should == ''
     end
+
     it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda { @browser.li(:index, 1337).id }.should raise_error(UnknownObjectException)
@@ -73,9 +81,11 @@ describe Li do
     it "should return the title attribute" do
       @browser.li(:id, 'non_link_1').title.should == 'This is not a link!'
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.li(:index, 1).title.should == ''
     end
+
     it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:id, 'no_such_id').title }.should raise_error( UnknownObjectException)
       lambda { @browser.li(:xpath, "//li[@id='no_such_id']").title }.should raise_error( UnknownObjectException)
@@ -86,9 +96,11 @@ describe Li do
     it "should return the text of the p" do
       @browser.li(:id, 'non_link_1').text.should == 'Non-link 1'
     end
+
     it "should return an empty string if the element doesn't contain any text" do
       @browser.li(:index, 1).text.should == ''
     end
+
     it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:id, 'no_such_id').text }.should raise_error( UnknownObjectException)
       lambda { @browser.li(:xpath , "//li[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
@@ -104,6 +116,7 @@ describe Li do
                                       "  title:        This is not a link!\n" +
                                       "  text:         Non-link 1"
     end
+
     it "should raise UnknownObjectException if the li doesn't exist" do
       lambda { @browser.li(:xpath, "//li[@id='no_such_id']").to_s }.should raise_error( UnknownObjectException)
     end

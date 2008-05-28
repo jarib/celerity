@@ -20,6 +20,7 @@ describe TableBody do
       @browser.body(:index, 1).should exist
       @browser.body(:xpath, "//tbody[@id='first']").should exist
     end
+
     it "should return true if the table body exists (table context)" do
       @browser.table(:index, 1).body(:id, 'first').should exist
       @browser.table(:index, 1).body(:id, /first/).should exist
@@ -28,10 +29,12 @@ describe TableBody do
       @browser.table(:index, 1).body(:index, 1).should exist
       @browser.table(:index, 1).body(:xpath, "//tbody[@id='first']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.body("first").should exist
       @browser.table(:index, 1).body("first").should exist
     end
+
     it "should return false if the table body exists (page context)" do
       @browser.body(:id, 'no_such_id').should_not exist
       @browser.body(:id, /no_such_id/).should_not exist
@@ -40,6 +43,7 @@ describe TableBody do
       @browser.body(:index, 1337).should_not exist
       @browser.body(:xpath, "//tbody[@id='no_such_id']").should_not exist
     end
+
     it "should return false if the table body exists (table context)" do
       @browser.table(:index, 1).body(:id, 'no_such_id').should_not exist
       @browser.table(:index, 1).body(:id, /no_such_id/).should_not exist
@@ -48,10 +52,12 @@ describe TableBody do
       @browser.table(:index, 1).body(:index, 1337).should_not exist
       @browser.table(:index, 1).body(:xpath, "//tbody[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.body(:id, 3.14).exists? }.should raise_error(ArgumentError)
       lambda { @browser.table(:index, 1).body(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.body(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
       lambda { @browser.table(:index, 1).body(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
@@ -63,6 +69,7 @@ describe TableBody do
       @browser.body(:id, 'first').length.should == 3
       @browser.body(:name, 'second').length.should == 3
     end
+
     it "should return the correct number of table bodies (table context)" do
       @browser.table(:index, 1).body(:id, 'first').length.should == 3
       @browser.table(:index, 1).body(:name, 'second').length.should == 3
@@ -75,6 +82,7 @@ describe TableBody do
       @browser.body(:id, 'first')[2][1].text.should == 'Gregory House'
       @browser.body(:id, 'first')[3][1].text.should == 'Hugh Laurie'
     end
+
     it "should return the row at the given index (table context)" do
       @browser.table(:index, 1).body(:id, 'first')[1].text.should == 'March 2008'
       @browser.table(:index, 1).body(:id, 'first')[2][1].text.should == 'Gregory House'

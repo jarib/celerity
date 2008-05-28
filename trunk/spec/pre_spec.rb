@@ -22,9 +22,11 @@ describe Pre do
       @browser.pre(:index, 1).should exist
       @browser.pre(:xpath, "//pre[@id='rspec']").should exist
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.pre("rspec").should exist
     end
+
     it "should return false if the 'p' doesn't exist" do
       @browser.pre(:id, "no_such_id").should_not exist
       @browser.pre(:id, /no_such_id/).should_not exist
@@ -35,9 +37,11 @@ describe Pre do
       @browser.pre(:index, 1337).should_not exist
       @browser.pre(:xpath, "//pre[@id='no_such_id']").should_not exist
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.pre(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.pre(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
@@ -48,9 +52,11 @@ describe Pre do
     it "should return the class attribute" do
       @browser.pre(:id, 'rspec').class_name.should == 'ruby'
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.pre(:index, 1).class_name.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.pre(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
@@ -60,9 +66,11 @@ describe Pre do
     it "should return the id attribute" do
       @browser.pre(:class, 'ruby').id.should == "rspec"
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.pre(:index, 1).id.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.pre(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda { @browser.pre(:index, 1337).id }.should raise_error(UnknownObjectException)
@@ -73,9 +81,11 @@ describe Pre do
     it "should return the title attribute" do
       @browser.pre(:class, 'brainfuck').title.should == 'The brainfuck language is an esoteric programming language noted for its extreme minimalism'
     end
+
     it "should return an empty string if the element exists and the attribute doesn't" do
       @browser.pre(:index, 1).title.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.pre(:id, 'no_such_id').title }.should raise_error( UnknownObjectException)
       lambda { @browser.pre(:xpath, "//pre[@id='no_such_id']").title }.should raise_error( UnknownObjectException)
@@ -86,9 +96,11 @@ describe Pre do
     it "should return the text of the p" do
       @browser.pre(:class, 'haskell').text.should == 'main = putStrLn "Hello World"'
     end
+
     it "should return an empty string if the element doesn't contain any text" do
       @browser.pre(:index, 1).text.should == ''
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.pre(:id, 'no_such_id').text }.should raise_error( UnknownObjectException)
       lambda { @browser.pre(:xpath , "//pre[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
@@ -100,6 +112,7 @@ describe Pre do
     it "should return a human readable representation of the element" do
       @browser.pre(:index, 1).to_s.should == "tag:          pre"
     end
+
     it "should raise UnknownObjectException if the p doesn't exist" do
       lambda { @browser.pre(:xpath, "//pre[@id='no_such_id']").to_s }.should raise_error( UnknownObjectException)
     end

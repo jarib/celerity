@@ -18,15 +18,19 @@ describe TableRow do
       @browser.row(:index, 1).should exist
       @browser.row(:xpath, "//tr[@id='outer_first']")
     end
+
     it "should return true if the element exists (default how = :id)" do
       @browser.row("outer_last").should exist
     end
+
     it "should return false if the table row exists" do
       
     end
+
     it "should raise ArgumentError when 'what' argument is invalid" do
       lambda { @browser.row(:id, 3.14).exists? }.should raise_error(ArgumentError)
     end
+
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.row(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
