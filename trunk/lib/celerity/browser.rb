@@ -1,5 +1,5 @@
 module Celerity
-  class IE
+  class Browser
     include Container
     attr_accessor :page, :object
     attr_reader :charset, :webclient
@@ -9,7 +9,6 @@ module Celerity
       browser.goto(uri)
       browser
     end
-    
     
     # Creates a browser object. 
     #
@@ -26,7 +25,7 @@ module Celerity
     #   Set the log level for Apache Jakarta commons logging system (used by HtmlUnit)
     #   Defaults to :warn. (not working..)
     # ==== Returns
-    # An instance of Celerity::IE
+    # An instance of Celerity::Browser
     #
     #-- 
     # @public
@@ -189,7 +188,5 @@ module Celerity
       end
     end
     
-  end # IE
+  end # Browser
 end # Celerity
-
-Celerity::Browser = Celerity::IE

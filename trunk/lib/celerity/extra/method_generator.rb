@@ -125,7 +125,7 @@ module Celerity
   
   end # MethodGenerator
   
-  class IE
+  class Browser
     def generate_method(opts = {})
       MethodGenerator.new(self, opts).parse
     end
@@ -138,7 +138,7 @@ end # Celerity
 # if __FILE__ == $0
 #   require File.dirname(__FILE__) + "/../spec/spec_helper"
 #   $stdout.sync = true
-#   @ie = IE.new
+#   @ie = Browser.new
 #   @ie.goto(TEST_HOST + "/forms_with_input_elements.html")
 # 
 #   puts MethodGenerator.new(@ie).parse

@@ -1,5 +1,5 @@
 module Celerity
-  class IE
+  class Browser
     # these are just for Watir compatability - should we keep them?
     class << self
       attr_accessor :speed, :attach_timeout, :visible
@@ -60,3 +60,5 @@ module Celerity
     alias_method :getContents, :get_contents
   end
 end
+
+Celerity::IE = Celerity::Browser
