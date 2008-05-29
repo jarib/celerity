@@ -38,6 +38,7 @@ module Celerity
       @webclient.setThrowExceptionOnFailingStatusCode(false) unless opts[:status_code_exceptions]
       @webclient.setCssEnabled(false)                        unless opts[:css]
       @webclient.setUseInsecureSSL(true)                     if opts[:secure_ssl] 
+      # @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new());
 
       @last_url, @page = nil
       @page_container  = self
