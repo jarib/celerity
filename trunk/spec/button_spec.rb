@@ -156,6 +156,19 @@ describe Button do
       lambda { @browser.button(:name, "no_such_name").value }.should raise_error(UnknownObjectException, 'Unable to locate object, using :name and "no_such_name"')
     end
   end
+  
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.button(:index, 1).should respond_to(:class_name)
+      @browser.button(:index, 1).should respond_to(:id)
+      @browser.button(:index, 1).should respond_to(:name)
+      @browser.button(:index, 1).should respond_to(:src)
+      @browser.button(:index, 1).should respond_to(:style)
+      @browser.button(:index, 1).should respond_to(:title)
+      @browser.button(:index, 1).should respond_to(:type)
+      @browser.button(:index, 1).should respond_to(:value)
+    end
+  end
 
   # Access methods
   describe "#enabled?" do

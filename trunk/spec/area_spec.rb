@@ -65,6 +65,7 @@ describe Area do
       lambda { @browser.area(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda { @browser.area(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
+    
   end
   
   describe "#name" do
@@ -81,7 +82,14 @@ describe Area do
       lambda { @browser.area(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-
+  
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.area(:index, 1).should respond_to(:id)
+      @browser.area(:index, 1).should respond_to(:name)
+    end
+  end
+  
   after :all do
     @browser.close
   end
