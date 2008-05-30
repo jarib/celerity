@@ -36,9 +36,15 @@ module Celerity
       @rows.each { |row| yield TableRow.new(self, :object, row)  }
     end
     
-    def [](index)
+    def child_row(index)
       assert_exists
       return TableRow.new(self, :object, @rows[index-1])
+    end
+    alias_method :[], :child_row
+    
+    def child_cell(index)
+      assert_exists
+      return TableCell.new(self, :object, @cells[index-1])
     end
     
     def row_count

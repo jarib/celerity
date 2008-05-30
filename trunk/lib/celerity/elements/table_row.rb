@@ -15,11 +15,12 @@ module Celerity
       @cells.each { |cell| yield TableCell.new(self, :object, cell) }
     end
 
-    def [](index)
+    def child_cell(index)
       assert_exists
       raise UnknownCellException, "Unable to locate a cell at index #{index}" if @cells.length < index
       return TableCell.new(self, :object, @cells[index-1])
     end
+    alias_method :[], :child_cell
 
     def column_count
       assert_exists
