@@ -38,12 +38,14 @@ module Celerity
     
     def child_row(index)
       assert_exists
+      raise UnknownRowException, "Unable to locate a row at index #{index}" if @cells.length < index
       return TableRow.new(self, :object, @rows[index-1])
     end
     alias_method :[], :child_row
     
     def child_cell(index)
       assert_exists
+      raise UnknownCellException, "Unable to locate a cell at index #{index}" if @cells.length < index
       return TableCell.new(self, :object, @cells[index-1])
     end
     

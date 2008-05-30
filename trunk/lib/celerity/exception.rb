@@ -28,6 +28,9 @@ module Celerity
       
     # This exception gets raised if part of finding an object is missing
     class MissingWayOfFindingObjectException < CelerityException; end
+    
+    # this exception is raised if an attempt is made to access a table row that doesnt exist
+    class UnknownRowException < CelerityException; end
       
     # this exception is raised if an attempt is made to access a table cell that doesnt exist
     class UnknownCellException < CelerityException; end

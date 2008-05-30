@@ -24,7 +24,10 @@ describe TableRow do
     end
 
     it "should return false if the table row exists" do
-      
+      @browser.row(:id, "no_such_id").should_not exist
+      @browser.row(:id, /no_such_id/).should_not exist
+      @browser.row(:index, 1337).should_not exist
+      @browser.row(:xpath, "//tr[@id='no_such_id']")      
     end
 
     it "should raise ArgumentError when 'what' argument is invalid" do
@@ -54,15 +57,33 @@ describe TableRow do
   end
   
   describe "#[]" do
-    it "should " do # FIXME: description
+    it "should return the nth cell of the parent row" do
       @browser.table(:id, 'outer').row(:index, 1)[1].text.should == "Table 1, Row 1, Cell 1"
       @browser.table(:id, 'outer')[1][1].text.should == "Table 1, Row 1, Cell 1"
       @browser.table(:id, 'outer')[3][1].text.should == "Table 1, Row 3, Cell 1"
     end
+    
+    it "should raise UnknownCellException if the index is out of bounds" do
+      lambda { @browser.table(:id, 'outer').row(:index, 1)[1337] }.should raise_error(UnknownCellException)
+      lambda { @browser.table(:id, 'outer')[1][1337] }.should raise_error(UnknownCellException)
+    end
+  end
+  
+  describe "#child_cell" do
+    it "should return the nth cell of the parent row" do
+      @browser.table(:id, 'outer').row(:index, 1).child_cell(1).text.should == "Table 1, Row 1, Cell 1"
+      @browser.table(:id, 'outer')[1].child_cell(1).text.should == "Table 1, Row 1, Cell 1"
+      @browser.table(:id, 'outer')[3].child_cell(1).text.should == "Table 1, Row 3, Cell 1"
+    end
+    
+    it "should raise UnknownCellException if the index is out of bounds" do
+      lambda { @browser.table(:id, 'outer').row(:index, 1).child_cell(1337) }.should raise_error(UnknownCellException)
+      lambda { @browser.table(:id, 'outer')[1].child_cell(1337) }.should raise_error(UnknownCellException)
+    end
   end
   
   describe "#each" do
-    it "should " do # FIXME: description
+    it "should iterate correctly through the cells of the row" do
       index = 1
       @browser.table(:id, 'outer')[2].each do |c|
         case index

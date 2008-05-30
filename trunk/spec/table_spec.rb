@@ -91,10 +91,33 @@ describe Table do
   end
   
   describe "#[]" do
-    it "should return the row at the given index" do
+    it "should return the nth child row" do
       @browser.table(:id, 'outer')[1].id.should == "outer_first"
       @browser.table(:id, 'inner')[1].id.should == "inner_first"
       @browser.table(:id, 'outer')[3].id.should == "outer_last"
+    end
+    it "should raise UnknownRowException if the index is out of bounds" do
+      lambda { @browser.table(:id, 'outer')[1337] }.should raise_error(UnknownRowException)
+    end
+  end
+
+  describe "#child_row" do
+    it "should return the nth child row" do
+      @browser.table(:id, 'outer').child_row(1).id.should == "outer_first"
+      @browser.table(:id, 'inner').child_row(1).id.should == "inner_first"
+      @browser.table(:id, 'outer').child_row(3).id.should == "outer_last"
+    end
+    it "should raise UnknownRowException if the index is out of bounds" do
+      lambda { @browser.table(:id, 'outer').child_row(1337) }.should raise_error(UnknownRowException)
+    end
+  end
+  
+  describe "#child_cell" do
+    it "should return the nth child row" do
+      @browser.table(:id, 'outer').child_cell(5).text.should == "Table 1, Row 3, Cell 1"
+    end
+    it "should raise UnknownCellException if the index is out of bounds" do
+      lambda { @browser.table(:id, 'outer').child_cell(1337) }.should raise_error(UnknownCellException)
     end
   end
   
