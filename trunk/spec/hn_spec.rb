@@ -88,6 +88,15 @@ describe H1, H2, H3, H4, H5, H6 do
     end
   end
   
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.h1(:index, 1).should respond_to(:class_name)
+      @browser.h1(:index, 1).should respond_to(:id)
+      @browser.h1(:index, 1).should respond_to(:text)
+    end
+  end
+  
+  
   after :all do
     @browser.close
   end

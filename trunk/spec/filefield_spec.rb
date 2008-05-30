@@ -8,7 +8,7 @@ describe FileField do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   describe "#exist?" do
     it "should return true if the file field exists" do
       @browser.file_field(:id, 'new_user_portrait').should exist
@@ -44,7 +44,7 @@ describe FileField do
       lambda { @browser.file_field(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
 
   describe "#class_name" do
@@ -56,7 +56,7 @@ describe FileField do
       lambda { @browser.file_field(:index, 1337).class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id attribute if the text field exists" do
       @browser.file_field(:index, 1).id.should == "new_user_portrait"
@@ -66,7 +66,7 @@ describe FileField do
       lambda { @browser.file_field(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#name" do
     it "should return the name attribute if the text field exists" do
       @browser.file_field(:index, 1).name.should == "new_user_portrait"
@@ -76,13 +76,13 @@ describe FileField do
       lambda { @browser.file_field(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#title" do
     it "should return the title attribute if the text field exists" do
       @browser.file_field(:id, "new_user_portrait").title.should == "Smile!"
     end
   end
-  
+
   describe "#type" do
     it "should return the type attribute if the text field exists" do
       @browser.file_field(:index, 1).type.should == "file"
@@ -92,10 +92,20 @@ describe FileField do
       lambda { @browser.file_field(:index, 1337).type }.should raise_error(UnknownObjectException)
     end
   end
-  
-  
+
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.file_field(:index, 1).should respond_to(:class_name)
+      @browser.file_field(:index, 1).should respond_to(:id)
+      @browser.file_field(:index, 1).should respond_to(:name)
+      @browser.file_field(:index, 1).should respond_to(:title)
+      @browser.file_field(:index, 1).should respond_to(:type)
+      @browser.file_field(:index, 1).should respond_to(:value)
+    end
+  end
+
   # Manipulation methods
-    
+
   describe "#set" do
     it "should be able to set a file path in the field and click the upload button and fire the onchange event" do
       @browser.file_field(:name, "new_user_portrait").set(__FILE__)

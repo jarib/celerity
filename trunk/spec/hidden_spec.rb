@@ -98,6 +98,16 @@ describe Hidden do
     end
   end
   
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.hidden(:index, 1).should respond_to(:id)
+      @browser.hidden(:index, 1).should respond_to(:name)
+      @browser.hidden(:index, 1).should respond_to(:type)
+      @browser.hidden(:index, 1).should respond_to(:value)
+    end
+  end
+  
+  
   # Manipulation methods
   describe "#value=" do
     it "should set the value of the element" do
