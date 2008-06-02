@@ -10,7 +10,7 @@ describe Element do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
   
-  describe "#new" do
+  describe "::new" do
     it "should find elements matching the conditions when given a hash of :how => 'what' arguments" do
       @browser.checkbox(:name => 'new_user_interests', :title => 'Dancing is fun!').value.should == 'dancing'
       @browser.text_field(:class_name => 'name', :index => 2).id.should == 'new_user_last_name'
