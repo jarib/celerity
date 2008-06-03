@@ -26,6 +26,11 @@ describe TextField do
       @browser.text_field(:index, 1).should exist
       @browser.text_field(:xpath, "//input[@id='new_user_email']").should exist
      end
+     
+     it "should return true if the element exists (latin1)" do
+       @browser.goto(TEST_HOST + "/latin1_text.html")
+       @browser.text_field(:id, "\370\345\346").should exist
+     end
 
     it "should return true if the element exists (default how = :name)" do
       @browser.text_field("new_user_email").should exist
