@@ -18,36 +18,27 @@ It is a wrapper around the HtmlUnit Java library and is currently aimed at provi
 * Easy to use: Simple API
 * Portable: Cross-platform
 * Unintrusive: No browser window interrupting your workflow (runs in background)
-
-== SYNOPSIS:
-
-require 'rubygems'
-require 'celerity'
-
-browser = Celerity::IE.new
-browser.goto("google.com")
-browser.text_field(:name, 'q').set("celerity")
-browser.button(:name, 'btnG').submit
 	
 == REQUIREMENTS:
 
 * JRuby 1.1
-	
 * Java 6
 
 == INSTALL:
 
-* jruby -S gem install celerity
+  jruby -S gem install celerity
 
 == EXAMPLE:
-require "celerity" 
 
-browser = Celerity::Browser.new
-browser.goto('http://www.google.com')
-browser.text_field(:name, 'q').value = 'Celerity'
-browser.button(:name, 'btnG').click
+  require "rubygems"
+  require "celerity" 
 
-puts "yay" if browser.text.include? 'celerity.rubyforge.org'
+  browser = Celerity::Browser.new
+  browser.goto('http://www.google.com')
+  browser.text_field(:name, 'q').value = 'Celerity'
+  browser.button(:name, 'btnG').click
+
+  puts "yay" if browser.text.include? 'celerity.rubyforge.org'
 
 == LICENSE:
 

@@ -28,56 +28,11 @@ class DistributedViewer
   
   def print(path = nil)
     if path
-      # TODO: fix printing
-      
-      # =========
-      # = Alt I =
-      # =========
-      # rect = @web_view.mainFrame.frameView.documentView.bounds
-      # view = @web_view.mainFrame.frameView.documentView
-      # print_operation = NSPrintOperation.PDFOperationWithView_insideRect_toPath_printInfo(view, 
-      #                                                                                     rect,
-      #                                                                                     path,
-      #                                                                                     NSPrintInfo.sharedPrintInfo)
-      # print_operation.runOperation
-      
-      # ======================================================================
-      # = Alt II : http://www.cocoadev.com/index.pl?GettingViewContentAsImage =
-      # ======================================================================
-      print_info = NSPrintInfo.sharedPrintInfo
-      print_info.setJobDisposition(NSPrintSaveJob)
-      print_info.dictionary.setObject_forKey(path, NSPrintSavePath) 
-      print_info.dictionary.setObject_forKey(1, NSPrintFirstPage) 
-      print_info.dictionary.setObject_forKey(1, NSPrintLastPage) 
-      print_info.dictionary.setObject_forKey("Letter", NSPrintPaperName) 
-      print_info.setBottomMargin(0.0)
-      print_info.setTopMargin(0.0)
-      print_info.setLeftMargin(0.0)
-      print_info.setRightMargin(0.0)
-      
-      operation = NSPrintOperation.printOperationWithView_printInfo(@web_view.mainFrame.frameView.documentView, print_info)
-      operation.setShowPanels(false)
-      operation.runOperation
-      
-      # ===============================================================
-      # = Alt III : /Developer/Examples/RubyCocoa/Scripts/darkroom.rb =
-      # ===============================================================
-      # viewport = @web_view.mainFrame.frameView.documentView
-      # log(1)
-      # # viewport.window.orderFront(nil)
-      # viewport.window.display
-      # log(2)
-      # # viewport.window.setContentSize(viewport.bounds)
-      # viewport.setFrame(viewport.bounds)
-      # log(3)
-      # viewport.lockFocus
-      # log(4)
-      # bitmap = NSBitmapImageRep.alloc.initWithFocusedViewRect(viewport.bounds)
-      # viewport.unLockFocus
-      # log(5)
-      # log(bitmap)
-      # bitmap.representationUsingType_properties(NSPNGFileType, nil).writeToFile_atomically(path, true)
-      # log(6)
+      viewport = @web_view.mainFrame.frameView.documentView
+      viewport_bounds = viewport.bounds 
+      image_rep = viewport.bitmapImageRepForCachingDisplayInRect(viewport_bounds)
+      viewport.cacheDisplayInRect_toBitmapImageRep(viewport_bounds, image_rep)
+      image_rep.representationUsingType_properties(NSPNGFileType, nil).writeToFile_atomically(path, true)
     else
       @web_view.print(nil)
     end
