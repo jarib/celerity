@@ -1,0 +1,7 @@
+#!/usr/bin/env jruby
+
+require File.dirname(__FILE__) + "/../lib/celerity_viewer"
+
+
+DRb.install_acl(ACL.new(%w{deny all allow 127.0.0.1}))
+DRb.start_service("druby://127.0.0.1:6429", DistributedViewer.new(CelerityViewer::Application.new))

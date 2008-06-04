@@ -1,0 +1,15 @@
+require 'rake'
+
+desc 'Runs the app'
+task :run do
+  if RUBY_PLATFORM =~ /java/
+    load 'bin/celerity_viewer'
+  else
+   sh 'jruby bin/celerity_viewer'
+ end
+end
+
+
+task :default => [:run]
+
+# Dir['tasks/**/*.rake'].each { |rake| load rake }

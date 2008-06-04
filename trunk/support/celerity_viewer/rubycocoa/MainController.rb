@@ -9,7 +9,7 @@ class MainController < NSObject
 	def awakeFromNib
 	  @web_view.preferences.setShouldPrintBackgrounds(true)
 	  NSUserDefaults.standardUserDefaults.setObject_forKey('YES', 'WebKitDeveloperExtras')
-	  DRb.start_service("druby://127.0.0.1:1337", DistributedViewer.new(@web_view, @text_field))
+	  DRb.start_service("druby://127.0.0.1:6429", DistributedViewer.new(@web_view, @text_field))
 	end
 	
 	def load_url(sender)

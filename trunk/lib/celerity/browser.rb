@@ -30,6 +30,7 @@ module Celerity
     #-- 
     # @public
     def initialize(opts = {})
+      @opts = opts
       java.lang.System.getProperties.put("org.apache.commons.logging.simplelog.defaultlog", opts[:log_level] ? opts[:log_level].to_s : "warn")
 
       browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
@@ -175,17 +176,18 @@ module Celerity
       begin
         @viewer.render_html(html, url) 
       rescue Errno::ECONNREFUSED => e
-        puts e.message
+        @viewer = nil
       end
     end    
     
     def find_viewer
+      # FIXME: not ideal
+      require 'drb'
       begin
-        if `uname`.chomp == "Darwin" && `ps ax`[/CelerityViewer/]
-          require "drb"
-          @viewer = DRbObject.new_with_uri("druby://127.0.0.1:1337")
-        end
-      rescue IOError, Errno::ENOENT
+        viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
+        @viewer = viewer if viewer.respond_to?(:render_html)
+      rescue Errno::ECONNREFUSED
+        @viewer = nil
       end
     end
     
