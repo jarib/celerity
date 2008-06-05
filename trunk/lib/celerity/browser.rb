@@ -175,7 +175,7 @@ module Celerity
     def render
       begin
         @viewer.render_html(html, url) 
-      rescue Errno::ECONNREFUSED => e
+      rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
         @viewer = nil
       end
     end    
@@ -186,7 +186,7 @@ module Celerity
       begin
         viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
         @viewer = viewer if viewer.respond_to?(:render_html)
-      rescue Errno::ECONNREFUSED
+      rescue DRb::DRbConnError, Errno::ECONNREFUSED
         @viewer = nil
       end
     end
