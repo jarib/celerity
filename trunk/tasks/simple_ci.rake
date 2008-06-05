@@ -80,7 +80,7 @@ task :simple_ci do
 
     pp specs if $DEBUG
     puts "*** running rcov at #{Time.now}"
-    puts %x{jruby -S rake --silent spec > #{CI_ROOT}/index2.html}
+    puts %x{jruby -S rake --trace --silent spec > #{CI_ROOT}/index2.html}
     FileUtils.mv(CI_ROOT + "/index2.html", CI_ROOT + "/index.html", :verbose => true)
     Dir[CI_ROOT + "/coverage/*"].each { |f| FileUtils.rm_r(f, :verbose => true) }
     FileUtils.mv(CI_ROOT + "/../coverage", CI_ROOT + "/coverage", :verbose => true)
