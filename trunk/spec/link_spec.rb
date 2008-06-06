@@ -148,14 +148,14 @@ describe Link do
   
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
-      @browser.image(:index, 1).should respond_to(:class_name)
-      @browser.image(:index, 1).should respond_to(:href)
-      @browser.image(:index, 1).should respond_to(:url)
-      @browser.image(:index, 1).should respond_to(:id)
-      @browser.image(:index, 1).should respond_to(:name)
-      @browser.image(:index, 1).should respond_to(:style)
-      @browser.image(:index, 1).should respond_to(:text)
-      @browser.image(:index, 1).should respond_to(:title)
+      @browser.link(:index, 1).should respond_to(:class_name)
+      @browser.link(:index, 1).should respond_to(:href)
+      @browser.link(:index, 1).should respond_to(:url)
+      @browser.link(:index, 1).should respond_to(:id)
+      @browser.link(:index, 1).should respond_to(:name)
+      @browser.link(:index, 1).should respond_to(:style)
+      @browser.link(:index, 1).should respond_to(:text)
+      @browser.link(:index, 1).should respond_to(:title)
     end
   end
   
