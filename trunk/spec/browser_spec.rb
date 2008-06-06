@@ -50,11 +50,6 @@ describe IE do
       @browser.goto(TEST_HOST + "/utf8_text.html")
       @browser.text.strip.should == "\303\246\303\245\303\270"
     end
-
-    it "should return text in the correct charset (latin-1)" do
-      @browser.goto(TEST_HOST + "/latin1_text.html")
-      @browser.text.strip.should == "\370\345\346"
-    end
   end
 
   describe "#url" do

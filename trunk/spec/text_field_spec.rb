@@ -26,11 +26,6 @@ describe TextField do
       @browser.text_field(:index, 1).should exist
       @browser.text_field(:xpath, "//input[@id='new_user_email']").should exist
      end
-     
-     it "should return true if the element exists (latin1)" do
-       @browser.goto(TEST_HOST + "/latin1_text.html")
-       @browser.text_field(:id, "\370\345\346").should exist
-     end
 
     it "should return true if the element exists (default how = :name)" do
       @browser.text_field("new_user_email").should exist
@@ -264,12 +259,6 @@ describe TextField do
       @browser.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
     end
 
-    it "should be able to set Latin 1 characters" do
-      @browser.goto(TEST_HOST + "/latin1_text.html")
-      @browser.text_field(:id, "charset").value = "B\370rsmegler"
-      @browser.text_field(:id, "charset").value.should == "B\370rsmegler"
-    end
-
     it "should set the value of a textarea element" do
       @browser.text_field(:id, 'delete_user_comment').value = 'Hello Cruel World'
       @browser.text_field(:id, "delete_user_comment").value.should == 'Hello Cruel World'
@@ -304,12 +293,6 @@ describe TextField do
     it "should be able to set multi-byte characters" do
       @browser.text_field(:name, "new_user_occupation").set("ĳĳ")
       @browser.text_field(:name, "new_user_occupation").get_contents.should == "ĳĳ"
-    end
-
-    it "should be able to set Latin 1 characters" do
-      @browser.goto(TEST_HOST + "/latin1_text.html")
-      @browser.text_field(:id, "charset").set("B\370rsmegler")
-      @browser.text_field(:id, "charset").get_contents.should == "B\370rsmegler"
     end
 
     it "should raise UnknownObjectException if the text field doesn't exist" do
