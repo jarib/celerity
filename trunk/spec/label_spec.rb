@@ -63,6 +63,14 @@ describe Label do
       lambda { @browser.label(:index, 1337).for }.should raise_error(UnknownObjectException)  
     end
   end
+
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.label(:index, 1).should respond_to(:id)
+      @browser.label(:index, 1).should respond_to(:for)
+    end
+  end
+
   
   after :all do
     @browser.close

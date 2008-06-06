@@ -151,6 +151,18 @@ describe Radio do
     end
   end
   
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.radio(:index, 1).should respond_to(:class_name)
+      @browser.radio(:index, 1).should respond_to(:id)
+      @browser.radio(:index, 1).should respond_to(:name)
+      @browser.radio(:index, 1).should respond_to(:title)
+      @browser.radio(:index, 1).should respond_to(:type)
+      @browser.radio(:index, 1).should respond_to(:value)
+    end
+  end
+  
+  
   
   # Access methods
   describe "#enabled?" do

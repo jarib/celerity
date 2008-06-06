@@ -73,6 +73,14 @@ describe Ul do
     end
   end
   
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.ul(:index, 1).should respond_to(:class_name)
+      @browser.ul(:index, 1).should respond_to(:id)
+    end
+  end
+  
+  
   after :all do
     @browser.close
   end

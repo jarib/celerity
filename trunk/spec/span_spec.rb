@@ -136,6 +136,18 @@ describe Span do
       lambda { @browser.span(:index , 1337).value }.should raise_error(UnknownObjectException)
     end
   end
+  
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.image(:index, 1).should respond_to(:class_name)
+      @browser.image(:index, 1).should respond_to(:id)
+      @browser.image(:index, 1).should respond_to(:name)
+      @browser.image(:index, 1).should respond_to(:title)
+      @browser.image(:index, 1).should respond_to(:text)
+      @browser.image(:index, 1).should respond_to(:value)
+    end
+  end
+  
 
   # Other
   describe "#click" do

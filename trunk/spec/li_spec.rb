@@ -106,6 +106,16 @@ describe Li do
       lambda { @browser.li(:xpath , "//li[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
     end
   end
+  
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.li(:index, 1).should respond_to(:class_name)
+      @browser.li(:index, 1).should respond_to(:id)
+      @browser.li(:index, 1).should respond_to(:text)
+      @browser.li(:index, 1).should respond_to(:title)
+    end
+  end
+  
 
   # Other
   describe "#to_s" do

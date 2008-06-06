@@ -102,26 +102,6 @@ module Celerity
     alias_method :as_xml, :to_xml
     alias_method :html, :to_xml
     
-    # used to get attributes
-    def method_missing(meth, *args, &blk)
-      case meth
-      when :class_name
-        meth = :class
-      when :caption
-        meth = :value
-      when :url
-        meth = :href
-      end
-
-      if self.class::ATTRIBUTES.include?(meth)
-        assert_exists
-        @object.getAttributeValue(meth.to_s)
-      else
-        Log.warn "Element\#method_missing calling super with #{meth.inspect}"
-        super
-      end
-    end
-    
     def attribute_string
       assert_exists
       n = ''
@@ -131,6 +111,25 @@ module Celerity
         n += "#{attribute.getName}=\"#{attribute.getHtmlValue.to_s}\" "
       end
       return n
+    end
+
+    # used to get attributes
+    def method_missing(meth, *args, &blk)
+      meth = method_to_attribute(meth)
+      
+      if self.class::ATTRIBUTES.include?(meth)
+        assert_exists
+        @object.getAttributeValue(meth.to_s)
+      else
+        Log.warn "Element\#method_missing calling super with #{meth.inspect}"
+        super
+      end
+    end
+
+    def respond_to?(meth, include_private = false)
+      meth = method_to_attribute(meth)
+      return true if self.class::ATTRIBUTES.include?(meth)
+      super
     end
 
     private
@@ -153,6 +152,15 @@ module Celerity
         "#{how.inspect} and #{what.inspect}"
       else
         @conditions.inspect
+      end
+    end
+    
+    def method_to_attribute(meth)
+      case meth
+      when :class_name then :class
+      when :caption then :value
+      when :url then :href
+      else meth
       end
     end
     

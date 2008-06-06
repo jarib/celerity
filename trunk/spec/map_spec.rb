@@ -73,6 +73,14 @@ describe Map do
       lambda { @browser.map(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
+  
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.map(:index, 1).should respond_to(:id)
+      @browser.map(:index, 1).should respond_to(:name)
+    end
+  end
+  
 
   # Other
   describe "#to_s" do

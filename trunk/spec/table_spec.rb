@@ -139,7 +139,7 @@ describe Table do
   describe "#body" do
     it "should return the correct instance of TableBody" do
       body = @browser.table(:index, 1).body(:id, 'first')
-      body.instance_of?(TableBody).should be_true
+      body.should be_instance_of(TableBody)
       body[1][1].text.should == "March 2008"
     end
   end
@@ -147,7 +147,7 @@ describe Table do
   describe "#bodies" do
     it "should return the correct instance of TableBodies" do
       bodies = @browser.table(:index, 1).bodies
-      bodies.instance_of?(TableBodies).should be_true
+      bodies.should be_instance_of(TableBodies)
       bodies[1].id.should == "first"
       bodies[2].id.should == "second"
     end

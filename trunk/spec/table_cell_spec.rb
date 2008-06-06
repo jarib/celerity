@@ -59,6 +59,14 @@ describe TableCell do
     end
   end
   
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.cell(:index, 1).should respond_to(:text)
+      @browser.cell(:index, 1).should respond_to(:colspan)
+    end
+  end
+  
+  
   after :all do
     @browser.close
   end

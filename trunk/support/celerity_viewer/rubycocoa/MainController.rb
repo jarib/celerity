@@ -13,6 +13,7 @@ class MainController < NSObject
 	end
 	
 	def load_url(sender)
+    # debugger
 	  str = sender.stringValue
 	  url = NSURL.URLWithString(str.to_ruby =~ /^https?/ ? str : "http://#{str}" )
     @web_view.mainFrame.loadRequest(OSX::NSURLRequest.requestWithURL(url))

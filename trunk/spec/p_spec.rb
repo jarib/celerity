@@ -136,6 +136,18 @@ describe P do
       lambda { @browser.p(:index , 1337).value }.should raise_error(UnknownObjectException)
     end
   end
+  
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.p(:index, 1).should respond_to(:class_name)
+      @browser.p(:index, 1).should respond_to(:id)
+      @browser.p(:index, 1).should respond_to(:name)
+      @browser.p(:index, 1).should respond_to(:title)
+      @browser.p(:index, 1).should respond_to(:text)
+      @browser.p(:index, 1).should respond_to(:value)
+    end
+  end
+  
 
   # Other
   describe "#to_s" do
