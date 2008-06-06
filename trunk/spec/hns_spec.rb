@@ -12,23 +12,28 @@ describe H1s, H2s, H3s, H4s, H5s, H6s do
 
   describe "#length" do
     it "should return the number of h1s" do
-      @browser.h2s.length.should == 8
+      @browser.h2s.length.should == 9
     end
   end
   
   describe "#[]" do
-    it "should return the p at the given index" do
+    it "should return the h1 at the given index" do
       @browser.h1s[1].id.should == "first_header"
     end
   end
 
   describe "#each" do
-    it "should iterate through ps correctly" do
-      @browser.h2s.each_with_index do |h, index|
-        h.name.should == @browser.h2(:index, index+1).name
-        h.id.should == @browser.h2(:index, index+1).id
-        h.value.should == @browser.h2(:index, index+1).value
+    it "should iterate through header collections correctly" do
+      lengths = (1..6).collect do |i|
+        collection = @browser.send(:"h#{i}s")
+        collection.each_with_index do |h, index|
+          h.name.should == @browser.send(:"h#{i}", :index, index+1).name
+          h.id.should == @browser.send(:"h#{i}", :index, index+1).id
+          h.value.should == @browser.send(:"h#{i}", :index, index+1).value
+        end
+        collection.length
       end
+      lengths.should == [2, 9, 2, 1, 1, 2]
     end
   end
   

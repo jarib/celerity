@@ -13,11 +13,12 @@ describe H1, H2, H3, H4, H5, H6 do
   # Exists method
   describe "#exist?" do
     it "should return true if the element exists" do
-      @browser.h1(:id, "first_header").should exist
-      @browser.h1(:id, /first_header/).should exist
-      @browser.h1(:text, "Header 1").should exist
-      @browser.h1(:text, /Header 1/).should exist
-      @browser.h1(:index, 1).should exist
+      @browser.h1(:id, "header1").should exist
+      @browser.h2(:id, /header2/).should exist
+      @browser.h3(:text, "Header 3").should exist
+      @browser.h4(:text, /Header 4/).should exist
+      @browser.h5(:index, 1).should exist
+      @browser.h6(:index, 1).should exist
       @browser.h1(:xpath, "//h1[@id='first_header']").should exist
     end
 
@@ -64,7 +65,7 @@ describe H1, H2, H3, H4, H5, H6 do
     end
 
     it "should return an empty string if the element exists and the attribute doesn't" do
-      @browser.h2(:index, 1).id.should == ''
+      @browser.h3(:index, 1).id.should == ''
     end
 
     it "should raise UnknownObjectException if the p doesn't exist" do
@@ -79,12 +80,12 @@ describe H1, H2, H3, H4, H5, H6 do
     end
 
     it "should return an empty string if the element doesn't contain any text" do
-      @browser.h6(:index, 1).text.should == ''
+      @browser.h6(:id, "empty_header").text.should == ''
     end
 
     it "should raise UnknownObjectException if the p doesn't exist" do
-      lambda { @browser.h1(:id, 'no_such_id').text }.should raise_error( UnknownObjectException)
-      lambda { @browser.h1(:xpath , "//h1[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
+      lambda { @browser.h1(:id, 'no_such_id').text }.should raise_error(UnknownObjectException)
+      lambda { @browser.h1(:xpath , "//h1[@id='no_such_id']").text }.should raise_error(UnknownObjectException)
     end
   end
   
@@ -95,7 +96,6 @@ describe H1, H2, H3, H4, H5, H6 do
       @browser.h1(:index, 1).should respond_to(:text)
     end
   end
-  
   
   after :all do
     @browser.close
