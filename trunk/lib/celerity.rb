@@ -47,6 +47,7 @@ require "time"
 Log = Logger.new($DEBUG ? $stderr : nil)
 Log.level = Logger::DEBUG
 # undefine deprecated methods to use them for Element attributes
-Object.send :undef_method, :id
-Object.send :undef_method, :type
-
+if ["id", "type"].any? { |meth| Object.instance_methods.include?(meth) }
+  Object.send :undef_method, :id
+  Object.send :undef_method, :type
+end

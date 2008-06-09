@@ -42,7 +42,10 @@ if RUBY_PLATFORM =~ /java/ || ENV['WATIR_SPEC']
     # cleaner way to do this?
     require File.dirname(__FILE__) + "/../support/spec_server"
     s = Celerity::SpecServer.new
-    s.run
+    begin
+      s.run
+    rescue Errno::EADDRINUSE
+    end
     TEST_HOST = s.host
   end
 else
