@@ -65,12 +65,10 @@ module Celerity
     end
 
     def exists?
-      begin
-        assert_exists
-        true
-      rescue UnknownObjectException, UnknownFrameException
-        false
-      end
+      assert_exists
+      true
+    rescue UnknownObjectException, UnknownFrameException
+      false
     end
     alias_method :exist?, :exists?
     alias_method :exists, :exists?

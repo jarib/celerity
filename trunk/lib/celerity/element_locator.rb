@@ -23,55 +23,53 @@ module Celerity
       index = 0 # by default, return the first matching element
       text = nil 
       
-      begin 
-        conditions.each do |how, what|
-          case how
-          when :object
-            return what
-          when :id
-            return find_by_id(what)
-          when :xpath
-            return find_by_xpath(what)
-          when :class_name
-            how = :class
-          when :url
-            how = :href
-          when :caption
-            how = :text
-          end
-        
-          if @attributes.include?(how)
-            attributes[how] << what  
-          elsif how == :index
-            index = what.to_i - 1
-          elsif how == :text
-            text = what
-          else
-            raise MissingWayOfFindingObjectException, "No how #{how.inspect}"
-          end
-
+      conditions.each do |how, what|
+        case how
+        when :object
+          return what
+        when :id
+          return find_by_id(what)
+        when :xpath
+          return find_by_xpath(what)
+        when :class_name
+          how = :class
+        when :url
+          how = :href
+        when :caption
+          how = :text
         end
-
-        @idents.each do |ident|
-          merged = attributes.merge(ident.attributes) do |key, v1, v2|
-            attributes[key] = v1 | v2
-          end
-            
-          id = Identifier.new(ident.tag, merged)
-          # «original» identifier takes precedence for :text
-          id.text = ident.text || text
-          @condition_idents << id
-        end
-        
-        if index == 0
-          element_by_idents(@condition_idents)
+      
+        if @attributes.include?(how)
+          attributes[how] << what  
+        elsif how == :index
+          index = what.to_i - 1
+        elsif how == :text
+          text = what
         else
-          elements_by_idents(@condition_idents)[index]
+          raise MissingWayOfFindingObjectException, "No how #{how.inspect}"
         end
 
-      rescue HtmlUnit::ElementNotFoundException
-        nil # for rcov
       end
+
+      @idents.each do |ident|
+        merged = attributes.merge(ident.attributes) do |key, v1, v2|
+          attributes[key] = v1 | v2
+        end
+          
+        id = Identifier.new(ident.tag, merged)
+        # «original» identifier takes precedence for :text
+        id.text = ident.text || text
+        @condition_idents << id
+      end
+      
+      if index == 0
+        element_by_idents(@condition_idents)
+      else
+        elements_by_idents(@condition_idents)[index]
+      end
+
+    rescue HtmlUnit::ElementNotFoundException
+      nil # for rcov
     end
     
     def find_by_id(what)

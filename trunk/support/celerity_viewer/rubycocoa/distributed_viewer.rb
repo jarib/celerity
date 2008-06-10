@@ -13,17 +13,15 @@ class DistributedViewer
   end
     
   def render_html(html, url = nil)
-    begin
-      if url
-        uri = URI.parse(url)
-        base_url = "#{uri.scheme}://#{uri.host}"
-        @url_field.setStringValue(url)
-        url = NSURL.URLWithString(base_url)
-      end
-      @web_view.mainFrame.loadHTMLString_baseURL(html, url)
-    rescue => e
-      log(e)
+    if url
+      uri = URI.parse(url)
+      base_url = "#{uri.scheme}://#{uri.host}"
+      @url_field.setStringValue(url)
+      url = NSURL.URLWithString(base_url)
     end
+    @web_view.mainFrame.loadHTMLString_baseURL(html, url)
+  rescue => e
+    log(e)
   end
   
   def print(path = nil)

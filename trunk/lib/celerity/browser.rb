@@ -93,15 +93,6 @@ module Celerity
       @object
     end
     
-    def collection_string(collection_method)
-      collection = self.send collection_method
-      buffer = "Found #{collection.size} divs\n"
-      collection.each_with_index do |div, index|
-        buffer += "#{index+1}: #{div.attribute_string}\n"
-      end
-      return buffer
-    end
-    
     def back
       # FIXME: this is naive, need capability from HtmlUnit  
       goto(@last_url) if @last_url
@@ -159,10 +150,9 @@ module Celerity
     end
     
     def method_missing(meth, *args)
-      match_data = /^show_(.*)$/.match(meth.to_s)
-      if match_data
+      if type = meth.to_s[/^show_(.*)$/, 1]
         begin
-          puts collection_string(match_data[1])
+          puts collection_string(type)
         rescue NoMethodError
           super
         end
@@ -173,23 +163,28 @@ module Celerity
     
     private
     
-    def render
-      begin
-        @viewer.render_html(html, url) 
-      rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
-        @viewer = nil
+    def collection_string(collection_method)
+      collection = self.send collection_method
+      buffer = "Found #{collection.size} divs\n"
+      collection.each_with_index do |div, index|
+        buffer += "#{index+1}: #{div.attribute_string}\n"
       end
+      return buffer
+    end
+    
+    def render
+      @viewer.render_html(html, url) 
+    rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
+      @viewer = nil
     end    
     
     def find_viewer
       # FIXME: not ideal
       require 'drb'
-      begin
-        viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
-        @viewer = viewer if viewer.respond_to?(:render_html)
-      rescue DRb::DRbConnError, Errno::ECONNREFUSED
-        @viewer = nil
-      end
+      viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
+      @viewer = viewer if viewer.respond_to?(:render_html)
+    rescue DRb::DRbConnError, Errno::ECONNREFUSED
+      @viewer = nil
     end
     
   end # Browser
