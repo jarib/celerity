@@ -25,7 +25,7 @@ module Celerity
     end
     
     def update_page(value)
-      @page_container.set_page(value.getEnclosingWindow.getTopWindow.getEnclosedPage)
+      @page_container.page = value.getEnclosingWindow.getTopWindow.getEnclosedPage
     end
 
     def to_s

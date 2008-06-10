@@ -3,13 +3,13 @@ module Celerity
     include Celerity::Exception
     attr_accessor :page_container
 
-    def set_container(container)
+    def container=(container)
       @container = container
       @page_container = container.page_container
     end
 
     def update_page(page)
-      @page_container.set_page(page)
+      @page_container.page = page
     end
 
     def frame(*args)

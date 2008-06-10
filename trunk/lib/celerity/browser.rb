@@ -32,13 +32,14 @@ module Celerity
     def initialize(opts = {})
       @opts = opts
       java.lang.System.getProperties.put("org.apache.commons.logging.simplelog.defaultlog", opts[:log_level] ? opts[:log_level].to_s : "warn")
+      # java.lang.Logger.getLogger("org.apache.commons.logging.simplelog.defaultlog")
 
       browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
       @webclient = ::HtmlUnit::WebClient.new(browser)
-      @webclient.setThrowExceptionOnScriptError(false)       unless opts[:javascript_exceptions]
-      @webclient.setThrowExceptionOnFailingStatusCode(false) unless opts[:status_code_exceptions]
-      @webclient.setCssEnabled(false)                        unless opts[:css]
-      @webclient.setUseInsecureSSL(true)                     if opts[:secure_ssl] 
+      @webclient.throwExceptionOnScriptError = false       unless opts[:javascript_exceptions]
+      @webclient.throwExceptionOnFailingStatusCode = false unless opts[:status_code_exceptions]
+      @webclient.cssEnabled = false                        unless opts[:css]
+      @webclient.useInsecureSSL = true                     if opts[:secure_ssl] 
       # @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new());
 
       @last_url, @page = nil
@@ -49,7 +50,7 @@ module Celerity
 
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{^https?://}
-      set_page @webclient.getPage(uri)
+      self.page = @webclient.getPage(uri)
       uri
     end
     
@@ -57,7 +58,7 @@ module Celerity
       @page = nil
     end
 
-    def set_page(value)
+    def page=(value)
       @last_url = url() if exist?
       @page = value
       if @page.respond_to?("getDocumentElement")
@@ -108,7 +109,7 @@ module Celerity
     
     def refresh
       assert_exists
-      set_page(@page.refresh)
+      self.page = @page.refresh
     end
 
     def exist?

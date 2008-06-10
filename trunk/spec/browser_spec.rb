@@ -71,8 +71,8 @@ describe IE do
   end
   
   # Show methods
-  describe "#method_missing" do
-    it "should return all div elements on the page in a human readable format" do
+  describe "#show_«collection»" do
+    it "should print a human readable representation of elements matching the given name" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
       temp_stdout = StringIO.new
       old_stdout = $stdout

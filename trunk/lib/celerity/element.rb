@@ -2,7 +2,7 @@ module Celerity
   class Element
     include Exception
     include Container
-    attr_accessor :container, :object
+    attr_reader :container, :object
     
     # number of spaces that separate the property from the value in the create_string method
     TO_S_SIZE = 14
@@ -25,7 +25,7 @@ module Celerity
     DEFAULT_HOW = nil
     
     def initialize(container, *args)
-      set_container container
+      self.container = container
       
       case args.size
       when 2
