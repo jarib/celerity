@@ -46,9 +46,47 @@ describe IE do
       @browser.text.strip.should == 'This is text/plain'
     end
 
-    it "should return text in the correct charset (utf-8)" do
-      @browser.goto(TEST_HOST + "/utf8_text.html")
-      @browser.text.strip.should == "\303\246\303\245\303\270"
+    it "should return a text representation including newlines" do
+      @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+      @browser.text.should == <<-TEXT
+Forms with input elementsUser administration
+
+Add user
+
+Personal informationFirst name  
+
+Last name  
+
+Email address  
+
+Country  Denmark Norway Sweden United Kingdom USA 
+
+Occupation  
+
+Species  
+
+Personal code  
+
+Languages  Danish English Norwegian Swedish 
+
+Portrait  
+
+Dental records   Login informationUsername (max 20 characters)  0
+
+Password  
+
+Role  Administrator Moderator Regular user  Interests Books  Bowling  Cars  Dancing  Dentistry   Food  Preferences
+
+Do you want to recieve our newslettter?
+
+ Yes  No  Certainly  Absolutely  Nah  Actions  Button 2     
+
+Delete user
+
+Username  Username 1 Username 2 Username 3 
+
+Comment Default comment.      
+TEXT
     end
   end
 

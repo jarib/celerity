@@ -85,7 +85,7 @@ module Celerity
       if @page.respond_to?("getContent")
         @page.getContent
       else
-        @page ? @page.getFirstByXPath("//body").asText : ''
+        @page ? @page.documentElement.asText : ''
       end
     end
     
@@ -94,7 +94,7 @@ module Celerity
     end
     
     def back
-      # FIXME: this is naive, need capability from HtmlUnit  
+      # TODO: this is naive, need capability from HtmlUnit  
       goto(@last_url) if @last_url
     end
     

@@ -51,6 +51,13 @@ describe Element do
     end
   end
   
+  describe "#text" do
+    it "should return a text representation including newlines" do
+      @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+      @browser.form(:id, "delete_user").text.should == "Username  Username 1 Username 2 Username 3 \nComment Default comment."
+    end
+  end
+  
   after :all do
     @browser.close
   end
