@@ -85,7 +85,11 @@ module Celerity
       if @page.respond_to?("getContent")
         @page.getContent
       else
-        @page ? @page.documentElement.asText : ''
+        # # this has no whitespace
+        # @page ? @page.documentElement.asText : ''
+        
+        # this is firewatir does
+        res = execute_script("document.body.textContent").getJavaScriptResult 
       end
     end
     
