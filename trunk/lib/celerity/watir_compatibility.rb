@@ -53,6 +53,7 @@ module Celerity
     alias_method :getAllContents, :get_all_contents
     alias_method :clearSelection, :clear_selection
     alias_method :select_value, :select
+    alias_method :includes?, :include?
   end
   
   class TextField

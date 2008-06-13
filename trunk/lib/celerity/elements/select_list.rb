@@ -36,7 +36,6 @@ module Celerity
       assert_exists
       !!@object.getOptions.find { |e| matches?(e.asText, value) }
     end
-    alias_method :includes?, :include?
   
     def selected?(value)
       assert_exists
