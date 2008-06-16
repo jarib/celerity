@@ -7,9 +7,9 @@ describe "HtmlUnit bugs" do
   end
   
   describe "HtmlUnit bug 1968686: https://sourceforge.net/tracker/index.php?func=detail&aid=1968686&group_id=47038&atid=448266" do
-    # it "should not raise NativeException: java.lang.StackOverflowError when going to a page where Javascripts prints a <body> tag inside another <body> tag" do
-    #   lambda { @browser.goto(TEST_HOST + "/bug_javascript_001.html") }.should_not raise_error(NativeException)
-    # end
+    it "should not raise NativeException: java.lang.StackOverflowError when going to a page where Javascripts prints a <body> tag inside another <body> tag" do
+      lambda { @browser.goto(TEST_HOST + "/bug_javascript_001.html") }.should_not raise_error(NativeException)
+    end
   end
   
   describe "HtmlUnit bug 1968708: https://sourceforge.net/tracker/index.php?func=detail&aid=1968708&group_id=47038&atid=448266" do
