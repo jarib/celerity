@@ -22,10 +22,10 @@ Pathname.glob(path + '*.rb') do |file|
 	require(file)
 end
 
-require "rubygems"
-require "ruby-debug"
-Debugger.wait_connection = true
-Debugger.start_server
+# require "rubygems"
+# require "ruby-debug"
+# Debugger.wait_connection = true
+# Debugger.start_server
 
 OSX::NSApplication.sharedApplication
 OSX.NSApplicationMain(0, nil)
