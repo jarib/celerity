@@ -33,6 +33,17 @@ module Celerity
       create_string(@inline_frame_object)
     end
     
+    def method_missing(meth, *args, &blk)
+      meth = method_to_attribute(meth)
+      if self.class::ATTRIBUTES.include?(meth)
+        assert_exists
+        @inline_frame_object.getAttributeValue(meth.to_s)
+      else
+        Log.warn "Element\#method_missing calling super with #{meth.inspect}"
+        super
+      end
+    end
+    
   end
 
 end
