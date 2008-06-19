@@ -34,7 +34,8 @@ module Celerity
       java.lang.System.getProperties.put("org.apache.commons.logging.simplelog.defaultlog", opts[:log_level] ? opts[:log_level].to_s : "warn")
       # java.lang.Logger.getLogger("org.apache.commons.logging.simplelog.defaultlog")
 
-      browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
+      # browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
+      browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0  : ::HtmlUnit::BrowserVersion.INTERNET_EXPLORER_7_0 
       @webclient = ::HtmlUnit::WebClient.new(browser)
       @webclient.throwExceptionOnScriptError = false       unless opts[:javascript_exceptions]
       @webclient.throwExceptionOnFailingStatusCode = false unless opts[:status_code_exceptions]
@@ -82,14 +83,19 @@ module Celerity
     end
 
     def text
+      return '' unless @page
+
       if @page.respond_to?("getContent")
-        @page.getContent
+        @page.getContent  
       else
         # # this has no whitespace
-        # @page ? @page.documentElement.asText : ''
+        # @page.documentElement.asText
         
-        # this is firewatir does
-        res = execute_script("document.body.textContent").getJavaScriptResult 
+        # # this is what firewatir does
+        # res = execute_script("document.body.innerText").getJavaScriptResult 
+        
+        # this only works with HtmlUnit::BrowserVersion::INTERNET_EXPLORER_*, and isn't identical to Watir's ole_object.innerText
+        res = execute_script("document.body.innerText").getJavaScriptResult 
       end
     end
     

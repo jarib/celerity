@@ -74,7 +74,7 @@ module Celerity
     end
 
     def verify_contains(expected)
-      assert_exists
+      # assert_exists called by contains_text
       !!contains_text(expected)
     end
     

@@ -75,6 +75,10 @@ module Celerity
 
     def text
       assert_exists
+
+      # this could work, but breaks some tests atm
+      # @object.getTextContent.strip
+
       @object.asText.strip
     end
     alias_method :innerText, :text

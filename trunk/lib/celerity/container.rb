@@ -9,7 +9,7 @@ module Celerity
     end
 
     def update_page(page)
-      @page_container.page = page
+      @page_container.page = page 
     end
 
     def frame(*args)
