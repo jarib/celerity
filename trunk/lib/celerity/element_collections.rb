@@ -30,7 +30,7 @@ module Celerity
     end
     
     def [](n)
-      @elements ? element_class.new(@container, :object, @elements[n - 1]) : iterator_object(n - 1)
+      @elements ? element_class.new(@container, :object, @elements[n-1]) : iterator_object(n-1)
     end
     
     def to_s
@@ -41,7 +41,7 @@ module Celerity
 
     # this method creates an object of the correct type that the iterators use
     def iterator_object(i)
-      element_class.new(@container, :index, i + 1)
+      element_class.new(@container, :index, i+1)
     end
   
   end # ElementCollections

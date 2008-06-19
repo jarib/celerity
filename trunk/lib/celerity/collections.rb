@@ -1,5 +1,9 @@
 module Celerity
 
+ class Frames < ElementCollections
+    def element_class; Frame; end
+  end
+  
  class Buttons < ElementCollections
     def element_class; Button; end
   end

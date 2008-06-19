@@ -16,6 +16,10 @@ module Celerity
       assert_exists
       Frame.new(self, *args)
     end
+    def frames
+      assert_exists
+      Frames.new(self)
+    end
 
     def table(*args)
       assert_exists
