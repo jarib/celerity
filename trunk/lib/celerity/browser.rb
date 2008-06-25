@@ -50,7 +50,7 @@ module Celerity
     end
 
     def goto(uri)
-      uri = "http://#{uri}" unless uri =~ %r{^https?://}
+      uri = "http://#{uri}" unless uri =~ %r{://}
       self.page = @webclient.getPage(uri)
       uri
     end

@@ -153,6 +153,13 @@ TEXT
     # it "should handle HTTPS" do
     #   pending
     # end
+    
+    it "should add http:// to URLs with no protocol specified" do
+      url = TEST_HOST[%r{http://(.*)}, 1]
+      url.should_not be_nil
+      @browser.goto(url)
+      @browser.url.should == "http://#{url}"
+    end
 
     it "should go to the given url without raising errors" do
       lambda { @browser.goto(TEST_HOST + "/non_control_elements.html") }.should_not raise_error
