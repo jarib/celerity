@@ -175,9 +175,9 @@ module Celerity
     
     def collection_string(collection_method)
       collection = self.send collection_method
-      buffer = "Found #{collection.size} divs\n"
-      collection.each_with_index do |div, index|
-        buffer += "#{index+1}: #{div.attribute_string}\n"
+      buffer = "Found #{collection.size} #{collection_method.downcase}\n"
+      collection.each_with_index do |element, index|
+        buffer += "#{index+1}: #{element.attribute_string}\n"
       end
       return buffer
     end
