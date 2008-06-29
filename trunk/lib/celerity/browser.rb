@@ -67,6 +67,8 @@ module Celerity
       end
       render if @viewer
       run_error_checks
+      
+      value
     end
 
     def url

@@ -14,7 +14,7 @@ module Celerity
     attr_accessor :visible
    
     def bring_to_front; true; end
-    def speed=(s); end
+    def speed=(s); s end
     def wait; end
   end
   

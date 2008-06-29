@@ -36,6 +36,8 @@ module Celerity
       when 'input'
         @object.setValueAttribute(value.to_s)
       end
+      
+      value
     end
     
     def value

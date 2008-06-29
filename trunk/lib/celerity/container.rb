@@ -6,6 +6,7 @@ module Celerity
     def container=(container)
       @container = container
       @page_container = container.page_container
+      container
     end
 
     def update_page(page)
