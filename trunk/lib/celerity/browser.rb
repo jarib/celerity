@@ -24,6 +24,7 @@ module Celerity
     # :log_level<:trace, :debug, :info, :warn, :error, or :fatal>::
     #   Set the log level for Apache Jakarta commons logging system (used by HtmlUnit)
     #   Defaults to :warn. (not working..)
+    # :browser<:firefox, :ie>
     # ==== Returns
     # An instance of Celerity::Browser
     #
@@ -35,7 +36,7 @@ module Celerity
       # java.lang.Logger.getLogger("org.apache.commons.logging.simplelog.defaultlog")
 
       # browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
-      browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0  : ::HtmlUnit::BrowserVersion.INTERNET_EXPLORER_7_0 
+      browser = @opts[:browser] == :firefox ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
       @webclient = ::HtmlUnit::WebClient.new(browser)
       @webclient.throwExceptionOnScriptError = false       unless opts[:javascript_exceptions]
       @webclient.throwExceptionOnFailingStatusCode = false unless opts[:status_code_exceptions]
