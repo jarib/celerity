@@ -25,6 +25,8 @@ module Celerity
     #   Set the log level for Apache Jakarta commons logging system (used by HtmlUnit)
     #   Defaults to :warn. (not working..)
     # :browser<:firefox, :ie>
+    #   Set the BrowserVersion used by HtmlUnit. This changes the behaviour of Browser#text (amongst others..)
+    #   Defaults to :ie.
     # ==== Returns
     # An instance of Celerity::Browser
     #
@@ -94,11 +96,13 @@ module Celerity
         # # this has no whitespace
         # @page.documentElement.asText
         
-        # # this is what firewatir does
-        # res = execute_script("document.body.innerText").getJavaScriptResult 
-        
-        # this only works with HtmlUnit::BrowserVersion::INTERNET_EXPLORER_*, and isn't identical to Watir's ole_object.innerText
-        res = execute_script("document.body.innerText").getJavaScriptResult 
+        if @opts[:browser] == :firefox
+          # # this is what firewatir does - only works with HtmlUnit::BrowserVersion::FIREFOX_2
+          res = execute_script("document.body.textContent").getJavaScriptResult 
+        else
+          # this only works with HtmlUnit::BrowserVersion::INTERNET_EXPLORER_*, and isn't identical to Watir's ole_object.innerText
+          # res = execute_script("document.body.innerText").getJavaScriptResult 
+        end
       end
     end
     
