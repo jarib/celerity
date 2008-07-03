@@ -101,7 +101,7 @@ module Celerity
           res = execute_script("document.body.textContent").getJavaScriptResult 
         else
           # this only works with HtmlUnit::BrowserVersion::INTERNET_EXPLORER_*, and isn't identical to Watir's ole_object.innerText
-          # res = execute_script("document.body.innerText").getJavaScriptResult 
+          res = execute_script("document.body.innerText").getJavaScriptResult 
         end
       end
     end

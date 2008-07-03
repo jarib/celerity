@@ -53,7 +53,7 @@ module Celerity
 
       @idents.each do |ident|
         merged = attributes.merge(ident.attributes) do |key, v1, v2|
-          attributes[key] = v1 | v2
+          v1 | v2
         end
           
         id = Identifier.new(ident.tag, merged)

@@ -13,6 +13,7 @@ module Celerity
 
     def locate
       # ugly..
+      # this is done to make <button> and <input>-buttons look similar
       if (val = @conditions[:value])
         locator = ElementLocator.new(@container.object, self.class)
         button_ident = Identifier.new('button')
