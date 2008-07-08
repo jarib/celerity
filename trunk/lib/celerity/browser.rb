@@ -177,16 +177,28 @@ module Celerity
       @webclient.setAjaxController(old_controller)
     end
 
-    # FIXME: could be private?
+    # TODO: could be private?
     # check that we have a @page object
     # need to find a better way to handle this 
     def assert_exists
       raise UnknownObjectException, "no page loaded" unless exist?
     end
     
-    # FIXME: could be private?
+    # TODO: could be private?
     def run_error_checks
       @error_checkers.each { |e| e.call(self) }
+    end
+    
+    def page=(value)
+      @last_url = url() if exist?
+      @page = value
+      if @page.respond_to?("getDocumentElement")
+        @object = @page.getDocumentElement
+      end
+      render if @viewer
+      run_error_checks
+      
+      value
     end
     
     private
