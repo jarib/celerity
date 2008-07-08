@@ -106,13 +106,13 @@ module Celerity
     
     def attribute_string
       assert_exists
-      n = ''
+      result = ''
       iterator = @object.getAttributeEntriesIterator
       while iterator.hasNext
         attribute = iterator.next
-        n += "#{attribute.getName}=\"#{attribute.getHtmlValue.to_s}\" "
+        result << "#{attribute.getName}=\"#{attribute.getHtmlValue.to_s}\" "
       end
-      return n
+      return result
     end
 
     # used to get attributes

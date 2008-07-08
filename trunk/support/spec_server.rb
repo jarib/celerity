@@ -17,6 +17,14 @@ module Celerity
       resp.body << "This is text/plain"
     end
   end
+  
+  class SlowAjaxHandler < WEBrick::HTTPServlet::AbstractServlet
+    def do_GET(req, resp)
+      sleep 10
+      resp['content-type'] = 'text/html'
+      resp.body << "A slooow ajax response"
+    end
+  end
 
   class SpecServer
     attr_reader :host, :thread, :log_file
@@ -57,6 +65,7 @@ module Celerity
       server.mount("/", WEBrick::HTTPServlet::FileHandler, @doc_root, {:FancyIndexing=>true})
       server.mount("/post_to_me", PostHandler)
       server.mount("/plain_text", PlainTextHandler)
+      server.mount("/ajax", SlowAjaxHandler)
 
       @thread = Thread.new { server.start }
     end
