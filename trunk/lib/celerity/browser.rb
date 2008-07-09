@@ -93,15 +93,15 @@ module Celerity
         @page.getContent  
       else
         # # this has no whitespace
-        # @page.documentElement.asText
+        @page.documentElement.asText
         
-        if @opts[:browser] == :firefox
-          # # this is what firewatir does - only works with HtmlUnit::BrowserVersion::FIREFOX_2
-          res = execute_script("document.body.textContent").getJavaScriptResult 
-        else
-          # this only works with HtmlUnit::BrowserVersion::INTERNET_EXPLORER_*, and isn't identical to Watir's ole_object.innerText
-          res = execute_script("document.body.innerText").getJavaScriptResult 
-        end
+        # if @opts[:browser] == :firefox
+        #   # # this is what firewatir does - only works with HtmlUnit::BrowserVersion::FIREFOX_2
+        #   res = execute_script("document.body.textContent").getJavaScriptResult 
+        # else
+        #   # this only works with HtmlUnit::BrowserVersion::INTERNET_EXPLORER_*, and isn't identical to Watir's ole_object.innerText
+        #   res = execute_script("document.body.innerText").getJavaScriptResult 
+        # end
       end
     end
 
@@ -151,7 +151,7 @@ module Celerity
     end
 
     # Set Java log level (default is :warning)
-    # :finest, :finer, :fine, :config, :info, :warning or :severe
+    # :finest, :finer, :fine, :config, :info, :warning, :severe, or :off, :all
     def log_level=(level)
       java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level = java.util.logging.Level.const_get(level.to_s.upcase)
     end
