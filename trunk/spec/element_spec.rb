@@ -28,6 +28,12 @@ describe Element do
     end
     
   end
+
+  describe "#parent" do
+    it "should get the parent of this element" do
+      @browser.text_field(:id, "new_user_email").parent.should be_instance_of Celerity::Form
+    end
+  end
   
   describe "#method_missing" do
     it "should magically return the requested attribute if the attribute is defined in the attribute list" do

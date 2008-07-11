@@ -44,6 +44,18 @@ module Celerity
       end
     end
     
+    # Get the parent element (experimental, avoid if possible)
+    def parent
+      assert_exists
+      
+      obj = @object.getParentNode
+      until element_class = HtmlUnit2CelerityElement[obj.class]
+        return nil if obj.nil?
+        obj = obj.parentNode
+      end
+      element_class.new(@container, :object, obj)
+    end
+    
     # Locates the element
     def locate
       @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)

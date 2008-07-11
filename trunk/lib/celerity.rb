@@ -35,6 +35,7 @@ require "celerity/element"
 require "celerity/input_element"
 require "celerity/non_control_elements"
 Dir[File.dirname(__FILE__) + "/celerity/elements/*.rb"].each { |f| require(f) }
+require "celerity/element_map"
 require "celerity/browser"
 
 require "celerity/watir_compatibility"
