@@ -1,6 +1,7 @@
 module Celerity
   module ClickableElement
     
+    # clicks the element
     def click
       assert_exists
       assert_enabled

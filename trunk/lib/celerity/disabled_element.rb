@@ -1,4 +1,5 @@
 module Celerity
+  # Module mixed in to all elements that can have the 'disabled' attribute.
   module DisabledElement
     include Celerity::Exception
     

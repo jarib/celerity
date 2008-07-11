@@ -4,9 +4,10 @@ module Celerity
     TAGS = [ Identifier.new('input', :type => %w(file)) ]
     DEFAULT_HOW = :name
   
-    def set(value)
+    # Set the file field to the given path
+    def set(path)
       assert_exists
-      @object.setValueAttribute(value.to_s)
+      @object.setValueAttribute(path.to_s)
     end
   end
 end

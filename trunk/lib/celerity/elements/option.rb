@@ -1,4 +1,5 @@
 module Celerity
+  # Represents a select list option.
   class Option < Element
     include ClickableElement
     include DisabledElement

@@ -1,4 +1,25 @@
 module Celerity
+  
+  # This class contains methods for accessing elements inside a container (usually the Browser object, meaning the current page).
+  # The most common syntax is 
+  #   browser.elem(:attribute, 'value')
+  #
+  # Note that the element is located lazily, so no exceptions will be thrown if the element doesn't exist until you call a method
+  # resulting object. To do this you would normally use +Element#exists?+ or an action method on the object, like +ClickableElement#click+. 
+  # 
+  # You can also pass in a hash:
+  #
+  # browser.link(:index => 1).click
+  #
+  # All elements support multiple attributes identification using the hash syntax (not compatible with Watir):
+  #
+  # browser.span(:class_name => 'product', :index => 5).text
+  #
+  # You can also get all the elements of a certain type by using the plural form:
+  #
+  # browser.links => #<Celerity::Links:0x7a1c2da2 ...>
+  # 
+  # See +Celerity::ElementCollections+ for details.
   module Container
     include Celerity::Exception
     attr_accessor :page_container
@@ -17,6 +38,7 @@ module Celerity
       assert_exists
       Frame.new(self, *args)
     end
+
     def frames
       assert_exists
       Frames.new(self)
@@ -26,6 +48,7 @@ module Celerity
       assert_exists
       Table.new(self, *args)
     end
+    
     def tables
       assert_exists
       Tables.new(self)
@@ -35,6 +58,7 @@ module Celerity
       assert_exists
       TableHeader.new(self, *args)
     end
+    
     def theads
       assert_exists
       TableHeaders.new(self)
@@ -44,6 +68,7 @@ module Celerity
       assert_exists
       TableBody.new(self, *args)
     end
+    
     def tbodies
       assert_exists
       TableBodies.new(self)
@@ -53,6 +78,7 @@ module Celerity
       assert_exists
       TableFooter.new(self, *args)
     end
+    
     def tfoots
       assert_exists
       TableFooters.new(self)
@@ -63,6 +89,7 @@ module Celerity
       assert_exists
       TableCell.new(self, *args)
     end
+    
     def cells
       assert_exists
       TableCells.new(self)
@@ -72,6 +99,7 @@ module Celerity
       assert_exists
       TableRow.new(self, *args)
     end
+    
     def rows
       assert_exists
       TableRows.new(self)
@@ -81,6 +109,7 @@ module Celerity
       assert_exists
       Button.new(self, *args)
     end
+    
     def buttons
       assert_exists
       Buttons.new(self)
@@ -90,6 +119,7 @@ module Celerity
       assert_exists
       FileField.new(self, *args)
     end
+    
     def file_fields
       assert_exists
       FileFields.new(self)
@@ -99,6 +129,7 @@ module Celerity
       assert_exists
       TextField.new(self, *args)
     end
+    
     def text_fields
       assert_exists
       TextFields.new(self)
@@ -108,6 +139,7 @@ module Celerity
       assert_exists
       Hidden.new(self, *args)
     end
+    
     def hiddens
       assert_exists
       Hiddens.new(self)
@@ -117,6 +149,7 @@ module Celerity
       assert_exists
       SelectList.new(self, *args)
     end
+    
     def select_lists
       assert_exists
       SelectLists.new(self)
@@ -141,6 +174,7 @@ module Celerity
       assert_exists
       Radio.new(self, *args)
     end
+    
     def radios
       assert_exists
       Radios.new(self)
@@ -160,6 +194,7 @@ module Celerity
       assert_exists
       Ul.new(self, *args)
     end
+    
     def uls
       assert_exists
       Uls.new(self)
@@ -169,6 +204,7 @@ module Celerity
       assert_exists
       Ol.new(self, *args)
     end
+    
     def ols
       assert_exists
       Ols.new(self)
@@ -178,6 +214,7 @@ module Celerity
       assert_exists
       Li.new(self, *args)
     end
+    
     def lis
       assert_exists
       Lis.new(self)
@@ -187,6 +224,7 @@ module Celerity
       assert_exists
       Map.new(self, *args)
     end
+    
     def maps
       assert_exists
       Maps.new(self)
@@ -196,6 +234,7 @@ module Celerity
       assert_exists
       Area.new(self, *args)
     end
+    
     def areas
       assert_exists
       Areas.new(self)
@@ -205,6 +244,7 @@ module Celerity
       assert_exists
       Image.new(self, *args)
     end
+    
     def images
       assert_exists
       Images.new(self)
@@ -214,6 +254,7 @@ module Celerity
       assert_exists
       Div.new(self, *args)
     end
+    
     def divs
       assert_exists
       Divs.new(self)
@@ -223,6 +264,7 @@ module Celerity
       assert_exists
       Form.new(self, *args)
     end
+    
     def forms
       assert_exists
       Forms.new(self)
@@ -232,6 +274,7 @@ module Celerity
       assert_exists
       Span.new(self, *args)
     end
+    
     def spans
       assert_exists
       Spans.new(self)
@@ -241,6 +284,7 @@ module Celerity
       assert_exists
       P.new(self, *args)
     end
+    
     def ps
       assert_exists
       Ps.new(self)
@@ -250,6 +294,7 @@ module Celerity
       assert_exists
       Pre.new(self, *args)
     end
+    
     def pres
       assert_exists
       Pres.new(self)
@@ -259,6 +304,7 @@ module Celerity
       assert_exists
       Label.new(self, *args)
     end
+    
     def labels
       assert_exists
       Labels.new(self)
@@ -268,46 +314,57 @@ module Celerity
       assert_exists
       H1.new(self, *args)
     end
+    
     def h2(*args)
       assert_exists
       H2.new(self, *args)
     end
+    
     def h3(*args)
       assert_exists
       H3.new(self, *args)
     end
+    
     def h4(*args)
       assert_exists
       H4.new(self, *args)
     end
+    
     def h5(*args)
       assert_exists
       H5.new(self, *args)
     end
+    
     def h6(*args)
       assert_exists
       H6.new(self, *args)
     end
+    
     def h1s
       assert_exists
       H1s.new(self)
     end
+    
     def h2s
       assert_exists
       H2s.new(self)
     end
+    
     def h3s
       assert_exists
       H3s.new(self)
     end
+    
     def h4s
       assert_exists
       H4s.new(self)
     end
+    
     def h5s
       assert_exists
       H5s.new(self)
     end
+    
     def h6s
       assert_exists
       H6s.new(self)

@@ -34,7 +34,7 @@ module Celerity
     end
     
     def to_s
-      return self.collect { |i| i.to_s }.join("\n")
+      map { |i| i.to_s }.join("\n")
     end
     
     private

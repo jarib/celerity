@@ -24,6 +24,7 @@ module Celerity
 
     DEFAULT_HOW = nil
     
+    # Abstract superclass for HTML elements. 
     def initialize(container, *args)
       self.container = container
       
@@ -43,20 +44,24 @@ module Celerity
       end
     end
     
+    # Locates the element
     def locate
       @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
     end
     
+    # Returns a string representation of the element.
     def to_s
       assert_exists
       create_string(@object)
     end
     
+    # Get the value of the given attribute.
     def attribute_value(attribute)
       assert_exists
       @object.getAttribute(attribute)
     end
 
+    # Raises UnknownObjectException if the element doesn't exist. Only used internally.
     def assert_exists
       locate
       unless @object
@@ -64,6 +69,8 @@ module Celerity
       end
     end
 
+    # Checks if the element exists.
+    # Returns true or false.
     def exists?
       assert_exists
       true
@@ -73,6 +80,7 @@ module Celerity
     alias_method :exist?, :exists?
     alias_method :exists, :exists?
 
+    # Return a text representation of the element.
     def text
       assert_exists
 
@@ -84,6 +92,9 @@ module Celerity
     alias_method :innerText, :text
     alias_method :inner_text, :text
 
+    # expected_text - String or Regexp
+    #
+    # returns the index of the matched text, or nil if it doesn't match
     def contains_text(expected_text)
       assert_exists
       case expected_text
@@ -96,6 +107,7 @@ module Celerity
       end
     end
 
+    # Returns the normative XML representation of the element (including children)
     def to_xml
       assert_exists
       @object.asXml

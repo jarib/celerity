@@ -13,12 +13,12 @@ module Celerity
 
     def [](index)
       assert_exists
-      return TableRow.new(self, :object, @rows[index-1])
+      TableRow.new(self, :object, @rows[index-1])
     end
 
     def length
       assert_exists
-      return @object.getRows.length
+      @object.getRows.length
     end
     
     def each

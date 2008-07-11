@@ -21,66 +21,71 @@ module Celerity
       end
     end
     
+    # Returns a TableRows object.
     def rows
       assert_exists
-      return TableRows.new(self, :object, @rows)
+      TableRows.new(self, :object, @rows)
     end
     
+    # Returns a TableCells object.
     def cells
       assert_exists
-      return TableCells.new(self, :object, @cells)
+      TableCells.new(self, :object, @cells)
     end
     
+    # Iterates through each row in the table, passing TableRow objects to the given block.
     def each
       assert_exists
       @rows.each { |row| yield TableRow.new(self, :object, row)  }
     end
     
+    # Returns the TableRow at the given index (1-indexed).
+    #
+    #   browser.table(:foo, 'bar')[1] # => #<TableRow...>
+    #   browser.table(:foo, 'bar').child_row[1] # => #<TableRow...>
     def child_row(index)
       assert_exists
       raise UnknownRowException, "Unable to locate a row at index #{index}" if @cells.length < index
-      return TableRow.new(self, :object, @rows[index-1])
+      TableRow.new(self, :object, @rows[index-1])
     end
     alias_method :[], :child_row
     
+    # Returns the TableCell at the given index (1-indexed).
+    #
+    # In a 10-column row, table.child_cell[11] will return the first cell on the second row.
     def child_cell(index)
       assert_exists
       raise UnknownCellException, "Unable to locate a cell at index #{index}" if @cells.length < index
-      return TableCell.new(self, :object, @cells[index-1])
+      TableCell.new(self, :object, @cells[index-1])
     end
     
+    # The number of rows in the table
     def row_count
       assert_exists
       @object.getRowCount
     end
     
+    # Returns the number of columns on the row at the given index. (1-indexed)
+    # Default is the number of columns on the first row
     def column_count(index = 1)
       assert_exists
       @object.getRow(index-1).getCells.length
     end
     
-    # This method returns the table as a 2 dimensional array.
-    # Raises an UnknownObjectException if the table doesn't exist.
+    # Returns the text of each cell in the the table as a two-dimensional array.
     def to_a
       assert_exists
-      y = []
-      table_rows = @object.getRows
-      for table_row in table_rows
-        x = []
-        for td in table_row.getCells
-          x << td.asText
-        end
-        y << x
+      @object.getRows.map do |table_row|
+        table_row.getCells.map { |td| td.asText }
       end
-      return y
     end
     
-    def column_values(columnnumber)
-      (1..row_count).collect { |index| self[index][columnnumber].text }
+    def column_values(column_number)
+      (1..row_count).map { |index| self[index][column_number].text }
     end
     
-    def row_values(rownumber)
-      (1..column_count(rownumber)).collect { |index| self[rownumber][index].text }
+    def row_values(row_number)
+      (1..column_count(row_number)).map { |index| self[row_number][index].text }
     end
 
   end

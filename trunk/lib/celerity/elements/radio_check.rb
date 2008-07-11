@@ -1,10 +1,5 @@
 module Celerity
-  # This class is the class for radio buttons and check boxes.
-  # It contains methods common to both.
-  # Normally a user would not need to create this object as it is returned by the Watir::Container#checkbox or Watir::Container#radio methods
-  #
-  # most of the methods available to this element are inherited from the Element class
-  #
+  # Common superclass for radios and check boxes.
   class RadioCheckCommon < InputElement
     DEFAULT_HOW = :name
     
@@ -20,6 +15,7 @@ module Celerity
       end
     end
     
+    # returns true if the element is checked
     def set?
       assert_exists
       @object.isChecked
@@ -39,6 +35,13 @@ module Celerity
       super(container, ['radio'], *args)
     end
 
+    # Sets the radio button. 
+    #
+    #   radio.set? # => false
+    #   radio.set  
+    #   radio.set? # => true
+    #   radio.set(false)
+    #   radio.set? # => false
     def set(value = true)
       assert_exists
       assert_enabled
@@ -55,6 +58,13 @@ module Celerity
       super(container, ['checkbox'], *args)
     end
 
+    # Sets the checkbox button. 
+    #
+    #   checkbox.set? # => false
+    #   checkbox.set  
+    #   checkbox.set? # => true
+    #   checkbox.set(false)
+    #   checkbox.set? # => false
     def set(value = true)
       assert_exists
       assert_enabled

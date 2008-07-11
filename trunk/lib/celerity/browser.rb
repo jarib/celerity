@@ -13,9 +13,9 @@ module Celerity
     # Creates a browser object. 
     #
     # ==== Options (opts)
-    # :browser<:firefox, :ie>
-    #   Set the BrowserVersion used by HtmlUnit. This changes the behaviour of Browser#text (amongst others..)
-    #   Defaults to :ie.
+    # :browser<:firefox, :internet_explorer>
+    #   Set the BrowserVersion used by HtmlUnit.
+    #   Defaults to :internet_explorer.
     # :css<true, false, nil>::
     #   Enable CSS. Disabled by default.
     # :secure_ssl<true, false, nil>::
@@ -34,20 +34,14 @@ module Celerity
     # @public
     def initialize(opts = {})
       @opts = opts
-
-      self.log_level = :warning
-      # browser = RUBY_PLATFORM =~ /java/ ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion.FIREFOX_2
-      browser = @opts[:browser] == :firefox ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
-      @webclient = ::HtmlUnit::WebClient.new(browser)
-      @webclient.throwExceptionOnScriptError = false unless opts[:javascript_exceptions]
-      @webclient.throwExceptionOnFailingStatusCode = false unless opts[:status_code_exceptions]
-      @webclient.cssEnabled = false unless opts[:css]
-      @webclient.useInsecureSSL = true if opts[:secure_ssl] 
-      @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts[:resynchronize]
-
       @last_url, @page = nil
       @page_container  = self
       @error_checkers  = []
+      self.log_level = :warning
+
+      browser = @opts[:browser] == :firefox ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
+      @webclient = ::HtmlUnit::WebClient.new(browser)
+      set_options
       find_viewer 
     end
     
@@ -63,29 +57,35 @@ module Celerity
       end
     end
 
+    # goto the given URL
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{://}
       self.page = @webclient.getPage(uri)
       uri
     end
     
+    # unsets the current page (mostly for Watir compatibility)
     def close
       @page = nil
     end
 
+    # returns the URL of the current page
     def url
       assert_exists
       @page.getWebResponse.getUrl.toString
     end
     
+    # returns the title of the current page
     def title
       @page ? @page.getTitleText : ''
     end
 
+    # returns the HTML content of the current page
     def html
       @page ? @page.getWebResponse.getContentAsString : ''
     end
 
+    # returns a text representation of the current page
     def text
       return '' unless @page
 
@@ -105,6 +105,9 @@ module Celerity
       end
     end
 
+    # expected_text - String or Regexp
+    #
+    # returns the index of the matched text, or nil if it doesn't match
     def contains_text(expected_text)
       return nil unless exist?
       case expected_text
@@ -117,25 +120,30 @@ module Celerity
       end
     end
 
+    # returns the underlying HtmlUnit object.
     def document
       @object
     end
     
+    # goto the last url - HtmlUnit doesn't have a 'back' functionality
     def back
       # TODO: this is naive, need capability from HtmlUnit  
       goto(@last_url) if @last_url
     end
     
+    # refresh the current page
     def refresh
       assert_exists
       self.page = @page.refresh
     end
 
+    # execute the given JavaScript on the current page
     def execute_script(source)
       assert_exists
       @page.executeJavaScript(source.to_s)
     end
 
+    # add a 'checker' proc that will be run on every page load
     def add_checker(checker = nil, &block)
       if block_given?
         @error_checkers << block
@@ -146,6 +154,7 @@ module Celerity
       end
     end
     
+    # remove the given checker from the list of checkers
     def disable_checker(checker)
       @error_checkers.delete(checker)
     end
@@ -156,10 +165,13 @@ module Celerity
       java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level = java.util.logging.Level.const_get(level.to_s.upcase)
     end
     
+    # Return the Java log level
     def log_level
       java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
     end
 
+    # Checks if we have a page currently loaded. 
+    # Returns true or false.
     def exist?
       !!@page
     end
@@ -178,17 +190,18 @@ module Celerity
     end
 
     # TODO: could be private?
-    # check that we have a @page object
-    # need to find a better way to handle this 
+    # Raises UnknownObjectException unless we have a @page object
     def assert_exists
       raise UnknownObjectException, "no page loaded" unless exist?
     end
     
     # TODO: could be private?
+    # Runs the all the checker procs added by +add_checker+
     def run_error_checks
       @error_checkers.each { |e| e.call(self) }
     end
     
+    # Set the current page object for the browser
     def page=(value)
       @last_url = url() if exist?
       @page = value
@@ -203,13 +216,21 @@ module Celerity
     
     private
     
+    def set_options
+      @webclient.throwExceptionOnScriptError = false unless @opts[:javascript_exceptions]
+      @webclient.throwExceptionOnFailingStatusCode = false unless @opts[:status_code_exceptions]
+      @webclient.cssEnabled = false unless @opts[:css]
+      @webclient.useInsecureSSL = true if @opts[:secure_ssl] 
+      @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if @opts[:resynchronize]
+    end
+    
     def collection_string(collection_method)
       collection = self.send collection_method
       result = "Found #{collection.size} #{collection_method.downcase}\n"
       collection.each_with_index do |element, index|
         result << "#{index+1}: #{element.attribute_string}\n"
       end
-      return result
+      result
     end
     
     def render

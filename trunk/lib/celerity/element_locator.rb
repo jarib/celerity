@@ -1,9 +1,6 @@
 module Celerity
   
-  # What we essentially want is the ability to perform a fast SQLish 'select' against the DOM. 
-  # Instead of iterating twice through a lot of elements, we could modify the Identifier objects to contain 
-  # everything in our 'query'. 
-  # Jari - 2008-05-11
+  # Used internally to locate elements on the page.
   class ElementLocator
     include Celerity::Exception
     attr_accessor :idents

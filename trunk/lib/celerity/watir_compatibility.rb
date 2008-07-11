@@ -1,6 +1,6 @@
 module Celerity
   class Browser
-    # these are just for Watir compatability - should we keep them?
+    # these are just for Watir compatability
     class << self
       attr_accessor :speed, :attach_timeout, :visible
       alias_method :start_window, :start
@@ -20,45 +20,46 @@ module Celerity
   
   
   module ClickableElement
-    alias_method :click_no_wait, :click
+    alias_method :click_no_wait,    :click
   end
   
   module Container
-    alias_method :checkbox, :check_box
-    alias_method :checkBox, :check_box
-    alias_method :body, :tbody
-    alias_method :bodies, :tbodies
+    alias_method :checkbox,         :check_box
+    alias_method :checkBox,         :check_box
+    alias_method :body,             :tbody
+    alias_method :bodies,           :tbodies
   end
     
   class Image
-    alias_method :hasLoaded?, :loaded?
-    alias_method :has_loaded?, :loaded?
-    alias_method :fileSize, :file_size
-    alias_method :fileCreatedDate, :file_created_date
+    alias_method :hasLoaded?,       :loaded?
+    alias_method :has_loaded?,      :loaded?
+    alias_method :fileSize,         :file_size
+    alias_method :fileCreatedDate,  :file_created_date
   end
   
    class Link
-     alias_method :click_no_wait, :click
+     alias_method :click_no_wait,   :click
    end
   
   class RadioCheckCommon
-    alias_method :is_set?, :set?
-    alias_method :get_state, :set?
-    alias_method :isSet?, :set?
-    alias_method :getState, :set?
+    alias_method :is_set?,          :set?
+    alias_method :get_state,        :set?
+    alias_method :isSet?,           :set?
+    alias_method :getState,         :set?
   end
   
   class SelectList
     alias_method :getSelectedItems, :get_selected_items
-    alias_method :getAllContents, :get_all_contents
-    alias_method :clearSelection, :clear_selection
-    alias_method :select_value, :select
-    alias_method :includes?, :include?
+    alias_method :getAllContents,   :get_all_contents
+    alias_method :clearSelection,   :clear_selection
+    alias_method :select_value,     :select
+    alias_method :includes?,        :include?
   end
   
   class TextField
-    alias_method :dragContentsTo, :drag_contents_to
-    alias_method :getContents, :get_contents
+    alias_method :dragContentsTo,   :drag_contents_to
+    alias_method :getContents,      :value
+    alias_method :get_contents,     :value
   end
 end
 
