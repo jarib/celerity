@@ -74,7 +74,13 @@ module Celerity
       when Regexp
         elements_by_tag_names.find { |elem| elem.getIdAttribute =~ what }
       when String
-        @object.getHtmlElementById(what)
+        obj = @object.getHtmlElementById(what)
+        if @tags.include?(obj.getTagName)
+          obj
+        else
+          $stderr.puts "warning: multiple elements with identical id (#{what.inspect})? " if $VERBOSE
+          elements_by_tag_names.find { |elem| elem.getIdAttribute == what }
+        end
       else
         raise ArgumentError, "Argument #{what.inspect} should be a String or Regexp"
       end
