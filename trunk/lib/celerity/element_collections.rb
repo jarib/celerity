@@ -9,12 +9,12 @@ module Celerity
       @object = (how == :object ? what : nil)
       @length = length
     end
-
+   
     def length
       if @object
         @object.length
       else
-        @elements = ElementLocator.new(@container.object, element_class).elements_by_idents
+        @elements ||= ElementLocator.new(@container.object, element_class).elements_by_idents
         @elements.size
       end
     end
@@ -34,12 +34,11 @@ module Celerity
     end
     
     def to_s
-      map { |i| i.to_s }.join("\n")
+      map { |e| e.to_s }.join("\n")
     end
     
     private
 
-    # this method creates an object of the correct type that the iterators use
     def iterator_object(i)
       element_class.new(@container, :index, i+1)
     end

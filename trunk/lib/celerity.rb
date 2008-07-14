@@ -6,12 +6,18 @@ end
 
 if RUBY_PLATFORM =~ /java/
   require 'java'
+  JavaString = java.lang.String
+  
   Celerity::Jars.each { |jar| require(jar) }
 
   module HtmlUnit
     include_package 'com.gargoylesoftware.htmlunit'
+
+    module Html
+      include_package 'com.gargoylesoftware.htmlunit.html'
+    end
   end
-  JavaString = java.lang.String
+  
 else
   raise "Celerity only works on JRuby at the moment."
 end

@@ -92,7 +92,7 @@ module Celerity
       if @page.respond_to?("getContent")
         @page.getContent  
       else
-        # # this has no whitespace
+        # # this has minimal whitespace
         @page.documentElement.asText
         
         # if @opts[:browser] == :firefox
