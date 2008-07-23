@@ -28,6 +28,15 @@ describe Element do
     end
     
   end
+  
+  describe "#focus" do
+    it "should fire the onfocus event for the given element" do
+      tf = @browser.text_field(:id, "new_user_occupation")
+      tf.value.should == "Developer"
+      tf.focus
+      @browser.div(:id, "onfocus_test").text.should == "changed by onfocus event"
+    end
+  end
 
   describe "#parent" do
     it "should get the parent of this element" do

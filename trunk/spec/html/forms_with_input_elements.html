@@ -25,7 +25,7 @@
                 <option value="5">USA</option>
             </select> <br />
             <label for="new_user_occupation">Occupation</label>
-            <input type="text" name="new_user_occupation" id="new_user_occupation" value="Developer" /> <br />
+            <input type="text" name="new_user_occupation" id="new_user_occupation" value="Developer" onfocus="document.getElementById('onfocus_test').innerHTML = 'changed by onfocus event'"/> <br />
             <label for="new_user_species">Species</label>
             <input type="text" name="new_user_species" id="new_user_species" value="Homo sapiens sapiens" disabled="disabled" /> <br />
             <label for="new_user_code">Personal code</label>
@@ -108,6 +108,7 @@
 	<!-- used for testing javascript events -->
 	<div id="changed_language"></div>
 	<div id="wants_newsletter"></div>
+	<div id="onfocus_test"></div>
 
   </body>
 </html>

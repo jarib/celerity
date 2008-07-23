@@ -56,6 +56,12 @@ module Celerity
       element_class.new(@container, :object, obj)
     end
     
+    # Sets the focus to this element.
+    def focus
+      assert_exists
+      @object.focus
+    end
+    
     # Locates the element
     def locate
       @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)

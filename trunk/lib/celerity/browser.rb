@@ -33,6 +33,7 @@ module Celerity
     #-- 
     # @public
     def initialize(opts = {})
+      raise TypeError, "bad argument: #{opts.inspect}" unless opts.is_a? Hash
       @opts = opts
       @last_url, @page = nil
       @page_container  = self
