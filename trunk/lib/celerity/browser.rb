@@ -45,7 +45,7 @@ module Celerity
       set_options
       find_viewer 
     end
-    
+        
     def method_missing(meth, *args)
       if type = meth.to_s[/^show_(.*)$/, 1]
         begin
