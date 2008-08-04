@@ -134,7 +134,7 @@ module Celerity
     # workaround for HtmlUnit bug?
     rescue java.lang.NullPointerException => e
       $stderr.puts "warning: celerity caught #{e}"
-      if tries < 2
+      if tries > 2
         retry
         tries += 1
       end
