@@ -10,6 +10,10 @@ module Celerity
       browser
     end
     
+    def self.attach(*args)
+      raise NotImplementedError, "no popup handling yet"
+    end
+    
     # Creates a browser object. 
     #
     # ==== Options (opts)
