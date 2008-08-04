@@ -126,9 +126,17 @@ module Celerity
     end
 
     def elements_by_tag_names
+      tries = 0
       # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct order, making :index fail
       @object.getAllHtmlChildElements.iterator.to_a.select do |elem|
         @tags.include?(elem.getTagName)
+      end
+    # workaround for HtmlUnit bug?
+    rescue java.lang.NullPointerException => e
+      $stderr.puts "warning: celerity caught #{e}"
+      if tries < 2
+        retry
+        tries += 1
       end
     end
 
