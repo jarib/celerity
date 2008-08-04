@@ -137,6 +137,8 @@ module Celerity
       if tries < 2
         retry
         tries += 1
+      else
+        raise e
       end
     end
 
