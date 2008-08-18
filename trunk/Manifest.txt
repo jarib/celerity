@@ -3,8 +3,6 @@ License.txt
 Manifest.txt
 README.txt
 Rakefile
-config/hoe.rb
-config/requirements.rb
 lib/celerity.rb
 lib/celerity/browser.rb
 lib/celerity/clickable_element.rb
