@@ -1,6 +1,7 @@
 module Celerity
   class Browser
     include Container
+    
     attr_accessor :page, :object
     attr_reader :webclient, :viewer
     
