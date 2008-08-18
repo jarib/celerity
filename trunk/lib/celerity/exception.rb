@@ -1,7 +1,7 @@
 module Celerity
   module Exception
 
-    # Root class for all Celerity Exceptions
+    # Superclass for all Celerity exceptions.
     class CelerityException < StandardError  
       def initialize(message="")
           super(message)
@@ -20,32 +20,22 @@ module Celerity
     # This exception is thrown if an attempt is made to access a form that cannot be found 
     class UnknownFormException < CelerityException; end
       
-    # This exception is thrown if an attempt is made to access an object that is in a read only state
+    # This exception is thrown if an attempt is made to access an object that is in a read-only state
     class ObjectReadOnlyException < CelerityException; end
       
     # This exception is thrown if an attempt is made to access an object when the specified value cannot be found
     class NoValueFoundException < CelerityException; end
       
-    # This exception gets raised if part of finding an object is missing
+    # This exception gets raised if the how argument is wrong.
     class MissingWayOfFindingObjectException < CelerityException; end
     
-    # this exception is raised if an attempt is made to access a table row that doesnt exist
+    # This exception is raised if an attempt is made to access a table row that doesn't exist
     class UnknownRowException < CelerityException; end
       
-    # this exception is raised if an attempt is made to access a table cell that doesnt exist
+    # This exception is raised if an attempt is made to access a table cell that doesn't exist
     class UnknownCellException < CelerityException; end
       
     # This exception is thrown if an http error, such as a 404, 500 etc is encountered while navigating
     class NavigationException < CelerityException; end
-      
-    # # This exception is raised if a timeout is exceeded
-    # class TimeOutException < CelerityException
-    #   def initialize(duration, timeout)
-    #     @duration, @timeout = duration, timeout
-    #     super
-    #   end 
-    #   attr_reader :duration, :timeout
-    # end
-    
   end
 end

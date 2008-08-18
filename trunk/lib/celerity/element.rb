@@ -28,6 +28,7 @@ module Celerity
 
     DEFAULT_HOW = nil
     
+    # @api internal
     def initialize(container, *args)
       self.container = container
       
@@ -48,6 +49,7 @@ module Celerity
     end
     
     # Get the parent element (experimental, avoid if possible)
+    # @return [Celerity::Element] subclass
     def parent
       assert_exists
       
@@ -56,6 +58,7 @@ module Celerity
         return nil if obj.nil?
         obj = obj.parentNode
       end
+      
       element_class.new(@container, :object, obj)
     end
     
@@ -66,23 +69,28 @@ module Celerity
     end
     
     # Locates the element
+    # @api internal
     def locate
       @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
     end
     
-    # Returns a string representation of the element.
+    # @return [String] A string representation of the element.
     def to_s
       assert_exists
       create_string(@object)
     end
     
-    # Get the value of the given attribute.
+    # @param [String, #to_s] The attribute.
+    # @return [String] The value of the given attribute.
     def attribute_value(attribute)
       assert_exists
-      @object.getAttribute(attribute)
+      @object.getAttribute(attribute.to_s)
     end
 
-    # Raises UnknownObjectException if the element doesn't exist. Only used internally.
+    # Locates the element.
+    # 
+    # @raise UnknownObjectException
+    # @api internal
     def assert_exists
       locate
       unless @object
@@ -91,7 +99,7 @@ module Celerity
     end
 
     # Checks if the element exists.
-    # Returns true or false.
+    # @return [true, false]
     def exists?
       assert_exists
       true
@@ -102,6 +110,7 @@ module Celerity
     alias_method :exists, :exists?
 
     # Return a text representation of the element.
+    # @return [String]
     def text
       assert_exists
 
@@ -113,14 +122,16 @@ module Celerity
     alias_method :innerText, :text
     alias_method :inner_text, :text
 
-    # expected_text - String or Regexp
+    # Check if the element contains the given text.
     #
-    # returns the index of the matched text, or nil if it doesn't match
+    # @param  [String, Regexp] expected_text The text to look for.
+    # @return [Fixnum, nil]  The index of the matched text, or nil if it doesn't match.
     def contains_text(expected_text)
       assert_exists
+      
       case expected_text
       when Regexp
-        text().match(expected_text)
+        text() =~ expected_text
       when String
         text().index(expected_text)
       else
@@ -128,7 +139,7 @@ module Celerity
       end
     end
 
-    # Returns the normative XML representation of the element (including children)
+    # @return [String] The normative XML representation of the element (including children).
     def to_xml
       assert_exists
       @object.asXml
@@ -137,8 +148,10 @@ module Celerity
     alias_method :as_xml, :to_xml
     alias_method :html,   :to_xml
     
+    # @return [String] A string representation of the element's attributes.
     def attribute_string
       assert_exists
+      
       result = ''
       iterator = @object.getAttributeEntriesIterator
       
@@ -150,9 +163,11 @@ module Celerity
       result
     end
 
-    # used to get attributes
+    # Dynamically get element attributes.
+    # @return [String] The resulting attribute.
+    # @raise NoMethodError If the element doesn't have this attribute.
     def method_missing(meth, *args, &blk)
-      meth = method_to_attribute(meth)
+      meth = selector_to_attribute(meth)
       
       if self.class::ATTRIBUTES.include?(meth)
         assert_exists
@@ -164,7 +179,7 @@ module Celerity
     end
 
     def respond_to?(meth, include_private = false)
-      meth = method_to_attribute(meth)
+      meth = selector_to_attribute(meth)
       return true if self.class::ATTRIBUTES.include?(meth)
       super
     end
@@ -172,18 +187,18 @@ module Celerity
     private
     
     def create_string(element)
-      n = []
-      n << "tag:".ljust(TO_S_SIZE) + element.getTagName unless element.getTagName.empty?
-      iterator = element.getAttributeEntriesIterator
+      ret = []
+      ret << "tag:".ljust(TO_S_SIZE) + element.getTagName unless element.getTagName.empty?
       
+      iterator = element.getAttributeEntriesIterator
       while iterator.hasNext
         attribute = iterator.next
-        n << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
+        ret << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
       end
       
-      n << "  text:".ljust(TO_S_SIZE+2) + element.asText unless element.asText.empty?
+      ret << "  text:".ljust(TO_S_SIZE+2) + element.asText unless element.asText.empty?
       
-      n.join("\n")
+      ret.join("\n")
     end
     
     def identifier_string
@@ -195,7 +210,7 @@ module Celerity
       end
     end
     
-    def method_to_attribute(meth)
+    def selector_to_attribute(meth)
       case meth
       when :class_name then :class
       when :caption then :value

@@ -21,7 +21,7 @@ It is a wrapper around the HtmlUnit Java library and is currently aimed at provi
 	
 == REQUIREMENTS:
 
-* JRuby 1.1
+* JRuby 1.1 or higher
 * Java 6
 
 == INSTALL:
@@ -43,7 +43,7 @@ It is a wrapper around the HtmlUnit Java library and is currently aimed at provi
 == LICENSE:
 
 Celerity - JRuby wrapper for HtmlUnit
-Copyright (c) 2008 FinnTech AS
+Copyright (c) 2008 FINN.no AS
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

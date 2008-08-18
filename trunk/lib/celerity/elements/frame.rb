@@ -8,6 +8,7 @@ module Celerity
     DEFAULT_HOW = :name
     
     # Override the default locate to handle frame and inline frames.
+    # @api internal
     def locate
       super
       if @object
@@ -19,6 +20,7 @@ module Celerity
     end
     
     # Override assert_exists to raise UnknownFrameException (for Watir compatibility)
+    # @api internal
     def assert_exists
       locate unless @object
       unless @object
@@ -36,7 +38,7 @@ module Celerity
     end
     
     def method_missing(meth, *args, &blk)
-      meth = method_to_attribute(meth)
+      meth = selector_to_attribute(meth)
       if self.class::ATTRIBUTES.include?(meth)
         assert_exists
         @inline_frame_object.getAttributeValue(meth.to_s)

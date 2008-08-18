@@ -1,15 +1,17 @@
 module Celerity
-  # this class is the superclass for the iterator classes (Buttons, Links, Spans etc.)
-  # it would normally only be accessed by the iterator methods (Browser#spans, Browser#links, ...)
+  # This class is the superclass for the iterator classes (Buttons, Links, Spans etc.)
+  # It would normally only be accessed by the iterator methods (Browser#spans, Browser#links, ...).
   class ElementCollections
     include Enumerable
     
+    # @api internal
     def initialize(container, how = nil, what = nil)
       @container = container
       @object = (how == :object ? what : nil)
       @length = length
     end
    
+    # @return [Fixnum] The number of elements in this collection.
     def length
       if @object
         @object.length
@@ -20,6 +22,7 @@ module Celerity
     end
     alias_method :size, :length
     
+    # @yield [element] Iterate through the elements in this collection.
     def each
       if @elements
         @elements.each { |e| yield(element_class.new(@container, :object, e)) }
@@ -29,6 +32,10 @@ module Celerity
       end
     end
     
+    # Get the element at the given index.
+    # NB! This is 1-indexed to keep compatibility with Watir. Subject to change.
+    #
+    # @return [Celerity::Element]
     def [](n)
       @elements ? element_class.new(@container, :object, @elements[n-1]) : iterator_object(n-1)
     end

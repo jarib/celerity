@@ -5,7 +5,7 @@ require "active_support"
 #--
 # http://api.rubyonrails.com/classes/Inflector.html#M001621
 #++
-class String
+class String # :nodoc:
   def underscore
      gsub(/::/, '/').
      gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
@@ -16,10 +16,11 @@ class String
 end
 
 module Celerity
+  # Experimental
   class MethodGenerator
 
-    ELEMENTS = %w(text_field select_list radio checkbox button).map { |e| e.to_sym }
-    BUGGY_ELEMENTS = %w(radio checkbox).map { |e| e.to_sym }
+    ELEMENTS = %w[text_field select_list radio checkbox button].map { |e| e.to_sym }
+    BUGGY_ELEMENTS = %w[radio checkbox].map { |e| e.to_sym }
   
     def initialize(ie, opts = {})
       @ie = ie
