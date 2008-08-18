@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe Radios do
+describe "Radios" do
   
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do

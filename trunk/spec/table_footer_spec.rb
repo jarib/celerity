@@ -1,13 +1,13 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe TableFooter do
+describe "TableFooter" do
   
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do
-    @browser = IE.new
+    @browser = Browser.new
     @browser.goto(TEST_HOST + "/tables.html")
   end
   

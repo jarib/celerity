@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe IE do
+describe "Browser" do
   
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
   
   # Exists
@@ -142,8 +142,8 @@ TEXT
   # Manipulation methods
   describe ".start" do
     it "should go to the given URL and return an instance of itself" do
-      @browser = Celerity::IE.start(TEST_HOST + "/non_control_elements.html")
-      @browser.should be_instance_of(Celerity::IE)
+      @browser = Browser.start(TEST_HOST + "/non_control_elements.html")
+      @browser.should be_instance_of(Browser)
       @browser.title.should == "Non-control elements"
     end
   end
@@ -220,7 +220,7 @@ TEXT
     end
 
     it "should not raise error on a blank page" do
-      @browser = IE.new
+      @browser = Browser.new
       lambda { @browser.contains_text('') }.should_not raise_error
     end
   end

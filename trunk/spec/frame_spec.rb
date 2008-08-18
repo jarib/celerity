@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe Frame do
+describe "Frame" do
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do

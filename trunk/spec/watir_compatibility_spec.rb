@@ -1,54 +1,54 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe IE do
+describe "IE" do
   
   before :each do
-    @browser = IE.new
+    @browser = Browser.new
   end
   
   # Class methods
   it "should respond to .speed" do
-    IE.should respond_to("speed")
+    Browser.should respond_to("speed")
   end
 
   it "should respond to .speed=" do
-    IE.should respond_to("speed=")
+    Browser.should respond_to("speed=")
   end
 
   it "should respond to .set_fast_speed" do
-    IE.should respond_to("set_fast_speed")
+    Browser.should respond_to("set_fast_speed")
   end
 
   it "should respond to .set_slow_speed" do
-    IE.should respond_to("set_slow_speed")
+    Browser.should respond_to("set_slow_speed")
   end
 
   it "should respond to .attach_timeout" do
-    IE.should respond_to("attach_timeout")
+    Browser.should respond_to("attach_timeout")
   end
 
   it "should respond to .attach_timeout=" do
-    IE.should respond_to("attach_timeout=")
+    Browser.should respond_to("attach_timeout=")
   end
 
   it "should respond to .reset_attach_timeout" do
-    IE.should respond_to("reset_attach_timeout")
+    Browser.should respond_to("reset_attach_timeout")
   end
 
   it "should respond to .visible" do
-    IE.should respond_to("visible")
+    Browser.should respond_to("visible")
   end
 
   it "should respond to .each" do
-    IE.should respond_to("each")
+    Browser.should respond_to("each")
   end
 
   it "should respond to .quit" do
-    IE.should respond_to("quit")
+    Browser.should respond_to("quit")
   end
 
   it "should alias .start_window to .start" do
-    IE.should respond_to("start")
+    Browser.should respond_to("start")
   end
   
   # Instance methods
@@ -82,10 +82,10 @@ describe IE do
   
 end
 
-describe Button do
+describe "Button" do
   
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do
@@ -101,10 +101,10 @@ describe Button do
   
 end
 
-describe Link do
+describe "Link" do
   
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do
@@ -120,10 +120,10 @@ describe Link do
   
 end
   
-describe Image do
+describe "Image" do
   
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do
@@ -158,9 +158,9 @@ describe Image do
   
 end
 
-describe RadioCheckCommon do
+describe "RadioCheckCommon" do
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do
@@ -193,10 +193,10 @@ describe RadioCheckCommon do
   
 end
 
-describe SelectList do
+describe "SelectList" do
   
   before :all do
-    @browser = Celerity::IE.new
+    @browser = Browser.new
   end
 
   before :each do
@@ -232,10 +232,10 @@ describe SelectList do
   
 end
 
-describe TextField do
+describe "TextField" do
   
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do

@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe FileFields do
+describe "FileFields" do
   
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do

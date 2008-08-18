@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe SelectLists do
+describe "SelectLists" do
   
   before :all do
-    @browser = Celerity::IE.new
+    @browser = Browser.new
   end
 
   before :each do

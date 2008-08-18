@@ -108,8 +108,13 @@ module Celerity
         how, what = :index, (idx + 1).to_s
       else
         how = :url
-        uri = URI.parse(href)
-        what = Regexp.new(Regexp.escape(uri.to_s.sub(/.*#{uri.host}\//, '')))
+        
+        begin
+          uri = URI.parse(href)
+          what = Regexp.new(Regexp.escape(uri.to_s.sub(/.*#{uri.host}\//, '')))
+        rescue URI::InvalidURIError
+          what = href
+        end
       end
       @method << "    #{@browser}.link(#{how.inspect}, #{what.inspect}).click\n"
     end

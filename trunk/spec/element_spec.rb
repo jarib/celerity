@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe Element do
+describe "Element" do
 
   before :all do
-    @browser = IE.new
+    @browser = Browser.new
   end
 
   before :each do
@@ -40,7 +40,7 @@ describe Element do
 
   describe "#parent" do
     it "should get the parent of this element" do
-      @browser.text_field(:id, "new_user_email").parent.should be_instance_of Celerity::Form
+      @browser.text_field(:id, "new_user_email").parent.should be_instance_of(Form)
     end
   end
   
