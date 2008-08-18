@@ -2,10 +2,10 @@ module Celerity
   module Exception
 
     # Root class for all Celerity Exceptions
-    class CelerityException < RuntimeError  
-        def initialize(message="")
-            super(message)
-        end
+    class CelerityException < StandardError  
+      def initialize(message="")
+          super(message)
+      end
     end
     
     # This exception is thrown if an attempt is made to access an object that doesn't exist

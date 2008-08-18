@@ -5,7 +5,9 @@ module Celerity
     include Container
 
     TAGS = [ Identifier.new('td') ]
-    ATTRIBUTES = BASE_ATTRIBUTES | [:abbr, :axis, :headers, :scope, :rowspan, :colspan] | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES
+    ATTRIBUTES = BASE_ATTRIBUTES | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES |
+                         [:abbr, :axis, :headers, :scope, :rowspan, :colspan] 
+                                
     DEFAULT_HOW = :id
     
     alias_method :to_s, :text

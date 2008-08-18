@@ -1,17 +1,22 @@
 module Celerity
   
-  # This class contains methods for accessing elements inside a container (usually the Browser object, meaning the current page).
+  # This class contains methods for accessing elements inside a container.
+  # (usually the Browser object, meaning the current page).
+  #
   # The most common syntax is 
   #   browser.elem(:attribute, 'value')
   #
-  # Note that the element is located lazily, so no exceptions will be thrown if the element doesn't exist until you call a method
-  # resulting object. To do this you would normally use +Element#exists?+ or an action method on the object, like +ClickableElement#click+. 
+  # Note that the element is located lazily, so no exceptions will be thrown 
+  # if the element doesn't exist until you call a method on the resulting object. 
+  # To do this you would normally use +Element#exists?+ or an action method, 
+  # like +ClickableElement#click+. 
   # 
   # You can also pass in a hash:
   #
-  # browser.link(:index => 1).click
+  #   browser.link(:index => 1).click
   #
-  # All elements support multiple attributes identification using the hash syntax (not compatible with Watir):
+  # All elements support multiple attributes identification using the 
+  # hash syntax (though might not always be compatible with Watir):
   #
   # browser.span(:class_name => 'product', :index => 5).text
   #

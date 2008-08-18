@@ -106,6 +106,7 @@ module Celerity
         if @tags.include?(e.getTagName)
           idents.any? do |ident|
             next unless ident.tag == e.getTagName
+            
             attr_result = ident.attributes.all? do |key, value| 
               value.any? { |val| matches?(e.getAttributeValue(key.to_s), val) } 
             end 
@@ -115,7 +116,6 @@ module Celerity
             else
               attr_result
             end
-            
           end
         end
       end
@@ -135,8 +135,8 @@ module Celerity
     rescue java.lang.NullPointerException => e
       $stderr.puts "warning: celerity caught #{e}"
       if tries < 2
-        retry
         tries += 1
+        retry
       else
         raise e
       end

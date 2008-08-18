@@ -5,7 +5,8 @@ module Celerity
     include Container
     
     TAGS = [ Identifier.new('table') ]
-    ATTRIBUTES = BASE_ATTRIBUTES | [:summary, :width, :border, :frame, :rules, :cellspacing, :cellpadding, :align, :bgcolor]
+    ATTRIBUTES = BASE_ATTRIBUTES | [:summary, :width, :border, :frame, :rules, 
+                                    :cellspacing, :cellpadding, :align, :bgcolor]
     DEFAULT_HOW = :id
     
     def locate

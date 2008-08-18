@@ -67,6 +67,7 @@ module Celerity
     def type
       assert_exists
       type = @object.getAttributeValue('type')
+      
       if ['file', 'radio', 'checkbox', 'submit', 'reset', 'image', 'button', 'hidden'].include?(type)
         type
       else

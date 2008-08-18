@@ -1,7 +1,10 @@
 module Celerity
+  
+  # Superclass for all HTML elements.
   class Element
     include Exception
     include Container
+    
     attr_reader :container, :object
     
     # number of spaces that separate the property from the value in the create_string method
@@ -13,7 +16,8 @@ module Celerity
       :cell_halign => [:align, :char, :charoff],
       :cell_valign => [:valign],
       :i18n        => [:dir, :lang],
-      :event       => [:onclick, :ondblclick, :onmousedown, :onmouseup, :onmouseover, :onmousemove, :onmouseout, :onkeypress, :onkeydown, :onkeyup],
+      :event       => [:onclick, :ondblclick, :onmousedown, :onmouseup, :onmouseover, 
+                       :onmousemove, :onmouseout, :onkeypress, :onkeydown, :onkeyup],
       :sloppy      => [:name, :value]
     }
     
@@ -24,7 +28,6 @@ module Celerity
 
     DEFAULT_HOW = nil
     
-    # Abstract superclass for HTML elements. 
     def initialize(container, *args)
       self.container = container
       
@@ -32,7 +35,7 @@ module Celerity
       when 2
         @conditions = { args[0] => args[1] }
       when 1
-        if Hash === args.first
+        if args.first.is_a? Hash
           @conditions = args.first
         elsif self.class::DEFAULT_HOW
           @conditions = { self.class::DEFAULT_HOW => args.first }
@@ -130,19 +133,21 @@ module Celerity
       assert_exists
       @object.asXml
     end
-    alias_method :asXml, :to_xml
+    alias_method :asXml,  :to_xml
     alias_method :as_xml, :to_xml
-    alias_method :html, :to_xml
+    alias_method :html,   :to_xml
     
     def attribute_string
       assert_exists
       result = ''
       iterator = @object.getAttributeEntriesIterator
+      
       while iterator.hasNext
         attribute = iterator.next
         result << "#{attribute.getName}=\"#{attribute.getHtmlValue.to_s}\" "
       end
-      return result
+      
+      result
     end
 
     # used to get attributes
@@ -170,12 +175,15 @@ module Celerity
       n = []
       n << "tag:".ljust(TO_S_SIZE) + element.getTagName unless element.getTagName.empty?
       iterator = element.getAttributeEntriesIterator
+      
       while iterator.hasNext
         attribute = iterator.next
         n << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
       end
+      
       n << "  text:".ljust(TO_S_SIZE+2) + element.asText unless element.asText.empty?
-      return n.join("\n")
+      
+      n.join("\n")
     end
     
     def identifier_string

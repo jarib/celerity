@@ -38,30 +38,23 @@ module Celerity
     # @public
     def initialize(opts = {})
       raise TypeError, "bad argument: #{opts.inspect}" unless opts.is_a? Hash
-      @opts = opts
+      
+      @opts            = opts
       @last_url, @page = nil
       @page_container  = self
       @error_checkers  = []
+      
       self.log_level = :warning
 
-      browser = @opts[:browser] == :firefox ? ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
+      browser = @opts[:browser] == :firefox ? 
+          ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
+          
       @webclient = ::HtmlUnit::WebClient.new(browser)
-      set_options
+
+      configure_webclient
       find_viewer 
     end
         
-    def method_missing(meth, *args)
-      if type = meth.to_s[/^show_(.*)$/, 1]
-        begin
-          puts collection_string(type)
-        rescue NoMethodError
-          super
-        end
-      else
-        super
-      end
-    end
-
     # goto the given URL
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{://}
@@ -130,7 +123,7 @@ module Celerity
       @object
     end
     
-    # goto the last url - HtmlUnit doesn't have a 'back' functionality
+    # goto the last url - HtmlUnit doesn't have a 'back' functionality, so we only have 1 history item :)
     def back
       # TODO: this is naive, need capability from HtmlUnit  
       goto(@last_url) if @last_url
@@ -210,18 +203,26 @@ module Celerity
     def page=(value)
       @last_url = url() if exist?
       @page = value
+      
       if @page.respond_to?("getDocumentElement")
         @object = @page.getDocumentElement
       end
+      
       render if @viewer
       run_error_checks
       
       value
     end
-    
+
+    # used for #show_links(), #show_divs() etc.
+    def method_missing(meth, *args)
+      return super unless type = meth.to_s[/^show_(.*)$/, 1]
+      puts collection_string(type) rescue super
+    end
+
     private
     
-    def set_options
+    def configure_webclient
       @webclient.throwExceptionOnScriptError = false unless @opts[:javascript_exceptions]
       @webclient.throwExceptionOnFailingStatusCode = false unless @opts[:status_code_exceptions]
       @webclient.cssEnabled = false unless @opts[:css]
@@ -232,9 +233,11 @@ module Celerity
     def collection_string(collection_method)
       collection = self.send collection_method
       result = "Found #{collection.size} #{collection_method.downcase}\n"
+      
       collection.each_with_index do |element, index|
         result << "#{index+1}: #{element.attribute_string}\n"
       end
+      
       result
     end
     

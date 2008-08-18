@@ -17,7 +17,7 @@ module Celerity
     def assert_not_readonly
       if readonly?
         raise ObjectReadOnlyException,
-          "Textfield #{@how.inspect} and #{@what.inspect} is read only."
+          "InputElement #{identifier_string()} is read only."
       end
     end
 

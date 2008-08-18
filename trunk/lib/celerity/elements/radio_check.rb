@@ -2,7 +2,9 @@ module Celerity
   # Common superclass for radios and check boxes.
   class RadioCheckCommon < InputElement
     DEFAULT_HOW = :name
-    
+
+    # these can optionally take a value parameter as a third arg, so needs
+    # to be special-handled.
     def initialize(container, type, *args)
       @type = type
       case args.size

@@ -1,6 +1,6 @@
 module Celerity
-  # this class is the super class for the iterator classes (buttons, links, spans etc
-  # it would normally only be accessed by the iterator methods (spans, links etc) of Browser
+  # this class is the superclass for the iterator classes (Buttons, Links, Spans etc.)
+  # it would normally only be accessed by the iterator methods (Browser#spans, Browser#links, ...)
   class ElementCollections
     include Enumerable
     
