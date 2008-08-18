@@ -1,7 +1,7 @@
 require 'celerity/version'
 
-AUTHORS = ["T. Alexander Lystad", "Knut Johannes Dahle", "Jari Bakken"]
-EMAIL = "alexander.lystad@finntech.no"
+AUTHORS = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
+EMAIL = "jari.bakken@finntech.no"
 DESCRIPTION = <<DESC
   Celerity is a JRuby library for easy and fast functional test automation for web applications. It is a wrapper around the HtmlUnit Java library and is currently aimed at providing the same API and functionality as Watir.
 DESC
