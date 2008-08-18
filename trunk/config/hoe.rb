@@ -1,18 +1,18 @@
 require 'celerity/version'
 
-AUTHORS = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
-EMAIL = "jari.bakken@finntech.no"
-DESCRIPTION = <<DESC
+AUTHORS            = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
+EMAIL              = "jari.bakken@finntech.no"
+DESCRIPTION        = <<DESC
   Celerity is a JRuby library for easy and fast functional test automation for web applications. It is a wrapper around the HtmlUnit Java library and is currently aimed at providing the same API and functionality as Watir.
 DESC
 
-GEM_NAME = 'celerity'
-RUBYFORGE_PROJECT = 'celerity'
-HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
-DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
+GEM_NAME           = 'celerity'
+RUBYFORGE_PROJECT  = 'celerity'
+HOMEPATH           = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
+DOWNLOAD_PATH      = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 
-@config_file = "~/.rubyforge/user-config.yml"
-@config = nil
+@config_file       = "~/.rubyforge/user-config.yml"
+@config            = nil
 RUBYFORGE_USERNAME = "unknown"
 def rubyforge_username
   unless @config
@@ -54,6 +54,9 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
+  
+  # make sure rdoc doesn't see any jars
+  p.rdoc_pattern = /^(lib|bin|ext).+\.(rb|txt|)$|txt$/
   
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
