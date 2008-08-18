@@ -1,3 +1,17 @@
+== 0.0.4 2008-08-18
+* Minor enhancements
+  * Update HtmlUnit to 2.2
+  * New methods: Element#focus, Element#parent, Table#child_row, Table#child_cell, TableRow#child_cell
+  * Rename Celerity::IE -> Celerity::Browser (but Celerity::IE still points to the class)
+  * Add Celerity::Browser.new(:browser => :firefox) to use HtmlUnit's Firefox mode.
+  * Make it easier to run the spec suite against other implementations.
+  * Bugfixes:
+    - Image#click
+    - Finding elements by id could give weird errors if multiple elements had the same id.
+    - If getElementById returns an element with the wrong tag name, output a warning and find the correct element by iteration instead.
+    - Browser#goto regexp
+    - Frames (collection) support
+
 == 0.0.3 2008-05-26
 * 3 major enhancements:
   * Added support for <ul>, <ol>, <thead>, <tfoot>, <h1>, <h2>, <h3>, <h4>, <h5> and <h6> elements
