@@ -23,9 +23,9 @@ module Celerity
       conditions.each do |how, what|
         case how
         when :object
-          # unless what.is_a? Celerity::Element
-          #   raise ArgumentError, "second argument must be a Celerity::Element subclass" 
-          # end
+          unless what.is_a? Celerity::Element
+            raise ArgumentError, "second argument must be a Celerity::Element subclass" 
+          end
           return what
         when :id
           return find_by_id(what)
