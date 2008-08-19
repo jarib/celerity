@@ -29,7 +29,7 @@ module Celerity
     # @raise Celerity::Exception::NoValueFoundException if the value does not exist.
     def select(value)
       assert_exists
-      raise NoValueFoundException, "unknown option with value #{value.inspect}" unless include?(value)
+      raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list(#{@conditions.inspect})" unless include?(value)
       @object.getOptions.select { |e| matches?(e.asText, value) }.each do |option|
         @container.update_page(option.click)
       end
@@ -52,7 +52,7 @@ module Celerity
     # @return [true, false]
     def selected?(value)
       assert_exists
-      raise UnknownObjectException, "unknown option with value #{value.inspect}" unless include?(value)
+      raise UnknownObjectException, "unknown option with value #{value.inspect} for select_list(#{@conditions.inspect})" unless include?(value)
       !!@object.getOptions.find { |e| matches?(e.asText, value) && e.isSelected }
     end
 
