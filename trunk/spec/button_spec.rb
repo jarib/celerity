@@ -205,7 +205,7 @@ describe "Button" do
       b = @browser.button(:name, 'new_popup_window').click_and_attach
       b.should_not == @browser
       b.title.should == "Tables"
-      @browser.title.should == "Forms with input element"
+      @browser.title.should == "Forms with input elements"
     end
   end
   

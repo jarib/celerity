@@ -12,7 +12,7 @@ describe "Buttons" do
 
   describe "#length" do
     it "should return the number of buttons" do
-      @browser.buttons.length.should == 7
+      @browser.buttons.length.should == 8
     end
   end
   
