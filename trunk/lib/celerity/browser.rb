@@ -60,8 +60,8 @@ module Celerity
         
     # Goto the given URL
     #
-    # @param [String] the url
-    # @return [String] the url
+    # @param [String] uri The url.
+    # @return [String] The url.
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{://}
       self.page = @webclient.getPage(uri)
@@ -112,6 +112,7 @@ module Celerity
     # Check if the current page contains the given text.
     #
     # @param  [String, Regexp] expected_text The text to look for.
+    # @raise TypeError
     # @return [Numeric, nil]  The index of the matched text, or nil if it doesn't match.
     def contains_text(expected_text)
       return nil unless exist?
@@ -121,7 +122,7 @@ module Celerity
       when String
         text().index(expected_text)
       else
-        raise ArgumentError, "Argument must be String or Regexp, but was #{expected_text.inspect}:#{expected_text.class}"
+        raise TypeError, "Argument must be String or Regexp, but was #{expected_text.inspect}:#{expected_text.class}"
       end
     end
 
@@ -153,7 +154,8 @@ module Celerity
     # Add a 'checker' proc that will be run on every page load
     # 
     # @param [Proc] checker The proc to be run (can also be given as a block)
-    # @raise [ArgumentError] if no Proc or block was given.
+    # @yieldparam [Celerity::Browser] browser The current browser object.
+    # @raise ArgumentError if no Proc or block was given.
     def add_checker(checker = nil, &block)
       if block_given?
         @error_checkers << block
@@ -195,7 +197,7 @@ module Celerity
     #     b.link(:id, 'load_fancy_ajax_stuff').click
     #   end
     #
-    # @param [block] &block the block to execute synchronized.
+    # @yieldparam [Celerity::Browser] browser The current browser object.
     def resynchronized(&block)
       old_controller = @webclient.ajaxController
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new)
@@ -209,7 +211,7 @@ module Celerity
     #
     # Check that we have a @page object.
     # 
-    # @raise UnknownObjectException if no page is loaded.
+    # @raise Celerity::Exception::UnknownObjectException if no page is loaded.
     # @api internal
     def assert_exists
       raise UnknownObjectException, "no page loaded" unless exist?

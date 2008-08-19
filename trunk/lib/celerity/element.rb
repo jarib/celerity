@@ -89,7 +89,7 @@ module Celerity
 
     # Used internally to ensure the element actually exists.
     # 
-    # @raise UnknownObjectException if the element can't be found.
+    # @raise Celerity::Exception::UnknownObjectException if the element can't be found.
     # @api internal
     def assert_exists
       locate

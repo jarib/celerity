@@ -369,13 +369,13 @@ Used for #show_links(), #show_divs() etc. (for watir compatibility)
           <pre class="lines">
 
 
-248
-249
 250
-251</pre>
+251
+252
+253</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 248</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 250</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
   <span class='return return kw'>return</span> <span class='super super kw'>super</span> <span class='unless unless_mod kw'>unless</span> <span class='type identifier id'>type</span> <span class='assign token'>=</span> <span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='lbrack token'>[</span><span class='regexp val'>/^show_(.*)$/</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='rbrack token'>]</span>
@@ -514,7 +514,7 @@ Initialize a browser and goto the given URL.
     <tr>
       <th class="signature">
         <span class='name'><a href='#add_checker-instance_method' title='#add_checker'>#add_checker</a></span><span class='args'>(checker = nil, &amp;block)</span>
-        <span class='block'></span>
+        <span class='block'>{|browser| ... }</span>
         
       </th>
       <td class="docstring">
@@ -808,7 +808,7 @@ Refresh the current page.
     <tr>
       <th class="signature">
         <span class='name'><a href='#resynchronized-instance_method' title='#resynchronized'>#resynchronized</a></span><span class='args'>(&amp;block)</span>
-        <span class='block'>{|_self| ... }</span>
+        <span class='block'>{|browser| ... }</span>
         
       </th>
       <td class="docstring">
@@ -1327,7 +1327,7 @@ Instance of Celerity::Browser.
     <span class='visibility'>public</span>
     <span class='return_types'></span>
     <span class='name'>add_checker</span><span class='args'>(checker = nil, &amp;block)</span>
-    <span class='block'></span>
+    <span class='block'>{|browser| ... }</span>
   </tt>
 </div>
 
@@ -1359,19 +1359,40 @@ The proc to be run (can also be given as a block)
   
   </dl>
 </div>
+<div class="yieldparam">
+  <h3>Yield Parameters:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='' title='Celerity::Browser'>Celerity::Browser</a></tt>]</span>
+      
+      
+        <span class='name'>browser</span>
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+The current browser object.
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
 <div class="raise">
   <h3>Raises:</h3>
   <dl>
   
     <dt>
       
-        <span class='type'>[<tt>ArgumentError</tt>]</span>
+        <span class='type'></span>
       
       
     </dt>
     <dd>
       <span class='desc'><p>
-if no Proc or block was given.
+ArgumentError if no Proc or block was given.
 </p>
 </span>
     </dd>
@@ -1388,18 +1409,18 @@ if no Proc or block was given.
           <pre class="lines">
 
 
-157
-158
 159
 160
 161
 162
 163
 164
-165</pre>
+165
+166
+167</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 157</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 159</span>
 
 <span class='def def kw'>def</span> <span class='add_checker identifier id'>add_checker</span><span class='lparen token'>(</span><span class='checker identifier id'>checker</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='if if kw'>if</span> <span class='block_given? fid id'>block_given?</span>
@@ -1455,7 +1476,7 @@ Check that we have a @page object.
     </dt>
     <dd>
       <span class='desc'><p>
-UnknownObjectException if no page is loaded.
+Celerity::Exception::UnknownObjectException if no page is loaded.
 </p>
 </span>
     </dd>
@@ -1472,12 +1493,12 @@ UnknownObjectException if no page is loaded.
           <pre class="lines">
 
 
-214
-215
-216</pre>
+216
+217
+218</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 214</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 216</span>
 
 <span class='def def kw'>def</span> <span class='assert_exists identifier id'>assert_exists</span>
   <span class='raise identifier id'>raise</span> <span class='UnknownObjectException constant id'>UnknownObjectException</span><span class='comma token'>,</span> <span class='string val'>&quot;no page loaded&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='exist? fid id'>exist?</span>
@@ -1544,13 +1565,13 @@ The url of the resulting page, or nil if none was stored.
           <pre class="lines">
 
 
-135
 136
 137
-138</pre>
+138
+139</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 135</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 136</span>
 
 <span class='def def kw'>def</span> <span class='back identifier id'>back</span>
   <span class='comment val'># TODO: this is naive, need capability from HtmlUnit  </span>
@@ -1718,6 +1739,25 @@ The index of the matched text, or nil if it doesn&#8217;t match.
   
   </dl>
 </div>
+<div class="raise">
+  <h3>Raises:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+TypeError
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
 
 </div><div class="section source">
   <span>[<a class="source_link" href="#">View source</a>]</span>
@@ -1728,7 +1768,6 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-116
 117
 118
 119
@@ -1738,10 +1777,11 @@ The index of the matched text, or nil if it doesn&#8217;t match.
 123
 124
 125
-126</pre>
+126
+127</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 116</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 117</span>
 
 <span class='def def kw'>def</span> <span class='contains_text identifier id'>contains_text</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
   <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='unless unless_mod kw'>unless</span> <span class='exist? fid id'>exist?</span>
@@ -1751,7 +1791,7 @@ The index of the matched text, or nil if it doesn&#8217;t match.
   <span class='when when kw'>when</span> <span class='String constant id'>String</span>
     <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='index identifier id'>index</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
   <span class='else else kw'>else</span>
-    <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Argument must be String or Regexp, but was #{expected_text.inspect}:#{expected_text.class}&quot;</span>
+    <span class='raise identifier id'>raise</span> <span class='TypeError constant id'>TypeError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Argument must be String or Regexp, but was #{expected_text.inspect}:#{expected_text.class}&quot;</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -1815,12 +1855,12 @@ The Proc to disable.
           <pre class="lines">
 
 
-169
-170
-171</pre>
+171
+172
+173</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 169</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 171</span>
 
 <span class='def def kw'>def</span> <span class='disable_checker identifier id'>disable_checker</span><span class='lparen token'>(</span><span class='checker identifier id'>checker</span><span class='rparen token'>)</span>
   <span class='@error_checkers ivar id'>@error_checkers</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='checker identifier id'>checker</span><span class='rparen token'>)</span>
@@ -1881,12 +1921,12 @@ the underlying HtmlUnit object.
           <pre class="lines">
 
 
-129
 130
-131</pre>
+131
+132</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 129</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 130</span>
 
 <span class='def def kw'>def</span> <span class='document identifier id'>document</span>
   <span class='@object ivar id'>@object</span>
@@ -1949,13 +1989,13 @@ Execute the given JavaScript on the current page
           <pre class="lines">
 
 
-148
 149
 150
-151</pre>
+151
+152</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 148</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 149</span>
 
 <span class='def def kw'>def</span> <span class='execute_script identifier id'>execute_script</span><span class='lparen token'>(</span><span class='source identifier id'>source</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -2024,12 +2064,12 @@ Checks if we have a page currently loaded.
           <pre class="lines">
 
 
-187
-188
-189</pre>
+189
+190
+191</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 187</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 189</span>
 
 <span class='def def kw'>def</span> <span class='exist? fid id'>exist?</span>
   <span class='notop op'>!</span><span class='notop op'>!</span><span class='@page ivar id'>@page</span>
@@ -2124,12 +2164,12 @@ Goto the given URL
         <span class='type'>[<tt><a href='../String.html' title='String'>String</a></tt>]</span>
       
       
-        <span class='name'>the</span>
+        <span class='name'>uri</span>
       
     </dt>
     <dd>
       <span class='desc'><p>
-url
+The url.
 </p>
 </span>
     </dd>
@@ -2150,7 +2190,7 @@ url
     </dt>
     <dd>
       <span class='desc'><p>
-the url
+The url.
 </p>
 </span>
     </dd>
@@ -2303,12 +2343,12 @@ the current log level
           <pre class="lines">
 
 
-181
-182
-183</pre>
+183
+184
+185</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 181</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 183</span>
 
 <span class='def def kw'>def</span> <span class='log_level identifier id'>log_level</span>
   <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='logging identifier id'>logging</span><span class='dot token'>.</span><span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='getLogger identifier id'>getLogger</span><span class='lparen token'>(</span><span class='string val'>'com.gargoylesoftware.htmlunit'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='level identifier id'>level</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
@@ -2374,8 +2414,6 @@ The page to set.
           <pre class="lines">
 
 
-233
-234
 235
 236
 237
@@ -2386,10 +2424,12 @@ The page to set.
 242
 243
 244
-245</pre>
+245
+246
+247</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 233</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 235</span>
 
 <span class='def def kw'>def</span> <span class='page= identifier id'>page=</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
   <span class='@last_url ivar id'>@last_url</span> <span class='assign token'>=</span> <span class='url identifier id'>url</span><span class='lparen token'>(</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='exist? fid id'>exist?</span>
@@ -2441,13 +2481,13 @@ Refresh the current page
           <pre class="lines">
 
 
-141
 142
 143
-144</pre>
+144
+145</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 141</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 142</span>
 
 <span class='def def kw'>def</span> <span class='refresh identifier id'>refresh</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -2472,7 +2512,7 @@ Refresh the current page
     <span class='visibility'>public</span>
     <span class='return_types'></span>
     <span class='name'>resynchronized</span><span class='args'>(&amp;block)</span>
-    <span class='block'>{|_self| ... }</span>
+    <span class='block'>{|browser| ... }</span>
   </tt>
 </div>
 
@@ -2489,28 +2529,7 @@ NicelyResynchronizingAjaxController to resynchronize ajax calls.
 
 </div><div class="section tags">
   <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-    <dt>
-      
-        <span class='type'>[<tt>block</tt>]</span>
-      
-      
-        <span class='name'>&amp;block</span>
-      
-    </dt>
-    <dd>
-      <span class='desc'><p>
-the block to execute synchronized.
-</p>
-</span>
-    </dd>
-  
-  </dl>
-</div>
-<div class="yieldparam">
+  <div class="yieldparam">
   <h3>Yield Parameters:</h3>
   <dl>
   
@@ -2519,12 +2538,12 @@ the block to execute synchronized.
         <span class='type'>[<tt><a href='' title='Celerity::Browser'>Celerity::Browser</a></tt>]</span>
       
       
-        <span class='name'>_self</span>
+        <span class='name'>browser</span>
       
     </dt>
     <dd>
       <span class='desc'><p>
-the object that the method was called on
+The current browser object.
 </p>
 </span>
     </dd>
@@ -2541,15 +2560,15 @@ the object that the method was called on
           <pre class="lines">
 
 
-199
-200
 201
 202
 203
-204</pre>
+204
+205
+206</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 199</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 201</span>
 
 <span class='def def kw'>def</span> <span class='resynchronized identifier id'>resynchronized</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='old_controller identifier id'>old_controller</span> <span class='assign token'>=</span> <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='ajaxController identifier id'>ajaxController</span>
@@ -2609,12 +2628,12 @@ the object that the method was called on
           <pre class="lines">
 
 
-225
-226
-227</pre>
+227
+228
+229</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 225</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 227</span>
 
 <span class='def def kw'>def</span> <span class='run_error_checks identifier id'>run_error_checks</span>
   <span class='@error_checkers ivar id'>@error_checkers</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
