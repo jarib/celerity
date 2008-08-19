@@ -26,8 +26,9 @@ It is a wrapper around the HtmlUnit Java library and is currently aimed at provi
 
 == INSTALL:
 
-  jruby -S gem install celerity
-
+  `jruby -S gem install celerity`
+  
+  
 == EXAMPLE:
 
   require "rubygems"
@@ -39,6 +40,10 @@ It is a wrapper around the HtmlUnit Java library and is currently aimed at provi
   browser.button(:name, 'btnG').click
 
   puts "yay" if browser.text.include? 'celerity.rubyforge.org'
+  
+== GIT
+
+The project is manually mirrored @ http://github.com/jarib/celerity/tree/master 
 
 == LICENSE:
 

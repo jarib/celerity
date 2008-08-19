@@ -101,7 +101,7 @@ module Celerity
   # this class can be used to access hidden field objects
   # Normally a user would not need to create this object as it is returned by the Celerity::Container#hidden method
   class Hidden < TextField
-    TAGS = [ Identifier.new('input', :type => %w(hidden)) ]
+    TAGS = [ Identifier.new('input', :type => %w[hidden]) ]
     DEFAULT_HOW = :name
   end
   

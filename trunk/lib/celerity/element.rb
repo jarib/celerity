@@ -68,7 +68,7 @@ module Celerity
       @object.focus
     end
     
-    # Locates the element
+    # Used internally. Find the element on the page. 
     # @api internal
     def locate
       @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
@@ -87,9 +87,9 @@ module Celerity
       @object.getAttribute(attribute.to_s)
     end
 
-    # Locates the element.
+    # Used internally to ensure the element actually exists.
     # 
-    # @raise UnknownObjectException
+    # @raise UnknownObjectException if the element can't be found.
     # @api internal
     def assert_exists
       locate
@@ -164,8 +164,11 @@ module Celerity
     end
 
     # Dynamically get element attributes.
+    #
+    # @see ATTRIBUTES constant for a list of valid methods for a given subclass.
+    #
     # @return [String] The resulting attribute.
-    # @raise NoMethodError If the element doesn't have this attribute.
+    # @raise NoMethodError if the element doesn't support this attribute.
     def method_missing(meth, *args, &blk)
       meth = selector_to_attribute(meth)
       

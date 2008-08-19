@@ -16,15 +16,15 @@ class String # :nodoc:
 end
 
 module Celerity
-  # Experimental
+  # Experimental - generate a method definition for accessing elements on the current page.
   class MethodGenerator
 
     ELEMENTS = %w[text_field select_list radio checkbox button].map { |e| e.to_sym }
     BUGGY_ELEMENTS = %w[radio checkbox].map { |e| e.to_sym }
   
     def initialize(ie, opts = {})
-      @ie = ie
-      @opts = opts
+      @ie      = ie
+      @opts    = opts
       @browser = @opts[:browser] || '@ie'
 
       @docs = "  # Fills in the page at #{@ie.url}\n  #\n"
@@ -59,6 +59,7 @@ module Celerity
       @ie.send(symbol_pluralized).each_with_index do |elem, idx|
         self.send("add_#{symbol}".to_sym, elem, idx)
       end
+      
       @method << "\n"
     end
   
@@ -81,12 +82,14 @@ module Celerity
     def add_radio(elem, idx)
       how, what = find_identifier(elem) || [:index, (idx + 1).to_s]
       @method << "    #{@browser}.radio(#{how.inspect}, #{what.inspect}, "
+      
       if (value = elem.value).empty?
         symbol = (how == :index) ? ":radio_#{what.underscore}" : ":#{what.underscore}"
       else
         symbol = ":#{what.underscore}_#{value.underscore}"
         @method << "#{value.inspect}).set if opts[#{symbol}]\n"
       end
+      
       @doc_elements << [symbol, "set the radio with id/value #{what.inspect}"]
     end
   
@@ -95,6 +98,7 @@ module Celerity
       @method << "    #{@browser}.checkbox(#{how.inspect}, #{what.inspect}, "
       symbol = (how == :index) ? ":checkbox_#{what.underscore}" : ":#{what.underscore}"
       @method << "#{elem.value.inspect}).set if opts[#{symbol}]\n"
+      
       @doc_elements << [symbol, "set the checkbox with id/value #{what.inspect}"]
     end
   
@@ -120,7 +124,7 @@ module Celerity
     end
   
     def find_identifier(element)
-      # could use these if they were 'weighted' ?
+      # could use ATTRIBUTES if they were 'weighted' somehow?
       attrs = element.class::ATTRIBUTES
       [:id, :name].each do |attribute|
         return [attribute, element.send(attribute)] if attrs.include?(attribute) && !element.send(attribute).empty?
@@ -131,10 +135,13 @@ module Celerity
   end # MethodGenerator
   
   class Browser
+    # Experimental - generate a method definition for accessing elements on the current page
+    # Not loaded by default - need to 
+    #   require 'celerity/extra/method_generator'
     def generate_method(opts = {})
       MethodGenerator.new(self, opts).parse
     end
-  end
+  end # Browser
    
 end # Celerity
 

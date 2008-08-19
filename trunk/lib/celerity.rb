@@ -1,5 +1,6 @@
 $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
+# Celerity - JRuby wrapper for HtmlUnit
 module Celerity
   Jars = Dir[File.dirname(__FILE__) + '/celerity/htmlunit/*.jar']
 end
@@ -53,6 +54,7 @@ require "time"
 
 Log = Logger.new($DEBUG ? $stderr : nil)
 Log.level = Logger::DEBUG
+
 # undefine deprecated methods to use them for Element attributes
 if ["id", "type"].any? { |meth| Object.instance_methods.include?(meth) }
   Object.send :undef_method, :id

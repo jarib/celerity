@@ -18,6 +18,7 @@ module Celerity
     end
     
     # returns true if the element is checked
+    # @return [true, false]
     def set?
       assert_exists
       @object.isChecked
@@ -31,13 +32,14 @@ module Celerity
   
   # This class is the celerity representation of a radio button.
   class Radio < RadioCheckCommon
-    TAGS = [Identifier.new('input', :type => %w(radio))]
+    TAGS = [Identifier.new('input', :type => %w[radio])]
 
+    # @api internal
     def initialize(container, *args)
-      super(container, ['radio'], *args)
+      super(container, %w[radio], *args)
     end
 
-    # Sets the radio button. 
+    # Set the radio button to the given value. 
     #
     #   radio.set? # => false
     #   radio.set  
@@ -53,14 +55,16 @@ module Celerity
   end
   
   # This class is the celerity representation of a check box.
+  #
   class CheckBox < RadioCheckCommon
-    TAGS = [Identifier.new('input', :type => %w(checkbox))]
+    TAGS = [Identifier.new('input', :type => %w[checkbox])]
 
+    # @api internal
     def initialize(container, *args)
-      super(container, ['checkbox'], *args)
+      super(container, %w[checkbox], *args)
     end
 
-    # Sets the checkbox button. 
+    # Set the checkbox to the given value. 
     #
     #   checkbox.set? # => false
     #   checkbox.set  
@@ -70,6 +74,7 @@ module Celerity
     def set(value = true)
       assert_exists
       assert_enabled
+      
       if (value && !set?) || (!value && set?)
         Log.debug(@object.inspect)
         @container.update_page(@object.click)

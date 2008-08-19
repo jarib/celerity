@@ -22,7 +22,8 @@ module Celerity
     end
     alias_method :size, :length
     
-    # @yield [element] Iterate through the elements in this collection.
+    # @yieldparam [Celerity::Element] element Iterate through the elements in this collection.
+    #
     def each
       if @elements
         @elements.each { |e| yield(element_class.new(@container, :object, e)) }
@@ -35,11 +36,17 @@ module Celerity
     # Get the element at the given index.
     # NB! This is 1-indexed to keep compatibility with Watir. Subject to change.
     #
+    # @param [Fixnum] n Index of wanted element, 1-indexed.
     # @return [Celerity::Element]
     def [](n)
       @elements ? element_class.new(@container, :object, @elements[n-1]) : iterator_object(n-1)
     end
     
+    # Note: This can be quite useful in irb:
+    #
+    #   puts browser.text_fields
+    #
+    # @return [String] A string representation of all elements in this collection.
     def to_s
       map { |e| e.to_s }.join("\n")
     end

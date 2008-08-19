@@ -1,17 +1,13 @@
 module Celerity
   
-  # this class contains items that are common between the span, div, and pre objects
-  # it would not normally be used directly
-  #
-  # many of the methods available to this object are inherited from the Element class
-  #
+  # Abstract superclass for for Span, Pre, Div, H1, ...
   class NonControlElement < Element
     include Exception
     ATTRIBUTES = BASE_ATTRIBUTES
     DEFAULT_HOW = :id
 
-    # Can't use ClickableElement as it does assert_enabled - maybe we don't need the module after all?
     def click
+      # Can't use ClickableElement as it does assert_enabled - maybe we don't need that module after all?
       assert_exists
       @container.update_page(@object.click)
     end

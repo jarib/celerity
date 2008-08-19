@@ -22,19 +22,20 @@ module Celerity
       end
     end
     
-    # Returns a TableRows object.
+    # @return [Celerity::TableRows]
     def rows
       assert_exists
       TableRows.new(self, :object, @rows)
     end
     
-    # Returns a TableCells object.
+    # @return [Celerity::TableCells]
     def cells
       assert_exists
       TableCells.new(self, :object, @cells)
     end
     
-    # Iterates through each row in the table, passing TableRow objects to the given block.
+    # Iterates through each row in the table.
+    # @yieldparam [Celerity::TableRow] row A row.
     def each
       assert_exists
       @rows.each { |row| yield TableRow.new(self, :object, row)  }
@@ -44,6 +45,10 @@ module Celerity
     #
     #   browser.table(:foo, 'bar')[1] # => #<TableRow...>
     #   browser.table(:foo, 'bar').child_row[1] # => #<TableRow...>
+    #
+    # @param [Fixnum] index The index of the wanted row, 1-indexed.
+    # @raise Celerity::Exception::UnknownRowException
+    # @return [Celerity::TableRow]
     def child_row(index)
       assert_exists
       raise UnknownRowException, "Unable to locate a row at index #{index}" if @cells.length < index
@@ -54,6 +59,10 @@ module Celerity
     # Returns the TableCell at the given index (1-indexed).
     #
     # In a 10-column row, table.child_cell[11] will return the first cell on the second row.
+    #
+    # @param [Fixnum] index The index of the wanted cell, 1-indexed.
+    # @raise Celerity::Exception::UnknownCellException
+    # @return [Celerity::TableCell]
     def child_cell(index)
       assert_exists
       raise UnknownCellException, "Unable to locate a cell at index #{index}" if @cells.length < index
@@ -61,6 +70,7 @@ module Celerity
     end
     
     # The number of rows in the table
+    # @return [Fixnum]
     def row_count
       assert_exists
       @object.getRowCount
@@ -68,12 +78,15 @@ module Celerity
     
     # Returns the number of columns on the row at the given index. (1-indexed)
     # Default is the number of columns on the first row
+    # @param [Fixnum] index An index, 1-indexed (optional).
+    # @return [Fixnum]
     def column_count(index = 1)
       assert_exists
       @object.getRow(index-1).getCells.length
     end
     
     # Returns the text of each cell in the the table as a two-dimensional array.
+    # @return [Array<Array<String>>]
     def to_a
       assert_exists
       @object.getRows.map do |table_row|

@@ -1,30 +1,30 @@
 module Celerity
   class Browser
     class << self
-      # added for Watir compatability - not in use by Celerity
+      # Added for Watir compatability - not in use by Celerity
       attr_accessor :speed, :attach_timeout, :visible
-      # added for Watir compatability - not in use by Celerity
+      # Added for Watir compatability - not in use by Celerity
       alias_method :start_window, :start
-      # added for Watir compatability - not in use by Celerity
+      # Added for Watir compatability - not in use by Celerity
       def reset_attach_timeout; @attach_timeout = 2.0; end
-      # added for Watir compatability - not in use by Celerity
+      # Added for Watir compatability - not in use by Celerity
       def each; end
-      # added for Watir compatability - not in use by Celerity
+      # Added for Watir compatability - not in use by Celerity
       def quit; end
-      # added for Watir compatability - not in use by Celerity
+      # Added for Watir compatability - not in use by Celerity
       def set_fast_speed; @speed = :fast; end
-      # added for Watir compatability - not in use by Celerity
+      # Added for Watir compatability - not in use by Celerity
       def set_slow_speed; @speed = :slow; end  
     end
 
-    # added for Watir compatability - not in use by Celerity
+    # Added for Watir compatability - not in use by Celerity
     attr_accessor :visible
    
-    # added for Watir compatability - not in use by Celerity
+    # Added for Watir compatability - not in use by Celerity
     def bring_to_front; true; end
-    # added for Watir compatability - not in use by Celerity
+    # Added for Watir compatability - not in use by Celerity
     def speed=(s); s end
-    # added for Watir compatability - not in use by Celerity
+    # Added for Watir compatability - not in use by Celerity
     def wait; end
   end
   

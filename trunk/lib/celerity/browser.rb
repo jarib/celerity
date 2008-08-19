@@ -30,13 +30,14 @@ module Celerity
     #   :resynchronize          => [true, false, nil] 
     #   '    Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls. '
     #   :javascript_exceptions  => [true, false, nil] 
-    #   '    Throw exceptions on script errors. Disabled by default.                        '
+    #   '    Raise exceptions on script errors. Disabled by default.                        '
     #   :status_code_exceptions => [true, false, nil]
-    #   '    Throw exceptions on failing status codes (404 etc.). Disabled by default.      '
+    #   '    Raise exceptions on failing status codes (404 etc.). Disabled by default.      '
     #
     # @param [Hash[Symbol, Object]] Options for initial configuration of the browser (see above).
     #
     # @return [Celerity::Browser]     An instance of the browser.
+    # @see Celerity::Container for a small introduction to the API.
     # @api public
     def initialize(opts = {})
       raise TypeError, "bad argument: #{opts.inspect}" unless opts.is_a? Hash
@@ -151,7 +152,7 @@ module Celerity
 
     # Add a 'checker' proc that will be run on every page load
     # 
-    # @param [Proc] checker the proc to be run (can also be given as a block)
+    # @param [Proc] checker The proc to be run (can also be given as a block)
     # @raise [ArgumentError] if no Proc or block was given.
     def add_checker(checker = nil, &block)
       if block_given?
@@ -164,7 +165,7 @@ module Celerity
     end
     
     # Remove the given checker from the list of checkers
-    # @param [Proc] the Proc to disable
+    # @param [Proc] checker The Proc to disable.
     def disable_checker(checker)
       @error_checkers.delete(checker)
     end
@@ -190,7 +191,6 @@ module Celerity
 
     # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController to resynchronize ajax calls.
     #
-    # Example:
     #   @browser.resynchroniced do |b|
     #     b.link(:id, 'load_fancy_ajax_stuff').click
     #   end
@@ -209,7 +209,7 @@ module Celerity
     #
     # Check that we have a @page object.
     # 
-    # @raise UnknownObjectException
+    # @raise UnknownObjectException if no page is loaded.
     # @api internal
     def assert_exists
       raise UnknownObjectException, "no page loaded" unless exist?
