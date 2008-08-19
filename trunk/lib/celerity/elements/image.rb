@@ -45,11 +45,6 @@ module Celerity
       end
     end
     
-    def click
-      assert_exists
-      @container.update_page(@object.click)
-    end 
-    
     # Saves the image to the given file
     def save(filename)
       assert_exists

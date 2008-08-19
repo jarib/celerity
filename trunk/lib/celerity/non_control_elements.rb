@@ -3,14 +3,10 @@ module Celerity
   # Abstract superclass for for Span, Pre, Div, H1, ...
   class NonControlElement < Element
     include Exception
+    include ClickableElement
+    
     ATTRIBUTES = BASE_ATTRIBUTES
     DEFAULT_HOW = :id
-
-    def click
-      # Can't use ClickableElement as it does assert_enabled - maybe we don't need that module after all?
-      assert_exists
-      @container.update_page(@object.click)
-    end
   end
     
   class Pre < NonControlElement
