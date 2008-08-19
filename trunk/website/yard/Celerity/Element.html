@@ -160,8 +160,8 @@ Returns the value of attribute <tt>object</tt>.
   <span class='when when kw'>when</span> <span class='integer val'>1</span>
     <span class='if if kw'>if</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span> <span class='Hash constant id'>Hash</span>
       <span class='@conditions ivar id'>@conditions</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
-    <span class='elsif elsif kw'>elsif</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='DEFAULT_HOW constant id'>DEFAULT_HOW</span>
-      <span class='@conditions ivar id'>@conditions</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='DEFAULT_HOW constant id'>DEFAULT_HOW</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span> <span class='rbrace token'>}</span>
+    <span class='elsif elsif kw'>elsif</span> <span class='lparen token'>(</span><span class='how identifier id'>how</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='DEFAULT_HOW constant id'>DEFAULT_HOW</span><span class='rparen token'>)</span>
+      <span class='@conditions ivar id'>@conditions</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span> <span class='how identifier id'>how</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span> <span class='rbrace token'>}</span>
     <span class='else else kw'>else</span>
       <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='string val'>&quot;wrong number of arguments (1 for 2)&quot;</span>
     <span class='end end kw'>end</span>
@@ -283,11 +283,11 @@ NoMethodError if the element doesn&#8217;t support this attribute.
   
   <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
     <span class='assert_exists identifier id'>assert_exists</span>
-    <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
-  <span class='else else kw'>else</span>
-    <span class='Log constant id'>Log</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='dstring node'>&quot;Element\#method_missing calling super with #{meth.inspect}&quot;</span>
-    <span class='super super kw'>super</span>
+    <span class='return return kw'>return</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
   <span class='end end kw'>end</span>
+  
+  <span class='Log constant id'>Log</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='dstring node'>&quot;Element\#method_missing calling super with #{meth.inspect}&quot;</span>
+  <span class='super super kw'>super</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -382,9 +382,9 @@ Check if the element contains the given text.
         <span class='name'><a href='#exists%3F-instance_method' title='#exists?'>#exists?</a></span><span class='args'></span>
         <span class='block'></span>
         
-          <span class='alias'>#exists</span>
-        
           <span class='alias'>#exist?</span>
+        
+          <span class='alias'>#exists</span>
         
       </th>
       <td class="docstring">
@@ -517,11 +517,11 @@ Return a text representation of the element.
         <span class='name'><a href='#to_xml-instance_method' title='#to_xml'>#to_xml</a></span><span class='args'></span>
         <span class='block'></span>
         
-          <span class='alias'>#as_xml</span>
+          <span class='alias'>#html</span>
         
           <span class='alias'>#asXml</span>
         
-          <span class='alias'>#html</span>
+          <span class='alias'>#as_xml</span>
         
       </th>
       <td class="docstring">
@@ -927,9 +927,9 @@ The index of the matched text, or nil if it doesn&#8217;t match.
 <p class="aliases">
   <span class="aka">Also known as:</span>
   
-    <tt id="exists-instance_method">exists</tt>
-  
     <tt id="exist%3F-instance_method">exist?</tt>
+  
+    <tt id="exists-instance_method">exists</tt>
   
 </p>
 </div><div class="section docstring">
@@ -1161,7 +1161,7 @@ subclass
 <span class='def def kw'>def</span> <span class='parent identifier id'>parent</span>
   <span class='assert_exists identifier id'>assert_exists</span>
   
-  <span class='obj identifier id'>obj</span> <span class='assign token'>=</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getParentNode identifier id'>getParentNode</span>
+  <span class='obj identifier id'>obj</span> <span class='assign token'>=</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='parentNode identifier id'>parentNode</span>
   <span class='until until kw'>until</span> <span class='element_class identifier id'>element_class</span> <span class='assign token'>=</span> <span class='HtmlUnit2CelerityElement constant id'>HtmlUnit2CelerityElement</span><span class='lbrack token'>[</span><span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='rbrack token'>]</span>
     <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='if if_mod kw'>if</span> <span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
     <span class='obj identifier id'>obj</span> <span class='assign token'>=</span> <span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='parentNode identifier id'>parentNode</span>
@@ -1393,11 +1393,11 @@ A string representation of the element.
 <p class="aliases">
   <span class="aka">Also known as:</span>
   
-    <tt id="as_xml-instance_method">as_xml</tt>
+    <tt id="html-instance_method">html</tt>
   
     <tt id="asXml-instance_method">asXml</tt>
   
-    <tt id="html-instance_method">html</tt>
+    <tt id="as_xml-instance_method">as_xml</tt>
   
 </p>
 </div><div class="section tags">

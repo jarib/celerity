@@ -165,11 +165,11 @@ NoMethodError if the element doesn&#8217;t support this attribute.
   
   <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
     <span class='assert_exists identifier id'>assert_exists</span>
-    <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
-  <span class='else else kw'>else</span>
-    <span class='Log constant id'>Log</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='dstring node'>&quot;Element\#method_missing calling super with #{meth.inspect}&quot;</span>
-    <span class='super super kw'>super</span>
+    <span class='return return kw'>return</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
   <span class='end end kw'>end</span>
+  
+  <span class='Log constant id'>Log</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='dstring node'>&quot;Element\#method_missing calling super with #{meth.inspect}&quot;</span>
+  <span class='super super kw'>super</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
