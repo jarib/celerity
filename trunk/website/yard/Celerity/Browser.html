@@ -1791,7 +1791,7 @@ TypeError
   <span class='when when kw'>when</span> <span class='String constant id'>String</span>
     <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='index identifier id'>index</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
   <span class='else else kw'>else</span>
-    <span class='raise identifier id'>raise</span> <span class='TypeError constant id'>TypeError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Argument must be String or Regexp, but was #{expected_text.inspect}:#{expected_text.class}&quot;</span>
+    <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Argument must be String or Regexp, but was #{expected_text.inspect}:#{expected_text.class}&quot;</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>

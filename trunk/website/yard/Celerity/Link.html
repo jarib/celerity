@@ -18,6 +18,9 @@
   <ul>
   <li><a href='Element.html' title='Celerity::Element'>Celerity::Element</a></li><ul><li>Celerity::Link</li>
   </ul></ul>
+</div><div class="section mixins">
+  <h1>Included Modules</h1>
+  <p><a href='Link/ClickableElement.html' title='Celerity::ClickableElement'>Celerity::ClickableElement</a></p>
 </div><div class="section constants">
   <div class="thisclass">
   <h1>Constants</h1>
@@ -173,27 +176,7 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 </div>  <div class="section visibilitygroup public">
     <h1>Public Visibility</h1>
       <div class="section methodsummary instance public">
-    <h1>Public Instance Method Summary</h1>
-<table class="summary">
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href='#click-instance_method' title='#click'>#click</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-          <span class='alias'>#click_no_wait</span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-clicks the link.
-</p>
-
-        
-      </td>
-    </tr>
-  
-</table><div class="inherited">
+    <div class="inherited">
   
   <div>
     <h1>Public Instance Methods Inherited from <a href='Element.html' title='Celerity::Element'>Celerity::Element</a></h1>
@@ -201,66 +184,17 @@ clicks the link.
   </div>
   
 </div>
+<div class="clear"></div><div class="included">
+  
+  <div>
+    <h1>Public Instance Methods Included from <a href='Link/ClickableElement.html' title='Celerity::ClickableElement'>Celerity::ClickableElement</a></h1>
+    <p><span class='name'><a href='ClickableElement.html#click-instance_method' title='click'>click</a></span>, <span class='name'><a href='ClickableElement.html#click_and_attach-instance_method' title='click_and_attach'>click_and_attach</a></span></p>
+  </div>
+  
+</div>
 <div class="clear"></div>
   </div>
-<div class="section methoddetails instance public">
-  <h1>Public Instance Method Details</h1>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>click</h3>
-</div><div id="click-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>click</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
-<p class="aliases">
-  <span class="aka">Also known as:</span>
-  
-    <tt id="click_no_wait-instance_method">click_no_wait</tt>
-  
-</p>
-</div><div class="section docstring">
-  <p>
-clicks the link
-</p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-11
-12
-13
-14</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/link.rb', line 11</span>
-
-<span class='def def kw'>def</span> <span class='click identifier id'>click</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
-  <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-</div>
   </div>
 
 </div>
