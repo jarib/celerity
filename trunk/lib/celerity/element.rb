@@ -38,8 +38,8 @@ module Celerity
       when 1
         if args.first.is_a? Hash
           @conditions = args.first
-        elsif self.class::DEFAULT_HOW
-          @conditions = { self.class::DEFAULT_HOW => args.first }
+        elsif (how = self.class::DEFAULT_HOW)
+          @conditions = { how => args.first }
         else
           raise ArgumentError, "wrong number of arguments (1 for 2)"
         end
@@ -53,7 +53,7 @@ module Celerity
     def parent
       assert_exists
       
-      obj = @object.getParentNode
+      obj = @object.parentNode
       until element_class = HtmlUnit2CelerityElement[obj.class]
         return nil if obj.nil?
         obj = obj.parentNode
@@ -119,7 +119,7 @@ module Celerity
 
       @object.asText.strip
     end
-    alias_method :innerText, :text
+    alias_method :innerText,  :text
     alias_method :inner_text, :text
 
     # Check if the element contains the given text.
@@ -174,11 +174,11 @@ module Celerity
       
       if self.class::ATTRIBUTES.include?(meth)
         assert_exists
-        @object.getAttributeValue(meth.to_s)
-      else
-        Log.warn "Element\#method_missing calling super with #{meth.inspect}"
-        super
+        return @object.getAttributeValue(meth.to_s)
       end
+      
+      Log.warn "Element\#method_missing calling super with #{meth.inspect}"
+      super
     end
 
     def respond_to?(meth, include_private = false)

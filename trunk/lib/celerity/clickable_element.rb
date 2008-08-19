@@ -10,7 +10,7 @@ module Celerity
     end
 
     # Click the element and return a new Browser instance with the resulting page.
-    # This is useful for elements that trigger popups windows when clicked.
+    # This is useful for elements that trigger popups when clicked.
     #
     # @return [Celerity::Browser]
     # @since 0.0.5
