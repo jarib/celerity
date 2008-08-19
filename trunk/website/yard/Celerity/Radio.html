@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Celerity::Radio</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Celerity_Radio">
+  <h1 class="title">Class: Celerity::Radio</h1>
+  <div class="section inheritance">
+  <ul>
+  <li><a href='Element.html' title='Celerity::Element'>Celerity::Element</a></li><ul><li><a href='InputElement.html' title='Celerity::InputElement'>Celerity::InputElement</a></li><ul><li><a href='RadioCheckCommon.html' title='Celerity::RadioCheckCommon'>Celerity::RadioCheckCommon</a></li><ul><li>Celerity::Radio</li>
+  </ul></ul></ul></ul>
+</div><div class="section docstring">
+  <p>
+This class is the celerity representation of a radio button.
+</p>
+
+</div><div class="section constants">
+  <div class="thisclass">
+  <h1>Constants</h1>
+  <dl>
+    
+      <dt id="TAGS-constant">TAGS</dt>
+      <dd>[Identifier.new('input', :type =&gt; %w[radio])]</dd>
+    
+  </dl>
+</div>
+<div class="inherited">
+  
+  <div>
+    <h1>Constants Inherited from <a href='RadioCheckCommon.html' title='Celerity::RadioCheckCommon'>Celerity::RadioCheckCommon</a></h1>
+    <p><span class='name'><a href='RadioCheckCommon.html#DEFAULT_HOW-constant' title='DEFAULT_HOW'>DEFAULT_HOW</a></span></p>
+  </div>
+  
+  <div>
+    <h1>Constants Inherited from <a href='InputElement.html' title='Celerity::InputElement'>Celerity::InputElement</a></h1>
+    <p><span class='name'><a href='InputElement.html#ATTRIBUTES-constant' title='ATTRIBUTES'>ATTRIBUTES</a></span></p>
+  </div>
+  
+  <div>
+    <h1>Constants Inherited from <a href='Element.html' title='Celerity::Element'>Celerity::Element</a></h1>
+    <p><span class='name'><a href='Element.html#BASE_ATTRIBUTES-constant' title='BASE_ATTRIBUTES'>BASE_ATTRIBUTES</a></span>, <span class='name'><a href='Element.html#CELLHALIGN_ATTRIBUTES-constant' title='CELLHALIGN_ATTRIBUTES'>CELLHALIGN_ATTRIBUTES</a></span>, <span class='name'><a href='Element.html#CELLVALIGN_ATTRIBUTES-constant' title='CELLVALIGN_ATTRIBUTES'>CELLVALIGN_ATTRIBUTES</a></span>, <span class='name'><a href='Element.html#HTML_401_TRANSITIONAL-constant' title='HTML_401_TRANSITIONAL'>HTML_401_TRANSITIONAL</a></span>, <span class='name'><a href='Element.html#TO_S_SIZE-constant' title='TO_S_SIZE'>TO_S_SIZE</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <div id="initialize-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>initialize</span><span class='args'>(container, *args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+38
+39
+40</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/radio_check.rb', line 38</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='container identifier id'>container</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='container identifier id'>container</span><span class='comma token'>,</span> <span class='dstring node'>%w[radio]</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div><div class="section methodmissing">
+  <h1>Dynamic Method Handling</h1>
+
+  <p class="note">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+      in the class <a href='Element.html' title='Celerity::Element'>Celerity::Element</a>
+    
+  </p>
+
+  <div id="method_missing-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='../String.html' title='String'>String</a></tt></span>
+    <span class='name'>method_missing</span><span class='args'>(meth, *args, &amp;blk)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Dynamically get element attributes.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='../String.html' title='String'>String</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+The resulting attribute.
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="raise">
+  <h3>Raises:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+NoMethodError if the element doesn&#8217;t support this attribute.
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="see">
+  <h3>See Also:</h3>
+  <dl>
+    <dt></dt>
+    <dd>
+      <span class='desc'>
+        <tt>ATTRIBUTES constant for a list of valid methods for a given subclass.</tt>
+      </span>
+    </dd>
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 172</span>
+
+<span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
+  
+  <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
+    <span class='assert_exists identifier id'>assert_exists</span>
+    <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='Log constant id'>Log</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='dstring node'>&quot;Element\#method_missing calling super with #{meth.inspect}&quot;</span>
+    <span class='super super kw'>super</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#set-instance_method' title='#set'>#set</a></span><span class='args'>(value = true)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Set the radio button to the given value.
+</p>
+
+        
+      </td>
+    </tr>
+  
+</table><div class="inherited">
+  
+  <div>
+    <h1>Public Instance Methods Inherited from <a href='RadioCheckCommon.html' title='Celerity::RadioCheckCommon'>Celerity::RadioCheckCommon</a></h1>
+    <p><span class='name'><a href='RadioCheckCommon.html#clear-instance_method' title='clear'>clear</a></span>, <span class='name'><a href='RadioCheckCommon.html#set%3F-instance_method' title='set?'>set?</a></span></p>
+  </div>
+  
+  <div>
+    <h1>Public Instance Methods Inherited from <a href='InputElement.html' title='Celerity::InputElement'>Celerity::InputElement</a></h1>
+    <p><span class='name'><a href='InputElement.html#readonly%3F-instance_method' title='readonly?'>readonly?</a></span></p>
+  </div>
+  
+  <div>
+    <h1>Public Instance Methods Inherited from <a href='Element.html' title='Celerity::Element'>Celerity::Element</a></h1>
+    <p><span class='name'><a href='Element.html#assert_exists-instance_method' title='assert_exists'>assert_exists</a></span>, <span class='name'><a href='Element.html#attribute_string-instance_method' title='attribute_string'>attribute_string</a></span>, <span class='name'><a href='Element.html#attribute_value-instance_method' title='attribute_value'>attribute_value</a></span>, <span class='name'><a href='Element.html#contains_text-instance_method' title='contains_text'>contains_text</a></span>, <span class='name'><a href='Element.html#exists%3F-instance_method' title='exists?'>exists?</a></span>, <span class='name'><a href='Element.html#focus-instance_method' title='focus'>focus</a></span>, <span class='name'><a href='Element.html#locate-instance_method' title='locate'>locate</a></span>, <span class='name'><a href='Element.html#parent-instance_method' title='parent'>parent</a></span>, <span class='name'><a href='Element.html#respond_to%3F-instance_method' title='respond_to?'>respond_to?</a></span>, <span class='name'><a href='Element.html#text-instance_method' title='text'>text</a></span>, <span class='name'><a href='Element.html#to_s-instance_method' title='to_s'>to_s</a></span>, <span class='name'><a href='Element.html#to_xml-instance_method' title='to_xml'>to_xml</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>set</h3>
+</div><div id="set-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>set</span><span class='args'>(value = true)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Set the radio button to the given value.
+</p>
+<pre class="code">
+  <span class='radio identifier id'>radio</span><span class='dot token'>.</span><span class='set? fid id'>set?</span> <span class='comment val'># =&gt; false</span>
+  <span class='radio identifier id'>radio</span><span class='dot token'>.</span><span class='set identifier id'>set</span>
+  <span class='radio identifier id'>radio</span><span class='dot token'>.</span><span class='set? fid id'>set?</span> <span class='comment val'># =&gt; true</span>
+  <span class='radio identifier id'>radio</span><span class='dot token'>.</span><span class='set identifier id'>set</span><span class='lparen token'>(</span><span class='false false kw'>false</span><span class='rparen token'>)</span>
+  <span class='radio identifier id'>radio</span><span class='dot token'>.</span><span class='set? fid id'>set?</span> <span class='comment val'># =&gt; false</span>
+</pre>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+49
+50
+51
+52
+53</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/radio_check.rb', line 49</span>
+
+<span class='def def kw'>def</span> <span class='set identifier id'>set</span><span class='lparen token'>(</span><span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='true true kw'>true</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='assert_enabled identifier id'>assert_enabled</span>
+  <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='value identifier id'>value</span> <span class='integer val'>? </span><span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span> <span class='colon op'>:</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='setChecked identifier id'>setChecked</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+  </body>
+</html>

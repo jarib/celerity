@@ -1,0 +1,6062 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Module: Celerity::Container</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section module Celerity_Container">
+  <h1 class="title">Module: Celerity::Container</h1>
+  <div class="section mixins">
+  <h1>Included Modules</h1>
+  <p><a href='Exception.html' title='Celerity::Exception'>Celerity::Exception</a></p>
+</div><div class="section docstring">
+  <p>
+This class contains methods for accessing elements inside a container,
+usually the Browser object, meaning the current page. The most common
+syntax is
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='elem identifier id'>elem</span><span class='lparen token'>(</span><span class='symbol val'>:attribute</span><span class='comma token'>,</span> <span class='string val'>'value'</span><span class='rparen token'>)</span>
+</pre>
+<p>
+Note that the element is located lazily, so no exceptions will be raised if
+the element doesn&#8217;t exist until you call a method on the resulting
+object. To do this you would normally use Element#exists? or an action
+method, like ClickableElement#click. You can also pass in a hash:
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='link identifier id'>link</span><span class='lparen token'>(</span><span class='symbol val'>:index</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='click identifier id'>click</span>
+</pre>
+<p>
+All elements support multiple attributes identification using the hash
+syntax (though this might not always be compatible with Watir):
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='span identifier id'>span</span><span class='lparen token'>(</span><span class='symbol val'>:class_name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'product'</span><span class='comma token'>,</span> <span class='symbol val'>:index</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>5</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='text identifier id'>text</span>
+</pre>
+<p>
+Checkboxes and radio buttons support a special three-argument syntax:
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='check_box identifier id'>check_box</span><span class='lparen token'>(</span><span class='symbol val'>:name</span><span class='comma token'>,</span> <span class='string val'>'a_name'</span><span class='comma token'>,</span> <span class='string val'>'1234'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='set identifier id'>set</span>
+</pre>
+<p>
+You can also get all the elements of a certain type by using the plural
+form (@see Celerity::ElementCollections):
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='links identifier id'>links</span> <span class='comment val'># =&gt; #&lt;Celerity::Links:0x7a1c2da2 ...&gt;</span>
+</pre>
+
+</div><div class="section attributes">
+  <h1>Attributes</h1>
+
+  
+    <div class="instance">
+      <h2>Instance Attributes</h2>
+      <table>
+      
+        <tr>
+          <th class="name">page_container</td>
+          <td class="readwrite">
+            [<span id='page_container-instance_method'>R</span><span id='page_container%3D-instance_method'>W</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Sets the attribute <tt>page_container</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+      
+      </table>
+    </div>
+  
+</div><div class="section constants">
+  
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#area-instance_method' title='#area'>#area</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Area.html' title='Celerity::Area'>Celerity::Area</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#areas-instance_method' title='#areas'>#areas</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Areas.html' title='Celerity::Areas'>Celerity::Areas</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#button-instance_method' title='#button'>#button</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Button.html' title='Celerity::Button'>Celerity::Button</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#buttons-instance_method' title='#buttons'>#buttons</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Buttons.html' title='Celerity::Buttons'>Celerity::Buttons</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#cell-instance_method' title='#cell'>#cell</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableCell.html' title='Celerity::TableCell'>Celerity::TableCell</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#cells-instance_method' title='#cells'>#cells</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableCells.html' title='Celerity::TableCells'>Celerity::TableCells</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#check_box-instance_method' title='#check_box'>#check_box</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+          <span class='alias'>#checkbox</span>
+        
+          <span class='alias'>#checkBox</span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Since finding checkboxes by value is very common, you can use this
+shorthand:.
+</p>
+
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='CheckBox.html' title='Celerity::CheckBox'>Celerity::CheckBox</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#checkboxes-instance_method' title='#checkboxes'>#checkboxes</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='CheckBoxes.html' title='Celerity::CheckBoxes'>Celerity::CheckBoxes</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#container-instance_method' title='#container'>#container</a></span><span class='args'>=(container)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Used internally to update the container object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#div-instance_method' title='#div'>#div</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Div.html' title='Celerity::Div'>Celerity::Div</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#divs-instance_method' title='#divs'>#divs</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Divs.html' title='Celerity::Divs'>Celerity::Divs</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#file_field-instance_method' title='#file_field'>#file_field</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='FileField.html' title='Celerity::FileField'>Celerity::FileField</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#file_fields-instance_method' title='#file_fields'>#file_fields</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='FileFields.html' title='Celerity::FileFields'>Celerity::FileFields</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#form-instance_method' title='#form'>#form</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Form.html' title='Celerity::Form'>Celerity::Form</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#forms-instance_method' title='#forms'>#forms</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Forms.html' title='Celerity::Forms'>Celerity::Forms</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#frame-instance_method' title='#frame'>#frame</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Frame.html' title='Celerity::Frame'>Celerity::Frame</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#frames-instance_method' title='#frames'>#frames</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Frames.html' title='Celerity::Frames'>Celerity::Frames</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h1-instance_method' title='#h1'>#h1</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H1.html' title='Celerity::H1'>Celerity::H1</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h1s-instance_method' title='#h1s'>#h1s</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H1s.html' title='Celerity::H1s'>Celerity::H1s</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h2-instance_method' title='#h2'>#h2</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H2.html' title='Celerity::H2'>Celerity::H2</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h2s-instance_method' title='#h2s'>#h2s</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H2s.html' title='Celerity::H2s'>Celerity::H2s</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h3-instance_method' title='#h3'>#h3</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H3.html' title='Celerity::H3'>Celerity::H3</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h3s-instance_method' title='#h3s'>#h3s</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H3s.html' title='Celerity::H3s'>Celerity::H3s</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h4-instance_method' title='#h4'>#h4</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H4.html' title='Celerity::H4'>Celerity::H4</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h4s-instance_method' title='#h4s'>#h4s</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H4s.html' title='Celerity::H4s'>Celerity::H4s</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h5-instance_method' title='#h5'>#h5</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H5.html' title='Celerity::H5'>Celerity::H5</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h5s-instance_method' title='#h5s'>#h5s</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H5s.html' title='Celerity::H5s'>Celerity::H5s</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h6-instance_method' title='#h6'>#h6</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H6.html' title='Celerity::H6'>Celerity::H6</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#h6s-instance_method' title='#h6s'>#h6s</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='H6s.html' title='Celerity::H6s'>Celerity::H6s</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#hidden-instance_method' title='#hidden'>#hidden</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Hidden.html' title='Celerity::Hidden'>Celerity::Hidden</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#hiddens-instance_method' title='#hiddens'>#hiddens</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Hiddens.html' title='Celerity::Hiddens'>Celerity::Hiddens</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#image-instance_method' title='#image'>#image</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Image.html' title='Celerity::Image'>Celerity::Image</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#images-instance_method' title='#images'>#images</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Images.html' title='Celerity::Images'>Celerity::Images</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#label-instance_method' title='#label'>#label</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Label.html' title='Celerity::Label'>Celerity::Label</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#labels-instance_method' title='#labels'>#labels</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Labels.html' title='Celerity::Labels'>Celerity::Labels</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#li-instance_method' title='#li'>#li</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Li.html' title='Celerity::Li'>Celerity::Li</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#link-instance_method' title='#link'>#link</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Link.html' title='Celerity::Link'>Celerity::Link</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#links-instance_method' title='#links'>#links</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Links.html' title='Celerity::Links'>Celerity::Links</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#lis-instance_method' title='#lis'>#lis</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Lis.html' title='Celerity::Lis'>Celerity::Lis</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#map-instance_method' title='#map'>#map</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Map.html' title='Celerity::Map'>Celerity::Map</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#maps-instance_method' title='#maps'>#maps</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Maps.html' title='Celerity::Maps'>Celerity::Maps</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#matches%3F-instance_method' title='#matches?'>#matches?</a></span><span class='args'>(string, what)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Used internally.
+</p>
+
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt>MatchData</tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#ol-instance_method' title='#ol'>#ol</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Ol.html' title='Celerity::Ol'>Celerity::Ol</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#ols-instance_method' title='#ols'>#ols</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Ols.html' title='Celerity::Ols'>Celerity::Ols</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#option-instance_method' title='#option'>#option</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Option.html' title='Celerity::Option'>Celerity::Option</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#p-instance_method' title='#p'>#p</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='P.html' title='Celerity::P'>Celerity::P</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#pre-instance_method' title='#pre'>#pre</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Pre.html' title='Celerity::Pre'>Celerity::Pre</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#pres-instance_method' title='#pres'>#pres</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Pres.html' title='Celerity::Pres'>Celerity::Pres</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#ps-instance_method' title='#ps'>#ps</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Ps.html' title='Celerity::Ps'>Celerity::Ps</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#radio-instance_method' title='#radio'>#radio</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Since finding radios by value is very common, you can use this shorthand:.
+</p>
+
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Radio.html' title='Celerity::Radio'>Celerity::Radio</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#radios-instance_method' title='#radios'>#radios</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Radios.html' title='Celerity::Radios'>Celerity::Radios</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#row-instance_method' title='#row'>#row</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableRow.html' title='Celerity::TableRow'>Celerity::TableRow</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#rows-instance_method' title='#rows'>#rows</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableRows.html' title='Celerity::TableRows'>Celerity::TableRows</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#select_list-instance_method' title='#select_list'>#select_list</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='SelectList.html' title='Celerity::SelectList'>Celerity::SelectList</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#select_lists-instance_method' title='#select_lists'>#select_lists</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='SelectLists.html' title='Celerity::SelectLists'>Celerity::SelectLists</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#span-instance_method' title='#span'>#span</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Span.html' title='Celerity::Span'>Celerity::Span</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#spans-instance_method' title='#spans'>#spans</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Spans.html' title='Celerity::Spans'>Celerity::Spans</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#table-instance_method' title='#table'>#table</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Table.html' title='Celerity::Table'>Celerity::Table</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#tables-instance_method' title='#tables'>#tables</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Tables.html' title='Celerity::Tables'>Celerity::Tables</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#tbodies-instance_method' title='#tbodies'>#tbodies</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+          <span class='alias'>#bodies</span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableBodies.html' title='Celerity::TableBodies'>Celerity::TableBodies</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#tbody-instance_method' title='#tbody'>#tbody</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+          <span class='alias'>#body</span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableBody.html' title='Celerity::TableBody'>Celerity::TableBody</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#text_field-instance_method' title='#text_field'>#text_field</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TextField.html' title='Celerity::TextField'>Celerity::TextField</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#text_fields-instance_method' title='#text_fields'>#text_fields</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TextFields.html' title='Celerity::TextFields'>Celerity::TextFields</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#tfoot-instance_method' title='#tfoot'>#tfoot</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableFooter.html' title='Celerity::TableFooter'>Celerity::TableFooter</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#tfoots-instance_method' title='#tfoots'>#tfoots</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+          <span class='alias'>#tfeet</span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableFooters.html' title='Celerity::TableFooters'>Celerity::TableFooters</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#thead-instance_method' title='#thead'>#thead</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableHeader.html' title='Celerity::TableHeader'>Celerity::TableHeader</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#theads-instance_method' title='#theads'>#theads</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='TableHeaders.html' title='Celerity::TableHeaders'>Celerity::TableHeaders</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#ul-instance_method' title='#ul'>#ul</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Ul.html' title='Celerity::Ul'>Celerity::Ul</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#uls-instance_method' title='#uls'>#uls</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href='Uls.html' title='Celerity::Uls'>Celerity::Uls</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#update_page-instance_method' title='#update_page'>#update_page</a></span><span class='args'>(page)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Used internally to update the page object.
+</p>
+
+        
+      </td>
+    </tr>
+  
+</table>
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>area</h3>
+</div><div id="area-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Area.html' title='Celerity::Area'>Celerity::Area</a></tt></span>
+    <span class='name'>area</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Area.html' title='Celerity::Area'>Celerity::Area</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+300
+301
+302
+303</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 300</span>
+
+<span class='def def kw'>def</span> <span class='area identifier id'>area</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Area constant id'>Area</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>areas</h3>
+</div><div id="areas-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Areas.html' title='Celerity::Areas'>Celerity::Areas</a></tt></span>
+    <span class='name'>areas</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Areas.html' title='Celerity::Areas'>Celerity::Areas</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+306
+307
+308
+309</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 306</span>
+
+<span class='def def kw'>def</span> <span class='areas identifier id'>areas</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Areas constant id'>Areas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>button</h3>
+</div><div id="button-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Button.html' title='Celerity::Button'>Celerity::Button</a></tt></span>
+    <span class='name'>button</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Button.html' title='Celerity::Button'>Celerity::Button</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+134
+135
+136
+137</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 134</span>
+
+<span class='def def kw'>def</span> <span class='button identifier id'>button</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Button constant id'>Button</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>buttons</h3>
+</div><div id="buttons-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Buttons.html' title='Celerity::Buttons'>Celerity::Buttons</a></tt></span>
+    <span class='name'>buttons</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Buttons.html' title='Celerity::Buttons'>Celerity::Buttons</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+140
+141
+142
+143</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 140</span>
+
+<span class='def def kw'>def</span> <span class='buttons identifier id'>buttons</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Buttons constant id'>Buttons</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>cell</h3>
+</div><div id="cell-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableCell.html' title='Celerity::TableCell'>Celerity::TableCell</a></tt></span>
+    <span class='name'>cell</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableCell.html' title='Celerity::TableCell'>Celerity::TableCell</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+110
+111
+112
+113</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 110</span>
+
+<span class='def def kw'>def</span> <span class='cell identifier id'>cell</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableCell constant id'>TableCell</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>cells</h3>
+</div><div id="cells-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableCells.html' title='Celerity::TableCells'>Celerity::TableCells</a></tt></span>
+    <span class='name'>cells</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableCells.html' title='Celerity::TableCells'>Celerity::TableCells</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+116
+117
+118
+119</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 116</span>
+
+<span class='def def kw'>def</span> <span class='cells identifier id'>cells</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableCells constant id'>TableCells</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>check_box</h3>
+</div><div id="check_box-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='CheckBox.html' title='Celerity::CheckBox'>Celerity::CheckBox</a></tt></span>
+    <span class='name'>check_box</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="checkbox-instance_method">checkbox</tt>
+  
+    <tt id="checkBox-instance_method">checkBox</tt>
+  
+</p>
+</div><div class="section docstring">
+  <p>
+Since finding checkboxes by value is very common, you can use this
+shorthand:
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='check_box identifier id'>check_box</span><span class='lparen token'>(</span><span class='symbol val'>:name</span><span class='comma token'>,</span> <span class='string val'>'a_name'</span><span class='comma token'>,</span> <span class='string val'>'1234'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='set identifier id'>set</span>
+</pre>
+<p>
+or
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='check_box identifier id'>check_box</span><span class='lparen token'>(</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'a_name'</span><span class='comma token'>,</span> <span class='symbol val'>:value</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'1234'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='set identifier id'>set</span>
+</pre>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='CheckBox.html' title='Celerity::CheckBox'>Celerity::CheckBox</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+208
+209
+210
+211</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 208</span>
+
+<span class='def def kw'>def</span> <span class='check_box identifier id'>check_box</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='CheckBox constant id'>CheckBox</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>checkboxes</h3>
+</div><div id="checkboxes-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='CheckBoxes.html' title='Celerity::CheckBoxes'>Celerity::CheckBoxes</a></tt></span>
+    <span class='name'>checkboxes</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='CheckBoxes.html' title='Celerity::CheckBoxes'>Celerity::CheckBoxes</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+214
+215
+216
+217</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 214</span>
+
+<span class='def def kw'>def</span> <span class='checkboxes identifier id'>checkboxes</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='CheckBoxes constant id'>CheckBoxes</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>container</h3>
+</div><div id="container-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>container</span><span class='args'>=(container)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Used internally to update the container object.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+35
+36
+37
+38
+39</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='container= identifier id'>container=</span><span class='lparen token'>(</span><span class='container identifier id'>container</span><span class='rparen token'>)</span>
+  <span class='@container ivar id'>@container</span> <span class='assign token'>=</span> <span class='container identifier id'>container</span>
+  <span class='@page_container ivar id'>@page_container</span> <span class='assign token'>=</span> <span class='container identifier id'>container</span><span class='dot token'>.</span><span class='page_container identifier id'>page_container</span>
+  <span class='container identifier id'>container</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>div</h3>
+</div><div id="div-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Div.html' title='Celerity::Div'>Celerity::Div</a></tt></span>
+    <span class='name'>div</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Div.html' title='Celerity::Div'>Celerity::Div</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+324
+325
+326
+327</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 324</span>
+
+<span class='def def kw'>def</span> <span class='div identifier id'>div</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Div constant id'>Div</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>divs</h3>
+</div><div id="divs-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Divs.html' title='Celerity::Divs'>Celerity::Divs</a></tt></span>
+    <span class='name'>divs</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Divs.html' title='Celerity::Divs'>Celerity::Divs</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+330
+331
+332
+333</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 330</span>
+
+<span class='def def kw'>def</span> <span class='divs identifier id'>divs</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Divs constant id'>Divs</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>file_field</h3>
+</div><div id="file_field-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='FileField.html' title='Celerity::FileField'>Celerity::FileField</a></tt></span>
+    <span class='name'>file_field</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='FileField.html' title='Celerity::FileField'>Celerity::FileField</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+146
+147
+148
+149</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 146</span>
+
+<span class='def def kw'>def</span> <span class='file_field identifier id'>file_field</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='FileField constant id'>FileField</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>file_fields</h3>
+</div><div id="file_fields-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='FileFields.html' title='Celerity::FileFields'>Celerity::FileFields</a></tt></span>
+    <span class='name'>file_fields</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='FileFields.html' title='Celerity::FileFields'>Celerity::FileFields</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+152
+153
+154
+155</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 152</span>
+
+<span class='def def kw'>def</span> <span class='file_fields identifier id'>file_fields</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='FileFields constant id'>FileFields</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>form</h3>
+</div><div id="form-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Form.html' title='Celerity::Form'>Celerity::Form</a></tt></span>
+    <span class='name'>form</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Form.html' title='Celerity::Form'>Celerity::Form</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+336
+337
+338
+339</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 336</span>
+
+<span class='def def kw'>def</span> <span class='form identifier id'>form</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Form constant id'>Form</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>forms</h3>
+</div><div id="forms-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Forms.html' title='Celerity::Forms'>Celerity::Forms</a></tt></span>
+    <span class='name'>forms</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Forms.html' title='Celerity::Forms'>Celerity::Forms</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+342
+343
+344
+345</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 342</span>
+
+<span class='def def kw'>def</span> <span class='forms identifier id'>forms</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Forms constant id'>Forms</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>frame</h3>
+</div><div id="frame-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Frame.html' title='Celerity::Frame'>Celerity::Frame</a></tt></span>
+    <span class='name'>frame</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Frame.html' title='Celerity::Frame'>Celerity::Frame</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+48
+49
+50
+51</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 48</span>
+
+<span class='def def kw'>def</span> <span class='frame identifier id'>frame</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Frame constant id'>Frame</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>frames</h3>
+</div><div id="frames-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Frames.html' title='Celerity::Frames'>Celerity::Frames</a></tt></span>
+    <span class='name'>frames</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Frames.html' title='Celerity::Frames'>Celerity::Frames</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+54
+55
+56
+57</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 54</span>
+
+<span class='def def kw'>def</span> <span class='frames identifier id'>frames</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Frames constant id'>Frames</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h1</h3>
+</div><div id="h1-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H1.html' title='Celerity::H1'>Celerity::H1</a></tt></span>
+    <span class='name'>h1</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H1.html' title='Celerity::H1'>Celerity::H1</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+396
+397
+398
+399</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 396</span>
+
+<span class='def def kw'>def</span> <span class='h1 identifier id'>h1</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H1 constant id'>H1</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h1s</h3>
+</div><div id="h1s-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H1s.html' title='Celerity::H1s'>Celerity::H1s</a></tt></span>
+    <span class='name'>h1s</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H1s.html' title='Celerity::H1s'>Celerity::H1s</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+432
+433
+434
+435</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 432</span>
+
+<span class='def def kw'>def</span> <span class='h1s identifier id'>h1s</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H1s constant id'>H1s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h2</h3>
+</div><div id="h2-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H2.html' title='Celerity::H2'>Celerity::H2</a></tt></span>
+    <span class='name'>h2</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H2.html' title='Celerity::H2'>Celerity::H2</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+402
+403
+404
+405</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 402</span>
+
+<span class='def def kw'>def</span> <span class='h2 identifier id'>h2</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H2 constant id'>H2</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h2s</h3>
+</div><div id="h2s-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H2s.html' title='Celerity::H2s'>Celerity::H2s</a></tt></span>
+    <span class='name'>h2s</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H2s.html' title='Celerity::H2s'>Celerity::H2s</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+438
+439
+440
+441</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 438</span>
+
+<span class='def def kw'>def</span> <span class='h2s identifier id'>h2s</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H2s constant id'>H2s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h3</h3>
+</div><div id="h3-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H3.html' title='Celerity::H3'>Celerity::H3</a></tt></span>
+    <span class='name'>h3</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H3.html' title='Celerity::H3'>Celerity::H3</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+408
+409
+410
+411</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 408</span>
+
+<span class='def def kw'>def</span> <span class='h3 identifier id'>h3</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H3 constant id'>H3</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h3s</h3>
+</div><div id="h3s-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H3s.html' title='Celerity::H3s'>Celerity::H3s</a></tt></span>
+    <span class='name'>h3s</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H3s.html' title='Celerity::H3s'>Celerity::H3s</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+444
+445
+446
+447</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 444</span>
+
+<span class='def def kw'>def</span> <span class='h3s identifier id'>h3s</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H3s constant id'>H3s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h4</h3>
+</div><div id="h4-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H4.html' title='Celerity::H4'>Celerity::H4</a></tt></span>
+    <span class='name'>h4</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H4.html' title='Celerity::H4'>Celerity::H4</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+414
+415
+416
+417</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 414</span>
+
+<span class='def def kw'>def</span> <span class='h4 identifier id'>h4</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H4 constant id'>H4</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h4s</h3>
+</div><div id="h4s-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H4s.html' title='Celerity::H4s'>Celerity::H4s</a></tt></span>
+    <span class='name'>h4s</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H4s.html' title='Celerity::H4s'>Celerity::H4s</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+450
+451
+452
+453</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 450</span>
+
+<span class='def def kw'>def</span> <span class='h4s identifier id'>h4s</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H4s constant id'>H4s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h5</h3>
+</div><div id="h5-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H5.html' title='Celerity::H5'>Celerity::H5</a></tt></span>
+    <span class='name'>h5</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H5.html' title='Celerity::H5'>Celerity::H5</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+420
+421
+422
+423</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 420</span>
+
+<span class='def def kw'>def</span> <span class='h5 identifier id'>h5</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H5 constant id'>H5</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h5s</h3>
+</div><div id="h5s-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H5s.html' title='Celerity::H5s'>Celerity::H5s</a></tt></span>
+    <span class='name'>h5s</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H5s.html' title='Celerity::H5s'>Celerity::H5s</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+456
+457
+458
+459</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 456</span>
+
+<span class='def def kw'>def</span> <span class='h5s identifier id'>h5s</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H5s constant id'>H5s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h6</h3>
+</div><div id="h6-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H6.html' title='Celerity::H6'>Celerity::H6</a></tt></span>
+    <span class='name'>h6</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H6.html' title='Celerity::H6'>Celerity::H6</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+426
+427
+428
+429</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 426</span>
+
+<span class='def def kw'>def</span> <span class='h6 identifier id'>h6</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H6 constant id'>H6</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>h6s</h3>
+</div><div id="h6s-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='H6s.html' title='Celerity::H6s'>Celerity::H6s</a></tt></span>
+    <span class='name'>h6s</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='H6s.html' title='Celerity::H6s'>Celerity::H6s</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+462
+463
+464
+465</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 462</span>
+
+<span class='def def kw'>def</span> <span class='h6s identifier id'>h6s</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='H6s constant id'>H6s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>hidden</h3>
+</div><div id="hidden-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Hidden.html' title='Celerity::Hidden'>Celerity::Hidden</a></tt></span>
+    <span class='name'>hidden</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Hidden.html' title='Celerity::Hidden'>Celerity::Hidden</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+170
+171
+172
+173</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 170</span>
+
+<span class='def def kw'>def</span> <span class='hidden identifier id'>hidden</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Hidden constant id'>Hidden</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>hiddens</h3>
+</div><div id="hiddens-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Hiddens.html' title='Celerity::Hiddens'>Celerity::Hiddens</a></tt></span>
+    <span class='name'>hiddens</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Hiddens.html' title='Celerity::Hiddens'>Celerity::Hiddens</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+176
+177
+178
+179</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 176</span>
+
+<span class='def def kw'>def</span> <span class='hiddens identifier id'>hiddens</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Hiddens constant id'>Hiddens</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>image</h3>
+</div><div id="image-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Image.html' title='Celerity::Image'>Celerity::Image</a></tt></span>
+    <span class='name'>image</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Image.html' title='Celerity::Image'>Celerity::Image</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+312
+313
+314
+315</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 312</span>
+
+<span class='def def kw'>def</span> <span class='image identifier id'>image</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Image constant id'>Image</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>images</h3>
+</div><div id="images-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Images.html' title='Celerity::Images'>Celerity::Images</a></tt></span>
+    <span class='name'>images</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Images.html' title='Celerity::Images'>Celerity::Images</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+318
+319
+320
+321</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 318</span>
+
+<span class='def def kw'>def</span> <span class='images identifier id'>images</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Images constant id'>Images</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>label</h3>
+</div><div id="label-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Label.html' title='Celerity::Label'>Celerity::Label</a></tt></span>
+    <span class='name'>label</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Label.html' title='Celerity::Label'>Celerity::Label</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+384
+385
+386
+387</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 384</span>
+
+<span class='def def kw'>def</span> <span class='label identifier id'>label</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Label constant id'>Label</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>labels</h3>
+</div><div id="labels-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Labels.html' title='Celerity::Labels'>Celerity::Labels</a></tt></span>
+    <span class='name'>labels</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Labels.html' title='Celerity::Labels'>Celerity::Labels</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+390
+391
+392
+393</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 390</span>
+
+<span class='def def kw'>def</span> <span class='labels identifier id'>labels</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Labels constant id'>Labels</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>li</h3>
+</div><div id="li-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Li.html' title='Celerity::Li'>Celerity::Li</a></tt></span>
+    <span class='name'>li</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Li.html' title='Celerity::Li'>Celerity::Li</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+276
+277
+278
+279</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 276</span>
+
+<span class='def def kw'>def</span> <span class='li identifier id'>li</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Li constant id'>Li</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>link</h3>
+</div><div id="link-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Link.html' title='Celerity::Link'>Celerity::Link</a></tt></span>
+    <span class='name'>link</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Link.html' title='Celerity::Link'>Celerity::Link</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+240
+241
+242
+243</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 240</span>
+
+<span class='def def kw'>def</span> <span class='link identifier id'>link</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Link constant id'>Link</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>links</h3>
+</div><div id="links-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Links.html' title='Celerity::Links'>Celerity::Links</a></tt></span>
+    <span class='name'>links</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Links.html' title='Celerity::Links'>Celerity::Links</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+246
+247
+248
+249</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 246</span>
+
+<span class='def def kw'>def</span> <span class='links identifier id'>links</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Links constant id'>Links</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>lis</h3>
+</div><div id="lis-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Lis.html' title='Celerity::Lis'>Celerity::Lis</a></tt></span>
+    <span class='name'>lis</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Lis.html' title='Celerity::Lis'>Celerity::Lis</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+282
+283
+284
+285</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 282</span>
+
+<span class='def def kw'>def</span> <span class='lis identifier id'>lis</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Lis constant id'>Lis</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>map</h3>
+</div><div id="map-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Map.html' title='Celerity::Map'>Celerity::Map</a></tt></span>
+    <span class='name'>map</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Map.html' title='Celerity::Map'>Celerity::Map</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+288
+289
+290
+291</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 288</span>
+
+<span class='def def kw'>def</span> <span class='map identifier id'>map</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Map constant id'>Map</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>maps</h3>
+</div><div id="maps-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Maps.html' title='Celerity::Maps'>Celerity::Maps</a></tt></span>
+    <span class='name'>maps</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Maps.html' title='Celerity::Maps'>Celerity::Maps</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+294
+295
+296
+297</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 294</span>
+
+<span class='def def kw'>def</span> <span class='maps identifier id'>maps</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Maps constant id'>Maps</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>matches?</h3>
+</div><div id="matches%3F-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt>MatchData</tt></span>
+    <span class='name'>matches?</span><span class='args'>(string, what)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Used internally.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='../String.html' title='String'>String</a></tt>]</span>
+      
+      
+        <span class='name'>string</span>
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+The string to match against.
+</p>
+</span>
+    </dd>
+  
+    <dt>
+      
+        <span class='type'>[<tt>Regexp</tt>, <tt><a href='../String.html' title='String'>String</a></tt>, <tt>#to_s</tt>]</span>
+      
+      
+        <span class='name'>what</span>
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+The match we&#8217;re looking for.
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>MatchData</tt>, <tt>true</tt>, <tt>false</tt>, <tt>nil</tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+474
+475
+476</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 474</span>
+
+<span class='def def kw'>def</span> <span class='matches? fid id'>matches?</span><span class='lparen token'>(</span><span class='string identifier id'>string</span><span class='comma token'>,</span> <span class='what identifier id'>what</span><span class='rparen token'>)</span>
+  <span class='Regexp constant id'>Regexp</span> <span class='eqq op'>===</span> <span class='what identifier id'>what</span> <span class='integer val'>? </span><span class='string identifier id'>string</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='what identifier id'>what</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='string identifier id'>string</span> <span class='eq op'>==</span> <span class='what identifier id'>what</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>ol</h3>
+</div><div id="ol-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Ol.html' title='Celerity::Ol'>Celerity::Ol</a></tt></span>
+    <span class='name'>ol</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Ol.html' title='Celerity::Ol'>Celerity::Ol</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+264
+265
+266
+267</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 264</span>
+
+<span class='def def kw'>def</span> <span class='ol identifier id'>ol</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Ol constant id'>Ol</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>ols</h3>
+</div><div id="ols-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Ols.html' title='Celerity::Ols'>Celerity::Ols</a></tt></span>
+    <span class='name'>ols</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Ols.html' title='Celerity::Ols'>Celerity::Ols</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+270
+271
+272
+273</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 270</span>
+
+<span class='def def kw'>def</span> <span class='ols identifier id'>ols</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Ols constant id'>Ols</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>option</h3>
+</div><div id="option-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Option.html' title='Celerity::Option'>Celerity::Option</a></tt></span>
+    <span class='name'>option</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Option.html' title='Celerity::Option'>Celerity::Option</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+194
+195
+196
+197</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 194</span>
+
+<span class='def def kw'>def</span> <span class='option identifier id'>option</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Option constant id'>Option</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>p</h3>
+</div><div id="p-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='P.html' title='Celerity::P'>Celerity::P</a></tt></span>
+    <span class='name'>p</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='P.html' title='Celerity::P'>Celerity::P</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+360
+361
+362
+363</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 360</span>
+
+<span class='def def kw'>def</span> <span class='p identifier id'>p</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='P constant id'>P</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>pre</h3>
+</div><div id="pre-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Pre.html' title='Celerity::Pre'>Celerity::Pre</a></tt></span>
+    <span class='name'>pre</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Pre.html' title='Celerity::Pre'>Celerity::Pre</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+372
+373
+374
+375</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 372</span>
+
+<span class='def def kw'>def</span> <span class='pre identifier id'>pre</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Pre constant id'>Pre</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>pres</h3>
+</div><div id="pres-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Pres.html' title='Celerity::Pres'>Celerity::Pres</a></tt></span>
+    <span class='name'>pres</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Pres.html' title='Celerity::Pres'>Celerity::Pres</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+378
+379
+380
+381</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 378</span>
+
+<span class='def def kw'>def</span> <span class='pres identifier id'>pres</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Pres constant id'>Pres</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>ps</h3>
+</div><div id="ps-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Ps.html' title='Celerity::Ps'>Celerity::Ps</a></tt></span>
+    <span class='name'>ps</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Ps.html' title='Celerity::Ps'>Celerity::Ps</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+366
+367
+368
+369</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 366</span>
+
+<span class='def def kw'>def</span> <span class='ps identifier id'>ps</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Ps constant id'>Ps</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>radio</h3>
+</div><div id="radio-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Radio.html' title='Celerity::Radio'>Celerity::Radio</a></tt></span>
+    <span class='name'>radio</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Since finding radios by value is very common, you can use this shorthand:
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='radio identifier id'>radio</span><span class='lparen token'>(</span><span class='symbol val'>:name</span><span class='comma token'>,</span> <span class='string val'>'a_name'</span><span class='comma token'>,</span> <span class='string val'>'1234'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='set identifier id'>set</span>
+</pre>
+<p>
+or
+</p>
+<pre class="code">
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='radio identifier id'>radio</span><span class='lparen token'>(</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'a_name'</span><span class='comma token'>,</span> <span class='symbol val'>:value</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'1234'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='set identifier id'>set</span>
+</pre>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Radio.html' title='Celerity::Radio'>Celerity::Radio</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+228
+229
+230
+231</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 228</span>
+
+<span class='def def kw'>def</span> <span class='radio identifier id'>radio</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Radio constant id'>Radio</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>radios</h3>
+</div><div id="radios-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Radios.html' title='Celerity::Radios'>Celerity::Radios</a></tt></span>
+    <span class='name'>radios</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Radios.html' title='Celerity::Radios'>Celerity::Radios</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+234
+235
+236
+237</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 234</span>
+
+<span class='def def kw'>def</span> <span class='radios identifier id'>radios</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Radios constant id'>Radios</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>row</h3>
+</div><div id="row-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableRow.html' title='Celerity::TableRow'>Celerity::TableRow</a></tt></span>
+    <span class='name'>row</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableRow.html' title='Celerity::TableRow'>Celerity::TableRow</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+122
+123
+124
+125</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 122</span>
+
+<span class='def def kw'>def</span> <span class='row identifier id'>row</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableRow constant id'>TableRow</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>rows</h3>
+</div><div id="rows-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableRows.html' title='Celerity::TableRows'>Celerity::TableRows</a></tt></span>
+    <span class='name'>rows</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableRows.html' title='Celerity::TableRows'>Celerity::TableRows</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+128
+129
+130
+131</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 128</span>
+
+<span class='def def kw'>def</span> <span class='rows identifier id'>rows</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableRows constant id'>TableRows</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>select_list</h3>
+</div><div id="select_list-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='SelectList.html' title='Celerity::SelectList'>Celerity::SelectList</a></tt></span>
+    <span class='name'>select_list</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='SelectList.html' title='Celerity::SelectList'>Celerity::SelectList</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+182
+183
+184
+185</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 182</span>
+
+<span class='def def kw'>def</span> <span class='select_list identifier id'>select_list</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='SelectList constant id'>SelectList</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>select_lists</h3>
+</div><div id="select_lists-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='SelectLists.html' title='Celerity::SelectLists'>Celerity::SelectLists</a></tt></span>
+    <span class='name'>select_lists</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='SelectLists.html' title='Celerity::SelectLists'>Celerity::SelectLists</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+188
+189
+190
+191</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 188</span>
+
+<span class='def def kw'>def</span> <span class='select_lists identifier id'>select_lists</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='SelectLists constant id'>SelectLists</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>span</h3>
+</div><div id="span-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Span.html' title='Celerity::Span'>Celerity::Span</a></tt></span>
+    <span class='name'>span</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Span.html' title='Celerity::Span'>Celerity::Span</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+348
+349
+350
+351</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 348</span>
+
+<span class='def def kw'>def</span> <span class='span identifier id'>span</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Span constant id'>Span</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>spans</h3>
+</div><div id="spans-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Spans.html' title='Celerity::Spans'>Celerity::Spans</a></tt></span>
+    <span class='name'>spans</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Spans.html' title='Celerity::Spans'>Celerity::Spans</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+354
+355
+356
+357</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 354</span>
+
+<span class='def def kw'>def</span> <span class='spans identifier id'>spans</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Spans constant id'>Spans</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>table</h3>
+</div><div id="table-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Table.html' title='Celerity::Table'>Celerity::Table</a></tt></span>
+    <span class='name'>table</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Table.html' title='Celerity::Table'>Celerity::Table</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+60
+61
+62
+63</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 60</span>
+
+<span class='def def kw'>def</span> <span class='table identifier id'>table</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Table constant id'>Table</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>tables</h3>
+</div><div id="tables-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Tables.html' title='Celerity::Tables'>Celerity::Tables</a></tt></span>
+    <span class='name'>tables</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Tables.html' title='Celerity::Tables'>Celerity::Tables</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+66
+67
+68
+69</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 66</span>
+
+<span class='def def kw'>def</span> <span class='tables identifier id'>tables</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Tables constant id'>Tables</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>tbodies</h3>
+</div><div id="tbodies-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableBodies.html' title='Celerity::TableBodies'>Celerity::TableBodies</a></tt></span>
+    <span class='name'>tbodies</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="bodies-instance_method">bodies</tt>
+  
+</p>
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableBodies.html' title='Celerity::TableBodies'>Celerity::TableBodies</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+90
+91
+92
+93</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 90</span>
+
+<span class='def def kw'>def</span> <span class='tbodies identifier id'>tbodies</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableBodies constant id'>TableBodies</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>tbody</h3>
+</div><div id="tbody-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableBody.html' title='Celerity::TableBody'>Celerity::TableBody</a></tt></span>
+    <span class='name'>tbody</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="body-instance_method">body</tt>
+  
+</p>
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableBody.html' title='Celerity::TableBody'>Celerity::TableBody</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+84
+85
+86
+87</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 84</span>
+
+<span class='def def kw'>def</span> <span class='tbody identifier id'>tbody</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableBody constant id'>TableBody</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>text_field</h3>
+</div><div id="text_field-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TextField.html' title='Celerity::TextField'>Celerity::TextField</a></tt></span>
+    <span class='name'>text_field</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TextField.html' title='Celerity::TextField'>Celerity::TextField</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+158
+159
+160
+161</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 158</span>
+
+<span class='def def kw'>def</span> <span class='text_field identifier id'>text_field</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TextField constant id'>TextField</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>text_fields</h3>
+</div><div id="text_fields-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TextFields.html' title='Celerity::TextFields'>Celerity::TextFields</a></tt></span>
+    <span class='name'>text_fields</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TextFields.html' title='Celerity::TextFields'>Celerity::TextFields</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+164
+165
+166
+167</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 164</span>
+
+<span class='def def kw'>def</span> <span class='text_fields identifier id'>text_fields</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TextFields constant id'>TextFields</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>tfoot</h3>
+</div><div id="tfoot-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableFooter.html' title='Celerity::TableFooter'>Celerity::TableFooter</a></tt></span>
+    <span class='name'>tfoot</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableFooter.html' title='Celerity::TableFooter'>Celerity::TableFooter</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+96
+97
+98
+99</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 96</span>
+
+<span class='def def kw'>def</span> <span class='tfoot identifier id'>tfoot</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableFooter constant id'>TableFooter</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>tfoots</h3>
+</div><div id="tfoots-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableFooters.html' title='Celerity::TableFooters'>Celerity::TableFooters</a></tt></span>
+    <span class='name'>tfoots</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="tfeet-instance_method">tfeet</tt>
+  
+</p>
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableFooters.html' title='Celerity::TableFooters'>Celerity::TableFooters</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+102
+103
+104
+105</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 102</span>
+
+<span class='def def kw'>def</span> <span class='tfoots identifier id'>tfoots</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableFooters constant id'>TableFooters</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>thead</h3>
+</div><div id="thead-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableHeader.html' title='Celerity::TableHeader'>Celerity::TableHeader</a></tt></span>
+    <span class='name'>thead</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableHeader.html' title='Celerity::TableHeader'>Celerity::TableHeader</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+72
+73
+74
+75</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 72</span>
+
+<span class='def def kw'>def</span> <span class='thead identifier id'>thead</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableHeader constant id'>TableHeader</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>theads</h3>
+</div><div id="theads-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='TableHeaders.html' title='Celerity::TableHeaders'>Celerity::TableHeaders</a></tt></span>
+    <span class='name'>theads</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='TableHeaders.html' title='Celerity::TableHeaders'>Celerity::TableHeaders</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+78
+79
+80
+81</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 78</span>
+
+<span class='def def kw'>def</span> <span class='theads identifier id'>theads</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='TableHeaders constant id'>TableHeaders</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>ul</h3>
+</div><div id="ul-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Ul.html' title='Celerity::Ul'>Celerity::Ul</a></tt></span>
+    <span class='name'>ul</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Ul.html' title='Celerity::Ul'>Celerity::Ul</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+252
+253
+254
+255</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 252</span>
+
+<span class='def def kw'>def</span> <span class='ul identifier id'>ul</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Ul constant id'>Ul</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>uls</h3>
+</div><div id="uls-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a href='Uls.html' title='Celerity::Uls'>Celerity::Uls</a></tt></span>
+    <span class='name'>uls</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href='Uls.html' title='Celerity::Uls'>Celerity::Uls</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+258
+259
+260
+261</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 258</span>
+
+<span class='def def kw'>def</span> <span class='uls identifier id'>uls</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='Uls constant id'>Uls</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>update_page</h3>
+</div><div id="update_page-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>update_page</span><span class='args'>(page)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Used internally to update the page object.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+43
+44
+45</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 43</span>
+
+<span class='def def kw'>def</span> <span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
+  <span class='@page_container ivar id'>@page_container</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='page identifier id'>page</span> 
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+  </body>
+</html>

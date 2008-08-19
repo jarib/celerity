@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Celerity::MethodGenerator</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Celerity_MethodGenerator">
+  <h1 class="title">Class: Celerity::MethodGenerator</h1>
+  <div class="section docstring">
+  <p>
+Experimental - generate a method definition for accessing elements on the
+current page.
+</p>
+
+</div><div class="section constants">
+  <div class="thisclass">
+  <h1>Constants</h1>
+  <dl>
+    
+      <dt id="BUGGY_ELEMENTS-constant">BUGGY_ELEMENTS</dt>
+      <dd>%w[radio checkbox].map { |e| e.to_sym }</dd>
+    
+      <dt id="ELEMENTS-constant">ELEMENTS</dt>
+      <dd>%w[text_field select_list radio checkbox button].map { |e| e.to_sym }</dd>
+    
+  </dl>
+</div>
+
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <div id="initialize-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>initialize</span><span class='args'>(ie, opts = {})</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/extra/method_generator.rb', line 25</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='ie identifier id'>ie</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='@ie ivar id'>@ie</span>      <span class='assign token'>=</span> <span class='ie identifier id'>ie</span>
+  <span class='@opts ivar id'>@opts</span>    <span class='assign token'>=</span> <span class='opts identifier id'>opts</span>
+  <span class='@browser ivar id'>@browser</span> <span class='assign token'>=</span> <span class='@opts ivar id'>@opts</span><span class='lbrack token'>[</span><span class='symbol val'>:browser</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='string val'>'@ie'</span>
+
+  <span class='@docs ivar id'>@docs</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;  # Fills in the page at #{@ie.url}\n  #\n&quot;</span>
+  <span class='@docs ivar id'>@docs</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;  # Parameters:\n  #\n&quot;</span>
+  <span class='@doc_elements ivar id'>@doc_elements</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+
+  <span class='@method ivar id'>@method</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;  def #{@opts[:method_name] || 'generated_method'}(opts = {})\n\n&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href='#parse-instance_method' title='#parse'>#parse</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>parse</h3>
+</div><div id="parse-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>parse</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/extra/method_generator.rb', line 37</span>
+
+<span class='def def kw'>def</span> <span class='parse identifier id'>parse</span>
+  <span class='ELEMENTS constant id'>ELEMENTS</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='elem identifier id'>elem</span><span class='bitor op'>|</span>
+    <span class='@method ivar id'>@method</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;    # buggy!\n&quot;</span> <span class='if if_mod kw'>if</span> <span class='BUGGY_ELEMENTS constant id'>BUGGY_ELEMENTS</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='elem identifier id'>elem</span><span class='rparen token'>)</span>
+    <span class='add_elements identifier id'>add_elements</span><span class='lparen token'>(</span><span class='elem identifier id'>elem</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='add_elements identifier id'>add_elements</span><span class='lparen token'>(</span><span class='symbol val'>:link</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='@opts ivar id'>@opts</span><span class='lbrack token'>[</span><span class='symbol val'>:include_links</span><span class='rbrack token'>]</span>
+  <span class='@method ivar id'>@method</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;  end\n\n&quot;</span>
+
+  <span class='comment val'># fix docs</span>
+  <span class='max identifier id'>max</span> <span class='assign token'>=</span> <span class='@doc_elements ivar id'>@doc_elements</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='symbol identifier id'>symbol</span><span class='comma token'>,</span> <span class='_ identifier id'>_</span><span class='bitor op'>|</span> <span class='symbol identifier id'>symbol</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='size identifier id'>size</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+  <span class='@doc_elements ivar id'>@doc_elements</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='sym identifier id'>sym</span><span class='comma token'>,</span> <span class='desc identifier id'>desc</span><span class='bitor op'>|</span>
+    <span class='@docs ivar id'>@docs</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;  #  #{sym.to_s.ljust(max)} =&gt; #{desc}\n&quot;</span>
+  <span class='end end kw'>end</span>
+  <span class='@docs ivar id'>@docs</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;  #\n&quot;</span><span class='mult op'>*</span><span class='integer val'>2</span>
+  <span class='@docs ivar id'>@docs</span> <span class='plus op'>+</span> <span class='@method ivar id'>@method</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+  </body>
+</html>
