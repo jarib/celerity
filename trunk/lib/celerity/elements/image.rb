@@ -2,7 +2,6 @@ module Celerity
   
   class Image < Element
     include ClickableElement
-    include DisabledElement
     
     TAGS = [ Identifier.new('img') ]
     ATTRIBUTES = BASE_ATTRIBUTES | [:src, :alt, :longdesc, :name, :height, :width, :usemap, :ismap, :align, :border, :hspace, :vspace]
