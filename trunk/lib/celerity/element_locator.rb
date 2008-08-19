@@ -23,7 +23,7 @@ module Celerity
       conditions.each do |how, what|
         case how
         when :object
-          unless what.is_a? Celerity::Element
+          unless what.is_a? HtmlUnit::Html::HtmlElement
             raise ArgumentError, "second argument must be a Celerity::Element subclass" 
           end
           return what
