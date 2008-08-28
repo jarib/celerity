@@ -18,6 +18,13 @@ describe "HtmlUnit bugs" do
      @browser.text_field(:index, 1).id.should == "org_id"
    end
   end
+  
+  describe "HtmlUnit bug XXXXXX" do
+    it "should return strings as UTF-8 when there's a charset mismatch between HTTP response header and <meta> tag" do
+      @browser.goto(TEST_HOST + "/charset_mismatch")
+      @browser.text.should == "\303\270"
+    end
+  end
 
   after :all do
     @browser.close

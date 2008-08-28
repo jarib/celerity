@@ -25,6 +25,22 @@ module Celerity
       resp.body << "A slooow ajax response"
     end
   end
+  
+  class CharsetMismatchHandler < WEBrick::HTTPServlet::AbstractServlet
+    def do_GET(req, resp)
+      resp['content-type'] = 'text/html; charset=UTF-8'
+      resp.body << %q{
+        <html>
+          <head>
+            <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+          </head>
+        <body>
+        ø
+        </body>
+        </html>
+      }
+    end
+  end
 
   class SpecServer
     attr_reader :host, :thread, :log_file
@@ -66,6 +82,7 @@ module Celerity
       server.mount("/post_to_me", PostHandler)
       server.mount("/plain_text", PlainTextHandler)
       server.mount("/ajax", SlowAjaxHandler)
+      server.mount("/charset_mismatch", CharsetMismatchHandler)
 
       @thread = Thread.new { server.start }
     end
