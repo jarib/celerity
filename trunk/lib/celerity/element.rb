@@ -122,22 +122,22 @@ module Celerity
     alias_method :innerText,  :text
     alias_method :inner_text, :text
 
-    # Check if the element contains the given text.
-    #
-    # @param  [String, Regexp] expected_text The text to look for.
-    # @return [Fixnum, nil]  The index of the matched text, or nil if it doesn't match.
-    def contains_text(expected_text)
-      assert_exists
-      
-      case expected_text
-      when Regexp
-        text() =~ expected_text
-      when String
-        text().index(expected_text)
-      else
-        raise ArgumentError, "Argument #{expected_text.inspect} should be a String or Regexp."
-      end
-    end
+    # # Check if the element contains the given text.
+    # #
+    # # @param  [String, Regexp] expected_text The text to look for.
+    # # @return [Fixnum, nil]  The index of the matched text, or nil if it doesn't match.
+    # def contains_text(expected_text)
+    #   assert_exists
+    #   
+    #   case expected_text
+    #   when Regexp
+    #     text() =~ expected_text
+    #   when String
+    #     text().index(expected_text)
+    #   else
+    #     raise ArgumentError, "Argument #{expected_text.inspect} should be a String or Regexp."
+    #   end
+    # end
 
     # @return [String] The normative XML representation of the element (including children).
     def to_xml

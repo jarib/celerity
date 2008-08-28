@@ -116,14 +116,7 @@ module Celerity
     # @return [Numeric, nil]  The index of the matched text, or nil if it doesn't match.
     def contains_text(expected_text)
       return nil unless exist?
-      case expected_text
-      when Regexp
-        text() =~ expected_text
-      when String
-        text().index(expected_text)
-      else
-        raise ArgumentError, "Argument must be String or Regexp, but was #{expected_text.inspect}:#{expected_text.class}"
-      end
+      super
     end
 
     # @return [HtmlUnit::HtmlHtml] the underlying HtmlUnit object.

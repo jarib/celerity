@@ -30,6 +30,25 @@ module Celerity
     include Celerity::Exception
     attr_accessor :page_container
 
+
+    # Check if the element contains the given text.
+    #
+    # @param  [String, Regexp] expected_text The text to look for.
+    # @return [Fixnum, nil]  The index of the matched text, or nil if it doesn't match.
+    def contains_text(expected_text)
+      assert_exists
+      return nil unless respond_to? :text
+      
+      case expected_text
+      when Regexp
+        text() =~ expected_text
+      when String
+        text().index(expected_text)
+      else
+        raise ArgumentError, "Argument #{expected_text.inspect} should be a String or Regexp."
+      end
+    end
+
     # Used internally to update the container object.
     # @api internal
     def container=(container)

@@ -35,7 +35,7 @@ module Celerity
             <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
           </head>
         <body>
-        ø
+        Ã¸
         </body>
         </html>
       }
