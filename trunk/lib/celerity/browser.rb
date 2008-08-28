@@ -211,7 +211,7 @@ module Celerity
     # @see add_checker
     # @api internal
     def run_error_checks
-      @error_checkers.each { |e| e.call(self) }
+      @error_checkers.each { |e| e[self] }
     end
     
     # Set the current page object for the browser

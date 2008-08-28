@@ -125,7 +125,7 @@ module Celerity
     end
 
     def matches?(string, what)
-      Regexp === what ? string.match(what) : string == what.to_s
+      Regexp === what ? string =~ what : string == what.to_s
     end
 
     def elements_by_tag_names

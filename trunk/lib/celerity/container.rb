@@ -491,7 +491,7 @@ module Celerity
     #
     # @api internal
     def matches?(string, what)
-      Regexp === what ? string.match(what) : string == what.to_s
+      Regexp === what ? string =~ what : string == what.to_s
     end
     
   end # Container
