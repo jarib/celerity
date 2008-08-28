@@ -201,7 +201,9 @@ module Celerity
     def resynchronized(&block)
       old_controller = @webclient.ajaxController
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new)
+      
       yield self
+      
       @webclient.setAjaxController(old_controller)
     end
 

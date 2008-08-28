@@ -165,7 +165,7 @@ module Celerity
 
     # Dynamically get element attributes.
     #
-    # @see ATTRIBUTES constant for a list of valid methods for a given subclass.
+    # @see ATTRIBUTES constant for a list of valid methods for a given element.
     #
     # @return [String] The resulting attribute.
     # @raise NoMethodError if the element doesn't support this attribute.
