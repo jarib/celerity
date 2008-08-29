@@ -134,6 +134,46 @@ module Celerity
       assert_exists
       @page.executeJavaScript(source.to_s)
     end
+    
+    # Wait until the given block evaluates to true
+    # 
+    # @param [Fixnum] timeout How long to wait before timing out.
+    # @yieldparam [Celerity::Browser] browser The browser instance.
+    def wait_until(timeout = 30, &block)
+      Timeout.timeout(timeout) do
+        until yield(self)
+          new_page = @page.getEnclosingWindow.getEnclosedPage
+          $stderr.puts({:new_page => new_page, :old_page => @page}.inspect)
+          
+          if new_page && (new_page != @page)
+            @page = new_page 
+            sleep 2
+          end
+          
+          sleep 0.1 
+        end
+      end
+    end
+
+    # Wait while the given block evaluates to true
+    #
+    # @param [Fixnum] timeout How long to wait before timing out.
+    # @yieldparam [Celerity::Browser] browser The browser instance.
+    def wait_while(timeout = 30, &block)
+      Timeout.timeout(timeout) do
+        while yield(self)
+          new_page = @page.getEnclosingWindow.getEnclosedPage
+          $stderr.puts({:new_page => new_page, :old_page => @page}.inspect)
+          
+          if new_page && (new_page != @page)
+            @page = new_page 
+            sleep 2
+          end
+          
+          sleep 0.1 
+        end
+      end
+    end
 
     # Add a 'checker' proc that will be run on every page load
     # 

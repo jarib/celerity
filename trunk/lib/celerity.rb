@@ -50,6 +50,7 @@ require "celerity/watir_compatibility"
 require "logger"
 require "uri"
 require "pp"
+require "timeout"
 require "time"
 
 Log = Logger.new($DEBUG ? $stderr : nil)
