@@ -7,9 +7,10 @@ DRb.install_acl(ACL.new(%w{deny all allow 127.0.0.1}))
 class DistributedViewer
   attr_reader :web_view
   
-  def initialize(web_view, url_field)
-    @web_view = web_view
-    @url_field = url_field
+  def initialize(controller, web_view, url_field)
+    @controller = controller
+    @web_view   = web_view
+    @url_field  = url_field
   end
     
   def render_html(html, url = nil)
@@ -20,6 +21,7 @@ class DistributedViewer
       url = NSURL.URLWithString(base_url)
     end
     @web_view.mainFrame.loadHTMLString_baseURL(html, url)
+    @controller.bump_count
   rescue => e
     log(e)
   end

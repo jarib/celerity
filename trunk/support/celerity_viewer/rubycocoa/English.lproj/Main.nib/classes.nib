@@ -24,6 +24,8 @@
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
+				<key>status_label</key>
+				<string>id</string>
 				<key>text_field</key>
 				<string>id</string>
 				<key>web_view</key>
