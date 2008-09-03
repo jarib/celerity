@@ -1,33 +1,23 @@
 $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
+raise "Celerity only works on JRuby at the moment." unless RUBY_PLATFORM =~ /java/
 # Celerity - JRuby wrapper for HtmlUnit
 module Celerity
   Jars = Dir[File.dirname(__FILE__) + '/celerity/htmlunit/*.jar']
 end
 
-if RUBY_PLATFORM =~ /java/
-  require 'java'
-  JavaString = java.lang.String
-  
-  Celerity::Jars.each { |jar| require(jar) }
+require 'java'
+JavaString = java.lang.String
 
-  module HtmlUnit
-    include_package 'com.gargoylesoftware.htmlunit'
+Celerity::Jars.each { |jar| require(jar) }
 
-    module Html
-      include_package 'com.gargoylesoftware.htmlunit.html'
-    end
+module HtmlUnit
+  include_package 'com.gargoylesoftware.htmlunit'
+
+  module Html
+    include_package 'com.gargoylesoftware.htmlunit.html'
   end
-  
-else
-  raise "Celerity only works on JRuby at the moment."
 end
-  # require "rjb"
-  # Rjb::load(Celerity::Jars.join(";"))
-  # module HtmlUnit
-  #   WebClient      = Rjb::import('com.gargoylesoftware.htmlunit.WebClient')
-  #   BrowserVersion = Rjb::import('com.gargoylesoftware.htmlunit.BrowserVersion')
-  # end
 
 require "celerity/version"
 require "celerity/exception"
@@ -53,8 +43,10 @@ require "pp"
 require "timeout"
 require "time"
 
-Log = Logger.new($DEBUG ? $stderr : nil)
-Log.level = Logger::DEBUG
+module Celerity
+  Log = Logger.new($DEBUG ? $stderr : nil)
+  Log.level = Logger::DEBUG
+end
 
 # undefine deprecated methods to use them for Element attributes
 if ["id", "type"].any? { |meth| Object.instance_methods.include?(meth) }

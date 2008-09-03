@@ -2,11 +2,7 @@ module Celerity
   module Exception
 
     # Superclass for all Celerity exceptions.
-    class CelerityException < StandardError  
-      def initialize(message="")
-          super(message)
-      end
-    end
+    class CelerityException < StandardError; end
     
     # This exception is thrown if an attempt is made to access an object that doesn't exist
     class UnknownObjectException < CelerityException; end
