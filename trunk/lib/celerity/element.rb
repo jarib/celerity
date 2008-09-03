@@ -71,6 +71,7 @@ module Celerity
     # Used internally. Find the element on the page. 
     # @api internal
     def locate
+      raise "BUG: no container object found when locating #{identifier_string}" unless @container.object
       @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
     end
     
