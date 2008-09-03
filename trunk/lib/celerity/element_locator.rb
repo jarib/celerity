@@ -24,7 +24,7 @@ module Celerity
         case how
         when :object
           unless what.is_a? HtmlUnit::Html::HtmlElement
-            raise ArgumentError, "second argument must be a Celerity::Element subclass" 
+            raise ArgumentError, "expected a HtmlUnit::Html::HtmlElement subclass, got #{what.inspect}:#{what.class}" 
           end
           return what
         when :id
