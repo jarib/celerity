@@ -197,6 +197,18 @@ TEXT
     end
   end
   
+  describe "#wait_while" do
+    it "should return after the condition becomes false" do
+      pending
+    end
+  end
+  
+  describe "#wait_until" do
+    it "should return after the condition becomes true" do
+      pending
+    end
+  end
+  
   # Other
   describe "#contains_text" do
     before :each do
