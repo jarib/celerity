@@ -37,7 +37,7 @@ module Celerity
     # NB! This is 1-indexed to keep compatibility with Watir. Subject to change.
     #
     # @param [Fixnum] n Index of wanted element, 1-indexed.
-    # @return [Celerity::Element]
+    # @return [Celerity::Element, nil] Returns nil if index is out of bounds.
     def [](n)
       if @elements && @elements[n-1]
         element_class.new(@container, :object, @elements[n-1])

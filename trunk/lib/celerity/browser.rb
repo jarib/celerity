@@ -143,7 +143,7 @@ module Celerity
       Timeout.timeout(timeout) do
         until yield(self)
           new_page = @page.getEnclosingWindow.getEnclosedPage
-          $stderr.puts({:new_page => new_page, :old_page => @page}.inspect)
+          Log.debug({:new_page => new_page, :old_page => @page}.inspect)
           
           if new_page && (new_page != @page)
             @page = new_page 
@@ -163,7 +163,7 @@ module Celerity
       Timeout.timeout(timeout) do
         while yield(self)
           new_page = @page.getEnclosingWindow.getEnclosedPage
-          $stderr.puts({:new_page => new_page, :old_page => @page}.inspect)
+          Log.debug({:new_page => new_page, :old_page => @page}.inspect)
           
           if new_page && (new_page != @page)
             @page = new_page 
