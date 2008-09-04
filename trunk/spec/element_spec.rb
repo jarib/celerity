@@ -26,6 +26,12 @@ describe "Element" do
       lambda { Element.new(container, 1,2,3,4) }.should raise_error(ArgumentError, "wrong number of arguments (4 for 2)")
       lambda { Element.new(container, "foo") }.should raise_error(ArgumentError, "wrong number of arguments (1 for 2)")
     end
+  end
+
+  describe "#locate" do
+    it "should raise ArgumentError when used with :object and the object given isn't an HtmlElement subclass" do
+      lambda { Link.new(@browser, :object, "foo").locate }.should raise_error(ArgumentError, 'expected a HtmlUnit::Html::HtmlElement subclass, got "foo":String')
+    end
     
   end
   
