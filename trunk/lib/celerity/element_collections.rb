@@ -39,7 +39,11 @@ module Celerity
     # @param [Fixnum] n Index of wanted element, 1-indexed.
     # @return [Celerity::Element]
     def [](n)
-      @elements ? element_class.new(@container, :object, @elements[n-1]) : iterator_object(n-1)
+      if @elements && @elements[n-1]
+        element_class.new(@container, :object, @elements[n-1])
+      else
+        iterator_object(n-1)
+      end
     end
     
     # Note: This can be quite useful in irb:
