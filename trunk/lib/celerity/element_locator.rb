@@ -105,7 +105,7 @@ module Celerity
     private 
 
     def get_by_idents(meth, idents)
-      @object.getAllHtmlChildElements.iterator.to_a.send(meth) do |e|
+      @object.getAllHtmlChildElements.iterator.send(meth) do |e|
         if @tags.include?(e.getTagName)
           idents.any? do |ident|
             next unless ident.tag == e.getTagName
@@ -131,7 +131,7 @@ module Celerity
     def elements_by_tag_names
       tries = 0
       # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct order, making :index fail
-      @object.getAllHtmlChildElements.iterator.to_a.select do |elem|
+      @object.getAllHtmlChildElements.iterator.select do |elem|
         @tags.include?(elem.getTagName)
       end
     # workaround for HtmlUnit bug?
