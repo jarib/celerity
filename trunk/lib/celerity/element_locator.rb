@@ -105,6 +105,8 @@ module Celerity
     private 
 
     def get_by_idents(meth, idents)
+      tries = 0
+      
       @object.getAllHtmlChildElements.iterator.send(meth) do |e|
         if @tags.include?(e.getTagName)
           idents.any? do |ident|
@@ -122,9 +124,20 @@ module Celerity
           end
         end
       end
+
+    # HtmlUnit bug?
+    rescue java.lang.NullPointerException => e
+      $stderr.puts "warning: celerity caught #{e}"
+      if tries < 2
+        tries += 1
+        retry
+      else
+        raise e
+      end
     end
 
     def matches?(string, what)
+      string.strip!
       Regexp === what ? string =~ what : string == what.to_s
     end
 
@@ -134,7 +147,7 @@ module Celerity
       @object.getAllHtmlChildElements.iterator.select do |elem|
         @tags.include?(elem.getTagName)
       end
-    # workaround for HtmlUnit bug?
+    # HtmlUnit bug?
     rescue java.lang.NullPointerException => e
       $stderr.puts "warning: celerity caught #{e}"
       if tries < 2
