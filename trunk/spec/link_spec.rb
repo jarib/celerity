@@ -30,6 +30,10 @@ describe "Link" do
     it "should return true if the element exists (default how = :href)" do
       @browser.link(/input_elements/).should exist
     end
+    
+    it "should strip spaces from URL attributes when locating elements" do
+      @browser.link(:url, /strip_space$/).should exist
+    end
 
     it "should return false if the link doesn't exist" do
       @browser.link(:id, 'no_such_id').should_not exist
