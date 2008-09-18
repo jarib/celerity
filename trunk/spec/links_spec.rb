@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Links" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -12,13 +12,17 @@ describe "Links" do
 
   describe "#length" do
     it "should return the number of links" do
-      @browser.links.length.should == 3
+      @browser.links.length.should == 4
     end
   end
-  
+
   describe "#[]" do
     it "should return the link at the given index" do
       @browser.links[3].id.should == "link_3"
+    end
+
+    it "should ... when the index is out of bouds" do
+      pending
     end
   end
 

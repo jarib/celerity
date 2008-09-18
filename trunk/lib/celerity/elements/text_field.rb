@@ -5,7 +5,7 @@ module Celerity
   # This class is the main class for Text Fields
   # Normally a user would not need to create this object as it is returned by the Watir::Container#text_field method
   class TextField < InputElement
-    TAGS = [ Identifier.new('textarea'), 
+    TAGS = [ Identifier.new('textarea'),
              Identifier.new('input', :type => ["text", "password", /^(?!(file|radio|checkbox|submit|reset|image|button|hidden)$)/])  ]
     DEFAULT_HOW = :name
 
@@ -19,8 +19,8 @@ module Celerity
         @object.setValueAttribute('')
       end
     end
-  
-    # Set the text field to the given value. 
+
+    # Set the text field to the given value.
     # This ensures execution of JavaScript events (onkeypress etc.), but is slower than +value=+
     def set(value)
       assert_enabled
@@ -28,7 +28,7 @@ module Celerity
       clear
       type_string(value.to_s)
     end
-    
+
     # This directly sets the text field to the given value, skipping exectuion of JavaScript events.
     # Use +set+ if you want to run events on text fields.
     def value=(value)
@@ -41,10 +41,10 @@ module Celerity
       when 'input'
         @object.setValueAttribute(value.to_s)
       end
-      
+
       value
     end
-    
+
     # Returns the text in the text field.
     def value
       assert_exists
@@ -63,11 +63,11 @@ module Celerity
       assert_not_readonly
       type_string(value)
     end
-    
+
     def type
       assert_exists
       type = @object.getAttributeValue('type')
-      
+
       if ['file', 'radio', 'checkbox', 'submit', 'reset', 'image', 'button', 'hidden'].include?(type)
         type
       else
@@ -83,26 +83,29 @@ module Celerity
       self.value = ''
       @container.text_field(how, what).append(val)
     end
-    
-    # A boolean version of Element#contains_text :P
+
+    # A boolean version of Container#contains_text
+    # @param  [String, Regexp] expected_text The text to look for.
+    # @return [boolean]
     def verify_contains(expected)
       # assert_exists called by contains_text
       !!contains_text(expected)
     end
-    
-    private 
+
+    private
+
     def type_string(value)
-      JavaString.new(value.to_java_bytes, @container.page.getPageEncoding).toCharArray.each do |char| 
-        @container.update_page @object.type(char) 
+      JavaString.new(value.to_java_bytes, @container.page.getPageEncoding).toCharArray.each do |char|
+        @container.update_page @object.type(char)
       end
     end
   end
-  
+
   # this class can be used to access hidden field objects
   # Normally a user would not need to create this object as it is returned by the Celerity::Container#hidden method
   class Hidden < TextField
     TAGS = [ Identifier.new('input', :type => %w[hidden]) ]
     DEFAULT_HOW = :name
   end
-  
+
 end
