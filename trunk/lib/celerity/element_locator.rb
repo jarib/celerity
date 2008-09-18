@@ -127,8 +127,7 @@ module Celerity
     end
 
     def matches?(string, what)
-      string.strip!
-      Regexp === what ? string =~ what : string == what.to_s
+      Regexp === what ? string.strip =~ what : string == what.to_s
     end
 
     def elements_by_tag_names

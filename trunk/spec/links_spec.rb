@@ -28,14 +28,14 @@ describe "Links" do
 
   describe "#each" do
     it "should iterate through links correctly" do
-      index = 1
+      index = 0
       @browser.links.each do |c|
+        index += 1
         c.name.should == @browser.link(:index, index).name
         c.id.should == @browser.link(:index, index).id
         c.value.should == @browser.link(:index, index).value
-        index += 1
       end
-      @browser.links.length.should == index - 1
+      @browser.links.length.should == index
     end
   end
 
