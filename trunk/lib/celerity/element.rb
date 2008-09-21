@@ -88,6 +88,16 @@ module Celerity
       @object.getAttribute(attribute.to_s)
     end
 
+    # Check if the element is visible to the user or not. (Celerity-specific API)
+    # Note that this only takes the _style attribute_ of this element into account -
+    # styles from applied CSS is not considered.
+    #
+    # @return [boolean]
+    def visible?
+      return false if respond_to?(:type) && type == 'hidden'
+      return !(style =~ /display\s*:\s*none|visibility\s*:\s*hidden/)
+    end
+
     # Used internally to ensure the element actually exists.
     #
     # @raise Celerity::Exception::UnknownObjectException if the element can't be found.
@@ -201,8 +211,8 @@ module Celerity
     def selector_to_attribute(meth)
       case meth
       when :class_name then :class
-      when :caption then :value
-      when :url then :href
+      when :caption    then :value
+      when :url        then :href
       else meth
       end
     end

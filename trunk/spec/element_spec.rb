@@ -9,7 +9,7 @@ describe "Element" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   describe "::new" do
     it "should find elements matching the conditions when given a hash of :how => 'what' arguments" do
       @browser.checkbox(:name => 'new_user_interests', :title => 'Dancing is fun!').value.should == 'dancing'
@@ -32,9 +32,9 @@ describe "Element" do
     it "should raise ArgumentError when used with :object and the object given isn't an HtmlElement subclass" do
       lambda { Link.new(@browser, :object, "foo").locate }.should raise_error(ArgumentError, 'expected a HtmlUnit::Html::HtmlElement subclass, got "foo":String')
     end
-    
+
   end
-  
+
   describe "#focus" do
     it "should fire the onfocus event for the given element" do
       tf = @browser.text_field(:id, "new_user_occupation")
@@ -49,7 +49,25 @@ describe "Element" do
       @browser.text_field(:id, "new_user_email").parent.should be_instance_of(Form)
     end
   end
-  
+
+  describe "#visible?" do
+    it "should return true if the element is visible" do
+      @browser.text_field(:id, "new_user_email").should be_visible
+    end
+
+    it "should return false if the element is input element where type == 'hidden'" do
+      @browser.text_field(:id, "new_user_interests_dolls").should_not be_visible
+    end
+
+    it "should return false if the element has style='display: none;'" do
+      @browser.div(:id, 'changed_language').should_not be_visible
+    end
+
+    it "should return false if the element has style='visibility: hidden;" do
+      @browser.div(:id, 'wants_newsletter').should_not be_visible
+    end
+  end
+
   describe "#method_missing" do
     it "should magically return the requested attribute if the attribute is defined in the attribute list" do
       @browser.form(:index, 1).action.should == 'post_to_me'
@@ -59,7 +77,7 @@ describe "Element" do
       lambda { @browser.button(:index, 1).no_such_attribute_or_method }.should raise_error(NoMethodError)
     end
   end
-  
+
   describe "#html" do
     it "should return the descriptive (actual) html for the image element" do
       @browser.goto(TEST_HOST + "/images.html")
@@ -71,14 +89,14 @@ describe "Element" do
 </div>' #TODO: This expected value might be a little off, whitespace-wise
     end
   end
-  
+
   describe "#text" do
     it "should return a text representation including newlines" do
       @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
       @browser.form(:id, "delete_user").text.should == "Username  Username 1 Username 2 Username 3 \nComment Default comment."
     end
   end
-  
+
   after :all do
     @browser.close
   end
