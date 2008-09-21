@@ -128,11 +128,11 @@ module Celerity
       self.page = @page.refresh
     end
 
-    # Execute the given JavaScript on the current page
-    # @return [HtmlUnit::ScriptResult]
+    # Execute the given JavaScript on the current page. (Celerity-specific API)
+    # @return [Object] The resulting Object
     def execute_script(source)
       assert_exists
-      @page.executeJavaScript(source.to_s)
+      @page.executeJavaScript(source.to_s).getJavaScriptResult
     end
 
     # Wait until the given block evaluates to true (Celerity-specific API)
