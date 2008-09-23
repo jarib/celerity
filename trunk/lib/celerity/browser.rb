@@ -264,6 +264,8 @@ module Celerity
 
       if @page.respond_to?("getDocumentElement")
         @object = @page.getDocumentElement
+      elsif @page.is_a? HtmlUnit::UnexpectedPage
+        raise UnexpectedPageException, @page.getWebResponse.getContentType
       end
 
       render if @viewer

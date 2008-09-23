@@ -33,5 +33,8 @@ module Celerity
       
     # This exception is thrown if an http error, such as a 404, 500 etc is encountered while navigating
     class NavigationException < CelerityException; end
+    
+    # This exception is thrown if an unexpected content type is returned by the server.
+    class UnexpectedPageException < CelerityException; end
   end
 end

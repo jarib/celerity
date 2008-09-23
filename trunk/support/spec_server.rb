@@ -18,6 +18,14 @@ module Celerity
     end
   end
   
+  class OctetStreamHandler < WEBrick::HTTPServlet::AbstractServlet
+    def do_GET(req, resp)
+      resp['content-type'] = 'application/octet-stream'
+      resp.body << "This is application/octet-stream"
+    end
+  end
+  
+  
   class SlowAjaxHandler < WEBrick::HTTPServlet::AbstractServlet
     def do_GET(req, resp)
       sleep 10
@@ -83,6 +91,7 @@ module Celerity
       server.mount("/plain_text", PlainTextHandler)
       server.mount("/ajax", SlowAjaxHandler)
       server.mount("/charset_mismatch", CharsetMismatchHandler)
+      server.mount("/octet_stream", OctetStreamHandler)
 
       @thread = Thread.new { server.start }
     end

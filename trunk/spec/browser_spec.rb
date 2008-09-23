@@ -149,11 +149,6 @@ TEXT
   end
   
   describe "#goto" do
-    # waiting for JRuby OpenSSL
-    # it "should handle HTTPS" do
-    #   pending
-    # end
-    
     it "should add http:// to URLs with no protocol specified" do
       url = TEST_HOST[%r{http://(.*)}, 1]
       url.should_not be_nil
@@ -163,6 +158,10 @@ TEXT
 
     it "should go to the given url without raising errors" do
       lambda { @browser.goto(TEST_HOST + "/non_control_elements.html") }.should_not raise_error
+    end
+    
+    it "should raise UnexpectedPageException if the content type is not understood" do
+      lambda { @browser.goto(TEST_HOST + "/octet_stream") }.should raise_error(UnexpectedPageException)
     end
   end
   
