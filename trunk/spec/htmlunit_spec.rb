@@ -25,7 +25,7 @@ describe "HtmlUnit bugs" do
       @browser.text.should == "\303\270"
     end
   end
-
+  
   after :all do
     @browser.close
   end

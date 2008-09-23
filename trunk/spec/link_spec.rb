@@ -184,6 +184,15 @@ describe "Link" do
     it "should raise an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).click }.should raise_error(UnknownObjectException)
     end
+    
+    it "should let JQuery override href with click events" do
+      @browser.goto TEST_HOST + "/jquery_test.html"
+      @browser.link(:id, 'tipafriend').text.should == 'Before JQuery'
+      @browser.link(:id, 'tipafriend').click
+      @browser.url.should_not match(/google/)
+      @browser.link(:id, 'tipafriend').text.should == 'After JQuery'
+    end
+    
   end
 
   after :all do

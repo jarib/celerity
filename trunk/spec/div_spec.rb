@@ -169,7 +169,7 @@ describe "Div" do
       @browser.div(:id, 'best_language').click
       @browser.div(:id, 'best_language').text.should == 'Ruby!'
     end
-
+    
     it "should raise UnknownObjectException if the element does not exist" do
       lambda { @browser.div(:id, "no_such_id").click }.should raise_error(UnknownObjectException)
       lambda { @browser.div(:title, "no_such_title").click }.should raise_error(UnknownObjectException)
