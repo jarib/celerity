@@ -160,36 +160,36 @@ describe "SelectList" do
     end    
   end
   
-  describe "#get_all_contents" do
+  describe "#contents" do
     it "should should raise UnknownObjectException if the select list doesn't exist" do
-      lambda { @browser.select_list(:name, 'no_such_name').get_all_contents }.should raise_error(UnknownObjectException)
+      lambda { @browser.select_list(:name, 'no_such_name').contents }.should raise_error(UnknownObjectException)
     end
 
     it "should return all the options as an Array" do
-      @browser.select_list(:name, "new_user_country").get_all_contents.should == ["Denmark" ,"Norway" , "Sweden" , "United Kingdom", "USA"]
+      @browser.select_list(:name, "new_user_country").contents.should == ["Denmark" ,"Norway" , "Sweden" , "United Kingdom", "USA"]
     end
   end
   
-  describe "#get_selected_items" do
+  describe "#selected_items" do
     it "should should raise UnknownObjectException if the select list doesn't exist" do
-      lambda { @browser.select_list(:name, 'no_such_name').get_selected_items }.should raise_error(UnknownObjectException)
+      lambda { @browser.select_list(:name, 'no_such_name').selected_items }.should raise_error(UnknownObjectException)
     end
 
     it "should get the currently selected item(s)" do
-      @browser.select_list(:name, "new_user_country").get_selected_items.should == ["Norway"]
-      @browser.select_list(:name, "new_user_languages").get_selected_items.should == ["English", "Norwegian"]
+      @browser.select_list(:name, "new_user_country").selected_items.should == ["Norway"]
+      @browser.select_list(:name, "new_user_languages").selected_items.should == ["English", "Norwegian"]
     end
   end
   
   describe "#clear_selection" do
     it "should clear the selection when possible" do
       @browser.select_list(:name, "new_user_languages").clear_selection
-      @browser.select_list(:name, "new_user_languages").get_selected_items.should be_empty
+      @browser.select_list(:name, "new_user_languages").selected_items.should be_empty
     end
 
     it "should not clear selections when not possible" do
       @browser.select_list(:name , "new_user_country").clear_selection
-      @browser.select_list(:name, "new_user_country").get_selected_items.should == ["Norway"]
+      @browser.select_list(:name, "new_user_country").selected_items.should == ["Norway"]
     end
 
     it "should should raise UnknownObjectException if the select list doesn't exist" do
@@ -225,36 +225,36 @@ describe "SelectList" do
   describe "#select" do
     it "should select the given item when given a String" do
       @browser.select_list(:name, "new_user_country").select("Denmark")
-      @browser.select_list(:name, "new_user_country").get_selected_items.should == ["Denmark"]
+      @browser.select_list(:name, "new_user_country").selected_items.should == ["Denmark"]
     end
 
     it "should select the given item when given a Regexp" do
       @browser.select_list(:name, "new_user_country").select(/Denmark/)
-      @browser.select_list(:name, "new_user_country").get_selected_items.should == ["Denmark"]
+      @browser.select_list(:name, "new_user_country").selected_items.should == ["Denmark"]
     end
 
     it "should select the given item when given an Xpath" do
       @browser.select_list(:xpath, "//select[@name='new_user_country']").select("Denmark")
-      @browser.select_list(:xpath, "//select[@name='new_user_country']").get_selected_items.should == ["Denmark"]
+      @browser.select_list(:xpath, "//select[@name='new_user_country']").selected_items.should == ["Denmark"]
     end
 
     it "should be able to select multiple items using :name and a String" do
       @browser.select_list(:name, "new_user_languages").clear_selection
       @browser.select_list(:name, "new_user_languages").select("Danish")
       @browser.select_list(:name, "new_user_languages").select("Swedish")
-      @browser.select_list(:name, "new_user_languages").get_selected_items.should == ["Danish", "Swedish"] 
+      @browser.select_list(:name, "new_user_languages").selected_items.should == ["Danish", "Swedish"] 
     end
 
     it "should be able to select multiple items using :name and a Regexp" do
       @browser.select_list(:name, "new_user_languages").clear_selection
       @browser.select_list(:name, "new_user_languages").select(/ish/)
-      @browser.select_list(:name, "new_user_languages").get_selected_items.should == ["Danish", "English", "Swedish"]
+      @browser.select_list(:name, "new_user_languages").selected_items.should == ["Danish", "English", "Swedish"]
     end
 
     it "should be able to select multiple items using :xpath" do
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").clear_selection
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").select(/ish/)
-      @browser.select_list(:xpath, "//select[@name='new_user_languages']").get_selected_items.should == ["Danish", "English", "Swedish"]
+      @browser.select_list(:xpath, "//select[@name='new_user_languages']").selected_items.should == ["Danish", "English", "Swedish"]
     end
 
     it "should fire onchange event when selecting an item" do
@@ -283,7 +283,7 @@ describe "SelectList" do
     it "should select the given item" do
       @browser.select_list(:name, "new_user_languages").clear_selection
       @browser.select_list(:name, "new_user_languages").select("Swedish")
-      @browser.select_list(:name, "new_user_languages").get_selected_items.should == ["Swedish"]
+      @browser.select_list(:name, "new_user_languages").selected_items.should == ["Swedish"]
     end
 
     it "should raise NoValueFoundException if the option doesn't exist" do
