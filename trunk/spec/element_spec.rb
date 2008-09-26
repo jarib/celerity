@@ -66,6 +66,10 @@ describe "Element" do
     it "should return false if the element has style='visibility: hidden;" do
       @browser.div(:id, 'wants_newsletter').should_not be_visible
     end
+    
+    it "should return false if one of the parent elements is hidden" do
+      @browser.div(:id, 'hidden_parent').should_not be_visible
+    end
   end
 
   describe "#method_missing" do

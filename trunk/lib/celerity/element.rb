@@ -94,8 +94,14 @@ module Celerity
     #
     # @return [boolean]
     def visible?
-      return false if respond_to?(:type) && type == 'hidden'
-      return !(style =~ /display\s*:\s*none|visibility\s*:\s*hidden/)
+      obj = self
+      while obj
+        return false if obj.respond_to?(:type) && obj.type == 'hidden'
+        return false if obj.style =~ /display\s*:\s*none|visibility\s*:\s*hidden/
+        obj = obj.parent
+      end
+      
+      return true
     end
 
     # Used internally to ensure the element actually exists.
