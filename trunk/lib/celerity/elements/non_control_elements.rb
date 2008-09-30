@@ -1,6 +1,6 @@
 module Celerity
 
-  # Abstract superclass for for Span, Pre, Div, H1, ...
+  # Superclass for for Span, Pre, Div, H1, ...
   class NonControlElement < Element
     include Exception
     include ClickableElement
