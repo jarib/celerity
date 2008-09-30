@@ -46,6 +46,8 @@ module Celerity
       else
         raise ArgumentError, "wrong number of arguments (#{args.size} for 2)"
       end
+      
+      @conditions.freeze
     end
 
     # Get the parent element
@@ -209,7 +211,7 @@ module Celerity
 
     def identifier_string
       if @conditions.size == 1
-        how, what = @conditions.shift
+        how, what = @conditions.to_a.flatten
         "#{how.inspect} and #{what.inspect}"
       else
         @conditions.inspect
