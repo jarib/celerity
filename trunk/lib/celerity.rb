@@ -31,7 +31,23 @@ require "celerity/container"
 require "celerity/element"
 require "celerity/input_element"
 require "celerity/non_control_elements"
-Dir[File.dirname(__FILE__) + "/celerity/elements/*.rb"].each { |f| require(f) }
+require "celerity/elements/button.rb"
+require "celerity/elements/file_field.rb"
+require "celerity/elements/form.rb"
+require "celerity/elements/frame.rb"
+require "celerity/elements/image.rb"
+require "celerity/elements/label.rb"
+require "celerity/elements/link.rb"
+require "celerity/elements/option.rb"
+require "celerity/elements/radio_check.rb"
+require "celerity/elements/select_list.rb"
+require "celerity/elements/table.rb"
+require "celerity/elements/table_body.rb"
+require "celerity/elements/table_cell.rb"
+require "celerity/elements/table_footer.rb"
+require "celerity/elements/table_header.rb"
+require "celerity/elements/table_row.rb"
+require "celerity/elements/text_field.rb"
 require "celerity/element_map"
 require "celerity/browser"
 
@@ -49,7 +65,5 @@ module Celerity
 end
 
 # undefine deprecated methods to use them for Element attributes
-if ["id", "type"].any? { |meth| Object.instance_methods.include?(meth) }
-  Object.send :undef_method, :id
-  Object.send :undef_method, :type
-end
+Object.send :undef_method, :id   if Object.method_defined? "id"
+Object.send :undef_method, :type if Object.method_defined? "type"
