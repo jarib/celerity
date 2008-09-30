@@ -25,6 +25,8 @@ describe "TextField" do
       @browser.text_field(:class, /name/).should exist
       @browser.text_field(:index, 1).should exist
       @browser.text_field(:xpath, "//input[@id='new_user_email']").should exist
+      @browser.text_field(:label, "First name").should exist
+      @browser.text_field(:label, /(Last|First) name/).should exist
      end
 
     it "should return true if the element exists (default how = :name)" do
@@ -52,6 +54,8 @@ describe "TextField" do
       @browser.text_field(:class, /no_such_class/).should_not exist
       @browser.text_field(:index, 1337).should_not exist
       @browser.text_field(:xpath, "//input[@id='no_such_id']").should_not exist
+      @browser.text_field(:label, "bad label").should_not exist
+      @browser.text_field(:label, /bad label/).should_not exist
     end
 
     it "should raise ArgumentError when 'what' argument is invalid" do

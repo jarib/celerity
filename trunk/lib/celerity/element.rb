@@ -48,8 +48,8 @@ module Celerity
       end
     end
 
-    # Get the parent element (experimental, avoid if possible)
-    # @return [Celerity::Element] subclass
+    # Get the parent element
+    # @return [Celerity::Element, nil] subclass or Celerity::Element, or nil if no parent was found
     def parent
       assert_exists
 
@@ -88,9 +88,11 @@ module Celerity
       @object.getAttribute(attribute.to_s)
     end
 
-    # Check if the element is visible to the user or not. (Celerity-specific API)
-    # Note that this only takes the _style attribute_ of this element into account -
-    # styles from applied CSS is not considered.
+    # Check if the element is visible to the user or not.
+    # Note that this only takes the _style attribute_ of this element (and 
+    # its parents) into account - styles from applied CSS is not considered.
+    #
+    # The same functionality exists in Watir by requiring 'watir/contrib/visible' 
     #
     # @return [boolean]
     def visible?

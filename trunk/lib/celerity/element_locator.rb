@@ -31,6 +31,8 @@ module Celerity
           return find_by_id(what)
         when :xpath
           return find_by_xpath(what)
+        when :label
+          return find_by_label(what)
         when :class_name
           how = :class
         when :url
@@ -93,7 +95,15 @@ module Celerity
       what = ".#{what}" if what[0] == ?/
       @object.getByXPath(what).to_a.first
     end
-
+    
+    def find_by_label(what)
+      obj = elements_by_tag_names(['label']).find { |e| matches?(e.asText, what) }
+      return nil unless obj && (ref = obj.getReferencedElement)
+      return ref if @tags.include?(ref.getTagName)
+      
+      find_by_id obj.getForAttribute
+    end
+    
     def elements_by_idents(idents = nil)
       get_by_idents(:select, idents || @idents)
     end
@@ -126,11 +136,11 @@ module Celerity
       end
     end
 
-    def elements_by_tag_names
+    def elements_by_tag_names(tags = @tags)
       with_nullpointer_retry do
         # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct order, making :index fail
         @object.getAllHtmlChildElements.iterator.select do |elem|
-          @tags.include?(elem.getTagName)
+          tags.include?(elem.getTagName)
         end
       end
     end
