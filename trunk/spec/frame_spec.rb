@@ -64,8 +64,8 @@ describe "Frame" do
       @browser.frame(:xpath, "//frame[@id='no_such_id']").should_not exist
     end
 
-    it "should raise ArgumentError when 'what' argument is invalid" do
-      lambda { @browser.frame(:id, 3.14).exists? }.should raise_error(ArgumentError)
+    it "should raise TypeError when 'what' argument is invalid" do
+      lambda { @browser.frame(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
@@ -106,8 +106,8 @@ describe "Frame" do
       @browser.frame(:name, 'frame1').contains_text('Suspendisse sit amet nisi.').should be_instance_of(Fixnum)
     end
 
-    it "should raise ArgumentError when given an invalid argument" do
-      lambda { @browser.frame(:name, 'frame1').contains_text(3.14) }.should raise_error(ArgumentError)
+    it "should raise TypeError when given an invalid argument" do
+      lambda { @browser.frame(:name, 'frame1').contains_text(3.14) }.should raise_error(TypeError)
     end
   end
 

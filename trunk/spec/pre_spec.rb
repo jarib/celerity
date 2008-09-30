@@ -38,8 +38,8 @@ describe "Pre" do
       @browser.pre(:xpath, "//pre[@id='no_such_id']").should_not exist
     end
 
-    it "should raise ArgumentError when 'what' argument is invalid" do
-      lambda { @browser.pre(:id, 3.14).exists? }.should raise_error(ArgumentError)
+    it "should raise TypeError when 'what' argument is invalid" do
+      lambda { @browser.pre(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do

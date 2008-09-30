@@ -45,9 +45,9 @@ describe "TableHeader" do
       @browser.table(:index, 1).thead(:xpath, "//thead[@id='no_such_id']").should_not exist
     end
 
-    it "should raise ArgumentError when 'what' argument is invalid" do
-      lambda { @browser.thead(:id, 3.14).exists? }.should raise_error(ArgumentError)
-      lambda { @browser.table(:index, 1).thead(:id, 3.14).exists? }.should raise_error(ArgumentError)
+    it "should raise TypeError when 'what' argument is invalid" do
+      lambda { @browser.thead(:id, 3.14).exists? }.should raise_error(TypeError)
+      lambda { @browser.table(:index, 1).thead(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do

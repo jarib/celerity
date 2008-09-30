@@ -64,8 +64,8 @@ describe "Radio" do
       @browser.radio(:name, 'new_user_newsletter', 'no').should exist
     end
 
-    it "should raise ArgumentError when 'what' argument is invalid" do
-      lambda { @browser.radio(:id, 3.14).exists? }.should raise_error(ArgumentError)
+    it "should raise TypeError when 'what' argument is invalid" do
+      lambda { @browser.radio(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do

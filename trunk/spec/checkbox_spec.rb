@@ -66,8 +66,8 @@ describe "CheckBox" do
       @browser.checkbox(:name, 'new_user_interests', 'cars').should exist
     end
 
-    it "should raise ArgumentError when 'what' argument is invalid" do
-      lambda { @browser.checkbox(:id, 3.14).exists? }.should raise_error(ArgumentError)
+    it "should raise TypeError when 'what' argument is invalid" do
+      lambda { @browser.checkbox(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
     it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do

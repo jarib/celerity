@@ -87,7 +87,7 @@ module Celerity
           elements_by_tag_names.find { |elem| elem.getIdAttribute == what }
         end
       else
-        raise TypeError, "expected String or Regexp, got #{expected_text.inspect}:#{expected_text.class}"
+        raise TypeError, "expected String or Regexp, got #{what.inspect}:#{what.class}"
       end
     end
 

@@ -183,10 +183,13 @@ TEXT
       @browser.goto(TEST_HOST + "/non_control_elements.html")
     end
 
-    it "should raise ArgumentError when called with no or wrong arguments" do
+    it "should raise ArgumentError when called with no arguments" do
       lambda { @browser.contains_text }.should raise_error(ArgumentError)
-      lambda { @browser.contains_text(nil) }.should raise_error(ArgumentError)
-      lambda { @browser.contains_text(42) }.should raise_error(ArgumentError)
+    end
+    
+    it "should raise TypError when called with wrong arguments" do
+      lambda { @browser.contains_text(nil) }.should raise_error(TypeError)
+      lambda { @browser.contains_text(42) }.should raise_error(TypeError)
     end
 
     it "should return the index if the given text exists" do
