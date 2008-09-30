@@ -28,7 +28,7 @@ module Celerity
 
     DEFAULT_HOW = nil
 
-    # @api internal
+    # @api private
     def initialize(container, *args)
       self.container = container
 
@@ -69,7 +69,7 @@ module Celerity
     end
 
     # Used internally. Find the element on the page.
-    # @api internal
+    # @api private
     def locate
       raise "BUG: no container object found when locating #{self.class} with #{identifier_string}" unless @container.object
       @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
@@ -107,7 +107,7 @@ module Celerity
     # Used internally to ensure the element actually exists.
     #
     # @raise Celerity::Exception::UnknownObjectException if the element can't be found.
-    # @api internal
+    # @api private
     def assert_exists
       locate
       unless @object
@@ -158,7 +158,7 @@ module Celerity
 
       while iterator.hasNext
         attribute = iterator.next
-        result << "#{attribute.getName}=\"#{attribute.getHtmlValue.to_s}\" "
+        result << %Q{#{attribute.getName}="#{attribute.getHtmlValue.to_s}"}
       end
 
       result

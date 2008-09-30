@@ -56,7 +56,8 @@ module Celerity
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{://}
       self.page = @webclient.getPage(uri)
-      uri
+      
+      url()
     end
 
     # Unsets the current page (mostly for Watir compatibility)
@@ -238,7 +239,7 @@ module Celerity
     # Check that we have a @page object.
     #
     # @raise Celerity::Exception::UnknownObjectException if no page is loaded.
-    # @api internal
+    # @api private
     def assert_exists
       raise UnknownObjectException, "no page loaded" unless exist?
     end
@@ -249,7 +250,7 @@ module Celerity
     # Runs the all the checker procs added by +add_checker+
     #
     # @see add_checker
-    # @api internal
+    # @api private
     def run_error_checks
       @error_checkers.each { |e| e[self] }
     end
@@ -257,7 +258,7 @@ module Celerity
     # Set the current page object for the browser
     #
     # @param [HtmlUnit::HtmlPage] value The page to set.
-    # @api internal
+    # @api private
     def page=(value)
       @last_url = url() if exist?
       @page = value
@@ -274,12 +275,6 @@ module Celerity
       value
     end
 
-    # Used for #show_links(), #show_divs() etc. (for watir compatibility)
-    def method_missing(meth, *args)
-      return super unless type = meth.to_s[/^show_(.*)$/, 1]
-      puts collection_string(type) rescue super
-    end
-
     private
 
     # Configure the webclient according to the options given to #new.
@@ -292,22 +287,8 @@ module Celerity
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if @opts[:resynchronize]
     end
 
-    # Create a string representation of all the elements returned by collection_method
-    # @param [Symbol] collection_method
-    # @return [String]
-    def collection_string(collection_method)
-      collection = self.send collection_method
-      result = "Found #{collection.size} #{collection_method.downcase}\n"
-
-      collection.each_with_index do |element, index|
-        result << "#{index+1}: #{element.attribute_string}\n"
-      end
-
-      result
-    end
-
     # Render the current page on the viewer.
-    # @api internal
+    # @api private
     def render
       @viewer.render_html(html, url)
     rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
@@ -315,7 +296,7 @@ module Celerity
     end
 
     # Check if we have a viewer available on druby://127.0.0.1:6429
-    # @api internal
+    # @api private
     def find_viewer
       # FIXME: not ideal
       require 'drb'

@@ -10,13 +10,14 @@ end
 
 # require "profile"
 
-$:.unshift(File.dirname(__FILE__) + '/../lib')
+$:.unshift File.expand_path("#{File.dirname(__FILE__)}/../lib")
 
 if RUBY_PLATFORM =~ /java/
   require 'celerity'
   include Celerity
   include Celerity::Exception
 else
+  puts "Not using JRuby - trying to run specs on Watir…"
   require 'watir'
   include Watir
   include Watir::Exception
@@ -39,7 +40,6 @@ end
 
 if RUBY_PLATFORM =~ /java/ || ENV['WATIR_SPEC']
   unless defined? WEBRICK_SERVER
-    # cleaner way to do this?
     require File.dirname(__FILE__) + "/../support/spec_server"
     s = Celerity::SpecServer.new
     begin

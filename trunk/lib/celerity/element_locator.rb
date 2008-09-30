@@ -7,11 +7,11 @@ module Celerity
 
 
     def initialize(object, element_class)
-      @object = object
+      @object        = object
       @element_class = element_class
-      @attributes = @element_class::ATTRIBUTES # could check for 'strict' here?
-      @idents = @element_class::TAGS
-      @tags = @idents.map { |e| e.tag.downcase }
+      @attributes    = @element_class::ATTRIBUTES # could check for 'strict' here?
+      @idents        = @element_class::TAGS
+      @tags          = @idents.map { |e| e.tag.downcase }
     end
 
     def find_by_conditions(conditions)
@@ -126,10 +126,6 @@ module Celerity
       end
     end
 
-    def matches?(string, what)
-      Regexp === what ? string.strip =~ what : string == what.to_s
-    end
-
     def elements_by_tag_names
       with_nullpointer_retry do
         # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct order, making :index fail
@@ -150,6 +146,10 @@ module Celerity
       tries += 1
       $stderr.puts "warning: celerity caught #{e} - retry ##{tries}"
       retry
+    end
+
+    def matches?(string, what)
+      Regexp === what ? string.strip =~ what : string == what.to_s
     end
 
   end # ElementLocator

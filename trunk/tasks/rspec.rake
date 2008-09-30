@@ -23,7 +23,7 @@ Spec::Rake::SpecTask.new do |t|
   begin 
     require 'rcov'
     t.rcov = true
-    t.rcov_opts = ['--exclude', 'spec,fcntl,path_helper', '--no-rcovrt']
+    t.rcov_opts = ['--exclude', 'spec,fcntl,path_helper,yaml', '--no-rcovrt']
   rescue LoadError
   end
   

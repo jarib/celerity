@@ -50,7 +50,7 @@ module Celerity
     end
 
     # Used internally to update the container object.
-    # @api internal
+    # @api private
     def container=(container)
       @container = container
       @page_container = container.page_container
@@ -58,7 +58,7 @@ module Celerity
     end
 
     # Used internally to update the page object.
-    # @api internal
+    # @api private
     def update_page(page)
       @page_container.page = page
     end
@@ -489,7 +489,7 @@ module Celerity
     # @param [Regexp, String, #to_s] what The match we're looking for.
     # @return [MatchData, true, false, nil]
     #
-    # @api internal
+    # @api private
     def matches?(string, what)
       Regexp === what ? string =~ what : string == what.to_s
     end

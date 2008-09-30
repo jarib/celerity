@@ -4,7 +4,7 @@ module Celerity
   class ElementCollections
     include Enumerable
 
-    # @api internal
+    # @api private
     def initialize(container, how = nil, what = nil)
       @container = container
       @object = (how == :object ? what : nil)

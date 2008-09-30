@@ -8,7 +8,7 @@ module Celerity
     DEFAULT_HOW = :name
 
     # Override the default locate to handle frame and inline frames.
-    # @api internal
+    # @api private
     def locate
       super
       if @object
@@ -20,7 +20,7 @@ module Celerity
     end
 
     # Override assert_exists to raise UnknownFrameException (for Watir compatibility)
-    # @api internal
+    # @api private
     def assert_exists
       locate unless @object
       unless @object

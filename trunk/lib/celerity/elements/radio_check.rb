@@ -34,7 +34,7 @@ module Celerity
   class Radio < RadioCheckCommon
     TAGS = [Identifier.new('input', :type => %w[radio])]
 
-    # @api internal
+    # @api private
     def initialize(container, *args)
       super(container, %w[radio], *args)
     end
@@ -59,7 +59,7 @@ module Celerity
   class CheckBox < RadioCheckCommon
     TAGS = [Identifier.new('input', :type => %w[checkbox])]
 
-    # @api internal
+    # @api private
     def initialize(container, *args)
       super(container, %w[checkbox], *args)
     end

@@ -108,37 +108,6 @@ TEXT
     end
   end
 
-  # Show methods
-  describe "#show_«collection»" do
-    it "should print a human readable representation of elements matching the given name" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
-      temp_stdout = StringIO.new
-      old_stdout = $stdout
-      $stdout = temp_stdout
-      begin
-        @browser.show_divs
-      ensure
-        $stdout = old_stdout
-      end
-      temp_stdout.string.should ==
-'Found 8 divs
-1:
-2: id="outer_container"
-3: id="header" title="Header and primary navigation" class="profile"
-4: id="promo" name="invalid_attribute" value="invalid_attribute"
-5: id="content"
-6: id="best_language" onclick="this.innerHTML = \'Ruby!\'" style="color: red; text-decoration: underline; cursor: pointer;"
-7: id="html_test" class="some_class" title="This is a title"
-8: id="footer" title="Closing remarks" class="profile"
-'
-    end
-
-    it "should raise NoMethodError if the collection does not exist" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
-      lambda { @browser.show_no_such_collection }.should raise_error(NoMethodError)
-    end
-  end
-
   # Manipulation methods
   describe ".start" do
     it "should go to the given URL and return an instance of itself" do
