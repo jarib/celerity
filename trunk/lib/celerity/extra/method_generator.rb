@@ -21,7 +21,7 @@ module Celerity
 
     ELEMENTS = %w[text_field select_list radio checkbox button].map { |e| e.to_sym }
     BUGGY_ELEMENTS = %w[radio checkbox].map { |e| e.to_sym }
-  
+
     def initialize(ie, opts = {})
       @ie      = ie
       @opts    = opts
@@ -33,7 +33,7 @@ module Celerity
 
       @method = "  def #{@opts[:method_name] || 'generated_method'}(opts = {})\n\n"
     end
-  
+
     def parse
       ELEMENTS.each do |elem|
         @method << "    # buggy!\n" if BUGGY_ELEMENTS.include?(elem)
@@ -50,19 +50,19 @@ module Celerity
       @docs << "  #\n"*2
       @docs + @method
     end
-  
+
     private
-  
+
     def add_elements(symbol)
       symbol = symbol.to_sym
-      symbol_pluralized = symbol.to_s.pluralize.to_sym 
+      symbol_pluralized = symbol.to_s.pluralize.to_sym
       @ie.send(symbol_pluralized).each_with_index do |elem, idx|
         self.send("add_#{symbol}".to_sym, elem, idx)
       end
-      
+
       @method << "\n"
     end
-  
+
     def add_text_field(elem, idx)
       how, what = find_identifier(elem) || [:index, (idx + 1).to_s]
       @method << "    #{@browser}.text_field(#{how.inspect}, #{what.inspect}).value = "
@@ -70,7 +70,7 @@ module Celerity
       @method << "opts[#{symbol}]\n"
       @doc_elements << [symbol, "value for text field #{what.inspect}"]
     end
-  
+
     def add_select_list(elem, idx)
       how, what = find_identifier(elem) || [:index, (idx + 1).to_s]
       @method << "    #{@browser}.select_list(#{how.inspect}, #{what.inspect}).select("
@@ -78,41 +78,41 @@ module Celerity
       @method << "opts[#{symbol}])\n"
       @doc_elements << [symbol, "option to select for select list #{what.inspect}"]
     end
-  
+
     def add_radio(elem, idx)
       how, what = find_identifier(elem) || [:index, (idx + 1).to_s]
       @method << "    #{@browser}.radio(#{how.inspect}, #{what.inspect}, "
-      
+
       if (value = elem.value).empty?
         symbol = (how == :index) ? ":radio_#{what.underscore}" : ":#{what.underscore}"
       else
         symbol = ":#{what.underscore}_#{value.underscore}"
         @method << "#{value.inspect}).set if opts[#{symbol}]\n"
       end
-      
+
       @doc_elements << [symbol, "set the radio with id/value #{what.inspect}"]
     end
-  
+
     def add_checkbox(elem, idx)
       how, what = find_identifier(elem) || [:index, (idx + 1).to_s]
       @method << "    #{@browser}.checkbox(#{how.inspect}, #{what.inspect}, "
       symbol = (how == :index) ? ":checkbox_#{what.underscore}" : ":#{what.underscore}"
       @method << "#{elem.value.inspect}).set if opts[#{symbol}]\n"
-      
+
       @doc_elements << [symbol, "set the checkbox with id/value #{what.inspect}"]
     end
-  
+
     def add_button(elem, idx)
       how, what = find_identifier(elem) || [:index, (idx + 1).to_s]
       @method << "    #{@browser}.button(#{how.inspect}, #{what.inspect}).click\n"
     end
-  
+
     def add_link(elem, idx)
       if (href = elem.href) =~ /javascript/
         how, what = :index, (idx + 1).to_s
       else
         how = :url
-        
+
         begin
           uri = URI.parse(href)
           what = Regexp.new(Regexp.escape(uri.to_s.sub(/.*#{uri.host}\//, '')))
@@ -122,7 +122,7 @@ module Celerity
       end
       @method << "    #{@browser}.link(#{how.inspect}, #{what.inspect}).click\n"
     end
-  
+
     def find_identifier(element)
       # could use ATTRIBUTES if they were 'weighted' somehow?
       attrs = element.class::ATTRIBUTES
@@ -131,9 +131,9 @@ module Celerity
       end
       nil
     end
-  
+
   end # MethodGenerator
-  
+
   class Browser
     # Experimental - generate a method definition for accessing elements on the current page
     # Not loaded by default - need to require 'celerity/extra/method_generator'
@@ -141,7 +141,7 @@ module Celerity
       MethodGenerator.new(self, opts).parse
     end
   end # Browser
-   
+
 end # Celerity
 
 
@@ -151,7 +151,7 @@ end # Celerity
 #   $stdout.sync = true
 #   @ie = Browser.new
 #   @ie.goto(TEST_HOST + "/forms_with_input_elements.html")
-# 
+#
 #   puts MethodGenerator.new(@ie).parse
 #   @ie.goto(TEST_HOST + "/forms3.html")
 #   puts MethodGenerator.new(@ie).parse

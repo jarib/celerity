@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "TextField" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,7 +9,7 @@ describe "TextField" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   # Exists method
   describe "#exists?" do
     it "should return true if the element exists" do
@@ -62,7 +62,7 @@ describe "TextField" do
       lambda { @browser.text_field(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#id" do
     it "should return the id attribute if the text field exists" do
@@ -70,30 +70,30 @@ describe "TextField" do
     end
 
     it "should raise UnknownObjectException if the text field doesn't exist" do
-      lambda { @browser.text_field(:index, 1337).id }.should raise_error(UnknownObjectException)  
+      lambda { @browser.text_field(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#name" do
     it "should return the name attribute if the text field exists" do
       @browser.text_field(:index, 4).name.should == "new_user_occupation"
     end
 
     it "should raise UnknownObjectException if the text field doesn't exist" do
-      lambda { @browser.text_field(:index, 1337).name }.should raise_error(UnknownObjectException)  
+      lambda { @browser.text_field(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#title" do
     it "should return the title attribute if the text field exists" do
       @browser.text_field(:id, "new_user_code").title.should == "Your personal code"
     end
 
     it "should raise UnknownObjectException if the text field doesn't exist" do
-      lambda { @browser.text_field(:index, 1337).title }.should raise_error(UnknownObjectException)  
+      lambda { @browser.text_field(:index, 1337).title }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#type" do
     it "should return the type attribute if the text field exists" do
       @browser.text_field(:index, 4).type.should == "text"
@@ -108,10 +108,10 @@ describe "TextField" do
     end
 
     it "should raise UnknownObjectException if the text field doesn't exist" do
-      lambda { @browser.text_field(:index, 1337).type }.should raise_error(UnknownObjectException)  
+      lambda { @browser.text_field(:index, 1337).type }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#value" do
     it "should return the value attribute if the text field exists" do
       @browser.text_field(:name, "new_user_occupation").value.should == "Developer"
@@ -120,10 +120,10 @@ describe "TextField" do
     end
 
     it "should raise UnknownObjectException if the text field doesn't exist" do
-      lambda { @browser.text_field(:index, 1337).value }.should raise_error(UnknownObjectException)  
+      lambda { @browser.text_field(:index, 1337).value }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.text_field(:index, 1).should respond_to(:class_name)
@@ -134,7 +134,7 @@ describe "TextField" do
       @browser.text_field(:index, 1).should respond_to(:value)
     end
   end
-  
+
 
   # Access methods
   describe "#enabled?" do
@@ -148,10 +148,10 @@ describe "TextField" do
     end
 
     it "should raise UnknownObjectException if the text field doesn't exist" do
-      lambda { @browser.text_field(:id, "no_such_id").enabled? }.should raise_error(UnknownObjectException)  
+      lambda { @browser.text_field(:id, "no_such_id").enabled? }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#disabled?" do
     it "should return true if the text field is disabled" do
       @browser.text_field(:id, 'new_user_species').should be_disabled
@@ -180,8 +180,8 @@ describe "TextField" do
       lambda { @browser.text_field(:id, 'no_such_id').readonly? }.should raise_error(UnknownObjectException)
     end
   end
-  
-  
+
+
   # Manipulation methods
   describe "#append" do
     it "should append the text to the text field" do
@@ -195,18 +195,18 @@ describe "TextField" do
     end
 
     it "should raise ObjectReadOnlyException if the object is read only" do
-      lambda { @browser.text_field(:id, "new_user_code").append("Append This") }.should raise_error(ObjectReadOnlyException)  
+      lambda { @browser.text_field(:id, "new_user_code").append("Append This") }.should raise_error(ObjectReadOnlyException)
     end
 
     it "should raise ObjectDisabledException if the object is disabled" do
-      lambda { @browser.text_field(:name, "new_user_species").append("Append This") }.should raise_error(ObjectDisabledException)  
+      lambda { @browser.text_field(:name, "new_user_species").append("Append This") }.should raise_error(ObjectDisabledException)
     end
 
     it "should raise UnknownObjectException if the object doesn't exist" do
-      lambda { @browser.text_field(:name, "no_such_name").append("Append This") }.should raise_error(UnknownObjectException)  
+      lambda { @browser.text_field(:name, "no_such_name").append("Append This") }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#clear" do
     it "should remove all text from the text field" do
       @browser.text_field(:name, "new_user_occupation").clear
@@ -219,7 +219,7 @@ describe "TextField" do
       lambda { @browser.text_field(:id, "no_such_id").clear }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#drag_contents_to" do
     it "should drag contents to another text field" do
       @browser.text_field(:name, "new_user_first_name").set("Smith")
@@ -233,7 +233,7 @@ describe "TextField" do
       lambda { @browser.text_field(:name, "new_user_first_name").drag_contents_to(:id, "no_such_id") }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#get_contents" do
     it "should return the contents of the text field" do
       @browser.text_field(:name, "new_user_occupation").get_contents.should == "Developer"
@@ -247,7 +247,7 @@ describe "TextField" do
       lambda { @browser.text_field(:id, "no_such_id").get_contents }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#value=" do
     it "should set the value of the element" do
       @browser.text_field(:id, 'new_user_email').value = 'Hello Cruel World'
@@ -319,5 +319,5 @@ describe "TextField" do
   after :all do
     @browser.close
   end
-  
+
 end

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "TableCell" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -10,7 +10,7 @@ describe "TableCell" do
     @browser = Browser.new
     @browser.goto(TEST_HOST + "/tables.html")
   end
-  
+
   # Exists
   describe "#exists" do
     it "should return true when the table cell exists" do
@@ -43,7 +43,7 @@ describe "TableCell" do
       lambda { @browser.cell(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#text" do
     it "should return the text inside the table cell" do
@@ -51,24 +51,24 @@ describe "TableCell" do
       @browser.cell(:id, 't2_r1_c1').text.should == 'Table 2, Row 1, Cell 1'
     end
   end
-  
+
   describe "#colspan" do
     it "should get the colspan attribute" do
       @browser.cell(:id, 'colspan_2').colspan.should == 2
       @browser.cell(:id, 'no_colspan').colspan.should == 1
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.cell(:index, 1).should respond_to(:text)
       @browser.cell(:index, 1).should respond_to(:colspan)
     end
   end
-  
-  
+
+
   after :all do
     @browser.close
   end
-  
+
 end

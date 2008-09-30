@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "TableFooter" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -10,7 +10,7 @@ describe "TableFooter" do
     @browser = Browser.new
     @browser.goto(TEST_HOST + "/tables.html")
   end
-  
+
   describe "#exists" do
     it "should return true if the table tfoot exists (page context)" do
       @browser.tfoot(:id, 'tax_totals').should exist
@@ -55,7 +55,7 @@ describe "TableFooter" do
       lambda { @browser.table(:index, 1).tfoot(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   describe "#length" do
     it "should return the correct number of table bodies (page context)" do
       @browser.tfoot(:id, 'tax_totals').length.should == 1
@@ -65,7 +65,7 @@ describe "TableFooter" do
       @browser.table(:index, 1).tfoot(:id, 'tax_totals').length.should == 1
     end
   end
-  
+
   describe "#[]" do
     it "should return the row at the given index (page context)" do
       @browser.tfoot(:id, 'tax_totals')[1].text.should == 'Sum 24 349 5 577 18 722'
@@ -79,7 +79,7 @@ describe "TableFooter" do
       @browser.table(:index, 1).tfoot(:id, 'tax_totals')[1][3].text.should == '5 577'
     end
   end
-  
+
   describe "#each" do
     it "should iterate through rows correctly" do
       tfoot = @browser.table(:index, 1).tfoot(:id, 'tax_totals')
@@ -93,9 +93,9 @@ describe "TableFooter" do
       index.should_not == 1
     end
   end
-  
+
   after :all do
     @browser.close
   end
-  
+
 end

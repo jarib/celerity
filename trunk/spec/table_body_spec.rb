@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "TableBody" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -10,7 +10,7 @@ describe "TableBody" do
     @browser = Browser.new
     @browser.goto(TEST_HOST + "/tables.html")
   end
-  
+
   describe "#exists" do
     it "should return true if the table body exists (page context)" do
       @browser.body(:id, 'first').should exist
@@ -63,7 +63,7 @@ describe "TableBody" do
       lambda { @browser.table(:index, 1).body(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   describe "#length" do
     it "should return the correct number of table bodies (page context)" do
       @browser.body(:id, 'first').length.should == 3
@@ -75,7 +75,7 @@ describe "TableBody" do
       @browser.table(:index, 1).body(:name, 'second').length.should == 3
     end
   end
-  
+
   describe "#[]" do
     it "should return the row at the given index (page context)" do
       @browser.body(:id, 'first')[1].text.should == 'March 2008'
@@ -89,7 +89,7 @@ describe "TableBody" do
       @browser.table(:index, 1).body(:id, 'first')[3][1].text.should == 'Hugh Laurie'
     end
   end
-  
+
   describe "#each" do
     it "should iterate through rows correctly" do
       body = @browser.table(:index, 1).body(:id, 'first')
@@ -103,9 +103,9 @@ describe "TableBody" do
       index.should_not == 1
     end
   end
-  
+
   after :all do
     @browser.close
   end
-  
+
 end

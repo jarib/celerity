@@ -6,7 +6,7 @@ res = Benchmark.bmbm do |results|
     TESTS.times do
       # Create browser object
       browser = FRAMEWORK::IE.new
-      
+
       # Goto images.google.com
       browser.goto('http://images.google.com/ncr')
 

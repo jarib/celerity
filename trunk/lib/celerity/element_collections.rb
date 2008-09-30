@@ -3,14 +3,14 @@ module Celerity
   # It would normally only be accessed by the iterator methods (Browser#spans, Browser#links, ...).
   class ElementCollections
     include Enumerable
-    
+
     # @api internal
     def initialize(container, how = nil, what = nil)
       @container = container
       @object = (how == :object ? what : nil)
       @length = length
     end
-   
+
     # @return [Fixnum] The number of elements in this collection.
     def length
       if @object
@@ -21,7 +21,7 @@ module Celerity
       end
     end
     alias_method :size, :length
-    
+
     # @yieldparam [Celerity::Element] element Iterate through the elements in this collection.
     #
     def each
@@ -32,7 +32,7 @@ module Celerity
         0.upto(@length - 1) { |i| yield iterator_object(i) }
       end
     end
-    
+
     # Get the element at the given index.
     # NB! This is 1-indexed to keep compatibility with Watir. Subject to change.
     #
@@ -45,7 +45,7 @@ module Celerity
         iterator_object(n-1)
       end
     end
-    
+
     # Note: This can be quite useful in irb:
     #
     #   puts browser.text_fields
@@ -54,12 +54,12 @@ module Celerity
     def to_s
       map { |e| e.to_s }.join("\n")
     end
-    
+
     private
 
     def iterator_object(i)
       element_class.new(@container, :index, i+1)
     end
-  
+
   end # ElementCollections
 end # Celerity

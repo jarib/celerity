@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Area" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -50,7 +50,7 @@ describe "Area" do
       lambda { @browser.area(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#id" do
     it "should return the id attribute" do
@@ -65,9 +65,9 @@ describe "Area" do
       lambda { @browser.area(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda { @browser.area(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
-    
+
   end
-  
+
   describe "#name" do
     it "should return the name attribute" do
       @browser.area(:index, 1).name.should == "NCE"
@@ -82,14 +82,14 @@ describe "Area" do
       lambda { @browser.area(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.area(:index, 1).should respond_to(:id)
       @browser.area(:index, 1).should respond_to(:name)
     end
   end
-  
+
   after :all do
     @browser.close
   end

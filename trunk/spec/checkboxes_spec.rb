@@ -14,7 +14,7 @@ describe "CheckBoxes" do
       @browser.checkboxes.length.should == 7
     end
   end
-  
+
   describe "#[]" do
     it "should return the checkbox at the given index" do
       @browser.checkboxes[1].id.should == "new_user_interests_books"
@@ -30,7 +30,7 @@ describe "CheckBoxes" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

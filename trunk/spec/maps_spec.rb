@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Maps" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Maps" do
       @browser.maps.length.should == 2
     end
   end
-  
+
   describe "#[]" do
     it "should return the p at the given index" do
       @browser.maps[1].id.should == "triangle_map"
@@ -31,7 +31,7 @@ describe "Maps" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

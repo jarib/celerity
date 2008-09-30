@@ -3,10 +3,10 @@ module Celerity
     include ClickableElement
     include DisabledElement
 
-    ATTRIBUTES = BASE_ATTRIBUTES | [:type, :name, :value, :checked, :disabled, :readonly, :size, :maxlength, 
-                                    :src, :alt, :usemap, :ismap, :tabindex, :accesskey, :onfocus, :onblur, 
-                                    :onselect, :onchange, :accept, :align]    
-    
+    ATTRIBUTES = BASE_ATTRIBUTES | [:type, :name, :value, :checked, :disabled, :readonly, :size, :maxlength,
+                                    :src, :alt, :usemap, :ismap, :tabindex, :accesskey, :onfocus, :onblur,
+                                    :onselect, :onchange, :accept, :align]
+
     def readonly?
       assert_exists
       @object.isAttributeDefined('readonly')

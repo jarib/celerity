@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Table" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -10,7 +10,7 @@ describe "Table" do
     @browser = Browser.new
     @browser.goto(TEST_HOST + "/tables.html")
   end
-  
+
   # Exists
   describe "#exists?" do
     it "should return true if the table exists" do
@@ -39,14 +39,14 @@ describe "Table" do
       lambda { @browser.table(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Other
   describe "#to_a" do
     it "should return a two-dimensional array representation of the table" do
       @browser.table(:id, 'inner').to_a.should == [["Table 2, Row 1, Cell 1", "Table 2, Row 1, Cell 2"]]
     end
   end
-  
+
   describe "#row_count" do
     it "should count the number of rows correctly" do
       @browser.table(:id, 'inner').row_count.should == 1
@@ -58,15 +58,15 @@ describe "Table" do
       lambda { @browser.table(:index, 1337).row_count }.should raise_error(UnknownObjectException)
     end
   end
-  
-  describe "#row_values" do 
+
+  describe "#row_values" do
     it "should get row values" do
       @browser.table(:id, 'outer').row_values(1).should == ["Table 1, Row 1, Cell 1", "Table 1, Row 1, Cell 2"]
       @browser.table(:id, 'inner').row_values(1).should == ["Table 2, Row 1, Cell 1", "Table 2, Row 1, Cell 2"]
       @browser.table(:id, 'outer').row_values(3).should == ["Table 1, Row 3, Cell 1", "Table 1, Row 3, Cell 2"]
     end
   end
-  
+
   describe "#column_count" do
     it "should count the number of columns correctly" do
       @browser.table(:id, 'inner').column_count.should == 2
@@ -78,7 +78,7 @@ describe "Table" do
       lambda { @browser.table(:index, 1337).column_count }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#column_values" do
     it "should get column values" do
       @browser.table(:id, 'inner').column_values(1).should == ["Table 2, Row 1, Cell 1"]
@@ -89,7 +89,7 @@ describe "Table" do
       lambda { @browser.table(:id, 'inner').column_values(1337) }.should raise_error(UnknownCellException)
     end
   end
-  
+
   describe "#[]" do
     it "should return the nth child row" do
       @browser.table(:id, 'outer')[1].id.should == "outer_first"
@@ -111,7 +111,7 @@ describe "Table" do
       lambda { @browser.table(:id, 'outer').child_row(1337) }.should raise_error(UnknownRowException)
     end
   end
-  
+
   describe "#child_cell" do
     it "should return the nth child row" do
       @browser.table(:id, 'outer').child_cell(5).text.should == "Table 1, Row 3, Cell 1"
@@ -120,7 +120,7 @@ describe "Table" do
       lambda { @browser.table(:id, 'outer').child_cell(1337) }.should raise_error(UnknownCellException)
     end
   end
-  
+
   describe "#each" do
     it "should iterate through the table's rows" do
       index = 1
@@ -135,7 +135,7 @@ describe "Table" do
       end
     end
   end
-  
+
   describe "#body" do
     it "should return the correct instance of TableBody" do
       body = @browser.table(:index, 1).body(:id, 'first')
@@ -143,7 +143,7 @@ describe "Table" do
       body[1][1].text.should == "March 2008"
     end
   end
-  
+
   describe "#bodies" do
     it "should return the correct instance of TableBodies" do
       bodies = @browser.table(:index, 1).bodies
@@ -152,7 +152,7 @@ describe "Table" do
       bodies[2].id.should == "second"
     end
   end
-  
+
   after :all do
     @browser.close
   end

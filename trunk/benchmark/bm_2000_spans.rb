@@ -13,7 +13,7 @@ res = Benchmark.bmbm do |results|
       end
     end
   end
-  
+
 #  results.report("Loop through all spans (raw)") do
 #    TESTS.times do
 #      if RUBY_PLATFORM =~ /java/
@@ -27,19 +27,19 @@ res = Benchmark.bmbm do |results|
 #      end
 #    end
 #  end
-  
+
   results.report("Last span by id (String)") do
     TESTS.times do
       browser.span(:id, "id_2000").exists?
     end
   end
-  
+
   results.report("Last span by id (Regexp)") do
     TESTS.times do
       browser.span(:id, "/2000/").exists?
     end
   end
-  
+
 end
 
 puts

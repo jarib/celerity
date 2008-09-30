@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Ps" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Ps" do
       @browser.ps.length.should == 5
     end
   end
-  
+
   describe "#[]" do
     it "should return the p at the given index" do
       @browser.ps[1].id.should == "lead"
@@ -31,7 +31,7 @@ describe "Ps" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

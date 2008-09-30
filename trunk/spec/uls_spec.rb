@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Uls" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Uls" do
       @browser.uls.length.should == 2
     end
   end
-  
+
   describe "#[]" do
     it "should return the ul at the given index" do
       @browser.uls[1].id.should == "navbar"
@@ -31,7 +31,7 @@ describe "Uls" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

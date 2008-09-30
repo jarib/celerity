@@ -3,7 +3,7 @@ module Celerity
  class Frames < ElementCollections
     def element_class; Frame; end
   end
-  
+
  class Buttons < ElementCollections
     def element_class; Button; end
   end
@@ -31,11 +31,11 @@ module Celerity
   class Uls < ElementCollections
     def element_class; Ul; end
   end
-  
+
   class Ols < ElementCollections
     def element_class; Ol; end
   end
-  
+
   class Lis < ElementCollections
     def element_class; Li; end
   end
@@ -63,7 +63,7 @@ module Celerity
   class Tables < ElementCollections
     def element_class; Table; end
   end
-  
+
   class TableHeaders < ElementCollections
     def element_class; TableHeader; end
   end
@@ -101,15 +101,15 @@ module Celerity
   class Divs < ElementCollections
     def element_class; Div; end
   end
-  
+
   class Forms < ElementCollections
     def element_class; Form; end
   end
-  
+
   class Options < ElementCollections
     def element_class; Option; end
   end
-  
+
   class H1s < ElementCollections
     def element_class; H1; end
   end

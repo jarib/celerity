@@ -2,7 +2,7 @@ module Celerity
   # Module mixed in to all elements that can have the 'disabled' attribute.
   module DisabledElement
     include Celerity::Exception
-    
+
     # Returns false if the element is disabled.
     def enabled?
       !disabled?
@@ -14,7 +14,7 @@ module Celerity
       @object.isDisabled
     end
     alias_method :disabled, :disabled?
-    
+
     # Used internally.
     # @api private
     def assert_enabled
@@ -22,6 +22,6 @@ module Celerity
         raise ObjectDisabledException, "Object #{identifier_string} is disabled"
       end
     end
-    
+
   end
 end

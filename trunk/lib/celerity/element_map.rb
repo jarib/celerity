@@ -46,6 +46,6 @@ module Celerity
   end
 end
 
-class Celerity::Element 
+class Celerity::Element
   include Celerity::ElementMap
 end

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "TableCells" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -10,14 +10,14 @@ describe "TableCells" do
     @browser = Browser.new
     @browser.goto(TEST_HOST + "/tables.html")
   end
-  
+
 #  describe "#length" do
 #    it "should return the number of cells" do
 #      @browser.table(:id, 'outer').cells.length.should == 6
 #      @browser.table(:id, 'inner').cells.length.should == 2
 #    end
 #  end
-#  
+#
 #  describe "#[]" do
 #    it "should return the row at the given index" do
 #      @browser.table(:id, 'outer').cells[1].text.should == "Table 1, Row 1, Cell 1"
@@ -47,13 +47,13 @@ describe "TableCells" do
         c.name.should == outer_table.cell(:index, index+1).name
         c.id.should == outer_table.cell(:index, index+1).id
         c.value.should == outer_table.cell(:index, index+1).value
-      end      
+      end
     end
   end
-  
+
   after :all do
     @browser.close
   end
-  
+
 end
 

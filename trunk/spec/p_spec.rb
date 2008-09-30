@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe P do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -46,7 +46,7 @@ describe P do
       lambda { @browser.p(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class attribute" do
@@ -61,7 +61,7 @@ describe P do
       lambda { @browser.p(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id attribute" do
       @browser.p(:index, 1).id.should == "lead"
@@ -76,7 +76,7 @@ describe P do
       lambda { @browser.p(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#name" do
     it "should return the name attribute" do
       @browser.p(:index, 2).name.should == "invalid_attribute"
@@ -91,7 +91,7 @@ describe P do
       lambda { @browser.p(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#title" do
     it "should return the title attribute" do
       @browser.p(:index, 1).title.should == 'Lorem ipsum'
@@ -106,7 +106,7 @@ describe P do
       lambda { @browser.p(:xpath, "//p[@id='no_such_id']").title }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   describe "#text" do
     it "should return the text of the p" do
       @browser.p(:index, 2).text.should == 'Sed pretium metus et quam. Nullam odio dolor, vestibulum non, tempor ut, vehicula sed, sapien. Vestibulum placerat ligula at quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
@@ -121,7 +121,7 @@ describe P do
       lambda { @browser.p(:xpath , "//p[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   describe "#value" do
     it "should return the value attribute" do
       @browser.p(:index, 2).value.should == "invalid_attribute"
@@ -136,7 +136,7 @@ describe P do
       lambda { @browser.p(:index , 1337).value }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.p(:index, 1).should respond_to(:class_name)
@@ -147,12 +147,12 @@ describe P do
       @browser.p(:index, 1).should respond_to(:value)
     end
   end
-  
+
 
   # Other
   describe "#to_s" do
     it "should return a human readable representation of the element" do
-      @browser.p(:index, 1).to_s.should == "tag:          p\n" + 
+      @browser.p(:index, 1).to_s.should == "tag:          p\n" +
                                       "  id:           lead\n" +
                                       "  class:        lead\n" +
                                       "  title:        Lorem ipsum\n" +
@@ -163,7 +163,7 @@ describe P do
       lambda { @browser.p(:xpath, "//p[@id='no_such_id']").to_s }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   after :all do
     @browser.close
   end

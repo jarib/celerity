@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Areas" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Areas" do
       @browser.areas.length.should == 3
     end
   end
-  
+
   describe "#[]" do
     it "should return the area at the given index" do
       @browser.areas[1].id.should == "NCE"
@@ -31,7 +31,7 @@ describe "Areas" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Tables" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Tables" do
       @browser.tables.length.should == 4
     end
   end
-  
+
   describe "#[]" do
     it "should return the p at the given index" do
       @browser.tables[1].id.should == "axis_example"
@@ -33,7 +33,7 @@ describe "Tables" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

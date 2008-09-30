@@ -15,7 +15,7 @@ describe "Frame" do
     @browser.frame(:id, "frame_1").button(:id, 'send').click
     @browser.frame(:id, "frame_2").text_field(:name, 'recieverElement').value.should == 'send_this_value'
   end
-  
+
   # Exists
   describe "#exist?" do
     it "should return true if the frame exists" do
@@ -96,7 +96,7 @@ describe "Frame" do
     frame1.button(:index, 1).click
     frame2.text_field(:index, 1).value.should == "send_this_value"
   end
-  
+
   describe "#contains_text" do
     it "should find text in a frame" do
       @browser.frame(:name, 'frame1').contains_text('Suspendisse sit amet nisi.').should be_instance_of(Fixnum)
@@ -106,7 +106,7 @@ describe "Frame" do
       lambda { @browser.frame(:name, 'frame1').contains_text(3.14) }.should raise_error(ArgumentError)
     end
   end
-  
+
   describe "#to_s" do
     it "should return a human readable representation of the frame" do
       @browser.frame(:index, 1).to_s.should == "tag:          frame\n" +
@@ -116,6 +116,6 @@ describe "Frame" do
                                           "  class:        half"
     end
   end
-  
+
 end
 

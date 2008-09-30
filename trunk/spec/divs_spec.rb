@@ -8,13 +8,13 @@ describe "Divs" do
   before :each do
     @browser.goto(TEST_HOST + "/non_control_elements.html")
   end
-  
+
   describe "#length" do
     it "should return the number of divs" do
       @browser.divs.length.should == 8
     end
   end
-  
+
   describe "#[]" do
     it "should return the div at the given index" do
       @browser.divs[2].id.should == "outer_container"
@@ -30,7 +30,7 @@ describe "Divs" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

@@ -31,16 +31,16 @@ Run 'rubyforge setup' to prepare your env for access to Rubyforge
 end
 
 
-REV = nil 
-# UNCOMMENT IF REQUIRED: 
+REV = nil
+# UNCOMMENT IF REQUIRED:
 # REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
 VERS = Celerity::VERSION::STRING + (REV ? ".#{REV}" : "")
 
 class Hoe
-  def extra_deps 
-    @extra_deps.reject! { |x| Array(x).first == 'hoe' } 
+  def extra_deps
+    @extra_deps.reject! { |x| Array(x).first == 'hoe' }
     @extra_deps
-  end 
+  end
 end
 
 # Generate all the Rake tasks
@@ -54,15 +54,15 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
-  
+
   # make sure rdoc doesn't see any jars
   p.rdoc_pattern = /^(lib|bin|ext).+\.(rb|txt|)$|txt$/
-  
+
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   #p.extra_deps = []     # An array of rubygem dependencies [name, version], e.g. [ ['active_support', '>= 1.3.1'] ]
   #p.spec_extras = {}    # A hash of extra values to set in the gemspec.
-  
+
 end
 
 CHANGES = $hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")

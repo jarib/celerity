@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Pre" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -46,7 +46,7 @@ describe "Pre" do
       lambda { @browser.pre(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class attribute" do
@@ -61,7 +61,7 @@ describe "Pre" do
       lambda { @browser.pre(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id attribute" do
       @browser.pre(:class, 'ruby').id.should == "rspec"
@@ -76,7 +76,7 @@ describe "Pre" do
       lambda { @browser.pre(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#title" do
     it "should return the title attribute" do
       @browser.pre(:class, 'brainfuck').title.should == 'The brainfuck language is an esoteric programming language noted for its extreme minimalism'
@@ -91,7 +91,7 @@ describe "Pre" do
       lambda { @browser.pre(:xpath, "//pre[@id='no_such_id']").title }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   describe "#text" do
     it "should return the text of the p" do
       @browser.pre(:class, 'haskell').text.should == 'main = putStrLn "Hello World"'
@@ -106,7 +106,7 @@ describe "Pre" do
       lambda { @browser.pre(:xpath , "//pre[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.image(:index, 1).should respond_to(:class_name)
@@ -115,7 +115,7 @@ describe "Pre" do
       @browser.image(:index, 1).should respond_to(:text)
     end
   end
-  
+
 
   # Other
   describe "#to_s" do
@@ -127,7 +127,7 @@ describe "Pre" do
       lambda { @browser.pre(:xpath, "//pre[@id='no_such_id']").to_s }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   after :all do
     @browser.close
   end

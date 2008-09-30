@@ -8,7 +8,7 @@ describe "Form" do
   before :each do
    @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   describe "#exists" do
     it "should return true if the form exists" do
       @browser.form(:id, 'new_user').should exist
@@ -48,12 +48,12 @@ describe "Form" do
       lambda { @browser.form(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   describe "#submit" do
     it "should submit the form" do
       @browser.form(:id, "delete_user").submit
       @browser.text.should include("Semantic table")
     end
   end
-    
-end  
+
+end

@@ -1,34 +1,34 @@
 module Celerity
-  
+
   # Abstract superclass for for Span, Pre, Div, H1, ...
   class NonControlElement < Element
     include Exception
     include ClickableElement
-    
+
     ATTRIBUTES = BASE_ATTRIBUTES
     DEFAULT_HOW = :id
   end
-    
+
   class Pre < NonControlElement
-    TAGS = [ Identifier.new('pre')] 
+    TAGS = [ Identifier.new('pre')]
   end
-  
+
   class P < NonControlElement
     TAGS = [ Identifier.new('p') ]
   end
-  
+
   class Div < NonControlElement
-    TAGS = [ Identifier.new('div')] 
+    TAGS = [ Identifier.new('div')]
   end
-  
+
   class Span < NonControlElement
     TAGS = [ Identifier.new('span') ]
   end
-  
+
   class Ul < NonControlElement
     TAGS = [ Identifier.new('ul') ]
   end
-  
+
   class Ol < NonControlElement
     TAGS = [ Identifier.new('ol') ]
   end
@@ -36,7 +36,7 @@ module Celerity
   class Li < NonControlElement
     TAGS = [ Identifier.new('li') ]
   end
-    
+
   class Map < NonControlElement
     TAGS = [ Identifier.new('map') ]
   end
@@ -45,7 +45,7 @@ module Celerity
     ATTRIBUTES = ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt, :tabindex, :accesskey, :onfocus, :onblur]
     TAGS = [ Identifier.new('area') ]
   end
-  
+
   class H1 < NonControlElement
     TAGS = [ Identifier.new('h1') ]
   end
@@ -64,5 +64,5 @@ module Celerity
   class H6 < NonControlElement
     TAGS = [ Identifier.new('h6') ]
   end
-  
+
 end

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Ols" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Ols" do
       @browser.ols.length.should == 2
     end
   end
-  
+
   describe "#[]" do
     it "should return the ol at the given index" do
       @browser.ols[1].id.should == "favorite_compounds"
@@ -31,7 +31,7 @@ describe "Ols" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

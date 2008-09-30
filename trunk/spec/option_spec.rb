@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Option" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,7 +9,7 @@ describe "Option" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   describe "#exists?" do
     it "should return true if the element exists (page context)" do
       @browser.option(:id, "nor").should exist
@@ -74,7 +74,7 @@ describe "Option" do
       lambda { @browser.select_list(:name, "new_user_country").option(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   describe "#select" do
     it "should should be able to select the chosen option (page context)" do
       @browser.select_list(:name, "new_user_country").clear_selection
@@ -109,13 +109,13 @@ describe "Option" do
     end
 
     it "should raise UnknownObjectException if the option does not exist (page context)" do
-      lambda { @browser.option(:text, "no_such_text").select }.should raise_error(UnknownObjectException)  
-      lambda { @browser.option(:text, /missing/).select }.should raise_error(UnknownObjectException)  
+      lambda { @browser.option(:text, "no_such_text").select }.should raise_error(UnknownObjectException)
+      lambda { @browser.option(:text, /missing/).select }.should raise_error(UnknownObjectException)
     end
 
     it "should raise UnknownObjectException if the option does not exist (select_list context)" do
-      lambda { @browser.select_list(:name, "new_user_country").option(:text, "no_such_text").select }.should raise_error(UnknownObjectException)  
-      lambda { @browser.select_list(:name, "new_user_country").option(:text, /missing/).select }.should raise_error(UnknownObjectException)  
+      lambda { @browser.select_list(:name, "new_user_country").option(:text, "no_such_text").select }.should raise_error(UnknownObjectException)
+      lambda { @browser.select_list(:name, "new_user_country").option(:text, /missing/).select }.should raise_error(UnknownObjectException)
     end
 
     it "should raise MissingWayOfFindingObjectException when given a bad 'how' (page context)" do
@@ -126,8 +126,8 @@ describe "Option" do
       lambda { @browser.select_list(:name, "new_user_country").option(:missing, "Denmark").select }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
-  describe "#class_name" do  
+
+  describe "#class_name" do
     it "should be able to get attributes (page context)" do
       @browser.option(:text, 'Sweden').class_name.should == "scandinavia"
     end
@@ -136,7 +136,7 @@ describe "Option" do
       @browser.select_list(:name, "new_user_country").option(:text , 'Sweden').class_name.should == "scandinavia"
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.option(:index, 1).should respond_to(:class_name)
@@ -145,7 +145,7 @@ describe "Option" do
       @browser.option(:index, 1).should respond_to(:name)
     end
   end
-  
+
 
   after :all do
     @browser.close

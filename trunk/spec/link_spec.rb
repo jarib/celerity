@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Link" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,7 +9,7 @@ describe "Link" do
   before :each do
     @browser.goto(TEST_HOST + "/non_control_elements.html")
   end
-  
+
   # Exists method
   describe "#exist?" do
     it "should return true if the link exists" do
@@ -30,7 +30,7 @@ describe "Link" do
     it "should return true if the element exists (default how = :href)" do
       @browser.link(/input_elements/).should exist
     end
-    
+
     it "should strip spaces from URL attributes when locating elements" do
       @browser.link(:url, /strip_space$/).should exist
     end
@@ -73,7 +73,7 @@ describe "Link" do
       lambda { @browser.link(:index, 1337).class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#href" do
     it "should return the href attribute if the link exists" do
       @browser.link(:index, 2).href.should match(/non_control_elements/)
@@ -87,20 +87,20 @@ describe "Link" do
       lambda { @browser.link(:index, 1337).href }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#url" do
     it "should return the href attribute" do
       @browser.link(:index, 2).url.should match(/non_control_elements/)
     end
   end
-    
+
   describe "#id" do
     it "should return the id attribute if the link exists" do
       @browser.link(:index, 2).id.should == "link_2"
     end
 
     it "should return an empty string if the link exists and the attribute doesn't" do
-      @browser.link(:index, 1).id.should == ""      
+      @browser.link(:index, 1).id.should == ""
     end
 
     it "should raise an UnknownObjectException if the link doesn't exist" do
@@ -121,7 +121,7 @@ describe "Link" do
       lambda { @browser.link(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#text" do
     it "should return the link text" do
       @browser.link(:index, 2).text.should == "Link 2"
@@ -142,14 +142,14 @@ describe "Link" do
     end
 
     it "should return an empty string if the link exists and the attribute doesn't" do
-      @browser.link(:index, 1).title.should == ""      
+      @browser.link(:index, 1).title.should == ""
     end
 
     it "should raise an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).title }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.link(:index, 1).should respond_to(:class_name)
@@ -162,8 +162,8 @@ describe "Link" do
       @browser.link(:index, 1).should respond_to(:title)
     end
   end
-  
-  
+
+
   # Manipulation methods
   describe "#click" do
     it "should find an existing link by (:text, String) and click it" do
@@ -184,7 +184,7 @@ describe "Link" do
     it "should raise an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).click }.should raise_error(UnknownObjectException)
     end
-    
+
     it "should let JQuery override href with click events" do
       @browser.goto TEST_HOST + "/jquery_test.html"
       @browser.link(:id, 'tipafriend').text.should == 'Before JQuery'
@@ -192,7 +192,7 @@ describe "Link" do
       @browser.url.should_not match(/google/)
       @browser.link(:id, 'tipafriend').text.should == 'After JQuery'
     end
-    
+
   end
 
   after :all do

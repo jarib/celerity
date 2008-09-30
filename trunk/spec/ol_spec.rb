@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Ul" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -42,7 +42,7 @@ describe "Ul" do
       lambda { @browser.ol(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class attribute" do
@@ -57,7 +57,7 @@ describe "Ul" do
       lambda { @browser.ol(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id attribute" do
       @browser.ol(:class, 'chemistry').id.should == "favorite_compounds"
@@ -72,14 +72,14 @@ describe "Ul" do
       lambda { @browser.ol(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.ol(:index, 1).should respond_to(:class_name)
       @browser.ol(:index, 1).should respond_to(:id)
     end
   end
-  
+
   after :all do
     @browser.close
   end

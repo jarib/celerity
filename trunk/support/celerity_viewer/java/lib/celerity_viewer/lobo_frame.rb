@@ -4,7 +4,7 @@ class LoboFrame < Swing::JFrame
     super
     self.getContentPane.add(@frame_panel)
   end
-  
+
   def goto(url)
     @frame_panel.navigate(url)
   end

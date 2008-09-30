@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "H1", "H2", "H3", "H4", "H5", "H6" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -43,7 +43,7 @@ describe "H1", "H2", "H3", "H4", "H5", "H6" do
       lambda { @browser.h1(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class attribute" do
@@ -58,7 +58,7 @@ describe "H1", "H2", "H3", "H4", "H5", "H6" do
       lambda { @browser.h2(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id attribute" do
       @browser.h1(:index, 1).id.should == "first_header"
@@ -73,7 +73,7 @@ describe "H1", "H2", "H3", "H4", "H5", "H6" do
       lambda { @browser.h1(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
- 
+
   describe "#text" do
     it "should return the text of the element" do
       @browser.h1(:index, 1).text.should == 'Header 1'
@@ -88,7 +88,7 @@ describe "H1", "H2", "H3", "H4", "H5", "H6" do
       lambda { @browser.h1(:xpath , "//h1[@id='no_such_id']").text }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.h1(:index, 1).should respond_to(:class_name)
@@ -96,7 +96,7 @@ describe "H1", "H2", "H3", "H4", "H5", "H6" do
       @browser.h1(:index, 1).should respond_to(:text)
     end
   end
-  
+
   after :all do
     @browser.close
   end

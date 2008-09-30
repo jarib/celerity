@@ -1,13 +1,13 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Frames" do
-  
+
   before :all do
     @browser = Browser.new
   end
 
   describe "<frame> elements" do
-    
+
     before :each do
       @browser.goto(TEST_HOST + "/frames.html")
     end
@@ -34,9 +34,9 @@ describe "Frames" do
       end
     end
   end
-  
+
   describe "<iframe> elements" do
-    
+
     before :each do
       @browser.goto(TEST_HOST + "/iframes.html")
     end

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "TableHeader" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -10,7 +10,7 @@ describe "TableHeader" do
     @browser = Browser.new
     @browser.goto(TEST_HOST + "/tables.html")
   end
-  
+
   describe "#exists" do
     it "should return true if the table theader exists (page context)" do
       @browser.thead(:id, 'tax_headers').should exist
@@ -55,7 +55,7 @@ describe "TableHeader" do
       lambda { @browser.table(:index, 1).thead(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   describe "#length" do
     it "should return the correct number of table bodies (page context)" do
       @browser.thead(:id, 'tax_headers').length.should == 1
@@ -65,7 +65,7 @@ describe "TableHeader" do
       @browser.table(:index, 1).thead(:id, 'tax_headers').length.should == 1
     end
   end
-  
+
   describe "#[]" do
     it "should return the row at the given index (page context)" do
       @browser.thead(:id, 'tax_headers')[1].text.should == 'Before income tax Income tax After income tax'
@@ -79,7 +79,7 @@ describe "TableHeader" do
       @browser.table(:index, 1).thead(:id, 'tax_headers')[1][3].text.should == 'Income tax'
     end
   end
-  
+
   describe "#each" do
     it "should iterate through rows correctly" do
       theader = @browser.table(:index, 1).thead(:id, 'tax_headers')
@@ -93,9 +93,9 @@ describe "TableHeader" do
       index.should_not == 1
     end
   end
-  
+
   after :all do
     @browser.close
   end
-  
+
 end

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Li" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -46,7 +46,7 @@ describe "Li" do
       lambda { @browser.li(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class attribute" do
@@ -61,7 +61,7 @@ describe "Li" do
       lambda { @browser.li(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id attribute" do
       @browser.li(:class, 'nonlink').id.should == "non_link_1"
@@ -76,7 +76,7 @@ describe "Li" do
       lambda { @browser.li(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#title" do
     it "should return the title attribute" do
       @browser.li(:id, 'non_link_1').title.should == 'This is not a link!'
@@ -91,7 +91,7 @@ describe "Li" do
       lambda { @browser.li(:xpath, "//li[@id='no_such_id']").title }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   describe "#text" do
     it "should return the text of the p" do
       @browser.li(:id, 'non_link_1').text.should == 'Non-link 1'
@@ -106,7 +106,7 @@ describe "Li" do
       lambda { @browser.li(:xpath , "//li[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.li(:index, 1).should respond_to(:class_name)
@@ -115,12 +115,12 @@ describe "Li" do
       @browser.li(:index, 1).should respond_to(:title)
     end
   end
-  
+
 
   # Other
   describe "#to_s" do
     it "should return a human readable representation of the element" do
-      @browser.li(:id, 'non_link_1').to_s.should == "tag:          li\n" + 
+      @browser.li(:id, 'non_link_1').to_s.should == "tag:          li\n" +
                                       "  id:           non_link_1\n" +
                                       "  class:        nonlink\n" +
                                       "  title:        This is not a link!\n" +
@@ -131,7 +131,7 @@ describe "Li" do
       lambda { @browser.li(:xpath, "//li[@id='no_such_id']").to_s }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   after :all do
     @browser.close
   end

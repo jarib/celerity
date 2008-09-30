@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "CheckBox" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,10 +9,10 @@ describe "CheckBox" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
-  
+
+
   # Exists method
-  
+
   describe "#exists?" do
     it "should return true if the checkbox button exists" do
       @browser.checkbox(:id, "new_user_interests_books").should exist
@@ -74,10 +74,10 @@ describe "CheckBox" do
       lambda { @browser.checkbox(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
-  
+
+
   # Attribute methods
-  
+
   describe "#class_name" do
     it "should return the class name if the checkbox exists and has an attribute" do
       @browser.checkbox(:id, "new_user_interests_dancing").class_name.should == "fun"
@@ -91,7 +91,7 @@ describe "CheckBox" do
       lambda { @browser.checkbox(:id, "no_such_id").class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id attribute if the checkbox exists and has an attribute" do
       @browser.checkbox(:index, 1).id.should == "new_user_interests_books"
@@ -119,7 +119,7 @@ describe "CheckBox" do
       lambda { @browser.checkbox(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#title" do
     it "should return the title attribute if the checkbox exists" do
       @browser.checkbox(:id, "new_user_interests_dancing").title.should == "Dancing is fun!"
@@ -130,7 +130,7 @@ describe "CheckBox" do
     end
 
     it "should raise UnknownObjectException if the checkbox doesn't exist" do
-      lambda { @browser.checkbox(:index, 1337).title }.should raise_error(UnknownObjectException)  
+      lambda { @browser.checkbox(:index, 1337).title }.should raise_error(UnknownObjectException)
     end
   end
 
@@ -140,20 +140,20 @@ describe "CheckBox" do
     end
 
     it "should raise UnknownObjectException if the checkbox doesn't exist" do
-      lambda { @browser.checkbox(:index, 1337).type }.should raise_error(UnknownObjectException)  
+      lambda { @browser.checkbox(:index, 1337).type }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#value" do
     it "should return the value attribute if the checkbox exists" do
       @browser.checkbox(:id, 'new_user_interests_books').value.should == 'books'
     end
 
     it "should raise UnknownObjectException if the checkbox doesn't exist" do
-      lambda { @browser.checkbox(:index, 1337).value}.should raise_error(UnknownObjectException)  
+      lambda { @browser.checkbox(:index, 1337).value}.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.checkbox(:index, 1).should respond_to(:class_name)
@@ -164,9 +164,9 @@ describe "CheckBox" do
       @browser.checkbox(:index, 1).should respond_to(:value)
     end
   end
-  
+
   # Access methods
-  
+
   describe "#enabled?" do
     it "should return true if the checkbox button is enabled" do
       @browser.checkbox(:id, "new_user_interests_books").should be_enabled
@@ -179,11 +179,11 @@ describe "CheckBox" do
     end
 
     it "should raise UnknownObjectException if the checkbox button doesn't exist" do
-      lambda { @browser.checkbox(:id, "no_such_id").enabled?  }.should raise_error(UnknownObjectException)  
+      lambda { @browser.checkbox(:id, "no_such_id").enabled?  }.should raise_error(UnknownObjectException)
       lambda { @browser.checkbox(:xpath, "//input[@id='no_such_id']").enabled?  }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#disabled?" do
     it "should return true if the checkbox is disabled" do
       @browser.checkbox(:id, 'new_user_interests_dentistry').should be_disabled
@@ -194,13 +194,13 @@ describe "CheckBox" do
     end
 
     it "should raise UnknownObjectException if the checkbox doesn't exist" do
-      lambda { @browser.checkbox(:index, 1337).disabled? }.should raise_error(UnknownObjectException)  
+      lambda { @browser.checkbox(:index, 1337).disabled? }.should raise_error(UnknownObjectException)
     end
   end
-  
-  
+
+
   # Manipulation methods
-  
+
   describe "#clear" do
     it "should raise ObjectDisabledException if the checkbox is disabled" do
       @browser.checkbox(:id, "new_user_interests_dentistry").should_not be_set
@@ -220,10 +220,10 @@ describe "CheckBox" do
 
     it "should raise UnknownObjectException if the checkbox button doesn't exist" do
       lambda { @browser.checkbox(:name, "no_such_id").clear }.should raise_error(UnknownObjectException)
-      lambda { @browser.checkbox(:xpath, "//input[@id='no_such_id']").clear  }.should raise_error(UnknownObjectException)  
+      lambda { @browser.checkbox(:xpath, "//input[@id='no_such_id']").clear  }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#set" do
     it "should set the checkbox button" do
       @browser.checkbox(:id, "new_user_interests_cars").set
@@ -253,10 +253,10 @@ describe "CheckBox" do
       lambda { @browser.checkbox(:xpath, "//input[@id='new_user_interests_dentistry']").set  }.should raise_error(ObjectDisabledException )
     end
   end
-  
-  
+
+
   # Other
-  
+
   describe '#set?' do
     it "should return true if the checkbox button is set" do
       @browser.checkbox(:id, "new_user_interests_books").should be_set
@@ -275,11 +275,11 @@ describe "CheckBox" do
     end
 
     it "should raise UnknownObjectException if the checkbox button doesn't exist" do
-      lambda { @browser.checkbox(:id, "no_such_id").set?  }.should raise_error(UnknownObjectException)  
+      lambda { @browser.checkbox(:id, "no_such_id").set?  }.should raise_error(UnknownObjectException)
       lambda { @browser.checkbox(:xpath, "//input[@id='no_such_id']").set?  }.should raise_error(UnknownObjectException)
-    end    
+    end
   end
-  
+
   describe "#get_state" do
     it "should return true if the checkbox is set" do
       @browser.checkbox(:id, "new_user_interests_books").get_state.should be_true
@@ -294,7 +294,7 @@ describe "CheckBox" do
       lambda {   @browser.checkbox(:xpath, "//input[@name='no_such_name']").get_state  }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   after :all do
     @browser.close
   end

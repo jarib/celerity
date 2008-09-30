@@ -100,7 +100,7 @@ module Celerity
         return false if obj.style =~ /display\s*:\s*none|visibility\s*:\s*hidden/
         obj = obj.parent
       end
-      
+
       return true
     end
 

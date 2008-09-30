@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Images" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,13 +9,13 @@ describe "Images" do
   before :each do
     @browser.goto(TEST_HOST + "/images.html")
   end
-  
+
   describe "#length" do
     it "should return the number of images" do
       @browser.images.length.should == 9
     end
   end
-  
+
   describe "#[]" do
     it "should return the image at the given index" do
       @browser.images[6].id.should == "square"
@@ -31,7 +31,7 @@ describe "Images" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

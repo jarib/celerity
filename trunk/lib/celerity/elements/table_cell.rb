@@ -1,15 +1,15 @@
 module Celerity
-  
+
   class TableCell < Element
     include Celerity::Exception
     include Container
 
     TAGS = [ Identifier.new('td') ]
     ATTRIBUTES = BASE_ATTRIBUTES | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES |
-                         [:abbr, :axis, :headers, :scope, :rowspan, :colspan] 
-                                
+                         [:abbr, :axis, :headers, :scope, :rowspan, :colspan]
+
     DEFAULT_HOW = :id
-    
+
     alias_method :to_s, :text
 
     def colspan

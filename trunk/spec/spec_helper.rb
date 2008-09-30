@@ -15,11 +15,11 @@ $:.unshift(File.dirname(__FILE__) + '/../lib')
 if RUBY_PLATFORM =~ /java/
   require 'celerity'
   include Celerity
-  include Celerity::Exception  
+  include Celerity::Exception
 else
   require 'watir'
   include Watir
-  include Watir::Exception  
+  include Watir::Exception
 end
 
 # ============

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Labels" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Labels" do
       @browser.labels.length.should == 26 # changed this from 25 - Jari
     end
   end
-  
+
   describe "#[]" do
     it "should return the pre at the given index" do
       @browser.labels[1].id.should == "first_label"
@@ -31,7 +31,7 @@ describe "Labels" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

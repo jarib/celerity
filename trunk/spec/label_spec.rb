@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Label" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,7 +9,7 @@ describe "Label" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   # Exists method
   describe "#exists?" do
     it "should return true if the element exists" do
@@ -42,7 +42,7 @@ describe "Label" do
       lambda { @browser.label(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#id" do
     it "should return the id attribute if the label exists" do
@@ -50,17 +50,17 @@ describe "Label" do
     end
 
     it "should raise UnknownObjectException if the label doesn't exist" do
-      lambda { @browser.label(:index, 1337).id }.should raise_error(UnknownObjectException)  
+      lambda { @browser.label(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#for" do
     it "should return the 'for' attribute if the label exists" do
       @browser.label(:index, 1).for.should == "new_user_first_name"
     end
 
     it "should raise UnknownObjectException if the label doesn't exist" do
-      lambda { @browser.label(:index, 1337).for }.should raise_error(UnknownObjectException)  
+      lambda { @browser.label(:index, 1337).for }.should raise_error(UnknownObjectException)
     end
   end
 
@@ -71,7 +71,7 @@ describe "Label" do
     end
   end
 
-  
+
   after :all do
     @browser.close
   end

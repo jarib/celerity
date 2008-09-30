@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "TableRows" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -10,7 +10,7 @@ describe "TableRows" do
     @browser = Browser.new
     @browser.goto(TEST_HOST + "/tables.html")
   end
-  
+
   describe "#length" do
     it "should return the correct number of cells (table context)" do
       @browser.table(:id, 'inner').rows.length.should == 1
@@ -21,7 +21,7 @@ describe "TableRows" do
       @browser.rows.length.should == 14
     end
   end
-  
+
   describe "#[]" do
     it "should return the row at the given index (table context)" do
       @browser.table(:id, 'outer').rows[1].text.should == "Table 1, Row 1, Cell 1 Table 1, Row 1, Cell 2"
@@ -31,7 +31,7 @@ describe "TableRows" do
       @browser.rows[1].text.should == "Before income tax Income tax After income tax"
     end
   end
-  
+
   describe "#each" do
       it "should iterate through rows correctly" do
       # rows inside a table
@@ -50,9 +50,9 @@ describe "TableRows" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end
-  
+
 end

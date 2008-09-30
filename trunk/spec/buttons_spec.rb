@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Buttons" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Buttons" do
       @browser.buttons.length.should == 8
     end
   end
-  
+
   describe "#[]" do
     it "should return the button at the given index" do
       @browser.buttons[1].title.should == "Submit the form"
@@ -31,7 +31,7 @@ describe "Buttons" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

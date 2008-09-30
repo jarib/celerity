@@ -121,7 +121,7 @@ describe "Image" do
       lambda { @browser.image(:index, 1337).title }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.image(:index, 1).should respond_to(:class_name)
@@ -132,7 +132,7 @@ describe "Image" do
       @browser.image(:index, 1).should respond_to(:value)
     end
   end
-  
+
 
   # Manipulation methods
   describe "#click" do

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "SelectList" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,7 +9,7 @@ describe "SelectList" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   # Exists method
   describe "#exists?" do
     it "should return true if the select list exists" do
@@ -55,8 +55,8 @@ describe "SelectList" do
       lambda { @browser.select_list(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
-  
+
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class name of the select list" do
@@ -67,7 +67,7 @@ describe "SelectList" do
       lambda { @browser.select_list(:name, 'no_such_name').class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id of the element" do
       @browser.select_list(:index, 1).id.should == "new_user_country"
@@ -77,7 +77,7 @@ describe "SelectList" do
       lambda { @browser.select_list(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#name" do
     it "should return the name of the element" do
       @browser.select_list(:index, 1).name.should == "new_user_country"
@@ -87,7 +87,7 @@ describe "SelectList" do
       lambda { @browser.select_list(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#type" do
     it "should return the type of the element" do
       @browser.select_list(:index, 1).type.should == "select-one"
@@ -99,7 +99,7 @@ describe "SelectList" do
     end
   end
 
-  describe "#value" do      
+  describe "#value" do
     it "should return the value of the selected option" do
       @browser.select_list(:index, 1).value.should == "2"
       @browser.select_list(:index, 1).select(/Sweden/)
@@ -110,7 +110,7 @@ describe "SelectList" do
       lambda { @browser.select_list(:index, 1337).value }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.select_list(:index, 1).should respond_to(:class_name)
@@ -120,8 +120,8 @@ describe "SelectList" do
       @browser.select_list(:index, 1).should respond_to(:value)
     end
   end
-  
-  
+
+
   # Access methods
   describe "#enabled?" do
     it "should return true if the select list is enabled" do
@@ -136,7 +136,7 @@ describe "SelectList" do
       lambda { @browser.select_list(:name, 'no_such_name').enabled? }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#disabled?" do
     it "should return true if the select list is disabled" do
       @browser.select_list(:index, 3).should be_disabled
@@ -150,16 +150,16 @@ describe "SelectList" do
       lambda { @browser.select_list(:index, 1337).disabled? }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   # Other
   describe "#option" do
     it "should return an instance of Option" do
       option = @browser.select_list(:name, "new_user_country").option(:text, "Denmark")
       option.should be_instance_of(Option)
       option.value.should == "1"
-    end    
+    end
   end
-  
+
   describe "#contents" do
     it "should should raise UnknownObjectException if the select list doesn't exist" do
       lambda { @browser.select_list(:name, 'no_such_name').contents }.should raise_error(UnknownObjectException)
@@ -169,7 +169,7 @@ describe "SelectList" do
       @browser.select_list(:name, "new_user_country").contents.should == ["Denmark" ,"Norway" , "Sweden" , "United Kingdom", "USA"]
     end
   end
-  
+
   describe "#selected_items" do
     it "should should raise UnknownObjectException if the select list doesn't exist" do
       lambda { @browser.select_list(:name, 'no_such_name').selected_items }.should raise_error(UnknownObjectException)
@@ -180,7 +180,7 @@ describe "SelectList" do
       @browser.select_list(:name, "new_user_languages").selected_items.should == ["English", "Norwegian"]
     end
   end
-  
+
   describe "#clear_selection" do
     it "should clear the selection when possible" do
       @browser.select_list(:name, "new_user_languages").clear_selection
@@ -196,7 +196,7 @@ describe "SelectList" do
       lambda { @browser.select_list(:name, 'no_such_name').clear_selection }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#includes?" do
     it "should return true if the given option exists" do
       @browser.select_list(:name, 'new_user_country').includes?('Denmark').should be_true
@@ -206,7 +206,7 @@ describe "SelectList" do
       @browser.select_list(:name, 'new_user_country').includes?('Ireland').should be_false
     end
   end
-  
+
   describe "#selected?" do
     it "should return true if the given option is selected" do
       @browser.select_list(:name, 'new_user_country').select('Denmark')
@@ -221,7 +221,7 @@ describe "SelectList" do
       lambda { @browser.select_list(:name, 'new_user_country').selected?('missing_option') }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#select" do
     it "should select the given item when given a String" do
       @browser.select_list(:name, "new_user_country").select("Denmark")
@@ -242,7 +242,7 @@ describe "SelectList" do
       @browser.select_list(:name, "new_user_languages").clear_selection
       @browser.select_list(:name, "new_user_languages").select("Danish")
       @browser.select_list(:name, "new_user_languages").select("Swedish")
-      @browser.select_list(:name, "new_user_languages").selected_items.should == ["Danish", "Swedish"] 
+      @browser.select_list(:name, "new_user_languages").selected_items.should == ["Danish", "Swedish"]
     end
 
     it "should be able to select multiple items using :name and a Regexp" do
@@ -278,7 +278,7 @@ describe "SelectList" do
       lambda { @browser.select_list(:name, "new_user_country").select(/missing_option/) }.should raise_error(NoValueFoundException)
     end
   end
-  
+
   describe "#select_value" do
     it "should select the given item" do
       @browser.select_list(:name, "new_user_languages").clear_selection

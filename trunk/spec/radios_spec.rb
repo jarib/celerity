@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Radios" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,19 +9,19 @@ describe "Radios" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   describe "#length" do
     it "should return the number of radios" do
       @browser.radios.length.should == 5
     end
   end
-  
+
   describe "#[]" do
     it "should return the radio button at the given index" do
       @browser.radios[1].id.should == "new_user_newsletter_yes"
     end
   end
-  
+
   describe "#each" do
     it "should iterate through radio buttons correctly" do
       index = 1
@@ -38,5 +38,5 @@ describe "Radios" do
   after :all do
     @browser.close
   end
-  
+
 end

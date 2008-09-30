@@ -2,11 +2,11 @@ module Celerity
   class Frame < Element
     include Container
     attr_accessor :page
-    
+
     TAGS = [Identifier.new('frame'), Identifier.new('iframe')]
     ATTRIBUTES = BASE_ATTRIBUTES | [:longdesc, :name, :src, :frameborder, :marginwidth, :marginheight, :noresize, :scrolling]
     DEFAULT_HOW = :name
-    
+
     # Override the default locate to handle frame and inline frames.
     # @api internal
     def locate
@@ -18,7 +18,7 @@ module Celerity
         end
       end
     end
-    
+
     # Override assert_exists to raise UnknownFrameException (for Watir compatibility)
     # @api internal
     def assert_exists
@@ -27,7 +27,7 @@ module Celerity
         raise UnknownFrameException, "unable to locate frame, using #{identifier_string}"
       end
     end
-    
+
     def update_page(value)
       @page_container.page = value.getEnclosingWindow.getTopWindow.getEnclosedPage
     end
@@ -36,7 +36,7 @@ module Celerity
       assert_exists
       create_string(@inline_frame_object)
     end
-    
+
     def method_missing(meth, *args, &blk)
       meth = selector_to_attribute(meth)
       if self.class::ATTRIBUTES.include?(meth)
@@ -47,7 +47,7 @@ module Celerity
         super
       end
     end
-    
+
   end
 
 end

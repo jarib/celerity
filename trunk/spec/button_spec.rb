@@ -9,7 +9,7 @@ describe "Button" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   # Exists method
   describe "#exists?" do
     it "should return true if the button exists" do
@@ -63,7 +63,7 @@ describe "Button" do
       lambda { @browser.button(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class name of the button" do
@@ -74,7 +74,7 @@ describe "Button" do
       @browser.button(:name, "new_user_submit").class_name.should == ""
     end
   end
-  
+
   describe "#id" do
     it "should return the id if the button exists" do
       @browser.button(:index, 1).id.should == 'new_user_submit'
@@ -98,7 +98,7 @@ describe "Button" do
       lambda { @browser.button(:name, "no_such_name").name }.should raise_error(UnknownObjectException, 'Unable to locate object, using :name and "no_such_name"')
     end
   end
-  
+
   describe "#src" do
     it "should return the url for the button image" do
       @browser.button(:name, "new_user_image").src.should == "images/button.jpg"
@@ -108,7 +108,7 @@ describe "Button" do
       lambda { @browser.button(:name, "no_such_name").src }.should raise_error(UnknownObjectException, 'Unable to locate object, using :name and "no_such_name"')
     end
   end
-  
+
   describe "#style" do
     it "should return the style attribute if the button exists" do
       @browser.button(:id, 'delete_user_submit').style.should == "border: 4px solid red;"
@@ -122,7 +122,7 @@ describe "Button" do
       lambda { @browser.button(:name, "no_such_name").style }.should raise_error(UnknownObjectException, 'Unable to locate object, using :name and "no_such_name"')
     end
   end
-  
+
   describe "#title" do
     it "should return the title of the button" do
       @browser.button(:index, 1).title.should == 'Submit the form'
@@ -156,7 +156,7 @@ describe "Button" do
       lambda { @browser.button(:name, "no_such_name").value }.should raise_error(UnknownObjectException, 'Unable to locate object, using :name and "no_such_name"')
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.button(:index, 1).should respond_to(:class_name)
@@ -198,7 +198,7 @@ describe "Button" do
       lambda { @browser.button(:name, "no_such_name").disabled? }.should raise_error(UnknownObjectException, 'Unable to locate object, using :name and "no_such_name"')
     end
   end
-  
+
   # Celerity API
   describe "#click_and_attach" do
     it "should return a new browser instance with the popup page" do
@@ -208,7 +208,7 @@ describe "Button" do
       @browser.title.should == "Forms with input elements"
     end
   end
-  
+
   # Manipulation methods
   describe "#click" do
     it "should click the button if it exists" do

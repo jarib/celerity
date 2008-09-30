@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Pres" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Pres" do
       @browser.pres.length.should == 7
     end
   end
-  
+
   describe "#[]" do
     it "should return the pre at the given index" do
       @browser.pres[2].id.should == "rspec"
@@ -31,7 +31,7 @@ describe "Pres" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

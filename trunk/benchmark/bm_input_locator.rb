@@ -17,7 +17,7 @@ res = Benchmark.bmbm do |results|
   results.report("text input by name (Regexp)") do
     TESTS.times { browser.text_field(:name, /user_email/).exists? }
   end
-  
+
   results.report("select list by id (String)") do
     TESTS.times { browser.select_list(:id, 'new_user_country').exists? }
   end
@@ -30,28 +30,28 @@ res = Benchmark.bmbm do |results|
   results.report("select list by name (Regexp)") do
     TESTS.times { browser.select_list(:name, /user_country/).exists? }
   end
-  
+
   results.report("checkbox by id (String)") do
     TESTS.times { browser.checkbox(:id, 'new_user_interests_books').exists? }
   end
   results.report("checkbox by id (Regexp)") do
     TESTS.times { browser.checkbox(:id, /interests_books/).exists? }
   end
-  
+
   results.report("checkbox by name (String)") do
     TESTS.times { browser.checkbox(:name, 'new_user_interests').exists? }
   end
   results.report("checkbox by name (Regexp)") do
     TESTS.times { browser.checkbox(:name, /user_interests/).exists? }
   end
-  
+
   results.report("checkbox by id (String) and value (String)") do
     TESTS.times { browser.checkbox(:id, 'new_user_interests_books', 'cars').exists? }
   end
   results.report("checkbox by id (Regexp) and value (Regexp)") do
     TESTS.times { browser.checkbox(:id, /interests_books/, /car/).exists? }
   end
-  
+
   results.report("checkbox by name (String) and value (String)") do
     TESTS.times { browser.checkbox(:name, 'new_user_interests', 'dancing').exists? }
   end
@@ -59,8 +59,8 @@ res = Benchmark.bmbm do |results|
     TESTS.times { browser.checkbox(:name, /user_interests/, /danc/).exists? }
   end
 
-  
-  
+
+
 end
 
 puts

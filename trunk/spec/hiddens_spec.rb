@@ -14,7 +14,7 @@ describe "Hiddens" do
       @browser.hiddens.length.should == 1
     end
   end
-  
+
   describe "#[]" do
     it "should return the Hidden at the given index" do
       @browser.hiddens[1].id.should == "new_user_interests_dolls"
@@ -30,7 +30,7 @@ describe "Hiddens" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Lis" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -15,7 +15,7 @@ describe "Lis" do
       @browser.lis.length.should == 18
     end
   end
-  
+
   describe "#[]" do
     it "should return the p at the given index" do
       @browser.lis[5].id.should == "non_link_1"
@@ -31,7 +31,7 @@ describe "Lis" do
       end
     end
   end
-  
+
   after :all do
     @browser.close
   end

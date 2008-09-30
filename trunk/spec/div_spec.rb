@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Div" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,8 +9,8 @@ describe "Div" do
   before :each do
     @browser.goto(TEST_HOST + "/non_control_elements.html")
   end
-  
-  
+
+
   # Exists method
   describe "#exists?" do
     it "should return true if the element exists" do
@@ -51,7 +51,7 @@ describe "Div" do
       lambda { @browser.div(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class attribute if the element exists" do
@@ -85,7 +85,7 @@ describe "Div" do
       lambda {@browser.div(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#name" do
     it "should return the name attribute if the element exists" do
       @browser.div(:id, 'promo').name.should == "invalid_attribute"
@@ -101,7 +101,7 @@ describe "Div" do
       lambda {@browser.div(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#style" do
     it "should return the style attribute if the element exists" do
       @browser.div(:id, 'best_language').style.should == "color: red; text-decoration: underline; cursor: pointer;"
@@ -115,7 +115,7 @@ describe "Div" do
       lambda {@browser.div(:id, "no_such_id").style }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#text" do
     it "should return the text of the div" do
       @browser.div(:id, "footer").text.strip.should == "This is a footer."
@@ -134,7 +134,7 @@ describe "Div" do
       lambda { @browser.div(:xpath, "//div[@id='no_such_id']").text }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#value" do
     it "should return the value attribute if the element exists" do
       @browser.div(:id, 'promo').value.should == "invalid_attribute"
@@ -150,7 +150,7 @@ describe "Div" do
       lambda {@browser.div(:index, 1337).value }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.div(:index, 1).should respond_to(:class_name)
@@ -161,7 +161,7 @@ describe "Div" do
       @browser.div(:index, 1).should respond_to(:value)
     end
   end
-  
+
   # Manipulation methods
   describe "#click" do
     it "should fire events when clicked" do
@@ -169,7 +169,7 @@ describe "Div" do
       @browser.div(:id, 'best_language').click
       @browser.div(:id, 'best_language').text.should == 'Ruby!'
     end
-    
+
     it "should raise UnknownObjectException if the element does not exist" do
       lambda { @browser.div(:id, "no_such_id").click }.should raise_error(UnknownObjectException)
       lambda { @browser.div(:title, "no_such_title").click }.should raise_error(UnknownObjectException)
@@ -187,10 +187,10 @@ describe "Div" do
       html.should_not include('</body>')
     end
   end
-  
+
   describe "#to_s" do
     it "should return a human readable representation of the element" do
-      @browser.div(:id, 'footer').to_s.should == 
+      @browser.div(:id, 'footer').to_s.should ==
 %q{tag:          div
   id:           footer
   title:        Closing remarks
@@ -198,7 +198,7 @@ describe "Div" do
   text:         This is a footer.}
     end
   end
-  
+
   after :all do
     @browser.close
   end

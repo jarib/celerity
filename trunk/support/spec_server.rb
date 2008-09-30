@@ -10,22 +10,22 @@ module Celerity
       resp.body << req.body
     end
   end
-  
+
   class PlainTextHandler < WEBrick::HTTPServlet::AbstractServlet
     def do_GET(req, resp)
       resp['content-type'] = 'text/plain'
       resp.body << "This is text/plain"
     end
   end
-  
+
   class OctetStreamHandler < WEBrick::HTTPServlet::AbstractServlet
     def do_GET(req, resp)
       resp['content-type'] = 'application/octet-stream'
       resp.body << "This is application/octet-stream"
     end
   end
-  
-  
+
+
   class SlowAjaxHandler < WEBrick::HTTPServlet::AbstractServlet
     def do_GET(req, resp)
       sleep 10
@@ -33,7 +33,7 @@ module Celerity
       resp.body << "A slooow ajax response"
     end
   end
-  
+
   class CharsetMismatchHandler < WEBrick::HTTPServlet::AbstractServlet
     def do_GET(req, resp)
       resp['content-type'] = 'text/html; charset=UTF-8'
@@ -52,7 +52,7 @@ module Celerity
 
   class SpecServer
     attr_reader :host, :thread, :log_file
-    
+
     def initialize(opts = {})
       @ssl      = opts[:ssl] || false
       @doc_root = opts[:doc_root] || File.join(File.dirname(__FILE__),"..", "spec", "html")
@@ -78,7 +78,7 @@ module Celerity
         server_options.merge!(
           :SSLEnable       => true,
           :SSLVerifyClient => ::OpenSSL::SSL::VERIFY_NONE,
-          :SSLCertName     => [["CN", "Celerity"]] 
+          :SSLCertName     => [["CN", "Celerity"]]
         )
         @host = "https://localhost:#{@port}"
       else

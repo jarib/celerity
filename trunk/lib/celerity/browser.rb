@@ -22,7 +22,7 @@ module Celerity
     #
     # @option opts :browser [:firefox, :internet_explorer] (:internet_explorer) Set the BrowserVersion used by HtmlUnit. Defaults to Internet Explorer.
     # @option opts :css                     [Boolean] (false) Enable CSS.  Disabled by default.
-    # @option opts :secure_ssl              [Boolean] (true) Disable secure SSL. Enabled by default.
+    # @option opts :secure_ssl              [Boolean] (true)  Disable secure SSL. Enabled by default.
     # @option opts :resynchronize           [Boolean] (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
     # @option opts :javascript_exceptions   [Boolean] (false) Raise exceptions on script errors. Disabled by default.
     # @option opts :status_code_exceptions  [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.

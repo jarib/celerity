@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Radio" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -9,7 +9,7 @@ describe "Radio" do
   before :each do
     @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
   end
-  
+
   # Exists method
   describe "#exists?" do
     it "should return true if the radio button exists" do
@@ -72,8 +72,8 @@ describe "Radio" do
       lambda { @browser.radio(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
-  
+
+
   # Attribute methods
   describe "#class_name" do
     it "should return the class name if the radio exists and has an attribute" do
@@ -88,7 +88,7 @@ describe "Radio" do
       lambda { @browser.radio(:id, "no_such_id").class_name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#id" do
     it "should return the id attribute if the radio exists and has an attribute" do
       @browser.radio(:index, 1).id.should == "new_user_newsletter_yes"
@@ -116,7 +116,7 @@ describe "Radio" do
       lambda { @browser.radio(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#title" do
     it "should return the title attribute if the radio exists" do
       @browser.radio(:id, "new_user_newsletter_no").title.should == "Traitor!"
@@ -127,7 +127,7 @@ describe "Radio" do
     end
 
     it "should raise UnknownObjectException if the radio doesn't exist" do
-      lambda { @browser.radio(:index, 1337).title }.should raise_error(UnknownObjectException)  
+      lambda { @browser.radio(:index, 1337).title }.should raise_error(UnknownObjectException)
     end
   end
 
@@ -137,10 +137,10 @@ describe "Radio" do
     end
 
     it "should raise UnknownObjectException if the radio doesn't exist" do
-      lambda { @browser.radio(:index, 1337).type }.should raise_error(UnknownObjectException)  
+      lambda { @browser.radio(:index, 1337).type }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#value" do
     it "should return the value attribute if the radio exists" do
       @browser.radio(:id, 'new_user_newsletter_yes').value.should == 'yes'
@@ -150,7 +150,7 @@ describe "Radio" do
       lambda { @browser.radio(:index, 1337).value}.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.radio(:index, 1).should respond_to(:class_name)
@@ -161,9 +161,9 @@ describe "Radio" do
       @browser.radio(:index, 1).should respond_to(:value)
     end
   end
-  
-  
-  
+
+
+
   # Access methods
   describe "#enabled?" do
     it "should return true if the radio button is enabled" do
@@ -177,11 +177,11 @@ describe "Radio" do
     end
 
     it "should raise UnknownObjectException if the radio button doesn't exist" do
-      lambda { @browser.radio(:id, "no_such_id").enabled?  }.should raise_error(UnknownObjectException)  
+      lambda { @browser.radio(:id, "no_such_id").enabled?  }.should raise_error(UnknownObjectException)
       lambda { @browser.radio(:xpath, "//input[@id='no_such_id']").enabled?  }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#disabled?" do
     it "should return true if the radio is disabled" do
       @browser.radio(:id, 'new_user_newsletter_nah').should be_disabled
@@ -192,11 +192,11 @@ describe "Radio" do
     end
 
     it "should raise UnknownObjectException if the radio doesn't exist" do
-      lambda { @browser.radio(:index, 1337).disabled? }.should raise_error(UnknownObjectException)  
+      lambda { @browser.radio(:index, 1337).disabled? }.should raise_error(UnknownObjectException)
     end
   end
-  
-  
+
+
   # Manipulation methods
   describe "#clear" do
     it "should clear the radio button if it is set" do
@@ -211,7 +211,7 @@ describe "Radio" do
 
     it "should raise UnknownObjectException if the radio button doesn't exist" do
       lambda { @browser.radio(:name, "no_such_id").clear }.should raise_error(UnknownObjectException)
-      lambda { @browser.radio(:xpath, "//input[@id='no_such_id']").clear  }.should raise_error(UnknownObjectException)  
+      lambda { @browser.radio(:xpath, "//input[@id='no_such_id']").clear  }.should raise_error(UnknownObjectException)
     end
 
     it "should raise ObjectDisabledException if the radio is disabled" do
@@ -220,7 +220,7 @@ describe "Radio" do
       lambda { @browser.radio(:xpath, "//input[@id='new_user_newsletter_nah']").clear }.should raise_error(ObjectDisabledException)
     end
   end
-  
+
   describe "#set" do
     it "should set the radio button" do
       @browser.radio(:id, "new_user_newsletter_no").set
@@ -250,8 +250,8 @@ describe "Radio" do
       lambda { @browser.radio(:xpath, "//input[@id='new_user_newsletter_nah']").set  }.should raise_error(ObjectDisabledException )
     end
   end
-  
-  
+
+
   # Other
   describe '#set?' do
     it "should return true if the radio button is set" do
@@ -271,11 +271,11 @@ describe "Radio" do
     end
 
     it "should raise UnknownObjectException if the radio button doesn't exist" do
-      lambda { @browser.radio(:id, "no_such_id").set?  }.should raise_error(UnknownObjectException)  
+      lambda { @browser.radio(:id, "no_such_id").set?  }.should raise_error(UnknownObjectException)
       lambda { @browser.radio(:xpath, "//input[@id='no_such_id']").set?  }.should raise_error(UnknownObjectException)
-    end    
+    end
   end
-  
+
   describe "#get_state" do
     it "should return true if the radio is set" do
       @browser.radio(:id, "new_user_newsletter_yes").get_state.should be_true

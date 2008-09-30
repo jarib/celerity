@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Map" do
-  
+
   before :all do
     @browser = Browser.new
   end
@@ -42,7 +42,7 @@ describe "Map" do
       lambda { @browser.map(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   # Attribute methods
   describe "#id" do
     it "should return the id attribute" do
@@ -58,7 +58,7 @@ describe "Map" do
       lambda { @browser.map(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#name" do
     it "should return the name attribute" do
       @browser.map(:index, 1).name.should == "triangle_map"
@@ -73,19 +73,19 @@ describe "Map" do
       lambda { @browser.map(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#respond_to?" do
     it "should return true for all attribute methods" do
       @browser.map(:index, 1).should respond_to(:id)
       @browser.map(:index, 1).should respond_to(:name)
     end
   end
-  
+
 
   # Other
   describe "#to_s" do
     it "should return a human readable representation of the element" do
-      @browser.map(:index, 1).to_s.should == "tag:          map\n" + 
+      @browser.map(:index, 1).to_s.should == "tag:          map\n" +
                                       "  id:           triangle_map\n" +
                                       "  name:         triangle_map"
     end
@@ -94,7 +94,7 @@ describe "Map" do
       lambda { @browser.map(:xpath, "//map[@id='no_such_id']").to_s }.should raise_error( UnknownObjectException)
     end
   end
-  
+
   after :all do
     @browser.close
   end

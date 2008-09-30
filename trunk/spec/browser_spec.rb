@@ -1,11 +1,11 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Browser" do
-  
+
   before :all do
     @browser = Browser.new
   end
-  
+
   # Exists
   describe "#exists?" do
     it "should return true if we are at a page" do
@@ -19,14 +19,14 @@ describe "Browser" do
       @browser.should_not exist
     end
   end
-  
+
   describe "#html" do
     it "should return the html of the page" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
       @browser.html.should == File.read(File.dirname(__FILE__) + "/html/non_control_elements.html")
     end
   end
-  
+
   describe "#title" do
     it "should return the current page title" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
@@ -53,39 +53,39 @@ Forms with input elementsUser administration
 
 Add user
 
-Personal informationFirst name  
+Personal informationFirst name
 
-Last name  
+Last name
 
-Email address  
+Email address
 
-Country  Denmark Norway Sweden United Kingdom USA 
+Country  Denmark Norway Sweden United Kingdom USA
 
-Occupation  
+Occupation
 
-Species  
+Species
 
-Personal code  
+Personal code
 
-Languages  Danish English Norwegian Swedish 
+Languages  Danish English Norwegian Swedish
 
-Portrait  
+Portrait
 
 Dental records   Login informationUsername (max 20 characters)  0
 
-Password  
+Password
 
 Role  Administrator Moderator Regular user  Interests Books  Bowling  Cars  Dancing  Dentistry   Food  Preferences
 
 Do you want to recieve our newslettter?
 
- Yes  No  Certainly  Absolutely  Nah  Actions  Button 2     
+ Yes  No  Certainly  Absolutely  Nah  Actions  Button 2
 
 Delete user
 
-Username  Username 1 Username 2 Username 3 
+Username  Username 1 Username 2 Username 3
 
-Comment Default comment.      
+Comment Default comment.
 TEXT
     end
   end
@@ -96,18 +96,18 @@ TEXT
       @browser.url.should == TEST_HOST + "/non_control_elements.html"
     end
   end
-  
+
   describe "#document" do
     it "should return the underlying object" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
       if RUBY_PLATFORM =~ /java/
         @browser.document.should be_instance_of(Java::ComGargoylesoftwareHtmlunitHtml::HtmlHtml)
-      else 
+      else
         @browser.document.should be_instance_of(WIN32OLE)
       end
     end
   end
-  
+
   # Show methods
   describe "#show_«collection»" do
     it "should print a human readable representation of elements matching the given name" do
@@ -122,14 +122,14 @@ TEXT
       end
       temp_stdout.string.should ==
 'Found 8 divs
-1: 
-2: id="outer_container" 
-3: id="header" title="Header and primary navigation" class="profile" 
-4: id="promo" name="invalid_attribute" value="invalid_attribute" 
-5: id="content" 
-6: id="best_language" onclick="this.innerHTML = \'Ruby!\'" style="color: red; text-decoration: underline; cursor: pointer;" 
-7: id="html_test" class="some_class" title="This is a title" 
-8: id="footer" title="Closing remarks" class="profile" 
+1:
+2: id="outer_container"
+3: id="header" title="Header and primary navigation" class="profile"
+4: id="promo" name="invalid_attribute" value="invalid_attribute"
+5: id="content"
+6: id="best_language" onclick="this.innerHTML = \'Ruby!\'" style="color: red; text-decoration: underline; cursor: pointer;"
+7: id="html_test" class="some_class" title="This is a title"
+8: id="footer" title="Closing remarks" class="profile"
 '
     end
 
@@ -138,7 +138,7 @@ TEXT
       lambda { @browser.show_no_such_collection }.should raise_error(NoMethodError)
     end
   end
-  
+
   # Manipulation methods
   describe ".start" do
     it "should go to the given URL and return an instance of itself" do
@@ -147,7 +147,7 @@ TEXT
       @browser.title.should == "Non-control elements"
     end
   end
-  
+
   describe "#goto" do
     it "should add http:// to URLs with no protocol specified" do
       url = TEST_HOST[%r{http://(.*)}, 1]
@@ -159,12 +159,12 @@ TEXT
     it "should go to the given url without raising errors" do
       lambda { @browser.goto(TEST_HOST + "/non_control_elements.html") }.should_not raise_error
     end
-    
+
     it "should raise UnexpectedPageException if the content type is not understood" do
       lambda { @browser.goto(TEST_HOST + "/octet_stream") }.should raise_error(UnexpectedPageException)
     end
   end
-  
+
   describe "#refresh" do
     it "should refresh the page" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
@@ -174,7 +174,7 @@ TEXT
       @browser.span(:name, 'footer').text.should_not include('Javascript')
     end
   end
-  
+
   describe "#execute_script" do
     it "should execute the given JavaScript on the current page" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
@@ -183,7 +183,7 @@ TEXT
       @browser.pre(:id, 'rspec').text.should == "javascript text"
     end
   end
-  
+
   describe "#back" do
     it "should go to the previous page" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
@@ -195,19 +195,19 @@ TEXT
       orig_url.should == @browser.url
     end
   end
-  
+
   describe "#wait_while" do
     it "should return after the condition becomes false" do
       pending
     end
   end
-  
+
   describe "#wait_until" do
     it "should return after the condition becomes true" do
       pending
     end
   end
-  
+
   # Other
   describe "#contains_text" do
     before :each do
@@ -235,7 +235,7 @@ TEXT
       lambda { @browser.contains_text('') }.should_not raise_error
     end
   end
-  
+
   describe "#add_checker" do
     it "should raise ArgumentError when not given any arguments" do
       lambda { @browser.add_checker }.should raise_error(ArgumentError)
@@ -256,7 +256,7 @@ TEXT
       output.should include('Dubito, ergo cogito, ergo sum')
     end
   end
-  
+
   describe "#disable_checker" do
     it "should remove a previously added checker" do
       output = ''
