@@ -56,7 +56,7 @@ module Celerity
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{://}
       self.page = @webclient.getPage(uri)
-      
+
       url()
     end
 
@@ -144,6 +144,10 @@ module Celerity
     def wait_until(timeout = 30, &block)
       Timeout.timeout(timeout) do
         until yield(self)
+          if (new_page = @page.getEnclosingWindow.getEnclosedPage) != @page
+            self.page = new_page
+          end
+
           sleep 0.1
         end
       end
@@ -157,6 +161,10 @@ module Celerity
     def wait_while(timeout = 30, &block)
       Timeout.timeout(timeout) do
         while yield(self)
+          if (new_page = @page.getEnclosingWindow.getEnclosedPage) != @page
+            self.page = new_page
+          end
+
           sleep 0.1
         end
       end
