@@ -51,7 +51,7 @@ module Celerity
     end
 
     # Get the parent element
-    # @return [Celerity::Element, nil] subclass or Celerity::Element, or nil if no parent was found
+    # @return [Celerity::Element, nil] subclass of Celerity::Element, or nil if no parent was found
     def parent
       assert_exists
 

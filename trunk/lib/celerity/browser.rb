@@ -144,10 +144,7 @@ module Celerity
     def wait_until(timeout = 30, &block)
       Timeout.timeout(timeout) do
         until yield(self)
-          if (new_page = @page.getEnclosingWindow.getEnclosedPage) != @page
-            self.page = new_page
-          end
-
+          refresh_page_from_window
           sleep 0.1
         end
       end
@@ -161,10 +158,7 @@ module Celerity
     def wait_while(timeout = 30, &block)
       Timeout.timeout(timeout) do
         while yield(self)
-          if (new_page = @page.getEnclosingWindow.getEnclosedPage) != @page
-            self.page = new_page
-          end
-
+          refresh_page_from_window
           sleep 0.1
         end
       end
@@ -280,6 +274,17 @@ module Celerity
       @webclient.cssEnabled = false unless @opts[:css]
       @webclient.useInsecureSSL = true if @opts[:secure_ssl]
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if @opts[:resynchronize]
+    end
+
+    # This *should* be unneccessary, but sometimes the page we get from the
+    # window is different (ie. a different object) from our current @page
+    # (Used by #wait_while and #wait_until)
+    def refresh_page_from_window
+      new_page = @page.getEnclosingWindow.getEnclosedPage
+
+      if new_page && (new_page != @page)
+        self.page = new_page
+      end
     end
 
     # Render the current page on the viewer.
