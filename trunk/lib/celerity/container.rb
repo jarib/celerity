@@ -45,7 +45,7 @@ module Celerity
       when String
         text().index(expected_text)
       else
-        raise ArgumentError, "Argument #{expected_text.inspect} should be a String or Regexp."
+        raise TypeError, "expected String or Regexp, got #{expected_text.inspect}:#{expected_text.class}"
       end
     end
 

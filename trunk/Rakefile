@@ -3,4 +3,6 @@ begin
   require 'config/hoe' # setup Hoe + all gem configuration
 rescue LoadError
 end
+
+$:.unshift("#{File.dirname(__FILE__)}/lib")
 Dir['tasks/**/*.rake'].each { |rake| load rake }

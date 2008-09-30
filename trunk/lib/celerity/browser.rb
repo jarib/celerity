@@ -140,17 +140,10 @@ module Celerity
     #
     # @param [Fixnum] timeout How long to wait before timing out.
     # @yieldparam [Celerity::Browser] browser The browser instance.
+    # @see Celerity::Browser#resynchronized
     def wait_until(timeout = 30, &block)
       Timeout.timeout(timeout) do
         until yield(self)
-          new_page = @page.getEnclosingWindow.getEnclosedPage
-          Log.debug({:new_page => new_page, :old_page => @page}.inspect)
-
-          if new_page && (new_page != @page)
-            @page = new_page
-            sleep 2
-          end
-
           sleep 0.1
         end
       end
@@ -160,17 +153,10 @@ module Celerity
     #
     # @param [Fixnum] timeout How long to wait before timing out.
     # @yieldparam [Celerity::Browser] browser The browser instance.
+    # @see Celerity::Browser#resynchronized
     def wait_while(timeout = 30, &block)
       Timeout.timeout(timeout) do
         while yield(self)
-          new_page = @page.getEnclosingWindow.getEnclosedPage
-          Log.debug({:new_page => new_page, :old_page => @page}.inspect)
-
-          if new_page && (new_page != @page)
-            @page = new_page
-            sleep 2
-          end
-
           sleep 0.1
         end
       end
@@ -223,11 +209,12 @@ module Celerity
     #   end
     #
     # @yieldparam [Celerity::Browser] browser The current browser object.
+    # @see Celerity::Browser#new for options on how to always use this.
     def resynchronized(&block)
       old_controller = @webclient.ajaxController
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new)
 
-      yield self
+      yield(self)
 
       @webclient.setAjaxController(old_controller)
     end
