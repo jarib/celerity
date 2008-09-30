@@ -16,7 +16,7 @@
   <h1 class="title">Class: Celerity::ElementLocator</h1>
   <div class="section mixins">
   <h1>Included Modules</h1>
-  <p><a href="Exception.html" title="Celerity::Exception">Celerity::Exception</a></p>
+  <p><a title="Celerity::Exception" href="Exception.html">Celerity::Exception</a></p>
 </div><div class="section docstring">
   <p>
 Used internally to locate elements on the page.
@@ -86,11 +86,11 @@ Sets the attribute <tt>idents</tt>.
           <pre class="code"><span class="info file"># File 'lib/celerity/element_locator.rb', line 9</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='object identifier id'>object</span><span class='comma token'>,</span> <span class='element_class identifier id'>element_class</span><span class='rparen token'>)</span>
-  <span class='@object ivar id'>@object</span> <span class='assign token'>=</span> <span class='object identifier id'>object</span>
+  <span class='@object ivar id'>@object</span>        <span class='assign token'>=</span> <span class='object identifier id'>object</span>
   <span class='@element_class ivar id'>@element_class</span> <span class='assign token'>=</span> <span class='element_class identifier id'>element_class</span>
-  <span class='@attributes ivar id'>@attributes</span> <span class='assign token'>=</span> <span class='@element_class ivar id'>@element_class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span> <span class='comment val'># could check for 'strict' here?</span>
-  <span class='@idents ivar id'>@idents</span> <span class='assign token'>=</span> <span class='@element_class ivar id'>@element_class</span><span class='colon2 op'>::</span><span class='TAGS constant id'>TAGS</span>
-  <span class='@tags ivar id'>@tags</span> <span class='assign token'>=</span> <span class='@idents ivar id'>@idents</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span> <span class='rbrace token'>}</span>
+  <span class='@attributes ivar id'>@attributes</span>    <span class='assign token'>=</span> <span class='@element_class ivar id'>@element_class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span> <span class='comment val'># could check for 'strict' here?</span>
+  <span class='@idents ivar id'>@idents</span>        <span class='assign token'>=</span> <span class='@element_class ivar id'>@element_class</span><span class='colon2 op'>::</span><span class='TAGS constant id'>TAGS</span>
+  <span class='@tags ivar id'>@tags</span>          <span class='assign token'>=</span> <span class='@idents ivar id'>@idents</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -107,7 +107,7 @@ Sets the attribute <tt>idents</tt>.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#element_by_idents-instance_method" title="#element_by_idents">#element_by_idents</a></span><span class='args'>(idents = nil)</span>
+        <span class='name'><a title="#element_by_idents" href="#element_by_idents-instance_method">#element_by_idents</a></span><span class='args'>(idents = nil)</span>
         <span class='block'></span>
         
       </th>
@@ -119,7 +119,7 @@ Sets the attribute <tt>idents</tt>.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#elements_by_idents-instance_method" title="#elements_by_idents">#elements_by_idents</a></span><span class='args'>(idents = nil)</span>
+        <span class='name'><a title="#elements_by_idents" href="#elements_by_idents-instance_method">#elements_by_idents</a></span><span class='args'>(idents = nil)</span>
         <span class='block'></span>
         
       </th>
@@ -131,7 +131,7 @@ Sets the attribute <tt>idents</tt>.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#elements_by_tag_names-instance_method" title="#elements_by_tag_names">#elements_by_tag_names</a></span><span class='args'></span>
+        <span class='name'><a title="#find_by_conditions" href="#find_by_conditions-instance_method">#find_by_conditions</a></span><span class='args'>(conditions)</span>
         <span class='block'></span>
         
       </th>
@@ -143,7 +143,7 @@ Sets the attribute <tt>idents</tt>.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#find_by_conditions-instance_method" title="#find_by_conditions">#find_by_conditions</a></span><span class='args'>(conditions)</span>
+        <span class='name'><a title="#find_by_id" href="#find_by_id-instance_method">#find_by_id</a></span><span class='args'>(what)</span>
         <span class='block'></span>
         
       </th>
@@ -155,43 +155,7 @@ Sets the attribute <tt>idents</tt>.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#find_by_id-instance_method" title="#find_by_id">#find_by_id</a></span><span class='args'>(what)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#find_by_xpath-instance_method" title="#find_by_xpath">#find_by_xpath</a></span><span class='args'>(what)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#get_by_idents-instance_method" title="#get_by_idents">#get_by_idents</a></span><span class='args'>(meth, idents)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#matches%3F-instance_method" title="#matches?">#matches?</a></span><span class='args'>(string, what)</span>
+        <span class='name'><a title="#find_by_xpath" href="#find_by_xpath-instance_method">#find_by_xpath</a></span><span class='args'>(what)</span>
         <span class='block'></span>
         
       </th>
@@ -292,74 +256,6 @@ Sets the attribute <tt>idents</tt>.
   
     <div class="method">
       <div class="method_header">
-  <h3>elements_by_tag_names</h3>
-</div><div id="elements_by_tag_names-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>elements_by_tag_names</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
-
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element_locator.rb', line 131</span>
-
-<span class='def def kw'>def</span> <span class='elements_by_tag_names identifier id'>elements_by_tag_names</span>
-  <span class='tries identifier id'>tries</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
-  <span class='comment val'># HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct order, making :index fail</span>
-  <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAllHtmlChildElements identifier id'>getAllHtmlChildElements</span><span class='dot token'>.</span><span class='iterator identifier id'>iterator</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='select identifier id'>select</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='elem identifier id'>elem</span><span class='bitor op'>|</span>
-    <span class='@tags ivar id'>@tags</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='elem identifier id'>elem</span><span class='dot token'>.</span><span class='getTagName identifier id'>getTagName</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='comment val'># workaround for HtmlUnit bug?</span>
-<span class='rescue rescue kw'>rescue</span> <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='lang identifier id'>lang</span><span class='dot token'>.</span><span class='NullPointerException constant id'>NullPointerException</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='e identifier id'>e</span>
-  <span class='$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;warning: celerity caught #{e}&quot;</span>
-  <span class='if if kw'>if</span> <span class='tries identifier id'>tries</span> <span class='lt op'>&lt;</span> <span class='integer val'>2</span>
-    <span class='tries identifier id'>tries</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
-    <span class='retry retry kw'>retry</span>
-  <span class='else else kw'>else</span>
-    <span class='raise identifier id'>raise</span> <span class='e identifier id'>e</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-    <div class="method">
-      <div class="method_header">
   <h3>find_by_conditions</h3>
 </div><div id="find_by_conditions-instance_method" class="section method">
   <div class="details_title">
@@ -446,13 +342,13 @@ Sets the attribute <tt>idents</tt>.
   <span class='@condition_idents ivar id'>@condition_idents</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
   <span class='attributes identifier id'>attributes</span> <span class='assign token'>=</span> <span class='Hash constant id'>Hash</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='comma token'>,</span> <span class='k identifier id'>k</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span>
   <span class='index identifier id'>index</span> <span class='assign token'>=</span> <span class='integer val'>0</span> <span class='comment val'># by default, return the first matching element</span>
-  <span class='text identifier id'>text</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span> 
-  
+  <span class='text identifier id'>text</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+
   <span class='conditions identifier id'>conditions</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='how identifier id'>how</span><span class='comma token'>,</span> <span class='what identifier id'>what</span><span class='bitor op'>|</span>
     <span class='case case kw'>case</span> <span class='how identifier id'>how</span>
     <span class='when when kw'>when</span> <span class='symbol val'>:object</span>
       <span class='unless unless kw'>unless</span> <span class='what identifier id'>what</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span> <span class='HtmlUnit constant id'>HtmlUnit</span><span class='colon2 op'>::</span><span class='Html constant id'>Html</span><span class='colon2 op'>::</span><span class='HtmlElement constant id'>HtmlElement</span>
-        <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='string val'>&quot;second argument must be a Celerity::Element subclass&quot;</span> 
+        <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;expected a HtmlUnit::Html::HtmlElement subclass, got #{what.inspect}:#{what.class}&quot;</span>
       <span class='end end kw'>end</span>
       <span class='return return kw'>return</span> <span class='what identifier id'>what</span>
     <span class='when when kw'>when</span> <span class='symbol val'>:id</span>
@@ -466,9 +362,9 @@ Sets the attribute <tt>idents</tt>.
     <span class='when when kw'>when</span> <span class='symbol val'>:caption</span>
       <span class='how identifier id'>how</span> <span class='assign token'>=</span> <span class='symbol val'>:text</span>
     <span class='end end kw'>end</span>
-  
+
     <span class='if if kw'>if</span> <span class='@attributes ivar id'>@attributes</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='how identifier id'>how</span><span class='rparen token'>)</span>
-      <span class='attributes identifier id'>attributes</span><span class='lbrack token'>[</span><span class='how identifier id'>how</span><span class='rbrack token'>]</span> <span class='lshft op'>&lt;&lt;</span> <span class='what identifier id'>what</span>  
+      <span class='attributes identifier id'>attributes</span><span class='lbrack token'>[</span><span class='how identifier id'>how</span><span class='rbrack token'>]</span> <span class='lshft op'>&lt;&lt;</span> <span class='what identifier id'>what</span>
     <span class='elsif elsif kw'>elsif</span> <span class='how identifier id'>how</span> <span class='eq op'>==</span> <span class='symbol val'>:index</span>
       <span class='index identifier id'>index</span> <span class='assign token'>=</span> <span class='what identifier id'>what</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span> <span class='minus op'>-</span> <span class='integer val'>1</span>
     <span class='elsif elsif kw'>elsif</span> <span class='how identifier id'>how</span> <span class='eq op'>==</span> <span class='symbol val'>:text</span>
@@ -483,13 +379,13 @@ Sets the attribute <tt>idents</tt>.
     <span class='merged identifier id'>merged</span> <span class='assign token'>=</span> <span class='attributes identifier id'>attributes</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='ident identifier id'>ident</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='v1 identifier id'>v1</span><span class='comma token'>,</span> <span class='v2 identifier id'>v2</span><span class='bitor op'>|</span>
       <span class='v1 identifier id'>v1</span> <span class='bitor op'>|</span> <span class='v2 identifier id'>v2</span>
     <span class='end end kw'>end</span>
-      
+
     <span class='id identifier id'>id</span> <span class='assign token'>=</span> <span class='Identifier constant id'>Identifier</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='ident identifier id'>ident</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span><span class='comma token'>,</span> <span class='merged identifier id'>merged</span><span class='rparen token'>)</span>
     <span class='comment val'># «original» identifier takes precedence for :text</span>
     <span class='id identifier id'>id</span><span class='dot token'>.</span><span class='text identifier id'>text</span> <span class='assign token'>=</span> <span class='ident identifier id'>ident</span><span class='dot token'>.</span><span class='text identifier id'>text</span> <span class='orop op'>||</span> <span class='text identifier id'>text</span>
     <span class='@condition_idents ivar id'>@condition_idents</span> <span class='lshft op'>&lt;&lt;</span> <span class='id identifier id'>id</span>
   <span class='end end kw'>end</span>
-  
+
   <span class='if if kw'>if</span> <span class='index identifier id'>index</span> <span class='eq op'>==</span> <span class='integer val'>0</span>
     <span class='element_by_idents identifier id'>element_by_idents</span><span class='lparen token'>(</span><span class='@condition_idents ivar id'>@condition_idents</span><span class='rparen token'>)</span>
   <span class='else else kw'>else</span>
@@ -610,122 +506,6 @@ Sets the attribute <tt>idents</tt>.
 <span class='def def kw'>def</span> <span class='find_by_xpath identifier id'>find_by_xpath</span><span class='lparen token'>(</span><span class='what identifier id'>what</span><span class='rparen token'>)</span>
   <span class='what identifier id'>what</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;.#{what}&quot;</span> <span class='if if_mod kw'>if</span> <span class='what identifier id'>what</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='integer val'>?/</span>
   <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getByXPath identifier id'>getByXPath</span><span class='lparen token'>(</span><span class='what identifier id'>what</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>get_by_idents</h3>
-</div><div id="get_by_idents-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>get_by_idents</span><span class='args'>(meth, idents)</span>
-    <span class='block'></span>
-  </tt>
-</div>
-
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element_locator.rb', line 107</span>
-
-<span class='def def kw'>def</span> <span class='get_by_idents identifier id'>get_by_idents</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='idents identifier id'>idents</span><span class='rparen token'>)</span>
-  <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAllHtmlChildElements identifier id'>getAllHtmlChildElements</span><span class='dot token'>.</span><span class='iterator identifier id'>iterator</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span>
-    <span class='if if kw'>if</span> <span class='@tags ivar id'>@tags</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='e identifier id'>e</span><span class='dot token'>.</span><span class='getTagName identifier id'>getTagName</span><span class='rparen token'>)</span>
-      <span class='idents identifier id'>idents</span><span class='dot token'>.</span><span class='any? fid id'>any?</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ident identifier id'>ident</span><span class='bitor op'>|</span>
-        <span class='next next kw'>next</span> <span class='unless unless_mod kw'>unless</span> <span class='ident identifier id'>ident</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span> <span class='eq op'>==</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='getTagName identifier id'>getTagName</span>
-        
-        <span class='attr_result identifier id'>attr_result</span> <span class='assign token'>=</span> <span class='ident identifier id'>ident</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='dot token'>.</span><span class='all? fid id'>all?</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span> 
-          <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='any? fid id'>any?</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='val identifier id'>val</span><span class='bitor op'>|</span> <span class='matches? fid id'>matches?</span><span class='lparen token'>(</span><span class='e identifier id'>e</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='key identifier id'>key</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='val identifier id'>val</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span> 
-        <span class='end end kw'>end</span> 
-        
-        <span class='if if kw'>if</span> <span class='ident identifier id'>ident</span><span class='dot token'>.</span><span class='text identifier id'>text</span>
-          <span class='attr_result identifier id'>attr_result</span> <span class='andop op'>&amp;&amp;</span> <span class='matches? fid id'>matches?</span><span class='lparen token'>(</span><span class='e identifier id'>e</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span><span class='comma token'>,</span> <span class='ident identifier id'>ident</span><span class='dot token'>.</span><span class='text identifier id'>text</span><span class='rparen token'>)</span> 
-        <span class='else else kw'>else</span>
-          <span class='attr_result identifier id'>attr_result</span>
-        <span class='end end kw'>end</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>matches?</h3>
-</div><div id="matches%3F-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>matches?</span><span class='args'>(string, what)</span>
-    <span class='block'></span>
-  </tt>
-</div>
-
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-127
-128
-129</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element_locator.rb', line 127</span>
-
-<span class='def def kw'>def</span> <span class='matches? fid id'>matches?</span><span class='lparen token'>(</span><span class='string identifier id'>string</span><span class='comma token'>,</span> <span class='what identifier id'>what</span><span class='rparen token'>)</span>
-  <span class='Regexp constant id'>Regexp</span> <span class='eqq op'>===</span> <span class='what identifier id'>what</span> <span class='integer val'>? </span><span class='string identifier id'>string</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='what identifier id'>what</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='string identifier id'>string</span> <span class='eq op'>==</span> <span class='what identifier id'>what</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>

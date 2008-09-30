@@ -16,7 +16,7 @@
   <h1 class="title">Class: Celerity::TextField</h1>
   <div class="section inheritance">
   <ul>
-  <li><a href="Element.html" title="Celerity::Element">Celerity::Element</a></li><ul><li><a href="InputElement.html" title="Celerity::InputElement">Celerity::InputElement</a></li><ul><li>Celerity::TextField</li>
+  <li><a title="Celerity::Element" href="Element.html">Celerity::Element</a></li><ul><li><a title="Celerity::InputElement" href="InputElement.html">Celerity::InputElement</a></li><ul><li>Celerity::TextField</li>
   </ul></ul></ul>
 </div><div class="section docstring">
   <p>
@@ -37,20 +37,20 @@ method
       <dd>:name</dd>
     
       <dt id="TAGS-constant">TAGS</dt>
-      <dd>[ Identifier.new('textarea'),              Identifier.new('input', :type =&gt; [&quot;text&quot;, &quot;password&quot;, /^(?!(file|radio|checkbox|submit|reset|image|button|hidden)$)/])  ]</dd>
+      <dd>[ Identifier.new('textarea'),             Identifier.new('input', :type =&gt; [&quot;text&quot;, &quot;password&quot;, /^(?!(file|radio|checkbox|submit|reset|image|button|hidden)$)/])  ]</dd>
     
   </dl>
 </div>
 <div class="inherited">
   
   <div>
-    <h1>Constants Inherited from <a href="InputElement.html" title="Celerity::InputElement">Celerity::InputElement</a></h1>
-    <p><span class='name'><a href="InputElement.html#ATTRIBUTES-constant" title="ATTRIBUTES">ATTRIBUTES</a></span></p>
+    <h1>Constants Inherited from <a title="Celerity::InputElement" href="InputElement.html">Celerity::InputElement</a></h1>
+    <p><span class='name'><a title="ATTRIBUTES" href="InputElement.html#ATTRIBUTES-constant">ATTRIBUTES</a></span></p>
   </div>
   
   <div>
-    <h1>Constants Inherited from <a href="Element.html" title="Celerity::Element">Celerity::Element</a></h1>
-    <p><span class='name'><a href="Element.html#BASE_ATTRIBUTES-constant" title="BASE_ATTRIBUTES">BASE_ATTRIBUTES</a></span>, <span class='name'><a href="Element.html#CELLHALIGN_ATTRIBUTES-constant" title="CELLHALIGN_ATTRIBUTES">CELLHALIGN_ATTRIBUTES</a></span>, <span class='name'><a href="Element.html#CELLVALIGN_ATTRIBUTES-constant" title="CELLVALIGN_ATTRIBUTES">CELLVALIGN_ATTRIBUTES</a></span>, <span class='name'><a href="Element.html#HTML_401_TRANSITIONAL-constant" title="HTML_401_TRANSITIONAL">HTML_401_TRANSITIONAL</a></span>, <span class='name'><a href="Element.html#TO_S_SIZE-constant" title="TO_S_SIZE">TO_S_SIZE</a></span></p>
+    <h1>Constants Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
+    <p><span class='name'><a title="BASE_ATTRIBUTES" href="Element.html#BASE_ATTRIBUTES-constant">BASE_ATTRIBUTES</a></span>, <span class='name'><a title="CELLHALIGN_ATTRIBUTES" href="Element.html#CELLHALIGN_ATTRIBUTES-constant">CELLHALIGN_ATTRIBUTES</a></span>, <span class='name'><a title="CELLVALIGN_ATTRIBUTES" href="Element.html#CELLVALIGN_ATTRIBUTES-constant">CELLVALIGN_ATTRIBUTES</a></span>, <span class='name'><a title="HTML_401_TRANSITIONAL" href="Element.html#HTML_401_TRANSITIONAL-constant">HTML_401_TRANSITIONAL</a></span>, <span class='name'><a title="TO_S_SIZE" href="Element.html#TO_S_SIZE-constant">TO_S_SIZE</a></span></p>
   </div>
   
 </div>
@@ -58,7 +58,7 @@ method
 </div><div class="section constructor">
 <h1>Constructor Summary</h1>
   <p class="inherited_msg">
-    This class inherits a constructor from <a href="Element.html#initialize-instance_method" title="Celerity::Element">Celerity::Element</a>.
+    This class inherits a constructor from <a title="Celerity::Element" href="Element.html#initialize-instance_method">Celerity::Element</a>.
   </p>
 </div><div class="section methodmissing">
   <h1>Dynamic Method Handling</h1>
@@ -66,7 +66,7 @@ method
   <p class="note">
     This class handles dynamic methods through the <tt>method_missing</tt> method
     
-      in the class <a href="Element.html" title="Celerity::Element">Celerity::Element</a>
+      in the class <a title="Celerity::Element" href="Element.html">Celerity::Element</a>
     
   </p>
 
@@ -75,7 +75,7 @@ method
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>method_missing</span><span class='args'>(meth, *args, &amp;blk)</span>
     <span class='block'></span>
   </tt>
@@ -99,7 +99,7 @@ Dynamically get element attributes.
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -156,7 +156,6 @@ NoMethodError if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-172
 173
 174
 175
@@ -166,19 +165,20 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 179
 180
 181
-182</pre>
+182
+183</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 172</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 173</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
-  
+
   <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
     <span class='assert_exists identifier id'>assert_exists</span>
     <span class='return return kw'>return</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
   <span class='end end kw'>end</span>
-  
+
   <span class='Log constant id'>Log</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='dstring node'>&quot;Element\#method_missing calling super with #{meth.inspect}&quot;</span>
   <span class='super super kw'>super</span>
 <span class='end end kw'>end</span>
@@ -197,7 +197,7 @@ NoMethodError if the element doesn&#8217;t support this attribute.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#append-instance_method" title="#append">#append</a></span><span class='args'>(value)</span>
+        <span class='name'><a title="#append" href="#append-instance_method">#append</a></span><span class='args'>(value)</span>
         <span class='block'></span>
         
       </th>
@@ -212,7 +212,7 @@ Append the given value to the text in the text field.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#clear-instance_method" title="#clear">#clear</a></span><span class='args'></span>
+        <span class='name'><a title="#clear" href="#clear-instance_method">#clear</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -227,7 +227,7 @@ Clear the text field.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#drag_contents_to-instance_method" title="#drag_contents_to">#drag_contents_to</a></span><span class='args'>(how, what)</span>
+        <span class='name'><a title="#drag_contents_to" href="#drag_contents_to-instance_method">#drag_contents_to</a></span><span class='args'>(how, what)</span>
         <span class='block'></span>
         
           <span class='alias'>#dragContentsTo</span>
@@ -246,7 +246,7 @@ dragging.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#set-instance_method" title="#set">#set</a></span><span class='args'>(value)</span>
+        <span class='name'><a title="#set" href="#set-instance_method">#set</a></span><span class='args'>(value)</span>
         <span class='block'></span>
         
       </th>
@@ -261,7 +261,7 @@ Set the text field to the given value.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#type-instance_method" title="#type">#type</a></span><span class='args'></span>
+        <span class='name'><a title="#type" href="#type-instance_method">#type</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -273,24 +273,12 @@ Set the text field to the given value.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#type_string-instance_method" title="#type_string">#type_string</a></span><span class='args'>(value)</span>
+        <span class='name'><a title="#value" href="#value-instance_method">#value</a></span><span class='args'></span>
         <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#value-instance_method" title="#value">#value</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-          <span class='alias'>#get_contents</span>
         
           <span class='alias'>#getContents</span>
+        
+          <span class='alias'>#get_contents</span>
         
       </th>
       <td class="docstring">
@@ -304,15 +292,22 @@ Returns the text in the text field.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#verify_contains-instance_method" title="#verify_contains">#verify_contains</a></span><span class='args'>(expected)</span>
+        <span class='name'><a title="#verify_contains" href="#verify_contains-instance_method">#verify_contains</a></span><span class='args'>(expected)</span>
         <span class='block'></span>
         
       </th>
       <td class="docstring">
         <p>
-A boolean version of Element#contains_text :P.
+A boolean version of Container#contains_text.
 </p>
 
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt>boolean</tt>
+              </span>
+          </p>
         
       </td>
     </tr>
@@ -320,13 +315,13 @@ A boolean version of Element#contains_text :P.
 </table><div class="inherited">
   
   <div>
-    <h1>Public Instance Methods Inherited from <a href="InputElement.html" title="Celerity::InputElement">Celerity::InputElement</a></h1>
-    <p><span class='name'><a href="InputElement.html#readonly%3F-instance_method" title="readonly?">readonly?</a></span></p>
+    <h1>Public Instance Methods Inherited from <a title="Celerity::InputElement" href="InputElement.html">Celerity::InputElement</a></h1>
+    <p><span class='name'><a title="readonly?" href="InputElement.html#readonly%3F-instance_method">readonly?</a></span></p>
   </div>
   
   <div>
-    <h1>Public Instance Methods Inherited from <a href="Element.html" title="Celerity::Element">Celerity::Element</a></h1>
-    <p><span class='name'><a href="Element.html#assert_exists-instance_method" title="assert_exists">assert_exists</a></span>, <span class='name'><a href="Element.html#attribute_string-instance_method" title="attribute_string">attribute_string</a></span>, <span class='name'><a href="Element.html#attribute_value-instance_method" title="attribute_value">attribute_value</a></span>, <span class='name'><a href="Element.html#exists%3F-instance_method" title="exists?">exists?</a></span>, <span class='name'><a href="Element.html#focus-instance_method" title="focus">focus</a></span>, <span class='name'><a href="Element.html#locate-instance_method" title="locate">locate</a></span>, <span class='name'><a href="Element.html#parent-instance_method" title="parent">parent</a></span>, <span class='name'><a href="Element.html#respond_to%3F-instance_method" title="respond_to?">respond_to?</a></span>, <span class='name'><a href="Element.html#text-instance_method" title="text">text</a></span>, <span class='name'><a href="Element.html#to_s-instance_method" title="to_s">to_s</a></span>, <span class='name'><a href="Element.html#to_xml-instance_method" title="to_xml">to_xml</a></span></p>
+    <h1>Public Instance Methods Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
+    <p><span class='name'><a title="assert_exists" href="Element.html#assert_exists-instance_method">assert_exists</a></span>, <span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="locate" href="Element.html#locate-instance_method">locate</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_s" href="Element.html#to_s-instance_method">to_s</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="visible?" href="Element.html#visible%3F-instance_method">visible?</a></span></p>
   </div>
   
 </div>
@@ -599,57 +594,11 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
 <span class='def def kw'>def</span> <span class='type identifier id'>type</span>
   <span class='assert_exists identifier id'>assert_exists</span>
   <span class='type identifier id'>type</span> <span class='assign token'>=</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='string val'>'type'</span><span class='rparen token'>)</span>
-  
+
   <span class='if if kw'>if</span> <span class='lbrack token'>[</span><span class='string val'>'file'</span><span class='comma token'>,</span> <span class='string val'>'radio'</span><span class='comma token'>,</span> <span class='string val'>'checkbox'</span><span class='comma token'>,</span> <span class='string val'>'submit'</span><span class='comma token'>,</span> <span class='string val'>'reset'</span><span class='comma token'>,</span> <span class='string val'>'image'</span><span class='comma token'>,</span> <span class='string val'>'button'</span><span class='comma token'>,</span> <span class='string val'>'hidden'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='rparen token'>)</span>
     <span class='type identifier id'>type</span>
   <span class='else else kw'>else</span>
     <span class='string val'>'text'</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>type_string</h3>
-</div><div id="type_string-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>type_string</span><span class='args'>(value)</span>
-    <span class='block'></span>
-  </tt>
-</div>
-
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-94
-95
-96
-97
-98</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 94</span>
-
-<span class='def def kw'>def</span> <span class='type_string identifier id'>type_string</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
-  <span class='JavaString constant id'>JavaString</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_java_bytes identifier id'>to_java_bytes</span><span class='comma token'>,</span> <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='page identifier id'>page</span><span class='dot token'>.</span><span class='getPageEncoding identifier id'>getPageEncoding</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='toCharArray identifier id'>toCharArray</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='char identifier id'>char</span><span class='bitor op'>|</span> 
-    <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='type identifier id'>type</span><span class='lparen token'>(</span><span class='char identifier id'>char</span><span class='rparen token'>)</span> 
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -677,9 +626,9 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
 <p class="aliases">
   <span class="aka">Also known as:</span>
   
-    <tt id="get_contents-instance_method">get_contents</tt>
-  
     <tt id="getContents-instance_method">getContents</tt>
+  
+    <tt id="get_contents-instance_method">get_contents</tt>
   
 </p>
 </div><div class="section docstring">
@@ -735,7 +684,7 @@ Returns the text in the text field.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'></span>
+    <span class='return_types'><tt>boolean</tt></span>
     <span class='name'>verify_contains</span><span class='args'>(expected)</span>
     <span class='block'></span>
   </tt>
@@ -743,8 +692,35 @@ Returns the text in the text field.
 
 </div><div class="section docstring">
   <p>
-A boolean version of Element#contains_text :P
+A boolean version of Container#contains_text
 </p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div><div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>boolean</tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
 
 </div><div class="section source">
   <span>[<a class="source_link" href="#">View source</a>]</span>
@@ -755,13 +731,13 @@ A boolean version of Element#contains_text :P
           <pre class="lines">
 
 
-88
-89
 90
-91</pre>
+91
+92
+93</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 88</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 90</span>
 
 <span class='def def kw'>def</span> <span class='verify_contains identifier id'>verify_contains</span><span class='lparen token'>(</span><span class='expected identifier id'>expected</span><span class='rparen token'>)</span>
   <span class='comment val'># assert_exists called by contains_text</span>

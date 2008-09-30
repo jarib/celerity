@@ -24,7 +24,7 @@
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#click-instance_method" title="#click">#click</a></span><span class='args'></span>
+        <span class='name'><a title="#click" href="#click-instance_method">#click</a></span><span class='args'></span>
         <span class='block'></span>
         
           <span class='alias'>#click_no_wait</span>
@@ -41,7 +41,7 @@ clicks the element.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#click_and_attach-instance_method" title="#click_and_attach">#click_and_attach</a></span><span class='args'></span>
+        <span class='name'><a title="#click_and_attach" href="#click_and_attach-instance_method">#click_and_attach</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -55,7 +55,7 @@ page.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="Browser.html" title="Celerity::Browser">Celerity::Browser</a></tt>
+                 <tt><a title="Celerity::Browser" href="Browser.html">Celerity::Browser</a></tt>
               </span>
           </p>
         
@@ -113,7 +113,7 @@ clicks the element
 <span class='def def kw'>def</span> <span class='click identifier id'>click</span>
   <span class='assert_exists identifier id'>assert_exists</span>
   <span class='assert_enabled identifier id'>assert_enabled</span> <span class='if if_mod kw'>if</span> <span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:assert_enabled</span><span class='rparen token'>)</span>
-  
+
   <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -133,7 +133,7 @@ clicks the element
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="Browser.html" title="Celerity::Browser">Celerity::Browser</a></tt></span>
+    <span class='return_types'><tt><a title="Celerity::Browser" href="Browser.html">Celerity::Browser</a></tt></span>
     <span class='name'>click_and_attach</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -158,7 +158,7 @@ page. This is useful for elements that trigger popups when clicked.
   
     <dt>
       
-        <span class='type'>[<tt><a href="Browser.html" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Browser" href="Browser.html">Celerity::Browser</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -167,24 +167,6 @@ page. This is useful for elements that trigger popups when clicked.
     </dt>
     <dd>
       <span class='desc'></span>
-    </dd>
-  
-  </dl>
-</div>
-<div class="since">
-  <h3>Since:</h3>
-  <dl>
-  
-    <dt>
-      
-      
-      
-    </dt>
-    <dd>
-      <span class='desc'><p>
-0.0.5
-</p>
-</span>
     </dd>
   
   </dl>
@@ -199,6 +181,7 @@ page. This is useful for elements that trigger popups when clicked.
           <pre class="lines">
 
 
+16
 17
 18
 19
@@ -206,19 +189,18 @@ page. This is useful for elements that trigger popups when clicked.
 21
 22
 23
-24
-25</pre>
+24</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 17</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 16</span>
 
 <span class='def def kw'>def</span> <span class='click_and_attach identifier id'>click_and_attach</span>
   <span class='assert_exists identifier id'>assert_exists</span>
   <span class='assert_enabled identifier id'>assert_enabled</span> <span class='if if_mod kw'>if</span> <span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:assert_enabled</span><span class='rparen token'>)</span>
-  
+
   <span class='browser identifier id'>browser</span> <span class='assign token'>=</span> <span class='Browser constant id'>Browser</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
   <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span><span class='rparen token'>)</span>
-  
+
   <span class='browser identifier id'>browser</span>
 <span class='end end kw'>end</span>
 </pre>
