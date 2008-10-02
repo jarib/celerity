@@ -68,7 +68,8 @@ module Celerity
     # @return [String] the URL of the current page
     def url
       assert_exists
-      @page.getWebResponse.getUrl.toString
+      # will be renamed getUrl => getRequestUrl
+      @page.getWebResponse.getUrl.toString 
     end
 
     # @return [String] the title of the current page

@@ -211,7 +211,7 @@ module Celerity
 
     def identifier_string
       if @conditions.size == 1
-        how, what = @conditions.to_a.flatten
+        how, what = @conditions.to_a.first
         "#{how.inspect} and #{what.inspect}"
       else
         @conditions.inspect

@@ -71,6 +71,16 @@ describe "Element" do
       @browser.div(:id, 'hidden_parent').should_not be_visible
     end
   end
+  
+  describe "#identifier_string" do
+    it "should not make the next locate find the wrong element" do
+      elem = @browser.div(:id, 'hidden_parent')
+      elem.should exist
+      def elem.public_identifier_string; identifier_string end # method is private
+      elem.public_identifier_string
+      elem.id.should == 'hidden_parent'
+    end
+  end
 
   describe "#method_missing" do
     it "should magically return the requested attribute if the attribute is defined in the attribute list" do
