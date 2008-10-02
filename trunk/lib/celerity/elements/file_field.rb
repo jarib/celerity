@@ -7,7 +7,7 @@ module Celerity
     # Set the file field to the given path
     def set(path)
       assert_exists
-      @object.setValueAttribute(path.to_s)
+      @container.update_page @object.setValueAttribute(path.to_s)
     end
   end
 end

@@ -31,7 +31,7 @@ module Celerity
       assert_exists
       raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
       @object.getOptions.select { |e| matches?(e.asText, value) }.each do |option|
-        @container.update_page(option.click)
+        @container.update_page option.click
       end
     end
     alias_method :set, :select

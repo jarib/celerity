@@ -122,7 +122,7 @@ TEXT
       url = TEST_HOST[%r{http://(.*)}, 1]
       url.should_not be_nil
       @browser.goto(url)
-      @browser.url.should == "http://#{url}"
+      @browser.url.should =~ %r[http://#{url}/?]
     end
 
     it "should go to the given url without raising errors" do
