@@ -27,17 +27,20 @@ module Celerity
     def each
       if @elements
         @elements.each { |e| yield(element_class.new(@container, :object, e)) }
-        @length
       else
         0.upto(@length - 1) { |i| yield iterator_object(i) }
       end
+
+      @length
     end
 
     # Get the element at the given index.
-    # NB! This is 1-indexed to keep compatibility with Watir. Subject to change.
+    # This is 1-indexed to keep compatibility with Watir - subject to change.
+    # Also note that because of Watir's lazy loading, this will return an Element
+    # instance even if the index is out of bounds.
     #
     # @param [Fixnum] n Index of wanted element, 1-indexed.
-    # @return [Celerity::Element, nil] Returns nil if index is out of bounds.
+    # @return [Celerity::Element] Returns a subclass of Celerity::Element
     def [](n)
       if @elements && @elements[n-1]
         element_class.new(@container, :object, @elements[n-1])
