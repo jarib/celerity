@@ -14,7 +14,7 @@ module Celerity
       @tags          = @idents.map { |e| e.tag.downcase }
     end
 
-    def find_by_conditions(conditions)
+    def find_by_conditions(conditions) # TODO: refactor without performance hit
       @condition_idents = []
       attributes = Hash.new { |h, k| h[k] = [] }
       index = 0 # by default, return the first matching element
@@ -83,7 +83,7 @@ module Celerity
         if @tags.include?(obj.getTagName)
           obj
         else
-          $stderr.puts "warning: multiple elements with identical id (#{what.inspect})? " if $VERBOSE
+          $stderr.puts "warning: multiple elements with identical id? (#{what.inspect})" if $VERBOSE
           elements_by_tag_names.find { |elem| elem.getIdAttribute == what }
         end
       else
@@ -92,7 +92,7 @@ module Celerity
     end
 
     def find_by_xpath(what)
-      what = ".#{what}" if what[0] == ?/
+      what = ".#{what}" if what[0].chr == "/"
       @object.getByXPath(what).to_a.first
     end
     

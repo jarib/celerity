@@ -73,8 +73,9 @@ module Celerity
     # Used internally. Find the element on the page.
     # @api private
     def locate
-      raise "BUG: no container object found when locating #{self.class} with #{identifier_string}" unless @container.object
-      @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
+      if @container.object
+        @object = ElementLocator.new(@container.object, self.class).find_by_conditions(@conditions)
+      end
     end
 
     # @return [String] A string representation of the element.
@@ -122,10 +123,8 @@ module Celerity
     # Checks if the element exists.
     # @return [true, false]
     def exists?
-      assert_exists
-      true
-    rescue UnknownObjectException, UnknownFrameException
-      false
+      locate
+      !!@object
     end
     alias_method :exist?, :exists?
     alias_method :exists, :exists?

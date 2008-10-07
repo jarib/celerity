@@ -12,12 +12,7 @@ module Celerity
     # Clear the text field.
     def clear
       assert_exists
-      case @object.getTagName
-      when 'textarea'
-        @object.setText('')
-      when 'input'
-        @object.setValueAttribute('')
-      end
+      insert_string ''
     end
 
     # Set the text field to the given value.
@@ -35,12 +30,8 @@ module Celerity
       assert_enabled
       assert_not_readonly
       clear
-      case @object.getTagName
-      when 'textarea'
-        @object.setText(value.to_s)
-      when 'input'
-        @object.setValueAttribute(value.to_s)
-      end
+
+      insert_string value.to_s
 
       value
     end
@@ -97,6 +88,17 @@ module Celerity
     def type_string(value)
       JavaString.new(value.to_java_bytes, @container.page.getPageEncoding).toCharArray.each do |char|
         @container.update_page @object.type(char)
+      end
+    end
+    
+    def insert_string(value)
+      case @object.getTagName
+      when 'textarea'
+        @object.setText(value)
+      when 'input'
+        @object.setValueAttribute(value)
+      else
+        raise "unknown tag name #{@object.getTagName.inspect} for #{self.class}"
       end
     end
   end
