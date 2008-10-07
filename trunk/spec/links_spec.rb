@@ -21,7 +21,7 @@ describe "Links" do
       @browser.links[3].id.should == "link_3"
     end
 
-    it "should return a Link object also when the index is out of bouds" do
+    it "should return a Link object also when the index is out of bounds" do
       @browser.links[2000].should_not be_nil
     end
   end
