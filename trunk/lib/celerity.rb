@@ -1,24 +1,10 @@
 $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
 raise "Celerity only works on JRuby at the moment." unless RUBY_PLATFORM =~ /java/
-# Celerity - JRuby wrapper for HtmlUnit
-module Celerity
-  Jars = Dir[File.dirname(__FILE__) + '/celerity/htmlunit/*.jar']
-end
-
 require 'java'
 JavaString = java.lang.String
 
-Celerity::Jars.each { |jar| require(jar) }
-
-module HtmlUnit
-  include_package 'com.gargoylesoftware.htmlunit'
-
-  module Html
-    include_package 'com.gargoylesoftware.htmlunit.html'
-  end
-end
-
+require "celerity/htmlunit"
 require "celerity/version"
 require "celerity/exception"
 require "celerity/clickable_element"
@@ -50,7 +36,6 @@ require "celerity/elements/table_row.rb"
 require "celerity/elements/text_field.rb"
 require "celerity/element_map"
 require "celerity/browser"
-
 require "celerity/watir_compatibility"
 
 require "logger"

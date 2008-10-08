@@ -197,9 +197,7 @@ module Celerity
       ret = []
       ret << "tag:".ljust(TO_S_SIZE) + element.getTagName unless element.getTagName.empty?
 
-      iterator = element.getAttributeEntriesIterator
-      while iterator.hasNext
-        attribute = iterator.next
+      element.getAttributes.each do |attribute|
         ret << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
       end
 
