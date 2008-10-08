@@ -139,7 +139,7 @@ module Celerity
 
     # Wait until the given block evaluates to true (Celerity-specific API)
     #
-    # @param [Fixnum] timeout How long to wait before timing out.
+    # @param [Fixnum] timeout Number of seconds to wait before timing out (default: 30).
     # @yieldparam [Celerity::Browser] browser The browser instance.
     # @see Celerity::Browser#resynchronized
     def wait_until(timeout = 30, &block)
@@ -153,7 +153,7 @@ module Celerity
 
     # Wait while the given block evaluates to true (Celerity-specific API)
     #
-    # @param [Fixnum] timeout How long to wait before timing out.
+    # @param [Fixnum] timeout Number of seconds to wait before timing out (default: 30).
     # @yieldparam [Celerity::Browser] browser The browser instance.
     # @see Celerity::Browser#resynchronized
     def wait_while(timeout = 30, &block)
