@@ -1,6 +1,6 @@
 class LoboFrame < Swing::JFrame
   def initialize
-    @frame_panel = org.lobobrowser.gui.HtmlPanel.new
+    @frame_panel = org.lobobrowser.gui.FramePanel.new
     super
     self.getContentPane.add(@frame_panel)
   end
