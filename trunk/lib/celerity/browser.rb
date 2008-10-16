@@ -82,6 +82,11 @@ module Celerity
       @page ? @page.getWebResponse.getContentAsString : ''
     end
 
+    # @return [String] the XML representation of the DOM
+    def xml
+      @page ? @page.asXml : ''
+    end
+
     # @return [String] a text representation of the current page
     def text
       return '' unless @page
