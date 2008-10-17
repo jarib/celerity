@@ -6,8 +6,10 @@ module Celerity
     attr_accessor :idents
 
 
-    def initialize(object, element_class)
-      @object        = object
+    def initialize(container, element_class)
+      container.assert_exists
+      
+      @object        = container.object
       @element_class = element_class
       @attributes    = @element_class::ATTRIBUTES # could check for 'strict' here?
       @idents        = @element_class::TAGS

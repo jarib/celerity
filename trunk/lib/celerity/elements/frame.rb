@@ -22,7 +22,7 @@ module Celerity
     # Override assert_exists to raise UnknownFrameException (for Watir compatibility)
     # @api private
     def assert_exists
-      locate unless @object
+      locate
       unless @object
         raise UnknownFrameException, "unable to locate frame, using #{identifier_string}"
       end

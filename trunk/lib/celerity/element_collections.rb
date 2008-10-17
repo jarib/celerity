@@ -16,7 +16,7 @@ module Celerity
       if @object
         @object.length
       else
-        @elements ||= ElementLocator.new(@container.object, element_class).elements_by_idents
+        @elements ||= ElementLocator.new(@container, element_class).elements_by_idents
         @elements.size
       end
     end

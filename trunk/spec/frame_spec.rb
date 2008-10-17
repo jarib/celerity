@@ -78,11 +78,11 @@ describe "Frame" do
   end
 
   it "should raise UnknownFrameException when accessing a non-existing frame" do
-    lambda { @browser.frame(:name, "no_such_name").p(:index, 1).id }.should raise_error(UnknownFrameException)
+    lambda { @browser.frame(:name, "no_such_name").id }.should raise_error(UnknownFrameException)
   end
 
   it "should raise UnknownFrameException when accessing a non-existing subframe" do
-    lambda { @browser.frame(:name, "frame1").frame(:name, "no_such_name").p(:index, 1).id }.should raise_error(UnknownFrameException)
+    lambda { @browser.frame(:name, "frame1").frame(:name, "no_such_name").id }.should raise_error(UnknownFrameException)
   end
 
   it "should raise UnknownObjectException when accessing a non-existing element inside an existing frame" do

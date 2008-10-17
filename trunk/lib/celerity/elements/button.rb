@@ -16,7 +16,7 @@ module Celerity
       # ugly..
       # this is done to make <button> and <input>-buttons look similar
       if (val = @conditions[:value])
-        locator = ElementLocator.new(@container.object, self.class)
+        locator = ElementLocator.new(@container, self.class)
         button_ident = Identifier.new('button')
         button_ident.text = val
         input_ident = Identifier.new('input', :type => %w[submit reset image button], :value => [val])
