@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>jquery test</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+	    (function ($) {
+			function makeEditable(){
+			    $(".editLink").click(function(event){
+			        // var editableContentId = '#' + getActionName(this.href);
+			        jQuery.ajax({
+			            url:this.href,
+			            timeout: 20000,
+			            error: function() {
+			                window.location = "error.action"
+			            },
+			            success: function(html) {
+			                // var bodyContent = getHtmlBodyContent(html);
+			                // if ($(editableContentId, bodyContent).length == 0) {
+			                //     window.location.reload();
+			                // }
+			                // $(editableContentId).replaceWith($(editableContentId, bodyContent));
+			                // $('#form').submit(executeEditable);
+			                // var registerListElementLinkOnLoad = createCategoryFunction($(editableContentId));
+			                // registerListElementLinkOnLoad();
+							$("#jquery").replaceWith(html);
+			            }
+			        });
+			        event.preventDefault();
+			        return false;
+			    });
+			}
+			
+			$(document).ready(makeEditable);
+	    })(jQuery);
+			
+		</script>
+	</head>
+	<body id="jquery" onload="">
+		<a href="/jquery2.html" class="editLink">editLink</a>
+		<div id="content">
+			nothing here
+		</div>
+	</body>
+</html>
