@@ -9,6 +9,7 @@ module Celerity
     def initialize(container, element_class)
       container.assert_exists
       
+      @container     = container
       @object        = container.object
       @element_class = element_class
       @attributes    = @element_class::ATTRIBUTES # could check for 'strict' here?
@@ -17,6 +18,8 @@ module Celerity
     end
 
     def find_by_conditions(conditions) # TODO: refactor without performance hit
+      raise "BUG: no container object when locating #{conditions.inspect} in #{@container.inspect}" unless @object
+      
       @condition_idents = []
       attributes = Hash.new { |h, k| h[k] = [] }
       index = 0 # by default, return the first matching element
