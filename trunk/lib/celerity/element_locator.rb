@@ -18,7 +18,7 @@ module Celerity
     end
 
     def find_by_conditions(conditions) # TODO: refactor without performance hit
-      raise "BUG: no container object when locating #{conditions.inspect} in #{@container.inspect}" unless @object
+      return nil unless @object # probably means we're on a TextPage (content-type is "text/plain")
       
       @condition_idents = []
       attributes = Hash.new { |h, k| h[k] = [] }

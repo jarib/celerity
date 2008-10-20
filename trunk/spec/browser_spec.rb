@@ -186,7 +186,7 @@ TEXT
     it "should raise ArgumentError when called with no arguments" do
       lambda { @browser.contains_text }.should raise_error(ArgumentError)
     end
-    
+
     it "should raise TypError when called with wrong arguments" do
       lambda { @browser.contains_text(nil) }.should raise_error(TypeError)
       lambda { @browser.contains_text(42) }.should raise_error(TypeError)
@@ -241,6 +241,12 @@ TEXT
       output.should include('Dubito, ergo cogito, ergo sum')
     end
   end
+
+  it "should raise UnknownObjectException when trying to access DOM elements on plain/text-page" do
+    @browser.goto(TEST_HOST + "/plain_text")
+    lambda { @browser.div(:id, 'foo').id }.should raise_error(UnknownObjectException)
+  end
+
 
   after :all do
     @browser.close
