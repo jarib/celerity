@@ -84,7 +84,9 @@ module Celerity
 
     # @return [String] the XML representation of the DOM
     def xml
-      @page ? @page.asXml : ''
+      return '' unless @page
+      return @page.asXml if @page.respond_to?(:asXml) 
+      return text # fallback to text (for exampel for "plain/text" pages)
     end
 
     # @return [String] a text representation of the current page
