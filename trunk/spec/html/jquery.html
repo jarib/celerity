@@ -5,41 +5,27 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 	    (function ($) {
-			function makeEditable(){
+			function init(){
 			    $(".editLink").click(function(event){
-			        // var editableContentId = '#' + getActionName(this.href);
-			        jQuery.ajax({
-			            url:this.href,
-			            timeout: 20000,
-			            error: function() {
-			                window.location = "error.action"
-			            },
-			            success: function(html) {
-			                // var bodyContent = getHtmlBodyContent(html);
-			                // if ($(editableContentId, bodyContent).length == 0) {
-			                //     window.location.reload();
-			                // }
-			                // $(editableContentId).replaceWith($(editableContentId, bodyContent));
-			                // $('#form').submit(executeEditable);
-			                // var registerListElementLinkOnLoad = createCategoryFunction($(editableContentId));
-			                // registerListElementLinkOnLoad();
-							$("#jquery").replaceWith(html);
-			            }
-			        });
+			        var scriptTag = "<scri" + "pt> function update() { return 0; } </s" + "cript>";
+			        $('#script').replaceWith(scriptTag);
+			        $('#content').append(typeof(update));
 			        event.preventDefault();
 			        return false;
 			    });
 			}
 			
-			$(document).ready(makeEditable);
+			$(document).ready(init);
 	    })(jQuery);
-			
 		</script>
 	</head>
 	<body id="jquery" onload="">
-		<a href="/jquery2.html" class="editLink">editLink</a>
+	  <div id="script"></div>
+	  
+	  
+		<a href="http://www.google.com" class="editLink">add function</a>
 		<div id="content">
-			nothing here
+			typeof update: 
 		</div>
 	</body>
 </html>
