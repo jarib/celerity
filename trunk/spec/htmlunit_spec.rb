@@ -26,12 +26,10 @@ describe "HtmlUnit bugs" do
     end
   end
   
-  describe "HtmlUnit bug XXXXXX (jquery 001)" do
-    it "should evaluate <script> tags injected in the DOM through JQuery's replaceWith() " do
-      @browser.goto(TEST_HOST + "/jquery.html")
-      @browser.link(:class, 'editLink').click
-      @browser.div(:id, 'content').text.should == "typeof update: function"
-    end
+  it "should evaluate <script> tags injected in the DOM through JQuery's replaceWith() - fixed in rev. 3598" do
+    @browser.goto(TEST_HOST + "/jquery.html")
+    @browser.link(:class, 'editLink').click
+    @browser.div(:id, 'content').text.should == "typeof update: function"
   end
 
   after :all do
