@@ -1,3 +1,5 @@
+require "uri"
+
 class DistributedViewer
 
   def initialize(browser)
@@ -5,9 +7,17 @@ class DistributedViewer
     @temp_file = File.expand_path("temp.html")
   end
 
-  def render_html(html, base_url = nil)
-    # haven't found a way to just render the given HTML string yet
-    File.open(@temp_file, "w") { |f| f << html }
+  def render_html(html, url = nil)
+    if url
+      uri = URI.parse(url)
+      base_url = "#{uri.scheme}://#{uri.host}"
+      # hack to get images/css rendering
+      html = %Q{<base href="#{base_url}" />\n#{html}}
+    end
+    
+    File.open(@temp_file, "w") do |f|
+      f << html
+    end
     @browser.goto(@temp_file)
   end
 
