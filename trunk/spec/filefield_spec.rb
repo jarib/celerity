@@ -113,6 +113,12 @@ describe "FileField" do
       @browser.div(:id, 'changed_language').text.should == "File onchange triggered"
       @browser.button(:name, "new_user_submit").click
     end
+    
+    it "should send content as correct content type for common file types" do
+      @browser.file_field(:name, "new_user_portrait").set("foo.doc")
+      obj = @browser.file_field(:name, "new_user_portrait").locate
+      obj.getContentType.should == "application/msword"
+    end
   end
 
   after :all do

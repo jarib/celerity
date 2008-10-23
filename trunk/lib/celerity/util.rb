@@ -1,7 +1,7 @@
 module Celerity
-  module ElementMap
-    # Some HtmlUnit classes are missing equivalents in Celerity. Shouldn't be too hard to fix.
-    # This is mostly used to implement Element#parent easily.
+  module Util
+    module_function
+    
     HtmlUnit2CelerityElement = {
       HtmlUnit::Html::HtmlAnchor           => Celerity::Link,
       HtmlUnit::Html::HtmlArea             => Celerity::Area,
@@ -43,9 +43,24 @@ module Celerity
       HtmlUnit::Html::HtmlTextInput        => Celerity::TextField,
       HtmlUnit::Html::HtmlUnorderedList    => Celerity::Ul
     }
-  end
-end
+   
+    def htmlunit2celerity(klass)
+      HtmlUnit2CelerityElement[klass]
+    end
+    
+    # HtmlUnit will recognize most common file types, but custom ones can be added here.
+    # Used for FileField uploads.
+    ContentTypes = {
+      ".doc" => "application/msword"
+    }
 
-class Celerity::Element
-  include Celerity::ElementMap
+    def content_type_for(path)
+      if ct = java.net.URLConnection.getFileNameMap.getContentTypeFor(path)
+        return ct
+      else
+        ContentTypes[File.extname(path)]
+      end
+    end
+    
+  end
 end

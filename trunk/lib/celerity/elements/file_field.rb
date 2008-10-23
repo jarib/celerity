@@ -7,7 +7,11 @@ module Celerity
     # Set the file field to the given path
     def set(path)
       assert_exists
-      @container.update_page @object.setValueAttribute(path.to_s)
+      path = path.to_s
+      @container.update_page @object.setValueAttribute(path)
+      unless @object.getContentType
+        @object.setContentType(Util.content_type_for(path))
+      end
     end
   end
 end

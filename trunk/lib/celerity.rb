@@ -34,7 +34,7 @@ require "celerity/elements/table_footer.rb"
 require "celerity/elements/table_header.rb"
 require "celerity/elements/table_row.rb"
 require "celerity/elements/text_field.rb"
-require "celerity/element_map"
+require "celerity/util"
 require "celerity/browser"
 require "celerity/watir_compatibility"
 
