@@ -204,20 +204,20 @@ describe "SelectList" do
   end
 
   describe "#getSelectedItems" do
-    it "should behave like #selected_items" do
+    it "should behave like #selected_options" do
       @browser.select_list(:name, "new_user_country").getSelectedItems.should == ["Norway"]
       @browser.select_list(:name, "new_user_languages").getSelectedItems.should == ["English", "Norwegian"]
     end
   end
 
   describe "#getAllContents" do
-    it "should behave like #contents" do
+    it "should behave like #options" do
       @browser.select_list(:name, "new_user_country").getAllContents.should == ["Denmark" ,"Norway" , "Sweden" , "United Kingdom", "USA"]
     end
   end
 
   describe "#clearSelection" do
-    it "should behave like #clear selection" do
+    it "should behave like #clear_selection" do
       @browser.select_list(:name, "new_user_languages").clearSelection
       @browser.select_list(:name, "new_user_languages").getSelectedItems.should be_empty
     end

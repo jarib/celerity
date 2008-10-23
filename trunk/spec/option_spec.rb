@@ -79,13 +79,13 @@ describe "Option" do
     it "should should be able to select the chosen option (page context)" do
       @browser.select_list(:name, "new_user_country").clear_selection
       @browser.option(:text, "Denmark").select
-      @browser.select_list(:name, "new_user_country").selected_items.should == ["Denmark"]
+      @browser.select_list(:name, "new_user_country").selected_options.should == ["Denmark"]
     end
 
     it "should should be able to select the chosen option (select_list context)" do
       @browser.select_list(:name, "new_user_country").clear_selection
       @browser.select_list(:name, "new_user_country").option(:text, "Denmark").select
-      @browser.select_list(:name, "new_user_country").selected_items.should == ["Denmark"]
+      @browser.select_list(:name, "new_user_country").selected_options.should == ["Denmark"]
     end
 
     it "should select the option when found by text (page context)" do

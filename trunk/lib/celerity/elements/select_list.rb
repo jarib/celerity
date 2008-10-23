@@ -4,13 +4,13 @@ module Celerity
     DEFAULT_HOW = :name
     
     # @return [Array<String>] An array of strings representing the text value of the select list's options.
-    def contents
+    def options
       assert_exists
       @object.getOptions.map { |e| e.asText }
     end
 
     # @return [Array<String>] An array of strings representing the text value of the currently selected options.
-    def selected_items
+    def selected_options
       assert_exists
       @object.getSelectedOptions.map { |e| e.asText }
     end

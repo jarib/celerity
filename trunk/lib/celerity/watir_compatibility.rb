@@ -61,8 +61,8 @@ module Celerity
   end
 
   class SelectList
-    alias_method :getSelectedItems, :selected_items
-    alias_method :getAllContents,   :contents
+    alias_method :getSelectedItems, :selected_options
+    alias_method :getAllContents,   :options
     alias_method :clearSelection,   :clear_selection
     alias_method :select_value,     :select
     alias_method :includes?,        :include?
