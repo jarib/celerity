@@ -5,7 +5,7 @@ namespace :jar do
 
   desc "Compile and create celerity-complete-#{Celerity::VERSION::STRING}.jar (includes HtmlUnit)"
   task :fat do
-    file_name = "celerity-complete-#{Celerity::VERSION::STRING}.jar"
+    file_name = "pkg/celerity-complete-#{Celerity::VERSION::STRING}.jar"
 
     ruby_files = Dir['lib/**/*.rb']
     jar_files  = Dir['lib/**/*.jar']
@@ -27,12 +27,13 @@ namespace :jar do
     end
     chdir top_dir, :verbose => true
 
+    mkdir_p "pkg"
     sh "jar", "cvf", file_name, '-C', target_dir, '.'
   end
 
   desc "Compile and create celerity-#{Celerity::VERSION::STRING}.jar"
   task :tiny do
-    file_name = "celerity-#{Celerity::VERSION::STRING}.jar"
+    file_name = "pkg/celerity-#{Celerity::VERSION::STRING}.jar"
 
     ruby_files = Dir['lib/**/*.rb']
 
@@ -41,6 +42,7 @@ namespace :jar do
 
     sh "jrubyc", "-d", "lib", "-t", target_dir, *ruby_files
 
+    mkdir_p "pkg"
     sh "jar", "cvf", file_name, '-C', target_dir, '.'
   end
 end
