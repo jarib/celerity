@@ -28,7 +28,9 @@ module Celerity
   #
   module Container
     include Celerity::Exception
-    attr_accessor :page_container
+    
+    # Points back to the Browser instance that contains this element
+    attr_accessor :browser
 
 
     # Check if the element contains the given text.
@@ -53,14 +55,14 @@ module Celerity
     # @api private
     def container=(container)
       @container = container
-      @page_container = container.page_container
+      @browser = container.browser
       container
     end
 
     # Used internally to update the page object.
     # @api private
     def update_page(page)
-      @page_container.page = page
+      @browser.page = page
     end
 
     # @return [Celerity::Frame]

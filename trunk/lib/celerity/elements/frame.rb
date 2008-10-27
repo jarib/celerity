@@ -29,7 +29,7 @@ module Celerity
     end
 
     def update_page(value)
-      @page_container.page = value.getEnclosingWindow.getTopWindow.getEnclosedPage
+      @browser.page = value.getEnclosingWindow.getTopWindow.getEnclosedPage
     end
 
     def to_s

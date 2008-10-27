@@ -35,10 +35,11 @@ module Celerity
 
       @opts            = opts
       @last_url, @page = nil
-      @page_container  = self
       @error_checkers  = []
-
-      self.log_level = :warning
+      
+      # for Container#browser
+      @browser  = self
+      self.log_level = @opts[:log_level] || :warning
 
       browser = @opts[:browser] == :firefox ?
           ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
