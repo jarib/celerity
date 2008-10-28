@@ -49,7 +49,7 @@ module Celerity
         if @attributes.include?(how)
           attributes[how] << what
         elsif how == :index
-          index = what.to_i - 1
+          index = what.to_i - INDEX_OFFSET
         elsif how == :text
           text = what
         else

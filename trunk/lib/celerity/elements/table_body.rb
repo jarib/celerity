@@ -13,7 +13,7 @@ module Celerity
 
     def [](index)
       assert_exists
-      TableRow.new(self, :object, @rows[index-1])
+      TableRow.new(self, :object, @rows[index - INDEX_OFFSET])
     end
 
     def length

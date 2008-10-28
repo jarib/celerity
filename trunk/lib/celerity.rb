@@ -4,6 +4,19 @@ raise "Celerity only works on JRuby at the moment." unless RUBY_PLATFORM =~ /jav
 require 'java'
 JavaString = java.lang.String
 
+require "logger"
+require "uri"
+require "pp"
+require "timeout"
+require "time"
+
+module Celerity
+  Log = Logger.new($DEBUG ? $stderr : nil)
+  Log.level = Logger::DEBUG
+  
+  INDEX_OFFSET = 1
+end
+
 require "celerity/htmlunit"
 require "celerity/version"
 require "celerity/exception"
@@ -37,17 +50,6 @@ require "celerity/elements/text_field.rb"
 require "celerity/util"
 require "celerity/browser"
 require "celerity/watir_compatibility"
-
-require "logger"
-require "uri"
-require "pp"
-require "timeout"
-require "time"
-
-module Celerity
-  Log = Logger.new($DEBUG ? $stderr : nil)
-  Log.level = Logger::DEBUG
-end
 
 # undefine deprecated methods to use them for Element attributes
 Object.send :undef_method, :id   if Object.method_defined? "id"

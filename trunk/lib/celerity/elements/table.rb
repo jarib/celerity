@@ -51,8 +51,12 @@ module Celerity
     # @return [Celerity::TableRow]
     def child_row(index)
       assert_exists
-      raise UnknownRowException, "Unable to locate a row at index #{index}" if @cells.length < index
-      TableRow.new(self, :object, @rows[index-1])
+      
+      if (index - INDEX_OFFSET) >= @cells.length 
+        raise UnknownRowException, "Unable to locate a row at index #{index}" 
+      end
+      
+      TableRow.new(self, :object, @rows[index - INDEX_OFFSET])
     end
     alias_method :[], :child_row
 
@@ -65,8 +69,11 @@ module Celerity
     # @return [Celerity::TableCell]
     def child_cell(index)
       assert_exists
-      raise UnknownCellException, "Unable to locate a cell at index #{index}" if @cells.length < index
-      TableCell.new(self, :object, @cells[index-1])
+
+      if (index - INDEX_OFFSET) >= @cells.length 
+        raise UnknownCellException, "Unable to locate a cell at index #{index}"
+      end
+      TableCell.new(self, :object, @cells[index - INDEX_OFFSET])
     end
 
     # The number of rows in the table
@@ -80,9 +87,9 @@ module Celerity
     # Default is the number of columns on the first row
     # @param [Fixnum] index An index, 1-indexed (optional).
     # @return [Fixnum]
-    def column_count(index = 1)
+    def column_count(index = INDEX_OFFSET)
       assert_exists
-      @object.getRow(index-1).getCells.length
+      @object.getRow(index - INDEX_OFFSET).getCells.length
     end
 
     # Returns the text of each cell in the the table as a two-dimensional array.

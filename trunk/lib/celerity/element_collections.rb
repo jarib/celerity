@@ -42,10 +42,10 @@ module Celerity
     # @param [Fixnum] n Index of wanted element, 1-indexed.
     # @return [Celerity::Element] Returns a subclass of Celerity::Element
     def [](n)
-      if @elements && @elements[n-1]
-        element_class.new(@container, :object, @elements[n-1])
+      if @elements && @elements[n - INDEX_OFFSET]
+        element_class.new(@container, :object, @elements[n - INDEX_OFFSET])
       else
-        iterator_object(n-1)
+        iterator_object(n - INDEX_OFFSET)
       end
     end
 
