@@ -1,9 +1,8 @@
 $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
 raise "Celerity only works on JRuby at the moment." unless RUBY_PLATFORM =~ /java/
-require 'java'
-JavaString = java.lang.String
 
+require 'java'
 require "logger"
 require "uri"
 require "pp"
@@ -41,10 +40,8 @@ require "celerity/elements/option.rb"
 require "celerity/elements/radio_check.rb"
 require "celerity/elements/select_list.rb"
 require "celerity/elements/table.rb"
-require "celerity/elements/table_body.rb"
+require "celerity/elements/table_elements.rb"
 require "celerity/elements/table_cell.rb"
-require "celerity/elements/table_footer.rb"
-require "celerity/elements/table_header.rb"
 require "celerity/elements/table_row.rb"
 require "celerity/elements/text_field.rb"
 require "celerity/util"

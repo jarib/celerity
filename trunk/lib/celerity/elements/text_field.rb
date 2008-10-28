@@ -86,7 +86,7 @@ module Celerity
     private
 
     def type_string(value)
-      JavaString.new(value.to_java_bytes, @container.page.getPageEncoding).toCharArray.each do |char|
+      java.lang.String.new(value.to_java_bytes, @container.page.getPageEncoding).toCharArray.each do |char|
         @container.update_page @object.type(char)
       end
     end

@@ -1,8 +1,7 @@
 module Celerity
-  class TableBody < Element
-    include Enumerable # specs for this?
+  class TableElement < Element
+    include Enumerable
 
-    TAGS = [ Identifier.new('tbody') ]
     ATTRIBUTES = BASE_ATTRIBUTES | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES
     DEFAULT_HOW = :id
 
@@ -25,6 +24,18 @@ module Celerity
       assert_exists
       @rows.each { |row| yield TableRow.new(self, :object, row) }
     end
-
   end
+  
+  class TableBody < TableElement
+    TAGS = [ Identifier.new('tbody') ]
+  end
+
+  class TableFooter < TableElement
+    TAGS = [ Identifier.new('tfoot') ]
+  end
+  
+  class TableHeader < TableElement
+    TAGS = [ Identifier.new('thead') ]
+  end
+  
 end
