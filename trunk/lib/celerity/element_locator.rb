@@ -29,7 +29,7 @@ module Celerity
         case how
         when :object
           unless what.is_a? HtmlUnit::Html::HtmlElement
-            raise ArgumentError, "expected a HtmlUnit::Html::HtmlElement subclass, got #{what.inspect}:#{what.class}"
+            raise ArgumentError, "expected an HtmlUnit::Html::HtmlElement subclass, got #{what.inspect}:#{what.class}"
           end
           return what
         when :id
@@ -55,7 +55,6 @@ module Celerity
         else
           raise MissingWayOfFindingObjectException, "No how #{how.inspect}"
         end
-
       end
 
       @idents.each do |ident|
@@ -85,12 +84,10 @@ module Celerity
         elements_by_tag_names.find { |elem| elem.getIdAttribute =~ what }
       when String
         obj = @object.getHtmlElementById(what)
-        if @tags.include?(obj.getTagName)
-          obj
-        else
-          $stderr.puts "warning: multiple elements with identical id? (#{what.inspect})" if $VERBOSE
-          elements_by_tag_names.find { |elem| elem.getIdAttribute == what }
-        end
+        return obj if @tags.include?(obj.getTagName)
+
+        $stderr.puts "warning: multiple elements with identical id? (#{what.inspect})" if $VERBOSE
+        elements_by_tag_names.find { |elem| elem.getIdAttribute == what }
       else
         raise TypeError, "expected String or Regexp, got #{what.inspect}:#{what.class}"
       end
@@ -102,7 +99,8 @@ module Celerity
     end
     
     def find_by_label(what)
-      obj = elements_by_tag_names(['label']).find { |e| matches?(e.asText, what) }
+      obj = elements_by_tag_names(%w[label]).find { |e| matches?(e.asText, what) }
+      
       return nil unless obj && (ref = obj.getReferencedElement)
       return ref if @tags.include?(ref.getTagName)
       
@@ -121,30 +119,32 @@ module Celerity
 
     def get_by_idents(meth, idents)
       with_nullpointer_retry do
-        @object.getAllHtmlChildElements.iterator.send(meth) do |e|
-          if @tags.include?(e.getTagName)
-            idents.any? do |ident|
-              next unless ident.tag == e.getTagName
-
-              attr_result = ident.attributes.all? do |key, value|
-                value.any? { |val| matches?(e.getAttributeValue(key.to_s), val) }
-              end
-
-              if ident.text
-                attr_result && matches?(e.asText, ident.text)
-              else
-                attr_result
-              end
-            end
-          end
+        @object.getAllHtmlChildElements.send(meth) do |e|
+          next unless @tags.include?(e.getTagName)
+          idents.any? { |id| element_matches_ident?(e, id) }
         end
+      end
+    end
+    
+    def element_matches_ident?(element, ident)
+      return false if ident.tag != element.getTagName
+
+      attr_result = ident.attributes.all? do |key, values|
+        values.any? { |val| matches?(element.getAttributeValue(key.to_s), val) }
+      end
+
+      if ident.text
+        attr_result && matches?(element.asText, ident.text)
+      else
+        attr_result
       end
     end
 
     def elements_by_tag_names(tags = @tags)
       with_nullpointer_retry do
-        # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct order, making :index fail
-        @object.getAllHtmlChildElements.iterator.select do |elem|
+        # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct 
+        # order (making :index fail), so we're using getAllHtmlChildElements instead.
+        @object.getAllHtmlChildElements.select do |elem|
           tags.include?(elem.getTagName)
         end
       end

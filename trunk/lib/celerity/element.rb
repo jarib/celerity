@@ -127,7 +127,6 @@ module Celerity
       false
     end
     alias_method :exist?, :exists?
-    alias_method :exists, :exists?
 
     # Return a text representation of the element.
     # @return [String]
@@ -139,9 +138,6 @@ module Celerity
 
       @object.asText.strip
     end
-    alias_method :innerText,  :text
-    alias_method :inner_text, :text
-
 
     # @return [String] The normative XML representation of the element (including children).
     def to_xml
@@ -157,13 +153,10 @@ module Celerity
       assert_exists
 
       result = ''
-      iterator = @object.getAttributeEntriesIterator
-
-      while iterator.hasNext
-        attribute = iterator.next
+      @object.getAttributes.each do |attribute|
         result << %Q{#{attribute.getName}="#{attribute.getHtmlValue.to_s}"}
       end
-
+      
       result
     end
 

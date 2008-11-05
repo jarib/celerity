@@ -30,7 +30,7 @@ describe "Element" do
 
   describe "#locate" do
     it "should raise ArgumentError when used with :object and the object given isn't an HtmlElement subclass" do
-      lambda { Link.new(@browser, :object, "foo").locate }.should raise_error(ArgumentError, 'expected a HtmlUnit::Html::HtmlElement subclass, got "foo":String')
+      lambda { Link.new(@browser, :object, "foo").locate }.should raise_error(ArgumentError)
     end
 
   end

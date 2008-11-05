@@ -21,3 +21,13 @@ module Java::OrgW3cDom::NamedNodeMap
     end
   end
 end
+
+module Java::JavaLang::Iterable
+  include Enumerable
+  
+  def each
+    it = iterator
+    yield it.next while it.hasNext
+  end
+  
+end

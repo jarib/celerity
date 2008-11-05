@@ -41,6 +41,12 @@ module Celerity
     alias_method :body,             :tbody
     alias_method :bodies,           :tbodies
   end
+  
+  class Element
+    alias_method :exists,           :exists?
+    alias_method :innerText,        :text
+    alias_method :inner_text,       :text
+  end
 
   class Image
     alias_method :hasLoaded?,       :loaded?
