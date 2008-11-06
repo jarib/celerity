@@ -11,6 +11,7 @@ module Celerity
 
     def initialize(webclient)
       @webclient = webclient
+      @procs = Hash.new { |h, k| h[k] = [] }
     end
 
     # Add a listener block for one of the available types.
@@ -19,48 +20,47 @@ module Celerity
       case type
       when :status
         @webclient.setStatusHandler(self)
-        (@statuses ||= []) << block
       when :alert
         @webclient.setAlertHandler(self)
-        (@alerts ||= []) << block
       when :web_window_event
         @webclient.addWebWindowListener(self)
-        (@web_window_events ||= []) << block
       when :html_parser
         @webclient.setHTMLParserListener(self)
-        (@html_parsers ||= []) << block
       when :incorrectness
         @webclient.setIncorrectnessListener(self)
-        (@incorrects ||= []) << block
+      else
+        raise "unknown listener type #{type.inspect}"
       end
+      
+      @procs[type] << block
     end
 
     # interface StatusHandler
     def statusMessageChanged(page, message)
-      @statuses.each { |h| h.call(page, message) }
+      @procs[:status].each { |h| h.call(page, message) }
     end
 
     # interface AlertHandler
     def handleAlert(page, message)
-      @alerts.each { |h| h.call(page, message) }
+      @procs[:alert].each { |h| h.call(page, message) }
     end
 
     # interface WebWindowListener
     def webWindowClosed(web_window_event)
-      @web_window_events.each { |h| h.call(web_window_event) }
+      @procs[:web_window_event].each { |h| h.call(web_window_event) }
     end
     alias_method :webWindowOpened, :webWindowClosed
     alias_method :webWindowContentChanged, :webWindowClosed
 
     # interface HTMLParserListener
     def error(message, url, line, column, key)
-      @html_parsers.each { |h| h.call(message, url, line, column, key) }
+      @procs[:html_parser].each { |h| h.call(message, url, line, column, key) }
     end
     alias_method :warning, :error
 
     # interface IncorrectnessListener
     def notify(message, origin)
-      @incorrects.each { |h| h.call(message, origin) }
+      @procs[:incorrectness].each { |h| h.call(message, origin) }
     end
 
   end # Listener
