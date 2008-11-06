@@ -45,6 +45,7 @@ require "celerity/elements/table_cell.rb"
 require "celerity/elements/table_row.rb"
 require "celerity/elements/text_field.rb"
 require "celerity/util"
+require "celerity/listener"
 require "celerity/browser"
 require "celerity/watir_compatibility"
 

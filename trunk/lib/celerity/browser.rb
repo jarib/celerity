@@ -273,6 +273,20 @@ module Celerity
       value
     end
 
+    # Add a listener block for one of the available types.
+    # Types map to HtmlUnit interfaces like this:
+    #
+    #   :status           => StatusHandler
+    #   :alert            => AlertHandler (JavaScript alert() calls)
+    #   :web_window_event => WebWindowListener
+    #   :html_parser      => HTMLParserListener
+    #   :incorrectness    => IncorrectnessListener
+    #
+    def add_listener(type, &block)
+      @listener ||= Celerity::Listener.new(@webclient)
+      @listener.add_listener(type, &block)
+    end
+
     private
 
     # Configure the webclient according to the options given to #new.
