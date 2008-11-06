@@ -357,6 +357,10 @@ module Celerity
     def labels
       Labels.new(self)
     end
+    
+    def meta(*args)
+      Meta.new(self, *args)
+    end
 
     # @return [Celerity::H1]
     def h1(*args)

@@ -40,6 +40,11 @@ module Celerity
   class Map < NonControlElement
     TAGS = [ Identifier.new('map') ]
   end
+  
+  class Meta < NonControlElement
+    ATTRIBUTES = [:name, :id, :'http-equiv', :content, :scheme] | HTML_401_TRANSITIONAL[:i18n]
+    TAGS = [ Identifier.new('meta') ]
+  end
 
   class Area < NonControlElement
     ATTRIBUTES = ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt, :tabindex, :accesskey, :onfocus, :onblur]
@@ -49,18 +54,23 @@ module Celerity
   class H1 < NonControlElement
     TAGS = [ Identifier.new('h1') ]
   end
+  
   class H2 < NonControlElement
     TAGS = [ Identifier.new('h2') ]
   end
+  
   class H3 < NonControlElement
     TAGS = [ Identifier.new('h3') ]
   end
+  
   class H4 < NonControlElement
     TAGS = [ Identifier.new('h4') ]
   end
+  
   class H5 < NonControlElement
     TAGS = [ Identifier.new('h5') ]
   end
+  
   class H6 < NonControlElement
     TAGS = [ Identifier.new('h6') ]
   end

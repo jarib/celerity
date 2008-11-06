@@ -46,7 +46,7 @@ module Celerity
           how = :text
         end
 
-        if @attributes.include?(how)
+        if @attributes.include?(how = how.to_sym)
           attributes[how] << what
         elsif how == :index
           index = what.to_i - INDEX_OFFSET
