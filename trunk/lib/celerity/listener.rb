@@ -4,10 +4,10 @@ module Celerity
   # from HtmlUnit's WebClient.
   class Listener
     include com.gargoylesoftware.htmlunit.AlertHandler
-    include com.gargoylesoftware.htmlunit.StatusHandler
-    include com.gargoylesoftware.htmlunit.WebWindowListener
     include com.gargoylesoftware.htmlunit.html.HTMLParserListener
     include com.gargoylesoftware.htmlunit.IncorrectnessListener
+    include com.gargoylesoftware.htmlunit.StatusHandler
+    include com.gargoylesoftware.htmlunit.WebWindowListener
 
     def initialize(webclient)
       @webclient = webclient
@@ -29,10 +29,25 @@ module Celerity
       when :incorrectness
         @webclient.setIncorrectnessListener(self)
       else
-        raise "unknown listener type #{type.inspect}"
+        raise ArgumentError, "unknown listener type #{type.inspect}"
       end
-      
+
       @procs[type] << block
+    end
+
+    def remove_listener(type, proc_or_index)
+      unless @procs.has_key?(type)
+        raise ArgumentError, "unknown listener type #{type.inspect}"
+      end
+
+      case proc_or_index
+      when Fixnum
+        @procs[type].deleta_at proc_or_index
+      when Proc
+        @procs[type].delete proc_or_index
+      else
+        raise TypeError, "must give proc or index"
+      end
     end
 
     # interface StatusHandler
