@@ -6,38 +6,25 @@ describe "Listener" do
     @listener = Celerity::Listener.new(@web_client)
   end
 
-  describe "#add_listener" do
-    it "should add itself as a listener for the :status type" do
-      @web_client.should_receive('setStatusHandler').with(@listener)
-      @listener.add_listener(:status) {}
-    end
-
-    it "should add itself as a listener for the :alert type" do
-      @web_client.should_receive('setAlertHandler').with(@listener)
-      @listener.add_listener(:alert) {}
-    end
-
-    it "should add itself as a listener for the :web_window_event type" do
-      @web_client.should_receive('addWebWindowListener').with(@listener)
-      @listener.add_listener(:web_window_event) {}
-    end
-
-    it "should add itself as a listener for the :html_parser type" do
-      @web_client.should_receive('setHTMLParserListener').with(@listener)
-      @listener.add_listener(:html_parser) {}
-    end
-
-    it "should add itself as a listener for the :incorrectness type" do
-      @web_client.should_receive('setIncorrectnessListener').with(@listener)
-      @listener.add_listener(:incorrectness) {}
-    end
-  end
-
   it "should implement the StatusHandler interface" do
     @listener.should be_a_kind_of(com.gargoylesoftware.htmlunit.StatusHandler)
 
     @listener.should respond_to(:statusMessageChanged)
     lambda { @listener.statusMessageChanged('page', 'message') }.should_not raise_error
+  end
+
+  it "should implement the ConfirmHandler interface" do
+    @listener.should be_a_kind_of(com.gargoylesoftware.htmlunit.ConfirmHandler)
+
+    @listener.should respond_to(:handleConfirm)
+    lambda { @listener.handleConfirm('page', 'message') }.should_not raise_error
+  end
+
+  it "should implement the AttachmentHandler interface" do
+    @listener.should be_a_kind_of(com.gargoylesoftware.htmlunit.attachment.AttachmentHandler)
+
+    @listener.should respond_to(:handleAttachment)
+    lambda { @listener.handleAttachment('page') }.should_not raise_error
   end
 
   it "should implement the AlertHandler interface" do
@@ -74,6 +61,56 @@ describe "Listener" do
 
     @listener.should respond_to(:notify)
     lambda { @listener.notify('message', 'origin') }.should_not raise_error
+  end
+
+  it "should implement the PromptHandler interface" do
+    @listener.should be_a_kind_of(com.gargoylesoftware.htmlunit.PromptHandler)
+
+    @listener.should respond_to(:handlePrompt)
+    lambda { @listener.handlePrompt('page', 'message') }.should_not raise_error
+  end
+
+
+  describe "#add_listener" do
+    it "should add itself as a listener for the :status type" do
+      @web_client.should_receive('setStatusHandler').with(@listener)
+      @listener.add_listener(:status) {}
+    end
+
+    it "should add itself as a listener for the :alert type" do
+      @web_client.should_receive('setAlertHandler').with(@listener)
+      @listener.add_listener(:alert) {}
+    end
+    
+    it "should add itself as a listener for the :confirm type" do
+      @web_client.should_receive('setConfirmHandler').with(@listener)
+      @listener.add_listener(:confirm) {}
+    end
+
+    it "should add itself as a listener for the :prompt type" do
+      @web_client.should_receive('setPromptHandler').with(@listener)
+      @listener.add_listener(:prompt) {}
+    end
+    
+    it "should add itself as a listener for the :web_window_event type" do
+      @web_client.should_receive('addWebWindowListener').with(@listener)
+      @listener.add_listener(:web_window_event) {}
+    end
+
+    it "should add itself as a listener for the :html_parser type" do
+      @web_client.should_receive('setHTMLParserListener').with(@listener)
+      @listener.add_listener(:html_parser) {}
+    end
+
+    it "should add itself as a listener for the :incorrectness type" do
+      @web_client.should_receive('setIncorrectnessListener').with(@listener)
+      @listener.add_listener(:incorrectness) {}
+    end
+
+    it "should add itself as a listener for the :attachment type" do
+      @web_client.should_receive('setAttachmentHandler').with(@listener)
+      @listener.add_listener(:attachment) {}
+    end
   end
 
 end
