@@ -109,6 +109,10 @@ module Celerity
   class Options < ElementCollections
     def element_class; Option; end
   end
+  
+  class Metas < ElementCollections
+    def element_class; Meta; end
+  end
 
   class H1s < ElementCollections
     def element_class; H1; end

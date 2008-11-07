@@ -361,6 +361,10 @@ module Celerity
     def meta(*args)
       Meta.new(self, *args)
     end
+    
+    def metas(*args)
+      Metas.new(self, *args)
+    end
 
     # @return [Celerity::H1]
     def h1(*args)
