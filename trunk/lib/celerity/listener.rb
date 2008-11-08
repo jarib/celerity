@@ -51,7 +51,7 @@ module Celerity
 
       case proc_or_index
       when Fixnum
-        @procs[type].deleta_at proc_or_index
+        @procs[type].delete_at proc_or_index
       when Proc
         @procs[type].delete proc_or_index
       else

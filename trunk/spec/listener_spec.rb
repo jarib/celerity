@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/spec_helper"
 
 describe "Listener" do
   before(:each) do
-    @web_client = mock("WebClient")
+    @web_client = mock("WebClient", :null_object => true)
     @listener = Celerity::Listener.new(@web_client)
   end
 
@@ -110,6 +110,20 @@ describe "Listener" do
     it "should add itself as a listener for the :attachment type" do
       @web_client.should_receive('setAttachmentHandler').with(@listener)
       @listener.add_listener(:attachment) {}
+    end
+  end
+  
+  describe "#remove_listener" do
+    it "should remove the listener at the given index" do
+      updates = []
+      first, second = lambda { updates << :first }, lambda { updates << :second }
+      
+      @listener.add_listener(:prompt, &first)
+      @listener.add_listener(:prompt, &second)
+      
+      @listener.remove_listener(:prompt, 0)
+      @listener.handlePrompt('foo', 'bar')
+      updates.should == [:second]
     end
   end
 

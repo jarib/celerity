@@ -277,11 +277,16 @@ module Celerity
     # Types map to HtmlUnit interfaces like this:
     #
     #   :status           => StatusHandler
-    #   :alert            => AlertHandler (JavaScript alert() calls)
+    #   :alert            => AlertHandler  ( window.alert() )
     #   :web_window_event => WebWindowListener
     #   :html_parser      => HTMLParserListener
     #   :incorrectness    => IncorrectnessListener
+    #   :confirm          => ConfirmHandler ( window.confirm() )
+    #   :prompt           => PromptHandler ( window.prompt() )
+    # 
     #
+    # @param [Symbol] type One of the above symbols.
+    # @param [Proc] block A block to be executed for events of this type.
     def add_listener(type, &block)
       @listener ||= Celerity::Listener.new(@webclient)
       @listener.add_listener(type, &block)
