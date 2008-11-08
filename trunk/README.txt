@@ -21,7 +21,7 @@ It is a wrapper around the HtmlUnit Java library and is currently aimed at provi
 	
 == REQUIREMENTS:
 
-* JRuby 1.1 or higher
+* JRuby 1.1.5 or higher
 * Java 6
 
 == INSTALL:

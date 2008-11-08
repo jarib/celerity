@@ -46,7 +46,7 @@ module Celerity
       else
         raise ArgumentError, "wrong number of arguments (#{args.size} for 2)"
       end
-      
+
       @conditions.freeze
     end
 
@@ -90,10 +90,8 @@ module Celerity
     end
 
     # Check if the element is visible to the user or not.
-    # Note that this only takes the _style attribute_ of this element (and 
+    # Note that this only takes the _style attribute_ of the element (and
     # its parents) into account - styles from applied CSS is not considered.
-    #
-    # The same functionality exists in Watir by requiring 'watir/contrib/visible' 
     #
     # @return [boolean]
     def visible?
@@ -156,7 +154,7 @@ module Celerity
       @object.getAttributes.each do |attribute|
         result << %Q{#{attribute.getName}="#{attribute.getHtmlValue.to_s}"}
       end
-      
+
       result
     end
 
@@ -188,13 +186,18 @@ module Celerity
 
     def create_string(element)
       ret = []
-      ret << "tag:".ljust(TO_S_SIZE) + element.getTagName unless element.getTagName.empty?
+
+      unless (tag = element.getTagName).empty?
+        ret << "tag:".ljust(TO_S_SIZE) + tag
+      end
 
       element.getAttributes.each do |attribute|
         ret << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
       end
 
-      ret << "  text:".ljust(TO_S_SIZE+2) + element.asText unless element.asText.empty?
+      unless (text = element.asText).empty?
+        ret << "  text:".ljust(TO_S_SIZE+2) + element.asText
+      end
 
       ret.join("\n")
     end

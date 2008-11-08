@@ -36,9 +36,8 @@ module Celerity
       @opts            = opts
       @last_url, @page = nil
       @error_checkers  = []
-      
-      # for Container#browser
-      @browser  = self
+      @browser         = self # for Container#browser
+
       self.log_level = @opts[:log_level] || :warning
 
       browser = @opts[:browser] == :firefox ?
@@ -70,7 +69,7 @@ module Celerity
     def url
       assert_exists
       # will be renamed getUrl => getRequestUrl
-      @page.getWebResponse.getUrl.toString 
+      @page.getWebResponse.getUrl.toString
     end
 
     # @return [String] the title of the current page
@@ -86,7 +85,7 @@ module Celerity
     # @return [String] the XML representation of the DOM
     def xml
       return '' unless @page
-      return @page.asXml if @page.respond_to?(:asXml) 
+      return @page.asXml if @page.respond_to?(:asXml)
       return text # fallback to text (for exampel for "plain/text" pages)
     end
 
@@ -283,7 +282,7 @@ module Celerity
     #   :incorrectness    => IncorrectnessListener
     #   :confirm          => ConfirmHandler ( window.confirm() )
     #   :prompt           => PromptHandler ( window.prompt() )
-    # 
+    #
     #
     # @param [Symbol] type One of the above symbols.
     # @param [Proc] block A block to be executed for events of this type.
@@ -312,13 +311,15 @@ module Celerity
 
       if new_page && (new_page != @page)
         self.page = new_page
+      else
+        Log.debug "unneccessary refresh"
       end
     end
 
     # Render the current page on the viewer.
     # @api private
     def render
-      @viewer.render_html(html, url)
+      @viewer.render_html(xml, url)
     rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
       @viewer = nil
     end
