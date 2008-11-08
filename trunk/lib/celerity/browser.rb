@@ -300,7 +300,7 @@ module Celerity
       @webclient.throwExceptionOnScriptError = false unless @opts[:javascript_exceptions]
       @webclient.throwExceptionOnFailingStatusCode = false unless @opts[:status_code_exceptions]
       @webclient.cssEnabled = false unless @opts[:css]
-      @webclient.useInsecureSSL = true if @opts[:secure_ssl]
+      @webclient.useInsecureSSL = @opts[:secure_ssl] == false
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if @opts[:resynchronize]
     end
 
