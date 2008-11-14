@@ -123,15 +123,9 @@ describe "Table" do
 
   describe "#each" do
     it "should iterate through the table's rows" do
-      index = 1
-      @browser.table(:id, 'outer').each do |r|
-        case index
-        when 1
-          r.text.should == "Table 1, Row 1, Cell 1 Table 1, Row 1, Cell 2"
-        when 3
-          r.text.should == "Table 1, Row 3, Cell 1 Table 1, Row 3, Cell 2"
-        end
-        index += 1
+      ids = ["outer_first", "outer_second", "outer_last"]
+      @browser.table(:id, 'outer').each_with_index do |r, idx|
+        r.id.should == ids[idx]
       end
     end
   end

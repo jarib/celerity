@@ -58,13 +58,9 @@ module Celerity
       end
 
       @idents.each do |ident|
-        merged = attributes.merge(ident.attributes) do |key, v1, v2|
-          v1 | v2
-        end
-
+        merged = attributes.merge(ident.attributes) { |key, v1, v2| v1 | v2 }
         id = Identifier.new(ident.tag, merged)
-        # «original» identifier takes precedence for :text
-        id.text = ident.text || text
+        id.text = ident.text || text # «original» identifier takes precedence for :text
         @condition_idents << id
       end
 
@@ -127,7 +123,7 @@ module Celerity
     end
     
     def element_matches_ident?(element, ident)
-      return false if ident.tag != element.getTagName
+      return false unless ident.tag == element.getTagName
 
       attr_result = ident.attributes.all? do |key, values|
         values.any? { |val| matches?(element.getAttributeValue(key.to_s), val) }

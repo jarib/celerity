@@ -22,7 +22,7 @@ describe "HtmlUnit bugs" do
   describe "HtmlUnit bug XXXXXX" do
     it "should return strings as UTF-8 when there's a charset mismatch between HTTP response header and <meta> tag" do
       @browser.goto(TEST_HOST + "/charset_mismatch")
-      @browser.text.should == "\303\270"
+      @browser.h1(:index, 1).text.should == "\303\270"
     end
   end
   

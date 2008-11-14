@@ -52,7 +52,7 @@ module Celerity
     def child_row(index)
       assert_exists
       
-      if (index - INDEX_OFFSET) >= @cells.length 
+      if (index - INDEX_OFFSET) >= @rows.length 
         raise UnknownRowException, "Unable to locate a row at index #{index}" 
       end
       

@@ -84,15 +84,8 @@ describe "TableRow" do
 
   describe "#each" do
     it "should iterate correctly through the cells of the row" do
-      index = 1
-      @browser.table(:id, 'outer')[2].each do |c|
-        case index
-        when 1
-          c.text.should == "Table 1, Row 2, Cell 1"
-        when 2
-          c.text.should == "Table 1, Row 2, Cell 2 Table 2, Row 1, Cell 1 Table 2, Row 1, Cell 2"
-        end
-        index += 1
+      @browser.table(:id, 'outer')[2].each_with_index do |cell,idx|
+        cell.id.should == "t1_r2_c#{idx + 1}"
       end
     end
   end

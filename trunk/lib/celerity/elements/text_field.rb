@@ -5,8 +5,9 @@ module Celerity
   # This class is the main class for Text Fields
   # Normally a user would not need to create this object as it is returned by the Watir::Container#text_field method
   class TextField < InputElement
+    NON_TEXT_TYPES = %w[file radio checkbox submit reset image button hidden]
     TAGS = [ Identifier.new('textarea'),
-             Identifier.new('input', :type => ["text", "password", /^(?!(file|radio|checkbox|submit|reset|image|button|hidden)$)/])  ]
+             Identifier.new('input', :type => ["text", "password", /^(?!(#{ Regexp.union(*NON_TEXT_TYPES) })$)/])  ]
     DEFAULT_HOW = :name
 
     # Clear the text field.
@@ -59,7 +60,7 @@ module Celerity
       assert_exists
       type = @object.getAttributeValue('type')
 
-      if ['file', 'radio', 'checkbox', 'submit', 'reset', 'image', 'button', 'hidden'].include?(type)
+      if NON_TEXT_TYPES.include?(type)
         type
       else
         'text'

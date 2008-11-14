@@ -42,9 +42,9 @@ module Celerity
           <head>
             <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
           </head>
-        <body>
-        ø
-        </body>
+          <body>
+            <h1>ø</h1>
+          </body>
         </html>
       }
     end
