@@ -56,7 +56,7 @@ module Celerity
       assert_exists
 
       obj = @object.parentNode
-      until element_class = Util.htmlunit2celerity(obj.class)
+      until element_class = Celerity::Util.htmlunit2celerity(obj.class)
         return nil if obj.nil?
         obj = obj.parentNode
       end

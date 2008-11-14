@@ -10,7 +10,7 @@ module Celerity
       path = path.to_s
       @container.update_page @object.setValueAttribute(path)
       unless @object.getContentType
-        @object.setContentType(Util.content_type_for(path))
+        @object.setContentType(Celerity::Util.content_type_for(path))
       end
     end
   end
