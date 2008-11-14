@@ -116,7 +116,6 @@ module Celerity
     end
     alias_method :tfeet, :tfoots # :-)
 
-
     # @return [Celerity::TableCell]
     def cell(*args)
       TableCell.new(self, *args)
@@ -125,6 +124,20 @@ module Celerity
     # @return [Celerity::TableCells]
     def cells
       TableCells.new(self)
+    end
+    
+    # Watir's cells() won't return <th> elements. 
+    # This is a workaround.
+    #
+    # @return [Celerity::Th]
+    def th(*args)
+      Th.new(self, *args)
+    end
+    
+    # TODO: implement or change api, 
+    # @see th
+    def ths
+      raise NotImplementedError
     end
 
     # @return [Celerity::TableRow]

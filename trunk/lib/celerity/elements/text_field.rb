@@ -75,8 +75,21 @@ module Celerity
       self.value = ''
       @container.text_field(how, what).append(val)
     end
+    
+    def contains_text(expected_text)
+      assert_exists
 
-    # A boolean version of Container#contains_text
+      case expected_text
+      when Regexp
+        value() =~ expected_text
+      when String
+        value().index(expected_text)
+      else
+        raise TypeError, "expected String or Regexp, got #{expected_text.inspect}:#{expected_text.class}"
+      end
+    end
+
+    # A boolean version of TextField#contains_text
     # @param  [String, Regexp] expected_text The text to look for.
     # @return [boolean]
     def verify_contains(expected)

@@ -10,7 +10,7 @@ module Celerity
 
     DEFAULT_HOW = :id
 
-    alias_method :to_s, :text
+    alias_method :to_s, :text # why?
 
     def colspan
       assert_exists
@@ -19,4 +19,10 @@ module Celerity
     end
 
   end
+  
+  # needs code review regarding attributes/correctness of this
+  class Th < TableCell 
+    TAGS = [ Identifier.new('th')]
+  end
+  
 end

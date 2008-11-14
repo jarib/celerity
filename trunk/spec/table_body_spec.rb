@@ -93,10 +93,10 @@ describe "TableBody" do
   describe "#each" do
     it "should iterate through rows correctly" do
       body = @browser.table(:index, 1).body(:id, 'first')
-      expected_texts = ["March 2008", "Gregory House", "Hugh Laurie"]
+      expected_texts = ["march", "gregory", "hugh"]
       
       body.each_with_index do |row, idx|
-        row.cell(:index, 1).text.should == expected_texts[idx]
+        row.id.should == expected_texts[idx]
       end
       
     end

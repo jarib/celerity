@@ -83,14 +83,9 @@ describe "TableFooter" do
   describe "#each" do
     it "should iterate through rows correctly" do
       tfoot = @browser.table(:index, 1).tfoot(:id, 'tax_totals')
-      index = 1
-      tfoot.each do |r|
-        r.name.should == @browser.row(:index, index).name
-        r.id.should == @browser.row(:index, index).id
-        r.value.should == @browser.row(:index, index).value
-        index += 1
+      tfoot.each_with_index do |r, idx|
+        r.id.should == "tfoot_row_#{idx + 1}"
       end
-      index.should_not == 1
     end
   end
 
