@@ -68,13 +68,13 @@ describe "TableFooter" do
 
   describe "#[]" do
     it "should return the row at the given index (page context)" do
-      @browser.tfoot(:id, 'tax_totals')[1].text.should == 'Sum 24 349 5 577 18 722'
+      @browser.tfoot(:id, 'tax_totals')[1].id.should == 'tfoot_row_1'
       @browser.tfoot(:id, 'tax_totals')[1][2].text.should == '24 349'
       @browser.tfoot(:id, 'tax_totals')[1][3].text.should == '5 577'
     end
 
     it "should return the row at the given index (table context)" do
-      @browser.table(:index, 1).tfoot(:id, 'tax_totals')[1].text.should == 'Sum 24 349 5 577 18 722'
+      @browser.table(:index, 1).tfoot(:id, 'tax_totals')[1].id.should == "tfoot_row_1"
       @browser.table(:index, 1).tfoot(:id, 'tax_totals')[1][2].text.should == '24 349'
       @browser.table(:index, 1).tfoot(:id, 'tax_totals')[1][3].text.should == '5 577'
     end

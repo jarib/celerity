@@ -12,7 +12,7 @@
             <colgroup width="25%" align="left"></colgroup>
             <colgroup width="25%" span="3" align="right"></colgroup>
             <thead id="tax_headers">
-                <tr style="border-bottom: 1px solid black;" class="dark">
+                <tr style="border-bottom: 1px solid black;" class="dark" id="thead_row_1">
                     <th></th>
                     <th id="before_tax" axis="cash" abbr="Before tax">Before income tax</th>
                     <th id="tax" axis="cash" abbr="Tax">Income tax</th>
@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tfoot id="tax_totals">
-                <tr class="dark">
+                <tr class="dark" id="tfoot_row_1">
                     <th axis="sum">Sum</th>
                     <td headers="before_tax">24 349</td>
                     <td headers="tax">5 577</td>
@@ -78,11 +78,11 @@
                     Table 1, Row 1, Cell 2
                 </td>
             </tr>
-            <tr>
+            <tr id="outer_second">
                 <td id="t1_r2_c1">
                     Table 1, Row 2, Cell 1
                 </td>
-                <td>
+                <td id="t1_r2_c2">
                     Table 1, Row 2, Cell 2
                     <table border="1" id="inner">
                         <tr id="inner_first">

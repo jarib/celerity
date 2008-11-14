@@ -68,13 +68,13 @@ describe "TableHeader" do
 
   describe "#[]" do
     it "should return the row at the given index (page context)" do
-      @browser.thead(:id, 'tax_headers')[1].text.should == 'Before income tax Income tax After income tax'
+      @browser.thead(:id, 'tax_headers')[1].id.should == 'thead_row_1'
       @browser.thead(:id, 'tax_headers')[1][2].text.should == 'Before income tax'
       @browser.thead(:id, 'tax_headers')[1][3].text.should == 'Income tax'
     end
 
     it "should return the row at the given index (table context)" do
-      @browser.table(:index, 1).thead(:id, 'tax_headers')[1].text.should == 'Before income tax Income tax After income tax'
+      @browser.table(:index, 1).thead(:id, 'tax_headers')[1].id.should == 'thead_row_1'
       @browser.table(:index, 1).thead(:id, 'tax_headers')[1][2].text.should == 'Before income tax'
       @browser.table(:index, 1).thead(:id, 'tax_headers')[1][3].text.should == 'Income tax'
     end

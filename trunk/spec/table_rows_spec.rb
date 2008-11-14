@@ -24,11 +24,11 @@ describe "TableRows" do
 
   describe "#[]" do
     it "should return the row at the given index (table context)" do
-      @browser.table(:id, 'outer').rows[1].text.should == "Table 1, Row 1, Cell 1 Table 1, Row 1, Cell 2"
+      @browser.table(:id, 'outer').rows[1].id.should == "outer_first"
     end
 
     it "should return the row at the given index (page context)" do
-      @browser.rows[1].text.should == "Before income tax Income tax After income tax"
+      @browser.rows[1].id.should == "thead_row_1"
     end
   end
 
