@@ -27,7 +27,7 @@ end
 # = Debugger =
 # ============
 
-if ENV['DEBUGGER']
+if ENV['DEBUGGER'] || $DEBUG
   require "ruby-debug"
   Debugger.start
   Debugger.settings[:autoeval] = true

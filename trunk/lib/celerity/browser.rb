@@ -94,18 +94,9 @@ module Celerity
       return '' unless @page
 
       if @page.respond_to?("getContent")
-        @page.getContent
+        @page.getContent.strip
       else
-        # # this has minimal whitespace
-        @page.documentElement.asText
-
-        # if @opts[:browser] == :firefox
-        #   # # this is what firewatir does - only works with HtmlUnit::BrowserVersion::FIREFOX_2
-        #   res = execute_script("document.body.textContent").getJavaScriptResult
-        # else
-        #   # this only works with HtmlUnit::BrowserVersion::INTERNET_EXPLORER_*, and isn't identical to Watir's ole_object.innerText
-        #   res = execute_script("document.body.innerText").getJavaScriptResult
-        # end
+        @page.documentElement.getTextContent.strip
       end
     end
 
