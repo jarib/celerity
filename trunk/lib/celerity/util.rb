@@ -51,7 +51,7 @@ module Celerity
     # HtmlUnit will recognize most common file types, but custom ones can be added here.
     # Used for FileField uploads.
     ContentTypes = {
-      ".doc" => "application/msword"
+      ".doc" => "application/msword",
     }
 
     def content_type_for(path)
@@ -60,6 +60,11 @@ module Celerity
       else
         ContentTypes[File.extname(path)]
       end
+    end
+    
+    def normalize_text(string)
+      string.gsub("\302\240", " "). # non-breaking space 00A0
+             strip
     end
     
   end

@@ -130,7 +130,7 @@ module Celerity
     # @return [String]
     def text
       assert_exists
-      @object.getTextContent.strip
+      Celerity::Util.normalize_text @object.getTextContent
     end
 
     # @return [String] The normative XML representation of the element (including children).

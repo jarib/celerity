@@ -1,6 +1,6 @@
 module Celerity
   class TableRow < Element
-    include Enumerable # specs for this?
+    include Enumerable
 
     TAGS = [ Identifier.new('tr') ]
     DEFAULT_HOW = :id
