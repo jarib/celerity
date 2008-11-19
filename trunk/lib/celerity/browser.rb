@@ -134,6 +134,22 @@ module Celerity
       assert_exists
       @page.executeJavaScript(source.to_s).getJavaScriptResult
     end
+    
+    # experimental
+    def send_keys(keys)
+      keys = keys.gsub(/\s*/, '').scan(/((?:\{[A-Z]+?\})|.)/u).flatten
+      keys.each do |key|
+        element = @page.getFocusedElement
+        case key
+        when "{TAB}"
+          @page.tabToNextElement
+        when /\w/
+          element.type(key)
+        else
+          raise NotImplementedError
+        end
+      end
+    end
 
     # Wait until the given block evaluates to true (Celerity-specific API)
     #
