@@ -44,7 +44,7 @@ describe "Spans" do
                               "  value:        invalid_attribute\n" +
                               "  text:         Sed pretium metus et quam. Nullam odio dolor, vestibulum non, tempor ut, vehicula sed, sapien. Vestibulum placerat ligula at quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n" +
                               "tag:          span\n" +
-                              "  text:         Suspendisse at ipsum a turpis viverra venenatis. Praesent ut nibh. Nullam eu odio. Donec tempor, elit ut lacinia porttitor, augue neque vehicula diam, in elementum ligula nisi a tellus. Aliquam vestibulum ultricies tortor. \n" +
+                              "  text:         Suspendisse at ipsum a turpis viverra venenatis. Praesent ut nibh. Nullam eu odio. Donec tempor, elit ut lacinia porttitor, augue neque vehicula diam, in elementum ligula nisi a tellus. Aliquam vestibulum ultricies tortor.\n" +
                               "tag:          span\n" +
                               "  text:         Dubito, ergo cogito, ergo sum.\n" +
                               "tag:          span\n" +

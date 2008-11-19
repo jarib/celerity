@@ -184,15 +184,15 @@ module Celerity
       ret = []
 
       unless (tag = element.getTagName).empty?
-        ret << "tag:".ljust(TO_S_SIZE) + tag
+        ret << "tag:".ljust(TO_S_SIZE) + tag.strip
       end
 
       element.getAttributes.each do |attribute|
-        ret << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
+        ret << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s.strip
       end
 
       unless (text = element.asText).empty?
-        ret << "  text:".ljust(TO_S_SIZE+2) + element.asText
+        ret << "  text:".ljust(TO_S_SIZE+2) + text.strip
       end
 
       ret.join("\n")
