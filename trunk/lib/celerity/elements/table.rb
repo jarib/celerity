@@ -96,8 +96,11 @@ module Celerity
     # @return [Array<Array<String>>]
     def to_a
       assert_exists
-      @object.getRows.map do |table_row|
-        table_row.getCells.map { |td| td.asText }
+      # @object.getRows.map do |table_row|
+      #   table_row.getCells.map { |td| td.asText.strip }
+      # end
+      rows.map do |table_row|
+        table_row.map { |td| td.text }
       end
     end
 

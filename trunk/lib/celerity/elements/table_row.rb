@@ -10,6 +10,7 @@ module Celerity
       @cells = @object.getCells if @object
     end
 
+    # Yields each TableCell in this row cell to the given block.
     def each
       assert_exists
       @cells.each { |cell| yield TableCell.new(self, :object, cell) }
