@@ -70,7 +70,8 @@ module Celerity
     end
     
     def normalize_text(string)
-      string.gsub("\302\240", " "). # non-breaking space 00A0
+      string.gsub("\302\240", ' '). # non-breaking space 00A0
+             gsub(/\n|\t/, '' ).    # get rid of newlines/tabs ( could switch back to asText()? )
              strip
     end
     
