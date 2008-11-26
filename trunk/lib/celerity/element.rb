@@ -126,9 +126,22 @@ module Celerity
     end
     alias_method :exist?, :exists?
 
-    # Return a text representation of the element.
+    # Return a text representation of the element as it would appear in a browser.
+    #
+    # @see inner_text
     # @return [String]
     def text
+      assert_exists
+      @object.asText.strip
+    end
+
+    # Return the text content of this DOM node, disregarding its visibility.
+    #
+    # (Celerity-specific?)
+    #
+    # @see text
+    # @return [String]
+    def inner_text
       assert_exists
       Celerity::Util.normalize_text @object.getTextContent
     end

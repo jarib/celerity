@@ -96,10 +96,11 @@ module Celerity
       if @page.respond_to?("getContent")
         string = @page.getContent.strip
       else
-        string = @page.documentElement.getTextContent.strip
+        string = @page.documentElement.asText.strip
       end
       
-      Celerity::Util.normalize_text(string)
+      # Celerity::Util.normalize_text(string)
+      string
     end
 
     # Check if the current page contains the given text.
