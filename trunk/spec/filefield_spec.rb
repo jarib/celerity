@@ -108,9 +108,11 @@ describe "FileField" do
 
   describe "#set" do
     it "should be able to set a file path in the field and click the upload button and fire the onchange event" do
+      alerts = []
+      @browser.add_listener(:alert) { |_, msg| alerts << msg }
       @browser.file_field(:name, "new_user_portrait").set(__FILE__)
       @browser.file_field(:name, "new_user_portrait").value.should == __FILE__
-      @browser.div(:id, 'changed_language').text.should == "File onchange triggered"
+      alerts.should == [__FILE__]
       @browser.button(:name, "new_user_submit").click
     end
     

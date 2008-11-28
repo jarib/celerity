@@ -258,19 +258,22 @@ describe "SelectList" do
     end
 
     it "should fire onchange event when selecting an item" do
-      @browser.div(:id, "changed_language").text.should be_empty
+      alerts = []
+      @browser.add_listener(:alert) { |_, msg| alerts << msg }
       @browser.select_list(:id, "new_user_languages").select("Danish")
-      @browser.div(:id, "changed_language").text.should == "changed language"
-      @browser.refresh # to reset js
+      alerts.should == ['changed language']
     end
 
     it "should not fire onchange event when selecting an already selected item" do
+      alerts = []
+      @browser.add_listener(:alert) { |_, msg| alerts << msg }
+      
       @browser.select_list(:id, "new_user_languages").clear_selection # removes the two pre-selected options
-      @browser.div(:id, "changed_language").text.should == "changed languagechanged language"
       @browser.select_list(:id, "new_user_languages").select("English")
-      @browser.div(:id, "changed_language").text.should == "changed languagechanged languagechanged language"
+      alerts.size.should == 3
+      
       @browser.select_list(:id, "new_user_languages").select("English")
-      @browser.div(:id, "changed_language").text.should == "changed languagechanged languagechanged language"
+      alerts.size.should == 3
     end
 
     it "should raise NoValueFoundException if the option doesn't exist" do
