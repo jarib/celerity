@@ -31,6 +31,13 @@ describe "HtmlUnit bugs" do
     @browser.link(:class, 'editLink').click
     @browser.div(:id, 'content').text.should == "typeof update: function"
   end
+  
+  it "should not return the TinyMCE DOM when executing javascript functions" do
+    @browser.goto(TEST_HOST + "/tiny_mce.html")
+    @browser.text.should include("Beskrivelse")
+    @browser.checkbox(:id, "exemption").set
+    @browser.text.should include("Beskrivelse")
+  end
 
   after :all do
     @browser.close
