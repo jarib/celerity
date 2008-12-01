@@ -1,9 +1,7 @@
 require "net/telnet"
 require "uri"
-
 require "drb"
 require "drb/acl"
-require "uri"
 
 DRb.install_acl(ACL.new(%w{deny all allow 127.0.0.1}))
 
@@ -11,35 +9,33 @@ DRb.install_acl(ACL.new(%w{deny all allow 127.0.0.1}))
 # Firefox: http://hyperstruct.net/projects/mozrepl
 class FirefoxViewer
   
-  START = "<html><h1>Celerity FirefoxViewer</h1></html>"
-  
   def initialize( opts = {})
     @opts = opts
+    @verbose = opts[:verbose]
+    
     @firefox = Net::Telnet.new(
       "Host"    => "localhost",
       "Timeout" => 5,
       "Port"    => opts[:port] || 4242
     )
     
-    # execute "window.open('data:text/html,#{URI.escape(START)}')"
-    render_html("Celerity FirefoxViewer")
+    render_html("<html><h1>Celerity FirefoxViewer</h1></html>")
   end
   
   
   def render_html(string, url = nil)
     if url
       uri = URI.parse(url)
-      base_url = "#{uri.scheme}://#{uri.host}"
+      string = %Q{<base href="#{uri.scheme}://#{uri.host}">\n#{string}}
     end
+    string.gsub!(/<\?xml version="1.0" encoding="ISO-8859-1"\?>/i, 
+                 '<?xml version="1.0" encoding="UTF-8"?>')
+
+    string = create_data_uri(string)
+    p :string => string if @verbose
     
-    string.gsub!(/<\?xml version="1.0" encoding="ISO-8859-1"\?>/i, '<?xml version="1.0" encoding="UTF-8"?>')
-    
-    execute %Q{content.document.location.href = 'data:text/html,#{URI.escape(string).gsub("\'", "\\\\\'")}'}
+    execute %Q{content.document.location.href = '#{string.gsub(/(?=['\n])/, "\\\\")}';}
     execute ";"
-    # execute %Q{var incoming = document.createElement("html")}
-    # execute %Q{incoming.innerHTML = #{string.inspect}}
-    # # execute %Q{var root = document.getElementsByTagName("html")[0]}
-    # execute %Q{content.document.replaceChild(content.document.documentElement, incoming)}
   end
   
   def print(*args)
@@ -50,10 +46,15 @@ class FirefoxViewer
   
   def execute(cmd)
     @firefox.cmd(cmd) do |output|
-      puts output if @opts[:verbose]
+      puts output if @verbose
     end
     
     nil
+  end
+  
+  def create_data_uri(string)
+    string = [string].pack("m").chomp
+    string = "data:text/html;charset=UTF-8;base64,#{string}"
   end
   
 end
