@@ -24,6 +24,8 @@ class FirefoxViewer
   
   
   def render_html(string, url = nil)
+    p :rendering => url
+    
     if url
       uri = URI.parse(url)
       string = %Q{<base href="#{uri.scheme}://#{uri.host}">\n#{string}}
@@ -60,6 +62,6 @@ class FirefoxViewer
 end
 
 if __FILE__ == $0
-  DRb.start_service("druby://127.0.0.1:6429", FirefoxViewer.new(:verbose => true))
+  DRb.start_service("druby://127.0.0.1:6429", FirefoxViewer.new(:verbose => false))
   DRb.thread.join
 end

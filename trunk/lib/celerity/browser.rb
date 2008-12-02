@@ -329,7 +329,7 @@ module Celerity
     # Render the current page on the viewer.
     # @api private
     def render
-      @viewer.render_html(xml, url)
+      @viewer.render_html(html, url)
     rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
       @viewer = nil
     end
