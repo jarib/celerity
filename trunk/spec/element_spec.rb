@@ -18,7 +18,7 @@ describe "Element" do
 
     it "should raise UnknownObjectException with a sane error message when given a hash of :how => 'what' arguments (non-existing object)" do
       conditions = {:index => 100, :name => "foo"}
-      lambda { @browser.text_field(conditions).id }.should raise_error(UnknownObjectException, /Unable to locate object, using (\{:name=>"foo", :index=>100\}|\{:index=>100, :name=>"foo"\})/)
+      lambda { @browser.text_field(conditions).id }.should raise_error(UnknownObjectException, /Unable to locate TextField, using (\{:name=>"foo", :index=>100\}|\{:index=>100, :name=>"foo"\})/)
     end
 
     it "should raise ArgumentError if given the wrong number of arguments" do

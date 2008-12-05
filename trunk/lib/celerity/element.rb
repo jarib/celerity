@@ -112,7 +112,7 @@ module Celerity
     def assert_exists
       locate
       unless @object
-        raise UnknownObjectException, "Unable to locate object, using #{identifier_string}"
+        raise UnknownObjectException, "Unable to locate #{self.class.name[/::(.*)$/, 1]}, using #{identifier_string}"
       end
     end
 
