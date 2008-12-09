@@ -1,7 +1,0 @@
-A JRuby version of CelerityViewer, using the Lobo library http://lobobrowser.org/
-
-- Unsure if this is the best choice, HTML rendering seems broken (but might be just a setup issue).
-- Haven't found a way to render the HTML string from in-memory, writing to a temp-file at the moment.
-- No need for DRb (i.e. two processes) as this is also running on JRuby. 
-  Could be moved to the lib/celerity/extra directory when/if it becomes good enough.
-
