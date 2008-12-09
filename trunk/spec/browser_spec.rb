@@ -6,6 +6,16 @@ describe "Browser" do
     @browser = Browser.new
   end
 
+
+  describe "#new" do
+    it "should raise TypeError if argument is not a Hash" do
+      lambda { Browser.new(:foo) }.should raise_error(TypeError)
+    end
+
+    it "should raise ArgumentError if given bad arguments for :render key" do
+      lambda { Browser.new(:render => :foo) }.should raise_error(ArgumentError)
+    end
+  end
   # Exists
   describe "#exists?" do
     it "should return true if we are at a page" do
