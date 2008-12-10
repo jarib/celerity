@@ -65,7 +65,7 @@ module Celerity
       if ct = java.net.URLConnection.getFileNameMap.getContentTypeFor(path)
         return ct
       else
-        ContentTypes[File.extname(path)]
+        ContentTypes[File.extname(path).downcase]
       end
     end
     
