@@ -130,7 +130,7 @@ module Celerity
       end
 
       if ident.text
-        attr_result && matches?(element.asText, ident.text)
+        attr_result && matches?(element.asText.strip, ident.text)
       else
         attr_result
       end
