@@ -36,6 +36,18 @@ module Celerity
   class Li < NonControlElement
     TAGS = [ Identifier.new('li') ]
   end
+  
+  class Dl < NonControlElement
+    TAGS = [ Identifier.new('dl')]
+  end
+
+  class Dt < NonControlElement
+    TAGS = [ Identifier.new('dt')]
+  end
+
+  class Dd < NonControlElement
+    TAGS = [ Identifier.new('dd')]
+  end
 
   class Map < NonControlElement
     TAGS = [ Identifier.new('map') ]

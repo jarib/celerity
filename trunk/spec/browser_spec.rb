@@ -163,6 +163,12 @@ TEXT
     end
   end
 
+  describe "#clear_cookies" do
+    it "should clear all cookies" do
+      pending
+    end
+  end
+
   describe "#back" do
     it "should go to the previous page" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")

@@ -137,6 +137,11 @@ module Celerity
       self.page = @page.refresh
     end
 
+    # Clears all cookies. (Celerity-specific API)
+    def clear_cookies
+      @webclient.getCookieManager.clearCookies
+    end
+
     # Execute the given JavaScript on the current page. (Celerity-specific API)
     # @return [Object] The resulting Object
     def execute_script(source)

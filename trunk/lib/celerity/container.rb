@@ -265,6 +265,30 @@ module Celerity
     def ols
       Ols.new(self)
     end
+    
+    def dl(*args)
+      Dl.new(self, *args)
+    end
+    
+    def dls
+      Dls.new(self, *args)
+    end
+
+    def dt(*args)
+      Dt.new(self, *args)
+    end
+    
+    def dts
+      Dts.new(self, *args)
+    end
+
+    def dd(*args)
+      Dd.new(self, *args)
+    end
+    
+    def dds
+      Dds.new(self, *args)
+    end
 
     # @return [Celerity::Li]
     def li(*args)
