@@ -9,58 +9,29 @@ module Celerity
     DEFAULT_HOW = :id
   end
 
-  class Pre < NonControlElement
-    TAGS = [ Identifier.new('pre')]
+  #
+  #  classes ordered alphabetically
+  #
+
+  class Area < NonControlElement
+    ATTRIBUTES = ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt, :tabindex, :accesskey, :onfocus, :onblur]
+    TAGS = [ Identifier.new('area') ]
   end
 
-  class P < NonControlElement
-    TAGS = [ Identifier.new('p') ]
+  class Dd < NonControlElement
+    TAGS = [ Identifier.new('dd')]
   end
-
+  
   class Div < NonControlElement
     TAGS = [ Identifier.new('div')]
   end
 
-  class Span < NonControlElement
-    TAGS = [ Identifier.new('span') ]
-  end
-
-  class Ul < NonControlElement
-    TAGS = [ Identifier.new('ul') ]
-  end
-
-  class Ol < NonControlElement
-    TAGS = [ Identifier.new('ol') ]
-  end
-
-  class Li < NonControlElement
-    TAGS = [ Identifier.new('li') ]
-  end
-  
   class Dl < NonControlElement
     TAGS = [ Identifier.new('dl')]
   end
 
   class Dt < NonControlElement
     TAGS = [ Identifier.new('dt')]
-  end
-
-  class Dd < NonControlElement
-    TAGS = [ Identifier.new('dd')]
-  end
-
-  class Map < NonControlElement
-    TAGS = [ Identifier.new('map') ]
-  end
-  
-  class Meta < NonControlElement
-    ATTRIBUTES = [:name, :id, :'http-equiv', :content, :scheme] | HTML_401_TRANSITIONAL[:i18n]
-    TAGS = [ Identifier.new('meta') ]
-  end
-
-  class Area < NonControlElement
-    ATTRIBUTES = ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt, :tabindex, :accesskey, :onfocus, :onblur]
-    TAGS = [ Identifier.new('area') ]
   end
 
   class H1 < NonControlElement
@@ -85,6 +56,38 @@ module Celerity
   
   class H6 < NonControlElement
     TAGS = [ Identifier.new('h6') ]
+  end
+
+  class Li < NonControlElement
+    TAGS = [ Identifier.new('li') ]
+  end
+
+  class Map < NonControlElement
+    TAGS = [ Identifier.new('map') ]
+  end
+  
+  class Ol < NonControlElement
+    TAGS = [ Identifier.new('ol') ]
+  end
+
+  class P < NonControlElement
+    TAGS = [ Identifier.new('p') ]
+  end
+  
+  class Pre < NonControlElement
+    TAGS = [ Identifier.new('pre')]
+  end
+
+  class Span < NonControlElement
+    TAGS = [ Identifier.new('span') ]
+  end
+
+  # class Title < NonControlElement
+  #   TAGS = [ Identifier.new('title') ]
+  # end
+
+  class Ul < NonControlElement
+    TAGS = [ Identifier.new('ul') ]
   end
 
 end
