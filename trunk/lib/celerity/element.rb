@@ -132,7 +132,7 @@ module Celerity
     # @return [String]
     def text
       assert_exists
-      @object.asText.strip
+      @object.asText.strip # this must behave like ElementLocator
     end
 
     # Return the text content of this DOM node, disregarding its visibility.
