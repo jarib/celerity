@@ -271,7 +271,7 @@ module Celerity
     end
     
     def dls
-      Dls.new(self, *args)
+      Dls.new(self)
     end
 
     def dt(*args)
@@ -279,7 +279,7 @@ module Celerity
     end
     
     def dts
-      Dts.new(self, *args)
+      Dts.new(self)
     end
 
     def dd(*args)
@@ -287,7 +287,7 @@ module Celerity
     end
     
     def dds
-      Dds.new(self, *args)
+      Dds.new(self)
     end
 
     # @return [Celerity::Li]

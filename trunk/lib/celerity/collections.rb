@@ -40,6 +40,18 @@ module Celerity
     def element_class; Li; end
   end
 
+  class Dds < ElementCollections
+    def element_class; Dd; end
+  end
+
+  class Dls < ElementCollections
+    def element_class; Dl; end
+  end
+
+  class Dts < ElementCollections
+    def element_class; Dt; end
+  end
+
   class Maps < ElementCollections
     def element_class; Map; end
   end
