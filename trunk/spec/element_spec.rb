@@ -50,6 +50,12 @@ describe "Element" do
     end
   end
 
+  describe "#xpath" do
+    it "should get the canonical xpath of this element" do
+      @browser.text_field(:id, "new_user_email").xpath.should == '/html/body/form[1]/fieldset[1]/input[3]'
+    end
+  end
+
   describe "#visible?" do
     it "should return true if the element is visible" do
       @browser.text_field(:id, "new_user_email").should be_visible

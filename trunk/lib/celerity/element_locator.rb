@@ -28,7 +28,7 @@ module Celerity
       conditions.each do |how, what|
         case how
         when :object
-          unless what.is_a? HtmlUnit::Html::HtmlElement
+          unless what.is_a?(HtmlUnit::Html::HtmlElement) || what.nil?
             raise ArgumentError, "expected an HtmlUnit::Html::HtmlElement subclass, got #{what.inspect}:#{what.class}"
           end
           return what

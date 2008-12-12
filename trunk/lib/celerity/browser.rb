@@ -118,6 +118,25 @@ module Celerity
       return nil unless exist?
       super
     end
+    
+    #
+    # write me!
+    # 
+    def element_by_xpath(xpath)
+      assert_exists
+      obj = @page.getFirstByXPath(xpath)
+      element_from_dom_node(obj)
+    end
+    
+    #
+    # write me!
+    # 
+    def elements_by_xpath(xpath)
+      assert_exists
+      objects = @page.getByXPath(xpath)
+      # should use an ElementCollection here?
+      objects.map { |o| element_from_dom_node(o) }.compact
+    end
 
     # @return [HtmlUnit::HtmlHtml] the underlying HtmlUnit object.
     def document
@@ -354,6 +373,14 @@ module Celerity
       @viewer = viewer if viewer.respond_to?(:render_html)
     rescue DRb::DRbConnError, Errno::ECONNREFUSED
       @viewer = nil
+    end
+    
+    def element_from_dom_node(obj)
+      if element_class = Celerity::Util.htmlunit2celerity(obj.class)
+        element_class.new(self, :object, obj)
+      else
+        Element.new(self, :object, nil)
+      end
     end
 
   end # Browser

@@ -203,7 +203,7 @@ TEXT
       lambda { @browser.contains_text }.should raise_error(ArgumentError)
     end
 
-    it "should raise TypError when called with wrong arguments" do
+    it "should raise TypeError when called with wrong arguments" do
       lambda { @browser.contains_text(nil) }.should raise_error(TypeError)
       lambda { @browser.contains_text(42) }.should raise_error(TypeError)
     end
@@ -221,6 +221,39 @@ TEXT
     it "should not raise error on a blank page" do
       @browser = Browser.new
       lambda { @browser.contains_text('') }.should_not raise_error
+    end
+  end
+  
+  describe "#element_by_xpath" do
+    before :each do
+      @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+    end
+
+    it "should find the element matching the given xpath" do
+      e = @browser.element_by_xpath("//input[@type='password']")
+      e.should exist
+    end
+
+    it "should not find elements that doesn't exist" do
+      e = @browser.element_by_xpath("//input[@type='foobar']")
+      e.should_not exist
+      lambda { e.set('foo') }.should raise_error(UnknownObjectException)
+    end
+  end
+  
+  describe "#elements_by_xpath" do
+    before :each do
+      @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+    end
+    
+    it "should return an Array of matching elements" do
+      objects = @browser.elements_by_xpath("//*[@type='text']")
+      objects.size.should == 6
+    end
+
+    it "should return an empty Array if there are no matching elements" do
+      objects = @browser.elements_by_xpath("//*[@type='foobar']")
+      objects.size.should == 0
     end
   end
 

@@ -25,6 +25,7 @@ module Celerity
     CELLVALIGN_ATTRIBUTES = HTML_401_TRANSITIONAL[:cell_valign]
     BASE_ATTRIBUTES       = HTML_401_TRANSITIONAL.values_at(:core, :i18n, :event, :sloppy).flatten
     ATTRIBUTES            = BASE_ATTRIBUTES
+    TAGS                  = []
 
     DEFAULT_HOW = nil
 
@@ -166,6 +167,12 @@ module Celerity
 
       result
     end
+    
+    # return the canonical xpath for this element (Celerity-specific)
+    def xpath
+      assert_exists
+      @object.getCanonicalXPath
+    end
 
     # Dynamically get element attributes.
     #
@@ -174,10 +181,11 @@ module Celerity
     # @return [String] The resulting attribute.
     # @raise NoMethodError if the element doesn't support this attribute.
     def method_missing(meth, *args, &blk)
+      assert_exists
+      
       meth = selector_to_attribute(meth)
 
       if self.class::ATTRIBUTES.include?(meth)
-        assert_exists
         return @object.getAttributeValue(meth.to_s)
       end
 
