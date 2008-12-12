@@ -25,7 +25,7 @@ module Celerity
       @rows.each { |row| yield TableRow.new(self, :object, row) }
     end
   end
-  
+
   class TableBody < TableElement
     TAGS = [ Identifier.new('tbody') ]
   end
@@ -33,9 +33,9 @@ module Celerity
   class TableFooter < TableElement
     TAGS = [ Identifier.new('tfoot') ]
   end
-  
+
   class TableHeader < TableElement
     TAGS = [ Identifier.new('thead') ]
   end
-  
+
 end

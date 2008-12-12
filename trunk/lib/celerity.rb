@@ -12,7 +12,7 @@ require "time"
 module Celerity
   Log = Logger.new($DEBUG ? $stderr : nil)
   Log.level = Logger::DEBUG
-  
+
   INDEX_OFFSET = 1
 end
 

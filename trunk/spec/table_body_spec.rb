@@ -94,11 +94,11 @@ describe "TableBody" do
     it "should iterate through rows correctly" do
       body = @browser.table(:index, 1).body(:id, 'first')
       expected_texts = ["march", "gregory", "hugh"]
-      
+
       body.each_with_index do |row, idx|
         row.id.should == expected_texts[idx]
       end
-      
+
     end
   end
 

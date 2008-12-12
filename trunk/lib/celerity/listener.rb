@@ -11,7 +11,7 @@ module Celerity
     include com.gargoylesoftware.htmlunit.StatusHandler
     include com.gargoylesoftware.htmlunit.WebWindowListener
     include com.gargoylesoftware.htmlunit.attachment.AttachmentHandler
-    
+
     def initialize(webclient)
       @webclient = webclient
       @procs = Hash.new { |h, k| h[k] = [] }
@@ -68,7 +68,7 @@ module Celerity
     def handleAlert(page, message)
       @procs[:alert].each { |h| h.call(page, message) }
     end
-    
+
     # interface ConfirmHandler
     def handleConfirm(page, message)
       @procs[:confirm].each { |h| h.call(page, message) }

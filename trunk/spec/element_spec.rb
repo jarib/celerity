@@ -77,13 +77,13 @@ describe "Element" do
       @browser.div(:id, 'hidden_parent').should_not be_visible
     end
   end
-  
+
   describe "#exist?" do
     it "should not raise when called on nested elements" do
       @browser.div(:id, 'no_such_div').link(:id, 'no_such_id').should_not exist
     end
   end
-  
+
   describe "#identifier_string" do
     it "should not make the next locate find the wrong element" do
       elem = @browser.div(:id, 'hidden_parent')

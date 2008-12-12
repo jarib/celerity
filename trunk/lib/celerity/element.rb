@@ -167,7 +167,7 @@ module Celerity
 
       result
     end
-    
+
     # return the canonical xpath for this element (Celerity-specific)
     def xpath
       assert_exists
@@ -182,7 +182,7 @@ module Celerity
     # @raise NoMethodError if the element doesn't support this attribute.
     def method_missing(meth, *args, &blk)
       assert_exists
-      
+
       meth = selector_to_attribute(meth)
 
       if self.class::ATTRIBUTES.include?(meth)

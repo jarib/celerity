@@ -28,7 +28,7 @@ module Celerity
   #
   module Container
     include Celerity::Exception
-    
+
     # Points back to the Browser instance that contains this element
     attr_accessor :browser
 
@@ -125,16 +125,16 @@ module Celerity
     def cells
       TableCells.new(self)
     end
-    
-    # Watir's cells() won't return <th> elements. 
+
+    # Watir's cells() won't return <th> elements.
     # This is a workaround.
     #
     # @return [Celerity::Th]
     def th(*args)
       Th.new(self, *args)
     end
-    
-    # TODO: implement or change api, 
+
+    # TODO: implement or change api,
     # @see th
     def ths
       raise NotImplementedError
@@ -265,11 +265,11 @@ module Celerity
     def ols
       Ols.new(self)
     end
-    
+
     def dl(*args)
       Dl.new(self, *args)
     end
-    
+
     def dls
       Dls.new(self)
     end
@@ -277,7 +277,7 @@ module Celerity
     def dt(*args)
       Dt.new(self, *args)
     end
-    
+
     def dts
       Dts.new(self)
     end
@@ -285,7 +285,7 @@ module Celerity
     def dd(*args)
       Dd.new(self, *args)
     end
-    
+
     def dds
       Dds.new(self)
     end
@@ -349,7 +349,7 @@ module Celerity
     def forms
       Forms.new(self)
     end
-    
+
     # @return [Celerity::Option]
     def option(*args)
       Option.new(self, *args)
@@ -394,11 +394,11 @@ module Celerity
     def labels
       Labels.new(self)
     end
-    
+
     def meta(*args)
       Meta.new(self, *args)
     end
-    
+
     def metas(*args)
       Metas.new(self, *args)
     end

@@ -15,7 +15,7 @@ describe "Meta" do
       @browser.meta('http-equiv', "Content-Type").should exist
     end
   end
-  
+
   describe "content" do
     it "should return the content attribute of the tag" do
       @browser.meta('http-equiv', "Content-Type").content.should == "text/html; charset=utf-8"

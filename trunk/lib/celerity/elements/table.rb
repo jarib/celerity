@@ -51,11 +51,11 @@ module Celerity
     # @return [Celerity::TableRow]
     def child_row(index)
       assert_exists
-      
-      if (index - INDEX_OFFSET) >= @rows.length 
-        raise UnknownRowException, "Unable to locate a row at index #{index}" 
+
+      if (index - INDEX_OFFSET) >= @rows.length
+        raise UnknownRowException, "Unable to locate a row at index #{index}"
       end
-      
+
       TableRow.new(self, :object, @rows[index - INDEX_OFFSET])
     end
     alias_method :[], :child_row
@@ -70,7 +70,7 @@ module Celerity
     def child_cell(index)
       assert_exists
 
-      if (index - INDEX_OFFSET) >= @cells.length 
+      if (index - INDEX_OFFSET) >= @cells.length
         raise UnknownCellException, "Unable to locate a cell at index #{index}"
       end
       TableCell.new(self, :object, @cells[index - INDEX_OFFSET])

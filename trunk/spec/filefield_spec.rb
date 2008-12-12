@@ -115,7 +115,7 @@ describe "FileField" do
       alerts.should == [__FILE__]
       @browser.button(:name, "new_user_submit").click
     end
-    
+
     it "should send content as correct content type for common file types" do
       @browser.file_field(:name, "new_user_portrait").set("foo.doc")
       obj = @browser.file_field(:name, "new_user_portrait").locate

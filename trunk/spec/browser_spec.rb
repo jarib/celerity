@@ -223,7 +223,7 @@ TEXT
       lambda { @browser.contains_text('') }.should_not raise_error
     end
   end
-  
+
   describe "#element_by_xpath" do
     before :each do
       @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
@@ -240,12 +240,12 @@ TEXT
       lambda { e.set('foo') }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#elements_by_xpath" do
     before :each do
       @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
     end
-    
+
     it "should return an Array of matching elements" do
       objects = @browser.elements_by_xpath("//*[@type='text']")
       objects.size.should == 6

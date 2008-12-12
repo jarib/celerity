@@ -8,7 +8,7 @@ module Celerity
 
     def initialize(container, element_class)
       container.assert_exists
-      
+
       @container     = container
       @object        = container.object
       @element_class = element_class
@@ -19,7 +19,7 @@ module Celerity
 
     def find_by_conditions(conditions) # TODO: refactor without performance hit
       return nil unless @object # probably means we're on a TextPage (content-type is "text/plain")
-      
+
       @condition_idents = []
       attributes = Hash.new { |h, k| h[k] = [] }
       index = 0 # by default, return the first matching element
@@ -93,16 +93,16 @@ module Celerity
       what = ".#{what}" if what[0].chr == "/"
       @object.getByXPath(what).to_a.first
     end
-    
+
     def find_by_label(what)
       obj = elements_by_tag_names(%w[label]).find { |e| matches?(e.asText, what) }
-      
+
       return nil unless obj && (ref = obj.getReferencedElement)
       return ref if @tags.include?(ref.getTagName)
-      
+
       find_by_id obj.getForAttribute
     end
-    
+
     def elements_by_idents(idents = nil)
       get_by_idents(:select, idents || @idents)
     end
@@ -121,7 +121,7 @@ module Celerity
         end
       end
     end
-    
+
     def element_matches_ident?(element, ident)
       return false unless ident.tag == element.getTagName
 
@@ -138,7 +138,7 @@ module Celerity
 
     def elements_by_tag_names(tags = @tags)
       with_nullpointer_retry do
-        # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct 
+        # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct
         # order (making :index fail), so we're using getAllHtmlChildElements instead.
         @object.getAllHtmlChildElements.select do |elem|
           tags.include?(elem.getTagName)

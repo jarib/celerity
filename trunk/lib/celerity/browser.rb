@@ -36,8 +36,8 @@ module Celerity
       unless [:html, :xml, nil].include?(opts[:render])
         raise ArgumentError, "bad argument :render => #{opts[:render].inspect}"
       end
-      
-      opts[:render] = opts[:render] || :html 
+
+      opts[:render] = opts[:render] || :html
 
       @opts            = opts
       @last_url, @page = nil
@@ -104,7 +104,7 @@ module Celerity
       else
         string = @page.documentElement.asText.strip
       end
-      
+
       # Celerity::Util.normalize_text(string)
       string
     end
@@ -118,19 +118,19 @@ module Celerity
       return nil unless exist?
       super
     end
-    
+
     #
     # write me!
-    # 
+    #
     def element_by_xpath(xpath)
       assert_exists
       obj = @page.getFirstByXPath(xpath)
       element_from_dom_node(obj)
     end
-    
+
     #
     # write me!
-    # 
+    #
     def elements_by_xpath(xpath)
       assert_exists
       objects = @page.getByXPath(xpath)
@@ -167,7 +167,7 @@ module Celerity
       assert_exists
       @page.executeJavaScript(source.to_s).getJavaScriptResult
     end
-    
+
     # experimental
     def send_keys(keys)
       keys = keys.gsub(/\s*/, '').scan(/((?:\{[A-Z]+?\})|.)/u).flatten
@@ -374,7 +374,7 @@ module Celerity
     rescue DRb::DRbConnError, Errno::ECONNREFUSED
       @viewer = nil
     end
-    
+
     def element_from_dom_node(obj)
       if element_class = Celerity::Util.htmlunit2celerity(obj.class)
         element_class.new(self, :object, obj)

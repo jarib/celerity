@@ -75,7 +75,7 @@ module Celerity
       self.value = ''
       @container.text_field(how, what).append(val)
     end
-    
+
     def contains_text(expected_text)
       assert_exists
 
@@ -104,7 +104,7 @@ module Celerity
         @container.update_page @object.type(char)
       end
     end
-    
+
     def insert_string(value)
       case @object.getTagName
       when 'textarea'

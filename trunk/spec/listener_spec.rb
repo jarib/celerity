@@ -81,7 +81,7 @@ describe "Listener" do
       @web_client.should_receive('setAlertHandler').with(@listener)
       @listener.add_listener(:alert) {}
     end
-    
+
     it "should add itself as a listener for the :confirm type" do
       @web_client.should_receive('setConfirmHandler').with(@listener)
       @listener.add_listener(:confirm) {}
@@ -91,7 +91,7 @@ describe "Listener" do
       @web_client.should_receive('setPromptHandler').with(@listener)
       @listener.add_listener(:prompt) {}
     end
-    
+
     it "should add itself as a listener for the :web_window_event type" do
       @web_client.should_receive('addWebWindowListener').with(@listener)
       @listener.add_listener(:web_window_event) {}
@@ -112,15 +112,15 @@ describe "Listener" do
       @listener.add_listener(:attachment) {}
     end
   end
-  
+
   describe "#remove_listener" do
     it "should remove the listener at the given index" do
       updates = []
       first, second = lambda { updates << :first }, lambda { updates << :second }
-      
+
       @listener.add_listener(:prompt, &first)
       @listener.add_listener(:prompt, &second)
-      
+
       @listener.remove_listener(:prompt, 0)
       @listener.handlePrompt('foo', 'bar')
       updates.should == [:second]

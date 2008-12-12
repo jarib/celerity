@@ -1,7 +1,7 @@
 module Celerity
   module Util
     module_function
-    
+
     HtmlUnit2CelerityElement = {
       HtmlUnit::Html::HtmlAnchor           => Celerity::Link,
       HtmlUnit::Html::HtmlArea             => Celerity::Area,
@@ -43,11 +43,11 @@ module Celerity
       HtmlUnit::Html::HtmlTextInput        => Celerity::TextField,
       HtmlUnit::Html::HtmlUnorderedList    => Celerity::Ul
     }
-   
+
     def htmlunit2celerity(klass)
       HtmlUnit2CelerityElement[klass]
     end
-    
+
     # HtmlUnit will recognize most common file types, but custom ones can be added here.
     # Used for FileField uploads.
     ContentTypes = {
@@ -68,12 +68,12 @@ module Celerity
         ContentTypes[File.extname(path).downcase]
       end
     end
-    
+
     def normalize_text(string)
       string.gsub("\302\240", ' '). # non-breaking space 00A0
              gsub(/\n|\t/, '' ).    # get rid of newlines/tabs ( could switch back to asText()? )
              strip
     end
-    
+
   end
 end

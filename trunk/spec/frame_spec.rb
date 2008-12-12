@@ -88,7 +88,7 @@ describe "Frame" do
   it "should raise UnknownObjectException when accessing a non-existing element inside an existing frame" do
     lambda { @browser.frame(:index, 1).p(:index, 1337).id }.should raise_error(UnknownObjectException)
   end
-  
+
   it "should raise NoMethodError when trying to access attributes it doesn't have" do
     lambda { @browser.frame(:index, 1).foo }.should raise_error(NoMethodError)
   end

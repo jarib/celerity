@@ -18,7 +18,7 @@ module Celerity
 
     def child_cell(index)
       assert_exists
-      
+
       if (index - INDEX_OFFSET) >= @cells.length
         raise UnknownCellException, "Unable to locate a cell at index #{index}"
       end

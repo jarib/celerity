@@ -25,13 +25,13 @@ describe "HtmlUnit bugs" do
       @browser.h1(:index, 1).text.should == "\303\270"
     end
   end
-  
+
   it "should evaluate <script> tags injected in the DOM through JQuery's replaceWith() - fixed in rev. 3598" do
     @browser.goto(TEST_HOST + "/jquery.html")
     @browser.link(:class, 'editLink').click
     @browser.div(:id, 'content').text.should == "typeof update: function"
   end
-  
+
   it "should not return the TinyMCE DOM when executing javascript functions" do
     @browser.goto(TEST_HOST + "/tiny_mce.html")
     @browser.text.should include("Beskrivelse")
