@@ -152,9 +152,6 @@ NoMethodError if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-173
-174
-175
 176
 177
 178
@@ -162,10 +159,13 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 180
 181
 182
-183</pre>
+183
+184
+185
+186</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 173</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 176</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
@@ -276,7 +276,7 @@ NoMethodError if the element doesn&#8217;t support this attribute.
   <span class='comment val'># ugly..</span>
   <span class='comment val'># this is done to make &lt;button&gt; and &lt;input&gt;-buttons look similar</span>
   <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='@conditions ivar id'>@conditions</span><span class='lbrack token'>[</span><span class='colon op'>:</span><span class='value identifier id'>value</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-    <span class='locator identifier id'>locator</span> <span class='assign token'>=</span> <span class='ElementLocator constant id'>ElementLocator</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='object identifier id'>object</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='rparen token'>)</span>
+    <span class='locator identifier id'>locator</span> <span class='assign token'>=</span> <span class='ElementLocator constant id'>ElementLocator</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='rparen token'>)</span>
     <span class='button_ident identifier id'>button_ident</span> <span class='assign token'>=</span> <span class='Identifier constant id'>Identifier</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'button'</span><span class='rparen token'>)</span>
     <span class='button_ident identifier id'>button_ident</span><span class='dot token'>.</span><span class='text identifier id'>text</span> <span class='assign token'>=</span> <span class='val identifier id'>val</span>
     <span class='input_ident identifier id'>input_ident</span> <span class='assign token'>=</span> <span class='Identifier constant id'>Identifier</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'input'</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='dstring node'>%w[submit reset image button]</span><span class='comma token'>,</span> <span class='symbol val'>:value</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='val identifier id'>val</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>

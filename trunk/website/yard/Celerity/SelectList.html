@@ -146,9 +146,6 @@ NoMethodError if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-173
-174
-175
 176
 177
 178
@@ -156,10 +153,13 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 180
 181
 182
-183</pre>
+183
+184
+185
+186</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 173</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 176</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
@@ -205,27 +205,6 @@ changed?.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#contents" href="#contents-instance_method">#contents</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-          <span class='alias'>#getAllContents</span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-          <p class='returns'>
-            Returns: 
-              <span class='return_types'>
-                 <tt>Array&lt;<a title="String" href="../String.html">String</a>></tt>
-              </span>
-          </p>
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
         <span class='name'><a title="#include?" href="#include%3F-instance_method">#include?</a></span><span class='args'>(value)</span>
         <span class='block'></span>
         
@@ -251,12 +230,33 @@ value.
   
     <tr>
       <th class="signature">
+        <span class='name'><a title="#options" href="#options-instance_method">#options</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+          <span class='alias'>#getAllContents</span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt>Array&lt;<a title="String" href="../String.html">String</a>></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
         <span class='name'><a title="#select" href="#select-instance_method">#select</a></span><span class='args'>(value)</span>
         <span class='block'></span>
         
-          <span class='alias'>#set</span>
-        
           <span class='alias'>#select_value</span>
+        
+          <span class='alias'>#set</span>
         
       </th>
       <td class="docstring">
@@ -292,7 +292,7 @@ Returns true if any of the selected options match the given value.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#selected_items" href="#selected_items-instance_method">#selected_items</a></span><span class='args'></span>
+        <span class='name'><a title="#selected_options" href="#selected_options-instance_method">#selected_options</a></span><span class='args'></span>
         <span class='block'></span>
         
           <span class='alias'>#getSelectedItems</span>
@@ -432,86 +432,6 @@ changed?
   
     <div class="method">
       <div class="method_header">
-  <h3>contents</h3>
-</div><div id="contents-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'><tt>Array&lt;<a title="String" href="../String.html">String</a>></tt></span>
-    <span class='name'>contents</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
-<p class="aliases">
-  <span class="aka">Also known as:</span>
-  
-    <tt id="getAllContents-instance_method">getAllContents</tt>
-  
-</p>
-</div><div class="section tags">
-  <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-  </dl>
-</div><div class="return">
-  <h3>Returns:</h3>
-  <dl>
-  
-    <dt>
-      
-        <span class='type'>[<tt>Array&lt;<a title="String" href="../String.html">String</a>></tt>]</span>
-      
-      
-        <span class='name'></span>
-      
-      
-    </dt>
-    <dd>
-      <span class='desc'><p>
-An array of strings representing the text value of the select list&#8217;s
-options.
-</p>
-</span>
-    </dd>
-  
-  </dl>
-</div>
-
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-7
-8
-9
-10</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/select_list.rb', line 7</span>
-
-<span class='def def kw'>def</span> <span class='contents identifier id'>contents</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
-  <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getOptions identifier id'>getOptions</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-    <div class="method">
-      <div class="method_header">
   <h3>include?</h3>
 </div><div id="include%3F-instance_method" class="section method">
   <div class="details_title">
@@ -608,6 +528,86 @@ A value.
   
     <div class="method">
       <div class="method_header">
+  <h3>options</h3>
+</div><div id="options-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt>Array&lt;<a title="String" href="../String.html">String</a>></tt></span>
+    <span class='name'>options</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+<p class="aliases">
+  <span class="aka">Also known as:</span>
+  
+    <tt id="getAllContents-instance_method">getAllContents</tt>
+  
+</p>
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div><div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>Array&lt;<a title="String" href="../String.html">String</a>></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+An array of strings representing the text value of the select list&#8217;s
+options.
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+7
+8
+9
+10</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/select_list.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='options identifier id'>options</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getOptions identifier id'>getOptions</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
   <h3>select</h3>
 </div><div id="select-instance_method" class="section method">
   <div class="details_title">
@@ -622,9 +622,9 @@ A value.
 <p class="aliases">
   <span class="aka">Also known as:</span>
   
-    <tt id="set-instance_method">set</tt>
-  
     <tt id="select_value-instance_method">select_value</tt>
+  
+    <tt id="set-instance_method">set</tt>
   
 </p>
 </div><div class="section docstring">
@@ -699,7 +699,7 @@ Celerity::Exception::NoValueFoundException if the value does not exist.
   <span class='assert_exists identifier id'>assert_exists</span>
   <span class='raise identifier id'>raise</span> <span class='NoValueFoundException constant id'>NoValueFoundException</span><span class='comma token'>,</span> <span class='dstring node'>&quot;unknown option with value #{value.inspect} for select_list #{@conditions.inspect}&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
   <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getOptions identifier id'>getOptions</span><span class='dot token'>.</span><span class='select identifier id'>select</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='matches? fid id'>matches?</span><span class='lparen token'>(</span><span class='e identifier id'>e</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='option identifier id'>option</span><span class='bitor op'>|</span>
-    <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='dot token'>.</span><span class='click identifier id'>click</span><span class='rparen token'>)</span>
+    <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span> <span class='option identifier id'>option</span><span class='dot token'>.</span><span class='click identifier id'>click</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -825,14 +825,14 @@ Celerity::Exception::UnknownObjectException if the value does not exist.
   
     <div class="method">
       <div class="method_header">
-  <h3>selected_items</h3>
-</div><div id="selected_items-instance_method" class="section method">
+  <h3>selected_options</h3>
+</div><div id="selected_options-instance_method" class="section method">
   <div class="details_title">
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
     <span class='return_types'><tt>Array&lt;<a title="String" href="../String.html">String</a>></tt></span>
-    <span class='name'>selected_items</span><span class='args'></span>
+    <span class='name'>selected_options</span><span class='args'></span>
     <span class='block'></span>
   </tt>
 </div>
@@ -890,7 +890,7 @@ options.
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/elements/select_list.rb', line 13</span>
 
-<span class='def def kw'>def</span> <span class='selected_items identifier id'>selected_items</span>
+<span class='def def kw'>def</span> <span class='selected_options identifier id'>selected_options</span>
   <span class='assert_exists identifier id'>assert_exists</span>
   <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getSelectedOptions identifier id'>getSelectedOptions</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>

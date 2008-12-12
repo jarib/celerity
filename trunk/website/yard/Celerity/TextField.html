@@ -36,8 +36,11 @@ method
       <dt id="DEFAULT_HOW-constant">DEFAULT_HOW</dt>
       <dd>:name</dd>
     
+      <dt id="NON_TEXT_TYPES-constant">NON_TEXT_TYPES</dt>
+      <dd>%w[file radio checkbox submit reset image button hidden]</dd>
+    
       <dt id="TAGS-constant">TAGS</dt>
-      <dd>[ Identifier.new('textarea'),             Identifier.new('input', :type =&gt; [&quot;text&quot;, &quot;password&quot;, /^(?!(file|radio|checkbox|submit|reset|image|button|hidden)$)/])  ]</dd>
+      <dd>[ Identifier.new('textarea'),             Identifier.new('input', :type =&gt; [&quot;text&quot;, &quot;password&quot;, /^(?!(#{ Regexp.union(*NON_TEXT_TYPES) })$)/])  ]</dd>
     
   </dl>
 </div>
@@ -156,9 +159,6 @@ NoMethodError if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-173
-174
-175
 176
 177
 178
@@ -166,10 +166,13 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 180
 181
 182
-183</pre>
+183
+184
+185
+186</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 173</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 176</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
@@ -227,6 +230,18 @@ Clear the text field.
   
     <tr>
       <th class="signature">
+        <span class='name'><a title="#contains_text" href="#contains_text-instance_method">#contains_text</a></span><span class='args'>(expected_text)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
         <span class='name'><a title="#drag_contents_to" href="#drag_contents_to-instance_method">#drag_contents_to</a></span><span class='args'>(how, what)</span>
         <span class='block'></span>
         
@@ -276,9 +291,9 @@ Set the text field to the given value.
         <span class='name'><a title="#value" href="#value-instance_method">#value</a></span><span class='args'></span>
         <span class='block'></span>
         
-          <span class='alias'>#getContents</span>
-        
           <span class='alias'>#get_contents</span>
+        
+          <span class='alias'>#getContents</span>
         
       </th>
       <td class="docstring">
@@ -298,7 +313,7 @@ Returns the text in the text field.
       </th>
       <td class="docstring">
         <p>
-A boolean version of Container#contains_text.
+A boolean version of TextField#contains_text.
 </p>
 
         
@@ -358,14 +373,14 @@ Append the given value to the text in the text field.
           <pre class="lines">
 
 
-61
-62
-63
-64
-65</pre>
+53
+54
+55
+56
+57</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 61</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 53</span>
 
 <span class='def def kw'>def</span> <span class='append identifier id'>append</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
   <span class='assert_enabled identifier id'>assert_enabled</span>
@@ -409,26 +424,76 @@ Clear the text field.
           <pre class="lines">
 
 
-13
 14
 15
 16
-17
-18
-19
-20
-21</pre>
+17</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 13</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 14</span>
 
 <span class='def def kw'>def</span> <span class='clear identifier id'>clear</span>
   <span class='assert_exists identifier id'>assert_exists</span>
-  <span class='case case kw'>case</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getTagName identifier id'>getTagName</span>
-  <span class='when when kw'>when</span> <span class='string val'>'textarea'</span>
-    <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='setText identifier id'>setText</span><span class='lparen token'>(</span><span class='string val'>''</span><span class='rparen token'>)</span>
-  <span class='when when kw'>when</span> <span class='string val'>'input'</span>
-    <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='setValueAttribute identifier id'>setValueAttribute</span><span class='lparen token'>(</span><span class='string val'>''</span><span class='rparen token'>)</span>
+  <span class='insert_string identifier id'>insert_string</span> <span class='string val'>''</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>contains_text</h3>
+</div><div id="contains_text-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>contains_text</span><span class='args'>(expected_text)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 79</span>
+
+<span class='def def kw'>def</span> <span class='contains_text identifier id'>contains_text</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+
+  <span class='case case kw'>case</span> <span class='expected_text identifier id'>expected_text</span>
+  <span class='when when kw'>when</span> <span class='Regexp constant id'>Regexp</span>
+    <span class='value identifier id'>value</span><span class='lparen token'>(</span><span class='rparen token'>)</span> <span class='match op'>=~</span> <span class='expected_text identifier id'>expected_text</span>
+  <span class='when when kw'>when</span> <span class='String constant id'>String</span>
+    <span class='value identifier id'>value</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='index identifier id'>index</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='raise identifier id'>raise</span> <span class='TypeError constant id'>TypeError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;expected String or Regexp, got #{expected_text.inspect}:#{expected_text.class}&quot;</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -475,15 +540,15 @@ dragging.
           <pre class="lines">
 
 
-80
-81
-82
-83
-84
-85</pre>
+72
+73
+74
+75
+76
+77</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 80</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 72</span>
 
 <span class='def def kw'>def</span> <span class='drag_contents_to identifier id'>drag_contents_to</span><span class='lparen token'>(</span><span class='how identifier id'>how</span><span class='comma token'>,</span> <span class='what identifier id'>what</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span> <span class='comment val'># assert_enabled?</span>
@@ -529,15 +594,15 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
           <pre class="lines">
 
 
+21
+22
+23
+24
 25
-26
-27
-28
-29
-30</pre>
+26</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 25</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 21</span>
 
 <span class='def def kw'>def</span> <span class='set identifier id'>set</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
   <span class='assert_enabled identifier id'>assert_enabled</span>
@@ -577,25 +642,25 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
           <pre class="lines">
 
 
+59
+60
+61
+62
+63
+64
+65
+66
 67
-68
-69
-70
-71
-72
-73
-74
-75
-76</pre>
+68</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 67</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 59</span>
 
 <span class='def def kw'>def</span> <span class='type identifier id'>type</span>
   <span class='assert_exists identifier id'>assert_exists</span>
   <span class='type identifier id'>type</span> <span class='assign token'>=</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='string val'>'type'</span><span class='rparen token'>)</span>
 
-  <span class='if if kw'>if</span> <span class='lbrack token'>[</span><span class='string val'>'file'</span><span class='comma token'>,</span> <span class='string val'>'radio'</span><span class='comma token'>,</span> <span class='string val'>'checkbox'</span><span class='comma token'>,</span> <span class='string val'>'submit'</span><span class='comma token'>,</span> <span class='string val'>'reset'</span><span class='comma token'>,</span> <span class='string val'>'image'</span><span class='comma token'>,</span> <span class='string val'>'button'</span><span class='comma token'>,</span> <span class='string val'>'hidden'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='NON_TEXT_TYPES constant id'>NON_TEXT_TYPES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='rparen token'>)</span>
     <span class='type identifier id'>type</span>
   <span class='else else kw'>else</span>
     <span class='string val'>'text'</span>
@@ -626,9 +691,9 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
 <p class="aliases">
   <span class="aka">Also known as:</span>
   
-    <tt id="getContents-instance_method">getContents</tt>
-  
     <tt id="get_contents-instance_method">get_contents</tt>
+  
+    <tt id="getContents-instance_method">getContents</tt>
   
 </p>
 </div><div class="section docstring">
@@ -645,18 +710,18 @@ Returns the text in the text field.
           <pre class="lines">
 
 
-49
-50
-51
-52
-53
-54
-55
-56
-57</pre>
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 49</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 41</span>
 
 <span class='def def kw'>def</span> <span class='value identifier id'>value</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -692,7 +757,7 @@ Returns the text in the text field.
 
 </div><div class="section docstring">
   <p>
-A boolean version of Container#contains_text
+A boolean version of TextField#contains_text
 </p>
 
 </div><div class="section tags">
@@ -731,13 +796,13 @@ A boolean version of Container#contains_text
           <pre class="lines">
 
 
-90
-91
-92
-93</pre>
+95
+96
+97
+98</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 90</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 95</span>
 
 <span class='def def kw'>def</span> <span class='verify_contains identifier id'>verify_contains</span><span class='lparen token'>(</span><span class='expected identifier id'>expected</span><span class='rparen token'>)</span>
   <span class='comment val'># assert_exists called by contains_text</span>

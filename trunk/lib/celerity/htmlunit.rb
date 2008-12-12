@@ -4,8 +4,13 @@ end
 
 Celerity::Jars.each { |jar| require(jar) }
 
-HtmlUnit       = com.gargoylesoftware.htmlunit
-HtmlUnit::Html = com.gargoylesoftware.htmlunit.html
+module HtmlUnit
+  include_package 'com.gargoylesoftware.htmlunit'
+  
+  module Html
+    include_package 'com.gargoylesoftware.htmlunit.html'
+  end
+end
 
 module Java::OrgW3cDom::NamedNodeMap
   include Enumerable

@@ -41,6 +41,11 @@ Celerity::Container#hidden method
 <div class="inherited">
   
   <div>
+    <h1>Constants Inherited from <a title="Celerity::TextField" href="TextField.html">Celerity::TextField</a></h1>
+    <p><span class='name'><a title="NON_TEXT_TYPES" href="TextField.html#NON_TEXT_TYPES-constant">NON_TEXT_TYPES</a></span></p>
+  </div>
+  
+  <div>
     <h1>Constants Inherited from <a title="Celerity::InputElement" href="InputElement.html">Celerity::InputElement</a></h1>
     <p><span class='name'><a title="ATTRIBUTES" href="InputElement.html#ATTRIBUTES-constant">ATTRIBUTES</a></span></p>
   </div>
@@ -153,9 +158,6 @@ NoMethodError if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-173
-174
-175
 176
 177
 178
@@ -163,10 +165,13 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 180
 181
 182
-183</pre>
+183
+184
+185
+186</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 173</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 176</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
@@ -193,7 +198,7 @@ NoMethodError if the element doesn&#8217;t support this attribute.
   
   <div>
     <h1>Public Instance Methods Inherited from <a title="Celerity::TextField" href="TextField.html">Celerity::TextField</a></h1>
-    <p><span class='name'><a title="append" href="TextField.html#append-instance_method">append</a></span>, <span class='name'><a title="clear" href="TextField.html#clear-instance_method">clear</a></span>, <span class='name'><a title="drag_contents_to" href="TextField.html#drag_contents_to-instance_method">drag_contents_to</a></span>, <span class='name'><a title="set" href="TextField.html#set-instance_method">set</a></span>, <span class='name'><a title="type" href="TextField.html#type-instance_method">type</a></span>, <span class='name'><a title="value" href="TextField.html#value-instance_method">value</a></span>, <span class='name'><a title="verify_contains" href="TextField.html#verify_contains-instance_method">verify_contains</a></span></p>
+    <p><span class='name'><a title="append" href="TextField.html#append-instance_method">append</a></span>, <span class='name'><a title="clear" href="TextField.html#clear-instance_method">clear</a></span>, <span class='name'><a title="contains_text" href="TextField.html#contains_text-instance_method">contains_text</a></span>, <span class='name'><a title="drag_contents_to" href="TextField.html#drag_contents_to-instance_method">drag_contents_to</a></span>, <span class='name'><a title="set" href="TextField.html#set-instance_method">set</a></span>, <span class='name'><a title="type" href="TextField.html#type-instance_method">type</a></span>, <span class='name'><a title="value" href="TextField.html#value-instance_method">value</a></span>, <span class='name'><a title="verify_contains" href="TextField.html#verify_contains-instance_method">verify_contains</a></span></p>
   </div>
   
   <div>

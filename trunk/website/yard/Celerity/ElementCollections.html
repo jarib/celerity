@@ -181,8 +181,10 @@ Note: This can be quite useful in irb:.
 
 </div><div class="section docstring">
   <p>
-Get the element at the given index. NB! This is 1-indexed to keep
-compatibility with Watir. Subject to change.
+Get the element at the given index. This is 1-indexed to keep compatibility
+with Watir - subject to change. Also note that because of Watir&#8217;s
+lazy loading, this will return an Element instance even if the index is out
+of bounds.
 </p>
 
 </div><div class="section tags">
@@ -212,7 +214,7 @@ Index of wanted element, 1-indexed.
   
     <dt>
       
-        <span class='type'>[<tt><a title="Celerity::Element" href="Element.html">Celerity::Element</a></tt>, <tt>nil</tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Element" href="Element.html">Celerity::Element</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -221,7 +223,7 @@ Index of wanted element, 1-indexed.
     </dt>
     <dd>
       <span class='desc'><p>
-Returns nil if index is out of bounds.
+Returns a subclass of Celerity::Element
 </p>
 </span>
     </dd>
@@ -238,22 +240,22 @@ Returns nil if index is out of bounds.
           <pre class="lines">
 
 
-41
-42
-43
 44
 45
 46
-47</pre>
+47
+48
+49
+50</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element_collections.rb', line 41</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element_collections.rb', line 44</span>
 
 <span class='def def kw'>def</span> <span class='aref op'>[]</span><span class='lparen token'>(</span><span class='n identifier id'>n</span><span class='rparen token'>)</span>
-  <span class='if if kw'>if</span> <span class='@elements ivar id'>@elements</span> <span class='andop op'>&amp;&amp;</span> <span class='@elements ivar id'>@elements</span><span class='lbrack token'>[</span><span class='n identifier id'>n</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='rbrack token'>]</span>
-    <span class='element_class identifier id'>element_class</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='comma token'>,</span> <span class='symbol val'>:object</span><span class='comma token'>,</span> <span class='@elements ivar id'>@elements</span><span class='lbrack token'>[</span><span class='n identifier id'>n</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='@elements ivar id'>@elements</span> <span class='andop op'>&amp;&amp;</span> <span class='@elements ivar id'>@elements</span><span class='lbrack token'>[</span><span class='n identifier id'>n</span> <span class='minus op'>-</span> <span class='INDEX_OFFSET constant id'>INDEX_OFFSET</span><span class='rbrack token'>]</span>
+    <span class='element_class identifier id'>element_class</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='comma token'>,</span> <span class='symbol val'>:object</span><span class='comma token'>,</span> <span class='@elements ivar id'>@elements</span><span class='lbrack token'>[</span><span class='n identifier id'>n</span> <span class='minus op'>-</span> <span class='INDEX_OFFSET constant id'>INDEX_OFFSET</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
   <span class='else else kw'>else</span>
-    <span class='iterator_object identifier id'>iterator_object</span><span class='lparen token'>(</span><span class='n identifier id'>n</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='rparen token'>)</span>
+    <span class='iterator_object identifier id'>iterator_object</span><span class='lparen token'>(</span><span class='n identifier id'>n</span> <span class='minus op'>-</span> <span class='INDEX_OFFSET constant id'>INDEX_OFFSET</span><span class='rparen token'>)</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -325,7 +327,8 @@ Iterate through the elements in this collection.
 31
 32
 33
-34</pre>
+34
+35</pre>
         </td>
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/element_collections.rb', line 27</span>
@@ -333,10 +336,11 @@ Iterate through the elements in this collection.
 <span class='def def kw'>def</span> <span class='each identifier id'>each</span>
   <span class='if if kw'>if</span> <span class='@elements ivar id'>@elements</span>
     <span class='@elements ivar id'>@elements</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='element_class identifier id'>element_class</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='comma token'>,</span> <span class='symbol val'>:object</span><span class='comma token'>,</span> <span class='e identifier id'>e</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-    <span class='@length ivar id'>@length</span>
   <span class='else else kw'>else</span>
     <span class='integer val'>0</span><span class='dot token'>.</span><span class='upto identifier id'>upto</span><span class='lparen token'>(</span><span class='@length ivar id'>@length</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='i identifier id'>i</span><span class='bitor op'>|</span> <span class='yield yield kw'>yield</span> <span class='iterator_object identifier id'>iterator_object</span><span class='lparen token'>(</span><span class='i identifier id'>i</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
   <span class='end end kw'>end</span>
+
+  <span class='@length ivar id'>@length</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -421,7 +425,7 @@ The number of elements in this collection.
   <span class='if if kw'>if</span> <span class='@object ivar id'>@object</span>
     <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
   <span class='else else kw'>else</span>
-    <span class='@elements ivar id'>@elements</span> <span class='opasgn op'>||=</span> <span class='ElementLocator constant id'>ElementLocator</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='object identifier id'>object</span><span class='comma token'>,</span> <span class='element_class identifier id'>element_class</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='elements_by_idents identifier id'>elements_by_idents</span>
+    <span class='@elements ivar id'>@elements</span> <span class='opasgn op'>||=</span> <span class='ElementLocator constant id'>ElementLocator</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='comma token'>,</span> <span class='element_class identifier id'>element_class</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='elements_by_idents identifier id'>elements_by_idents</span>
     <span class='@elements ivar id'>@elements</span><span class='dot token'>.</span><span class='size identifier id'>size</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
@@ -495,12 +499,12 @@ A string representation of all elements in this collection.
           <pre class="lines">
 
 
-54
-55
-56</pre>
+57
+58
+59</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element_collections.rb', line 54</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element_collections.rb', line 57</span>
 
 <span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
   <span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span>

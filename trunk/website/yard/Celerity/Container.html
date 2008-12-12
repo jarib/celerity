@@ -65,16 +65,16 @@ form (@see Celerity::ElementCollections):
       <table>
       
         <tr>
-          <th class="name">page_container</td>
+          <th class="name">browser</td>
           <td class="readwrite">
-            [<span id='page_container-instance_method'>R</span><span id='page_container%3D-instance_method'>W</span>] 
+            [<span id='browser-instance_method'>R</span><span id='browser%3D-instance_method'>W</span>] 
           </td>
           <td class="visibility">
             public
           </td>
           <td class="docstring">
             <p>
-Sets the attribute <tt>page_container</tt>.
+Points back to the Browser instance that contains this element.
 </p>
 
             
@@ -291,6 +291,30 @@ Check if the element contains the given text.
   
     <tr>
       <th class="signature">
+        <span class='name'><a title="#dd" href="#dd-instance_method">#dd</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#dds" href="#dds-instance_method">#dds</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
         <span class='name'><a title="#div" href="#div-instance_method">#div</a></span><span class='args'>(*args)</span>
         <span class='block'></span>
         
@@ -323,6 +347,54 @@ Check if the element contains the given text.
                  <tt><a title="Celerity::Divs" href="Divs.html">Celerity::Divs</a></tt>
               </span>
           </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#dl" href="#dl-instance_method">#dl</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#dls" href="#dls-instance_method">#dls</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#dt" href="#dt-instance_method">#dt</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#dts" href="#dts-instance_method">#dts</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
         
       </td>
     </tr>
@@ -921,6 +993,30 @@ Used internally.
   
     <tr>
       <th class="signature">
+        <span class='name'><a title="#meta" href="#meta-instance_method">#meta</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#metas" href="#metas-instance_method">#metas</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
         <span class='name'><a title="#ol" href="#ol-instance_method">#ol</a></span><span class='args'>(*args)</span>
         <span class='block'></span>
         
@@ -1367,6 +1463,28 @@ Since finding radios by value is very common, you can use this shorthand:.
   
     <tr>
       <th class="signature">
+        <span class='name'><a title="#th" href="#th-instance_method">#th</a></span><span class='args'>(*args)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Watir&#8217;s cells() won&#8217;t return &lt;th&gt; elements.
+</p>
+
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a title="Celerity::Th" href="Th.html">Celerity::Th</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
         <span class='name'><a title="#thead" href="#thead-instance_method">#thead</a></span><span class='args'>(*args)</span>
         <span class='block'></span>
         
@@ -1399,6 +1517,21 @@ Since finding radios by value is very common, you can use this shorthand:.
                  <tt><a title="Celerity::TableHeaders" href="TableHeaders.html">Celerity::TableHeaders</a></tt>
               </span>
           </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#ths" href="#ths-instance_method">#ths</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+TODO: implement or change api,.
+</p>
+
         
       </td>
     </tr>
@@ -1511,16 +1644,14 @@ Used internally to update the page object.
           <pre class="lines">
 
 
-319
-320
-321
-322</pre>
+314
+315
+316</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 319</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 314</span>
 
 <span class='def def kw'>def</span> <span class='area identifier id'>area</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Area constant id'>Area</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -1582,16 +1713,14 @@ Used internally to update the page object.
           <pre class="lines">
 
 
-325
-326
-327
-328</pre>
+319
+320
+321</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 325</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 319</span>
 
 <span class='def def kw'>def</span> <span class='areas identifier id'>areas</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Areas constant id'>Areas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -1653,16 +1782,14 @@ Used internally to update the page object.
           <pre class="lines">
 
 
-153
 154
 155
 156</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 153</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 154</span>
 
 <span class='def def kw'>def</span> <span class='button identifier id'>button</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Button constant id'>Button</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -1726,14 +1853,12 @@ Used internally to update the page object.
 
 159
 160
-161
-162</pre>
+161</pre>
         </td>
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 159</span>
 
 <span class='def def kw'>def</span> <span class='buttons identifier id'>buttons</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Buttons constant id'>Buttons</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -1795,16 +1920,14 @@ Used internally to update the page object.
           <pre class="lines">
 
 
-129
-130
-131
-132</pre>
+120
+121
+122</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 129</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 120</span>
 
 <span class='def def kw'>def</span> <span class='cell identifier id'>cell</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableCell constant id'>TableCell</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -1866,16 +1989,14 @@ Used internally to update the page object.
           <pre class="lines">
 
 
-135
-136
-137
-138</pre>
+125
+126
+127</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 135</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 125</span>
 
 <span class='def def kw'>def</span> <span class='cells identifier id'>cells</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableCells constant id'>TableCells</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -1959,16 +2080,14 @@ or
           <pre class="lines">
 
 
-227
-228
-229
-230</pre>
+212
+213
+214</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 227</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 212</span>
 
 <span class='def def kw'>def</span> <span class='check_box identifier id'>check_box</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='CheckBox constant id'>CheckBox</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2030,16 +2149,14 @@ or
           <pre class="lines">
 
 
-233
-234
-235
-236</pre>
+217
+218
+219</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 233</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 217</span>
 
 <span class='def def kw'>def</span> <span class='checkboxes identifier id'>checkboxes</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='CheckBoxes constant id'>CheckBoxes</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2087,18 +2204,18 @@ Used internally to update the container object.
           <pre class="lines">
 
 
-54
-55
 56
 57
-58</pre>
+58
+59
+60</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 54</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 56</span>
 
 <span class='def def kw'>def</span> <span class='container= identifier id'>container=</span><span class='lparen token'>(</span><span class='container identifier id'>container</span><span class='rparen token'>)</span>
   <span class='@container ivar id'>@container</span> <span class='assign token'>=</span> <span class='container identifier id'>container</span>
-  <span class='@page_container ivar id'>@page_container</span> <span class='assign token'>=</span> <span class='container identifier id'>container</span><span class='dot token'>.</span><span class='page_container identifier id'>page_container</span>
+  <span class='@browser ivar id'>@browser</span> <span class='assign token'>=</span> <span class='container identifier id'>container</span><span class='dot token'>.</span><span class='browser identifier id'>browser</span>
   <span class='container identifier id'>container</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2182,8 +2299,6 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-38
-39
 40
 41
 42
@@ -2194,10 +2309,12 @@ The index of the matched text, or nil if it doesn&#8217;t match.
 47
 48
 49
-50</pre>
+50
+51
+52</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 38</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 40</span>
 
 <span class='def def kw'>def</span> <span class='contains_text identifier id'>contains_text</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -2209,8 +2326,92 @@ The index of the matched text, or nil if it doesn&#8217;t match.
   <span class='when when kw'>when</span> <span class='String constant id'>String</span>
     <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='index identifier id'>index</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
   <span class='else else kw'>else</span>
-    <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Argument #{expected_text.inspect} should be a String or Regexp.&quot;</span>
+    <span class='raise identifier id'>raise</span> <span class='TypeError constant id'>TypeError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;expected String or Regexp, got #{expected_text.inspect}:#{expected_text.class}&quot;</span>
   <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>dd</h3>
+</div><div id="dd-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>dd</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+285
+286
+287</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 285</span>
+
+<span class='def def kw'>def</span> <span class='dd identifier id'>dd</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='Dd constant id'>Dd</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>dds</h3>
+</div><div id="dds-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>dds</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+289
+290
+291</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 289</span>
+
+<span class='def def kw'>def</span> <span class='dds identifier id'>dds</span>
+  <span class='Dds constant id'>Dds</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -2271,16 +2472,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-343
-344
-345
-346</pre>
+334
+335
+336</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 343</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 334</span>
 
 <span class='def def kw'>def</span> <span class='div identifier id'>div</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Div constant id'>Div</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2342,17 +2541,183 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-349
-350
-351
-352</pre>
+339
+340
+341</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 349</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 339</span>
 
 <span class='def def kw'>def</span> <span class='divs identifier id'>divs</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Divs constant id'>Divs</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>dl</h3>
+</div><div id="dl-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>dl</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+269
+270
+271</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 269</span>
+
+<span class='def def kw'>def</span> <span class='dl identifier id'>dl</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='Dl constant id'>Dl</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>dls</h3>
+</div><div id="dls-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>dls</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+273
+274
+275</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 273</span>
+
+<span class='def def kw'>def</span> <span class='dls identifier id'>dls</span>
+  <span class='Dls constant id'>Dls</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>dt</h3>
+</div><div id="dt-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>dt</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+277
+278
+279</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 277</span>
+
+<span class='def def kw'>def</span> <span class='dt identifier id'>dt</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='Dt constant id'>Dt</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>dts</h3>
+</div><div id="dts-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>dts</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+281
+282
+283</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 281</span>
+
+<span class='def def kw'>def</span> <span class='dts identifier id'>dts</span>
+  <span class='Dts constant id'>Dts</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -2413,16 +2778,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
+164
 165
-166
-167
-168</pre>
+166</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 165</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 164</span>
 
 <span class='def def kw'>def</span> <span class='file_field identifier id'>file_field</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='FileField constant id'>FileField</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2484,16 +2847,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-171
-172
-173
-174</pre>
+169
+170
+171</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 171</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 169</span>
 
 <span class='def def kw'>def</span> <span class='file_fields identifier id'>file_fields</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='FileFields constant id'>FileFields</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2555,16 +2916,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-355
-356
-357
-358</pre>
+344
+345
+346</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 355</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 344</span>
 
 <span class='def def kw'>def</span> <span class='form identifier id'>form</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Form constant id'>Form</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2626,16 +2985,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-361
-362
-363
-364</pre>
+349
+350
+351</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 361</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 349</span>
 
 <span class='def def kw'>def</span> <span class='forms identifier id'>forms</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Forms constant id'>Forms</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2697,16 +3054,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-67
-68
 69
-70</pre>
+70
+71</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 67</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 69</span>
 
 <span class='def def kw'>def</span> <span class='frame identifier id'>frame</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Frame constant id'>Frame</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2768,16 +3123,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-73
 74
 75
 76</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 73</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 74</span>
 
 <span class='def def kw'>def</span> <span class='frames identifier id'>frames</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Frames constant id'>Frames</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2839,16 +3192,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-415
-416
-417
-418</pre>
+407
+408
+409</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 415</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 407</span>
 
 <span class='def def kw'>def</span> <span class='h1 identifier id'>h1</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H1 constant id'>H1</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2910,16 +3261,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-451
-452
-453
-454</pre>
+437
+438
+439</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 451</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 437</span>
 
 <span class='def def kw'>def</span> <span class='h1s identifier id'>h1s</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H1s constant id'>H1s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2981,16 +3330,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-421
-422
-423
-424</pre>
+412
+413
+414</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 421</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 412</span>
 
 <span class='def def kw'>def</span> <span class='h2 identifier id'>h2</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H2 constant id'>H2</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3052,16 +3399,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-457
-458
-459
-460</pre>
+442
+443
+444</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 457</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 442</span>
 
 <span class='def def kw'>def</span> <span class='h2s identifier id'>h2s</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H2s constant id'>H2s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3123,16 +3468,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-427
-428
-429
-430</pre>
+417
+418
+419</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 427</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 417</span>
 
 <span class='def def kw'>def</span> <span class='h3 identifier id'>h3</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H3 constant id'>H3</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3194,16 +3537,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-463
-464
-465
-466</pre>
+447
+448
+449</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 463</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 447</span>
 
 <span class='def def kw'>def</span> <span class='h3s identifier id'>h3s</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H3s constant id'>H3s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3265,16 +3606,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-433
-434
-435
-436</pre>
+422
+423
+424</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 433</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 422</span>
 
 <span class='def def kw'>def</span> <span class='h4 identifier id'>h4</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H4 constant id'>H4</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3336,16 +3675,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-469
-470
-471
-472</pre>
+452
+453
+454</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 469</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 452</span>
 
 <span class='def def kw'>def</span> <span class='h4s identifier id'>h4s</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H4s constant id'>H4s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3407,16 +3744,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-439
-440
-441
-442</pre>
+427
+428
+429</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 439</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 427</span>
 
 <span class='def def kw'>def</span> <span class='h5 identifier id'>h5</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H5 constant id'>H5</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3478,16 +3813,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-475
-476
-477
-478</pre>
+457
+458
+459</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 475</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 457</span>
 
 <span class='def def kw'>def</span> <span class='h5s identifier id'>h5s</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H5s constant id'>H5s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3549,16 +3882,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-445
-446
-447
-448</pre>
+432
+433
+434</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 445</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 432</span>
 
 <span class='def def kw'>def</span> <span class='h6 identifier id'>h6</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H6 constant id'>H6</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3620,16 +3951,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-481
-482
-483
-484</pre>
+462
+463
+464</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 481</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 462</span>
 
 <span class='def def kw'>def</span> <span class='h6s identifier id'>h6s</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='H6s constant id'>H6s</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3691,16 +4020,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-189
-190
-191
-192</pre>
+184
+185
+186</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 189</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 184</span>
 
 <span class='def def kw'>def</span> <span class='hidden identifier id'>hidden</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Hidden constant id'>Hidden</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3762,16 +4089,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-195
-196
-197
-198</pre>
+189
+190
+191</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 195</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 189</span>
 
 <span class='def def kw'>def</span> <span class='hiddens identifier id'>hiddens</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Hiddens constant id'>Hiddens</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3833,16 +4158,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-331
-332
-333
-334</pre>
+324
+325
+326</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 331</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 324</span>
 
 <span class='def def kw'>def</span> <span class='image identifier id'>image</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Image constant id'>Image</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3904,16 +4227,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-337
-338
-339
-340</pre>
+329
+330
+331</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 337</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 329</span>
 
 <span class='def def kw'>def</span> <span class='images identifier id'>images</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Images constant id'>Images</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -3975,16 +4296,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-403
-404
-405
-406</pre>
+389
+390
+391</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 403</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 389</span>
 
 <span class='def def kw'>def</span> <span class='label identifier id'>label</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Label constant id'>Label</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4046,16 +4365,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-409
-410
-411
-412</pre>
+394
+395
+396</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 409</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 394</span>
 
 <span class='def def kw'>def</span> <span class='labels identifier id'>labels</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Labels constant id'>Labels</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4117,16 +4434,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
+294
 295
-296
-297
-298</pre>
+296</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 295</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 294</span>
 
 <span class='def def kw'>def</span> <span class='li identifier id'>li</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Li constant id'>Li</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4188,16 +4503,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-259
-260
-261
-262</pre>
+240
+241
+242</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 259</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 240</span>
 
 <span class='def def kw'>def</span> <span class='link identifier id'>link</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Link constant id'>Link</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4259,16 +4572,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-265
-266
-267
-268</pre>
+245
+246
+247</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 265</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 245</span>
 
 <span class='def def kw'>def</span> <span class='links identifier id'>links</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Links constant id'>Links</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4330,16 +4641,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-301
-302
-303
-304</pre>
+299
+300
+301</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 301</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 299</span>
 
 <span class='def def kw'>def</span> <span class='lis identifier id'>lis</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Lis constant id'>Lis</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4401,16 +4710,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-307
-308
-309
-310</pre>
+304
+305
+306</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 307</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 304</span>
 
 <span class='def def kw'>def</span> <span class='map identifier id'>map</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Map constant id'>Map</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4472,16 +4779,14 @@ The index of the matched text, or nil if it doesn&#8217;t match.
           <pre class="lines">
 
 
-313
-314
-315
-316</pre>
+309
+310
+311</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 313</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 309</span>
 
 <span class='def def kw'>def</span> <span class='maps identifier id'>maps</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Maps constant id'>Maps</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4576,15 +4881,99 @@ The match we&#8217;re looking for.
           <pre class="lines">
 
 
-493
-494
-495</pre>
+473
+474
+475</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 493</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 473</span>
 
 <span class='def def kw'>def</span> <span class='matches? fid id'>matches?</span><span class='lparen token'>(</span><span class='string identifier id'>string</span><span class='comma token'>,</span> <span class='what identifier id'>what</span><span class='rparen token'>)</span>
   <span class='Regexp constant id'>Regexp</span> <span class='eqq op'>===</span> <span class='what identifier id'>what</span> <span class='integer val'>? </span><span class='string identifier id'>string</span> <span class='match op'>=~</span> <span class='what identifier id'>what</span> <span class='colon op'>:</span> <span class='string identifier id'>string</span> <span class='eq op'>==</span> <span class='what identifier id'>what</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>meta</h3>
+</div><div id="meta-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>meta</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+398
+399
+400</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 398</span>
+
+<span class='def def kw'>def</span> <span class='meta identifier id'>meta</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='Meta constant id'>Meta</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>metas</h3>
+</div><div id="metas-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>metas</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+402
+403
+404</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 402</span>
+
+<span class='def def kw'>def</span> <span class='metas identifier id'>metas</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='Metas constant id'>Metas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -4645,16 +5034,14 @@ The match we&#8217;re looking for.
           <pre class="lines">
 
 
-283
-284
-285
-286</pre>
+260
+261
+262</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 283</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 260</span>
 
 <span class='def def kw'>def</span> <span class='ol identifier id'>ol</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Ol constant id'>Ol</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4716,16 +5103,14 @@ The match we&#8217;re looking for.
           <pre class="lines">
 
 
-289
-290
-291
-292</pre>
+265
+266
+267</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 289</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 265</span>
 
 <span class='def def kw'>def</span> <span class='ols identifier id'>ols</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Ols constant id'>Ols</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4787,16 +5172,14 @@ The match we&#8217;re looking for.
           <pre class="lines">
 
 
-213
-214
-215
-216</pre>
+354
+355
+356</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 213</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 354</span>
 
 <span class='def def kw'>def</span> <span class='option identifier id'>option</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Option constant id'>Option</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4858,16 +5241,14 @@ The match we&#8217;re looking for.
           <pre class="lines">
 
 
-379
-380
-381
-382</pre>
+369
+370
+371</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 379</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 369</span>
 
 <span class='def def kw'>def</span> <span class='p identifier id'>p</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='P constant id'>P</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4929,16 +5310,14 @@ The match we&#8217;re looking for.
           <pre class="lines">
 
 
-391
-392
-393
-394</pre>
+379
+380
+381</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 391</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 379</span>
 
 <span class='def def kw'>def</span> <span class='pre identifier id'>pre</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Pre constant id'>Pre</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5000,16 +5379,14 @@ The match we&#8217;re looking for.
           <pre class="lines">
 
 
-397
-398
-399
-400</pre>
+384
+385
+386</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 397</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 384</span>
 
 <span class='def def kw'>def</span> <span class='pres identifier id'>pres</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Pres constant id'>Pres</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5071,16 +5448,14 @@ The match we&#8217;re looking for.
           <pre class="lines">
 
 
-385
-386
-387
-388</pre>
+374
+375
+376</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 385</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 374</span>
 
 <span class='def def kw'>def</span> <span class='ps identifier id'>ps</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Ps constant id'>Ps</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5156,16 +5531,14 @@ or
           <pre class="lines">
 
 
-247
-248
-249
-250</pre>
+230
+231
+232</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 247</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 230</span>
 
 <span class='def def kw'>def</span> <span class='radio identifier id'>radio</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Radio constant id'>Radio</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5227,16 +5600,14 @@ or
           <pre class="lines">
 
 
-253
-254
-255
-256</pre>
+235
+236
+237</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 253</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 235</span>
 
 <span class='def def kw'>def</span> <span class='radios identifier id'>radios</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Radios constant id'>Radios</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5298,16 +5669,14 @@ or
           <pre class="lines">
 
 
-141
-142
-143
-144</pre>
+144
+145
+146</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 141</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 144</span>
 
 <span class='def def kw'>def</span> <span class='row identifier id'>row</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableRow constant id'>TableRow</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5369,16 +5738,14 @@ or
           <pre class="lines">
 
 
-147
-148
 149
-150</pre>
+150
+151</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 147</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 149</span>
 
 <span class='def def kw'>def</span> <span class='rows identifier id'>rows</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableRows constant id'>TableRows</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5440,16 +5807,14 @@ or
           <pre class="lines">
 
 
-201
-202
-203
-204</pre>
+194
+195
+196</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 201</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 194</span>
 
 <span class='def def kw'>def</span> <span class='select_list identifier id'>select_list</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='SelectList constant id'>SelectList</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5511,16 +5876,14 @@ or
           <pre class="lines">
 
 
-207
-208
-209
-210</pre>
+199
+200
+201</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 207</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 199</span>
 
 <span class='def def kw'>def</span> <span class='select_lists identifier id'>select_lists</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='SelectLists constant id'>SelectLists</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5582,16 +5945,14 @@ or
           <pre class="lines">
 
 
-367
-368
-369
-370</pre>
+359
+360
+361</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 367</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 359</span>
 
 <span class='def def kw'>def</span> <span class='span identifier id'>span</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Span constant id'>Span</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5653,16 +6014,14 @@ or
           <pre class="lines">
 
 
-373
-374
-375
-376</pre>
+364
+365
+366</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 373</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 364</span>
 
 <span class='def def kw'>def</span> <span class='spans identifier id'>spans</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Spans constant id'>Spans</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5726,14 +6085,12 @@ or
 
 79
 80
-81
-82</pre>
+81</pre>
         </td>
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 79</span>
 
 <span class='def def kw'>def</span> <span class='table identifier id'>table</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Table constant id'>Table</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5795,16 +6152,14 @@ or
           <pre class="lines">
 
 
+84
 85
-86
-87
-88</pre>
+86</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 85</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 84</span>
 
 <span class='def def kw'>def</span> <span class='tables identifier id'>tables</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Tables constant id'>Tables</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5871,16 +6226,14 @@ or
           <pre class="lines">
 
 
-109
-110
-111
-112</pre>
+104
+105
+106</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 109</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 104</span>
 
 <span class='def def kw'>def</span> <span class='tbodies identifier id'>tbodies</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableBodies constant id'>TableBodies</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -5947,16 +6300,14 @@ or
           <pre class="lines">
 
 
-103
-104
-105
-106</pre>
+99
+100
+101</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 103</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 99</span>
 
 <span class='def def kw'>def</span> <span class='tbody identifier id'>tbody</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableBody constant id'>TableBody</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -6018,16 +6369,14 @@ or
           <pre class="lines">
 
 
-177
-178
-179
-180</pre>
+174
+175
+176</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 177</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 174</span>
 
 <span class='def def kw'>def</span> <span class='text_field identifier id'>text_field</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TextField constant id'>TextField</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -6089,16 +6438,14 @@ or
           <pre class="lines">
 
 
-183
-184
-185
-186</pre>
+179
+180
+181</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 183</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 179</span>
 
 <span class='def def kw'>def</span> <span class='text_fields identifier id'>text_fields</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TextFields constant id'>TextFields</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -6160,16 +6507,14 @@ or
           <pre class="lines">
 
 
-115
-116
-117
-118</pre>
+109
+110
+111</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 115</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 109</span>
 
 <span class='def def kw'>def</span> <span class='tfoot identifier id'>tfoot</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableFooter constant id'>TableFooter</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -6236,17 +6581,90 @@ or
           <pre class="lines">
 
 
-121
-122
-123
-124</pre>
+114
+115
+116</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 121</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 114</span>
 
 <span class='def def kw'>def</span> <span class='tfoots identifier id'>tfoots</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableFooters constant id'>TableFooters</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>th</h3>
+</div><div id="th-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a title="Celerity::Th" href="Th.html">Celerity::Th</a></tt></span>
+    <span class='name'>th</span><span class='args'>(*args)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Watir&#8217;s cells() won&#8217;t return &lt;th&gt; elements. This is a
+workaround.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div><div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a title="Celerity::Th" href="Th.html">Celerity::Th</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+133
+134
+135</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 133</span>
+
+<span class='def def kw'>def</span> <span class='th identifier id'>th</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='Th constant id'>Th</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -6307,16 +6725,14 @@ or
           <pre class="lines">
 
 
-91
-92
-93
-94</pre>
+89
+90
+91</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 91</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 89</span>
 
 <span class='def def kw'>def</span> <span class='thead identifier id'>thead</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableHeader constant id'>TableHeader</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -6378,17 +6794,98 @@ or
           <pre class="lines">
 
 
-97
-98
-99
-100</pre>
+94
+95
+96</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 97</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 94</span>
 
 <span class='def def kw'>def</span> <span class='theads identifier id'>theads</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='TableHeaders constant id'>TableHeaders</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>ths</h3>
+</div><div id="ths-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>ths</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+TODO: implement or change api,
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div><div class="raise">
+  <h3>Raises:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>NotImplementedError</tt>]</span>
+      
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="see">
+  <h3>See Also:</h3>
+  <dl>
+    <dt></dt>
+    <dd>
+      <span class='desc'>
+        <tt><a title="th" href="#th-instance_method">th</a></tt>
+      </span>
+    </dd>
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+139
+140
+141</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 139</span>
+
+<span class='def def kw'>def</span> <span class='ths identifier id'>ths</span>
+  <span class='raise identifier id'>raise</span> <span class='NotImplementedError constant id'>NotImplementedError</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -6449,16 +6946,14 @@ or
           <pre class="lines">
 
 
-271
-272
-273
-274</pre>
+250
+251
+252</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 271</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 250</span>
 
 <span class='def def kw'>def</span> <span class='ul identifier id'>ul</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Ul constant id'>Ul</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -6520,16 +7015,14 @@ or
           <pre class="lines">
 
 
-277
-278
-279
-280</pre>
+255
+256
+257</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 277</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 255</span>
 
 <span class='def def kw'>def</span> <span class='uls identifier id'>uls</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
   <span class='Uls constant id'>Uls</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -6577,15 +7070,15 @@ Used internally to update the page object.
           <pre class="lines">
 
 
-62
-63
-64</pre>
+64
+65
+66</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 62</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/container.rb', line 64</span>
 
 <span class='def def kw'>def</span> <span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
-  <span class='@page_container ivar id'>@page_container</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='page identifier id'>page</span>
+  <span class='@browser ivar id'>@browser</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='page identifier id'>page</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>

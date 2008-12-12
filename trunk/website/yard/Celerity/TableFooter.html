@@ -16,21 +16,12 @@
   <h1 class="title">Class: Celerity::TableFooter</h1>
   <div class="section inheritance">
   <ul>
-  <li><a title="Celerity::Element" href="Element.html">Celerity::Element</a></li><ul><li>Celerity::TableFooter</li>
-  </ul></ul>
-</div><div class="section mixins">
-  <h1>Included Modules</h1>
-  <p>Enumerable</p>
+  <li><a title="Celerity::Element" href="Element.html">Celerity::Element</a></li><ul><li><a title="Celerity::TableElement" href="TableElement.html">Celerity::TableElement</a></li><ul><li>Celerity::TableFooter</li>
+  </ul></ul></ul>
 </div><div class="section constants">
   <div class="thisclass">
   <h1>Constants</h1>
   <dl>
-    
-      <dt id="ATTRIBUTES-constant">ATTRIBUTES</dt>
-      <dd>BASE_ATTRIBUTES | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES</dd>
-    
-      <dt id="DEFAULT_HOW-constant">DEFAULT_HOW</dt>
-      <dd>:id</dd>
     
       <dt id="TAGS-constant">TAGS</dt>
       <dd>[ Identifier.new('tfoot') ]</dd>
@@ -38,6 +29,11 @@
   </dl>
 </div>
 <div class="inherited">
+  
+  <div>
+    <h1>Constants Inherited from <a title="Celerity::TableElement" href="TableElement.html">Celerity::TableElement</a></h1>
+    <p><span class='name'><a title="ATTRIBUTES" href="TableElement.html#ATTRIBUTES-constant">ATTRIBUTES</a></span>, <span class='name'><a title="DEFAULT_HOW" href="TableElement.html#DEFAULT_HOW-constant">DEFAULT_HOW</a></span></p>
+  </div>
   
   <div>
     <h1>Constants Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
@@ -147,9 +143,6 @@ NoMethodError if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-173
-174
-175
 176
 177
 178
@@ -157,10 +150,13 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 180
 181
 182
-183</pre>
+183
+184
+185
+186</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 173</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 176</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
@@ -183,58 +179,12 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 </div>  <div class="section visibilitygroup public">
     <h1>Public Visibility</h1>
       <div class="section methodsummary instance public">
-    <h1>Public Instance Method Summary</h1>
-<table class="summary">
+    <div class="inherited">
   
-    <tr>
-      <th class="signature">
-        <span class='name'><a title="#[]" href="#%5B%5D-instance_method">#[]</a></span><span class='args'>(index)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a title="#each" href="#each-instance_method">#each</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a title="#length" href="#length-instance_method">#length</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a title="#locate" href="#locate-instance_method">#locate</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-</table><div class="inherited">
+  <div>
+    <h1>Public Instance Methods Inherited from <a title="Celerity::TableElement" href="TableElement.html">Celerity::TableElement</a></h1>
+    <p><span class='name'><a title="[]" href="TableElement.html#%5B%5D-instance_method">[]</a></span>, <span class='name'><a title="each" href="TableElement.html#each-instance_method">each</a></span>, <span class='name'><a title="length" href="TableElement.html#length-instance_method">length</a></span>, <span class='name'><a title="locate" href="TableElement.html#locate-instance_method">locate</a></span></p>
+  </div>
   
   <div>
     <h1>Public Instance Methods Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
@@ -244,186 +194,7 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 </div>
 <div class="clear"></div>
   </div>
-<div class="section methoddetails instance public">
-  <h1>Public Instance Method Details</h1>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>[]</h3>
-</div><div id="%5B%5D-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>[]</span><span class='args'>(index)</span>
-    <span class='block'></span>
-  </tt>
-</div>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-14
-15
-16
-17</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/table_footer.rb', line 14</span>
-
-<span class='def def kw'>def</span> <span class='aref op'>[]</span><span class='lparen token'>(</span><span class='index identifier id'>index</span><span class='rparen token'>)</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
-  <span class='TableRow constant id'>TableRow</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='symbol val'>:object</span><span class='comma token'>,</span> <span class='@rows ivar id'>@rows</span><span class='lbrack token'>[</span><span class='index identifier id'>index</span><span class='minus op'>-</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>each</h3>
-</div><div id="each-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>each</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
-
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-24
-25
-26
-27</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/table_footer.rb', line 24</span>
-
-<span class='def def kw'>def</span> <span class='each identifier id'>each</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
-  <span class='@rows ivar id'>@rows</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='row identifier id'>row</span><span class='bitor op'>|</span> <span class='yield yield kw'>yield</span> <span class='TableRow constant id'>TableRow</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='symbol val'>:object</span><span class='comma token'>,</span> <span class='row identifier id'>row</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>length</h3>
-</div><div id="length-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>length</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
-
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-19
-20
-21
-22</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/table_footer.rb', line 19</span>
-
-<span class='def def kw'>def</span> <span class='length identifier id'>length</span>
-  <span class='assert_exists identifier id'>assert_exists</span>
-  <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getRows identifier id'>getRows</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>locate</h3>
-</div><div id="locate-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>locate</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
-
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
-
-
-9
-10
-11
-12</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/table_footer.rb', line 9</span>
-
-<span class='def def kw'>def</span> <span class='locate identifier id'>locate</span>
-  <span class='super super kw'>super</span>
-  <span class='@rows ivar id'>@rows</span> <span class='assign token'>=</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getRows identifier id'>getRows</span> <span class='if if_mod kw'>if</span> <span class='@object ivar id'>@object</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-    </div>
-  
-</div>
   </div>
 
 </div>

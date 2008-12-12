@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Celerity::Th</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Celerity_Th">
+  <h1 class="title">Class: Celerity::Th</h1>
+  <div class="section inheritance">
+  <ul>
+  <li><a title="Celerity::Element" href="Element.html">Celerity::Element</a></li><ul><li><a title="Celerity::TableCell" href="TableCell.html">Celerity::TableCell</a></li><ul><li>Celerity::Th</li>
+  </ul></ul></ul>
+</div><div class="section docstring">
+  <p>
+needs code review regarding attributes/correctness of this
+</p>
+
+</div><div class="section constants">
+  <div class="thisclass">
+  <h1>Constants</h1>
+  <dl>
+    
+      <dt id="TAGS-constant">TAGS</dt>
+      <dd>[ Identifier.new('th')]</dd>
+    
+  </dl>
+</div>
+<div class="inherited">
+  
+  <div>
+    <h1>Constants Inherited from <a title="Celerity::TableCell" href="TableCell.html">Celerity::TableCell</a></h1>
+    <p><span class='name'><a title="ATTRIBUTES" href="TableCell.html#ATTRIBUTES-constant">ATTRIBUTES</a></span>, <span class='name'><a title="DEFAULT_HOW" href="TableCell.html#DEFAULT_HOW-constant">DEFAULT_HOW</a></span></p>
+  </div>
+  
+  <div>
+    <h1>Constants Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
+    <p><span class='name'><a title="BASE_ATTRIBUTES" href="Element.html#BASE_ATTRIBUTES-constant">BASE_ATTRIBUTES</a></span>, <span class='name'><a title="CELLHALIGN_ATTRIBUTES" href="Element.html#CELLHALIGN_ATTRIBUTES-constant">CELLHALIGN_ATTRIBUTES</a></span>, <span class='name'><a title="CELLVALIGN_ATTRIBUTES" href="Element.html#CELLVALIGN_ATTRIBUTES-constant">CELLVALIGN_ATTRIBUTES</a></span>, <span class='name'><a title="HTML_401_TRANSITIONAL" href="Element.html#HTML_401_TRANSITIONAL-constant">HTML_401_TRANSITIONAL</a></span>, <span class='name'><a title="TO_S_SIZE" href="Element.html#TO_S_SIZE-constant">TO_S_SIZE</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <p class="inherited_msg">
+    This class inherits a constructor from <a title="Celerity::Element" href="Element.html#initialize-instance_method">Celerity::Element</a>.
+  </p>
+</div><div class="section methodmissing">
+  <h1>Dynamic Method Handling</h1>
+
+  <p class="note">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+      in the class <a title="Celerity::Element" href="Element.html">Celerity::Element</a>
+    
+  </p>
+
+  <div id="method_missing-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='name'>method_missing</span><span class='args'>(meth, *args, &amp;blk)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Dynamically get element attributes.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div><div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+The resulting attribute.
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="raise">
+  <h3>Raises:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>Object</tt>]</span>
+      
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+NoMethodError if the element doesn&#8217;t support this attribute.
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="see">
+  <h3>See Also:</h3>
+  <dl>
+    <dt></dt>
+    <dd>
+      <span class='desc'>
+        <tt>ATTRIBUTES constant for a list of valid methods for a given element.</tt>
+      </span>
+    </dd>
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 176</span>
+
+<span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
+
+  <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
+    <span class='assert_exists identifier id'>assert_exists</span>
+    <span class='return return kw'>return</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='Log constant id'>Log</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='dstring node'>&quot;Element\#method_missing calling super with #{meth.inspect}&quot;</span>
+  <span class='super super kw'>super</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary instance public">
+    <div class="inherited">
+  
+  <div>
+    <h1>Public Instance Methods Inherited from <a title="Celerity::TableCell" href="TableCell.html">Celerity::TableCell</a></h1>
+    <p><span class='name'><a title="colspan" href="TableCell.html#colspan-instance_method">colspan</a></span></p>
+  </div>
+  
+  <div>
+    <h1>Public Instance Methods Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
+    <p><span class='name'><a title="assert_exists" href="Element.html#assert_exists-instance_method">assert_exists</a></span>, <span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="locate" href="Element.html#locate-instance_method">locate</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="visible?" href="Element.html#visible%3F-instance_method">visible?</a></span></p>
+  </div>
+  
+</div>
+<div class="clear"></div>
+  </div>
+
+  </div>
+
+</div>
+    </div>
+  </body>
+</html>

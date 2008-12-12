@@ -204,9 +204,6 @@ NoMethodError if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-173
-174
-175
 176
 177
 178
@@ -214,10 +211,13 @@ NoMethodError if the element doesn&#8217;t support this attribute.
 180
 181
 182
-183</pre>
+183
+184
+185
+186</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 173</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 176</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
@@ -260,15 +260,15 @@ NoMethodError if the element doesn&#8217;t support this attribute.
         <span class='name'><a title="#set?" href="#set%3F-instance_method">#set?</a></span><span class='args'></span>
         <span class='block'></span>
         
-          <span class='alias'>#get_state</span>
-        
           <span class='alias'>#isSet?</span>
+        
+          <span class='alias'>#checked?</span>
         
           <span class='alias'>#is_set?</span>
         
           <span class='alias'>#getState</span>
         
-          <span class='alias'>#checked?</span>
+          <span class='alias'>#get_state</span>
         
       </th>
       <td class="docstring">
@@ -363,15 +363,15 @@ returns true if the element is checked.
 <p class="aliases">
   <span class="aka">Also known as:</span>
   
-    <tt id="get_state-instance_method">get_state</tt>
-  
     <tt id="isSet%3F-instance_method">isSet?</tt>
+  
+    <tt id="checked%3F-instance_method">checked?</tt>
   
     <tt id="is_set%3F-instance_method">is_set?</tt>
   
     <tt id="getState-instance_method">getState</tt>
   
-    <tt id="checked%3F-instance_method">checked?</tt>
+    <tt id="get_state-instance_method">get_state</tt>
   
 </p>
 </div><div class="section docstring">
