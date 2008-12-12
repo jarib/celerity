@@ -1,0 +1,143 @@
+require File.dirname(__FILE__) + '/spec_helper.rb'
+
+describe "Dd" do
+
+  before :all do
+    @browser = Browser.new
+  end
+
+  before :each do
+    @browser.goto(TEST_HOST + "/definition_lists.html")
+  end
+
+
+  # Exists method
+  describe "#exists?" do
+    it "should return true if the element exists" do
+      @browser.dd(:id, "someone").should exist
+      @browser.dd(:class, "name").should exist
+      @browser.dd(:xpath, "//dd[@id='someone']").should exist
+      @browser.dd(:index, 1).should exist
+    end
+
+    it "should return false if the element does not exist" do
+      @browser.dd(:id, "no_such_id").should_not exist
+    end
+
+    it "should raise TypeError when 'what' argument is invalid" do
+      lambda { @browser.dd(:id, 3.14).exists? }.should raise_error(TypeError)
+    end
+
+    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
+      lambda { @browser.dd(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
+    end
+  end
+
+  # Attribute methods
+  describe "#class_name" do
+    it "should return the class attribute if the element exists" do
+      @browser.dd(:id, "someone").class_name.should == "name"
+    end
+
+    it "should return an empty string if the element exists but the attribute doesn't" do
+      @browser.dd(:id, "city").class_name.should == ""
+    end
+
+    it "should raise UnknownObjectException if the element does not exist" do
+      lambda { @browser.dd(:id, "no_such_id").class_name }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:title, "no_such_title").class_name }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:index, 1337).class_name }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:xpath, "//dd[@id='no_such_id']").class_name }.should raise_error(UnknownObjectException)
+    end
+  end
+
+  describe "#id" do
+    it "should return the id attribute if the element exists" do
+      @browser.dd(:class, 'name').id.should == "someone"
+    end
+
+    it "should return an empty string if the element exists, but the attribute doesn't" do
+      @browser.dd(:class, 'address').id.should == ""
+    end
+
+    it "should raise UnknownObjectException if the element does not exist" do
+      lambda {@browser.dd(:id, "no_such_id").id }.should raise_error(UnknownObjectException)
+      lambda {@browser.dd(:title, "no_such_id").id }.should raise_error(UnknownObjectException)
+      lambda {@browser.dd(:index, 1337).id }.should raise_error(UnknownObjectException)
+    end
+  end
+
+  describe "#title" do
+    it "should return the title of the element" do
+      @browser.dd(:class, "name").title.should == "someone"
+    end
+  end
+
+  describe "#text" do
+    it "should return the text of the element" do
+      @browser.dd(:id, "someone").text.should == "John Doe"
+    end
+
+    it "should return an empty string if the element exists but contains no text" do
+      @browser.dd(:class, 'noop').text.should == ""
+    end
+
+    it "should raise UnknownObjectException if the element does not exist" do
+      lambda { @browser.dd(:id, "no_such_id").text }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:title, "no_such_title").text }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:index, 1337).text }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:xpath, "//dd[@id='no_such_id']").text }.should raise_error(UnknownObjectException)
+    end
+  end
+
+  describe "#respond_to?" do
+    it "should return true for all attribute methods" do
+      @browser.dd(:index, 1).should respond_to(:id)
+      @browser.dd(:index, 1).should respond_to(:class_name)
+      @browser.dd(:index, 1).should respond_to(:style)
+      @browser.dd(:index, 1).should respond_to(:text)
+      @browser.dd(:index, 1).should respond_to(:title)
+    end
+  end
+
+  # Manipulation methods
+  describe "#click" do
+    it "should fire events when clicked" do
+      @browser.dd(:title, 'education').text.should_not == 'changed'
+      @browser.dd(:title, 'education').click
+      @browser.dd(:title, 'education').text.should == 'changed'
+    end
+
+    it "should raise UnknownObjectException if the element does not exist" do
+      lambda { @browser.dd(:id, "no_such_id").click }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:title, "no_such_title").click }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:index, 1337).click }.should raise_error(UnknownObjectException)
+      lambda { @browser.dd(:xpath, "//dd[@id='no_such_id']").click }.should raise_error(UnknownObjectException)
+    end
+  end
+
+  describe "#html" do
+    it "should return the HTML of the element" do
+      html = @browser.dd(:id, 'someone').html
+      html.should match(%r"John Doe"m)
+      html.should_not include('</body>')
+    end
+  end
+
+  describe "#to_s" do
+    it "should return a human readable representation of the element" do
+      @browser.dd(:id, 'someone').to_s.should ==
+%q{tag:          dd
+  id:           someone
+  class:        name
+  title:        someone
+  text:         John Doe}
+    end
+  end
+
+  after :all do
+    @browser.close
+  end
+
+end
+
