@@ -22,7 +22,7 @@ describe "Dts" do
   end
 
   describe "#each" do
-    it "should iterate through dls correctly" do
+    it "should iterate through dts correctly" do
       @browser.dts.each_with_index do |d, index|
         d.name.should == @browser.dt(:index, index+1).name
         d.id.should == @browser.dt(:index, index+1).id
