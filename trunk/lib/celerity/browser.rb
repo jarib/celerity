@@ -306,7 +306,7 @@ module Celerity
         raise UnexpectedPageException, @page.getWebResponse.getContentType
       end
 
-      render if @viewer
+      render unless @viewer == DefaultViewer
       run_error_checks
 
       value
@@ -361,18 +361,20 @@ module Celerity
     def render
       @viewer.render_html(self.send(@opts[:render]), url)
     rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
-      @viewer = nil
+      @viewer = DefaultViewer
     end
 
     # Check if we have a viewer available on druby://127.0.0.1:6429
     # @api private
     def find_viewer
-      # FIXME: not ideal
-      require 'drb'
       viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
-      @viewer = viewer if viewer.respond_to?(:render_html)
+      if viewer.respond_to?(:render_html)
+        @viewer = viewer 
+      else
+        @viewer = DefaultViewer
+      end
     rescue DRb::DRbConnError, Errno::ECONNREFUSED
-      @viewer = nil
+      @viewer = DefaultViewer
     end
 
     def element_from_dom_node(obj)

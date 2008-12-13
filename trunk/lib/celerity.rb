@@ -8,12 +8,15 @@ require "uri"
 require "pp"
 require "timeout"
 require "time"
+require 'drb'
+require "fileutils"
 
 module Celerity
   Log = Logger.new($DEBUG ? $stderr : nil)
   Log.level = Logger::DEBUG
 
   INDEX_OFFSET = 1
+  DIR = File.expand_path(File.dirname(__FILE__) + "/celerity")
 end
 
 require "celerity/htmlunit"
@@ -46,6 +49,7 @@ require "celerity/elements/table_cell.rb"
 require "celerity/elements/table_row.rb"
 require "celerity/elements/text_field.rb"
 require "celerity/util"
+require "celerity/default_viewer"
 require "celerity/listener"
 require "celerity/browser"
 require "celerity/watir_compatibility"

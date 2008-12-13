@@ -9,11 +9,14 @@ namespace :jar do
 
     ruby_files = Dir['lib/**/*.rb']
     jar_files  = Dir['lib/**/*.jar']
-
-    rm_rf target_dir if File.exist? target_dir
-    mkdir target_dir
-
+    resources  = Dir['lib/celerity/resources/*']
+    
+    rm_rf   target_dir if File.exist? target_dir
+    mkdir   target_dir
+    mkdir_p resource_dir = "#{target_dir}/celerity/resources"
+    
     sh "jrubyc", "-d", "lib", "-t", target_dir, *ruby_files
+    resources.each { |extra| cp extra, resource_dir }
 
     jar_files.each do |f|
       cp f, target_dir
@@ -36,11 +39,14 @@ namespace :jar do
     file_name = "pkg/celerity-#{Celerity::VERSION::STRING}.jar"
 
     ruby_files = Dir['lib/**/*.rb']
+    resources  = Dir['lib/celerity/resources/*']
 
-    rm_rf target_dir if File.exist? target_dir
-    mkdir target_dir
-
+    rm_rf   target_dir if File.exist? target_dir
+    mkdir   target_dir
+    mkdir_p resource_dir = "#{target_dir}/celerity/resources"
+    
     sh "jrubyc", "-d", "lib", "-t", target_dir, *ruby_files
+    resources.each { |extra| cp extra, resource_dir }
 
     mkdir_p "pkg"
     sh "jar", "cvf", file_name, '-C', target_dir, '.'
