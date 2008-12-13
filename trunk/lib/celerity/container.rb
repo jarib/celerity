@@ -30,7 +30,7 @@ module Celerity
     include Celerity::Exception
 
     # Points back to the Browser instance that contains this element
-    attr_accessor :browser
+    attr_reader :browser
 
 
     # Check if the element contains the given text.
