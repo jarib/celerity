@@ -24,7 +24,7 @@ describe "Dls" do
   describe "#each" do
     it "should iterate through dls correctly" do
       @browser.dls.each_with_index do |d, index|
-        d.name.should == @browser.dl(:index, index+1).text
+        d.text.should == @browser.dl(:index, index+1).text
         d.id.should == @browser.dl(:index, index+1).id
         d.class_name.should == @browser.dl(:index, index+1).class_name
       end
