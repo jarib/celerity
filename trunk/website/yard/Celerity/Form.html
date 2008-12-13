@@ -112,14 +112,14 @@ The resulting attribute.
   
     <dt>
       
-        <span class='type'>[<tt>Object</tt>]</span>
+        <span class='type'>[<tt>NoMethodError</tt>]</span>
       
       
       
     </dt>
     <dd>
       <span class='desc'><p>
-NoMethodError if the element doesn&#8217;t support this attribute.
+if the element doesn&#8217;t support this attribute.
 </p>
 </span>
     </dd>
@@ -147,26 +147,28 @@ NoMethodError if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-176
-177
-178
-179
-180
-181
-182
 183
 184
 185
-186</pre>
+186
+187
+188
+189
+190
+191
+192
+193
+194</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 176</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 183</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
 
   <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
-    <span class='assert_exists identifier id'>assert_exists</span>
     <span class='return return kw'>return</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttributeValue identifier id'>getAttributeValue</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
   <span class='end end kw'>end</span>
 
@@ -205,7 +207,7 @@ Submits the form.
   
   <div>
     <h1>Public Instance Methods Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
-    <p><span class='name'><a title="assert_exists" href="Element.html#assert_exists-instance_method">assert_exists</a></span>, <span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="locate" href="Element.html#locate-instance_method">locate</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_s" href="Element.html#to_s-instance_method">to_s</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="visible?" href="Element.html#visible%3F-instance_method">visible?</a></span></p>
+    <p><span class='name'><a title="assert_exists" href="Element.html#assert_exists-instance_method">assert_exists</a></span>, <span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="locate" href="Element.html#locate-instance_method">locate</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_s" href="Element.html#to_s-instance_method">to_s</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="visible?" href="Element.html#visible%3F-instance_method">visible?</a></span>, <span class='name'><a title="xpath" href="Element.html#xpath-instance_method">xpath</a></span></p>
   </div>
   
 </div>

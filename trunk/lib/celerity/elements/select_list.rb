@@ -26,7 +26,7 @@ module Celerity
     # If several options match the value given, all will be selected.
     #
     # @param [String, Regexp] value A value.
-    # @raise Celerity::Exception::NoValueFoundException if the value does not exist.
+    # @raise [Celerity::Exception::NoValueFoundException] if the value does not exist.
     def select(value)
       assert_exists
       raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
@@ -48,7 +48,7 @@ module Celerity
     # Returns true if any of the selected options match the given value.
     #
     # @param [String, Regexp] value A value.
-    # @raise Celerity::Exception::UnknownObjectException if the value does not exist.
+    # @raise [Celerity::Exception::UnknownObjectException] if the value does not exist.
     # @return [true, false]
     def selected?(value)
       assert_exists

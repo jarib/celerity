@@ -108,7 +108,7 @@ module Celerity
 
     # Used internally to ensure the element actually exists.
     #
-    # @raise Celerity::Exception::UnknownObjectException if the element can't be found.
+    # @raise [Celerity::Exception::UnknownObjectException] if the element can't be found.
     # @api private
     def assert_exists
       locate
@@ -179,7 +179,7 @@ module Celerity
     # @see ATTRIBUTES constant for a list of valid methods for a given element.
     #
     # @return [String] The resulting attribute.
-    # @raise NoMethodError if the element doesn't support this attribute.
+    # @raise  [NoMethodError] if the element doesn't support this attribute.
     def method_missing(meth, *args, &blk)
       assert_exists
 

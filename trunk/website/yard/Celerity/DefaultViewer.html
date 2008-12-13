@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Celerity::DefaultViewer</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Celerity_DefaultViewer">
+  <h1 class="title">Class: Celerity::DefaultViewer</h1>
+  <div class="section constants">
+  <div class="thisclass">
+  <h1>Constants</h1>
+  <dl>
+    
+      <dt id="IMAGE-constant">IMAGE</dt>
+      <dd>&quot;#{Celerity::DIR}/resources/no_viewer.png&quot;</dd>
+    
+  </dl>
+</div>
+
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary class public">
+    <h1>Public Class Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="save" href="#save-class_method">save</a></span><span class='args'>(path = nil)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+  </div>
+<div class="section methoddetails class public">
+  <h1>Public Class Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>save</h3>
+</div><div id="save-class_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>save</span><span class='args'>(path = nil)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+5
+6
+7
+8</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/default_viewer.rb', line 5</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='save identifier id'>save</span><span class='lparen token'>(</span><span class='path identifier id'>path</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='unless unless_mod kw'>unless</span> <span class='path identifier id'>path</span>
+  <span class='FileUtils constant id'>FileUtils</span><span class='dot token'>.</span><span class='copy identifier id'>copy</span><span class='lparen token'>(</span><span class='IMAGE constant id'>IMAGE</span><span class='comma token'>,</span> <span class='path identifier id'>path</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+  </body>
+</html>

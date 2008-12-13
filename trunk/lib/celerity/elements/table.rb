@@ -47,7 +47,7 @@ module Celerity
     #   browser.table(:foo, 'bar').child_row[1] # => #<TableRow...>
     #
     # @param [Fixnum] index The index of the wanted row, 1-indexed.
-    # @raise Celerity::Exception::UnknownRowException
+    # @raise [Celerity::Exception::UnknownRowException]
     # @return [Celerity::TableRow]
     def child_row(index)
       assert_exists
@@ -65,7 +65,7 @@ module Celerity
     # In a 10-column row, table.child_cell[11] will return the first cell on the second row.
     #
     # @param [Fixnum] index The index of the wanted cell, 1-indexed.
-    # @raise Celerity::Exception::UnknownCellException
+    # @raise [Celerity::Exception::UnknownCellException]
     # @return [Celerity::TableCell]
     def child_cell(index)
       assert_exists

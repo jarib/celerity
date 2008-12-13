@@ -20,13 +20,14 @@ module Celerity
 
     # Creates a browser object.
     #
-    # @option opts :browser                 [:firefox, :internet_explorer] (:internet_explorer) Set the BrowserVersion used by HtmlUnit. Defaults to Internet Explorer.
-    # @option opts :css                     [Boolean]     (false) Enable CSS.  Disabled by default.
-    # @option opts :secure_ssl              [Boolean]     (true)  Disable secure SSL. Enabled by default.
-    # @option opts :resynchronize           [Boolean]     (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
-    # @option opts :javascript_exceptions   [Boolean]     (false) Raise exceptions on script errors. Disabled by default.
-    # @option opts :status_code_exceptions  [Boolean]     (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
-    # @option opts :render                  [:html, :xml] (:html) What DOM representation to send to connected viewers.
+    # @option opts :log_level [Symbol] (:warning) @see log_level= 
+    # @option opts :browser [:firefox, :internet_explorer] (:internet_explorer) Set the BrowserVersion used by HtmlUnit. Defaults to Internet Explorer.
+    # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
+    # @option opts :secure_ssl [Boolean] (true)  Disable secure SSL. Enabled by default.
+    # @option opts :resynchronize [Boolean] (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
+    # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
+    # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
+    # @option opts :render [:html, :xml](:html) What DOM representation to send to connected viewers.
     #
     # @return [Celerity::Browser]     An instance of the browser.
     # @see Celerity::Container for a small introduction to the API.
@@ -112,7 +113,7 @@ module Celerity
     # Check if the current page contains the given text.
     #
     # @param  [String, Regexp] expected_text The text to look for.
-    # @raise TypeError
+    # @raise  [TypeError]
     # @return [Numeric, nil]  The index of the matched text, or nil if it doesn't match.
     def contains_text(expected_text)
       return nil unless exist?
@@ -216,7 +217,7 @@ module Celerity
     #
     # @param [Proc] checker The proc to be run (can also be given as a block)
     # @yieldparam [Celerity::Browser] browser The current browser object.
-    # @raise ArgumentError if no Proc or block was given.
+    # @raise [ArgumentError] if no Proc or block was given.
     def add_checker(checker = nil, &block)
       if block_given?
         @error_checkers << block
@@ -275,7 +276,7 @@ module Celerity
     #
     # Check that we have a @page object.
     #
-    # @raise Celerity::Exception::UnknownObjectException if no page is loaded.
+    # @raise [Celerity::Exception::UnknownObjectException] if no page is loaded.
     # @api private
     def assert_exists
       raise UnknownObjectException, "no page loaded" unless exist?

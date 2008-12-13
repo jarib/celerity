@@ -90,7 +90,7 @@ Sets the attribute <tt>idents</tt>.
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='container identifier id'>container</span><span class='comma token'>,</span> <span class='element_class identifier id'>element_class</span><span class='rparen token'>)</span>
   <span class='container identifier id'>container</span><span class='dot token'>.</span><span class='assert_exists identifier id'>assert_exists</span>
-  
+
   <span class='@container ivar id'>@container</span>     <span class='assign token'>=</span> <span class='container identifier id'>container</span>
   <span class='@object ivar id'>@object</span>        <span class='assign token'>=</span> <span class='container identifier id'>container</span><span class='dot token'>.</span><span class='object identifier id'>object</span>
   <span class='@element_class ivar id'>@element_class</span> <span class='assign token'>=</span> <span class='element_class identifier id'>element_class</span>
@@ -357,7 +357,7 @@ Sets the attribute <tt>idents</tt>.
 
 <span class='def def kw'>def</span> <span class='find_by_conditions identifier id'>find_by_conditions</span><span class='lparen token'>(</span><span class='conditions identifier id'>conditions</span><span class='rparen token'>)</span> <span class='comment val'># TODO: refactor without performance hit</span>
   <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='unless unless_mod kw'>unless</span> <span class='@object ivar id'>@object</span> <span class='comment val'># probably means we're on a TextPage (content-type is &quot;text/plain&quot;)</span>
-  
+
   <span class='@condition_idents ivar id'>@condition_idents</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
   <span class='attributes identifier id'>attributes</span> <span class='assign token'>=</span> <span class='Hash constant id'>Hash</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='comma token'>,</span> <span class='k identifier id'>k</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span>
   <span class='index identifier id'>index</span> <span class='assign token'>=</span> <span class='integer val'>0</span> <span class='comment val'># by default, return the first matching element</span>
@@ -366,7 +366,7 @@ Sets the attribute <tt>idents</tt>.
   <span class='conditions identifier id'>conditions</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='how identifier id'>how</span><span class='comma token'>,</span> <span class='what identifier id'>what</span><span class='bitor op'>|</span>
     <span class='case case kw'>case</span> <span class='how identifier id'>how</span>
     <span class='when when kw'>when</span> <span class='symbol val'>:object</span>
-      <span class='unless unless kw'>unless</span> <span class='what identifier id'>what</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span> <span class='HtmlUnit constant id'>HtmlUnit</span><span class='colon2 op'>::</span><span class='Html constant id'>Html</span><span class='colon2 op'>::</span><span class='HtmlElement constant id'>HtmlElement</span>
+      <span class='unless unless kw'>unless</span> <span class='what identifier id'>what</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='HtmlUnit constant id'>HtmlUnit</span><span class='colon2 op'>::</span><span class='Html constant id'>Html</span><span class='colon2 op'>::</span><span class='HtmlElement constant id'>HtmlElement</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='what identifier id'>what</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
         <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;expected an HtmlUnit::Html::HtmlElement subclass, got #{what.inspect}:#{what.class}&quot;</span>
       <span class='end end kw'>end</span>
       <span class='return return kw'>return</span> <span class='what identifier id'>what</span>
@@ -521,10 +521,10 @@ Sets the attribute <tt>idents</tt>.
 
 <span class='def def kw'>def</span> <span class='find_by_label identifier id'>find_by_label</span><span class='lparen token'>(</span><span class='what identifier id'>what</span><span class='rparen token'>)</span>
   <span class='obj identifier id'>obj</span> <span class='assign token'>=</span> <span class='elements_by_tag_names identifier id'>elements_by_tag_names</span><span class='lparen token'>(</span><span class='dstring node'>%w[label]</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='matches? fid id'>matches?</span><span class='lparen token'>(</span><span class='e identifier id'>e</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span><span class='comma token'>,</span> <span class='what identifier id'>what</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-  
+
   <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='unless unless_mod kw'>unless</span> <span class='obj identifier id'>obj</span> <span class='andop op'>&amp;&amp;</span> <span class='lparen token'>(</span><span class='ref identifier id'>ref</span> <span class='assign token'>=</span> <span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='getReferencedElement identifier id'>getReferencedElement</span><span class='rparen token'>)</span>
   <span class='return return kw'>return</span> <span class='ref identifier id'>ref</span> <span class='if if_mod kw'>if</span> <span class='@tags ivar id'>@tags</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='ref identifier id'>ref</span><span class='dot token'>.</span><span class='getTagName identifier id'>getTagName</span><span class='rparen token'>)</span>
-  
+
   <span class='find_by_id identifier id'>find_by_id</span> <span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='getForAttribute identifier id'>getForAttribute</span>
 <span class='end end kw'>end</span>
 </pre>
