@@ -15,7 +15,7 @@ module Celerity
     end
 
     def self.attach(*args)
-      raise NotImplementedError, "no popup handling yet"
+      raise NotImplementedError, "use ClickableElement#click_and_attach instead"
     end
 
     # Creates a browser object.
