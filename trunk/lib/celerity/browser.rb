@@ -234,16 +234,16 @@ module Celerity
       @error_checkers.delete(checker)
     end
 
+    # @return [Symbol] the current log level
+    def log_level
+      java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
+    end
+    
     # Set Java log level (default is :warning)
     #
     # @param [Symbol] level :finest, :finer, :fine, :config, :info, :warning, :severe, or :off, :all
     def log_level=(level)
       java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level = java.util.logging.Level.const_get(level.to_s.upcase)
-    end
-
-    # @return [Symbol] the current log level
-    def log_level
-      java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
     end
 
     # Checks if we have a page currently loaded.

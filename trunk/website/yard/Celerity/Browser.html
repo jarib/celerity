@@ -855,14 +855,10 @@ Goto the given URL.
         
       </th>
       <td class="docstring">
-        
-        
-          <p class='returns'>
-            Returns: 
-              <span class='return_types'>
-                 <tt>Symbol</tt>
-              </span>
-          </p>
+        <p>
+Set Java log level (default is :warning).
+</p>
+
         
       </td>
     </tr>
@@ -2733,11 +2729,16 @@ the HTML content of the current page
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt>Symbol</tt></span>
+    <span class='return_types'></span>
     <span class='name'>log_level</span><span class='args'></span>
     <span class='block'></span>
   </tt>
 </div>
+
+</div><div class="section docstring">
+  <p>
+Set Java log level (default is :warning)
+</p>
 
 </div><div class="section tags">
   <h2>Meta Tags</h2>
@@ -2746,29 +2747,7 @@ the HTML content of the current page
   <dl>
   
   </dl>
-</div><div class="return">
-  <h3>Returns:</h3>
-  <dl>
-  
-    <dt>
-      
-        <span class='type'>[<tt>Symbol</tt>]</span>
-      
-      
-        <span class='name'></span>
-      
-      
-    </dt>
-    <dd>
-      <span class='desc'><p>
-the current log level
-</p>
-</span>
-    </dd>
-  
-  </dl>
 </div>
-
 </div><div class="section source">
   <span>[<a class="source_link" href="#">View source</a>]</span>
   <div class="source_code">
@@ -2785,8 +2764,8 @@ the current log level
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 245</span>
 
-<span class='def def kw'>def</span> <span class='log_level identifier id'>log_level</span>
-  <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='logging identifier id'>logging</span><span class='dot token'>.</span><span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='getLogger identifier id'>getLogger</span><span class='lparen token'>(</span><span class='string val'>'com.gargoylesoftware.htmlunit'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='level identifier id'>level</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='def def kw'>def</span> <span class='log_level= identifier id'>log_level=</span><span class='lparen token'>(</span><span class='level identifier id'>level</span><span class='rparen token'>)</span>
+  <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='logging identifier id'>logging</span><span class='dot token'>.</span><span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='getLogger identifier id'>getLogger</span><span class='lparen token'>(</span><span class='string val'>'com.gargoylesoftware.htmlunit'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='level identifier id'>level</span> <span class='assign token'>=</span> <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='logging identifier id'>logging</span><span class='dot token'>.</span><span class='Level constant id'>Level</span><span class='dot token'>.</span><span class='const_get identifier id'>const_get</span><span class='lparen token'>(</span><span class='level identifier id'>level</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='upcase identifier id'>upcase</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
