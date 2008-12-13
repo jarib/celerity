@@ -11,9 +11,12 @@ describe "DefaultViewer" do
     it "should save the default image to the given path" do
       fname   = File.expand_path "default_viewer_test.png"
       default = "#{File.dirname(__FILE__)}/../lib/celerity/resources/no_viewer.png" 
+      
       @browser.viewer.save(fname)
       File.exist?(fname).should be_true
       File.read(fname).should == File.read(default)
+      
+      File.delete(fname)
     end
   end
 end
