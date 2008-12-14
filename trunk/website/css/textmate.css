@@ -1,0 +1,226 @@
+/* Stylesheet generated from TextMate theme
+ *
+ * Mac Classic
+ * 
+ *
+ */
+
+/* Mostly to improve view within the TextMate HTML viewer */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+pre.textmate-source {
+	margin: 0;
+	padding: 0 0 0 2px;
+	font-family: "DejaVu Sans Mono", monospace;
+	font-size: 14px;
+	line-height: 1.3em;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+}
+
+pre.textmate-source.mac_classic {
+	color: #000000;
+	background: rgb(249,249,247)
+}
+
+pre.textmate-source .linenum {
+	width: 75px;
+	padding: 0.1em 1em 0.2em 0;
+	color: #888;
+	background-color: #eee;
+}
+pre.textmate-source.mac_classic span {
+   padding-top: 0.2em;
+   padding-bottom: 0.1em;
+}
+pre.textmate-source.mac_classic ::selection {
+	background-color: rgba(77, 151, 255, 0.33);
+}
+/* Comment */
+pre.textmate-source.mac_classic .comment {
+	color: #0066FF;
+	font-style: italic;
+}
+
+/* Keyword */
+pre.textmate-source.mac_classic .keyword, pre.textmate-source.mac_classic .storage {
+	color: #0000FF;
+	font-weight: bold;
+}
+
+/* Number */
+pre.textmate-source.mac_classic .constant_numeric {
+	color: #0000CD;
+}
+
+/* User-defined constant */
+pre.textmate-source.mac_classic .constant {
+	color: #C5060B;
+	font-weight: bold;
+}
+
+/* Built-in constant */
+pre.textmate-source.mac_classic .constant_language {
+	color: #585CF6;
+	font-weight: bold;
+}
+
+/* Variable */
+pre.textmate-source.mac_classic .variable_language, pre.textmate-source.mac_classic .variable_other {
+	color: #318495;
+}
+
+/* String */
+pre.textmate-source.mac_classic .string {
+	color: #036A07;
+}
+
+/* String interpolation */
+pre.textmate-source.mac_classic .constant_character_escape, pre.textmate-source.mac_classic .string .source {
+	color: #26B31A;
+}
+
+/* Preprocessor line */
+pre.textmate-source.mac_classic .meta_preprocessor {
+	color: #1A921C;
+}
+
+/* Preprocessor directive */
+pre.textmate-source.mac_classic .keyword_control_import {
+	color: #0C450D;
+	font-weight: bold;
+}
+
+/* Function name */
+pre.textmate-source.mac_classic .entity_name_function, pre.textmate-source.mac_classic .support_function_any-method {
+	color: #0000A2;
+	font-weight: bold;
+}
+
+/* Type name */
+pre.textmate-source.mac_classic .entity_name_type {
+	text-decoration: underline;
+}
+
+/* Inherited class name */
+pre.textmate-source.mac_classic .entity_other_inherited-class {
+	font-style: italic;
+}
+
+/* Function parameter */
+pre.textmate-source.mac_classic .variable_parameter {
+	font-style: italic;
+}
+
+/* Function argument and result types */
+pre.textmate-source.mac_classic .storage_type_method {
+	color: #70727E;
+}
+
+/* Section */
+pre.textmate-source.mac_classic .meta_section .entity_name_section, pre.textmate-source.mac_classic .declaration_section .entity_name_section {
+	font-style: italic;
+}
+
+/* Library function */
+pre.textmate-source.mac_classic .support_function {
+	color: #3C4C72;
+	font-weight: bold;
+}
+
+/* Library object */
+pre.textmate-source.mac_classic .support_class, pre.textmate-source.mac_classic .support_type {
+	color: #6D79DE;
+	font-weight: bold;
+}
+
+/* Library constant */
+pre.textmate-source.mac_classic .support_constant {
+	color: #06960E;
+	font-weight: bold;
+}
+
+/* Library variable */
+pre.textmate-source.mac_classic .support_variable {
+	color: #21439C;
+	font-weight: bold;
+}
+
+/* JS: Operator */
+pre.textmate-source.mac_classic .keyword_operator_js {
+	color: #687687;
+}
+
+/* Invalid */
+pre.textmate-source.mac_classic .invalid {
+	color: #FFFFFF;
+	background-color: #990000;
+}
+
+/* Invalid trailing whitespace */
+pre.textmate-source.mac_classic .invalid_deprecated_trailing-whitespace {
+	background-color: #FFD0D0;
+}
+
+/* Embedded source */
+pre.textmate-source.mac_classic .text .source, pre.textmate-source.mac_classic .string_unquoted {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Embedded embedded source */
+pre.textmate-source.mac_classic .text .source .string_unquoted, pre.textmate-source.mac_classic .text .source .text .source {
+	background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Markup XML declaration */
+pre.textmate-source.mac_classic .meta_tag_preprocessor_xml {
+	color: #68685B;
+}
+
+/* Markup DOCTYPE */
+pre.textmate-source.mac_classic .meta_tag_sgml_doctype, pre.textmate-source.mac_classic .meta_tag_sgml_doctype .entity, pre.textmate-source.mac_classic .meta_tag_sgml_doctype .string, pre.textmate-source.mac_classic .meta_tag_preprocessor_xml, pre.textmate-source.mac_classic .meta_tag_preprocessor_xml .entity, pre.textmate-source.mac_classic .meta_tag_preprocessor_xml .string {
+	color: #888888;
+}
+
+/* Markup DTD */
+pre.textmate-source.mac_classic .string_quoted_docinfo_doctype_DTD {
+	font-style: italic;
+}
+
+/* Markup tag */
+pre.textmate-source.mac_classic .meta_tag, pre.textmate-source.mac_classic .declaration_tag {
+	color: #1C02FF;
+}
+
+/* Markup name of tag */
+pre.textmate-source.mac_classic .entity_name_tag {
+	font-weight: bold;
+}
+
+/* Markup tag attribute */
+pre.textmate-source.mac_classic .entity_other_attribute-name {
+	font-style: italic;
+}
+
+/* Markup: Heading */
+pre.textmate-source.mac_classic .markup_heading {
+	color: #0C07FF;
+	font-weight: bold;
+}
+
+/* Markup: Quote */
+pre.textmate-source.mac_classic .markup_quote {
+	color: #000000;
+	font-style: italic;
+}
+
+/* Markup: List */
+pre.textmate-source.mac_classic .markup_list {
+	color: #B90690;
+}
