@@ -17,7 +17,7 @@ module Celerity
 
     # Clear all selected options
     # TODO: should update page for each option changed?
-    def clear_selection
+    def clear
       # assert_exists called by SelectList#type here
       @object.getSelectedOptions.each { |e| e.setSelected(false) } unless type() == 'select-one'
     end

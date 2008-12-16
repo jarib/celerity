@@ -1,7 +1,7 @@
 module Celerity
 
   class Table < Element
-    include Enumerable # specs for this?
+    include Enumerable
     include Container
 
     TAGS = [ Identifier.new('table') ]
