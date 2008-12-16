@@ -99,7 +99,7 @@ describe "Browser" do
 # Comment Default comment.
 # TEXT
 #     end
-#   end
+  end
 
   describe "#url" do
     it "should return the current url" do
