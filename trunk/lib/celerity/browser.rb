@@ -51,7 +51,7 @@ module Celerity
           ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
 
       @webclient = ::HtmlUnit::WebClient.new(browser)
-
+      
       configure_webclient
       find_viewer
     end
@@ -312,6 +312,24 @@ module Celerity
 
       value
     end
+    
+    # Start or stop HtmlUnit's DebuggingWebConnection. 
+    # The output will go to /tmp/«name»
+    # 
+    # @param [Boolean] bool start or stop
+    # @param [String]  name required if bool is true
+    def debug_web_connection(bool, name = nil)
+      if bool 
+        raise "no name given" unless name
+        @old_webconnection = @webclient.getWebConnection
+        dwc = HtmlUnit::Util::DebuggingWebConnection.new(@old_webconnection, name)
+        @webclient.setWebConnection(dwc)
+        $stderr.puts "debug-webconnection on"
+      else
+        @webclient.setWebConnection(@old_webconnection) if @old_webconnection
+        $stderr.puts "debug-webconnection off"
+      end
+    end
 
     # Add a listener block for one of the available types.
     # Types map to HtmlUnit interfaces like this:
@@ -342,6 +360,7 @@ module Celerity
       @webclient.cssEnabled = false unless @opts[:css]
       @webclient.useInsecureSSL = @opts[:secure_ssl] == false
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if @opts[:resynchronize]
+      
     end
 
     # This *should* be unneccessary, but sometimes the page we get from the

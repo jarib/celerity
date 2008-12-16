@@ -11,6 +11,10 @@ module HtmlUnit
     include_package 'com.gargoylesoftware.htmlunit.html'
   end
   
+  module Util
+    include_package 'com.gargoylesoftware.htmlunit.util'
+  end
+  
 end
 
 module Java::OrgW3cDom::NamedNodeMap
