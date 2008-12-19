@@ -155,7 +155,7 @@ module Celerity
     # Wait for ajax calls to finish
     def wait
       assert_exists
-      @page.getEnclosingWindow().getThreadManager().joinAll(10000)
+      @page.getEnclosingWindow.getThreadManager.joinAll(10000)
     end
 
     # Refresh the current page
