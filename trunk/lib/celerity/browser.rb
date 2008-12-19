@@ -67,9 +67,10 @@ module Celerity
       url()
     end
 
-    # Unsets the current page (mostly for Watir compatibility)
+    # Unsets the current page / closes all windows
     def close
       @page = nil
+      @webclient.closeAllWindows
     end
 
     # @return [String] the URL of the current page
