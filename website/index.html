@@ -24,12 +24,14 @@
                     <li><a accesskey="o" title="Documentation" href="http://celerity.rubyforge.org/yard/" hreflang="en">Documentation</a></li>
                     <li><a accesskey="f" title="Discuss Celerity" href="http://rubyforge.org/forum/?group_id=6198" hreflang="en">Forum</a></li>
                     <li><a accesskey="m" title="Stay up-to-date" href="http://rubyforge.org/mail/?group_id=6198" hreflang="en">Mailing lists</a></li>
-                    <li><a accesskey="s" title="Infinite monkey theorem" href="http://celerity.rubyforge.org/svn/" hreflang="en">Browse source</a></li>
+                    <li><a accesskey="s" title="Infinite monkey theorem" href="http://github.com/jarib/celerity/tree/master" hreflang="en">Browse source</a></li>
                     <li><a accesskey="b" title="Report and browse bugs" href="http://rubyforge.org/tracker/?atid=24033&amp;group_id=6198&amp;func=browse" hreflang="en">Bug tracker</a></li>
                     <li><a accesskey="e" title="Request and browse new features" href="http://rubyforge.org/tracker/?atid=24036&amp;group_id=6198&amp;func=browse" hreflang="en">Feature tracker</a></li>
                     <li><a accesskey="n" title="Benchmarks" href="benchmarks.html" hreflang="en">Benchmarks</a></li>
-                    <li><a accesskey="w" title="Wiki/FAQ" href="http://celerity.rubyforge.org/wiki/wiki.pl" hreflang="en">Wiki/FAQ</a></li>
-                    <li><a accesskey="t" title="Tutorial" href="http://celerity.rubyforge.org/wiki/wiki.pl?GettingStarted" hreflang="en">Tutorial</a></li>
+                    <!-- <li><a accesskey="w" title="Wiki/FAQ" href="http://celerity.rubyforge.org/wiki/wiki.pl" hreflang="en">Wiki/FAQ</a></li>
+                    <li><a accesskey="t" title="Tutorial" href="http://celerity.rubyforge.org/wiki/wiki.pl?GettingStarted" hreflang="en">Tutorial</a></li> -->
+                    <li><a accesskey="w" title="Wiki/FAQ" href="http://github.com/jarib/celerity/wikis" hreflang="en">Wiki/FAQ</a></li>
+                    <li><a accesskey="t" title="Tutorial" href="http://github.com/jarib/celerity/wikis/getting-started" hreflang="en">Tutorial</a></li>
                 </ul>
             </div>
             <div id="content">
@@ -61,7 +63,12 @@
                 <h2>Installing Celerity</h2>
                 <pre>
                 <code>
-jruby -S gem install celerity
+$ jruby -S gem install celerity
+
+# or from github
+
+$ gem sources -a http://gems.github.com (you only have to do this once)
+$ sudo gem install jarib-celerity
                 </code>
                 </pre>
 
@@ -80,7 +87,7 @@ puts <span class="string string_quoted string_quoted_double string_quoted_double
                 <p>For more examples and help, check our <a href="http://celerity.rubyforge.org/wiki/wiki.pl?GettingStarted">tutorial</a>.</p>
 
                 <h2>How to submit patches</h2>
-                <p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people's code</a>. The trunk repository is <a href="svn://rubyforge.org/var/svn/celerity/trunk"><code>svn://rubyforge.org/var/svn/celerity/trunk</code></a> for anonymous access. Failing specs for issues/features you don't know how to implement yourself are most welcome.</p>
+                <p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people's code</a>. The repository is hosted at <a href="http://github.com/jarib/celerity/tree/master"><code>GitHub</code></a>. Failing specs for issues/features are most welcome!</p>
 
                 <h2>License</h2>
                 <p>Celerity is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GPLv3 license</a>.</p>
