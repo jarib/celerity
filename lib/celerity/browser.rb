@@ -151,6 +151,12 @@ module Celerity
       # TODO: this is naive, need capability from HtmlUnit
       goto(@last_url) if @last_url
     end
+    
+    # Wait for ajax calls to finish
+    def wait
+      assert_exists
+      @page.getEnclosingWindow().getThreadManager().joinAll(10000)
+    end
 
     # Refresh the current page
     def refresh
