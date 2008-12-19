@@ -71,7 +71,7 @@ $hoe.rsync_args = '-av --delete --ignore-errors'
 # Gemspec creator
 spec = Gem::Specification.new do |s|
   s.name = GEM_NAME
-  s.version = Celerity::VERSION::STRING
+  s.version = VERS
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = true
   s.extra_rdoc_files = ["README.txt", "License.txt", 'History.txt']
@@ -91,10 +91,10 @@ spec = Gem::Specification.new do |s|
   s.autorequire = GEM_NAME
   s.files = %w(Rakefile History.txt README.txt) + Dir.glob("{lib,specs,tasks}/**/*")
 end
- 
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.gem_spec = spec
-end
+
+# Rake::GemPackageTask.new(spec) do |pkg|
+#   pkg.gem_spec = spec
+# end
   
 desc "create a gemspec file"
 task :make_spec do
