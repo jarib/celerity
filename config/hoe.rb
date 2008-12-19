@@ -2,10 +2,7 @@ require 'celerity/version'
 
 AUTHORS            = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
 EMAIL              = "jari.bakken@finn.no"
-DESCRIPTION        = <<DESC
-  Celerity is a JRuby library for easy and fast functional test automation for web applications. It is a wrapper around the HtmlUnit Java library and is currently aimed at providing the same API and functionality as Watir.
-DESC
-
+DESCRIPTION        = "Celerity is a JRuby library for easy and fast functional test automation for web applications"
 GEM_NAME           = 'celerity'
 RUBYFORGE_PROJECT  = 'celerity'
 HOMEPATH           = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
@@ -14,6 +11,7 @@ DOWNLOAD_PATH      = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 @config_file       = "~/.rubyforge/user-config.yml"
 @config            = nil
 RUBYFORGE_USERNAME = "unknown"
+
 def rubyforge_username
   unless @config
     begin
@@ -69,3 +67,40 @@ CHANGES = $hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PROJECT}/#{GEM_NAME}"
 $hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
 $hoe.rsync_args = '-av --delete --ignore-errors'
+
+# Gemspec creator
+spec = Gem::Specification.new do |s|
+  s.name = GEM_NAME
+  s.version = Celerity::VERSION::STRING
+  s.platform = Gem::Platform::RUBY
+  s.has_rdoc = true
+  s.extra_rdoc_files = ["README.txt", "License.txt", 'History.txt']
+  s.summary = DESCRIPTION
+  s.description = s.summary
+  s.authors = AUTHORS
+  s.email = EMAIL
+  s.homepage = HOMEPATH
+  
+  # Uncomment this to add a dependency
+  # EXTRA_DEPENDENCIES.each do |arr|
+  #   s.add_runtime_dependency arr
+  # end  
+  # s.extra_deps = EXTRA_DEPENDENCIES
+  
+  s.require_path = 'lib'
+  s.autorequire = GEM_NAME
+  s.files = %w(Rakefile History.txt README.txt) + Dir.glob("{lib,specs,tasks}/**/*")
+end
+ 
+Rake::GemPackageTask.new(spec) do |pkg|
+  pkg.gem_spec = spec
+end
+  
+desc "create a gemspec file"
+task :make_spec do
+  file = "#{GEM_NAME.downcase}.gemspec"
+  ::File.unlink file if ::File.exists?(file)
+  ::File.open(file, "w+") do |file|
+    file.puts spec.to_ruby
+  end
+end
