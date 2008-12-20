@@ -2,10 +2,6 @@
 
 * http://celerity.rubyforge.org/
 
-== TUTORIAL:
-
-* http://celerity.rubyforge.org/wiki/wiki.pl?GettingStarted
-
 == DESCRIPTION:
 
 Celerity is a JRuby library for easy and fast functional test automation for web applications.
@@ -28,6 +24,10 @@ It is a wrapper around the HtmlUnit Java library and is currently aimed at provi
 
   `jruby -S gem install celerity`
   
+  or from GitHub
+  
+  `jruby -S gem install jarib-celerity`
+  
   
 == EXAMPLE:
 
@@ -41,9 +41,13 @@ It is a wrapper around the HtmlUnit Java library and is currently aimed at provi
 
   puts "yay" if browser.text.include? 'celerity.rubyforge.org'
   
-== GIT
+== SOURCE
 
-The project is manually mirrored @ http://github.com/jarib/celerity/tree/master 
+The source code is available at http://github.com/jarib/celerity/tree/master 
+
+== WIKI:
+
+* http://github.com/jarib/celerity/wikis
 
 == LICENSE:
 
