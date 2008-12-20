@@ -11,19 +11,19 @@ describe "Metas" do
   end
 
   describe "#length" do
-    it "should return the number of meta elements" do
+    it "returns the number of meta elements" do
       @browser.metas.length.should == 2
     end
   end
 
   describe "#[]" do
-    it "should return the meta element at the given index" do
+    it "returns the meta element at the given index" do
       @browser.metas[2].name.should == "description"
     end
   end
 
   describe "#each" do
-    it "should iterate through meta elements correctly" do
+    it "iterates through meta elements correctly" do
       @browser.metas.each_with_index do |m, index|
         m.content.should == @browser.meta(:index, index+1).content
       end

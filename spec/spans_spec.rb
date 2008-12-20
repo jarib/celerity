@@ -11,19 +11,19 @@ describe "Spans" do
   end
 
   describe "#length" do
-    it "should return the number of spans" do
+    it "returns the number of spans" do
       @browser.spans.length.should == 6
     end
   end
 
   describe "#[]" do
-    it "should return the p at the given index" do
+    it "returns the p at the given index" do
       @browser.spans[1].id.should == "lead"
     end
   end
 
   describe "#each" do
-    it "should iterate through spans correctly" do
+    it "iterates through spans correctly" do
       @browser.spans.each_with_index do |s, index|
         s.name.should == @browser.span(:index, index+1).name
         s.id.should == @browser.span(:index, index+1).id
@@ -33,7 +33,7 @@ describe "Spans" do
   end
 
   describe "#to_s" do
-    it "should return a human readable representation of the collection" do
+    it "returns a human readable representation of the collection" do
       @browser.spans.to_s.should == "tag:          span\n" +
                               "  id:           lead\n" +
                               "  class:        lead\n" +

@@ -12,7 +12,7 @@ describe "Link" do
 
   # Exists method
   describe "#exist?" do
-    it "should return true if the link exists" do
+    it "returns true if the link exists" do
       @browser.link(:id, 'link_2').should exist
       @browser.link(:id, /link_2/).should exist
       @browser.link(:name, 'bad_attribute').should exist
@@ -27,15 +27,15 @@ describe "Link" do
       @browser.link(:xpath, "//a[@id='link_2']").should exist
     end
 
-    it "should return true if the element exists (default how = :href)" do
+    it "returns true if the element exists (default how = :href)" do
       @browser.link(/input_elements/).should exist
     end
 
-    it "should strip spaces from URL attributes when locating elements" do
+    it "strips spaces from URL attributes when locating elements" do
       @browser.link(:url, /strip_space$/).should exist
     end
 
-    it "should return false if the link doesn't exist" do
+    it "returns false if the link doesn't exist" do
       @browser.link(:id, 'no_such_id').should_not exist
       @browser.link(:id, /no_such_id/).should_not exist
       @browser.link(:name, 'no_such_name').should_not exist
@@ -50,108 +50,108 @@ describe "Link" do
       @browser.link(:xpath, "//a[@id='no_such_id']").should_not exist
     end
 
-    it "should raise TypeError when 'what' argument is invalid" do
+    it "raises TypeError when 'what' argument is invalid" do
       lambda { @browser.link(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
-    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
+    it "raises MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.link(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
 
   # Attribute methods
   describe "#class_name" do
-    it "should return the type attribute if the link exists" do
+    it "returns the type attribute if the link exists" do
       @browser.link(:index, 2).class_name.should == "external"
     end
 
-    it "should return an empty string if the link exists and the attribute doesn't" do
+    it "returns an empty string if the link exists and the attribute doesn't" do
       @browser.link(:index, 1).class_name.should == ''
     end
 
-    it "should raise an UnknownObjectException if the link doesn't exist" do
+    it "raises an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).class_name }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#href" do
-    it "should return the href attribute if the link exists" do
+    it "returns the href attribute if the link exists" do
       @browser.link(:index, 2).href.should match(/non_control_elements/)
     end
 
-    it "should return an empty string if the link exists and the attribute doesn't" do
+    it "returns an empty string if the link exists and the attribute doesn't" do
       @browser.link(:index, 1).href.should == ""
     end
 
-    it "should raise an UnknownObjectException if the link doesn't exist" do
+    it "raises an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).href }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#url" do
-    it "should return the href attribute" do
+    it "returns the href attribute" do
       @browser.link(:index, 2).url.should match(/non_control_elements/)
     end
   end
 
   describe "#id" do
-    it "should return the id attribute if the link exists" do
+    it "returns the id attribute if the link exists" do
       @browser.link(:index, 2).id.should == "link_2"
     end
 
-    it "should return an empty string if the link exists and the attribute doesn't" do
+    it "returns an empty string if the link exists and the attribute doesn't" do
       @browser.link(:index, 1).id.should == ""
     end
 
-    it "should raise an UnknownObjectException if the link doesn't exist" do
+    it "raises an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#name" do
-    it "should return the name attribute if the link exists" do
+    it "returns the name attribute if the link exists" do
       @browser.link(:index, 3).name.should == "bad_attribute"
     end
 
-    it "should return an empty string if the link exists and the attribute doesn't" do
+    it "returns an empty string if the link exists and the attribute doesn't" do
       @browser.link(:index, 1).name.should == ''
     end
 
-    it "should raise an UnknownObjectException if the link doesn't exist" do
+    it "raises an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#text" do
-    it "should return the link text" do
+    it "returns the link text" do
       @browser.link(:index, 2).text.should == "Link 2"
     end
 
-    it "should return an empty string if the link exists and contains no text" do
+    it "returns an empty string if the link exists and contains no text" do
       @browser.link(:index, 1).text.should == ""
     end
 
-    it "should raise an UnknownObjectException if the link doesn't exist" do
+    it "raises an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).text }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#title" do
-    it "should return the type attribute if the link exists" do
+    it "returns the type attribute if the link exists" do
       @browser.link(:index, 2).title.should == "link_title_2"
     end
 
-    it "should return an empty string if the link exists and the attribute doesn't" do
+    it "returns an empty string if the link exists and the attribute doesn't" do
       @browser.link(:index, 1).title.should == ""
     end
 
-    it "should raise an UnknownObjectException if the link doesn't exist" do
+    it "raises an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).title }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#respond_to?" do
-    it "should return true for all attribute methods" do
+    it "returns true for all attribute methods" do
       @browser.link(:index, 1).should respond_to(:class_name)
       @browser.link(:index, 1).should respond_to(:href)
       @browser.link(:index, 1).should respond_to(:url)
@@ -166,22 +166,22 @@ describe "Link" do
 
   # Manipulation methods
   describe "#click" do
-    it "should find an existing link by (:text, String) and click it" do
+    it "finds an existing link by (:text, String) and click it" do
       @browser.link(:text, "Link 3").click
       @browser.text.include?("User administration").should be_true
     end
 
-    it "should find an existing link by (:text, Regexp) and click it" do
+    it "finds an existing link by (:text, Regexp) and click it" do
       @browser.link(:url, /forms_with_input_elements/).click
       @browser.text.include?("User administration").should be_true
     end
 
-    it "should find an existing link by (:index, Integer) and click it" do
+    it "finds an existing link by (:index, Integer) and click it" do
       @browser.link(:index, 3).click
       @browser.text.include?("User administration").should be_true
     end
 
-    it "should raise an UnknownObjectException if the link doesn't exist" do
+    it "raises an UnknownObjectException if the link doesn't exist" do
       lambda { @browser.link(:index, 1337).click }.should raise_error(UnknownObjectException)
     end
 

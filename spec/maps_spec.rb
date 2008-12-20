@@ -11,19 +11,19 @@ describe "Maps" do
   end
 
   describe "#length" do
-    it "should return the number of maps" do
+    it "returns the number of maps" do
       @browser.maps.length.should == 2
     end
   end
 
   describe "#[]" do
-    it "should return the p at the given index" do
+    it "returns the p at the given index" do
       @browser.maps[1].id.should == "triangle_map"
     end
   end
 
   describe "#each" do
-    it "should iterate through maps correctly" do
+    it "iterates through maps correctly" do
       @browser.maps.each_with_index do |m, index|
         m.name.should == @browser.map(:index, index+1).name
         m.id.should == @browser.map(:index, index+1).id

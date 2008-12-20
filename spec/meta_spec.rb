@@ -11,13 +11,13 @@ describe "Meta" do
   end
 
   describe "#exist?" do
-    it "should return true if the meta tag exists" do
+    it "returns true if the meta tag exists" do
       @browser.meta('http-equiv', "Content-Type").should exist
     end
   end
 
   describe "content" do
-    it "should return the content attribute of the tag" do
+    it "returns the content attribute of the tag" do
       @browser.meta('http-equiv', "Content-Type").content.should == "text/html; charset=utf-8"
     end
   end

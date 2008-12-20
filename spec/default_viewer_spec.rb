@@ -8,7 +8,7 @@ describe "DefaultViewer" do
   end
 
   describe ".save" do
-    it "should save the default image to the given path" do
+    it "saves the default image to the given path" do
       fname   = File.expand_path "default_viewer_test.png"
       default = "#{File.dirname(__FILE__)}/../lib/celerity/resources/no_viewer.png" 
       

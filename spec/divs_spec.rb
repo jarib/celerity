@@ -10,19 +10,19 @@ describe "Divs" do
   end
 
   describe "#length" do
-    it "should return the number of divs" do
+    it "returns the number of divs" do
       @browser.divs.length.should == 8
     end
   end
 
   describe "#[]" do
-    it "should return the div at the given index" do
+    it "returns the div at the given index" do
       @browser.divs[2].id.should == "outer_container"
     end
   end
 
   describe "#each" do
-    it "should iterate through divs correctly" do
+    it "iterates through divs correctly" do
       @browser.divs.each_with_index do |d, index|
         d.name.should == @browser.div(:index, index+1).name
         d.id.should == @browser.div(:index, index+1).id

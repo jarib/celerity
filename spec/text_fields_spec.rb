@@ -11,13 +11,13 @@ describe "TextFields" do
   end
 
   describe "#length" do
-    it "should return the number of text fields" do
+    it "returns the number of text fields" do
       @browser.text_fields.length.should == 9
     end
   end
 
   describe "#[]" do
-    it "should return the text field at the given index" do
+    it "returns the text field at the given index" do
       @browser.text_fields[1].id.should == "new_user_first_name"
       @browser.text_fields[2].id.should == "new_user_last_name"
       @browser.text_fields[3].id.should == "new_user_email"
@@ -25,7 +25,7 @@ describe "TextFields" do
   end
 
   describe "#each" do
-    it "should iterate through text fields correctly" do
+    it "iterates through text fields correctly" do
       index = 1
       @browser.text_fields.each do |r|
         r.name.should == @browser.text_field(:index, index).name

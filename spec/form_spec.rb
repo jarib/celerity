@@ -10,7 +10,7 @@ describe "Form" do
   end
 
   describe "#exists" do
-    it "should return true if the form exists" do
+    it "returns true if the form exists" do
       @browser.form(:id, 'new_user').should exist
       @browser.form(:id, /new_user/).should exist
       @browser.form(:class, 'user').should exist
@@ -23,11 +23,11 @@ describe "Form" do
       @browser.form(:xpath, "//form[@id='new_user']").should exist
     end
 
-    it "should return true if the element exists (default how = :name)" do
+    it "returns true if the element exists (default how = :name)" do
       @browser.form("user_new").should exist
     end
 
-    it "should return false if the form doesn't exist" do
+    it "returns false if the form doesn't exist" do
       @browser.form(:id, 'no_such_id').should_not exist
       @browser.form(:id, /no_such_id/).should_not exist
       @browser.form(:class, 'no_such_class').should_not exist
@@ -40,17 +40,17 @@ describe "Form" do
       @browser.form(:xpath, "//form[@id='no_such_id']").should_not exist
     end
 
-    it "should raise TypeError when 'what' argument is invalid" do
+    it "raises TypeError when 'what' argument is invalid" do
       lambda { @browser.form(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
-    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
+    it "raises MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.form(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
 
   describe "#submit" do
-    it "should submit the form" do
+    it "submits the form" do
       @browser.form(:id, "delete_user").submit
       @browser.text.should include("Semantic table")
     end

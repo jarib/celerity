@@ -13,19 +13,19 @@ describe "Frames" do
     end
 
     describe "#length" do
-      it "should return the correct number of frames" do
+      it "returns the correct number of frames" do
         @browser.frames.length.should == 2
       end
     end
 
     describe "#[]" do
-      it "should return the frame at the given index" do
+      it "returns the frame at the given index" do
         @browser.frames[1].id.should == "frame_1"
       end
     end
 
     describe "#each" do
-      it "should iterate through frames correctly" do
+      it "iterates through frames correctly" do
         @browser.frames.each_with_index do |f, index|
           f.name.should == @browser.frame(:index, index+1).name
           f.id.should ==  @browser.frame(:index, index+1).id
@@ -42,19 +42,19 @@ describe "Frames" do
     end
 
     describe "#length" do
-      it "should return the correct number of frames" do
+      it "returns the correct number of frames" do
         @browser.frames.length.should == 2
       end
     end
 
     describe "#[]" do
-      it "should return the frame at the given index" do
+      it "returns the frame at the given index" do
         @browser.frames[1].id.should == "frame_1"
       end
     end
 
     describe "#each" do
-      it "should iterate through frames correctly" do
+      it "iterates through frames correctly" do
         @browser.frames.each_with_index do |f, index|
           f.name.should == @browser.frame(:index, index+1).name
           f.id.should ==  @browser.frame(:index, index+1).id

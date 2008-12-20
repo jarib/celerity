@@ -10,19 +10,19 @@ describe "Dds" do
   end
 
   describe "#length" do
-    it "should return the number of dds" do
+    it "returns the number of dds" do
       @browser.dds.length.should == 11
     end
   end
 
   describe "#[]" do
-    it "should return the dd at the given index" do
+    it "returns the dd at the given index" do
       @browser.dds[2].title.should == "education"
     end
   end
 
   describe "#each" do
-    it "should iterate through dds correctly" do
+    it "iterates through dds correctly" do
       @browser.dds.each_with_index do |d, index|
         d.name.should == @browser.dd(:index, index+1).name
         d.id.should == @browser.dd(:index, index+1).id

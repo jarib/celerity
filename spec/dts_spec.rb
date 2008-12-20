@@ -10,19 +10,19 @@ describe "Dts" do
   end
 
   describe "#length" do
-    it "should return the number of dts" do
+    it "returns the number of dts" do
       @browser.dts.length.should == 11
     end
   end
 
   describe "#[]" do
-    it "should return the dt at the given index" do
+    it "returns the dt at the given index" do
       @browser.dts[1].id.should == "experience"
     end
   end
 
   describe "#each" do
-    it "should iterate through dts correctly" do
+    it "iterates through dts correctly" do
       @browser.dts.each_with_index do |d, index|
         d.name.should == @browser.dt(:index, index+1).name
         d.id.should == @browser.dt(:index, index+1).id

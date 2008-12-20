@@ -11,19 +11,19 @@ describe "Uls" do
   end
 
   describe "#length" do
-    it "should return the number of uls" do
+    it "returns the number of uls" do
       @browser.uls.length.should == 2
     end
   end
 
   describe "#[]" do
-    it "should return the ul at the given index" do
+    it "returns the ul at the given index" do
       @browser.uls[1].id.should == "navbar"
     end
   end
 
   describe "#each" do
-    it "should iterate through uls correctly" do
+    it "iterates through uls correctly" do
       @browser.uls.each_with_index do |ul, index|
         ul.name.should == @browser.ul(:index, index+1).name
         ul.id.should == @browser.ul(:index, index+1).id

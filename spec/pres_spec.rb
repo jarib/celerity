@@ -11,19 +11,19 @@ describe "Pres" do
   end
 
   describe "#length" do
-    it "should return the number of pres" do
+    it "returns the number of pres" do
       @browser.pres.length.should == 7
     end
   end
 
   describe "#[]" do
-    it "should return the pre at the given index" do
+    it "returns the pre at the given index" do
       @browser.pres[2].id.should == "rspec"
     end
   end
 
   describe "#each" do
-    it "should iterate through pres correctly" do
+    it "iterates through pres correctly" do
       @browser.pres.each_with_index do |p, index|
         p.name.should == @browser.pre(:index, index+1).name
         p.id.should == @browser.pre(:index, index+1).id

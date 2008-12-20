@@ -11,13 +11,13 @@ describe "SelectLists" do
   end
 
   describe "#length" do
-    it "should return the correct number of select lists on the page" do
+    it "returns the correct number of select lists on the page" do
       @browser.select_lists.length.should == 4
     end
   end
 
   describe "#[]" do
-    it "should return the correct item" do
+    it "returns the correct item" do
       @browser.select_lists[1].value.should == "2"
       @browser.select_lists[1].name.should == "new_user_country"
       @browser.select_lists[1].type.should == "select-one"
@@ -26,7 +26,7 @@ describe "SelectLists" do
   end
 
   describe "#each" do
-    it "should iterate through the select lists correctly" do
+    it "iterates through the select lists correctly" do
       index=1
       @browser.select_lists.each do |l|
         @browser.select_list(:index, index).name.should == l.name

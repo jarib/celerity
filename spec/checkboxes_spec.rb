@@ -10,19 +10,19 @@ describe "CheckBoxes" do
   end
 
   describe "#length" do
-    it "should return the number of checkboxes" do
+    it "returns the number of checkboxes" do
       @browser.checkboxes.length.should == 7
     end
   end
 
   describe "#[]" do
-    it "should return the checkbox at the given index" do
+    it "returns the checkbox at the given index" do
       @browser.checkboxes[1].id.should == "new_user_interests_books"
     end
   end
 
   describe "#each" do
-    it "should iterate through checkboxes correctly" do
+    it "iterates through checkboxes correctly" do
       @browser.checkboxes.each_with_index do |c, index|
         c.name.should == @browser.checkbox(:index, index+1).name
         c.id.should == @browser.checkbox(:index, index+1).id

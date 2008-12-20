@@ -12,7 +12,7 @@ describe "Hidden" do
 
   # Exist method
   describe "#exists?" do
-    it "should return true if the element exists" do
+    it "returns true if the element exists" do
       @browser.hidden(:id, 'new_user_interests_dolls').should exist
       @browser.hidden(:id, /new_user_interests_dolls/).should exist
       @browser.hidden(:name, 'new_user_interests').should exist
@@ -28,11 +28,11 @@ describe "Hidden" do
       @browser.hidden(:xpath, "//input[@id='new_user_interests_dolls']").should exist
      end
 
-    it "should return true if the element exists (default how = :name)" do
+    it "returns true if the element exists (default how = :name)" do
       @browser.hidden("new_user_interests").should exist
     end
 
-    it "should return false if the element does not exist" do
+    it "returns false if the element does not exist" do
       @browser.hidden(:id, 'no_such_id').should_not exist
       @browser.hidden(:id, /no_such_id/).should_not exist
       @browser.hidden(:name, 'no_such_name').should_not exist
@@ -47,11 +47,11 @@ describe "Hidden" do
       @browser.hidden(:xpath, "//input[@id='no_such_id']").should_not exist
     end
 
-    it "should raise TypeError when 'what' argument is invalid" do
+    it "raises TypeError when 'what' argument is invalid" do
       lambda { @browser.hidden(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
-    it "should raise MissingWayOfFindingObjectException when 'how' argument is invalid" do
+    it "raises MissingWayOfFindingObjectException when 'how' argument is invalid" do
       lambda { @browser.hidden(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
@@ -59,47 +59,47 @@ describe "Hidden" do
 
   # Attribute methods
   describe "#id" do
-    it "should return the id attribute if the text field exists" do
+    it "returns the id attribute if the text field exists" do
       @browser.hidden(:index, 1).id.should == "new_user_interests_dolls"
     end
 
-    it "should raise UnknownObjectException if the text field doesn't exist" do
+    it "raises UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#name" do
-    it "should return the name attribute if the text field exists" do
+    it "returns the name attribute if the text field exists" do
       @browser.hidden(:index, 1).name.should == "new_user_interests"
     end
 
-    it "should raise UnknownObjectException if the text field doesn't exist" do
+    it "raises UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:index, 1337).name }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#type" do
-    it "should return the type attribute if the text field exists" do
+    it "returns the type attribute if the text field exists" do
       @browser.hidden(:index, 1).type.should == "hidden"
     end
 
-    it "should raise UnknownObjectException if the text field doesn't exist" do
+    it "raises UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:index, 1337).type }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#value" do
-    it "should return the value attribute if the text field exists" do
+    it "returns the value attribute if the text field exists" do
       @browser.hidden(:index, 1).value.should == "dolls"
     end
 
-    it "should raise UnknownObjectException if the text field doesn't exist" do
+    it "raises UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:index, 1337).value }.should raise_error(UnknownObjectException)
     end
   end
 
   describe "#respond_to?" do
-    it "should return true for all attribute methods" do
+    it "returns true for all attribute methods" do
       @browser.hidden(:index, 1).should respond_to(:id)
       @browser.hidden(:index, 1).should respond_to(:name)
       @browser.hidden(:index, 1).should respond_to(:type)
@@ -110,12 +110,12 @@ describe "Hidden" do
 
   # Manipulation methods
   describe "#value=" do
-    it "should set the value of the element" do
+    it "sets the value of the element" do
       @browser.hidden(:id, 'new_user_interests_dolls').value = 'guns'
       @browser.hidden(:id, "new_user_interests_dolls").value.should == 'guns'
     end
 
-    it "should raise UnknownObjectException if the text field doesn't exist" do
+    it "raises UnknownObjectException if the text field doesn't exist" do
       lambda { @browser.hidden(:id, 'no_such_id').value = 'guns' }.should raise_error(UnknownObjectException)
     end
   end

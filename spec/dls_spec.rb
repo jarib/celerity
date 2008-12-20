@@ -10,19 +10,19 @@ describe "Dls" do
   end
 
   describe "#length" do
-    it "should return the number of dls" do
+    it "returns the number of dls" do
       @browser.dls.length.should == 3
     end
   end
 
   describe "#[]" do
-    it "should return the dl at the given index" do
+    it "returns the dl at the given index" do
       @browser.dls[1].id.should == "experience-list"
     end
   end
 
   describe "#each" do
-    it "should iterate through dls correctly" do
+    it "iterates through dls correctly" do
       @browser.dls.each_with_index do |d, index|
         d.text.should == @browser.dl(:index, index+1).text
         d.id.should == @browser.dl(:index, index+1).id

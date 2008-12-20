@@ -11,13 +11,13 @@ describe "Tables" do
   end
 
   describe "#length" do
-    it "should return the number of tables" do
+    it "returns the number of tables" do
       @browser.tables.length.should == 4
     end
   end
 
   describe "#[]" do
-    it "should return the p at the given index" do
+    it "returns the p at the given index" do
       @browser.tables[1].id.should == "axis_example"
       @browser.tables[2].id.should == "outer"
       @browser.tables[3].id.should == "inner"
@@ -25,7 +25,7 @@ describe "Tables" do
   end
 
   describe "#each" do
-    it "should iterate through tables correctly" do
+    it "iterates through tables correctly" do
       @browser.tables.each_with_index do |t, index|
         t.name.should == @browser.table(:index, index+1).name
         t.id.should == @browser.table(:index, index+1).id

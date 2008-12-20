@@ -12,14 +12,14 @@ describe "TableCells" do
   end
 
 #  describe "#length" do
-#    it "should return the number of cells" do
+#    it "returns the number of cells" do
 #      @browser.table(:id, 'outer').cells.length.should == 6
 #      @browser.table(:id, 'inner').cells.length.should == 2
 #    end
 #  end
 #
 #  describe "#[]" do
-#    it "should return the row at the given index" do
+#    it "returns the row at the given index" do
 #      @browser.table(:id, 'outer').cells[1].text.should == "Table 1, Row 1, Cell 1"
 #      @browser.table(:id, 'inner').cells[1].text.should == "Table 2, Row 1, Cell 1"
 #      @browser.table(:id, 'outer').cells[6].text.should == "Table 1, Row 3, Cell 2"
@@ -27,7 +27,7 @@ describe "TableCells" do
 #  end
 
   describe "#each" do
-    it "should iterate through cells correctly" do
+    it "iterates through cells correctly" do
       # All cells on the page
       @browser.cells.each_with_index do |c, index|
         c.name.should == @browser.cell(:index, index+1).name

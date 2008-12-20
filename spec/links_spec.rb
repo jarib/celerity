@@ -11,23 +11,23 @@ describe "Links" do
   end
 
   describe "#length" do
-    it "should return the number of links" do
+    it "returns the number of links" do
       @browser.links.length.should == 4
     end
   end
 
   describe "#[]" do
-    it "should return the link at the given index" do
+    it "returns the link at the given index" do
       @browser.links[3].id.should == "link_3"
     end
 
-    it "should return a Link object also when the index is out of bounds" do
+    it "returns a Link object also when the index is out of bounds" do
       @browser.links[2000].should_not be_nil
     end
   end
 
   describe "#each" do
-    it "should iterate through links correctly" do
+    it "iterates through links correctly" do
       index = 0
       @browser.links.each do |c|
         index += 1
