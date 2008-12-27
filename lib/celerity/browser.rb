@@ -2,7 +2,7 @@ module Celerity
   class Browser
     include Container
 
-    attr_accessor :page, :object
+    attr_accessor :page, :object, :charset
     attr_reader :webclient, :viewer
 
     # Initialize a browser and goto the given URL
@@ -39,6 +39,7 @@ module Celerity
       end
 
       opts[:render] = opts[:render] || :html
+      opts[:charset] ||= HtmlUnit::TextUtil::DEFAULT_CHARSET
 
       @opts            = opts
       @last_url, @page = nil
@@ -62,7 +63,11 @@ module Celerity
     # @return [String] The url.
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{://}
-      self.page = @webclient.getPage(uri)
+      
+      request = HtmlUnit::WebRequestSettings.new(::Java::JavaNet::URL.new(uri))
+      request.setCharset(@opts[:charset])
+      
+      self.page = @webclient.getPage(request)
 
       url()
     end
