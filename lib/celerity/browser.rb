@@ -20,7 +20,7 @@ module Celerity
 
     # Creates a browser object.
     #
-    # @option opts :log_level [Symbol] (:warning) @see log_level= 
+    # @option opts :log_level [Symbol] (:warning) @see log_level=
     # @option opts :browser [:firefox, :internet_explorer] (:internet_explorer) Set the BrowserVersion used by HtmlUnit. Defaults to Internet Explorer.
     # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
     # @option opts :secure_ssl [Boolean] (true)  Disable secure SSL. Enabled by default.
@@ -34,11 +34,12 @@ module Celerity
     # @api public
     def initialize(opts = {})
       raise TypeError, "bad argument: #{opts.inspect}" unless opts.is_a? Hash
+      
       unless [:html, :xml, nil].include?(opts[:render])
         raise ArgumentError, "bad argument :render => #{opts[:render].inspect}"
       end
 
-      opts[:render] = opts[:render] || :html
+      opts[:render]  ||= :html
       opts[:charset] ||= HtmlUnit::TextUtil::DEFAULT_CHARSET
 
       @opts            = opts
@@ -48,11 +49,13 @@ module Celerity
 
       self.log_level = @opts[:log_level] || :warning
 
-      browser = @opts[:browser] == :firefox ?
-          ::HtmlUnit::BrowserVersion::FIREFOX_2 : ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
+      browser = case @opts[:browser] 
+                when :firefox then ::HtmlUnit::BrowserVersion::FIREFOX_2 
+                else               ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
+                end
 
       @webclient = ::HtmlUnit::WebClient.new(browser)
-      
+
       configure_webclient
       find_viewer
     end
@@ -63,10 +66,10 @@ module Celerity
     # @return [String] The url.
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{://}
-      
+
       request = HtmlUnit::WebRequestSettings.new(::Java::JavaNet::URL.new(uri))
       request.setCharset(@opts[:charset])
-      
+
       self.page = @webclient.getPage(request)
 
       url()
@@ -156,7 +159,7 @@ module Celerity
       # TODO: this is naive, need capability from HtmlUnit
       goto(@last_url) if @last_url
     end
-    
+
     # Wait for ajax calls to finish
     def wait
       assert_exists
@@ -250,7 +253,7 @@ module Celerity
     def log_level
       java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
     end
-    
+
     # Set Java log level (default is :warning)
     #
     # @param [Symbol] level :finest, :finer, :fine, :config, :info, :warning, :severe, or :off, :all
@@ -324,14 +327,14 @@ module Celerity
 
       value
     end
-    
-    # Start or stop HtmlUnit's DebuggingWebConnection. 
+
+    # Start or stop HtmlUnit's DebuggingWebConnection.
     # The output will go to /tmp/«name»
-    # 
+    #
     # @param [Boolean] bool start or stop
     # @param [String]  name required if bool is true
     def debug_web_connection(bool, name = nil)
-      if bool 
+      if bool
         raise "no name given" unless name
         @old_webconnection = @webclient.getWebConnection
         dwc = HtmlUnit::Util::DebuggingWebConnection.new(@old_webconnection, name)
@@ -372,7 +375,7 @@ module Celerity
       @webclient.cssEnabled = false unless @opts[:css]
       @webclient.useInsecureSSL = @opts[:secure_ssl] == false
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if @opts[:resynchronize]
-      
+
     end
 
     # This *should* be unneccessary, but sometimes the page we get from the
@@ -401,7 +404,7 @@ module Celerity
     def find_viewer
       viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
       if viewer.respond_to?(:render_html)
-        @viewer = viewer 
+        @viewer = viewer
       else
         @viewer = DefaultViewer
       end
