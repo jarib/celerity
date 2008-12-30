@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/loader"
 
 # Create browser object
 browser = FRAMEWORK::IE.new
-browser.goto(TEST_HOST + "/2000_spans.html")
+browser.goto(HTML_DIR + "/2000_spans.html")
 
 TESTS = 100
 res = Benchmark.bmbm do |results|

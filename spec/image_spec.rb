@@ -7,7 +7,7 @@ describe "Image" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/images.html")
+    @browser.goto(HTML_DIR + "/images.html")
   end
 
   # Exists method
@@ -147,6 +147,7 @@ describe "Image" do
   # File methods
   describe "#file_created_date" do
     it "returns the date the image was created as reported by the file system" do
+      @browser.goto(TEST_HOST + "/images.html")
       image = @browser.image(:index, 2)
       path = File.dirname(__FILE__) + "/html/#{image.src}"
       image.file_created_date.to_i.should == File.mtime(path).to_i

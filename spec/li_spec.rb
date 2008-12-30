@@ -7,7 +7,7 @@ describe "Li" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/non_control_elements.html")
+    @browser.goto(HTML_DIR + "/non_control_elements.html")
   end
 
   # Exists method

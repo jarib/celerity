@@ -7,7 +7,7 @@ describe "Button" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+    @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
   end
 
   # Exists method
@@ -212,6 +212,7 @@ describe "Button" do
   # Manipulation methods
   describe "#click" do
     it "clicks the button if it exists" do
+      @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
       @browser.button(:id, 'new_user_submit').click
       @browser.text.should include("You posted the following content:")
     end

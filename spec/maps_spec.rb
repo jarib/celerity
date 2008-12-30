@@ -7,7 +7,7 @@ describe "Maps" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/images.html")
+    @browser.goto(HTML_DIR + "/images.html")
   end
 
   describe "#length" do

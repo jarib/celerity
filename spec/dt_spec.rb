@@ -7,7 +7,7 @@ describe "Dt" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/definition_lists.html")
+    @browser.goto(HTML_DIR + "/definition_lists.html")
   end
 
 

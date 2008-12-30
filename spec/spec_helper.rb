@@ -53,3 +53,5 @@ else
   puts "Remember to run \"rake specserver\" before running these tests!"
   TEST_HOST = "http://localhost:2000"
 end
+
+HTML_DIR = "file://#{File.expand_path(File.dirname(__FILE__))}/html"

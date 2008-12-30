@@ -8,7 +8,7 @@ describe "TableFooters" do
 
   before :each do
     @browser = Browser.new
-    @browser.goto(TEST_HOST + "/tables.html")
+    @browser.goto(HTML_DIR + "/tables.html")
   end
 
   describe "#length" do

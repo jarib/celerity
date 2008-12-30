@@ -72,7 +72,7 @@ describe "IE" do
 
   describe "#checkBox" do
     it "behaves like #checkbox" do
-      @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+      @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
       @browser.checkbox(:id, "new_user_interests_books").should exist
       @browser.checkbox(:id, "new_user_interests_cars").should_not be_set
       @browser.checkbox(:id, "new_user_interests_cars").set
@@ -127,7 +127,7 @@ describe "Image" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/images.html")
+    @browser.goto(HTML_DIR + "/images.html")
   end
 
   describe "#hasLoaded?" do
@@ -150,6 +150,7 @@ describe "Image" do
 
   describe "#fileCreatedDate" do
     it "behaves like #file_created_date" do
+      @browser.goto(TEST_HOST + "/images.html")
       image = @browser.image(:index, 2)
       path = File.dirname(__FILE__) + "/html/#{image.src}"
       image.file_created_date.to_i.should == File.mtime(path).to_i
@@ -164,7 +165,7 @@ describe "RadioCheckCommon" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+    @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
   end
 
   describe "#is_set?" do
@@ -200,7 +201,7 @@ describe "SelectList" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+    @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
   end
 
   describe "#getSelectedItems" do
@@ -239,7 +240,7 @@ describe "TextField" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+    @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
   end
 
   describe "#dragContentsTo" do

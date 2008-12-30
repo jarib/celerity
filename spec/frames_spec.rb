@@ -9,7 +9,7 @@ describe "Frames" do
   describe "<frame> elements" do
 
     before :each do
-      @browser.goto(TEST_HOST + "/frames.html")
+      @browser.goto(HTML_DIR + "/frames.html")
     end
 
     describe "#length" do
@@ -38,7 +38,7 @@ describe "Frames" do
   describe "<iframe> elements" do
 
     before :each do
-      @browser.goto(TEST_HOST + "/iframes.html")
+      @browser.goto(HTML_DIR + "/iframes.html")
     end
 
     describe "#length" do

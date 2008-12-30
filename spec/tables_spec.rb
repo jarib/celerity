@@ -7,7 +7,7 @@ describe "Tables" do
   end
 
   before :each do
-    @browser.goto(TEST_HOST + "/tables.html")
+    @browser.goto(HTML_DIR + "/tables.html")
   end
 
   describe "#length" do

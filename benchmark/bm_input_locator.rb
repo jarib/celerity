@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + "/loader"
 
 browser = FRAMEWORK::IE.new
-browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+browser.goto(HTML_DIR + "/forms_with_input_elements.html")
 
 TESTS = 1000
 res = Benchmark.bmbm do |results|

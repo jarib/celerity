@@ -23,7 +23,7 @@ describe "Browser" do
   describe "#exists?" do
     it "returns true if we are at a page" do
       @browser.should_not exist
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       @browser.should exist
     end
 
@@ -35,21 +35,21 @@ describe "Browser" do
 
   describe "#html" do
     it "returns the html of the page" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       @browser.html.should == File.read(File.dirname(__FILE__) + "/html/non_control_elements.html")
     end
   end
 
   describe "#title" do
     it "returns the current page title" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       @browser.title.should == "Non-control elements"
     end
   end
 
   describe "#text" do
     it "returns the text of the page" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       @browser.text.should include("Dubito, ergo cogito, ergo sum.")
     end
 
@@ -61,7 +61,7 @@ describe "Browser" do
 
 # disabled for CI - need fix from HtmlUnit
 #     it "returns a text representation including newlines" do
-#       @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+#       @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
 #       @browser.text.should == <<-TEXT
 # Forms with input elementsUser administration
 # 
@@ -113,7 +113,7 @@ describe "Browser" do
 
   describe "#document" do
     it "returns the underlying object" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       if RUBY_PLATFORM =~ /java/
         @browser.document.should be_instance_of(Java::ComGargoylesoftwareHtmlunitHtml::HtmlHtml)
       else
@@ -125,7 +125,7 @@ describe "Browser" do
   # Manipulation methods
   describe ".start" do
     it "goes to the given URL and return an instance of itself" do
-      @browser = Browser.start(TEST_HOST + "/non_control_elements.html")
+      @browser = Browser.start(HTML_DIR + "/non_control_elements.html")
       @browser.should be_instance_of(Browser)
       @browser.title.should == "Non-control elements"
     end
@@ -140,7 +140,7 @@ describe "Browser" do
     end
 
     it "goes to the given url without raising errors" do
-      lambda { @browser.goto(TEST_HOST + "/non_control_elements.html") }.should_not raise_error
+      lambda { @browser.goto(HTML_DIR + "/non_control_elements.html") }.should_not raise_error
     end
 
     it "raises UnexpectedPageException if the content type is not understood" do
@@ -150,7 +150,7 @@ describe "Browser" do
 
   describe "#refresh" do
     it "refreshes the page" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       @browser.span(:name, 'footer').click
       @browser.span(:name, 'footer').text.should include('Javascript')
       @browser.refresh
@@ -160,7 +160,7 @@ describe "Browser" do
 
   describe "#execute_script" do
     it "executes the given JavaScript on the current page" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       @browser.pre(:id, 'rspec').text.should_not == "javascript text"
       @browser.execute_script("document.getElementById('rspec').innerHTML = 'javascript text'")
       @browser.pre(:id, 'rspec').text.should == "javascript text"
@@ -200,7 +200,7 @@ describe "Browser" do
   # Other
   describe "#contains_text" do
     before :each do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
     end
 
     it "raises ArgumentError when called with no arguments" do
@@ -230,7 +230,7 @@ describe "Browser" do
 
   describe "#element_by_xpath" do
     before :each do
-      @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+      @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
     end
 
     it "finds the element matching the given xpath" do
@@ -247,7 +247,7 @@ describe "Browser" do
 
   describe "#elements_by_xpath" do
     before :each do
-      @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
+      @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
     end
 
     it "returns an Array of matching elements" do
@@ -270,14 +270,14 @@ describe "Browser" do
       output = ''
       proc = Proc.new { |ie| output << ie.text }
       @browser.add_checker(proc)
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       output.should include('Dubito, ergo cogito, ergo sum')
     end
 
     it "runs the given block on each page load" do
       output = ''
       @browser.add_checker { |ie| output << ie.text }
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       output.should include('Dubito, ergo cogito, ergo sum')
     end
   end
@@ -287,10 +287,10 @@ describe "Browser" do
       output = ''
       checker = lambda { |ie| output << ie.text }
       @browser.add_checker(checker)
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       output.should include('Dubito, ergo cogito, ergo sum')
       @browser.disable_checker(checker)
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
       output.should include('Dubito, ergo cogito, ergo sum')
     end
   end

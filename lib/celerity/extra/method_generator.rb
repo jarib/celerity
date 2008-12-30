@@ -150,9 +150,9 @@ end # Celerity
 #   require File.dirname(__FILE__) + "/../spec/spec_helper"
 #   $stdout.sync = true
 #   @ie = Browser.new
-#   @ie.goto(TEST_HOST + "/forms_with_input_elements.html")
+#   @ie.goto(HTML_DIR + "/forms_with_input_elements.html")
 #
 #   puts MethodGenerator.new(@ie).parse
-#   @ie.goto(TEST_HOST + "/forms3.html")
+#   @ie.goto(HTML_DIR + "/forms3.html")
 #   puts MethodGenerator.new(@ie).parse
 # end
