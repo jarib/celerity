@@ -6,7 +6,6 @@ describe "Browser" do
     @browser = Browser.new
   end
 
-
   describe "#new" do
     it "raises TypeError if argument is not a Hash" do
       lambda { Browser.new(:foo) }.should raise_error(TypeError)
@@ -15,8 +14,12 @@ describe "Browser" do
     it "raises ArgumentError if given bad arguments for :render key" do
       lambda { Browser.new(:render => :foo) }.should raise_error(ArgumentError)
     end
+    
+    it "raises ArgumentError if given an unknown option" do
+      lambda { Browser.new(:foo => 1) }.should raise_error(ArgumentError)
+    end
   end
-  # Exists
+  
   describe "#exists?" do
     it "returns true if we are at a page" do
       @browser.should_not exist

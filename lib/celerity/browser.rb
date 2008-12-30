@@ -34,30 +34,31 @@ module Celerity
     # @see Celerity::Container for a small introduction to the API.
     # @api public
     def initialize(opts = {})
-      raise TypeError, "bad argument: #{opts.inspect}" unless opts.is_a? Hash
-      
-      unless [:html, :xml, nil].include?(opts[:render])
-        raise ArgumentError, "bad argument :render => #{opts[:render].inspect}"
+      unless opts.is_a?(Hash)
+        raise TypeError, "wrong argument type #{opts.class}, expected Hash"
       end
 
-      opts[:render]  ||= :html
-      opts[:charset] ||= HtmlUnit::TextUtil::DEFAULT_CHARSET # => 'ISO-8859-1'
+      unless (render_types = [:html, :xml, nil]).include?(opts[:render])
+        raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
+      end
 
-      @opts            = opts
+      @render_type   = opts.delete(:render) || :html
+      @charset       = opts.delete(:charset) || "UTF-8"
+      self.log_level = opts.delete(:log_level) || :warning
+
       @last_url, @page = nil
       @error_checkers  = []
       @browser         = self # for Container#browser
 
-      self.log_level = @opts[:log_level] || :warning
-
-      browser = case @opts[:browser] 
-                when :firefox then ::HtmlUnit::BrowserVersion::FIREFOX_2 
+      browser = case opts.delete(:browser)
+                when :firefox then ::HtmlUnit::BrowserVersion::FIREFOX_2
                 else               ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
                 end
 
       @webclient = ::HtmlUnit::WebClient.new(browser)
 
-      configure_webclient
+      configure_webclient(opts)
+      raise ArgumentError, "unknown option #{opts.inspect}" unless opts.empty?
       find_viewer
     end
 
@@ -69,7 +70,7 @@ module Celerity
       uri = "http://#{uri}" unless uri =~ %r{://}
 
       request = HtmlUnit::WebRequestSettings.new(::Java::JavaNet::URL.new(uri))
-      request.setCharset(@opts[:charset])
+      request.setCharset(@charset)
 
       self.page = @webclient.getPage(request)
 
@@ -370,13 +371,12 @@ module Celerity
 
     # Configure the webclient according to the options given to #new.
     # @see initialize
-    def configure_webclient
-      @webclient.throwExceptionOnScriptError = false unless @opts[:javascript_exceptions]
-      @webclient.throwExceptionOnFailingStatusCode = false unless @opts[:status_code_exceptions]
-      @webclient.cssEnabled = false unless @opts[:css]
-      @webclient.useInsecureSSL = @opts[:secure_ssl] == false
-      @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if @opts[:resynchronize]
-
+    def configure_webclient(opts)
+      @webclient.throwExceptionOnScriptError = false unless opts.delete(:javascript_exceptions)
+      @webclient.throwExceptionOnFailingStatusCode = false unless opts.delete(:status_code_exceptions)
+      @webclient.cssEnabled = false unless opts.delete(:css)
+      @webclient.useInsecureSSL = opts.delete(:secure_ssl) == false
+      @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts.delete(:resynchronize)
     end
 
     # This *should* be unneccessary, but sometimes the page we get from the
@@ -395,7 +395,7 @@ module Celerity
     # Render the current page on the viewer.
     # @api private
     def render
-      @viewer.render_html(self.send(@opts[:render]), url)
+      @viewer.render_html(self.send(@render_type), url)
     rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
       @viewer = DefaultViewer
     end
