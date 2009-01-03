@@ -28,7 +28,7 @@ module Celerity
     # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
     # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
     # @option opts :render [:html, :xml](:html) What DOM representation to send to connected viewers.
-    # @option opts :charset [String] (HtmlUnit::TextUtil::DEFAULT_CHARSET) Specify the charset that webclient will use by default.
+    # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use by default.
     #
     # @return [Celerity::Browser]     An instance of the browser.
     # @see Celerity::Container for a small introduction to the API.
