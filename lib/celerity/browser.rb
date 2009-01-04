@@ -122,6 +122,27 @@ module Celerity
       # Celerity::Util.normalize_text(string)
       string
     end
+    
+    # @return [Hash] response headers as a hash
+    def response_headers
+      return {} unless @page
+      
+      Hash[*@page.getWebResponse.getResponseHeaders.map { |obj| [obj.name, obj.value] }.flatten]
+    end
+    
+    # @return [String] content-type as in 'text/html'
+    def content_type
+      return '' unless @page
+      
+      @page.getWebResponse.getContentType
+    end
+    
+    # @return [IO] page contents as an IO, returns nil if @page isn't read yet.
+    def content_as_io
+      return nil unless @page
+      
+      @page.getWebResponse.getContentAsStream.to_io
+    end
 
     # Check if the current page contains the given text.
     #
