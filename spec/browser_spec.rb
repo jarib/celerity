@@ -121,7 +121,33 @@ describe "Browser" do
       end
     end
   end
-
+  
+  describe "#response_headers" do
+    it "returns the response headers (as a hash)" do
+      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.response_headers.class.should == Hash
+      @browser.response_headers['Date'].class.should == String
+      @browser.response_headers['Content-Type'].class.should == String
+    end
+  end
+  
+  describe "#content_type" do
+    it "returns the content type" do
+      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.content_type.should =~ /\w+\/\w+/
+    end
+  end
+  
+  
+  describe "#content_as_io" do
+    it "returns the io object of the content" do
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
+      @browser.content_as_io.class.should == IO
+      @browser.content_as_io.read.should == open(HTML_DIR.gsub('file://', '') + "/non_control_elements.html").read
+    end
+  end
+  
+  
   # Manipulation methods
   describe ".start" do
     it "goes to the given URL and return an instance of itself" do
