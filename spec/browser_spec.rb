@@ -125,9 +125,9 @@ describe "Browser" do
   describe "#response_headers" do
     it "returns the response headers (as a hash)" do
       @browser.goto(TEST_HOST + "/non_control_elements.html")
-      @browser.response_headers.class.should == Hash
-      @browser.response_headers['Date'].class.should == String
-      @browser.response_headers['Content-Type'].class.should == String
+      @browser.response_headers.should be_kind_of(Hash)
+      @browser.response_headers['Date'].should be_kind_of(String)
+      @browser.response_headers['Content-Type'].should be_kind_of(String)
     end
   end
   

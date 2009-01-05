@@ -27,7 +27,7 @@ module Celerity
     # @option opts :resynchronize [Boolean] (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
     # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
     # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
-    # @option opts :render [:html, :xml](:html) What DOM representation to send to connected viewers.
+    # @option opts :render [:html, :xml] (:html) What DOM representation to send to connected viewers.
     # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use by default.
     # @option opts :proxy [String] (nil) Proxy server to use, in address:port format.
     #
@@ -43,9 +43,9 @@ module Celerity
         raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
       end
 
-      @render_type   = opts.delete(:render) || :html
-      @charset       = opts.delete(:charset) || "UTF-8"
-      @proxy         = opts.delete(:proxy) || nil
+      @render_type   = opts.delete(:render)    || :html
+      @charset       = opts.delete(:charset)   || "UTF-8"
+      @proxy         = opts.delete(:proxy)     || nil
       self.log_level = opts.delete(:log_level) || :warning
 
       @last_url, @page = nil
@@ -400,8 +400,8 @@ module Celerity
       @webclient.cssEnabled = false unless opts.delete(:css)
       @webclient.useInsecureSSL = opts.delete(:secure_ssl) == false
 
-      unless @proxy.nil?
-        phost, pport = @proxy.split(/:/)
+      if @proxy
+        phost, pport = @proxy.split(":")
         @webclient.proxyHost = phost
         @webclient.proxyPort = pport.to_i
       end
