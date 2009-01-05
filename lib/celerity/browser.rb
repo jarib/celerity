@@ -137,8 +137,8 @@ module Celerity
       @page.getWebResponse.getContentType
     end
     
-    # @return [IO] page contents as an IO, returns nil if @page isn't read yet.
-    def content_as_io
+    # @return [IO, nil] page contents as an IO, returns nil if no page is loaded.
+    def io
       return nil unless @page
       
       @page.getWebResponse.getContentAsStream.to_io

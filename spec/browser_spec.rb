@@ -139,11 +139,11 @@ describe "Browser" do
   end
   
   
-  describe "#content_as_io" do
+  describe "#io" do
     it "returns the io object of the content" do
       @browser.goto(HTML_DIR + "/non_control_elements.html")
-      @browser.content_as_io.class.should == IO
-      @browser.content_as_io.read.should == open(HTML_DIR.gsub('file://', '') + "/non_control_elements.html").read
+      @browser.io.should be_kind_of(IO)
+      @browser.io.read.should == File.read("#{File.dirname(__FILE__)}/html/non_control_elements.html")
     end
   end
   
