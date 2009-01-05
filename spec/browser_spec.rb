@@ -18,6 +18,21 @@ describe "Browser" do
     it "raises ArgumentError if given an unknown option" do
       lambda { Browser.new(:foo => 1) }.should raise_error(ArgumentError)
     end
+    
+    it "should use the specified proxy" do
+      received = false
+      s = WEBrick::HTTPProxyServer.new(
+        :Port => 2001, 
+        :ProxyContentHandler => proc { received = true }
+      )
+      Thread.new { s.start }
+      
+      b = Browser.new(:proxy => "localhost:2001")
+      b.goto(TEST_HOST)
+      s.stop
+
+      received.should be_true
+    end
   end
   
   describe "#exists?" do
@@ -37,6 +52,14 @@ describe "Browser" do
     it "returns the html of the page" do
       @browser.goto(HTML_DIR + "/non_control_elements.html")
       @browser.html.should == File.read(File.dirname(__FILE__) + "/html/non_control_elements.html")
+    end
+    
+    %w(shift_jis iso-2022-jp euc-jp).each do |charset|
+      it "returns decoded #{charset.upcase} when :charset specified" do
+        browser = Browser.new(:charset => charset.upcase)
+        browser.goto(HTML_DIR + "/#{charset}_text.html")
+        browser.html.should =~ /本日は晴天なり。/ # Browser#text is automagically transcoded into the right charset, but Browser#html isn't.
+      end
     end
   end
 

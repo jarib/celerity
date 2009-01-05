@@ -1,4 +1,5 @@
 require 'webrick'
+require 'webrick/httpproxy'
 require 'webrick/https'
 
 module Celerity
