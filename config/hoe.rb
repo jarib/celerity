@@ -2,7 +2,8 @@ require 'celerity/version'
 
 AUTHORS            = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
 EMAIL              = "jari.bakken@finn.no"
-DESCRIPTION        = "Celerity is a JRuby library for easy and fast functional test automation for web applications"
+DESCRIPTION        = "Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with JavaScript support. It provides a simple API for programmatic navigation through web applications. Celerity aims at being API compatible with Watir."
+SUMMARY            = "Celerity is a JRuby library for easy and fast functional test automation for web applications"
 GEM_NAME           = 'celerity'
 RUBYFORGE_PROJECT  = 'celerity'
 HOMEPATH           = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
@@ -47,7 +48,7 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.author = AUTHORS
   p.email = EMAIL
   p.description = DESCRIPTION
-  p.summary = DESCRIPTION
+  p.summary = SUMMARY
   p.url = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["test/**/test_*.rb"]
