@@ -207,6 +207,12 @@ describe "Button" do
       b.title.should == "Tables"
       @browser.title.should == "Forms with input elements"
     end
+
+    it "returns a new browser with same log_level as original" do
+      b = @browser.button(:name, 'new_popup_window').click_and_attach
+      b.should_not == @browser
+      b.log_level.should == @browser.log_level
+    end
   end
 
   # Manipulation methods

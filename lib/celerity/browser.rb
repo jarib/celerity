@@ -14,6 +14,7 @@ module Celerity
       browser
     end
 
+    # Not implemented. Use ClickableElement#click_and_attach instead.
     def self.attach(*args)
       raise NotImplementedError, "use ClickableElement#click_and_attach instead"
     end

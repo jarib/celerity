@@ -17,7 +17,7 @@ module Celerity
       assert_exists
       assert_enabled if respond_to?(:assert_enabled)
 
-      browser = Browser.new
+      browser = Browser.new(:log_level => @browser.log_level)
       browser.update_page(@object.click)
 
       browser
