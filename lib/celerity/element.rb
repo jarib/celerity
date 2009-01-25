@@ -162,7 +162,7 @@ module Celerity
 
       result = ''
       @object.getAttributes.each do |attribute|
-        result << %Q{#{attribute.getName}="#{attribute.getHtmlValue.to_s}"}
+        result << %Q{#{attribute.getName}="#{attribute.getHtmlValue}"}
       end
 
       result

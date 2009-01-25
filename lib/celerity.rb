@@ -10,6 +10,7 @@ require "timeout"
 require "time"
 require 'drb'
 require "fileutils"
+require "thread"
 
 module Celerity
   Log = Logger.new($DEBUG ? $stderr : nil)

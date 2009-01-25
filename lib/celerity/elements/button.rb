@@ -29,6 +29,5 @@ module Celerity
       end
     end
 
-  end
-
-end
+  end # Button
+end # Celerity

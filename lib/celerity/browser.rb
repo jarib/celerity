@@ -187,7 +187,7 @@ module Celerity
     end
 
     # Wait for ajax calls to finish
-    def wait
+    def join_threads
       assert_exists
       @page.getEnclosingWindow.getThreadManager.joinAll(10000)
     end
@@ -274,7 +274,8 @@ module Celerity
     def disable_checker(checker)
       @error_checkers.delete(checker)
     end
-
+    
+    # :finest, :finer, :fine, :config, :info, :warning, :severe, or :off, :all
     # @return [Symbol] the current log level
     def log_level
       java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
