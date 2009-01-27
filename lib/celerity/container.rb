@@ -409,6 +409,16 @@ module Celerity
       Spans.new(self)
     end
 
+    # @return [Celerity::Spans]
+    def strong(*args)
+      Strong.new(self, *args)
+    end
+
+    # @return [Celerity::Strongs]
+    def strongs
+      Strongs.new(self)
+    end
+
     # @return [Celerity::Table]
     def table(*args)
       Table.new(self, *args)

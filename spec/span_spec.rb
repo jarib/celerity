@@ -27,7 +27,7 @@ describe "Span" do
       @browser.span("lead").should exist
     end
 
-    it "returns false if the 'p' doesn't exist" do
+    it "returns false if the element doesn't exist" do
       @browser.span(:id, "no_such_id").should_not exist
       @browser.span(:id, /no_such_id/).should_not exist
       @browser.span(:text, "no_such_text").should_not exist
@@ -116,7 +116,7 @@ describe "Span" do
       @browser.span(:index, 5).text.should == ''
     end
 
-    it "raises UnknownObjectException if the p doesn't exist" do
+    it "raises UnknownObjectException if the span doesn't exist" do
       lambda { @browser.span(:id, 'no_such_id').text }.should raise_error( UnknownObjectException)
       lambda { @browser.span(:xpath , "//span[@id='no_such_id']").text }.should raise_error( UnknownObjectException)
     end
@@ -139,12 +139,12 @@ describe "Span" do
 
   describe "#respond_to?" do
     it "returns true for all attribute methods" do
-      @browser.image(:index, 1).should respond_to(:class_name)
-      @browser.image(:index, 1).should respond_to(:id)
-      @browser.image(:index, 1).should respond_to(:name)
-      @browser.image(:index, 1).should respond_to(:title)
-      @browser.image(:index, 1).should respond_to(:text)
-      @browser.image(:index, 1).should respond_to(:value)
+      @browser.span(:index, 1).should respond_to(:class_name)
+      @browser.span(:index, 1).should respond_to(:id)
+      @browser.span(:index, 1).should respond_to(:name)
+      @browser.span(:index, 1).should respond_to(:title)
+      @browser.span(:index, 1).should respond_to(:text)
+      @browser.span(:index, 1).should respond_to(:value)
     end
   end
 

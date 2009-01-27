@@ -81,6 +81,10 @@ module Celerity
   class Span < NonControlElement
     TAGS = [ Identifier.new('span') ]
   end
+  
+  class Strong < NonControlElement
+    TAGS = [ Identifier.new('strong') ]
+  end
 
   # class Title < NonControlElement
   #   TAGS = [ Identifier.new('title') ]

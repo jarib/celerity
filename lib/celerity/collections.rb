@@ -109,6 +109,10 @@ module Celerity
   class Spans < ElementCollections
     def element_class; Span; end
   end
+  
+  class Strongs < ElementCollections
+    def element_class; Strong; end
+  end
 
   class Divs < ElementCollections
     def element_class; Div; end
