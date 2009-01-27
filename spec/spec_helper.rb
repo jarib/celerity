@@ -8,12 +8,15 @@ rescue LoadError
   require 'spec'
 end
 
-# require "profile"
-
-$:.unshift File.expand_path("#{File.dirname(__FILE__)}/../lib")
-
 if RUBY_PLATFORM =~ /java/
-  require 'celerity'
+  if ENV['CELERITY_JAR'] = '1'
+    require Dir["pkg/celerity-complete-*.jar"].first
+    require "celerity"
+  else
+    $:.unshift File.expand_path("#{File.dirname(__FILE__)}/../lib")
+    require 'celerity'
+  end
+  
   include Celerity
   include Celerity::Exception
 else

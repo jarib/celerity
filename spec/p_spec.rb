@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe P do
+describe "P" do
 
   before :all do
     @browser = Browser.new(:log_level => LOG_LEVEL)
