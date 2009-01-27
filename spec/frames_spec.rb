@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "Frames" do
 
   before :all do
-    @browser = Browser.new
+    @browser = Browser.new(:log_level => LOG_LEVEL)
   end
 
   describe "<frame> elements" do

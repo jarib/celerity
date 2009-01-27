@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "Browser" do
 
   before :all do
-    @browser = Browser.new
+    @browser = Browser.new(:log_level => LOG_LEVEL)
   end
 
   describe "#new" do
@@ -272,7 +272,7 @@ describe "Browser" do
     end
 
     it "does not raise error on a blank page" do
-      @browser = Browser.new
+      @browser = Browser.new(:log_level => LOG_LEVEL)
       lambda { @browser.contains_text('') }.should_not raise_error
     end
   end
