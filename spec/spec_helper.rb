@@ -9,7 +9,7 @@ rescue LoadError
 end
 
 if RUBY_PLATFORM =~ /java/
-  if ENV['CELERITY_JAR'] = '1'
+  if ENV['CELERITY_JAR'] == '1'
     require Dir["pkg/celerity-complete-*.jar"].first
     require "celerity"
   else
