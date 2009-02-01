@@ -101,6 +101,11 @@ describe "Frame" do
     frame2.text_field(:index, 1).value.should == "send_this_value"
   end
 
+  it "is able to set a field" do
+    @browser.frame(:index, 1).text_field(:name, 'senderElement').set("new value")
+    @browser.frame(:index, 1).text_field(:name, 'senderElement').value.should == "new value"
+  end
+
   describe "#contains_text" do
     it "finds text in a frame" do
       @browser.frame(:name, 'frame1').contains_text('Suspendisse sit amet nisi.').should be_instance_of(Fixnum)

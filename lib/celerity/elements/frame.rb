@@ -13,7 +13,8 @@ module Celerity
       super
       if @object
         @inline_frame_object = @object.getEnclosedWindow.getFrameElement
-        if (frame = @object.getEnclosedPage.getDocumentElement)
+        self.page            = @object.getEnclosedPage
+        if (frame = self.page.getDocumentElement)
           @object = frame
         end
       end
