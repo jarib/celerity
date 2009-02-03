@@ -297,7 +297,7 @@ module Celerity
 
     # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController to resynchronize ajax calls.
     #
-    #   @browser.resynchroniced do |b|
+    #   @browser.resynchronized do |b|
     #     b.link(:id, 'load_fancy_ajax_stuff').click
     #   end
     #
