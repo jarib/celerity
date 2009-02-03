@@ -46,21 +46,14 @@ module Celerity
 
       @render_type   = opts.delete(:render)    || :html
       @charset       = opts.delete(:charset)   || "UTF-8"
-      @proxy         = opts.delete(:proxy)     || nil
       self.log_level = opts.delete(:log_level) || :warning
 
       @last_url, @page = nil
       @error_checkers  = []
       @browser         = self # for Container#browser
 
-      browser = case opts.delete(:browser)
-                when :firefox then ::HtmlUnit::BrowserVersion::FIREFOX_2
-                else               ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
-                end
-
-      @webclient = ::HtmlUnit::WebClient.new(browser)
-
-      configure_webclient(opts)
+      setup_webclient(opts)
+      
       raise ArgumentError, "unknown option #{opts.inspect}" unless opts.empty?
       find_viewer
     end
@@ -396,17 +389,23 @@ module Celerity
 
     # Configure the webclient according to the options given to #new.
     # @see initialize
-    def configure_webclient(opts)
+    def setup_webclient(opts)
+      browser = case opts.delete(:browser)
+                when :firefox then ::HtmlUnit::BrowserVersion::FIREFOX_2
+                else               ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
+                end
+
+      if proxy = opts.delete(:proxy)
+        phost, pport = proxy.split(":")
+        @webclient = ::HtmlUnit::WebClient.new(browser, phost, pport.to_i)
+      else
+        @webclient = ::HtmlUnit::WebClient.new(browser)  
+      end
+      
       @webclient.throwExceptionOnScriptError = false unless opts.delete(:javascript_exceptions)
       @webclient.throwExceptionOnFailingStatusCode = false unless opts.delete(:status_code_exceptions)
       @webclient.cssEnabled = false unless opts.delete(:css)
       @webclient.useInsecureSSL = opts.delete(:secure_ssl) == false
-
-      if @proxy
-        phost, pport = @proxy.split(":")
-        @webclient.proxyHost = phost
-        @webclient.proxyPort = pport.to_i
-      end
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts.delete(:resynchronize)
     end
 
