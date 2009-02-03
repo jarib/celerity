@@ -77,13 +77,13 @@ module Celerity
     def find_by_id(what)
       case what
       when Regexp
-        elements_by_tag_names.find { |elem| elem.getIdAttribute =~ what }
+        elements_by_tag_names.find { |elem| elem.getId =~ what }
       when String
         obj = @object.getHtmlElementById(what)
         return obj if @tags.include?(obj.getTagName)
 
         $stderr.puts "warning: multiple elements with identical id? (#{what.inspect})" if $VERBOSE
-        elements_by_tag_names.find { |elem| elem.getIdAttribute == what }
+        elements_by_tag_names.find { |elem| elem.getId == what }
       else
         raise TypeError, "expected String or Regexp, got #{what.inspect}:#{what.class}"
       end
