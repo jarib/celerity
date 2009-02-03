@@ -69,39 +69,11 @@ PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PRO
 $hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
 $hoe.rsync_args = '-av --delete --ignore-errors'
 
-# Gemspec creator
-spec = Gem::Specification.new do |s|
-  s.name = GEM_NAME
-  s.version = VERS
-  s.platform = Gem::Platform::RUBY
-  s.has_rdoc = true
-  s.extra_rdoc_files = ["README.txt", "License.txt", 'History.txt']
-  s.summary = DESCRIPTION
-  s.description = s.summary
-  s.authors = AUTHORS
-  s.email = EMAIL
-  s.homepage = HOMEPATH
-  
-  # Uncomment this to add a dependency
-  # EXTRA_DEPENDENCIES.each do |arr|
-  #   s.add_runtime_dependency arr
-  # end  
-  # s.extra_deps = EXTRA_DEPENDENCIES
-  
-  s.require_path = 'lib'
-  s.autorequire = GEM_NAME
-  s.files = %w(Rakefile History.txt README.txt) + Dir.glob("{lib,specs,tasks}/**/*")
-end
-
-# Rake::GemPackageTask.new(spec) do |pkg|
-#   pkg.gem_spec = spec
-# end
-  
 desc "create a gemspec file"
 task :make_spec do
   file = "#{GEM_NAME.downcase}.gemspec"
-  ::File.unlink file if ::File.exists?(file)
-  ::File.open(file, "w+") do |file|
-    file.puts spec.to_ruby
+  File.unlink file if File.exists?(file)
+  File.open(file, "w+") do |file|
+    file.puts $hoe.spec.to_ruby
   end
 end
