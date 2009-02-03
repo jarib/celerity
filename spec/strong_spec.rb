@@ -12,7 +12,7 @@ describe "Strong" do
 
   # Exists method
   describe "#exist?" do
-    it "returns true if the 'span' exists" do
+    it "returns true if the element exists" do
       @browser.strong(:id, "descartes").should exist
       @browser.strong(:id, /descartes/).should exist
       @browser.strong(:text, "Dubito, ergo cogito, ergo sum.").should exist
@@ -57,7 +57,7 @@ describe "Strong" do
       @browser.strong(:index, 2).class_name.should == ''
     end
 
-    it "raises UnknownObjectException if the span doesn't exist" do
+    it "raises UnknownObjectException if the element doesn't exist" do
       lambda { @browser.strong(:id, 'no_such_id').class_name }.should raise_error(UnknownObjectException)
     end
   end
@@ -74,7 +74,7 @@ describe "Strong" do
   end
 
   describe "#text" do
-    it "returns the text of the span" do
+    it "returns the text of the element" do
       @browser.strong(:index, 1).text.should == "Dubito, ergo cogito, ergo sum."
     end
 
