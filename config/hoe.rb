@@ -33,7 +33,7 @@ end
 REV = nil
 # UNCOMMENT IF REQUIRED:
 # REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
-VERS = Celerity::VERSION::STRING + (REV ? ".#{REV}" : "")
+VERS = Celerity::VERSION::STRING
 
 class Hoe
   def extra_deps
