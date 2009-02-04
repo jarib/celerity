@@ -22,6 +22,18 @@ describe "Buttons" do
     end
   end
 
+  describe "#first" do
+    it "returns the first element in the collection" do
+      @browser.buttons.first.value.should == @browser.buttons[1].value
+    end
+  end
+
+  describe "#last" do
+    it "returns the last element in the collection" do
+      @browser.buttons.last.value.should == @browser.buttons[0].value
+    end
+  end
+
   describe "#each" do
     it "iterates through buttons correctly" do
       @browser.buttons.each_with_index do |b, index|

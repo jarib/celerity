@@ -49,6 +49,20 @@ module Celerity
       end
     end
 
+    # Get the first element in this collection. (Celerity-specific)
+    #
+    # @return [Celerity::Element] Returns a subclass of Celerity::Element
+    def first
+      self[INDEX_OFFSET]
+    end
+
+    # Get the last element in this collection. (Celerity-specific)
+    #
+    # @return [Celerity::Element] Returns a subclass of Celerity::Element
+    def last
+      self[INDEX_OFFSET - 1]
+    end
+
     # Note: This can be quite useful in irb:
     #
     #   puts browser.text_fields
