@@ -47,6 +47,16 @@ describe "Browser" do
       @browser.should_not exist
     end
   end
+  
+  describe "#wait" do
+    it "should wait for javascript timers to finish" do
+      alerts = 0
+      @browser.add_listener(:alert) { alerts += 1 }
+      @browser.goto(HTML_DIR + "/timeout.html")
+      @browser.wait.should be_true
+      alerts.should == 1
+    end
+  end
 
   describe "#html" do
     it "returns the html of the page" do

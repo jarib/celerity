@@ -179,10 +179,10 @@ module Celerity
       goto(@last_url) if @last_url
     end
 
-    # Wait for ajax calls to finish
-    def join_threads
+    # Wait for javascript jobs to finish
+    def wait
       assert_exists
-      @page.getEnclosingWindow.getThreadManager.joinAll(10000)
+      @page.getEnclosingWindow.getJobManager.waitForAllJobsToFinish(10000)
     end
 
     # Refresh the current page

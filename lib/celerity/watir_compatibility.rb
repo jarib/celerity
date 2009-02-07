@@ -25,8 +25,6 @@ module Celerity
     # Added for Watir compatability - not in use by Celerity
     def speed=(s); s end
     # Added for Watir compatability - not in use by Celerity
-    def wait; end
-    # Added for Watir compatability - not in use by Celerity
     def status; '' end
   end
 
