@@ -3,14 +3,14 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Timeout Spec</title>
     <script type="text/javascript" charset="utf-8">
-          var threadID;
-          function test() {
-            threadID = setTimeout('doAlert()', 500);
-          }
-          function doAlert() {
-            alert('blah');
-          }
+          function timedAlert() { setTimeout('doAlert()', 500); }
+          function doAlert() { alert('blah'); }
+          function timedChange() { setTimeout('doChange()', 500); }
+          function doChange() { document.getElementById('change').innerHTML = 'all done' }
     </script>
   </head>
-  <body onload='test()' />
+  <body>
+    <div onclick="timedAlert()" id="alert">Trigger alert</div>
+    <div onclick="timedChange()" id="change">Trigger change</div>
+  </body>
 </html>

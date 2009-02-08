@@ -48,16 +48,6 @@ describe "Browser" do
     end
   end
   
-  describe "#wait" do
-    it "should wait for javascript timers to finish" do
-      alerts = 0
-      @browser.add_listener(:alert) { alerts += 1 }
-      @browser.goto(HTML_DIR + "/timeout.html")
-      @browser.wait.should be_true
-      alerts.should == 1
-    end
-  end
-
   describe "#html" do
     it "returns the html of the page" do
       @browser.goto(HTML_DIR + "/non_control_elements.html")
@@ -243,16 +233,32 @@ describe "Browser" do
       orig_url.should == @browser.url
     end
   end
+  
+  describe "#wait" do
+    it "should wait for javascript timers to finish" do
+      alerts = 0
+      @browser.add_listener(:alert) { alerts += 1 }
+      @browser.goto(HTML_DIR + "/timeout.html")
+      @browser.div(:id, 'alert').click
+      @browser.wait.should be_true
+      alerts.should == 1
+    end
+  end
 
   describe "#wait_while" do
     it "waits until the specified condition becomes false" do
-      pending
+      @browser.goto(HTML_DIR + "/timeout.html")
+      @browser.div(:id, "change").click
+      @browser.wait_while { @browser.contains_text("Trigger change") }
+      @browser.div(:id, "change").text.should == "all done"
     end
   end
 
   describe "#wait_until" do
     it "waits until the condition becomes true" do
-      pending
+      @browser.goto(HTML_DIR + "/timeout.html")
+      @browser.div(:id, "change").click
+      @browser.wait_until { @browser.contains_text("all done") }
     end
   end
 
