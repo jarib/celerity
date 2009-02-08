@@ -215,10 +215,28 @@ describe "Browser" do
       @browser.pre(:id, 'rspec').text.should == "javascript text"
     end
   end
+  
+  describe "#cookies" do
+    it "returns set cookies as a Ruby hash" do
+      cookies = @browser.cookies
+      cookies.should be_instance_of(Hash)
+      cookies.should be_empty
+      
+      @browser.goto(TEST_HOST + "/set_cookie")
+      
+      cookies = @browser.cookies
+      cookies.size.should == 1
+      cookies['monster'].should == "/"
+    end
+  end
 
   describe "#clear_cookies" do
     it "clears all cookies" do
-      pending
+      @browser.cookies.should be_empty
+      @browser.goto(TEST_HOST + "/set_cookie")
+      @browser.cookies.size.should == 1
+      @browser.clear_cookies
+      @browser.cookies.should be_empty
     end
   end
 

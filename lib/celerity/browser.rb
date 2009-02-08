@@ -196,6 +196,18 @@ module Celerity
       @webclient.getCookieManager.clearCookies
     end
 
+    # Get the cookies for this session. (Celerity-specific API)
+    def cookies
+      result = {}
+      
+      cookies = @webclient.getCookieManager.getCookies.to_a
+      cookies.each do |cookie|
+        result[cookie.getName] = cookie.getValue
+      end
+      
+      result
+    end
+
     # Execute the given JavaScript on the current page. (Celerity-specific API)
     # @return [Object] The resulting Object
     def execute_script(source)

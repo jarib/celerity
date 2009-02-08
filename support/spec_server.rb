@@ -35,6 +35,14 @@ module Celerity
     end
   end
 
+  class CookieHandler < WEBrick::HTTPServlet::AbstractServlet
+    def do_GET(req, resp)
+      resp['content-type'] = 'text/plain'
+      resp['set-cookie'] = "monster=/"
+      resp.body << "C is for cookie, it's good enough for me"
+    end
+  end
+
   class CharsetMismatchHandler < WEBrick::HTTPServlet::AbstractServlet
     def do_GET(req, resp)
       resp['content-type'] = 'text/html; charset=UTF-8'
@@ -93,6 +101,7 @@ module Celerity
       server.mount("/ajax", SlowAjaxHandler)
       server.mount("/charset_mismatch", CharsetMismatchHandler)
       server.mount("/octet_stream", OctetStreamHandler)
+      server.mount("/set_cookie", CookieHandler)
 
       @thread = Thread.new { server.start }
     end
