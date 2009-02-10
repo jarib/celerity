@@ -191,12 +191,12 @@ module Celerity
       self.page = @page.refresh
     end
 
-    # Clears all cookies. (Celerity-specific API)
+    # Clears all cookies. (Celerity only)
     def clear_cookies
       @webclient.getCookieManager.clearCookies
     end
 
-    # Get the cookies for this session. (Celerity-specific API)
+    # Get the cookies for this session. (Celerity only)
     def cookies
       result = {}
       
@@ -208,7 +208,7 @@ module Celerity
       result
     end
 
-    # Execute the given JavaScript on the current page. (Celerity-specific API)
+    # Execute the given JavaScript on the current page. (Celerity only)
     # @return [Object] The resulting Object
     def execute_script(source)
       assert_exists
@@ -231,7 +231,7 @@ module Celerity
       end
     end
 
-    # Wait until the given block evaluates to true (Celerity-specific API)
+    # Wait until the given block evaluates to true (Celerity only)
     #
     # @param [Fixnum] timeout Number of seconds to wait before timing out (default: 30).
     # @yieldparam [Celerity::Browser] browser The browser instance.
@@ -245,7 +245,7 @@ module Celerity
       end
     end
 
-    # Wait while the given block evaluates to true (Celerity-specific API)
+    # Wait while the given block evaluates to true (Celerity only)
     #
     # @param [Fixnum] timeout Number of seconds to wait before timing out (default: 30).
     # @yieldparam [Celerity::Browser] browser The browser instance.

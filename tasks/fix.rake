@@ -1,6 +1,6 @@
 namespace :fix do
 
-  desc 'Make all ruby files use UNIX (\n) line endings'
+  desc 'Make all ruby files use LF line endings'
   task :crlf do
     files = FileList['**/*.rb']
     files.each do |f|
