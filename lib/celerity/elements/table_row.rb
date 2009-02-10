@@ -1,6 +1,7 @@
 module Celerity
   class TableRow < Element
     include Enumerable
+    include ClickableElement
 
     TAGS = [ Identifier.new('tr') ]
     DEFAULT_HOW = :id

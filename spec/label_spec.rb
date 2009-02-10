@@ -42,6 +42,15 @@ describe "Label" do
       lambda { @browser.label(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
+  
+  describe "click" do
+    it "fires the onclick event" do
+      clicked = nil
+      @browser.add_listener(:alert) { |page, msg| clicked = msg }
+      @browser.label(:id, 'first_label').click
+      clicked.should == 'label'
+    end
+  end
 
   # Attribute methods
   describe "#id" do

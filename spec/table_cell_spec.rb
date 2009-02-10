@@ -43,6 +43,16 @@ describe "TableCell" do
       lambda { @browser.cell(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
+  
+  describe "#click" do
+    it "fires the table's onclick event" do
+      clicked = []
+      @browser.add_listener(:alert) { |page, msg| clicked << msg }
+      @browser.cell(:id, 't2_r1_c1').click
+      clicked.should include('td')
+    end
+  end
+  
 
   # Attribute methods
   describe "#text" do

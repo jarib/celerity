@@ -1,6 +1,7 @@
 module Celerity
   class TableElement < Element
     include Enumerable
+    include ClickableElement
 
     ATTRIBUTES = BASE_ATTRIBUTES | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES
     DEFAULT_HOW = :id

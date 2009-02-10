@@ -46,6 +46,15 @@ describe "Table" do
       @browser.table(:id, 'inner').to_a.should == [["Table 2, Row 1, Cell 1", "Table 2, Row 1, Cell 2"]]
     end
   end
+  
+  describe "#click" do
+    it "fires the table's onclick event" do
+      clicked = nil
+      @browser.add_listener(:alert) { |page, msg| clicked = msg }
+      @browser.table(:id, 'inner').click
+      clicked.should == 'table'
+    end
+  end
 
   describe "#row_count" do
     it "counts the number of rows correctly" do

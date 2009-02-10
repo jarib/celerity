@@ -1,6 +1,7 @@
 module Celerity
 
   class Table < Element
+    include ClickableElement
     include Enumerable
     include Container
 

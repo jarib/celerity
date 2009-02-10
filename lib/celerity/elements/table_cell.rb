@@ -1,6 +1,7 @@
 module Celerity
 
   class TableCell < Element
+    include ClickableElement
     include Celerity::Exception
     include Container
 
