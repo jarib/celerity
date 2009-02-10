@@ -177,6 +177,25 @@ describe "Div" do
       lambda { @browser.div(:xpath, "//div[@id='no_such_id']").click }.should raise_error(UnknownObjectException)
     end
   end
+  
+  describe "#double_click" do
+    it "fires the ondblclick event" do
+      double_clicked = false
+      @browser.add_listener(:alert) { double_clicked = true }
+      @browser.div(:id, 'html_test').double_click
+      double_clicked.should be_true
+    end
+  end
+  
+  describe "#right_click" do
+    it "fires the oncontextmenu event" do
+      right_clicked = false
+      @browser.goto(HTML_DIR + "/right_click.html")
+      @browser.add_listener(:alert) { right_clicked = true }
+      @browser.div(:id, "click").right_click
+      right_clicked.should be_true
+    end
+  end
 
   describe "#html" do
     it "returns the HTML of the element" do
