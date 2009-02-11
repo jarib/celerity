@@ -26,6 +26,12 @@ module Celerity
       raise NotImplementedError, "use ClickableElement#click_and_attach instead"
     end
 
+    def inspect
+      vars = (instance_variables - %w[@webclient @browser @object])
+      vars = vars.map { |var| "#{var}=#{instance_variable_get(var).inspect}" }.join(" ")
+      '#<%s:0x%s %s>' % [self.class.name, self.hash.to_s(16), vars]
+    end
+
     #
     # Creates a browser object.
     #

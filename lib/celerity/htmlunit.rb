@@ -38,3 +38,9 @@ module Java::JavaLang::Iterable
 end
 
 
+class Java::ComGargoylesoftwareHtmlunitHtml::HtmlPage
+  def inspect
+    '#<HtmlPage:0x%s(%s)>' % [self.hash.to_s(16), getWebResponse.getUrl.toString]
+  end
+end
+
