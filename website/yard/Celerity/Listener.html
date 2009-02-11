@@ -16,7 +16,7 @@
   <h1 class="title">Class: Celerity::Listener</h1>
   <div class="section docstring">
   <p>
-This class is used to wrap some of the various listeners available from
+This class is used to wrap some of the listeners available from
 HtmlUnit&#8217;s WebClient.
 </p>
 
@@ -44,13 +44,13 @@ HtmlUnit&#8217;s WebClient.
           <pre class="lines">
 
 
-15
-16
 17
-18</pre>
+18
+19
+20</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 15</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 17</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='webclient identifier id'>webclient</span><span class='rparen token'>)</span>
   <span class='@webclient ivar id'>@webclient</span> <span class='assign token'>=</span> <span class='webclient identifier id'>webclient</span>
@@ -71,7 +71,7 @@ HtmlUnit&#8217;s WebClient.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#add_listener" href="#add_listener-instance_method">#add_listener</a></span><span class='args'>(type, &amp;block)</span>
+        <span class='name'><a href="#add_listener-instance_method" title="#add_listener">#add_listener</a></span><span class='args'>(type, &amp;block)</span>
         <span class='block'></span>
         
       </th>
@@ -86,7 +86,7 @@ Add a listener block for one of the available types.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#error" href="#error-instance_method">#error</a></span><span class='args'>(message, url, line, column, key)</span>
+        <span class='name'><a href="#error-instance_method" title="#error">#error</a></span><span class='args'>(message, url, line, column, key)</span>
         <span class='block'></span>
         
           <span class='alias'>#warning</span>
@@ -103,7 +103,7 @@ interface HTMLParserListener.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#handleAlert" href="#handleAlert-instance_method">#handleAlert</a></span><span class='args'>(page, message)</span>
+        <span class='name'><a href="#handleAlert-instance_method" title="#handleAlert">#handleAlert</a></span><span class='args'>(page, message)</span>
         <span class='block'></span>
         
       </th>
@@ -118,7 +118,7 @@ interface AlertHandler.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#handleAttachment" href="#handleAttachment-instance_method">#handleAttachment</a></span><span class='args'>(page)</span>
+        <span class='name'><a href="#handleAttachment-instance_method" title="#handleAttachment">#handleAttachment</a></span><span class='args'>(page)</span>
         <span class='block'></span>
         
       </th>
@@ -133,7 +133,7 @@ interface AttachmentHandler.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#handleConfirm" href="#handleConfirm-instance_method">#handleConfirm</a></span><span class='args'>(page, message)</span>
+        <span class='name'><a href="#handleConfirm-instance_method" title="#handleConfirm">#handleConfirm</a></span><span class='args'>(page, message)</span>
         <span class='block'></span>
         
       </th>
@@ -148,7 +148,7 @@ interface ConfirmHandler.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#handlePrompt" href="#handlePrompt-instance_method">#handlePrompt</a></span><span class='args'>(page, message)</span>
+        <span class='name'><a href="#handlePrompt-instance_method" title="#handlePrompt">#handlePrompt</a></span><span class='args'>(page, message)</span>
         <span class='block'></span>
         
       </th>
@@ -163,7 +163,7 @@ interface PromptHandler.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#notify" href="#notify-instance_method">#notify</a></span><span class='args'>(message, origin)</span>
+        <span class='name'><a href="#notify-instance_method" title="#notify">#notify</a></span><span class='args'>(message, origin)</span>
         <span class='block'></span>
         
       </th>
@@ -178,7 +178,7 @@ interface IncorrectnessListener.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#remove_listener" href="#remove_listener-instance_method">#remove_listener</a></span><span class='args'>(type, proc_or_index)</span>
+        <span class='name'><a href="#remove_listener-instance_method" title="#remove_listener">#remove_listener</a></span><span class='args'>(type, proc_or_index)</span>
         <span class='block'></span>
         
       </th>
@@ -190,7 +190,7 @@ interface IncorrectnessListener.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#statusMessageChanged" href="#statusMessageChanged-instance_method">#statusMessageChanged</a></span><span class='args'>(page, message)</span>
+        <span class='name'><a href="#statusMessageChanged-instance_method" title="#statusMessageChanged">#statusMessageChanged</a></span><span class='args'>(page, message)</span>
         <span class='block'></span>
         
       </th>
@@ -205,7 +205,7 @@ interface StatusHandler.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#webWindowClosed" href="#webWindowClosed-instance_method">#webWindowClosed</a></span><span class='args'>(web_window_event)</span>
+        <span class='name'><a href="#webWindowClosed-instance_method" title="#webWindowClosed">#webWindowClosed</a></span><span class='args'>(web_window_event)</span>
         <span class='block'></span>
         
           <span class='alias'>#webWindowOpened</span>
@@ -259,7 +259,7 @@ Add a listener block for one of the available types.
     <dt></dt>
     <dd>
       <span class='desc'>
-        <tt><a title="Celerity::Browser#add_listener" href="Browser.html#add_listener-instance_method">Celerity::Browser#add_listener</a></tt>
+        <tt><a href="Browser.html#add_listener-instance_method" title="Celerity::Browser#add_listener">Celerity::Browser#add_listener</a></tt>
       </span>
     </dd>
   </dl>
@@ -274,11 +274,6 @@ Add a listener block for one of the available types.
           <pre class="lines">
 
 
-22
-23
-24
-25
-26
 27
 28
 29
@@ -297,10 +292,15 @@ Add a listener block for one of the available types.
 42
 43
 44
-45</pre>
+45
+46
+47
+48
+49
+50</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 22</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 27</span>
 
 <span class='def def kw'>def</span> <span class='add_listener identifier id'>add_listener</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='case case kw'>case</span> <span class='type identifier id'>type</span>
@@ -368,12 +368,12 @@ interface HTMLParserListener
           <pre class="lines">
 
 
-95
-96
-97</pre>
+121
+122
+123</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 95</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 121</span>
 
 <span class='def def kw'>def</span> <span class='error identifier id'>error</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='url identifier id'>url</span><span class='comma token'>,</span> <span class='line identifier id'>line</span><span class='comma token'>,</span> <span class='column identifier id'>column</span><span class='comma token'>,</span> <span class='key identifier id'>key</span><span class='rparen token'>)</span>
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:html_parser</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='url identifier id'>url</span><span class='comma token'>,</span> <span class='line identifier id'>line</span><span class='comma token'>,</span> <span class='column identifier id'>column</span><span class='comma token'>,</span> <span class='key identifier id'>key</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -415,12 +415,12 @@ interface AlertHandler
           <pre class="lines">
 
 
-68
-69
-70</pre>
+79
+80
+81</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 68</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 79</span>
 
 <span class='def def kw'>def</span> <span class='handleAlert identifier id'>handleAlert</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:alert</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -462,12 +462,12 @@ interface AttachmentHandler
           <pre class="lines">
 
 
-78
-79
-80</pre>
+95
+96
+97</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 78</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 95</span>
 
 <span class='def def kw'>def</span> <span class='handleAttachment identifier id'>handleAttachment</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:attachment</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -509,12 +509,12 @@ interface ConfirmHandler
           <pre class="lines">
 
 
-73
-74
-75</pre>
+87
+88
+89</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 73</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 87</span>
 
 <span class='def def kw'>def</span> <span class='handleConfirm identifier id'>handleConfirm</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:confirm</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -556,12 +556,12 @@ interface PromptHandler
           <pre class="lines">
 
 
-83
-84
-85</pre>
+103
+104
+105</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 83</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 103</span>
 
 <span class='def def kw'>def</span> <span class='handlePrompt identifier id'>handlePrompt</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:prompt</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -603,12 +603,12 @@ interface IncorrectnessListener
           <pre class="lines">
 
 
-101
-102
-103</pre>
+130
+131
+132</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 101</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 130</span>
 
 <span class='def def kw'>def</span> <span class='notify identifier id'>notify</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='origin identifier id'>origin</span><span class='rparen token'>)</span>
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:incorrectness</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='origin identifier id'>origin</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -645,11 +645,6 @@ interface IncorrectnessListener
           <pre class="lines">
 
 
-47
-48
-49
-50
-51
 52
 53
 54
@@ -658,10 +653,15 @@ interface IncorrectnessListener
 57
 58
 59
-60</pre>
+60
+61
+62
+63
+64
+65</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 47</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 52</span>
 
 <span class='def def kw'>def</span> <span class='remove_listener identifier id'>remove_listener</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='proc_or_index identifier id'>proc_or_index</span><span class='rparen token'>)</span>
   <span class='unless unless kw'>unless</span> <span class='@procs ivar id'>@procs</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='rparen token'>)</span>
@@ -714,12 +714,12 @@ interface StatusHandler
           <pre class="lines">
 
 
-63
-64
-65</pre>
+71
+72
+73</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 63</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 71</span>
 
 <span class='def def kw'>def</span> <span class='statusMessageChanged identifier id'>statusMessageChanged</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:status</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -768,12 +768,12 @@ interface WebWindowListener
           <pre class="lines">
 
 
-88
-89
-90</pre>
+111
+112
+113</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 88</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 111</span>
 
 <span class='def def kw'>def</span> <span class='webWindowClosed identifier id'>webWindowClosed</span><span class='lparen token'>(</span><span class='web_window_event identifier id'>web_window_event</span><span class='rparen token'>)</span>
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:web_window_event</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='web_window_event identifier id'>web_window_event</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>

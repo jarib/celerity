@@ -19,6 +19,12 @@
 Experimental - generate a method definition for accessing elements on the
 current page.
 </p>
+<p>
+Usage:
+</p>
+<pre class="code">
+   <span class='MethodGenerator constant id'>MethodGenerator</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='browser identifier id'>browser</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='parse identifier id'>parse</span>
+</pre>
 
 </div><div class="section constants">
   <div class="thisclass">
@@ -56,20 +62,20 @@ current page.
           <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
 33
 34
-35</pre>
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/extra/method_generator.rb', line 25</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/extra/method_generator.rb', line 33</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='ie identifier id'>ie</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='semicolon token'>;</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='@ie ivar id'>@ie</span>      <span class='assign token'>=</span> <span class='ie identifier id'>ie</span>
@@ -97,7 +103,7 @@ current page.
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#parse" href="#parse-instance_method">#parse</a></span><span class='args'></span>
+        <span class='name'><a href="#parse-instance_method" title="#parse">#parse</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -135,14 +141,6 @@ current page.
           <pre class="lines">
 
 
-37
-38
-39
-40
-41
-42
-43
-44
 45
 46
 47
@@ -150,10 +148,18 @@ current page.
 49
 50
 51
-52</pre>
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/extra/method_generator.rb', line 37</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/extra/method_generator.rb', line 45</span>
 
 <span class='def def kw'>def</span> <span class='parse identifier id'>parse</span>
   <span class='ELEMENTS constant id'>ELEMENTS</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='elem identifier id'>elem</span><span class='bitor op'>|</span>

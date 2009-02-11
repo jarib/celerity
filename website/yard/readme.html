@@ -17,17 +17,12 @@
 
 </li>
 </ul>
-<h2>TUTORIAL:</h2>
-<ul>
-<li>http://celerity.rubyforge.org/wiki/wiki.pl?GettingStarted
-
-</li>
-</ul>
 <h2>DESCRIPTION:</h2>
 <p>
-Celerity is a JRuby library for easy and fast functional test automation
-for web applications. It is a wrapper around the HtmlUnit Java library and
-is currently aimed at providing the same API and functionality as Watir.
+Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser
+with JavaScript support. It provides a simple API for programmatic
+navigation through web applications. Celerity aims at being API compatible
+with Watir.
 </p>
 <h2>FEATURES:</h2>
 <ul>
@@ -60,6 +55,10 @@ background)
 <h2>INSTALL:</h2>
 <pre class="code">
   <span class='xstring val'>`jruby -S gem install celerity`</span>
+
+  <span class='or or kw'>or</span> <span class='from identifier id'>from</span> <span class='GitHub constant id'>GitHub</span>
+
+  <span class='xstring val'>`jruby -S gem install jarib-celerity`</span>
 </pre>
 <h2>EXAMPLE:</h2>
 <pre class="code">
@@ -73,11 +72,17 @@ background)
 
   <span class='puts identifier id'>puts</span> <span class='string val'>&quot;yay&quot;</span> <span class='if if_mod kw'>if</span> <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='text identifier id'>text</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='string val'>'celerity.rubyforge.org'</span>
 </pre>
-<h2>GIT</h2>
+<h2>SOURCE</h2>
 <p>
-The project is manually mirrored @
+The source code is available at
 http://github.com/jarib/celerity/tree/master
 </p>
+<h2>WIKI:</h2>
+<ul>
+<li>http://github.com/jarib/celerity/wikis
+
+</li>
+</ul>
 <h2>LICENSE:</h2>
 <p>
 Celerity - JRuby wrapper for HtmlUnit Copyright &#169; 2008 FINN.no AS

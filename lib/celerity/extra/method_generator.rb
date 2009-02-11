@@ -16,7 +16,15 @@ class String # :nodoc:
 end
 
 module Celerity
+
+  #
   # Experimental - generate a method definition for accessing elements on the current page.
+  #
+  # Usage:
+  #
+  #    MethodGenerator.new(browser, opts).parse
+  #
+  #
   class MethodGenerator
 
     ELEMENTS = %w[text_field select_list radio checkbox button].map { |e| e.to_sym }
@@ -135,13 +143,17 @@ module Celerity
   end # MethodGenerator
 
   class Browser
+    
+    #
     # Experimental - generate a method definition for accessing elements on the current page
     # Not loaded by default - need to require 'celerity/extra/method_generator'
+    #
+    
     def generate_method(opts = {})
       MethodGenerator.new(self, opts).parse
     end
+    
   end # Browser
-
 end # Celerity
 
 

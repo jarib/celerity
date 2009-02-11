@@ -1,6 +1,9 @@
 module Celerity
-
+  
+  #
   # Superclass for for Span, Pre, Div, H1, ...
+  #
+  
   class NonControlElement < Element
     include Exception
     include ClickableElement
@@ -10,7 +13,9 @@ module Celerity
   end
 
   #
+  #--
   #  classes ordered alphabetically
+  #++
   #
 
   class Area < NonControlElement

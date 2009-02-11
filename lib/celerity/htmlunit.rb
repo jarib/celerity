@@ -27,7 +27,6 @@ module Java::OrgW3cDom::NamedNodeMap
   end
 end
 
-# this will be added in JRuby 1.1.6
 module Java::JavaLang::Iterable
   include Enumerable
 

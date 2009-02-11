@@ -1,6 +1,9 @@
 module Celerity
-
+  
+  #
   # Superclass for all HTML elements.
+  # 
+  
   class Element
     include Exception
     include Container
@@ -51,8 +54,11 @@ module Celerity
       @conditions.freeze
     end
 
+    #
     # Get the parent element
     # @return [Celerity::Element, nil] subclass of Celerity::Element, or nil if no parent was found
+    # 
+
     def parent
       assert_exists
 
@@ -65,36 +71,51 @@ module Celerity
       element_class.new(@container, :object, obj)
     end
 
+    #
     # Sets the focus to this element.
+    # 
+
     def focus
       assert_exists
       @object.focus
     end
 
+    #
     # Used internally. Find the element on the page.
     # @api private
+    # 
+
     def locate
       @object = ElementLocator.new(@container, self.class).find_by_conditions(@conditions)
     end
 
+    #
     # @return [String] A string representation of the element.
+    #
+
     def to_s
       assert_exists
       create_string(@object)
     end
 
+    #
     # @param [String, #to_s] The attribute.
     # @return [String] The value of the given attribute.
+    # 
+
     def attribute_value(attribute)
       assert_exists
       @object.getAttribute(attribute.to_s)
     end
 
+    #
     # Check if the element is visible to the user or not.
     # Note that this only takes the _style attribute_ of the element (and
     # its parents) into account - styles from applied CSS is not considered.
     #
     # @return [boolean]
+    # 
+
     def visible?
       obj = self
       while obj
@@ -106,19 +127,25 @@ module Celerity
       return true
     end
 
+    #
     # Used internally to ensure the element actually exists.
     #
     # @raise [Celerity::Exception::UnknownObjectException] if the element can't be found.
     # @api private
+    # 
+
     def assert_exists
       locate
       unless @object
         raise UnknownObjectException, "Unable to locate #{self.class.name[/::(.*)$/, 1]}, using #{identifier_string}"
       end
     end
-
+    
+    #
     # Checks if the element exists.
     # @return [true, false]
+    # 
+
     def exists?
       assert_exists
       true
@@ -126,28 +153,37 @@ module Celerity
       false
     end
     alias_method :exist?, :exists?
-
+    
+    #
     # Return a text representation of the element as it would appear in a browser.
     #
     # @see inner_text
     # @return [String]
+    # 
+
     def text
       assert_exists
       @object.asText.strip # this must behave like ElementLocator
     end
 
+    #
     # Return the text content of this DOM node, disregarding its visibility.
     #
     # (Celerity-specific?)
     #
     # @see text
     # @return [String]
+    # 
+
     def inner_text
       assert_exists
       Celerity::Util.normalize_text @object.getTextContent
     end
 
+    #
     # @return [String] The normative XML representation of the element (including children).
+    # 
+
     def to_xml
       assert_exists
       @object.asXml
@@ -156,7 +192,10 @@ module Celerity
     alias_method :as_xml, :to_xml
     alias_method :html,   :to_xml
 
+    #
     # @return [String] A string representation of the element's attributes.
+    # 
+
     def attribute_string
       assert_exists
 
@@ -168,18 +207,24 @@ module Celerity
       result
     end
 
+    #
     # return the canonical xpath for this element (Celerity-specific)
+    # 
+
     def xpath
       assert_exists
       @object.getCanonicalXPath
     end
 
+    #
     # Dynamically get element attributes.
     #
     # @see ATTRIBUTES constant for a list of valid methods for a given element.
     #
     # @return [String] The resulting attribute.
     # @raise  [NoMethodError] if the element doesn't support this attribute.
+    # 
+
     def method_missing(meth, *args, &blk)
       assert_exists
 

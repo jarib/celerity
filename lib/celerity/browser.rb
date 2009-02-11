@@ -5,21 +5,31 @@ module Celerity
     attr_accessor :page, :object, :charset
     attr_reader :webclient, :viewer
 
+    #
     # Initialize a browser and goto the given URL
-    # @param uri The URL to go to.
-    # @return Instance of Celerity::Browser.
+    # 
+    # @param [String] uri The URL to go to.
+    # @return [Celerity::Browser] instance.
+    # 
+
     def self.start(uri)
       browser = new
       browser.goto(uri)
       browser
     end
 
+    #
     # Not implemented. Use ClickableElement#click_and_attach instead.
+    #
+
     def self.attach(*args)
       raise NotImplementedError, "use ClickableElement#click_and_attach instead"
     end
 
+    #
     # Creates a browser object.
+    #
+    # @see Celerity::Container for an introduction to the main API.
     #
     # @option opts :log_level [Symbol] (:warning) @see log_level=
     # @option opts :browser [:firefox, :internet_explorer] (:internet_explorer) Set the BrowserVersion used by HtmlUnit. Defaults to Internet Explorer.
@@ -33,8 +43,10 @@ module Celerity
     # @option opts :proxy [String] (nil) Proxy server to use, in address:port format.
     #
     # @return [Celerity::Browser]     An instance of the browser.
-    # @see Celerity::Container for a small introduction to the API.
+    #
     # @api public
+    #
+
     def initialize(opts = {})
       unless opts.is_a?(Hash)
         raise TypeError, "wrong argument type #{opts.class}, expected Hash"
@@ -58,10 +70,13 @@ module Celerity
       find_viewer
     end
 
+    #
     # Goto the given URL
     #
     # @param [String] uri The url.
     # @return [String] The url.
+    #
+
     def goto(uri)
       uri = "http://#{uri}" unless uri =~ %r{://}
 
@@ -73,37 +88,55 @@ module Celerity
       url()
     end
 
+    #
     # Unsets the current page / closes all windows
+    #
+
     def close
       @page = nil
       @webclient.closeAllWindows
     end
 
+    #
     # @return [String] the URL of the current page
+    # 
+
     def url
       assert_exists
       # will be renamed getUrl => getRequestUrl
       @page.getWebResponse.getUrl.toString
     end
 
+    #
     # @return [String] the title of the current page
+    #
+
     def title
       @page ? @page.getTitleText : ''
     end
 
+    #
     # @return [String] the HTML content of the current page
+    #
+    
     def html
       @page ? @page.getWebResponse.getContentAsString : ''
     end
-
+    
+    #
     # @return [String] the XML representation of the DOM
+    #
+    
     def xml
       return '' unless @page
       return @page.asXml if @page.respond_to?(:asXml)
       return text # fallback to text (for exampel for "plain/text" pages)
     end
 
+    #
     # @return [String] a text representation of the current page
+    #
+    
     def text
       return '' unless @page
 
@@ -116,33 +149,45 @@ module Celerity
       # Celerity::Util.normalize_text(string)
       string
     end
-    
+
+    #
     # @return [Hash] response headers as a hash
+    #
+
     def response_headers
       return {} unless @page
       
       Hash[*@page.getWebResponse.getResponseHeaders.map { |obj| [obj.name, obj.value] }.flatten]
     end
-    
+
+    #
     # @return [String] content-type as in 'text/html'
+    #
+
     def content_type
       return '' unless @page
       
       @page.getWebResponse.getContentType
     end
-    
+
+    #
     # @return [IO, nil] page contents as an IO, returns nil if no page is loaded.
+    # 
+    
     def io
       return nil unless @page
       
       @page.getWebResponse.getContentAsStream.to_io
     end
 
+    #
     # Check if the current page contains the given text.
     #
     # @param  [String, Regexp] expected_text The text to look for.
+    # @return [Numeric, nil]  The index of the matched text, or nil if it isn't found.
     # @raise  [TypeError]
-    # @return [Numeric, nil]  The index of the matched text, or nil if it doesn't match.
+    # 
+
     def contains_text(expected_text)
       return nil unless exist?
       super
@@ -167,36 +212,54 @@ module Celerity
       objects.map { |o| element_from_dom_node(o) }.compact
     end
 
-    # @return [HtmlUnit::HtmlHtml] the underlying HtmlUnit object.
+    #
+    # @return [HtmlUnit::HtmlHtml] the underlying HtmlUnit document.
+    # 
+    
     def document
       @object
     end
 
+    #
     # Goto the last url - HtmlUnit doesn't have a 'back' functionality, so we only have 1 history item :)
     # @return [String, nil] The url of the resulting page, or nil if none was stored.
+    # 
+
     def back
       # TODO: this is naive, need capability from HtmlUnit
       goto(@last_url) if @last_url
     end
 
+    #
     # Wait for javascript jobs to finish
+    # 
+
     def wait
       assert_exists
       @page.getEnclosingWindow.getJobManager.waitForAllJobsToFinish(10000)
     end
 
+    #
     # Refresh the current page
+    # 
+
     def refresh
       assert_exists
       self.page = @page.refresh
     end
 
+    #
     # Clears all cookies. (Celerity only)
+    # 
+
     def clear_cookies
       @webclient.getCookieManager.clearCookies
     end
 
+    #
     # Get the cookies for this session. (Celerity only)
+    # 
+
     def cookies
       result = {}
       
@@ -208,8 +271,11 @@ module Celerity
       result
     end
 
+    #
     # Execute the given JavaScript on the current page. (Celerity only)
     # @return [Object] The resulting Object
+    #
+
     def execute_script(source)
       assert_exists
       @page.executeJavaScript(source.to_s).getJavaScriptResult
@@ -231,11 +297,14 @@ module Celerity
       end
     end
 
+    #
     # Wait until the given block evaluates to true (Celerity only)
     #
     # @param [Fixnum] timeout Number of seconds to wait before timing out (default: 30).
     # @yieldparam [Celerity::Browser] browser The browser instance.
     # @see Celerity::Browser#resynchronized
+    #
+    
     def wait_until(timeout = 30, &block)
       Timeout.timeout(timeout) do
         until yield(self)
@@ -245,11 +314,14 @@ module Celerity
       end
     end
 
+    #
     # Wait while the given block evaluates to true (Celerity only)
     #
     # @param [Fixnum] timeout Number of seconds to wait before timing out (default: 30).
     # @yieldparam [Celerity::Browser] browser The browser instance.
     # @see Celerity::Browser#resynchronized
+    # 
+
     def wait_while(timeout = 30, &block)
       Timeout.timeout(timeout) do
         while yield(self)
@@ -259,11 +331,77 @@ module Celerity
       end
     end
 
+    #
+    # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController to resynchronize ajax calls.
+    #
+    #   @browser.resynchronized do |b|
+    #     b.link(:id, 'load_fancy_ajax_stuff').click
+    #   end
+    #
+    # @yieldparam [Celerity::Browser] browser The current browser object.
+    # @see Celerity::Browser#new for options on how to always use this.
+    #
+
+    def resynchronized(&block)
+      old_controller = @webclient.ajaxController
+      @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new)
+
+      yield(self)
+
+      @webclient.setAjaxController(old_controller)
+    end
+
+    #
+    # Start or stop HtmlUnit's DebuggingWebConnection. (Celerity only)
+    # The output will go to /tmp/«name»
+    #
+    # @param [Boolean] bool start or stop
+    # @param [String]  name required if bool is true
+    # 
+
+    def debug_web_connection(bool, name = nil)
+      if bool
+        raise "no name given" unless name
+        @old_webconnection = @webclient.getWebConnection
+        dwc = HtmlUnit::Util::DebuggingWebConnection.new(@old_webconnection, name)
+        @webclient.setWebConnection(dwc)
+        $stderr.puts "debug-webconnection on"
+      else
+        @webclient.setWebConnection(@old_webconnection) if @old_webconnection
+        $stderr.puts "debug-webconnection off"
+      end
+    end
+
+    #
+    # Add a listener block for one of the available types. (Celerity only)
+    # Types map to HtmlUnit interfaces like this:
+    #
+    #   :status           => StatusHandler
+    #   :alert            => AlertHandler  ( window.alert() )
+    #   :web_window_event => WebWindowListener
+    #   :html_parser      => HTMLParserListener
+    #   :incorrectness    => IncorrectnessListener
+    #   :confirm          => ConfirmHandler ( window.confirm() )
+    #   :prompt           => PromptHandler ( window.prompt() )
+    #
+    #
+    # @param [Symbol] type One of the above symbols.
+    # @param [Proc] block A block to be executed for events of this type.
+    # 
+
+    def add_listener(type, &block)
+      @listener ||= Celerity::Listener.new(@webclient)
+      @listener.add_listener(type, &block)
+    end
+    
+    #
     # Add a 'checker' proc that will be run on every page load
     #
     # @param [Proc] checker The proc to be run (can also be given as a block)
     # @yieldparam [Celerity::Browser] browser The current browser object.
     # @raise [ArgumentError] if no Proc or block was given.
+    # 
+
     def add_checker(checker = nil, &block)
       if block_given?
         @error_checkers << block
@@ -274,76 +412,52 @@ module Celerity
       end
     end
 
+    #
     # Remove the given checker from the list of checkers
     # @param [Proc] checker The Proc to disable.
+    # 
+
     def disable_checker(checker)
       @error_checkers.delete(checker)
     end
-    
+
+    #
     # :finest, :finer, :fine, :config, :info, :warning, :severe, or :off, :all
+    # 
     # @return [Symbol] the current log level
+    # 
+
     def log_level
       java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
     end
 
+    #
     # Set Java log level (default is :warning)
     #
     # @param [Symbol] level :finest, :finer, :fine, :config, :info, :warning, :severe, or :off, :all
+    # 
+
     def log_level=(level)
       java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level = java.util.logging.Level.const_get(level.to_s.upcase)
     end
 
+    #
     # Checks if we have a page currently loaded.
     # @return [true, false]
+    #
+
     def exist?
       !!@page
     end
     alias_method :exists?, :exist?
 
-    # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController to resynchronize ajax calls.
     #
-    #   @browser.resynchronized do |b|
-    #     b.link(:id, 'load_fancy_ajax_stuff').click
-    #   end
-    #
-    # @yieldparam [Celerity::Browser] browser The current browser object.
-    # @see Celerity::Browser#new for options on how to always use this.
-    def resynchronized(&block)
-      old_controller = @webclient.ajaxController
-      @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new)
-
-      yield(self)
-
-      @webclient.setAjaxController(old_controller)
-    end
-
-    #--
-    # TODO: could be private?
-    #++
-    #
-    # Check that we have a @page object.
-    #
-    # @raise [Celerity::Exception::UnknownObjectException] if no page is loaded.
-    # @api private
-    def assert_exists
-      raise UnknownObjectException, "no page loaded" unless exist?
-    end
-
-    #--
-    # TODO: could be private?
-    #++
-    # Runs the all the checker procs added by +add_checker+
-    #
-    # @see add_checker
-    # @api private
-    def run_error_checks
-      @error_checkers.each { |e| e[self] }
-    end
-
-    # Set the current page object for the browser
+    # Sets the current page object for the browser
     #
     # @param [HtmlUnit::HtmlPage] value The page to set.
     # @api private
+    #
+
     def page=(value)
       @last_url = url() if exist?
       @page = value
@@ -360,47 +474,35 @@ module Celerity
       value
     end
 
-    # Start or stop HtmlUnit's DebuggingWebConnection.
-    # The output will go to /tmp/«name»
     #
-    # @param [Boolean] bool start or stop
-    # @param [String]  name required if bool is true
-    def debug_web_connection(bool, name = nil)
-      if bool
-        raise "no name given" unless name
-        @old_webconnection = @webclient.getWebConnection
-        dwc = HtmlUnit::Util::DebuggingWebConnection.new(@old_webconnection, name)
-        @webclient.setWebConnection(dwc)
-        $stderr.puts "debug-webconnection on"
-      else
-        @webclient.setWebConnection(@old_webconnection) if @old_webconnection
-        $stderr.puts "debug-webconnection off"
-      end
-    end
-
-    # Add a listener block for one of the available types.
-    # Types map to HtmlUnit interfaces like this:
+    # Check that we have a @page object.
     #
-    #   :status           => StatusHandler
-    #   :alert            => AlertHandler  ( window.alert() )
-    #   :web_window_event => WebWindowListener
-    #   :html_parser      => HTMLParserListener
-    #   :incorrectness    => IncorrectnessListener
-    #   :confirm          => ConfirmHandler ( window.confirm() )
-    #   :prompt           => PromptHandler ( window.prompt() )
-    #
-    #
-    # @param [Symbol] type One of the above symbols.
-    # @param [Proc] block A block to be executed for events of this type.
-    def add_listener(type, &block)
-      @listener ||= Celerity::Listener.new(@webclient)
-      @listener.add_listener(type, &block)
+    # @raise [Celerity::Exception::UnknownObjectException] if no page is loaded.
+    # @api private
+    # 
+    
+    def assert_exists
+      raise UnknownObjectException, "no page loaded" unless exist?
     end
 
     private
 
+    #
+    # Runs the all the checker procs added by +add_checker+
+    #
+    # @see add_checker
+    # @api private
+    # 
+    
+    def run_error_checks
+      @error_checkers.each { |e| e[self] }
+    end
+    
+    #
     # Configure the webclient according to the options given to #new.
     # @see initialize
+    #
+
     def setup_webclient(opts)
       browser = case opts.delete(:browser)
                 when :firefox then ::HtmlUnit::BrowserVersion::FIREFOX_2
@@ -421,9 +523,12 @@ module Celerity
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts.delete(:resynchronize)
     end
 
+    #
     # This *should* be unneccessary, but sometimes the page we get from the
     # window is different (ie. a different object) from our current @page
     # (Used by #wait_while and #wait_until)
+    # 
+    
     def refresh_page_from_window
       new_page = @page.getEnclosingWindow.getEnclosedPage
 
@@ -433,17 +538,23 @@ module Celerity
         Log.debug "unneccessary refresh"
       end
     end
-
+    
+    #
     # Render the current page on the viewer.
     # @api private
+    # 
+
     def render
       @viewer.render_html(self.send(@render_type), url)
     rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
       @viewer = DefaultViewer
     end
 
+    #
     # Check if we have a viewer available on druby://127.0.0.1:6429
     # @api private
+    # 
+
     def find_viewer
       viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
       if viewer.respond_to?(:render_html)
@@ -455,6 +566,10 @@ module Celerity
       @viewer = DefaultViewer
     end
 
+    # 
+    # Convert the given HtmlUnit object to a Celerity object
+    # 
+    
     def element_from_dom_node(obj)
       if element_class = Celerity::Util.htmlunit2celerity(obj.class)
         element_class.new(self, :object, obj)

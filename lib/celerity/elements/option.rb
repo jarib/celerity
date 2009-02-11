@@ -1,5 +1,9 @@
 module Celerity
-  # Represents a select list option.
+  
+  #
+  # Represents an option in a select list.
+  #
+
   class Option < Element
     include ClickableElement
     include DisabledElement
@@ -10,6 +14,10 @@ module Celerity
 
     alias_method :select, :click
 
+    # 
+    # Is this option selected?
+    # 
+    
     def selected?
       assert_exists
       @object.isSelected

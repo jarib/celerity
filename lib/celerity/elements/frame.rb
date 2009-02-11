@@ -7,8 +7,11 @@ module Celerity
     ATTRIBUTES = BASE_ATTRIBUTES | [:longdesc, :name, :src, :frameborder, :marginwidth, :marginheight, :noresize, :scrolling]
     DEFAULT_HOW = :name
 
+    #
     # Override the default locate to handle frame and inline frames.
     # @api private
+    # 
+
     def locate
       super
       if @object
@@ -19,9 +22,12 @@ module Celerity
         end
       end
     end
-
+    
+    #
     # Override assert_exists to raise UnknownFrameException (for Watir compatibility)
     # @api private
+    #
+
     def assert_exists
       locate
       unless @object
@@ -49,6 +55,5 @@ module Celerity
       end
     end
 
-  end
-
-end
+  end # Frame
+end # Celerity

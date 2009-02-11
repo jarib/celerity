@@ -1,8 +1,8 @@
 module Celerity
 
   class TableCell < Element
-    include ClickableElement
     include Celerity::Exception
+    include ClickableElement
     include Container
 
     TAGS = [ Identifier.new('td') ]
@@ -21,7 +21,7 @@ module Celerity
 
   end
 
-  # needs code review regarding attributes/correctness of this
+  #-- needs code review regarding attributes/correctness of this
   class Th < TableCell
     TAGS = [ Identifier.new('th')]
   end
