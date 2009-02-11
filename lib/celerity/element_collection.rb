@@ -5,7 +5,7 @@ module Celerity
   # It would normally only be accessed by the iterator methods (Browser#spans, Browser#links, ...).
   # 
   
-  class ElementCollections
+  class ElementCollection
     include Enumerable
     
     #
@@ -102,5 +102,5 @@ module Celerity
       element_class.new(@container, :index, i+1)
     end
 
-  end # ElementCollections
+  end # ElementCollection
 end # Celerity

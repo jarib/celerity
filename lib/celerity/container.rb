@@ -23,7 +23,7 @@ module Celerity
   #
   #   browser.check_box(:name, 'a_name', '1234').set
   #
-  # You can also get all the elements of a certain type by using the plural form (@see Celerity::ElementCollections):
+  # You can also get all the elements of a certain type by using the plural form (@see Celerity::ElementCollection):
   #
   #   browser.links # => #<Celerity::Links:0x7a1c2da2 ...>
   #
