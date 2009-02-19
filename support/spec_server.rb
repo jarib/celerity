@@ -59,6 +59,10 @@ module Celerity
     end
   end
 
+  AUTH_CALLBACK = lambda do |req, res|
+    WEBrick::HTTPAuth.basic_auth(req, res, '') { |u, p| u == "foo" && p == "bar" }
+  end
+  
   class SpecServer
     attr_reader :host, :thread, :log_file
 
@@ -95,13 +99,14 @@ module Celerity
       end
 
       server = WEBrick::HTTPServer.new(server_options)
-      server.mount("/", WEBrick::HTTPServlet::FileHandler, @doc_root, {:FancyIndexing=>true})
+      server.mount("/", WEBrick::HTTPServlet::FileHandler, @doc_root, :FancyIndexing=>true)
       server.mount("/post_to_me", PostHandler)
       server.mount("/plain_text", PlainTextHandler)
       server.mount("/ajax", SlowAjaxHandler)
       server.mount("/charset_mismatch", CharsetMismatchHandler)
       server.mount("/octet_stream", OctetStreamHandler)
       server.mount("/set_cookie", CookieHandler)
+      server.mount("/authentication", WEBrick::HTTPServlet::FileHandler, @doc_root, :FancyIndexing => true, :HandlerCallback => AUTH_CALLBACK)
 
       @thread = Thread.new { server.start }
     end

@@ -95,6 +95,22 @@ module Celerity
     end
 
     #
+    # Set the credentials used for basic HTTP authentication. (Celerity only)
+    #
+    # Example:
+    #   browser.credentials = "username:password"
+    #
+    # @param [String] A string with username / password, separated by a colon
+    #
+
+    def credentials=(string)
+      user, pass = string.split(":")
+      dcp = HtmlUnit::DefaultCredentialsProvider.new
+      dcp.addCredentials(user, pass)
+      @webclient.setCredentialsProvider(dcp)
+    end
+
+    #
     # Unsets the current page / closes all windows
     #
 
