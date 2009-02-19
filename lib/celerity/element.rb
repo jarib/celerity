@@ -237,6 +237,12 @@ module Celerity
       Log.warn "Element\#method_missing calling super with #{meth.inspect}"
       super
     end
+    
+    def methods(*args)
+      ms = super 
+      ms += self.class::ATTRIBUTES.map { |e| e.to_s }
+      ms.sort
+    end
 
     def respond_to?(meth, include_private = false)
       meth = selector_to_attribute(meth)
