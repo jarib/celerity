@@ -87,6 +87,12 @@ describe "Link" do
       lambda { @browser.link(:index, 1337).href }.should raise_error(UnknownObjectException)
     end
   end
+  
+  describe "absolute_url" do
+    it "returns the absolute URL for a link with a relative href attribute" do
+      @browser.link(:index, 2).absolute_url.should include("#{HTML_DIR}/non_control_elements.html".gsub("file://", ''))
+    end
+  end
 
   describe "#url" do
     it "returns the href attribute" do
