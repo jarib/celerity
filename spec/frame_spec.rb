@@ -116,6 +116,15 @@ describe "Frame" do
     end
   end
 
+  describe "#execute_script" do
+    it "executes the given javascript in the specified frame" do
+      frame = @browser.frame(:index, 1)
+      frame.div(:id, 'set_by_js').text.should == ""
+      frame.execute_script(%Q{document.getElementById('set_by_js').innerHTML = 'Art consists of limitation. The most beautiful part of every picture is the frame.'})
+      frame.div(:id, 'set_by_js').text.should == "Art consists of limitation. The most beautiful part of every picture is the frame."
+    end
+  end
+
   describe "#to_s" do
     it "returns a human readable representation of the frame" do
       @browser.frame(:index, 1).to_s.should == "tag:          frame\n" +

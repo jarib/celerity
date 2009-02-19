@@ -35,6 +35,22 @@ module Celerity
       end
     end
 
+    #
+    # Executes the given JavaScript string in this frame. (Celerity only)
+    #
+
+    def execute_script(source)
+      assert_exists
+      @page.executeJavaScript(source.to_s).getJavaScriptResult
+    end
+
+    #
+    # Updates the brwoser page with the page from this frame's top window.
+    # Used internally.
+    #
+    # @api private
+    #
+
     def update_page(value)
       @browser.page = value.getEnclosingWindow.getTopWindow.getEnclosedPage
     end
