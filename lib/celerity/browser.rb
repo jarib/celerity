@@ -507,10 +507,10 @@ module Celerity
     end
     
     #
-    # Returns the element that currently has the focus
+    # Returns the element that currently has the focus (Celerity only)
     #
 
-    def get_focused_element
+    def focused_element
       element_from_dom_node(page.getFocusedElement())
     end    
 
