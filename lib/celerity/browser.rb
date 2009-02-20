@@ -505,6 +505,14 @@ module Celerity
     def assert_exists
       raise UnknownObjectException, "no page loaded" unless exist?
     end
+    
+    #
+    # Returns the element that currently has the focus
+    #
+
+    def get_focused_element
+      element_from_dom_node(page.getFocusedElement())
+    end    
 
     private
 

@@ -9,7 +9,7 @@ lib/celerity/container.rb
 lib/celerity/default_viewer.rb
 lib/celerity/disabled_element.rb
 lib/celerity/element.rb
-lib/celerity/element_collections.rb
+lib/celerity/element_collection.rb
 lib/celerity/element_locator.rb
 lib/celerity/elements
 lib/celerity/elements/button.rb

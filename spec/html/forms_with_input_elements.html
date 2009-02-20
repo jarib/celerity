@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="this is a test page for forms with input elements" />
   </head>
-  <body>
+  <body onload="document.forms[0].elements[0].focus()">
     <h1><a href="">User administration</a></h1>
     <h2>Add user</h2>
     <form enctype="multipart/form-data" action="post_to_me" method="post" name="user_new" id="new_user" class="user">
