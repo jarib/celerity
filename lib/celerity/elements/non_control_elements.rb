@@ -39,6 +39,10 @@ module Celerity
     TAGS = [ Identifier.new('dt')]
   end
 
+  class Em < NonControlElement
+    TAGS = [ Identifier.new('em')]
+  end
+
   class H1 < NonControlElement
     TAGS = [ Identifier.new('h1') ]
   end

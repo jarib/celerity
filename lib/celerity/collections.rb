@@ -51,6 +51,10 @@ module Celerity
   class Dts < ElementCollection
     def element_class; Dt; end
   end
+  
+  class Ems < ElementCollection
+    def element_class; Em; end
+  end
 
   class Maps < ElementCollection
     def element_class; Map; end

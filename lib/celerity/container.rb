@@ -228,6 +228,22 @@ module Celerity
     def dts
       Dts.new(self)
     end
+    
+    #
+    # @return [Celerity::Em]
+    # 
+    
+    def em(*args)
+      Em.new(self, *args)
+    end
+    
+    #
+    # @return [Celerity::Ems]
+    # 
+    
+    def ems
+      Ems.new(self)
+    end
 
     #
     # @return [Celerity::FileField]
