@@ -378,10 +378,10 @@ describe "Browser" do
     end
   end
   
-  describe "#get_focused_element" do
+  describe "#focused_element" do
     it "returns the element that currently has the focus" do
       @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
-      @browser.get_focused_element.id.should == @browser.text_field(:id, "new_user_first_name").id
+      @browser.focused_element.id.should == "new_user_first_name"
     end
   end  
 
