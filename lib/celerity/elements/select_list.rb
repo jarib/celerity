@@ -37,14 +37,21 @@ module Celerity
     #
     # @param [String, Regexp] value A value.
     # @raise [Celerity::Exception::NoValueFoundException] if the value does not exist.
+    # @return [String, nil] The option selected. If multiple options match, returns the first match
+    # 
     #
     
     def select(value)
       assert_exists
       raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
+      
+      selected = nil
       @object.getOptions.select { |e| matches?(e.asText, value) }.each do |option|
+        selected ||= option.asText
         @container.update_page option.click
       end
+      
+      selected
     end
     alias_method :set, :select
 

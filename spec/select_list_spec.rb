@@ -256,6 +256,14 @@ describe "SelectList" do
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").select(/ish/)
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").selected_options.should == ["Danish", "English", "Swedish"]
     end
+    
+    it "returns the value selected" do
+      @browser.select_list(:name, "new_user_languages").select("Danish").should == "Danish"
+    end
+
+    it "returns the first matching value if there are multiple matches" do
+      @browser.select_list(:name, "new_user_languages").select(/ish/).should == "Danish"
+    end
 
     it "fires onchange event when selecting an item" do
       alerts = []
