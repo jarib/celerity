@@ -61,5 +61,5 @@ BROWSER_OPTIONS = {
   :log_level => $DEBUG ? :all : :off,
   :browser   => :firefox
 }
-LOG_LEVEL = 
+
 Thread.abort_on_exception = true
