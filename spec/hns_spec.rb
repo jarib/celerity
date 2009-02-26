@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "H1s", "H2s", "H3s", "H4s", "H5s", "H6s" do
 
   before :all do
-    @browser = Browser.new(:log_level => LOG_LEVEL)
+    @browser = Browser.new(BROWSER_OPTIONS)
   end
 
   before :each do

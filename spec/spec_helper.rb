@@ -57,5 +57,9 @@ else
 end
 
 HTML_DIR = "file://#{File.expand_path(File.dirname(__FILE__))}/html"
-LOG_LEVEL = $DEBUG ? :all : :off
+BROWSER_OPTIONS = {
+  :log_level => $DEBUG ? :all : :off,
+  :browser   => :firefox
+}
+LOG_LEVEL = 
 Thread.abort_on_exception = true

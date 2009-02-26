@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Dts" do
   before :all do
-    @browser = Browser.new(:log_level => LOG_LEVEL)
+    @browser = Browser.new(BROWSER_OPTIONS)
   end
 
   before :each do

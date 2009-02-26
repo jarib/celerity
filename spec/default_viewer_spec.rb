@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "DefaultViewer" do
 
   before :all do
-    @browser = Browser.new(:log_level => LOG_LEVEL)
+    @browser = Browser.new(BROWSER_OPTIONS)
     @browser.goto(HTML_DIR + "/definition_lists.html")
   end
 
