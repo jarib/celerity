@@ -33,7 +33,6 @@ describe "HtmlUnit bugs" do
     @browser.div(:id, 'content').text.should == "typeof update: function"
   end
   
-# disabled for CI - need fix from HtmlUnit
   it "doesn't return the TinyMCE DOM when executing javascript functions" do
     @browser.goto(HTML_DIR + "/tiny_mce.html")
     @browser.text.should include("Beskrivelse")
