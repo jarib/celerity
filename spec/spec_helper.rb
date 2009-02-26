@@ -59,7 +59,7 @@ end
 HTML_DIR = "file://#{File.expand_path(File.dirname(__FILE__))}/html"
 BROWSER_OPTIONS = {
   :log_level => $DEBUG ? :all : :off,
-  :browser   => :firefox
+  # :browser   => :firefox
 }
 
 Thread.abort_on_exception = true
