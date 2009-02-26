@@ -22,7 +22,7 @@ describe "HtmlUnit bugs" do
 # disabled for CI - need fix from HtmlUnit
   # describe "HtmlUnit bug XXXXXX" do
   #   it "returns strings as UTF-8 when there's a charset mismatch between HTTP response header and <meta> tag" do
-  #     @browser.goto(HTML_DIR + "/charset_mismatch")
+  #     @browser.goto(TEST_HOST + "/charset_mismatch")
   #     @browser.h1(:index, 1).text.should == "\303\270"
   #   end
   # end
@@ -34,12 +34,12 @@ describe "HtmlUnit bugs" do
   end
   
 # disabled for CI - need fix from HtmlUnit
-  # it "doesn't return the TinyMCE DOM when executing javascript functions" do
-  #   @browser.goto(HTML_DIR + "/tiny_mce.html")
-  #   @browser.text.should include("Beskrivelse")
-  #   @browser.checkbox(:id, "exemption").set
-  #   @browser.text.should include("Beskrivelse")
-  # end
+  it "doesn't return the TinyMCE DOM when executing javascript functions" do
+    @browser.goto(HTML_DIR + "/tiny_mce.html")
+    @browser.text.should include("Beskrivelse")
+    @browser.checkbox(:id, "exemption").set
+    @browser.text.should include("Beskrivelse")
+  end
 
   after :all do
     @browser.close
