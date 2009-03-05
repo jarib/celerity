@@ -366,9 +366,22 @@ module Celerity
     def resynchronized(&block)
       old_controller = @webclient.ajaxController
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new)
-
-      yield(self)
-
+      yield self
+      @webclient.setAjaxController(old_controller)
+    end
+    
+    #
+    # Allows you to temporarliy switch to HtmlUnit's default AjaxController, so ajax calls are performed asynchronously.
+    # This is useful if you have created the Browser with :resynchronize => true, but want to switch it off temporarily.
+    # 
+    # @yieldparam [Celerity::Browser] browser The current browser object.
+    # @see Celerity::Browser#new
+    #
+    
+    def asynchronized(&block)
+      old_controller = @webclient.ajaxController
+      @webclient.setAjaxController(::HtmlUnit::AjaxController.new)
+      yield self
       @webclient.setAjaxController(old_controller)
     end
 
