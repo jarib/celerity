@@ -78,6 +78,8 @@ module Celerity
     alias_method :dragContentsTo,   :drag_contents_to
     alias_method :getContents,      :value
     alias_method :get_contents,     :value
+    
+    def requires_typing; end
   end
 end
 
