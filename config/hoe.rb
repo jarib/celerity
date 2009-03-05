@@ -54,9 +54,6 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.test_globs = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'classes']  #An array of file patterns to delete on clean.
 
-  # make sure rdoc doesn't see any jars
-  p.rdoc_pattern = /^(lib|bin|ext).+\.(rb|txt|)$|txt$/
-
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   #p.extra_deps = []     # An array of rubygem dependencies [name, version], e.g. [ ['active_support', '>= 1.3.1'] ]
