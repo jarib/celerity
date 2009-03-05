@@ -6,7 +6,7 @@ module Celerity
     attr_reader :webclient, :viewer
 
     #
-    # Initialize a browser and goto the given URL
+    # Initialize a browser and go to the given URL
     # 
     # @param [String] uri The URL to go to.
     # @return [Celerity::Browser] instance.
@@ -215,8 +215,12 @@ module Celerity
     end
 
     #
-    # write me!
+    # Get the first element found matching the given XPath.
     #
+    # @param [String] xpath
+    # @return [Celerity::Element] An element subclass (or Element if none is found)
+    #
+    
     def element_by_xpath(xpath)
       assert_exists
       obj = @page.getFirstByXPath(xpath)
@@ -224,8 +228,12 @@ module Celerity
     end
 
     #
-    # write me!
+    # Get all the elements matching the given XPath.
     #
+    # @param [String] xpath
+    # @retrun [Array<Celerity::Element>] array of elements
+    #
+    
     def elements_by_xpath(xpath)
       assert_exists
       objects = @page.getByXPath(xpath)
@@ -293,7 +301,7 @@ module Celerity
     end
 
     #
-    # Execute the given JavaScript on the current page. (Celerity only)
+    # Execute the given JavaScript on the current page.
     # @return [Object] The resulting Object
     #
 
@@ -356,11 +364,11 @@ module Celerity
     # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController to resynchronize ajax calls.
     #
     #   @browser.resynchronized do |b|
-    #     b.link(:id, 'load_fancy_ajax_stuff').click
+    #     b.link(:id, 'trigger_ajax_call').click
     #   end
     #
     # @yieldparam [Celerity::Browser] browser The current browser object.
-    # @see Celerity::Browser#new for options on how to always use this.
+    # @see Celerity::Browser#new for how to configure the browser to always use this.
     #
 
     def resynchronized(&block)
