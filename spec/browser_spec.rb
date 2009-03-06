@@ -316,6 +316,11 @@ describe "Browser" do
       @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
     end
 
+    it "finds submit buttons matching the given xpath" do
+      e = @browser.element_by_xpath("//input[@type='submit']")
+      e.should exist
+    end
+
     it "finds the element matching the given xpath" do
       e = @browser.element_by_xpath("//input[@type='password']")
       e.should exist
