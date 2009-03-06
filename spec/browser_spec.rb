@@ -321,6 +321,11 @@ describe "Browser" do
       e.should exist
     end
 
+    it "finds reset buttons matching the given xpath" do
+      e = @browser.element_by_xpath("//input[@type='reset']")
+      e.should exist
+    end
+
     it "finds the element matching the given xpath" do
       e = @browser.element_by_xpath("//input[@type='password']")
       e.should exist

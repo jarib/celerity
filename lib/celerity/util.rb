@@ -7,6 +7,7 @@ module Celerity
       HtmlUnit::Html::HtmlArea                  => Celerity::Area,
       HtmlUnit::Html::HtmlButton                => Celerity::Button,
       HtmlUnit::Html::HtmlSubmitInput           => Celerity::Button,
+      HtmlUnit::Html::HtmlResetInput            => Celerity::Button,
       HtmlUnit::Html::HtmlButtonInput           => Celerity::Button,
       HtmlUnit::Html::HtmlCaption               => Celerity::Button, # ?
       HtmlUnit::Html::HtmlCheckBoxInput         => Celerity::CheckBox,
