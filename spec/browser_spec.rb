@@ -326,6 +326,11 @@ describe "Browser" do
       e.should exist
     end
 
+    it "finds image buttons matching the given xpath" do
+      e = @browser.element_by_xpath("//input[@type='image']")
+      e.should exist
+    end
+
     it "finds the element matching the given xpath" do
       e = @browser.element_by_xpath("//input[@type='password']")
       e.should exist
