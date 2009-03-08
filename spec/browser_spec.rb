@@ -14,7 +14,11 @@ describe "Browser" do
     it "raises ArgumentError if given bad arguments for :render key" do
       lambda { Browser.new(:render => :foo) }.should raise_error(ArgumentError)
     end
-    
+
+    it "raises ArgumentError if given bad arguments for :browser key" do
+      lambda { Browser.new(:browser => 'foo') }.should raise_error(ArgumentError)
+    end
+
     it "raises ArgumentError if given an unknown option" do
       lambda { Browser.new(:foo => 1) }.should raise_error(ArgumentError)
     end

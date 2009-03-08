@@ -554,16 +554,22 @@ module Celerity
     #
 
     def setup_webclient(opts)
-      browser = case opts.delete(:browser)
-                when :firefox then ::HtmlUnit::BrowserVersion::FIREFOX_2
-                else               ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
-                end
+      browser = (opts.delete(:browser) || :internet_explorer).to_sym
+
+      case browser
+      when :firefox
+        browser_version = ::HtmlUnit::BrowserVersion::FIREFOX_2
+      when :internet_explorer, :ie
+        browser_version = ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
+      else
+        raise ArgumentError, "unknown browser: #{browser.inspect}"
+      end
 
       if proxy = opts.delete(:proxy)
         phost, pport = proxy.split(":")
-        @webclient = ::HtmlUnit::WebClient.new(browser, phost, pport.to_i)
+        @webclient = ::HtmlUnit::WebClient.new(browser_version, phost, pport.to_i)
       else
-        @webclient = ::HtmlUnit::WebClient.new(browser)  
+        @webclient = ::HtmlUnit::WebClient.new(browser_version)  
       end
       
       @webclient.throwExceptionOnScriptError = false unless opts.delete(:javascript_exceptions)
