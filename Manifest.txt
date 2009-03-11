@@ -42,8 +42,8 @@ lib/celerity/htmlunit/commons-lang-2.4.jar
 lib/celerity/htmlunit/commons-logging-1.1.1.jar
 lib/celerity/htmlunit/cssparser-0.9.5.jar
 lib/celerity/htmlunit/htmlunit-2.5-SNAPSHOT.jar
-lib/celerity/htmlunit/htmlunit-core-js-2.5.jar
-lib/celerity/htmlunit/nekohtml-1.9.12-20090216.090710-7.jar
+lib/celerity/htmlunit/htmlunit-core-js-2.5-SNAPSHOT.jar
+lib/celerity/htmlunit/nekohtml-1.9.12-20090308.130127-11.jar
 lib/celerity/htmlunit/sac-1.3.jar
 lib/celerity/htmlunit/serializer-2.7.1.jar
 lib/celerity/htmlunit/xalan-2.7.1.jar
