@@ -22,5 +22,11 @@ module Celerity
       assert_exists
       @object.isSelected
     end
+    
+    def label
+      # overrides Container#label
+      assert_exists
+      @object.getAttribute("label")
+    end
   end
 end

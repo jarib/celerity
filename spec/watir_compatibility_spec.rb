@@ -213,7 +213,8 @@ describe "SelectList" do
 
   describe "#getAllContents" do
     it "behaves like #options" do
-      @browser.select_list(:name, "new_user_country").getAllContents.should == ["Denmark" ,"Norway" , "Sweden" , "United Kingdom", "USA"]
+      expected = ["Denmark" ,"Norway" , "Sweden" , "United Kingdom", "USA", "Germany"]
+      @browser.select_list(:name, "new_user_country").getAllContents.should == expected
     end
   end
 

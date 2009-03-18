@@ -166,7 +166,7 @@ describe "SelectList" do
     end
 
     it "returns all the options as an Array" do
-      @browser.select_list(:name, "new_user_country").options.should == ["Denmark" ,"Norway" , "Sweden" , "United Kingdom", "USA"]
+      @browser.select_list(:name, "new_user_country").options.should == ["Denmark" ,"Norway" , "Sweden" , "United Kingdom", "USA", "Germany"]
     end
   end
 
@@ -226,6 +226,11 @@ describe "SelectList" do
     it "selects the given item when given a String" do
       @browser.select_list(:name, "new_user_country").select("Denmark")
       @browser.select_list(:name, "new_user_country").selected_options.should == ["Denmark"]
+    end
+
+    it "selects options by label" do
+      @browser.select_list(:name, "new_user_country").select("Germany")
+      @browser.select_list(:name, "new_user_country").selected_options.should == ["Germany"]
     end
 
     it "selects the given item when given a Regexp" do

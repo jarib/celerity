@@ -33,6 +33,8 @@ describe "Option" do
       @browser.select_list(:name, "new_user_country").option(:class, "scandinavia").should exist
       @browser.select_list(:name, "new_user_country").option(:index, 2).should exist
       @browser.select_list(:name, "new_user_country").option(:xpath, "//option[@id='nor']").should exist
+      @browser.select_list(:name, "new_user_country").option(:xpath, "//option[@id='nor']").should exist
+      @browser.select_list(:name, "new_user_country").option(:label, "Germany").should exist
     end
 
     it "returns true if the element exists (default how = :text)" do
@@ -136,7 +138,7 @@ describe "Option" do
       @browser.select_list(:name, "new_user_country").option(:text , 'Sweden').class_name.should == "scandinavia"
     end
   end
-
+  
   describe "#respond_to?" do
     it "returns true for all attribute methods" do
       @browser.option(:index, 1).should respond_to(:class_name)

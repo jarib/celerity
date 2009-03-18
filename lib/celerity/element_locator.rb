@@ -40,7 +40,7 @@ module Celerity
         when :xpath
           return find_by_xpath(what)
         when :label
-          return find_by_label(what)
+          return find_by_label(what) unless @attributes.include?(:label)
         when :class_name
           how = :class
         when :url
