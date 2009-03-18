@@ -230,7 +230,7 @@ describe "Browser" do
       
       cookies = @browser.cookies
       cookies.size.should == 1
-      cookies['monster'].should == "/"
+      cookies['localhost']['monster'].should == "/"
     end
   end
 
@@ -241,6 +241,37 @@ describe "Browser" do
       @browser.cookies.size.should == 1
       @browser.clear_cookies
       @browser.cookies.should be_empty
+    end
+  end
+  
+  describe "add_cookie" do
+    it "adds a cookie with the given domain, name and value" do
+      @browser.add_cookie("example.com", "foo", "bar")
+      cookies = @browser.cookies
+      cookies.should be_instance_of(Hash)
+      cookies.should have_key('example.com')
+      cookies['example.com']['foo'].should == 'bar'
+      
+      @browser.clear_cookies
+    end
+    
+    it "adds a cookie with the specified options" do
+      @browser.add_cookie("example.com", "foo", "bar", :path => "/foobar", :max_age => 1000)
+      cookies = @browser.cookies
+      cookies.should be_instance_of(Hash)
+      cookies['example.com']['foo'].should == 'bar'
+    end
+  end
+  
+  describe "remove_cookie" do
+    it "removes the cookie for the given domain and name" do
+      @browser.goto(TEST_HOST + "/set_cookie")
+      @browser.remove_cookie("localhost", "monster")
+      @browser.cookies.should be_empty
+    end
+    
+    it "raises an error if no such cookie exists" do
+      lambda { @browser.remove_cookie("bogus.com", "bar") }.should raise_error
     end
   end
 

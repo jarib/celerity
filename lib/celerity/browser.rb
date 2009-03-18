@@ -288,16 +288,64 @@ module Celerity
     #
     # Get the cookies for this session. (Celerity only)
     # 
+    # @return [Hash<domain, Hash<name, value>>] 
+    #
 
     def cookies
-      result = {}
+      result = Hash.new { |hash, key| hash[key] = {} }
       
-      cookies = @webclient.getCookieManager.getCookies.to_a
+      cookies = @webclient.getCookieManager.getCookies
       cookies.each do |cookie|
-        result[cookie.getName] = cookie.getValue
+        result[cookie.getDomain][cookie.getName] = cookie.getValue
       end
       
       result
+    end
+    
+    #
+    # Add a cookie with the given parameters (Celerity only)
+    # 
+    # @param [String] domain
+    # @param [String] name
+    # @param [String] value
+    #
+    # @option opts :path    [String]  ("/") A path 
+    # @option opts :max_age [Fixnum]  (??) A max age
+    # @option opts :secure  [Boolean] (false) 
+    #
+    
+    def add_cookie(domain, name, value, opts = {})
+      if opts.empty?
+        cookie = Cookie.new(domain, name, value)
+      else
+        path    = opts.delete(:path) || "/"
+        max_age = opts.delete(:max_age) || (Time.now + 60*60*24) # not sure if this is correct
+        secure  = opts.delete(:secure) || false
+        
+        raise "unknown option: #{opts.inspect}" unless opts.empty?
+        
+        cookie = Cookie.new(domain, name, value, path, max_age, secure)
+      end
+      
+      @webclient.getCookieManager.addCookie(cookie)
+    end
+    
+    #
+    # Remove the cookie with the given domain and name (Celerity only)
+    #
+    # @param [String] domain
+    # @param [String] name
+    #
+    
+    def remove_cookie(domain, name)
+      cm = @webclient.getCookieManager
+      cookie = cm.getCookies.find { |c| c.getDomain == domain && c.getName == name }
+      
+      if cookie.nil?
+        raise "no cookie with domain #{domain.inspect} and name #{name.inspect}"
+      end
+      
+      cm.removeCookie(cookie)
     end
 
     #
@@ -310,7 +358,7 @@ module Celerity
       @page.executeJavaScript(source.to_s).getJavaScriptResult
     end
 
-    # experimental
+    # experimental - should be removed?
     def send_keys(keys)
       keys = keys.gsub(/\s*/, '').scan(/((?:\{[A-Z]+?\})|.)/u).flatten
       keys.each do |key|
