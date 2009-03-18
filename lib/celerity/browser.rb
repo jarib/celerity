@@ -315,18 +315,13 @@ module Celerity
     #
     
     def add_cookie(domain, name, value, opts = {})
-      if opts.empty?
-        cookie = Cookie.new(domain, name, value)
-      else
-        path    = opts.delete(:path) || "/"
-        max_age = opts.delete(:max_age) || (Time.now + 60*60*24) # not sure if this is correct
-        secure  = opts.delete(:secure) || false
-        
-        raise "unknown option: #{opts.inspect}" unless opts.empty?
-        
-        cookie = Cookie.new(domain, name, value, path, max_age, secure)
-      end
-      
+      path    = opts.delete(:path) || "/"
+      max_age = opts.delete(:max_age) || (Time.now + 60*60*24) # not sure if this is correct
+      secure  = opts.delete(:secure) || false
+
+      raise "unknown option: #{opts.inspect}" unless opts.empty?
+
+      cookie = Cookie.new(domain, name, value, path, max_age, secure)
       @webclient.getCookieManager.addCookie(cookie)
     end
     
