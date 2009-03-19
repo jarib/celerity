@@ -1,3 +1,36 @@
+== 0.0.6 2009-03-19
+* Support for meta, strong, dl, dt, dd, and em HTML elements.
+* Update to HtmlUnit 2.5-SNAPSHOT.
+* New options for Browser#new: :proxy, :charset, :render, :log_level
+* Methods added:
+  - Browser#add_cookie
+  - Browser#asynchronized
+  - Browser#add_listener
+  - Browser#content_type
+  - Browser#cookies
+  - Browser#debug_web_connection
+  - Browser#focused_element
+  - Browser#io
+  - Browser#remove_cookie
+  - Browser#response_headers
+  - Browser#wait
+  - Browser#xml
+  - Browser#{element,elements}_by_xpath
+  - ClickableElement#{double,right}_click
+  - ElementCollection#{first,last}
+* Methods removed:
+  - Browser#show_*
+* Methods renamed:
+  - SelectList#get_all_contents   => SelectList#options
+  - SelectList#get_selected_items => selected_options
+  - SelectList#clear_selection    => SelectList#clear
+* Add support for finding elements by their corresponding <label>.
+* Recognize buttons of type image, reset, submit.
+* Proxy support (see Browser.new)
+* Lots of refactorings, bug fixes and minor enhancements.
+
+Thanks to Hirobumi Hama, Kamal Fariz Mahyuddin and Thomas Marek for contributions in this release.
+
 == 0.0.4 2008-08-18
 * Minor enhancements
   * Update HtmlUnit to 2.2
