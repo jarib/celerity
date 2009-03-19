@@ -24,6 +24,9 @@
   HtmlUnit::Html::HtmlAnchor                =&gt; Celerity::Link,
   HtmlUnit::Html::HtmlArea                  =&gt; Celerity::Area,
   HtmlUnit::Html::HtmlButton                =&gt; Celerity::Button,
+  HtmlUnit::Html::HtmlSubmitInput           =&gt; Celerity::Button,
+  HtmlUnit::Html::HtmlResetInput            =&gt; Celerity::Button,
+  HtmlUnit::Html::HtmlImageInput            =&gt; Celerity::Button,
   HtmlUnit::Html::HtmlButtonInput           =&gt; Celerity::Button,
   HtmlUnit::Html::HtmlCaption               =&gt; Celerity::Button, # ?
   HtmlUnit::Html::HtmlCheckBoxInput         =&gt; Celerity::CheckBox,
@@ -138,16 +141,16 @@
           <pre class="lines">
 
 
-70
-71
-72
 73
 74
 75
-76</pre>
+76
+77
+78
+79</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/util.rb', line 70</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/util.rb', line 73</span>
 
 <span class='def def kw'>def</span> <span class='content_type_for identifier id'>content_type_for</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
   <span class='if if kw'>if</span> <span class='ct identifier id'>ct</span> <span class='assign token'>=</span> <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='net identifier id'>net</span><span class='dot token'>.</span><span class='URLConnection constant id'>URLConnection</span><span class='dot token'>.</span><span class='getFileNameMap identifier id'>getFileNameMap</span><span class='dot token'>.</span><span class='getContentTypeFor identifier id'>getContentTypeFor</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
@@ -188,12 +191,12 @@
           <pre class="lines">
 
 
-50
-51
-52</pre>
+53
+54
+55</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/util.rb', line 50</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/util.rb', line 53</span>
 
 <span class='def def kw'>def</span> <span class='htmlunit2celerity identifier id'>htmlunit2celerity</span><span class='lparen token'>(</span><span class='klass identifier id'>klass</span><span class='rparen token'>)</span>
   <span class='HtmlUnit2CelerityElement constant id'>HtmlUnit2CelerityElement</span><span class='lbrack token'>[</span><span class='klass identifier id'>klass</span><span class='rbrack token'>]</span>
@@ -230,14 +233,14 @@
           <pre class="lines">
 
 
-78
-79
-80
 81
-82</pre>
+82
+83
+84
+85</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/util.rb', line 78</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/util.rb', line 81</span>
 
 <span class='def def kw'>def</span> <span class='normalize_text identifier id'>normalize_text</span><span class='lparen token'>(</span><span class='string identifier id'>string</span><span class='rparen token'>)</span>
   <span class='string identifier id'>string</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>&quot;\302\240&quot;</span><span class='comma token'>,</span> <span class='string val'>' '</span><span class='rparen token'>)</span><span class='dot token'>.</span> <span class='comment val'># non-breaking space 00A0</span>

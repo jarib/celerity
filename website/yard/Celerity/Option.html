@@ -195,6 +195,18 @@ if the element doesn&#8217;t support this attribute.
   
     <tr>
       <th class="signature">
+        <span class='name'><a href="#label-instance_method" title="#label">#label</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
         <span class='name'><a href="#selected%3F-instance_method" title="#selected?">#selected?</a></span><span class='args'></span>
         <span class='block'></span>
         
@@ -212,7 +224,7 @@ Is this option selected?.
   
   <div>
     <h1>Public Instance Methods Inherited from <a href="Element.html" title="Celerity::Element">Celerity::Element</a></h1>
-    <p><span class='name'><a href="Element.html#assert_exists-instance_method" title="assert_exists">assert_exists</a></span>, <span class='name'><a href="Element.html#attribute_string-instance_method" title="attribute_string">attribute_string</a></span>, <span class='name'><a href="Element.html#attribute_value-instance_method" title="attribute_value">attribute_value</a></span>, <span class='name'><a href="Element.html#exists%3F-instance_method" title="exists?">exists?</a></span>, <span class='name'><a href="Element.html#focus-instance_method" title="focus">focus</a></span>, <span class='name'><a href="Element.html#locate-instance_method" title="locate">locate</a></span>, <span class='name'><a href="Element.html#parent-instance_method" title="parent">parent</a></span>, <span class='name'><a href="Element.html#respond_to%3F-instance_method" title="respond_to?">respond_to?</a></span>, <span class='name'><a href="Element.html#text-instance_method" title="text">text</a></span>, <span class='name'><a href="Element.html#to_s-instance_method" title="to_s">to_s</a></span>, <span class='name'><a href="Element.html#to_xml-instance_method" title="to_xml">to_xml</a></span>, <span class='name'><a href="Element.html#visible%3F-instance_method" title="visible?">visible?</a></span>, <span class='name'><a href="Element.html#xpath-instance_method" title="xpath">xpath</a></span></p>
+    <p><span class='name'><a href="Element.html#assert_exists-instance_method" title="assert_exists">assert_exists</a></span>, <span class='name'><a href="Element.html#attribute_string-instance_method" title="attribute_string">attribute_string</a></span>, <span class='name'><a href="Element.html#attribute_value-instance_method" title="attribute_value">attribute_value</a></span>, <span class='name'><a href="Element.html#exists%3F-instance_method" title="exists?">exists?</a></span>, <span class='name'><a href="Element.html#focus-instance_method" title="focus">focus</a></span>, <span class='name'><a href="Element.html#locate-instance_method" title="locate">locate</a></span>, <span class='name'><a href="Element.html#methods-instance_method" title="methods">methods</a></span>, <span class='name'><a href="Element.html#parent-instance_method" title="parent">parent</a></span>, <span class='name'><a href="Element.html#respond_to%3F-instance_method" title="respond_to?">respond_to?</a></span>, <span class='name'><a href="Element.html#text-instance_method" title="text">text</a></span>, <span class='name'><a href="Element.html#to_s-instance_method" title="to_s">to_s</a></span>, <span class='name'><a href="Element.html#to_xml-instance_method" title="to_xml">to_xml</a></span>, <span class='name'><a href="Element.html#visible%3F-instance_method" title="visible?">visible?</a></span>, <span class='name'><a href="Element.html#xpath-instance_method" title="xpath">xpath</a></span></p>
   </div>
   
 </div>
@@ -233,6 +245,52 @@ Is this option selected?.
   </div>
 <div class="section methoddetails instance public">
   <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>label</h3>
+</div><div id="label-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>label</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+26
+27
+28
+29
+30</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/option.rb', line 26</span>
+
+<span class='def def kw'>def</span> <span class='label identifier id'>label</span>
+  <span class='comment val'># overrides Container#label</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttribute identifier id'>getAttribute</span><span class='lparen token'>(</span><span class='string val'>&quot;label&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
   
     <div class="method">
       <div class="method_header">

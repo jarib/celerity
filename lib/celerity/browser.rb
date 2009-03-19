@@ -231,7 +231,7 @@ module Celerity
     # Get all the elements matching the given XPath.
     #
     # @param [String] xpath
-    # @retrun [Array<Celerity::Element>] array of elements
+    # @return [Array<Celerity::Element>] array of elements
     #
     
     def elements_by_xpath(xpath)

@@ -375,7 +375,7 @@ Sets the attribute <tt>idents</tt>.
     <span class='when when kw'>when</span> <span class='symbol val'>:xpath</span>
       <span class='return return kw'>return</span> <span class='find_by_xpath identifier id'>find_by_xpath</span><span class='lparen token'>(</span><span class='what identifier id'>what</span><span class='rparen token'>)</span>
     <span class='when when kw'>when</span> <span class='symbol val'>:label</span>
-      <span class='return return kw'>return</span> <span class='find_by_label identifier id'>find_by_label</span><span class='lparen token'>(</span><span class='what identifier id'>what</span><span class='rparen token'>)</span>
+      <span class='return return kw'>return</span> <span class='find_by_label identifier id'>find_by_label</span><span class='lparen token'>(</span><span class='what identifier id'>what</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='@attributes ivar id'>@attributes</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='symbol val'>:label</span><span class='rparen token'>)</span>
     <span class='when when kw'>when</span> <span class='symbol val'>:class_name</span>
       <span class='how identifier id'>how</span> <span class='assign token'>=</span> <span class='symbol val'>:class</span>
     <span class='when when kw'>when</span> <span class='symbol val'>:url</span>

@@ -18,7 +18,7 @@ web applications. Celerity aims at being API compatible with Watir.
 	
 == REQUIREMENTS:
 
-* JRuby 1.1.5 or higher
+* JRuby 1.2.0 or higher
 * Java 6
 
 == INSTALL:
