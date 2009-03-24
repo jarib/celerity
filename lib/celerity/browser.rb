@@ -180,6 +180,14 @@ module Celerity
       
       Hash[*@page.getWebResponse.getResponseHeaders.map { |obj| [obj.name, obj.value] }.flatten]
     end
+    
+    #
+    # @return [Fixnum] status code of the last request
+    #
+    
+    def status_code
+      @page.getWebResponse.getStatusCode
+    end
 
     #
     # @return [String] content-type as in 'text/html'
@@ -190,7 +198,7 @@ module Celerity
       
       @page.getWebResponse.getContentType
     end
-
+    
     #
     # @return [IO, nil] page contents as an IO, returns nil if no page is loaded.
     # 

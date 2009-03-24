@@ -433,7 +433,17 @@ describe "Browser" do
       @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
       @browser.focused_element.id.should == "new_user_first_name"
     end
-  end  
+  end
+  
+  describe "#status_code" do
+    it "returns the status code of the last request" do
+      @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
+      @browser.status_code.should == 200
+      
+      @browser.goto(TEST_HOST + "/doesnt_exist")
+      @browser.status_code.should == 404
+    end
+  end
 
   it "raises UnknownObjectException when trying to access DOM elements on plain/text-page" do
     @browser.goto(TEST_HOST + "/plain_text")
