@@ -86,6 +86,7 @@ module Celerity
     
     def handleConfirm(page, message)
       @procs[:confirm].each { |h| h.call(page, message) }
+      true # TODO: let user specify this somehow
     end
 
     #

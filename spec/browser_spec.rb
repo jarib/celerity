@@ -444,6 +444,14 @@ describe "Browser" do
       @browser.status_code.should == 404
     end
   end
+  
+  describe "add_listener" do
+    it "should click OK for confirm() calls" do
+      @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
+      @browser.add_listener(:confirm) { true}
+      @browser.execute_script("confirm()").should == true
+    end
+  end
 
   it "raises UnknownObjectException when trying to access DOM elements on plain/text-page" do
     @browser.goto(TEST_HOST + "/plain_text")
