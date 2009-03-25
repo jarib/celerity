@@ -2,13 +2,13 @@ $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) ||
 
 raise "Celerity only works on JRuby at the moment." unless RUBY_PLATFORM =~ /java/
 
-require 'java'
+require "java"
 require "logger"
 require "uri"
 require "pp"
 require "timeout"
 require "time"
-require 'drb'
+require "drb"
 require "fileutils"
 require "thread"
 

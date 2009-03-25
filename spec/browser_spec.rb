@@ -445,6 +445,21 @@ describe "Browser" do
     end
   end
   
+  describe "#status_code_exceptions" do
+    it "raises status code exceptions if set to true" do
+      @browser.status_code_exceptions = true
+      lambda { @browser.goto(TEST_HOST + "/doesnt_exist") }.should raise_error
+    end
+  end
+  
+  describe "#javascript_exceptions" do
+    it "raises javascript exceptions if set to true" do
+      @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
+      @browser.javascript_exceptions = true
+      lambda { @browser.execute_script("no_such_function()") }.should raise_error
+    end
+  end
+  
   describe "add_listener" do
     it "should click OK for confirm() calls" do
       @browser.goto(HTML_DIR + "/forms_with_input_elements.html")

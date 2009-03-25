@@ -543,6 +543,36 @@ module Celerity
       !!@page
     end
     alias_method :exists?, :exist?
+    
+    #
+    # Turn on/off javascript exceptions
+    # 
+    # @param [Bool]
+    # 
+
+    def javascript_exceptions=(bool)
+      @webclient.throwExceptionOnScriptError = bool
+    end
+    
+    def javascript_exceptions
+      @webclient.throwExceptionOnScriptError
+    end
+    
+    #
+    # Turn on/off status code exceptions
+    # 
+    # @param [Bool]
+    # 
+    
+    def status_code_exceptions=(bool)
+      @webclient.throwExceptionOnFailingStatusCode = bool
+    end
+    
+    def status_code_exceptions
+      @webclient.throwExceptionOnFailingStatusCode
+    end
+    
+
 
     #
     # Sets the current page object for the browser
@@ -623,13 +653,13 @@ module Celerity
         @webclient = ::HtmlUnit::WebClient.new(browser_version)  
       end
       
-      @webclient.throwExceptionOnScriptError = false unless opts.delete(:javascript_exceptions)
-      @webclient.throwExceptionOnFailingStatusCode = false unless opts.delete(:status_code_exceptions)
-      @webclient.cssEnabled = false unless opts.delete(:css)
-      @webclient.useInsecureSSL = opts.delete(:secure_ssl) == false
+      self.javascript_exceptions  = false unless opts.delete(:javascript_exceptions)
+      self.status_code_exceptions = false unless opts.delete(:status_code_exceptions)
+      @webclient.cssEnabled       = false unless opts.delete(:css)
+      @webclient.useInsecureSSL   = opts.delete(:secure_ssl) == false
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts.delete(:resynchronize)
     end
-
+    
     #
     # This *should* be unneccessary, but sometimes the page we get from the
     # window is different (ie. a different object) from our current @page
