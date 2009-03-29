@@ -75,20 +75,6 @@ module Celerity
       @browser.page = page
     end
     
-    #
-    # Used internally.
-    #
-    # @param [String] string The string to match against.
-    # @param [Regexp, String, #to_s] what The match we're looking for.
-    # @return [Fixnum, true, false, nil]
-    #
-    # @api private
-    #
-    
-    def matches?(string, what)
-      Regexp === what ? string =~ what : string == what.to_s
-    end
-
     #--
     # below methods sorted alphabetically
     #++
@@ -760,6 +746,33 @@ module Celerity
 
     def uls
       Uls.new(self)
+    end
+    
+    private
+    
+    #
+    # Used internally.
+    #
+    # @param [String] string The string to match against.
+    # @param [Regexp, String, #to_s] what The match we're looking for.
+    # @return [Fixnum, true, false, nil]
+    #
+    # @api private
+    #
+    
+    def matches?(string, what)
+      Regexp === what ? string =~ what : string == what.to_s
+    end
+    
+    #
+    # Rescues HtmlUnit::FailingHttpStatusCodeException and re-raises as 
+    # Celerity::NavigationException to avoid the huge JRuby backtrace
+    # 
+    
+    def rescue_status_code_exception(&blk)
+      yield
+    rescue HtmlUnit::FailingHttpStatusCodeException => e
+      raise NavigationException, e.message, caller
     end
 
   end # Container
