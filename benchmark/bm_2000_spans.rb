@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + "/loader"
 
 # Create browser object
-browser = FRAMEWORK::IE.new
+browser = create_browser
 browser.goto(HTML_DIR + "/2000_spans.html")
 
 TESTS = 100
