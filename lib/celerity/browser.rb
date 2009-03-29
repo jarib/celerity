@@ -275,7 +275,7 @@ module Celerity
 
     def wait
       assert_exists
-      @page.getEnclosingWindow.getJobManager.waitForAllJobsToFinish(10000)
+      @page.getEnclosingWindow.getJobManager.waitForJobs(10000)
     end
 
     #
