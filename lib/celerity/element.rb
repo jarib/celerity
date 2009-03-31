@@ -79,6 +79,15 @@ module Celerity
       assert_exists
       @object.focus
     end
+    
+    #
+    # Fires the given event for this element
+    #
+
+    def fire_event(event_name)
+      assert_exists
+      @object.fireEvent(event_name.sub(/^on/, ''))
+    end
 
     #
     # Used internally. Find the element on the page.
