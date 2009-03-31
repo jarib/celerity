@@ -5,7 +5,7 @@ res = Benchmark.bmbm do |results|
   results.report("Google image search results") do
     TESTS.times do
       # Create browser object
-      browser = FRAMEWORK::IE.new
+      browser = create_browser
 
       # Goto images.google.com
       browser.goto('http://images.google.com/ncr')

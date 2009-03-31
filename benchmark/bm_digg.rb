@@ -5,7 +5,7 @@ res = Benchmark.bmbm do |results|
   results.report("Diggs on front page") do
     TESTS.times do
       # Create browser object
-      browser = FRAMEWORK::IE.new
+      browser = create_browser
 
       # Go to digg.com
       browser.goto('http://digg.com/')

@@ -7,7 +7,7 @@ module Celerity
 
     def click
       assert_exists_and_enabled
-      @container.update_page(@object.click)
+      rescue_status_code_exception { @container.update_page(@object.click) }
     end
 
     #
@@ -16,7 +16,7 @@ module Celerity
 
     def double_click
       assert_exists_and_enabled
-      @container.update_page(@object.dblClick)
+      rescue_status_code_exception { @container.update_page(@object.dblClick) }
     end
 
     #
@@ -25,7 +25,7 @@ module Celerity
 
     def right_click
       assert_exists_and_enabled
-      @container.update_page(@object.rightClick)
+      rescue_status_code_exception { @container.update_page(@object.rightClick) }
     end
 
     #
@@ -38,7 +38,7 @@ module Celerity
     def click_and_attach
       assert_exists_and_enabled
       browser = Browser.new(:log_level => @browser.log_level)
-      browser.update_page(@object.click)
+      rescue_status_code_exception { browser.update_page(@object.click) }
 
       browser
     end

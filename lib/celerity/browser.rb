@@ -89,7 +89,9 @@ module Celerity
       request = HtmlUnit::WebRequestSettings.new(::Java::JavaNet::URL.new(uri))
       request.setCharset(@charset)
 
-      self.page = @webclient.getPage(request)
+      rescue_status_code_exception do
+        self.page = @webclient.getPage(request)
+      end
 
       url()
     end
@@ -273,7 +275,7 @@ module Celerity
 
     def wait
       assert_exists
-      @page.getEnclosingWindow.getJobManager.waitForAllJobsToFinish(10000)
+      @page.getEnclosingWindow.getJobManager.waitForJobs(10000)
     end
 
     #

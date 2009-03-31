@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/loader"
 
-browser = FRAMEWORK::IE.new
+browser = create_browser
 browser.goto(HTML_DIR + "/forms_with_input_elements.html")
 
 TESTS = 10000

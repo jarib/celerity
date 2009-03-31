@@ -66,11 +66,13 @@ PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PRO
 $hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
 $hoe.rsync_args = '-av --delete --ignore-errors'
 
-desc "create a gemspec file"
-task :make_spec do
-  file = "#{GEM_NAME.downcase}.gemspec"
-  File.unlink file if File.exists?(file)
-  File.open(file, "w+") do |file|
-    file.puts $hoe.spec.to_ruby
+namespace :gem do
+  desc "create a gemspec file"
+  task :make_spec do
+    file = "#{GEM_NAME.downcase}.gemspec"
+    File.unlink file if File.exists?(file)
+    File.open(file, "w+") do |file|
+      file.puts $hoe.spec.to_ruby
+    end
   end
 end
