@@ -71,11 +71,11 @@
         <fieldset>
             <legend>Preferences</legend>
             <p>Do you want to recieve our newslettter?</p>
-            <input type="radio" name="new_user_newsletter" id="new_user_newsletter_yes" value="yes" checked="checked" class="huge" onclick="document.getElementById('wants_newsletter').innerHTML = ''"/>
+            <input type="radio" name="new_user_newsletter" id="new_user_newsletter_yes" value="yes" checked="checked" class="huge" onclick="alert('clicked: ' + this.id)"/>
             <label for="new_user_newsletter_yes">Yes</label>
-            <input type="radio" name="new_user_newsletter" id="new_user_newsletter_no" value="no" title="Traitor!" onclick="document.getElementById('wants_newsletter').innerHTML = this.title" />
+            <input type="radio" name="new_user_newsletter" id="new_user_newsletter_no" value="no" title="Traitor!" onclick="alert('clicked: ' + this.id)" />
             <label for="new_user_newsletter_no">No</label>
-            <input type="radio" name="new_user_newsletter" value="certainly" />
+            <input type="radio" name="new_user_newsletter" value="certainly" onchange="alert('changed: ' + this.name)"/>
             <label>Certainly</label>
             <input type="radio" id="new_user_newsletter_absolutely" value="absolutely" />
             <label for="new_user_newsletter_absolutely">Absolutely</label>

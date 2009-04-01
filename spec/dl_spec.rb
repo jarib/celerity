@@ -131,7 +131,7 @@ describe "Dl" do
   id:           experience-list
   class:        list
   title:        experience
-  text:         Experience11 yearsEducationMasterCurrent industryArchitecturePrevious industry experienceArchitecture}
+  text:         Experience 11 years Education Master Current industry Architecture Previous industry experience Architecture}
     end
   end
 
