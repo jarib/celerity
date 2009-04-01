@@ -523,7 +523,7 @@ module Celerity
     # 
 
     def log_level
-      java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
+      logger_for('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
     end
 
     #
@@ -533,7 +533,15 @@ module Celerity
     # 
 
     def log_level=(level)
-      java.util.logging.Logger.getLogger('com.gargoylesoftware.htmlunit').level = java.util.logging.Level.const_get(level.to_s.upcase)
+      log_level = java.util.logging.Level.const_get(level.to_s.upcase)
+
+      # loggers = [
+      #   logger_for('com.gargoylesoftware.htmlunit'), 
+      #   logger_for("com.gargoylesoftware.htmlunit.html.HtmlElement")
+      # ]
+      # loggers.each { |logger| logger.level = log_level }
+
+      logger_for('com.gargoylesoftware.htmlunit').level = log_level
     end
 
     #
@@ -637,10 +645,10 @@ module Celerity
     #
 
     def setup_webclient(opts)
-      browser = (opts.delete(:browser) || :internet_explorer).to_sym
+      browser = (opts.delete(:browser) || :firefox).to_sym
 
       case browser
-      when :firefox
+      when :firefox, :ff
         browser_version = ::HtmlUnit::BrowserVersion::FIREFOX_2
       when :internet_explorer, :ie
         browser_version = ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
@@ -715,6 +723,10 @@ module Celerity
       else
         Element.new(self, :object, nil)
       end
+    end
+
+    def logger_for(class_string)
+      java.util.logging.Logger.getLogger(class_string)
     end
 
   end # Browser
