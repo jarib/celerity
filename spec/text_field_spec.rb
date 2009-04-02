@@ -289,9 +289,13 @@ describe "TextField" do
       @browser.span(:id, "current_length").text.should == "11"
     end
 
-    it "is able to set the value of a password field" do
+    it "sets the value of a password field" do
       @browser.text_field(:name , 'new_user_password').set('secret')
       @browser.text_field(:name , 'new_user_password').value.should == 'secret'
+    end
+    
+    it "sets the value when accessed through the enclosing Form" do
+      @browser.form(:id, 'new_user').text_field(:name , 'new_user_password').set('secret')
     end
 
     it "is able to set multi-byte characters" do
