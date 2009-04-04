@@ -13,6 +13,10 @@ module Celerity
              Identifier.new('input', :type => ["text", "password", /^(?!(#{ Regexp.union(*NON_TEXT_TYPES) })$)/])  ]
     DEFAULT_HOW = :name
     
+    def visible?
+      type == 'hidden' ? false : super
+    end
+    
     #
     # Clear the text field.
     #
@@ -157,6 +161,7 @@ module Celerity
     DEFAULT_HOW = :name
     
     def visible?
+      assert_exists
       false
     end
   end

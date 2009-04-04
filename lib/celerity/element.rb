@@ -126,14 +126,8 @@ module Celerity
     # 
 
     def visible?
-      obj = self
-      while obj
-        return false if obj.respond_to?(:type) && obj.type == 'hidden'
-        return false if obj.style =~ /display\s*:\s*none|visibility\s*:\s*hidden/
-        obj = obj.parent
-      end
-
-      return true
+      assert_exists
+      @object.isVisible
     end
 
     #
