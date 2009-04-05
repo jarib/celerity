@@ -25,10 +25,8 @@ describe "Browser" do
     
     it "should use the specified proxy" do
       received = false
-      s = WEBrick::HTTPProxyServer.new(
-        :Port => 2001, 
-        :ProxyContentHandler => proc { received = true }
-      )
+      blk      = lambda { received = true }
+      s = WEBrick::HTTPProxyServer.new(:Port => 2001, :ProxyContentHandler => blk)
       Thread.new { s.start }
       
       b = Browser.new(:proxy => "localhost:2001")
@@ -419,12 +417,14 @@ describe "Browser" do
     it "removes a previously added checker" do
       output = ''
       checker = lambda { |ie| output << ie.text }
+      
       @browser.add_checker(checker)
       @browser.goto(HTML_DIR + "/non_control_elements.html")
       output.should include('Dubito, ergo cogito, ergo sum')
+      
       @browser.disable_checker(checker)
-      @browser.goto(HTML_DIR + "/non_control_elements.html")
-      output.should include('Dubito, ergo cogito, ergo sum')
+      @browser.goto(HTML_DIR + "/definition_lists.html")
+      output.should_not include('definition_lists')
     end
   end
   
