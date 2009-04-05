@@ -5,8 +5,6 @@ module Celerity
   include_class org.apache.commons.httpclient.Cookie
 end
 
-
-
 module HtmlUnit
   include_package 'com.gargoylesoftware.htmlunit'
 
@@ -17,7 +15,6 @@ module HtmlUnit
   module Util
     include_package 'com.gargoylesoftware.htmlunit.util'
   end
-  
 end
 
 module Java::OrgW3cDom::NamedNodeMap
@@ -38,12 +35,10 @@ module Java::JavaLang::Iterable
     yield it.next while it.hasNext
   end
 
-end
-
+end unless Java::JavaLang::Iterable < Enumerable # depends on JRuby version
 
 class Java::ComGargoylesoftwareHtmlunitHtml::HtmlPage
   def inspect
     '#<HtmlPage:0x%s(%s)>' % [self.hash.to_s(16), getWebResponse.getUrl.toString]
   end
 end
-
