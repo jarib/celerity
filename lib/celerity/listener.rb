@@ -83,10 +83,15 @@ module Celerity
     #
     # interface ConfirmHandler
     #
+    # The returned value is determined by the last registered :confirm listener proc.
+    # If it is nil, return true, otherwise return that value as a boolean.
+    #
+    # @see Browser#confirm
+    # 
     
     def handleConfirm(page, message)
-      @procs[:confirm].each { |h| h.call(page, message) }
-      true # TODO: let user specify this somehow
+      val = @procs[:confirm].map { |h| h.call(page, message) }.last
+      val.nil? || !!val
     end
 
     #

@@ -464,11 +464,29 @@ describe "Browser" do
     end
   end
   
-  describe "add_listener" do
+  describe "#add_listener" do
     it "should click OK for confirm() calls" do
       @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
       @browser.add_listener(:confirm) {  }
       @browser.execute_script("confirm()").should == true
+    end
+  end
+  
+  describe "#confirm" do
+    it "clicks 'OK' for a confirm() call" do
+      @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
+
+      @browser.confirm(true) do
+        @browser.execute_script('confirm()').should be_true
+      end
+    end
+
+    it "clicks 'cancel' for a confirm() call" do
+      @browser.goto(HTML_DIR + "/forms_with_input_elements.html")
+
+      @browser.confirm(false) do
+        @browser.execute_script('confirm()').should be_false
+      end
     end
   end
 

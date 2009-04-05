@@ -485,8 +485,25 @@ module Celerity
     # 
 
     def add_listener(type, &block)
-      @listener ||= Celerity::Listener.new(@webclient)
-      @listener.add_listener(type, &block)
+      listener.add_listener(type, &block)
+    end
+    
+    #
+    # Specify a boolean value to click either 'OK' or 'Cancel' in any confirm
+    # dialogs that might show up during the duration of the given block. 
+    # 
+    # (Celerity only)
+    #
+    # @param [Boolean] bool true to click 'OK', false to click 'cancel'
+    # @param [Proc] block A block that will trigger the confirm() call(s).
+    #
+    
+    def confirm(bool, &block)
+      blk = lambda { bool }
+      
+      listener.add_listener(:confirm, &blk)
+      yield
+      listener.remove_listener(:confirm, blk)
     end
     
     #
@@ -582,8 +599,6 @@ module Celerity
       @webclient.throwExceptionOnFailingStatusCode
     end
     
-
-
     #
     # Sets the current page object for the browser
     #
@@ -727,6 +742,10 @@ module Celerity
 
     def logger_for(class_string)
       java.util.logging.Logger.getLogger(class_string)
+    end
+    
+    def listener
+      @listener ||= Celerity::Listener.new(@webclient)
     end
 
   end # Browser
