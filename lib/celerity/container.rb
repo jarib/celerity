@@ -1,5 +1,5 @@
 module Celerity
-  
+
   #
   # This class contains methods for accessing elements inside a container,
   # usually the Browser object, meaning the current page.
@@ -30,6 +30,7 @@ module Celerity
 
   module Container
     include Celerity::Exception
+    include Celerity::ShortInspect
 
     # Points back to the Browser instance that contains this element
     attr_reader :browser
@@ -39,8 +40,8 @@ module Celerity
     #
     # @param  [String, Regexp] expected_text The text to look for.
     # @return [Fixnum, nil]  The index of the matched text, or nil if it doesn't match.
-    # 
-    
+    #
+
     def contains_text(expected_text)
       assert_exists
       return nil unless respond_to? :text
@@ -54,12 +55,20 @@ module Celerity
         raise TypeError, "expected String or Regexp, got #{expected_text.inspect}:#{expected_text.class}"
       end
     end
-    
+
+    #
+    # Override inspect for readability
+    #
+
+    def inspect
+      short_inspect :exclude => %w[@browser @container]
+    end
+
     #
     # Used internally to update the container object.
     # @api private
     #
-    
+
     def container=(container)
       @container = container
       @browser = container.browser
@@ -70,11 +79,11 @@ module Celerity
     # Used internally to update the page object.
     # @api private
     #
-    
+
     def update_page(page)
       @browser.page = page
     end
-    
+
     #--
     # below methods sorted alphabetically
     #++
@@ -82,23 +91,23 @@ module Celerity
     #
     # @return [Celerity::Area]
     #
-    
+
     def area(*args)
       Area.new(self, *args)
     end
-    
+
     #
     # @return [Celerity::Areas]
     #
-    
+
     def areas
       Areas.new(self)
     end
-    
+
     #
     # @return [Celerity::Button]
     #
-    
+
     def button(*args)
       Button.new(self, *args)
     end
@@ -106,23 +115,23 @@ module Celerity
     #
     # @return [Celerity::Buttons]
     #
-    
+
     def buttons
       Buttons.new(self)
     end
-    
+
     #
     # @return [Celerity::TableCell]
     #
-    
+
     def cell(*args)
       TableCell.new(self, *args)
     end
-    
+
     #
     # @return [Celerity::TableCells]
     #
-    
+
     def cells
       TableCells.new(self)
     end
@@ -158,7 +167,7 @@ module Celerity
     def dd(*args)
       Dd.new(self, *args)
     end
-    
+
     #
     # @return [Celerity::Dds]
     #
@@ -166,7 +175,7 @@ module Celerity
     def dds
       Dds.new(self)
     end
-    
+
     #
     # @return [Celerity::Div]
     #
@@ -174,7 +183,7 @@ module Celerity
     def div(*args)
       Div.new(self, *args)
     end
-    
+
     #
     # @return [Celerity::Divs]
     #
@@ -182,7 +191,7 @@ module Celerity
     def divs
       Divs.new(self)
     end
-    
+
     #
     # @return [Celerity::Dl]
     #
@@ -198,7 +207,7 @@ module Celerity
     def dls
       Dls.new(self)
     end
-    
+
     #
     # @return [Celerity::Dt]
     #
@@ -214,19 +223,19 @@ module Celerity
     def dts
       Dts.new(self)
     end
-    
+
     #
     # @return [Celerity::Em]
-    # 
-    
+    #
+
     def em(*args)
       Em.new(self, *args)
     end
-    
+
     #
     # @return [Celerity::Ems]
-    # 
-    
+    #
+
     def ems
       Ems.new(self)
     end
@@ -270,7 +279,7 @@ module Celerity
     def frame(*args)
       Frame.new(self, *args)
     end
-    
+
     #
     # @return [Celerity::Frames]
     #
@@ -286,7 +295,7 @@ module Celerity
     def h1(*args)
       H1.new(self, *args)
     end
-    
+
     #
     # @return [Celerity::H1s]
     #
@@ -326,7 +335,7 @@ module Celerity
     def h3s
       H3s.new(self)
     end
-    
+
     #
     # @return [Celerity::H4]
     #
@@ -342,7 +351,7 @@ module Celerity
     def h4s
       H4s.new(self)
     end
-    
+
     #
     # @return [Celerity::H5]
     #
@@ -358,7 +367,7 @@ module Celerity
     def h5s
       H5s.new(self)
     end
-    
+
     #
     # @return [Celerity::H6]
     #
@@ -554,7 +563,7 @@ module Celerity
     #
     # @return [Celerity::Radio]
     #
-    
+
     def radio(*args)
       Radio.new(self, *args)
     end
@@ -598,7 +607,7 @@ module Celerity
     def select_lists
       SelectLists.new(self)
     end
-    
+
     #
     # @return [Celerity::Span]
     #
@@ -662,7 +671,7 @@ module Celerity
     def tbodies
       TableBodies.new(self)
     end
-    
+
     #
     # @return [Celerity::TextField]
     #
@@ -678,7 +687,7 @@ module Celerity
     def text_fields
       TextFields.new(self)
     end
-    
+
     #
     # @return [Celerity::TableFooter]
     #
@@ -695,14 +704,14 @@ module Celerity
       TableFooters.new(self)
     end
     alias_method :tfeet, :tfoots # :-)
-    
+
     #
     # Watir's cells() won't find <th> elements.
     # This is a workaround.
     #
     # @return [Celerity::Th]
     #
-    
+
     def th(*args)
       Th.new(self, *args)
     end
@@ -715,7 +724,7 @@ module Celerity
     def ths
       raise NotImplementedError
     end
-    
+
     #
     # @return [Celerity::TableHeader]
     #
@@ -747,9 +756,9 @@ module Celerity
     def uls
       Uls.new(self)
     end
-    
+
     private
-    
+
     #
     # Used internally.
     #
@@ -759,16 +768,16 @@ module Celerity
     #
     # @api private
     #
-    
+
     def matches?(string, what)
       Regexp === what ? string =~ what : string == what.to_s
     end
-    
+
     #
-    # Rescues HtmlUnit::FailingHttpStatusCodeException and re-raises as 
+    # Rescues HtmlUnit::FailingHttpStatusCodeException and re-raises as
     # Celerity::NavigationException to avoid the huge JRuby backtrace
-    # 
-    
+    #
+
     def rescue_status_code_exception(&blk)
       yield
     rescue HtmlUnit::FailingHttpStatusCodeException => e

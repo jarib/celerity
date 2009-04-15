@@ -27,9 +27,7 @@ module Celerity
     end
 
     def inspect
-      vars = (instance_variables - %w[@webclient @browser @object])
-      vars = vars.map { |var| "#{var}=#{instance_variable_get(var).inspect}" }.join(" ")
-      '#<%s:0x%s %s>' % [self.class.name, self.hash.to_s(16), vars]
+      short_inspect :exclude => %w[@webclient @browser @object]
     end
 
     #
