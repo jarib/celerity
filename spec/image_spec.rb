@@ -156,7 +156,7 @@ describe "Image" do
 
   describe "#file_size" do
     it "returns the file size of the image if the image exists" do
-      @browser.image(:id, 'square').file_size.should == 788
+      @browser.image(:id, 'square').file_size.should == File.size("#{HTML_DIR}/images/square.jpg".sub("file://", ''))
     end
 
     it "raises UnknownObjectException if the image doesn't exist" do
