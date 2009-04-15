@@ -35,6 +35,12 @@ describe "Browser" do
 
       received.should be_true
     end
+    
+    it "should use the specified user agent" do
+      b = Browser.new(BROWSER_OPTIONS.merge(:user_agent => "Celerity"))
+      b.goto(TEST_HOST + "/header_echo")
+      b.text.should include(%q["user-agent"=>["Celerity"]])
+    end
   end
   
   describe "#exists?" do

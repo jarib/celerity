@@ -43,6 +43,13 @@ module Celerity
     end
   end
 
+  class HeaderEchoHandler < WEBrick::HTTPServlet::AbstractServlet
+    def do_GET(req, resp)
+      resp['content-type'] = 'text/plain'
+      resp.body << req.header.inspect
+    end
+  end
+
   class CharsetMismatchHandler < WEBrick::HTTPServlet::AbstractServlet
     def do_GET(req, resp)
       resp['content-type'] = 'text/html; charset=UTF-8'
@@ -106,6 +113,7 @@ module Celerity
       server.mount("/charset_mismatch", CharsetMismatchHandler)
       server.mount("/octet_stream", OctetStreamHandler)
       server.mount("/set_cookie", CookieHandler)
+      server.mount("/header_echo", HeaderEchoHandler)
       server.mount("/authentication", WEBrick::HTTPServlet::FileHandler, @doc_root, :FancyIndexing => true, :HandlerCallback => AUTH_CALLBACK)
 
       @thread = Thread.new { server.start }

@@ -45,6 +45,7 @@ module Celerity
     # @option opts :render [:html, :xml] (:html) What DOM representation to send to connected viewers.
     # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use by default.
     # @option opts :proxy [String] (nil) Proxy server to use, in address:port format.
+    # @option opts :user_agent [String] Override the User-Agent set by the :browser option
     #
     # @return [Celerity::Browser]     An instance of the browser.
     #
@@ -703,6 +704,11 @@ module Celerity
       else
         raise ArgumentError, "unknown browser: #{browser.inspect}"
       end
+
+      if ua = opts.delete(:user_agent)
+        browser_version.setUserAgent(ua)
+      end 
+
 
       if proxy = opts.delete(:proxy)
         phost, pport = proxy.split(":")
