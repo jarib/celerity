@@ -294,6 +294,14 @@ module Celerity
     def clear_cookies
       @webclient.getCookieManager.clearCookies
     end
+    
+    #
+    # Clears the cache of "compiled JavaScript files and parsed CSS snippets"
+    #
+    
+    def clear_cache
+      @webclient.cache.clear
+    end
 
     #
     # Get the cookies for this session. (Celerity only)
