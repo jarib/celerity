@@ -559,7 +559,7 @@ module Celerity
       log_level = java.util.logging.Level.const_get(level.to_s.upcase)
 
       [ logger_for('com.gargoylesoftware.htmlunit'),
-        logger_for("org.apache.commons.htmlunit.html")
+        logger_for("org.apache.commons.htmlunit.html"),
         logger_for("org.apache.commons.httpclient")
       ].each { |logger| logger.level = log_level }
 
