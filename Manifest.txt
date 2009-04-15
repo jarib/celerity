@@ -54,6 +54,7 @@ lib/celerity/input_element.rb
 lib/celerity/listener.rb
 lib/celerity/resources
 lib/celerity/resources/no_viewer.png
+lib/celerity/short_inspect.rb
 lib/celerity/util.rb
 lib/celerity/version.rb
 lib/celerity/watir_compatibility.rb
