@@ -19,6 +19,7 @@ if RUBY_PLATFORM =~ /java/
   
   include Celerity
   include Celerity::Exception
+  java.lang.System.setProperty("java.awt.headless", "true")
 else
   puts "Not using JRuby - trying to run specs on Watir…"
   require 'watir'
