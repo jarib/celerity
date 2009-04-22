@@ -9,7 +9,9 @@ module Celerity
     
     def options
       assert_exists
-      @object.getOptions.map { |e| e.asText }
+      @object.getOptions.map do |e|
+        e.asText.empty? ? e.getAttribute("label") : e.asText
+      end
     end
     
     #
@@ -18,7 +20,7 @@ module Celerity
     
     def selected_options
       assert_exists
-      @object.getSelectedOptions.map { |e| e.asText }
+      @object.getSelectedOptions.map { |e| e.asText.empty? ? e.getAttribute('label') : e.asText }
     end
     
     #
@@ -46,7 +48,11 @@ module Celerity
       raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
       
       selected = nil
-      @object.getOptions.select { |e| matches?(e.asText, value) }.each do |option|
+      matching = @object.getOptions.select do |e|
+        matches?(e.asText, value) || matches?(e.getAttribute('label'), value)
+      end
+      
+      matching.each do |option|
         selected ||= option.asText
         @container.update_page option.click
       end
@@ -64,7 +70,7 @@ module Celerity
     
     def include?(value)
       assert_exists
-      !!@object.getOptions.find { |e| matches?(e.asText, value) }
+      !!@object.getOptions.find { |e| matches?(e.asText, value) || matches?(e.getAttribute('label'), value) }
     end
 
     #
@@ -91,7 +97,7 @@ module Celerity
     
     def type
       assert_exists
-      'select-' + (@object.isAttributeDefined('multiple') ? 'multiple' : 'one')
+      'select-' + (@object.hasAttribute('multiple') ? 'multiple' : 'one')
     end
 
     #
@@ -107,6 +113,8 @@ module Celerity
         optn.getValueAttribute
       end
     end
-
+    
+    private
+    
   end # SelectList
 end # Celerity

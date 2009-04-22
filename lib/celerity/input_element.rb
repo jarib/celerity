@@ -9,7 +9,7 @@ module Celerity
 
     def readonly?
       assert_exists
-      @object.isAttributeDefined('readonly')
+      @object.hasAttribute 'readonly'
     end
 
     private

@@ -700,7 +700,7 @@ module Celerity
       when :firefox, :ff
         browser_version = ::HtmlUnit::BrowserVersion::FIREFOX_2
       when :internet_explorer, :ie
-        browser_version = ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7_0
+        browser_version = ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7
       else
         raise ArgumentError, "unknown browser: #{browser.inspect}"
       end

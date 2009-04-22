@@ -82,7 +82,7 @@ module Celerity
       when Regexp
         elements_by_tag_names.find { |elem| elem.getId =~ what }
       when String
-        obj = @object.getHtmlElementById(what)
+        obj = @object.getElementById(what)
         return obj if @tags.include?(obj.getTagName)
 
         $stderr.puts "warning: multiple elements with identical id? (#{what.inspect})" if $VERBOSE
@@ -129,7 +129,7 @@ module Celerity
       return false unless ident.tag == element.getTagName
 
       attr_result = ident.attributes.all? do |key, values|
-        values.any? { |val| matches?(element.getAttributeValue(key.to_s), val) }
+        values.any? { |val| matches?(element.getAttribute(key.to_s), val) }
       end
 
       if ident.text

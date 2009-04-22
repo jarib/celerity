@@ -127,7 +127,7 @@ module Celerity
 
     def visible?
       assert_exists
-      @object.isVisible
+      @object.isDisplayed
     end
 
     #
@@ -204,7 +204,7 @@ module Celerity
 
       result = ''
       @object.getAttributes.each do |attribute|
-        result << %Q{#{attribute.getName}="#{attribute.getHtmlValue}"}
+        result << %Q{#{attribute.getName}="#{attribute.getValue}"}
       end
 
       result
@@ -234,7 +234,7 @@ module Celerity
       meth = selector_to_attribute(meth)
 
       if self.class::ATTRIBUTES.include?(meth)
-        return @object.getAttributeValue(meth.to_s)
+        return @object.getAttribute(meth.to_s)
       end
 
       Log.warn "Element\#method_missing calling super with #{meth.inspect}"
@@ -263,7 +263,7 @@ module Celerity
       end
 
       element.getAttributes.each do |attribute|
-        ret << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getHtmlValue.to_s
+        ret << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getValue.to_s
       end
 
       unless (text = element.asText).empty?

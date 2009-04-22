@@ -81,7 +81,7 @@ module Celerity
     
     def type
       assert_exists
-      type = @object.getAttributeValue('type')
+      type = @object.getAttribute 'type'
 
       if NON_TEXT_TYPES.include?(type)
         type

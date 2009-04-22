@@ -19,13 +19,13 @@ module Celerity
     end
 
     #
-    # returns the filesize of the image
+    # returns the file size of the image in bytes
     #
 
     def file_size
       assert_exists
       web_response = @object.getWebResponse(true)
-      web_response.getResponseBody.length
+      web_response.getContentAsBytes.length
     end
 
     #

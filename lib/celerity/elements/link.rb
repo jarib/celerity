@@ -16,7 +16,7 @@ module Celerity
 
     def absolute_url
       assert_exists
-      href = @object.getAttributeValue('href')
+      href = @object.getAttribute('href')
 
       unless href.empty? || URI.parse(href).absolute?
         href = URI.join(browser.url, href).to_s

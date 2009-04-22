@@ -15,7 +15,7 @@ module Celerity
 
     def colspan
       assert_exists
-      attribute_value = @object.getAttributeValue('colspan').to_i
+      attribute_value = @object.getAttribute('colspan').to_i
       attribute_value > 0 ? attribute_value : 1
     end
 
