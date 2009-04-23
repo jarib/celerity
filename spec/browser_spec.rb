@@ -380,6 +380,12 @@ describe "Browser" do
       e.should_not exist
       lambda { e.set('foo') }.should raise_error(UnknownObjectException)
     end
+    
+    it "returns usable elements even though they're not supported" do
+      el = @browser.element_by_xpath("//link")
+      el.should be_instance_of(Celerity::Element)
+      el.rel.should == "stylesheet"
+    end
   end
 
   describe "#elements_by_xpath" do

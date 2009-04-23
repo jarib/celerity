@@ -775,7 +775,7 @@ module Celerity
       if element_class = Celerity::Util.htmlunit2celerity(obj.class)
         element_class.new(self, :object, obj)
       else
-        Element.new(self, :object, nil)
+        Element.new(self, :object, obj)
       end
     end
 

@@ -28,7 +28,6 @@ module Celerity
       HtmlUnit::Html::HtmlHiddenInput           => Celerity::Hidden,
       HtmlUnit::Html::HtmlImage                 => Celerity::Image,
       HtmlUnit::Html::HtmlLabel                 => Celerity::Label,
-      HtmlUnit::Html::HtmlLink                  => Celerity::Link,
       HtmlUnit::Html::HtmlListItem              => Celerity::Li,
       HtmlUnit::Html::HtmlMap                   => Celerity::Map,
       HtmlUnit::Html::HtmlOption                => Celerity::Option,

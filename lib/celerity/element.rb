@@ -8,7 +8,7 @@ module Celerity
     include Exception
     include Container
 
-    attr_reader :container, :object
+    attr_reader :container
 
     # number of spaces that separate the property from the value in the create_string method
     TO_S_SIZE = 14
@@ -96,6 +96,10 @@ module Celerity
 
     def locate
       @object = ElementLocator.new(@container, self.class).find_by_conditions(@conditions)
+    end
+    
+    def object
+      @object || locate
     end
 
     #
@@ -233,10 +237,9 @@ module Celerity
 
       meth = selector_to_attribute(meth)
 
-      if self.class::ATTRIBUTES.include?(meth)
+      if self.class::ATTRIBUTES.include?(meth) || (self.class == Element && @object.hasAttribute(meth.to_s))
         return @object.getAttribute(meth.to_s)
       end
-
       Log.warn "Element\#method_missing calling super with #{meth.inspect}"
       super
     end
