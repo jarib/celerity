@@ -26,7 +26,7 @@ module Celerity
     def label
       # overrides Container#label
       assert_exists
-      @object.getAttribute("label")
+      @object.getLabelAttribute
     end
   end
 end

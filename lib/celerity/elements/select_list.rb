@@ -10,7 +10,7 @@ module Celerity
     def options
       assert_exists
       @object.getOptions.map do |e|
-        e.asText.empty? ? e.getAttribute("label") : e.asText
+        e.asText.empty? ? e.getLabelAttribute : e.asText
       end
     end
     
@@ -20,7 +20,7 @@ module Celerity
     
     def selected_options
       assert_exists
-      @object.getSelectedOptions.map { |e| e.asText.empty? ? e.getAttribute('label') : e.asText }
+      @object.getSelectedOptions.map { |e| e.asText.empty? ? e.getLabelAttribute : e.asText }
     end
     
     #
@@ -49,7 +49,7 @@ module Celerity
       
       selected = nil
       matching = @object.getOptions.select do |e|
-        matches?(e.asText, value) || matches?(e.getAttribute('label'), value)
+        matches?(e.asText, value) || matches?(e.getLabelAttribute, value)
       end
       
       matching.each do |option|
@@ -70,7 +70,7 @@ module Celerity
     
     def include?(value)
       assert_exists
-      !!@object.getOptions.find { |e| matches?(e.asText, value) || matches?(e.getAttribute('label'), value) }
+      !!@object.getOptions.find { |e| matches?(e.asText, value) || matches?(e.getLabelAttribute, value) }
     end
 
     #
