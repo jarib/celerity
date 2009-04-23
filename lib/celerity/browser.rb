@@ -3,7 +3,7 @@ module Celerity
     include Container
 
     attr_accessor :page, :object, :charset
-    attr_reader :webclient, :viewer
+    attr_reader :webclient, :viewer, :options
 
     #
     # Initialize a browser and go to the given URL
@@ -27,7 +27,7 @@ module Celerity
     end
 
     def inspect
-      short_inspect :exclude => %w[@webclient @browser @object]
+      short_inspect :exclude => %w[@webclient @browser @object @options]
     end
 
     #
@@ -60,6 +60,8 @@ module Celerity
       unless (render_types = [:html, :xml, nil]).include?(opts[:render])
         raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
       end
+      
+      @options = opts.dup # hirobumi: needed this to have click_and_attach to generate a browser with almost the same configuration.
 
       @render_type   = opts.delete(:render)    || :html
       @charset       = opts.delete(:charset)   || "UTF-8"

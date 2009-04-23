@@ -23,6 +23,10 @@ describe "Browser" do
       lambda { Browser.new(:foo => 1) }.should raise_error(ArgumentError)
     end
     
+    it "should hold the init options" do
+      @browser.options.should == BROWSER_OPTIONS
+    end
+    
     it "should use the specified proxy" do
       received = false
       blk      = lambda { received = true }
@@ -41,6 +45,7 @@ describe "Browser" do
       b.goto(TEST_HOST + "/header_echo")
       b.text.should include(%q["user-agent"=>["Celerity"]])
     end
+    
   end
   
   describe "#exists?" do

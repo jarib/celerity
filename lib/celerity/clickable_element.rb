@@ -37,10 +37,25 @@ module Celerity
 
     def click_and_attach
       assert_exists_and_enabled
-      browser = Browser.new(:log_level => @browser.log_level)
+      browser = Browser.new(@browser.options.dup)
+      browser.webclient.set_cookie_manager(
+        @browser.webclient.get_cookie_manager
+      ) # hirobumi: we do want cookies as well.
+      
       rescue_status_code_exception { browser.update_page(@object.click) }
 
       browser
+    end
+    
+    # 
+    # Click the element and just return the content as IO. Current page stays unchanged.
+    # 
+    # @return [IO]
+    # 
+    
+    def download
+      assert_exists_and_enabled
+      @object.click.getWebResponse.getContentAsStream.to_io
     end
 
     private
