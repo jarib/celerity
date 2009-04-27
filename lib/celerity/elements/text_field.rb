@@ -14,6 +14,7 @@ module Celerity
     DEFAULT_HOW = :name
     
     def visible?
+      assert_exists
       type == 'hidden' ? false : super
     end
     
