@@ -774,11 +774,8 @@ module Celerity
     #
 
     def element_from_dom_node(obj)
-      if element_class = Celerity::Util.htmlunit2celerity(obj.class)
-        element_class.new(self, :object, obj)
-      else
-        Element.new(self, :object, obj)
-      end
+      element_class = Celerity::Util.htmlunit2celerity(obj.class) || Element
+      element_class.new(self, :object, obj)
     end
 
     def logger_for(class_string)
