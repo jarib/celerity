@@ -48,11 +48,9 @@ module Celerity
       raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
       
       selected = nil
-      matching = @object.getOptions.select do |e|
-        matches?(e.asText, value) || matches?(e.getLabelAttribute, value)
-      end
-      
-      matching.each do |option|
+      matching = @object.getOptions.select do |option|
+        next unless matches_option?(option, value)
+        
         selected ||= option.asText
         @container.update_page option.click
       end
@@ -70,7 +68,7 @@ module Celerity
     
     def include?(value)
       assert_exists
-      !!@object.getOptions.find { |e| matches?(e.asText, value) || matches?(e.getLabelAttribute, value) }
+      !!@object.getOptions.find { |e| matches_option?(e, value) }
     end
 
     #
@@ -84,7 +82,7 @@ module Celerity
     def selected?(value)
       assert_exists
       raise UnknownObjectException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
-      !!@object.getOptions.find { |e| matches?(e.asText, value) && e.isSelected }
+      !!@object.getOptions.find { |e| matches_option?(e, value) && e.isSelected }
     end
 
     #
@@ -92,7 +90,6 @@ module Celerity
     # defined, otherwise 'select-one'.
     #
     # @return [String]
-    # TODO: Move to watir_compatibility or delete it 2008-05-23 Alexander
     #
     
     def type
@@ -109,12 +106,16 @@ module Celerity
 
     def value
       assert_exists
-      if (optn = @object.getSelectedOptions.to_a.first)
-        optn.getValueAttribute
+      if (option = @object.getSelectedOptions.to_a.first)
+        option.getValueAttribute
       end
     end
     
     private
+    
+    def matches_option?(option, value)
+      matches?(option.asText, value) || (option.hasAttribute("label") && matches?(option.getLabelAttribute, value))
+    end
     
   end # SelectList
 end # Celerity

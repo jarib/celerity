@@ -243,23 +243,28 @@ describe "SelectList" do
       @browser.select_list(:xpath, "//select[@name='new_user_country']").selected_options.should == ["Denmark"]
     end
 
-    it "is able to select multiple items using :name and a String" do
+    it "selects multiple items using :name and a String" do
       @browser.select_list(:name, "new_user_languages").clear_selection
       @browser.select_list(:name, "new_user_languages").select("Danish")
       @browser.select_list(:name, "new_user_languages").select("Swedish")
       @browser.select_list(:name, "new_user_languages").selected_options.should == ["Danish", "Swedish"]
     end
 
-    it "is able to select multiple items using :name and a Regexp" do
+    it "selects multiple items using :name and a Regexp" do
       @browser.select_list(:name, "new_user_languages").clear_selection
       @browser.select_list(:name, "new_user_languages").select(/ish/)
       @browser.select_list(:name, "new_user_languages").selected_options.should == ["Danish", "English", "Swedish"]
     end
 
-    it "is able to select multiple items using :xpath" do
+    it "selects multiple items using :xpath" do
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").clear_selection
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").select(/ish/)
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").selected_options.should == ["Danish", "English", "Swedish"]
+    end
+    
+    it "selects empty options" do
+      @browser.select_list(:id, "delete_user_username").select("")
+      @browser.select_list(:id, "delete_user_username").selected_options.should == [""]
     end
     
     it "returns the value selected" do
