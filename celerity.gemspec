@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{celerity}
-  s.version = "0.0.6.6"
+  s.version = "0.0.6.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
-  s.date = %q{2009-04-22}
+  s.date = %q{2009-04-30}
   s.description = %q{Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with JavaScript support. It provides a simple API for programmatic navigation through web applications. Celerity aims at being API compatible with Watir.}
   s.email = %q{jari.bakken@finn.no}
   s.extra_rdoc_files = ["History.txt", "License.txt", "README.txt"]
