@@ -50,6 +50,10 @@ The source code is available at http://github.com/jarib/celerity/tree/master
 
 * http://github.com/jarib/celerity/wikis
 
+== BUG TRACKER:
+
+* http://github.com/jarib/celerity/issues
+
 == LICENSE:
 
 Celerity - JRuby wrapper for HtmlUnit

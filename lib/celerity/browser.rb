@@ -61,7 +61,7 @@ module Celerity
         raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
       end
       
-      @options = opts.dup # hirobumi: needed this to have click_and_attach to generate a browser with almost the same configuration.
+      @options = opts.dup # for ClickableElement#click_and_attach
 
       @render_type   = opts.delete(:render)    || :html
       @charset       = opts.delete(:charset)   || "UTF-8"
@@ -423,7 +423,8 @@ module Celerity
     end
 
     #
-    # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController to resynchronize ajax calls.
+    # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController 
+    # to resynchronize ajax calls.
     #
     #   @browser.resynchronized do |b|
     #     b.link(:id, 'trigger_ajax_call').click
@@ -441,8 +442,9 @@ module Celerity
     end
 
     #
-    # Allows you to temporarliy switch to HtmlUnit's default AjaxController, so ajax calls are performed asynchronously.
-    # This is useful if you have created the Browser with :resynchronize => true, but want to switch it off temporarily.
+    # Allows you to temporarliy switch to HtmlUnit's default AjaxController, so 
+    # ajax calls are performed asynchronously. This is useful if you have created
+    # the Browser with :resynchronize => true, but want to switch it off temporarily.
     #
     # @yieldparam [Celerity::Browser] browser The current browser object.
     # @see Celerity::Browser#new
@@ -553,9 +555,9 @@ module Celerity
     end
 
     #
-    # Set Java log level (default is :warning)
+    # Set Java log level (default is :warning, can be any of :all, :finest, :finer, :fine, :config, :info, :warning, :severe, :off)
     #
-    # @param [Symbol] level :finest, :finer, :fine, :config, :info, :warning, :severe, or :off, :all
+    # @param [Symbol] level The new log level.
     #
 
     def log_level=(level)

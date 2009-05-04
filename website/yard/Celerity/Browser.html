@@ -16,7 +16,7 @@
   <h1 class="title">Class: Celerity::Browser</h1>
   <div class="section mixins">
   <h1>Included Modules</h1>
-  <p><a href="Browser/Container.html" title="Celerity::Container">Celerity::Container</a></p>
+  <p><a title="Celerity::Container" href="Browser/Container.html">Celerity::Container</a></p>
 </div><div class="section attributes">
   <h1>Attributes</h1>
 
@@ -118,6 +118,23 @@ Sets the attribute <tt>object</tt>.
         </tr>
       
         <tr>
+          <th class="name">options</td>
+          <td class="readwrite">
+            [<span id='options-instance_method'>R</span>W] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Returns the value of attribute <tt>options</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+      
+        <tr>
           <th class="name">page</td>
           <td class="readwrite">
             [R<span id='page%3D-instance_method'>W</span>] 
@@ -197,7 +214,7 @@ Returns the value of attribute <tt>webclient</tt>.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt></span>
+    <span class='return_types'><tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt></span>
     <span class='name'>initialize</span><span class='args'>(opts = )</span>
     <span class='block'></span>
   </tt>
@@ -346,7 +363,7 @@ What DOM representation to send to connected viewers.
               <tt>&quot;UTF-8&quot;</tt>
             
           </td>
-          <td class="type">[<tt><a href="../String.html" title="String">String</a></tt>]</td>
+          <td class="type">[<tt><a title="String" href="../String.html">String</a></tt>]</td>
           <td class="desc"><p>
 Specify the charset that webclient will use by default.
 </p>
@@ -360,9 +377,23 @@ Specify the charset that webclient will use by default.
               <tt>nil</tt>
             
           </td>
-          <td class="type">[<tt><a href="../String.html" title="String">String</a></tt>]</td>
+          <td class="type">[<tt><a title="String" href="../String.html">String</a></tt>]</td>
           <td class="desc"><p>
 Proxy server to use, in address:port format.
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:user_agent</td>
+          <td class="default">
+            
+              <span class="na">N/A</span>
+            
+          </td>
+          <td class="type">[<tt><a title="String" href="../String.html">String</a></tt>]</td>
+          <td class="desc"><p>
+Override the User-Agent set by the :browser option
 </p>
 </td>
         </tr>
@@ -380,7 +411,7 @@ Proxy server to use, in address:port format.
   
     <dt>
       
-        <span class='type'>[<tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -417,6 +448,7 @@ An instance of the browser.
           <pre class="lines">
 
 
+55
 56
 57
 58
@@ -438,10 +470,11 @@ An instance of the browser.
 74
 75
 76
-77</pre>
+77
+78</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 56</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 55</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='semicolon token'>;</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='unless unless kw'>unless</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='Hash constant id'>Hash</span><span class='rparen token'>)</span>
@@ -451,6 +484,8 @@ An instance of the browser.
   <span class='unless unless kw'>unless</span> <span class='lparen token'>(</span><span class='render_types identifier id'>render_types</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='colon op'>:</span><span class='html identifier id'>html</span><span class='comma token'>,</span> <span class='symbol val'>:xml</span><span class='comma token'>,</span> <span class='nil nil kw'>nil</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:render</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
     <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;expected one of #{render_types.inspect} for key :render&quot;</span>
   <span class='end end kw'>end</span>
+  
+  <span class='@options ivar id'>@options</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span> <span class='comment val'># for ClickableElement#click_and_attach</span>
 
   <span class='@render_type ivar id'>@render_type</span>   <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:render</span><span class='rparen token'>)</span>    <span class='orop op'>||</span> <span class='symbol val'>:html</span>
   <span class='@charset ivar id'>@charset</span>       <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:charset</span><span class='rparen token'>)</span>   <span class='orop op'>||</span> <span class='string val'>&quot;UTF-8&quot;</span>
@@ -461,7 +496,7 @@ An instance of the browser.
   <span class='@browser ivar id'>@browser</span>         <span class='assign token'>=</span> <span class='self self kw'>self</span> <span class='comment val'># for Container#browser</span>
 
   <span class='setup_webclient identifier id'>setup_webclient</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
-  
+
   <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;unknown option #{opts.inspect}&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
   <span class='find_viewer identifier id'>find_viewer</span>
 <span class='end end kw'>end</span>
@@ -480,7 +515,7 @@ An instance of the browser.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#attach-class_method" title="attach">attach</a></span><span class='args'>(*args)</span>
+        <span class='name'><a title="attach" href="#attach-class_method">attach</a></span><span class='args'>(*args)</span>
         <span class='block'></span>
         
       </th>
@@ -495,7 +530,7 @@ Not implemented.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#each-class_method" title="each">each</a></span><span class='args'></span>
+        <span class='name'><a title="each" href="#each-class_method">each</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -510,7 +545,7 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#quit-class_method" title="quit">quit</a></span><span class='args'></span>
+        <span class='name'><a title="quit" href="#quit-class_method">quit</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -525,7 +560,7 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#reset_attach_timeout-class_method" title="reset_attach_timeout">reset_attach_timeout</a></span><span class='args'></span>
+        <span class='name'><a title="reset_attach_timeout" href="#reset_attach_timeout-class_method">reset_attach_timeout</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -540,7 +575,7 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#set_fast_speed-class_method" title="set_fast_speed">set_fast_speed</a></span><span class='args'></span>
+        <span class='name'><a title="set_fast_speed" href="#set_fast_speed-class_method">set_fast_speed</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -555,7 +590,7 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#set_slow_speed-class_method" title="set_slow_speed">set_slow_speed</a></span><span class='args'></span>
+        <span class='name'><a title="set_slow_speed" href="#set_slow_speed-class_method">set_slow_speed</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -570,7 +605,7 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#start-class_method" title="start">start</a></span><span class='args'>(uri)</span>
+        <span class='name'><a title="start" href="#start-class_method">start</a></span><span class='args'>(uri)</span>
         <span class='block'></span>
         
           <span class='alias'>start_window</span>
@@ -585,7 +620,7 @@ Initialize a browser and go to the given URL.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt>
+                 <tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt>
               </span>
           </p>
         
@@ -600,7 +635,7 @@ Initialize a browser and go to the given URL.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#add_checker-instance_method" title="#add_checker">#add_checker</a></span><span class='args'>(checker = nil, &amp;block)</span>
+        <span class='name'><a title="#add_checker" href="#add_checker-instance_method">#add_checker</a></span><span class='args'>(checker = nil, &amp;block)</span>
         <span class='block'>{|browser| ... }</span>
         
       </th>
@@ -615,7 +650,7 @@ Add a &#8216;checker&#8217; proc that will be run on every page load.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#add_cookie-instance_method" title="#add_cookie">#add_cookie</a></span><span class='args'>(domain, name, value, opts = )</span>
+        <span class='name'><a title="#add_cookie" href="#add_cookie-instance_method">#add_cookie</a></span><span class='args'>(domain, name, value, opts = )</span>
         <span class='block'></span>
         
       </th>
@@ -630,7 +665,7 @@ Add a cookie with the given parameters (Celerity only).
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#add_listener-instance_method" title="#add_listener">#add_listener</a></span><span class='args'>(type, &amp;block)</span>
+        <span class='name'><a title="#add_listener" href="#add_listener-instance_method">#add_listener</a></span><span class='args'>(type, &amp;block)</span>
         <span class='block'></span>
         
       </th>
@@ -645,7 +680,7 @@ Add a listener block for one of the available types.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#assert_exists-instance_method" title="#assert_exists">#assert_exists</a></span><span class='args'></span>
+        <span class='name'><a title="#assert_exists" href="#assert_exists-instance_method">#assert_exists</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -660,7 +695,7 @@ Check that we have a @page object.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#asynchronized-instance_method" title="#asynchronized">#asynchronized</a></span><span class='args'>(&amp;block)</span>
+        <span class='name'><a title="#asynchronized" href="#asynchronized-instance_method">#asynchronized</a></span><span class='args'>(&amp;block)</span>
         <span class='block'>{|browser| ... }</span>
         
       </th>
@@ -676,7 +711,7 @@ AjaxController, so ajax calls are performed asynchronously.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#back-instance_method" title="#back">#back</a></span><span class='args'></span>
+        <span class='name'><a title="#back" href="#back-instance_method">#back</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -690,7 +725,7 @@ functionality, so we only have 1 history item :).
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="../String.html" title="String">String</a></tt>
+                 <tt><a title="String" href="../String.html">String</a></tt>
               </span>
           </p>
         
@@ -699,7 +734,7 @@ functionality, so we only have 1 history item :).
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#bring_to_front-instance_method" title="#bring_to_front">#bring_to_front</a></span><span class='args'></span>
+        <span class='name'><a title="#bring_to_front" href="#bring_to_front-instance_method">#bring_to_front</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -714,7 +749,23 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#clear_cookies-instance_method" title="#clear_cookies">#clear_cookies</a></span><span class='args'></span>
+        <span class='name'><a title="#clear_cache" href="#clear_cache-instance_method">#clear_cache</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Clears the cache of &quot;compiled JavaScript files and parsed CSS
+snippets&quot;.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#clear_cookies" href="#clear_cookies-instance_method">#clear_cookies</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -729,7 +780,7 @@ Clears all cookies.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#close-instance_method" title="#close">#close</a></span><span class='args'></span>
+        <span class='name'><a title="#close" href="#close-instance_method">#close</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -744,7 +795,24 @@ Unsets the current page / closes all windows.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#contains_text-instance_method" title="#contains_text">#contains_text</a></span><span class='args'>(expected_text)</span>
+        <span class='name'><a title="#confirm" href="#confirm-instance_method">#confirm</a></span><span class='args'>(bool, &amp;block)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Specify a boolean value to click either &#8216;OK&#8217; or
+&#8216;Cancel&#8217; in any confirm dialogs that might show up during the
+duration of the given block.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#contains_text" href="#contains_text-instance_method">#contains_text</a></span><span class='args'>(expected_text)</span>
         <span class='block'></span>
         
       </th>
@@ -766,7 +834,7 @@ Check if the current page contains the given text.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#content_type-instance_method" title="#content_type">#content_type</a></span><span class='args'></span>
+        <span class='name'><a title="#content_type" href="#content_type-instance_method">#content_type</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -776,7 +844,7 @@ Check if the current page contains the given text.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="../String.html" title="String">String</a></tt>
+                 <tt><a title="String" href="../String.html">String</a></tt>
               </span>
           </p>
         
@@ -785,7 +853,7 @@ Check if the current page contains the given text.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#cookies-instance_method" title="#cookies">#cookies</a></span><span class='args'></span>
+        <span class='name'><a title="#cookies" href="#cookies-instance_method">#cookies</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -807,7 +875,7 @@ Get the cookies for this session.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#credentials-instance_method" title="#credentials">#credentials</a></span><span class='args'></span>
+        <span class='name'><a title="#credentials" href="#credentials-instance_method">#credentials</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -822,7 +890,22 @@ Set the credentials used for basic HTTP authentication.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#debug_web_connection-instance_method" title="#debug_web_connection">#debug_web_connection</a></span><span class='args'>(bool, name = nil)</span>
+        <span class='name'><a title="#css" href="#css-instance_method">#css</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Turn on/off CSS loading.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#debug_web_connection" href="#debug_web_connection-instance_method">#debug_web_connection</a></span><span class='args'>(bool, name = nil)</span>
         <span class='block'></span>
         
       </th>
@@ -837,7 +920,7 @@ Start or stop HtmlUnit&#8217;s DebuggingWebConnection.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#disable_checker-instance_method" title="#disable_checker">#disable_checker</a></span><span class='args'>(checker)</span>
+        <span class='name'><a title="#disable_checker" href="#disable_checker-instance_method">#disable_checker</a></span><span class='args'>(checker)</span>
         <span class='block'></span>
         
       </th>
@@ -852,7 +935,7 @@ Remove the given checker from the list of checkers.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#document-instance_method" title="#document">#document</a></span><span class='args'></span>
+        <span class='name'><a title="#document" href="#document-instance_method">#document</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -871,7 +954,7 @@ Remove the given checker from the list of checkers.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#element_by_xpath-instance_method" title="#element_by_xpath">#element_by_xpath</a></span><span class='args'>(xpath)</span>
+        <span class='name'><a title="#element_by_xpath" href="#element_by_xpath-instance_method">#element_by_xpath</a></span><span class='args'>(xpath)</span>
         <span class='block'></span>
         
       </th>
@@ -884,7 +967,7 @@ Get the first element found matching the given XPath.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="Element.html" title="Celerity::Element">Celerity::Element</a></tt>
+                 <tt><a title="Celerity::Element" href="Element.html">Celerity::Element</a></tt>
               </span>
           </p>
         
@@ -893,7 +976,7 @@ Get the first element found matching the given XPath.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#elements_by_xpath-instance_method" title="#elements_by_xpath">#elements_by_xpath</a></span><span class='args'>(xpath)</span>
+        <span class='name'><a title="#elements_by_xpath" href="#elements_by_xpath-instance_method">#elements_by_xpath</a></span><span class='args'>(xpath)</span>
         <span class='block'></span>
         
       </th>
@@ -906,7 +989,7 @@ Get all the elements matching the given XPath.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt>Array&lt;<a href="Element.html" title="Celerity::Element">Celerity::Element</a>></tt>
+                 <tt>Array&lt;<a title="Celerity::Element" href="Element.html">Celerity::Element</a>></tt>
               </span>
           </p>
         
@@ -915,7 +998,7 @@ Get all the elements matching the given XPath.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#execute_script-instance_method" title="#execute_script">#execute_script</a></span><span class='args'>(source)</span>
+        <span class='name'><a title="#execute_script" href="#execute_script-instance_method">#execute_script</a></span><span class='args'>(source)</span>
         <span class='block'></span>
         
       </th>
@@ -937,7 +1020,7 @@ Execute the given JavaScript on the current page.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#exist%3F-instance_method" title="#exist?">#exist?</a></span><span class='args'></span>
+        <span class='name'><a title="#exist?" href="#exist%3F-instance_method">#exist?</a></span><span class='args'></span>
         <span class='block'></span>
         
           <span class='alias'>#exists?</span>
@@ -961,7 +1044,7 @@ Checks if we have a page currently loaded.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#focused_element-instance_method" title="#focused_element">#focused_element</a></span><span class='args'></span>
+        <span class='name'><a title="#focused_element" href="#focused_element-instance_method">#focused_element</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -976,7 +1059,7 @@ Returns the element that currently has the focus (Celerity only).
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#generate_method-instance_method" title="#generate_method">#generate_method</a></span><span class='args'>(opts = )</span>
+        <span class='name'><a title="#generate_method" href="#generate_method-instance_method">#generate_method</a></span><span class='args'>(opts = )</span>
         <span class='block'></span>
         
       </th>
@@ -993,7 +1076,7 @@ current page Not loaded by default - need to require
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#goto-instance_method" title="#goto">#goto</a></span><span class='args'>(uri)</span>
+        <span class='name'><a title="#goto" href="#goto-instance_method">#goto</a></span><span class='args'>(uri)</span>
         <span class='block'></span>
         
       </th>
@@ -1006,7 +1089,7 @@ Goto the given URL.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="../String.html" title="String">String</a></tt>
+                 <tt><a title="String" href="../String.html">String</a></tt>
               </span>
           </p>
         
@@ -1015,7 +1098,7 @@ Goto the given URL.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#html-instance_method" title="#html">#html</a></span><span class='args'></span>
+        <span class='name'><a title="#html" href="#html-instance_method">#html</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1025,7 +1108,7 @@ Goto the given URL.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="../String.html" title="String">String</a></tt>
+                 <tt><a title="String" href="../String.html">String</a></tt>
               </span>
           </p>
         
@@ -1034,7 +1117,7 @@ Goto the given URL.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#inspect-instance_method" title="#inspect">#inspect</a></span><span class='args'></span>
+        <span class='name'><a title="#inspect" href="#inspect-instance_method">#inspect</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1046,7 +1129,7 @@ Goto the given URL.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#io-instance_method" title="#io">#io</a></span><span class='args'></span>
+        <span class='name'><a title="#io" href="#io-instance_method">#io</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1065,13 +1148,13 @@ Goto the given URL.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#log_level-instance_method" title="#log_level">#log_level</a></span><span class='args'></span>
+        <span class='name'><a title="#javascript_exceptions" href="#javascript_exceptions-instance_method">#javascript_exceptions</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
       <td class="docstring">
         <p>
-Set Java log level (default is :warning).
+Turn on/off javascript exceptions.
 </p>
 
         
@@ -1080,7 +1163,23 @@ Set Java log level (default is :warning).
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#page-instance_method" title="#page">#page</a></span><span class='args'></span>
+        <span class='name'><a title="#log_level" href="#log_level-instance_method">#log_level</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Set Java log level (default is :warning, can be any of :all, :finest,
+:finer, :fine, :config, :info, :warning, :severe, :off).
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#page" href="#page-instance_method">#page</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1095,7 +1194,7 @@ Sets the current page object for the browser.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#refresh-instance_method" title="#refresh">#refresh</a></span><span class='args'></span>
+        <span class='name'><a title="#refresh" href="#refresh-instance_method">#refresh</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1110,7 +1209,7 @@ Refresh the current page.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#remove_cookie-instance_method" title="#remove_cookie">#remove_cookie</a></span><span class='args'>(domain, name)</span>
+        <span class='name'><a title="#remove_cookie" href="#remove_cookie-instance_method">#remove_cookie</a></span><span class='args'>(domain, name)</span>
         <span class='block'></span>
         
       </th>
@@ -1125,7 +1224,7 @@ Remove the cookie with the given domain and name (Celerity only).
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#response_headers-instance_method" title="#response_headers">#response_headers</a></span><span class='args'></span>
+        <span class='name'><a title="#response_headers" href="#response_headers-instance_method">#response_headers</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1144,7 +1243,7 @@ Remove the cookie with the given domain and name (Celerity only).
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#resynchronized-instance_method" title="#resynchronized">#resynchronized</a></span><span class='args'>(&amp;block)</span>
+        <span class='name'><a title="#resynchronized" href="#resynchronized-instance_method">#resynchronized</a></span><span class='args'>(&amp;block)</span>
         <span class='block'>{|browser| ... }</span>
         
       </th>
@@ -1160,7 +1259,22 @@ NicelyResynchronizingAjaxController to resynchronize ajax calls.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#send_keys-instance_method" title="#send_keys">#send_keys</a></span><span class='args'>(keys)</span>
+        <span class='name'><a title="#secure_ssl" href="#secure_ssl-instance_method">#secure_ssl</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Turn on/off secure SSL.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#send_keys" href="#send_keys-instance_method">#send_keys</a></span><span class='args'>(keys)</span>
         <span class='block'></span>
         
       </th>
@@ -1175,7 +1289,7 @@ experimental - should be removed?.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#speed-instance_method" title="#speed">#speed</a></span><span class='args'></span>
+        <span class='name'><a title="#speed" href="#speed-instance_method">#speed</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1190,7 +1304,7 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#status-instance_method" title="#status">#status</a></span><span class='args'></span>
+        <span class='name'><a title="#status" href="#status-instance_method">#status</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1205,7 +1319,7 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#text-instance_method" title="#text">#text</a></span><span class='args'></span>
+        <span class='name'><a title="#status_code" href="#status_code-instance_method">#status_code</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1215,7 +1329,7 @@ Added for Watir compatibility - not in use by Celerity.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="../String.html" title="String">String</a></tt>
+                 <tt>Fixnum</tt>
               </span>
           </p>
         
@@ -1224,7 +1338,22 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#title-instance_method" title="#title">#title</a></span><span class='args'></span>
+        <span class='name'><a title="#status_code_exceptions" href="#status_code_exceptions-instance_method">#status_code_exceptions</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Turn on/off status code exceptions.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#text" href="#text-instance_method">#text</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1234,7 +1363,7 @@ Added for Watir compatibility - not in use by Celerity.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="../String.html" title="String">String</a></tt>
+                 <tt><a title="String" href="../String.html">String</a></tt>
               </span>
           </p>
         
@@ -1243,7 +1372,7 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#url-instance_method" title="#url">#url</a></span><span class='args'></span>
+        <span class='name'><a title="#title" href="#title-instance_method">#title</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1253,7 +1382,7 @@ Added for Watir compatibility - not in use by Celerity.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="../String.html" title="String">String</a></tt>
+                 <tt><a title="String" href="../String.html">String</a></tt>
               </span>
           </p>
         
@@ -1262,7 +1391,26 @@ Added for Watir compatibility - not in use by Celerity.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#wait-instance_method" title="#wait">#wait</a></span><span class='args'></span>
+        <span class='name'><a title="#url" href="#url-instance_method">#url</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a title="String" href="../String.html">String</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#wait" href="#wait-instance_method">#wait</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1277,7 +1425,7 @@ Wait for javascript jobs to finish.
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#wait_until-instance_method" title="#wait_until">#wait_until</a></span><span class='args'>(timeout = 30, &amp;block)</span>
+        <span class='name'><a title="#wait_until" href="#wait_until-instance_method">#wait_until</a></span><span class='args'>(timeout = 30, &amp;block)</span>
         <span class='block'>{|browser| ... }</span>
         
       </th>
@@ -1292,7 +1440,7 @@ Wait until the given block evaluates to true (Celerity only).
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#wait_while-instance_method" title="#wait_while">#wait_while</a></span><span class='args'>(timeout = 30, &amp;block)</span>
+        <span class='name'><a title="#wait_while" href="#wait_while-instance_method">#wait_while</a></span><span class='args'>(timeout = 30, &amp;block)</span>
         <span class='block'>{|browser| ... }</span>
         
       </th>
@@ -1307,7 +1455,7 @@ Wait while the given block evaluates to true (Celerity only).
   
     <tr>
       <th class="signature">
-        <span class='name'><a href="#xml-instance_method" title="#xml">#xml</a></span><span class='args'></span>
+        <span class='name'><a title="#xml" href="#xml-instance_method">#xml</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -1317,7 +1465,7 @@ Wait while the given block evaluates to true (Celerity only).
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a href="../String.html" title="String">String</a></tt>
+                 <tt><a title="String" href="../String.html">String</a></tt>
               </span>
           </p>
         
@@ -1327,8 +1475,8 @@ Wait while the given block evaluates to true (Celerity only).
 </table><div class="included">
   
   <div>
-    <h1>Public Instance Methods Included from <a href="Browser/Container.html" title="Celerity::Container">Celerity::Container</a></h1>
-    <p><span class='name'><a href="Container.html#area-instance_method" title="area">area</a></span>, <span class='name'><a href="Container.html#areas-instance_method" title="areas">areas</a></span>, <span class='name'><a href="Container.html#button-instance_method" title="button">button</a></span>, <span class='name'><a href="Container.html#buttons-instance_method" title="buttons">buttons</a></span>, <span class='name'><a href="Container.html#cell-instance_method" title="cell">cell</a></span>, <span class='name'><a href="Container.html#cells-instance_method" title="cells">cells</a></span>, <span class='name'><a href="Container.html#check_box-instance_method" title="check_box">check_box</a></span>, <span class='name'><a href="Container.html#checkboxes-instance_method" title="checkboxes">checkboxes</a></span>, <span class='name'><a href="Container.html#container-instance_method" title="container">container</a></span>, <span class='name'><a href="Container.html#dd-instance_method" title="dd">dd</a></span>, <span class='name'><a href="Container.html#dds-instance_method" title="dds">dds</a></span>, <span class='name'><a href="Container.html#div-instance_method" title="div">div</a></span>, <span class='name'><a href="Container.html#divs-instance_method" title="divs">divs</a></span>, <span class='name'><a href="Container.html#dl-instance_method" title="dl">dl</a></span>, <span class='name'><a href="Container.html#dls-instance_method" title="dls">dls</a></span>, <span class='name'><a href="Container.html#dt-instance_method" title="dt">dt</a></span>, <span class='name'><a href="Container.html#dts-instance_method" title="dts">dts</a></span>, <span class='name'><a href="Container.html#em-instance_method" title="em">em</a></span>, <span class='name'><a href="Container.html#ems-instance_method" title="ems">ems</a></span>, <span class='name'><a href="Container.html#file_field-instance_method" title="file_field">file_field</a></span>, <span class='name'><a href="Container.html#file_fields-instance_method" title="file_fields">file_fields</a></span>, <span class='name'><a href="Container.html#form-instance_method" title="form">form</a></span>, <span class='name'><a href="Container.html#forms-instance_method" title="forms">forms</a></span>, <span class='name'><a href="Container.html#frame-instance_method" title="frame">frame</a></span>, <span class='name'><a href="Container.html#frames-instance_method" title="frames">frames</a></span>, <span class='name'><a href="Container.html#h1-instance_method" title="h1">h1</a></span>, <span class='name'><a href="Container.html#h1s-instance_method" title="h1s">h1s</a></span>, <span class='name'><a href="Container.html#h2-instance_method" title="h2">h2</a></span>, <span class='name'><a href="Container.html#h2s-instance_method" title="h2s">h2s</a></span>, <span class='name'><a href="Container.html#h3-instance_method" title="h3">h3</a></span>, <span class='name'><a href="Container.html#h3s-instance_method" title="h3s">h3s</a></span>, <span class='name'><a href="Container.html#h4-instance_method" title="h4">h4</a></span>, <span class='name'><a href="Container.html#h4s-instance_method" title="h4s">h4s</a></span>, <span class='name'><a href="Container.html#h5-instance_method" title="h5">h5</a></span>, <span class='name'><a href="Container.html#h5s-instance_method" title="h5s">h5s</a></span>, <span class='name'><a href="Container.html#h6-instance_method" title="h6">h6</a></span>, <span class='name'><a href="Container.html#h6s-instance_method" title="h6s">h6s</a></span>, <span class='name'><a href="Container.html#hidden-instance_method" title="hidden">hidden</a></span>, <span class='name'><a href="Container.html#hiddens-instance_method" title="hiddens">hiddens</a></span>, <span class='name'><a href="Container.html#image-instance_method" title="image">image</a></span>, <span class='name'><a href="Container.html#images-instance_method" title="images">images</a></span>, <span class='name'><a href="Container.html#label-instance_method" title="label">label</a></span>, <span class='name'><a href="Container.html#labels-instance_method" title="labels">labels</a></span>, <span class='name'><a href="Container.html#li-instance_method" title="li">li</a></span>, <span class='name'><a href="Container.html#link-instance_method" title="link">link</a></span>, <span class='name'><a href="Container.html#links-instance_method" title="links">links</a></span>, <span class='name'><a href="Container.html#lis-instance_method" title="lis">lis</a></span>, <span class='name'><a href="Container.html#map-instance_method" title="map">map</a></span>, <span class='name'><a href="Container.html#maps-instance_method" title="maps">maps</a></span>, <span class='name'><a href="Container.html#matches%3F-instance_method" title="matches?">matches?</a></span>, <span class='name'><a href="Container.html#meta-instance_method" title="meta">meta</a></span>, <span class='name'><a href="Container.html#metas-instance_method" title="metas">metas</a></span>, <span class='name'><a href="Container.html#ol-instance_method" title="ol">ol</a></span>, <span class='name'><a href="Container.html#ols-instance_method" title="ols">ols</a></span>, <span class='name'><a href="Container.html#option-instance_method" title="option">option</a></span>, <span class='name'><a href="Container.html#p-instance_method" title="p">p</a></span>, <span class='name'><a href="Container.html#pre-instance_method" title="pre">pre</a></span>, <span class='name'><a href="Container.html#pres-instance_method" title="pres">pres</a></span>, <span class='name'><a href="Container.html#ps-instance_method" title="ps">ps</a></span>, <span class='name'><a href="Container.html#radio-instance_method" title="radio">radio</a></span>, <span class='name'><a href="Container.html#radios-instance_method" title="radios">radios</a></span>, <span class='name'><a href="Container.html#row-instance_method" title="row">row</a></span>, <span class='name'><a href="Container.html#rows-instance_method" title="rows">rows</a></span>, <span class='name'><a href="Container.html#select_list-instance_method" title="select_list">select_list</a></span>, <span class='name'><a href="Container.html#select_lists-instance_method" title="select_lists">select_lists</a></span>, <span class='name'><a href="Container.html#span-instance_method" title="span">span</a></span>, <span class='name'><a href="Container.html#spans-instance_method" title="spans">spans</a></span>, <span class='name'><a href="Container.html#strong-instance_method" title="strong">strong</a></span>, <span class='name'><a href="Container.html#strongs-instance_method" title="strongs">strongs</a></span>, <span class='name'><a href="Container.html#table-instance_method" title="table">table</a></span>, <span class='name'><a href="Container.html#tables-instance_method" title="tables">tables</a></span>, <span class='name'><a href="Container.html#tbodies-instance_method" title="tbodies">tbodies</a></span>, <span class='name'><a href="Container.html#tbody-instance_method" title="tbody">tbody</a></span>, <span class='name'><a href="Container.html#text_field-instance_method" title="text_field">text_field</a></span>, <span class='name'><a href="Container.html#text_fields-instance_method" title="text_fields">text_fields</a></span>, <span class='name'><a href="Container.html#tfoot-instance_method" title="tfoot">tfoot</a></span>, <span class='name'><a href="Container.html#tfoots-instance_method" title="tfoots">tfoots</a></span>, <span class='name'><a href="Container.html#th-instance_method" title="th">th</a></span>, <span class='name'><a href="Container.html#thead-instance_method" title="thead">thead</a></span>, <span class='name'><a href="Container.html#theads-instance_method" title="theads">theads</a></span>, <span class='name'><a href="Container.html#ths-instance_method" title="ths">ths</a></span>, <span class='name'><a href="Container.html#ul-instance_method" title="ul">ul</a></span>, <span class='name'><a href="Container.html#uls-instance_method" title="uls">uls</a></span>, <span class='name'><a href="Container.html#update_page-instance_method" title="update_page">update_page</a></span></p>
+    <h1>Public Instance Methods Included from <a title="Celerity::Container" href="Browser/Container.html">Celerity::Container</a></h1>
+    <p><span class='name'><a title="area" href="Container.html#area-instance_method">area</a></span>, <span class='name'><a title="areas" href="Container.html#areas-instance_method">areas</a></span>, <span class='name'><a title="button" href="Container.html#button-instance_method">button</a></span>, <span class='name'><a title="buttons" href="Container.html#buttons-instance_method">buttons</a></span>, <span class='name'><a title="cell" href="Container.html#cell-instance_method">cell</a></span>, <span class='name'><a title="cells" href="Container.html#cells-instance_method">cells</a></span>, <span class='name'><a title="check_box" href="Container.html#check_box-instance_method">check_box</a></span>, <span class='name'><a title="checkboxes" href="Container.html#checkboxes-instance_method">checkboxes</a></span>, <span class='name'><a title="container" href="Container.html#container-instance_method">container</a></span>, <span class='name'><a title="dd" href="Container.html#dd-instance_method">dd</a></span>, <span class='name'><a title="dds" href="Container.html#dds-instance_method">dds</a></span>, <span class='name'><a title="div" href="Container.html#div-instance_method">div</a></span>, <span class='name'><a title="divs" href="Container.html#divs-instance_method">divs</a></span>, <span class='name'><a title="dl" href="Container.html#dl-instance_method">dl</a></span>, <span class='name'><a title="dls" href="Container.html#dls-instance_method">dls</a></span>, <span class='name'><a title="dt" href="Container.html#dt-instance_method">dt</a></span>, <span class='name'><a title="dts" href="Container.html#dts-instance_method">dts</a></span>, <span class='name'><a title="em" href="Container.html#em-instance_method">em</a></span>, <span class='name'><a title="ems" href="Container.html#ems-instance_method">ems</a></span>, <span class='name'><a title="file_field" href="Container.html#file_field-instance_method">file_field</a></span>, <span class='name'><a title="file_fields" href="Container.html#file_fields-instance_method">file_fields</a></span>, <span class='name'><a title="form" href="Container.html#form-instance_method">form</a></span>, <span class='name'><a title="forms" href="Container.html#forms-instance_method">forms</a></span>, <span class='name'><a title="frame" href="Container.html#frame-instance_method">frame</a></span>, <span class='name'><a title="frames" href="Container.html#frames-instance_method">frames</a></span>, <span class='name'><a title="h1" href="Container.html#h1-instance_method">h1</a></span>, <span class='name'><a title="h1s" href="Container.html#h1s-instance_method">h1s</a></span>, <span class='name'><a title="h2" href="Container.html#h2-instance_method">h2</a></span>, <span class='name'><a title="h2s" href="Container.html#h2s-instance_method">h2s</a></span>, <span class='name'><a title="h3" href="Container.html#h3-instance_method">h3</a></span>, <span class='name'><a title="h3s" href="Container.html#h3s-instance_method">h3s</a></span>, <span class='name'><a title="h4" href="Container.html#h4-instance_method">h4</a></span>, <span class='name'><a title="h4s" href="Container.html#h4s-instance_method">h4s</a></span>, <span class='name'><a title="h5" href="Container.html#h5-instance_method">h5</a></span>, <span class='name'><a title="h5s" href="Container.html#h5s-instance_method">h5s</a></span>, <span class='name'><a title="h6" href="Container.html#h6-instance_method">h6</a></span>, <span class='name'><a title="h6s" href="Container.html#h6s-instance_method">h6s</a></span>, <span class='name'><a title="hidden" href="Container.html#hidden-instance_method">hidden</a></span>, <span class='name'><a title="hiddens" href="Container.html#hiddens-instance_method">hiddens</a></span>, <span class='name'><a title="image" href="Container.html#image-instance_method">image</a></span>, <span class='name'><a title="images" href="Container.html#images-instance_method">images</a></span>, <span class='name'><a title="label" href="Container.html#label-instance_method">label</a></span>, <span class='name'><a title="labels" href="Container.html#labels-instance_method">labels</a></span>, <span class='name'><a title="li" href="Container.html#li-instance_method">li</a></span>, <span class='name'><a title="link" href="Container.html#link-instance_method">link</a></span>, <span class='name'><a title="links" href="Container.html#links-instance_method">links</a></span>, <span class='name'><a title="lis" href="Container.html#lis-instance_method">lis</a></span>, <span class='name'><a title="map" href="Container.html#map-instance_method">map</a></span>, <span class='name'><a title="maps" href="Container.html#maps-instance_method">maps</a></span>, <span class='name'><a title="meta" href="Container.html#meta-instance_method">meta</a></span>, <span class='name'><a title="metas" href="Container.html#metas-instance_method">metas</a></span>, <span class='name'><a title="ol" href="Container.html#ol-instance_method">ol</a></span>, <span class='name'><a title="ols" href="Container.html#ols-instance_method">ols</a></span>, <span class='name'><a title="option" href="Container.html#option-instance_method">option</a></span>, <span class='name'><a title="p" href="Container.html#p-instance_method">p</a></span>, <span class='name'><a title="pre" href="Container.html#pre-instance_method">pre</a></span>, <span class='name'><a title="pres" href="Container.html#pres-instance_method">pres</a></span>, <span class='name'><a title="ps" href="Container.html#ps-instance_method">ps</a></span>, <span class='name'><a title="radio" href="Container.html#radio-instance_method">radio</a></span>, <span class='name'><a title="radios" href="Container.html#radios-instance_method">radios</a></span>, <span class='name'><a title="row" href="Container.html#row-instance_method">row</a></span>, <span class='name'><a title="rows" href="Container.html#rows-instance_method">rows</a></span>, <span class='name'><a title="select_list" href="Container.html#select_list-instance_method">select_list</a></span>, <span class='name'><a title="select_lists" href="Container.html#select_lists-instance_method">select_lists</a></span>, <span class='name'><a title="span" href="Container.html#span-instance_method">span</a></span>, <span class='name'><a title="spans" href="Container.html#spans-instance_method">spans</a></span>, <span class='name'><a title="strong" href="Container.html#strong-instance_method">strong</a></span>, <span class='name'><a title="strongs" href="Container.html#strongs-instance_method">strongs</a></span>, <span class='name'><a title="table" href="Container.html#table-instance_method">table</a></span>, <span class='name'><a title="tables" href="Container.html#tables-instance_method">tables</a></span>, <span class='name'><a title="tbodies" href="Container.html#tbodies-instance_method">tbodies</a></span>, <span class='name'><a title="tbody" href="Container.html#tbody-instance_method">tbody</a></span>, <span class='name'><a title="text_field" href="Container.html#text_field-instance_method">text_field</a></span>, <span class='name'><a title="text_fields" href="Container.html#text_fields-instance_method">text_fields</a></span>, <span class='name'><a title="tfoot" href="Container.html#tfoot-instance_method">tfoot</a></span>, <span class='name'><a title="tfoots" href="Container.html#tfoots-instance_method">tfoots</a></span>, <span class='name'><a title="th" href="Container.html#th-instance_method">th</a></span>, <span class='name'><a title="thead" href="Container.html#thead-instance_method">thead</a></span>, <span class='name'><a title="theads" href="Container.html#theads-instance_method">theads</a></span>, <span class='name'><a title="ths" href="Container.html#ths-instance_method">ths</a></span>, <span class='name'><a title="ul" href="Container.html#ul-instance_method">ul</a></span>, <span class='name'><a title="uls" href="Container.html#uls-instance_method">uls</a></span>, <span class='name'><a title="update_page" href="Container.html#update_page-instance_method">update_page</a></span></p>
   </div>
   
 </div>
@@ -1632,7 +1780,7 @@ Added for Watir compatibility - not in use by Celerity
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt></span>
+    <span class='return_types'><tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt></span>
     <span class='name'>start</span><span class='args'>(uri)</span>
     <span class='block'></span>
   </tt>
@@ -1656,7 +1804,7 @@ Initialize a browser and go to the given URL
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>uri</span>
         
       </dt>
@@ -1675,7 +1823,7 @@ The URL to go to.
   
     <dt>
       
-        <span class='type'>[<tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -1775,7 +1923,7 @@ The proc to be run (can also be given as a block)
   
     <dt>
       
-        <span class='type'>[<tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt>]</span>
       
       
         <span class='name'>browser</span>
@@ -1821,18 +1969,18 @@ if no Proc or block was given.
           <pre class="lines">
 
 
-490
-491
-492
-493
-494
-495
-496
-497
-498</pre>
+528
+529
+530
+531
+532
+533
+534
+535
+536</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 490</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 528</span>
 
 <span class='def def kw'>def</span> <span class='add_checker identifier id'>add_checker</span><span class='lparen token'>(</span><span class='checker identifier id'>checker</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='if if kw'>if</span> <span class='block_given? fid id'>block_given?</span>
@@ -1879,7 +2027,7 @@ Add a cookie with the given parameters (Celerity only)
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>domain</span>
         
       </dt>
@@ -1890,7 +2038,7 @@ Add a cookie with the given parameters (Celerity only)
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>name</span>
         
       </dt>
@@ -1901,7 +2049,7 @@ Add a cookie with the given parameters (Celerity only)
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>value</span>
         
       </dt>
@@ -1929,7 +2077,7 @@ Add a cookie with the given parameters (Celerity only)
               <tt>&quot;/&quot;</tt>
             
           </td>
-          <td class="type">[<tt><a href="../String.html" title="String">String</a></tt>]</td>
+          <td class="type">[<tt><a title="String" href="../String.html">String</a></tt>]</td>
           <td class="desc"><p>
 A path
 </p>
@@ -1978,19 +2126,19 @@ A max age
           <pre class="lines">
 
 
-317
-318
-319
-320
-321
-322
-323
-324
-325
-326</pre>
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 317</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 336</span>
 
 <span class='def def kw'>def</span> <span class='add_cookie identifier id'>add_cookie</span><span class='lparen token'>(</span><span class='domain identifier id'>domain</span><span class='comma token'>,</span> <span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='semicolon token'>;</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='path identifier id'>path</span>    <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:path</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='string val'>&quot;/&quot;</span>
@@ -2071,17 +2219,15 @@ One of the above symbols.
           <pre class="lines">
 
 
-477
-478
-479
-480</pre>
+498
+499
+500</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 477</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 498</span>
 
 <span class='def def kw'>def</span> <span class='add_listener identifier id'>add_listener</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@listener ivar id'>@listener</span> <span class='opasgn op'>||=</span> <span class='Celerity constant id'>Celerity</span><span class='colon2 op'>::</span><span class='Listener constant id'>Listener</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@webclient ivar id'>@webclient</span><span class='rparen token'>)</span>
-  <span class='@listener ivar id'>@listener</span><span class='dot token'>.</span><span class='add_listener identifier id'>add_listener</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='listener identifier id'>listener</span><span class='dot token'>.</span><span class='add_listener identifier id'>add_listener</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -2124,7 +2270,7 @@ Check that we have a @page object.
   
     <dt>
       
-        <span class='type'>[<tt><a href="Exception/UnknownObjectException.html" title="Celerity::Exception::UnknownObjectException">Celerity::Exception::UnknownObjectException</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Exception::UnknownObjectException" href="Exception/UnknownObjectException.html">Celerity::Exception::UnknownObjectException</a></tt>]</span>
       
       
       
@@ -2148,12 +2294,12 @@ if no page is loaded.
           <pre class="lines">
 
 
-569
-570
-571</pre>
+670
+671
+672</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 569</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 670</span>
 
 <span class='def def kw'>def</span> <span class='assert_exists identifier id'>assert_exists</span>
   <span class='raise identifier id'>raise</span> <span class='UnknownObjectException constant id'>UnknownObjectException</span><span class='comma token'>,</span> <span class='string val'>&quot;no page loaded&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='exist? fid id'>exist?</span>
@@ -2202,7 +2348,7 @@ switch it off temporarily.
   
     <dt>
       
-        <span class='type'>[<tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt>]</span>
       
       
         <span class='name'>browser</span>
@@ -2239,15 +2385,15 @@ The current browser object.
           <pre class="lines">
 
 
-432
-433
-434
-435
-436
-437</pre>
+453
+454
+455
+456
+457
+458</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 432</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 453</span>
 
 <span class='def def kw'>def</span> <span class='asynchronized identifier id'>asynchronized</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='old_controller identifier id'>old_controller</span> <span class='assign token'>=</span> <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='ajaxController identifier id'>ajaxController</span>
@@ -2272,7 +2418,7 @@ The current browser object.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>back</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -2297,7 +2443,7 @@ functionality, so we only have 1 history item :)
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>, <tt>nil</tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>, <tt>nil</tt>]</span>
       
       
         <span class='name'></span>
@@ -2323,13 +2469,13 @@ The url of the resulting page, or nil if none was stored.
           <pre class="lines">
 
 
-257
-258
-259
-260</pre>
+268
+269
+270
+271</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 257</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 268</span>
 
 <span class='def def kw'>def</span> <span class='back identifier id'>back</span>
   <span class='comment val'># TODO: this is naive, need capability from HtmlUnit</span>
@@ -2389,6 +2535,54 @@ Added for Watir compatibility - not in use by Celerity
   
     <div class="method">
       <div class="method_header">
+  <h3>clear_cache</h3>
+</div><div id="clear_cache-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>clear_cache</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Clears the cache of &quot;compiled JavaScript files and parsed CSS
+snippets&quot;
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+303
+304
+305</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 303</span>
+
+<span class='def def kw'>def</span> <span class='clear_cache identifier id'>clear_cache</span>
+  <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='cache identifier id'>cache</span><span class='dot token'>.</span><span class='clear identifier id'>clear</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
   <h3>clear_cookies</h3>
 </div><div id="clear_cookies-instance_method" class="section method">
   <div class="details_title">
@@ -2415,12 +2609,12 @@ Clears all cookies. (Celerity only)
           <pre class="lines">
 
 
-284
-285
-286</pre>
+295
+296
+297</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 284</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 295</span>
 
 <span class='def def kw'>def</span> <span class='clear_cookies identifier id'>clear_cookies</span>
   <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='getCookieManager identifier id'>getCookieManager</span><span class='dot token'>.</span><span class='clearCookies identifier id'>clearCookies</span>
@@ -2462,17 +2656,99 @@ Unsets the current page / closes all windows
           <pre class="lines">
 
 
-117
-118
-119
-120</pre>
+120
+121
+122
+123</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 117</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 120</span>
 
 <span class='def def kw'>def</span> <span class='close identifier id'>close</span>
   <span class='@page ivar id'>@page</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
   <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='closeAllWindows identifier id'>closeAllWindows</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>confirm</h3>
+</div><div id="confirm-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>confirm</span><span class='args'>(bool, &amp;block)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Specify a boolean value to click either &#8216;OK&#8217; or
+&#8216;Cancel&#8217; in any confirm dialogs that might show up during the
+duration of the given block.
+</p>
+<p>
+(Celerity only)
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+    
+      <dt>
+        <span class='type'>[<tt>Boolean</tt>]</span>
+        <span class='name'>bool</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+true to click &#8216;OK&#8217;, false to click &#8216;cancel&#8217;
+</p>
+</span>
+      </dd>
+    
+  
+  </dl>
+</div>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+512
+513
+514
+515
+516
+517
+518</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 512</span>
+
+<span class='def def kw'>def</span> <span class='confirm identifier id'>confirm</span><span class='lparen token'>(</span><span class='bool identifier id'>bool</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='blk identifier id'>blk</span> <span class='assign token'>=</span> <span class='lambda identifier id'>lambda</span> <span class='lbrace token'>{</span> <span class='bool identifier id'>bool</span> <span class='rbrace token'>}</span>
+
+  <span class='listener identifier id'>listener</span><span class='dot token'>.</span><span class='add_listener identifier id'>add_listener</span><span class='lparen token'>(</span><span class='symbol val'>:confirm</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  <span class='yield yield kw'>yield</span>
+  <span class='listener identifier id'>listener</span><span class='dot token'>.</span><span class='remove_listener identifier id'>remove_listener</span><span class='lparen token'>(</span><span class='symbol val'>:confirm</span><span class='comma token'>,</span> <span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -2510,7 +2786,7 @@ Check if the current page contains the given text.
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>, <tt>Regexp</tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>, <tt>Regexp</tt>]</span>
         <span class='name'>expected_text</span>
         
       </dt>
@@ -2572,13 +2848,13 @@ The index of the matched text, or nil if it isn&#8217;t found.
           <pre class="lines">
 
 
-212
-213
-214
-215</pre>
+223
+224
+225
+226</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 212</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 223</span>
 
 <span class='def def kw'>def</span> <span class='contains_text identifier id'>contains_text</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
   <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='unless unless_mod kw'>unless</span> <span class='exist? fid id'>exist?</span>
@@ -2601,7 +2877,7 @@ The index of the matched text, or nil if it isn&#8217;t found.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>content_type</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -2620,7 +2896,7 @@ The index of the matched text, or nil if it isn&#8217;t found.
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -2646,18 +2922,18 @@ content-type as in &#8216;text/html&#8217;
           <pre class="lines">
 
 
-188
-189
-190
-191
-192</pre>
+199
+200
+201
+202
+203</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 188</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 199</span>
 
 <span class='def def kw'>def</span> <span class='content_type identifier id'>content_type</span>
   <span class='return return kw'>return</span> <span class='string val'>''</span> <span class='unless unless_mod kw'>unless</span> <span class='@page ivar id'>@page</span>
-  
+
   <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getContentType identifier id'>getContentType</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2724,28 +3000,28 @@ Get the cookies for this session. (Celerity only)
           <pre class="lines">
 
 
-294
-295
-296
-297
-298
-299
-300
-301
-302
-303</pre>
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 294</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 313</span>
 
 <span class='def def kw'>def</span> <span class='cookies identifier id'>cookies</span>
   <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='Hash constant id'>Hash</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='hash identifier id'>hash</span><span class='comma token'>,</span> <span class='key identifier id'>key</span><span class='bitor op'>|</span> <span class='hash identifier id'>hash</span><span class='lbrack token'>[</span><span class='key identifier id'>key</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span> <span class='rbrace token'>}</span>
-  
+
   <span class='cookies identifier id'>cookies</span> <span class='assign token'>=</span> <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='getCookieManager identifier id'>getCookieManager</span><span class='dot token'>.</span><span class='getCookies identifier id'>getCookies</span>
   <span class='cookies identifier id'>cookies</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='cookie identifier id'>cookie</span><span class='bitor op'>|</span>
     <span class='result identifier id'>result</span><span class='lbrack token'>[</span><span class='cookie identifier id'>cookie</span><span class='dot token'>.</span><span class='getDomain identifier id'>getDomain</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='cookie identifier id'>cookie</span><span class='dot token'>.</span><span class='getName identifier id'>getName</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='cookie identifier id'>cookie</span><span class='dot token'>.</span><span class='getValue identifier id'>getValue</span>
   <span class='end end kw'>end</span>
-  
+
   <span class='result identifier id'>result</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -2799,21 +3075,76 @@ Example:
           <pre class="lines">
 
 
-106
-107
-108
 109
 110
-111</pre>
+111
+112
+113
+114</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 106</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 109</span>
 
 <span class='def def kw'>def</span> <span class='credentials= identifier id'>credentials=</span><span class='lparen token'>(</span><span class='string identifier id'>string</span><span class='rparen token'>)</span>
   <span class='user identifier id'>user</span><span class='comma token'>,</span> <span class='pass identifier id'>pass</span> <span class='assign token'>=</span> <span class='string identifier id'>string</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;:&quot;</span><span class='rparen token'>)</span>
   <span class='dcp identifier id'>dcp</span> <span class='assign token'>=</span> <span class='HtmlUnit constant id'>HtmlUnit</span><span class='colon2 op'>::</span><span class='DefaultCredentialsProvider constant id'>DefaultCredentialsProvider</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
   <span class='dcp identifier id'>dcp</span><span class='dot token'>.</span><span class='addCredentials identifier id'>addCredentials</span><span class='lparen token'>(</span><span class='user identifier id'>user</span><span class='comma token'>,</span> <span class='pass identifier id'>pass</span><span class='rparen token'>)</span>
   <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='setCredentialsProvider identifier id'>setCredentialsProvider</span><span class='lparen token'>(</span><span class='dcp identifier id'>dcp</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>css</h3>
+</div><div id="css-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>css</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Turn on/off CSS loading
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+618
+619
+620</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 618</span>
+
+<span class='def def kw'>def</span> <span class='css identifier id'>css</span>
+  <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='cssEnabled identifier id'>cssEnabled</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -2866,7 +3197,7 @@ start or stop
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>name</span>
         
           <em class="default">(defaults to: <tt>nil</tt>)</em>
@@ -2891,21 +3222,21 @@ required if bool is true
           <pre class="lines">
 
 
-447
-448
-449
-450
-451
-452
-453
-454
-455
-456
-457
-458</pre>
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 447</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 468</span>
 
 <span class='def def kw'>def</span> <span class='debug_web_connection identifier id'>debug_web_connection</span><span class='lparen token'>(</span><span class='bool identifier id'>bool</span><span class='comma token'>,</span> <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
   <span class='if if kw'>if</span> <span class='bool identifier id'>bool</span>
@@ -2978,12 +3309,12 @@ The Proc to disable.
           <pre class="lines">
 
 
-505
-506
-507</pre>
+543
+544
+545</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 505</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 543</span>
 
 <span class='def def kw'>def</span> <span class='disable_checker identifier id'>disable_checker</span><span class='lparen token'>(</span><span class='checker identifier id'>checker</span><span class='rparen token'>)</span>
   <span class='@error_checkers ivar id'>@error_checkers</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='checker identifier id'>checker</span><span class='rparen token'>)</span>
@@ -3050,12 +3381,12 @@ the underlying HtmlUnit document.
           <pre class="lines">
 
 
-248
-249
-250</pre>
+259
+260
+261</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 248</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 259</span>
 
 <span class='def def kw'>def</span> <span class='document identifier id'>document</span>
   <span class='@object ivar id'>@object</span>
@@ -3077,7 +3408,7 @@ the underlying HtmlUnit document.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="Element.html" title="Celerity::Element">Celerity::Element</a></tt></span>
+    <span class='return_types'><tt><a title="Celerity::Element" href="Element.html">Celerity::Element</a></tt></span>
     <span class='name'>element_by_xpath</span><span class='args'>(xpath)</span>
     <span class='block'></span>
   </tt>
@@ -3096,7 +3427,7 @@ Get the first element found matching the given XPath.
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>xpath</span>
         
       </dt>
@@ -3112,7 +3443,7 @@ Get the first element found matching the given XPath.
   
     <dt>
       
-        <span class='type'>[<tt><a href="Element.html" title="Celerity::Element">Celerity::Element</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Element" href="Element.html">Celerity::Element</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -3138,14 +3469,14 @@ An element subclass (or Element if none is found)
           <pre class="lines">
 
 
-224
-225
-226
-227
-228</pre>
+235
+236
+237
+238
+239</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 224</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 235</span>
 
 <span class='def def kw'>def</span> <span class='element_by_xpath identifier id'>element_by_xpath</span><span class='lparen token'>(</span><span class='xpath identifier id'>xpath</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -3169,7 +3500,7 @@ An element subclass (or Element if none is found)
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt>Array&lt;<a href="Element.html" title="Celerity::Element">Celerity::Element</a>></tt></span>
+    <span class='return_types'><tt>Array&lt;<a title="Celerity::Element" href="Element.html">Celerity::Element</a>></tt></span>
     <span class='name'>elements_by_xpath</span><span class='args'>(xpath)</span>
     <span class='block'></span>
   </tt>
@@ -3188,7 +3519,7 @@ Get all the elements matching the given XPath.
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>xpath</span>
         
       </dt>
@@ -3204,7 +3535,7 @@ Get all the elements matching the given XPath.
   
     <dt>
       
-        <span class='type'>[<tt>Array&lt;<a href="Element.html" title="Celerity::Element">Celerity::Element</a>></tt>]</span>
+        <span class='type'>[<tt>Array&lt;<a title="Celerity::Element" href="Element.html">Celerity::Element</a>></tt>]</span>
       
       
         <span class='name'></span>
@@ -3230,15 +3561,15 @@ array of elements
           <pre class="lines">
 
 
-237
-238
-239
-240
-241
-242</pre>
+248
+249
+250
+251
+252
+253</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 237</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 248</span>
 
 <span class='def def kw'>def</span> <span class='elements_by_xpath identifier id'>elements_by_xpath</span><span class='lparen token'>(</span><span class='xpath identifier id'>xpath</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -3313,13 +3644,13 @@ The resulting Object
           <pre class="lines">
 
 
-351
-352
-353
-354</pre>
+370
+371
+372
+373</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 351</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 370</span>
 
 <span class='def def kw'>def</span> <span class='execute_script identifier id'>execute_script</span><span class='lparen token'>(</span><span class='source identifier id'>source</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -3394,12 +3725,12 @@ Checks if we have a page currently loaded.
           <pre class="lines">
 
 
-534
-535
-536</pre>
+579
+580
+581</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 534</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 579</span>
 
 <span class='def def kw'>def</span> <span class='exist? fid id'>exist?</span>
   <span class='notop op'>!</span><span class='notop op'>!</span><span class='@page ivar id'>@page</span>
@@ -3441,16 +3772,16 @@ Returns the element that currently has the focus (Celerity only)
           <pre class="lines">
 
 
-577
-578
-579</pre>
+678
+679
+680</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 577</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 678</span>
 
 <span class='def def kw'>def</span> <span class='focused_element identifier id'>focused_element</span>
   <span class='element_from_dom_node identifier id'>element_from_dom_node</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='dot token'>.</span><span class='getFocusedElement identifier id'>getFocusedElement</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>    
+<span class='end end kw'>end</span>
 </pre>
         </td>
       </tr>
@@ -3517,7 +3848,7 @@ current page Not loaded by default - need to require
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>goto</span><span class='args'>(uri)</span>
     <span class='block'></span>
   </tt>
@@ -3536,7 +3867,7 @@ Goto the given URL
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>uri</span>
         
       </dt>
@@ -3555,7 +3886,7 @@ The url.
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -3581,7 +3912,6 @@ The url.
           <pre class="lines">
 
 
-86
 87
 88
 89
@@ -3590,10 +3920,13 @@ The url.
 92
 93
 94
-95</pre>
+95
+96
+97
+98</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 86</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 87</span>
 
 <span class='def def kw'>def</span> <span class='goto identifier id'>goto</span><span class='lparen token'>(</span><span class='uri identifier id'>uri</span><span class='rparen token'>)</span>
   <span class='uri identifier id'>uri</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;http://#{uri}&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='uri identifier id'>uri</span> <span class='match op'>=~</span> <span class='regexp val'>%r{://}</span>
@@ -3601,7 +3934,9 @@ The url.
   <span class='request identifier id'>request</span> <span class='assign token'>=</span> <span class='HtmlUnit constant id'>HtmlUnit</span><span class='colon2 op'>::</span><span class='WebRequestSettings constant id'>WebRequestSettings</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='colon3 op'>::</span><span class='Java constant id'>Java</span><span class='colon2 op'>::</span><span class='JavaNet constant id'>JavaNet</span><span class='colon2 op'>::</span><span class='URL constant id'>URL</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='uri identifier id'>uri</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
   <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='setCharset identifier id'>setCharset</span><span class='lparen token'>(</span><span class='@charset ivar id'>@charset</span><span class='rparen token'>)</span>
 
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='getPage identifier id'>getPage</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='do do kw'>do</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='getPage identifier id'>getPage</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
 
   <span class='url identifier id'>url</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
@@ -3622,7 +3957,7 @@ The url.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>html</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -3641,7 +3976,7 @@ The url.
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -3667,12 +4002,12 @@ the HTML content of the current page
           <pre class="lines">
 
 
-143
-144
-145</pre>
+146
+147
+148</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 143</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 146</span>
 
 <span class='def def kw'>def</span> <span class='html identifier id'>html</span>
   <span class='@page ivar id'>@page</span> <span class='question op'>?</span> <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getContentAsString identifier id'>getContentAsString</span> <span class='colon op'>:</span> <span class='string val'>''</span>
@@ -3711,17 +4046,13 @@ the HTML content of the current page
 
 29
 30
-31
-32
-33</pre>
+31</pre>
         </td>
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 29</span>
 
 <span class='def def kw'>def</span> <span class='inspect identifier id'>inspect</span>
-  <span class='vars identifier id'>vars</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='instance_variables identifier id'>instance_variables</span> <span class='minus op'>-</span> <span class='dstring node'>%w[@webclient @browser @object]</span><span class='rparen token'>)</span>
-  <span class='vars identifier id'>vars</span> <span class='assign token'>=</span> <span class='vars identifier id'>vars</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='var identifier id'>var</span><span class='bitor op'>|</span> <span class='dstring node'>&quot;#{var}=#{instance_variable_get(var).inspect}&quot;</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot; &quot;</span><span class='rparen token'>)</span>
-  <span class='string val'>'#&lt;%s:0x%s %s&gt;'</span> <span class='mod op'>%</span> <span class='lbrack token'>[</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='hash identifier id'>hash</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='lparen token'>(</span><span class='integer val'>16</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='vars identifier id'>vars</span><span class='rbrack token'>]</span>
+  <span class='short_inspect identifier id'>short_inspect</span> <span class='symbol val'>:exclude</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='dstring node'>%w[@webclient @browser @object @options]</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -3785,19 +4116,74 @@ page contents as an IO, returns nil if no page is loaded.
           <pre class="lines">
 
 
-198
-199
-200
-201
-202</pre>
+209
+210
+211
+212
+213</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 198</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 209</span>
 
 <span class='def def kw'>def</span> <span class='io identifier id'>io</span>
   <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='unless unless_mod kw'>unless</span> <span class='@page ivar id'>@page</span>
-  
+
   <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getContentAsStream identifier id'>getContentAsStream</span><span class='dot token'>.</span><span class='to_io identifier id'>to_io</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>javascript_exceptions</h3>
+</div><div id="javascript_exceptions-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>javascript_exceptions</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Turn on/off javascript exceptions
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+590
+591
+592</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 590</span>
+
+<span class='def def kw'>def</span> <span class='javascript_exceptions identifier id'>javascript_exceptions</span>
+  <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='throwExceptionOnScriptError identifier id'>throwExceptionOnScriptError</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -3824,7 +4210,8 @@ page contents as an IO, returns nil if no page is loaded.
 
 </div><div class="section docstring">
   <p>
-Set Java log level (default is :warning)
+Set Java log level (default is :warning, can be any of :all, :finest,
+:finer, :fine, :config, :info, :warning, :severe, :off)
 </p>
 
 </div><div class="section tags">
@@ -3844,15 +4231,29 @@ Set Java log level (default is :warning)
           <pre class="lines">
 
 
-525
-526
-527</pre>
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 525</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 553</span>
 
 <span class='def def kw'>def</span> <span class='log_level= identifier id'>log_level=</span><span class='lparen token'>(</span><span class='level identifier id'>level</span><span class='rparen token'>)</span>
-  <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='logging identifier id'>logging</span><span class='dot token'>.</span><span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='getLogger identifier id'>getLogger</span><span class='lparen token'>(</span><span class='string val'>'com.gargoylesoftware.htmlunit'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='level identifier id'>level</span> <span class='assign token'>=</span> <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='logging identifier id'>logging</span><span class='dot token'>.</span><span class='Level constant id'>Level</span><span class='dot token'>.</span><span class='const_get identifier id'>const_get</span><span class='lparen token'>(</span><span class='level identifier id'>level</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='upcase identifier id'>upcase</span><span class='rparen token'>)</span>
+  <span class='log_level identifier id'>log_level</span> <span class='assign token'>=</span> <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='logging identifier id'>logging</span><span class='dot token'>.</span><span class='Level constant id'>Level</span><span class='dot token'>.</span><span class='const_get identifier id'>const_get</span><span class='lparen token'>(</span><span class='level identifier id'>level</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='upcase identifier id'>upcase</span><span class='rparen token'>)</span>
+
+  <span class='lbrack token'>[</span> <span class='logger_for identifier id'>logger_for</span><span class='lparen token'>(</span><span class='string val'>'com.gargoylesoftware.htmlunit'</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+    <span class='logger_for identifier id'>logger_for</span><span class='lparen token'>(</span><span class='string val'>&quot;com.gargoylesoftware.htmlunit.html&quot;</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+    <span class='logger_for identifier id'>logger_for</span><span class='lparen token'>(</span><span class='string val'>&quot;org.apache.commons.httpclient&quot;</span><span class='rparen token'>)</span>
+  <span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='logger identifier id'>logger</span><span class='bitor op'>|</span> <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='level identifier id'>level</span> <span class='assign token'>=</span> <span class='log_level identifier id'>log_level</span> <span class='rbrace token'>}</span>
+
+  <span class='level identifier id'>level</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -3899,24 +4300,24 @@ Sets the current page object for the browser
           <pre class="lines">
 
 
-546
-547
-548
-549
-550
-551
-552
-553
-554
-555
-556
-557
-558
-559
-560</pre>
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 546</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 647</span>
 
 <span class='def def kw'>def</span> <span class='page= identifier id'>page=</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
   <span class='@last_url ivar id'>@last_url</span> <span class='assign token'>=</span> <span class='url identifier id'>url</span><span class='lparen token'>(</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='exist? fid id'>exist?</span>
@@ -3970,13 +4371,13 @@ Refresh the current page
           <pre class="lines">
 
 
-275
-276
-277
-278</pre>
+286
+287
+288
+289</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 275</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 286</span>
 
 <span class='def def kw'>def</span> <span class='refresh identifier id'>refresh</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -4018,7 +4419,7 @@ Remove the cookie with the given domain and name (Celerity only)
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>domain</span>
         
       </dt>
@@ -4029,7 +4430,7 @@ Remove the cookie with the given domain and name (Celerity only)
   
     
       <dt>
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
         <span class='name'>name</span>
         
       </dt>
@@ -4049,28 +4450,28 @@ Remove the cookie with the given domain and name (Celerity only)
           <pre class="lines">
 
 
-335
-336
-337
-338
-339
-340
-341
-342
-343
-344</pre>
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 335</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 354</span>
 
 <span class='def def kw'>def</span> <span class='remove_cookie identifier id'>remove_cookie</span><span class='lparen token'>(</span><span class='domain identifier id'>domain</span><span class='comma token'>,</span> <span class='name identifier id'>name</span><span class='rparen token'>)</span>
   <span class='cm identifier id'>cm</span> <span class='assign token'>=</span> <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='getCookieManager identifier id'>getCookieManager</span>
   <span class='cookie identifier id'>cookie</span> <span class='assign token'>=</span> <span class='cm identifier id'>cm</span><span class='dot token'>.</span><span class='getCookies identifier id'>getCookies</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='c identifier id'>c</span><span class='bitor op'>|</span> <span class='c identifier id'>c</span><span class='dot token'>.</span><span class='getDomain identifier id'>getDomain</span> <span class='eq op'>==</span> <span class='domain identifier id'>domain</span> <span class='andop op'>&amp;&amp;</span> <span class='c identifier id'>c</span><span class='dot token'>.</span><span class='getName identifier id'>getName</span> <span class='eq op'>==</span> <span class='name identifier id'>name</span> <span class='rbrace token'>}</span>
-  
+
   <span class='if if kw'>if</span> <span class='cookie identifier id'>cookie</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
     <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;no cookie with domain #{domain.inspect} and name #{name.inspect}&quot;</span>
   <span class='end end kw'>end</span>
-  
+
   <span class='cm identifier id'>cm</span><span class='dot token'>.</span><span class='removeCookie identifier id'>removeCookie</span><span class='lparen token'>(</span><span class='cookie identifier id'>cookie</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4135,18 +4536,18 @@ response headers as a hash
           <pre class="lines">
 
 
-178
-179
-180
 181
-182</pre>
+182
+183
+184
+185</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 178</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 181</span>
 
 <span class='def def kw'>def</span> <span class='response_headers identifier id'>response_headers</span>
   <span class='return return kw'>return</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span> <span class='unless unless_mod kw'>unless</span> <span class='@page ivar id'>@page</span>
-  
+
   <span class='Hash constant id'>Hash</span><span class='lbrack token'>[</span><span class='mult op'>*</span><span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getResponseHeaders identifier id'>getResponseHeaders</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='obj identifier id'>obj</span><span class='bitor op'>|</span> <span class='lbrack token'>[</span><span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span><span class='rbrack token'>]</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -4196,7 +4597,7 @@ NicelyResynchronizingAjaxController to resynchronize ajax calls.
   
     <dt>
       
-        <span class='type'>[<tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt>]</span>
       
       
         <span class='name'>browser</span>
@@ -4233,21 +4634,76 @@ The current browser object.
           <pre class="lines">
 
 
-417
-418
-419
-420
-421
-422</pre>
+437
+438
+439
+440
+441
+442</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 417</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 437</span>
 
 <span class='def def kw'>def</span> <span class='resynchronized identifier id'>resynchronized</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='old_controller identifier id'>old_controller</span> <span class='assign token'>=</span> <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='ajaxController identifier id'>ajaxController</span>
   <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='setAjaxController identifier id'>setAjaxController</span><span class='lparen token'>(</span><span class='colon3 op'>::</span><span class='HtmlUnit constant id'>HtmlUnit</span><span class='colon2 op'>::</span><span class='NicelyResynchronizingAjaxController constant id'>NicelyResynchronizingAjaxController</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='rparen token'>)</span>
   <span class='yield yield kw'>yield</span> <span class='self self kw'>self</span>
   <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='setAjaxController identifier id'>setAjaxController</span><span class='lparen token'>(</span><span class='old_controller identifier id'>old_controller</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>secure_ssl</h3>
+</div><div id="secure_ssl-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>secure_ssl</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Turn on/off secure SSL
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+632
+633
+634</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 632</span>
+
+<span class='def def kw'>def</span> <span class='secure_ssl identifier id'>secure_ssl</span>
+  <span class='notop op'>!</span><span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='useInsecureSSL identifier id'>useInsecureSSL</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -4286,23 +4742,23 @@ experimental - should be removed?
           <pre class="lines">
 
 
-357
-358
-359
-360
-361
-362
-363
-364
-365
-366
-367
-368
-369
-370</pre>
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 357</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 376</span>
 
 <span class='def def kw'>def</span> <span class='send_keys identifier id'>send_keys</span><span class='lparen token'>(</span><span class='keys identifier id'>keys</span><span class='rparen token'>)</span>
   <span class='keys identifier id'>keys</span> <span class='assign token'>=</span> <span class='keys identifier id'>keys</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/\s*/</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/((?:\{[A-Z]+?\})|.)/</span><span class='u identifier id'>u</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span>
@@ -4415,13 +4871,140 @@ Added for Watir compatibility - not in use by Celerity
   
     <div class="method">
       <div class="method_header">
+  <h3>status_code</h3>
+</div><div id="status_code-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'><tt>Fixnum</tt></span>
+    <span class='name'>status_code</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div><div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>Fixnum</tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+status code of the last request
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+191
+192
+193</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 191</span>
+
+<span class='def def kw'>def</span> <span class='status_code identifier id'>status_code</span>
+  <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getStatusCode identifier id'>getStatusCode</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>status_code_exceptions</h3>
+</div><div id="status_code_exceptions-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>status_code_exceptions</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Turn on/off status code exceptions
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+604
+605
+606</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 604</span>
+
+<span class='def def kw'>def</span> <span class='status_code_exceptions identifier id'>status_code_exceptions</span>
+  <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='throwExceptionOnFailingStatusCode identifier id'>throwExceptionOnFailingStatusCode</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
   <h3>text</h3>
 </div><div id="text-instance_method" class="section method">
   <div class="details_title">
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>text</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -4440,7 +5023,7 @@ Added for Watir compatibility - not in use by Celerity
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -4466,9 +5049,6 @@ a text representation of the current page
           <pre class="lines">
 
 
-161
-162
-163
 164
 165
 166
@@ -4477,10 +5057,13 @@ a text representation of the current page
 169
 170
 171
-172</pre>
+172
+173
+174
+175</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 161</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 164</span>
 
 <span class='def def kw'>def</span> <span class='text identifier id'>text</span>
   <span class='return return kw'>return</span> <span class='string val'>''</span> <span class='unless unless_mod kw'>unless</span> <span class='@page ivar id'>@page</span>
@@ -4511,7 +5094,7 @@ a text representation of the current page
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>title</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -4530,7 +5113,7 @@ a text representation of the current page
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -4556,12 +5139,12 @@ the title of the current page
           <pre class="lines">
 
 
-135
-136
-137</pre>
+138
+139
+140</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 135</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 138</span>
 
 <span class='def def kw'>def</span> <span class='title identifier id'>title</span>
   <span class='@page ivar id'>@page</span> <span class='question op'>?</span> <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='getTitleText identifier id'>getTitleText</span> <span class='colon op'>:</span> <span class='string val'>''</span>
@@ -4583,7 +5166,7 @@ the title of the current page
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>url</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -4602,7 +5185,7 @@ the title of the current page
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -4628,13 +5211,13 @@ the URL of the current page
           <pre class="lines">
 
 
-126
-127
-128
-129</pre>
+129
+130
+131
+132</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 126</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 129</span>
 
 <span class='def def kw'>def</span> <span class='url identifier id'>url</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -4677,17 +5260,17 @@ Wait for javascript jobs to finish
           <pre class="lines">
 
 
-266
-267
-268
-269</pre>
+277
+278
+279
+280</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 266</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 277</span>
 
 <span class='def def kw'>def</span> <span class='wait identifier id'>wait</span>
   <span class='assert_exists identifier id'>assert_exists</span>
-  <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='getEnclosingWindow identifier id'>getEnclosingWindow</span><span class='dot token'>.</span><span class='getJobManager identifier id'>getJobManager</span><span class='dot token'>.</span><span class='waitForAllJobsToFinish identifier id'>waitForAllJobsToFinish</span><span class='lparen token'>(</span><span class='integer val'>10000</span><span class='rparen token'>)</span>
+  <span class='@webclient ivar id'>@webclient</span><span class='dot token'>.</span><span class='waitForBackgroundJavaScript identifier id'>waitForBackgroundJavaScript</span><span class='lparen token'>(</span><span class='integer val'>10000</span><span class='rparen token'>)</span><span class='semicolon token'>;</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -4746,7 +5329,7 @@ Number of seconds to wait before timing out (default: 30).
   
     <dt>
       
-        <span class='type'>[<tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt>]</span>
       
       
         <span class='name'>browser</span>
@@ -4768,7 +5351,7 @@ The browser instance.
     <dt></dt>
     <dd>
       <span class='desc'>
-        <tt><a href="#resynchronized-instance_method" title="Celerity::Browser#resynchronized">Celerity::Browser#resynchronized</a></tt>
+        <tt><a title="Celerity::Browser#resynchronized" href="#resynchronized-instance_method">Celerity::Browser#resynchronized</a></tt>
       </span>
     </dd>
   </dl>
@@ -4783,17 +5366,17 @@ The browser instance.
           <pre class="lines">
 
 
-380
-381
-382
-383
-384
-385
-386
-387</pre>
+399
+400
+401
+402
+403
+404
+405
+406</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 380</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 399</span>
 
 <span class='def def kw'>def</span> <span class='wait_until identifier id'>wait_until</span><span class='lparen token'>(</span><span class='timeout identifier id'>timeout</span> <span class='assign token'>=</span> <span class='integer val'>30</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='Timeout constant id'>Timeout</span><span class='dot token'>.</span><span class='timeout identifier id'>timeout</span><span class='lparen token'>(</span><span class='timeout identifier id'>timeout</span><span class='rparen token'>)</span> <span class='do do kw'>do</span>
@@ -4860,7 +5443,7 @@ Number of seconds to wait before timing out (default: 30).
   
     <dt>
       
-        <span class='type'>[<tt><a href="" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
+        <span class='type'>[<tt><a title="Celerity::Browser" href="">Celerity::Browser</a></tt>]</span>
       
       
         <span class='name'>browser</span>
@@ -4882,7 +5465,7 @@ The browser instance.
     <dt></dt>
     <dd>
       <span class='desc'>
-        <tt><a href="#resynchronized-instance_method" title="Celerity::Browser#resynchronized">Celerity::Browser#resynchronized</a></tt>
+        <tt><a title="Celerity::Browser#resynchronized" href="#resynchronized-instance_method">Celerity::Browser#resynchronized</a></tt>
       </span>
     </dd>
   </dl>
@@ -4897,17 +5480,17 @@ The browser instance.
           <pre class="lines">
 
 
-397
-398
-399
-400
-401
-402
-403
-404</pre>
+416
+417
+418
+419
+420
+421
+422
+423</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 397</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 416</span>
 
 <span class='def def kw'>def</span> <span class='wait_while identifier id'>wait_while</span><span class='lparen token'>(</span><span class='timeout identifier id'>timeout</span> <span class='assign token'>=</span> <span class='integer val'>30</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='Timeout constant id'>Timeout</span><span class='dot token'>.</span><span class='timeout identifier id'>timeout</span><span class='lparen token'>(</span><span class='timeout identifier id'>timeout</span><span class='rparen token'>)</span> <span class='do do kw'>do</span>
@@ -4934,7 +5517,7 @@ The browser instance.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="../String.html" title="String">String</a></tt></span>
+    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
     <span class='name'>xml</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -4953,7 +5536,7 @@ The browser instance.
   
     <dt>
       
-        <span class='type'>[<tt><a href="../String.html" title="String">String</a></tt>]</span>
+        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
       
       
         <span class='name'></span>
@@ -4979,14 +5562,14 @@ the XML representation of the DOM
           <pre class="lines">
 
 
-151
-152
-153
 154
-155</pre>
+155
+156
+157
+158</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 151</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/browser.rb', line 154</span>
 
 <span class='def def kw'>def</span> <span class='xml identifier id'>xml</span>
   <span class='return return kw'>return</span> <span class='string val'>''</span> <span class='unless unless_mod kw'>unless</span> <span class='@page ivar id'>@page</span>
