@@ -35,8 +35,6 @@ module Celerity
             raise ArgumentError, "expected an HtmlUnit::Html::HtmlElement subclass, got #{what.inspect}:#{what.class}"
           end
           return what
-        when :id
-          return find_by_id(what)
         when :xpath
           return find_by_xpath(what)
         when :label
@@ -49,7 +47,9 @@ module Celerity
           how = :text
         end
 
-        if @attributes.include?(how = how.to_sym)
+        if how == :id && conditions.size == 1
+          return find_by_id(what)
+        elsif @attributes.include?(how = how.to_sym)
           attributes[how] << what
         elsif how == :index
           index = what.to_i - INDEX_OFFSET

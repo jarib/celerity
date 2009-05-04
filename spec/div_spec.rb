@@ -84,6 +84,11 @@ describe "Div" do
       lambda {@browser.div(:title, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda {@browser.div(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
+    
+    it "should locate take all conditions into account when there are multiple id's" do
+      @browser.goto HTML_DIR + "/multiple_ids.html"
+      @browser.div(:id => "multiple", :class => "bar").class_name.should == "bar"
+    end
   end
 
   describe "#name" do
