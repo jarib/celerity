@@ -106,12 +106,12 @@ module Celerity
       find_by_id obj.getForAttribute
     end
 
-    def elements_by_idents(idents = nil)
-      get_by_idents(:select, idents || @idents)
+    def elements_by_idents(idents = @idents)
+      get_by_idents(:select, idents)
     end
 
-    def element_by_idents(idents = nil)
-      get_by_idents(:find, idents || @idents)
+    def element_by_idents(idents = @idents)
+      get_by_idents(:find, idents)
     end
 
     private

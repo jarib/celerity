@@ -35,7 +35,7 @@ describe "Browser" do
       
       b = Browser.new(:proxy => "localhost:2001")
       b.goto(TEST_HOST)
-      s.stop
+      s.shutdown
 
       received.should be_true
     end
