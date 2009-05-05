@@ -42,3 +42,9 @@ class Java::ComGargoylesoftwareHtmlunitHtml::HtmlPage
     '#<HtmlPage:0x%s(%s)>' % [self.hash.to_s(16), getWebResponse.getRequestUrl.toString]
   end
 end
+
+class Java::ComGargoylesoftwareHtmlunitHtml::HtmlElement
+  def inspect
+    '#<%s:0x%s>' % [self.class.name.split("::").last, self.hash.to_s(16)]
+  end
+end
