@@ -39,6 +39,12 @@ describe "Table" do
       lambda { @browser.table(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
+  
+  describe "#locate" do
+    it "is not nil for existing tables" do
+      @browser.table(:id, 'axis_example').locate.should_not be_nil
+    end
+  end
 
   # Other
   describe "#to_a" do

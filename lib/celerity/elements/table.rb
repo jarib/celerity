@@ -21,6 +21,8 @@ module Celerity
           end
         end
       end
+      
+      @object
     end
     
     #
