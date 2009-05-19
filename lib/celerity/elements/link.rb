@@ -7,12 +7,12 @@ module Celerity
                                     :target, :rel, :rev, :accesskey, :shape,
                                     :coords, :tabindex, :onfocus, :onblur]
     DEFAULT_HOW = :href
-    
+
     #
     # Returns the absolute URL for this link (Celerity-specific)
-    # 
+    #
     # (Watir/IE does this for href(), but we don't want that.)
-    # 
+    #
 
     def absolute_url
       assert_exists
@@ -25,6 +25,6 @@ module Celerity
       href
     end
 
-    
+
   end # Link
 end # Celerity

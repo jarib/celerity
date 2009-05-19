@@ -14,7 +14,7 @@ module Celerity
     #
     # Yields each TableCell in this row to the given block.
     #
-    
+
     def each
       assert_exists
       @cells.each { |cell| yield TableCell.new(self, :object, cell) }
@@ -23,7 +23,7 @@ module Celerity
     #
     # Get the child cell at the given index
     #
-    
+
     def child_cell(index)
       assert_exists
 
@@ -38,7 +38,7 @@ module Celerity
     #
     # Number of cells in this row.
     #
-    
+
     def column_count
       assert_exists
       @cells.length

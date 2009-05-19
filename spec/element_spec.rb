@@ -43,7 +43,7 @@ describe "Element" do
       @browser.div(:id, "onfocus_test").text.should == "changed by onfocus event"
     end
   end
-  
+
   describe "#fire_event" do
     it "should fire the given event" do
       @browser.div(:id, "onfocus_test").text.should be_empty

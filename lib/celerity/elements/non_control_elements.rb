@@ -1,9 +1,9 @@
 module Celerity
-  
+
   #
   # Superclass for for Span, Pre, Div, H1, ...
   #
-  
+
   class NonControlElement < Element
     include Exception
     include ClickableElement
@@ -90,7 +90,7 @@ module Celerity
   class Span < NonControlElement
     TAGS = [ Identifier.new('span') ]
   end
-  
+
   class Strong < NonControlElement
     TAGS = [ Identifier.new('strong') ]
   end

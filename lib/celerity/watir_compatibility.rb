@@ -1,7 +1,7 @@
 module Celerity
   class Browser
     class << self
-      
+
       # Added for Watir compatibility - not in use by Celerity
       attr_accessor :speed, :attach_timeout, :visible
       # Added for Watir compatibility - not in use by Celerity
@@ -78,7 +78,7 @@ module Celerity
     alias_method :dragContentsTo,   :drag_contents_to
     alias_method :getContents,      :value
     alias_method :get_contents,     :value
-    
+
     def requires_typing; end
   end
 end

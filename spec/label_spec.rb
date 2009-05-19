@@ -42,7 +42,7 @@ describe "Label" do
       lambda { @browser.label(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   describe "click" do
     it "fires the onclick event" do
       clicked = nil

@@ -4,7 +4,7 @@ module Celerity
     include ClickableElement
 
     TAGS = [ Identifier.new('img') ]
-    
+
     ATTRIBUTES = BASE_ATTRIBUTES | [:src, :alt, :longdesc, :name, :height, :width, :usemap, :ismap, :align, :border, :hspace, :vspace]
     DEFAULT_HOW = :src
 
@@ -71,6 +71,6 @@ module Celerity
       buffered_image = image_reader.read(0);
       javax.imageio.ImageIO.write(buffered_image, image_reader.getFormatName(), file);
     end
-    
+
   end # Image
 end # Celerity

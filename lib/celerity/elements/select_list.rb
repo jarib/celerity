@@ -6,27 +6,27 @@ module Celerity
     #
     # @return [Array<String>] An array of strings representing the text value of the select list's options.
     #
-    
+
     def options
       assert_exists
       @object.getOptions.map do |e|
         e.asText.empty? ? e.getLabelAttribute : e.asText
       end
     end
-    
+
     #
     # @return [Array<String>] An array of strings representing the text value of the currently selected options.
     #
-    
+
     def selected_options
       assert_exists
       @object.getSelectedOptions.map { |e| e.asText.empty? ? e.getLabelAttribute : e.asText }
     end
-    
+
     #
     # Clear all selected options
     #
-    
+
     def clear
       # assert_exists called by SelectList#type here
       # TODO: should update page for each option changed?
@@ -40,21 +40,21 @@ module Celerity
     # @param [String, Regexp] value A value.
     # @raise [Celerity::Exception::NoValueFoundException] if the value does not exist.
     # @return [String, nil] The option selected. If multiple options match, returns the first match
-    # 
     #
-    
+    #
+
     def select(value)
       assert_exists
       raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
-      
+
       selected = nil
       matching = @object.getOptions.select do |option|
         next unless matches_option?(option, value)
-        
+
         selected ||= option.asText
         @container.update_page option.click
       end
-      
+
       selected
     end
     alias_method :set, :select
@@ -65,7 +65,7 @@ module Celerity
     # @param [String, Regexp] value A value.
     # @return [true, false]
     #
-    
+
     def include?(value)
       assert_exists
       !!@object.getOptions.find { |e| matches_option?(e, value) }
@@ -78,7 +78,7 @@ module Celerity
     # @raise [Celerity::Exception::UnknownObjectException] if the value does not exist.
     # @return [true, false]
     #
-    
+
     def selected?(value)
       assert_exists
       raise UnknownObjectException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
@@ -91,7 +91,7 @@ module Celerity
     #
     # @return [String]
     #
-    
+
     def type
       assert_exists
       'select-' + (@object.hasAttribute('multiple') ? 'multiple' : 'one')
@@ -110,12 +110,12 @@ module Celerity
         option.getValueAttribute
       end
     end
-    
+
     private
-    
+
     def matches_option?(option, value)
       matches?(option.asText, value) || (option.hasAttribute("label") && matches?(option.getLabelAttribute, value))
     end
-    
+
   end # SelectList
 end # Celerity

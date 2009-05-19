@@ -258,7 +258,7 @@ describe "TextField" do
       @browser.text_field(:name, "new_user_occupation").getContents.should == "Developer"
     end
   end
-  
+
   describe "#requires_typing" do
     it "responds to the method" do
       @browser.text_field(:name, "new_user_occupation").should respond_to(:requires_typing)

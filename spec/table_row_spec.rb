@@ -38,7 +38,7 @@ describe "TableRow" do
       lambda { @browser.row(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   describe "#click" do
     it "fires the rows's onclick event" do
       clicked = []

@@ -39,7 +39,7 @@ describe "Table" do
       lambda { @browser.table(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
-  
+
   describe "#locate" do
     it "is not nil for existing tables" do
       @browser.table(:id, 'axis_example').locate.should_not be_nil
@@ -52,7 +52,7 @@ describe "Table" do
       @browser.table(:id, 'inner').to_a.should == [["Table 2, Row 1, Cell 1", "Table 2, Row 1, Cell 2"]]
     end
   end
-  
+
   describe "#click" do
     it "fires the table's onclick event" do
       clicked = nil

@@ -41,18 +41,18 @@ module Celerity
       browser.webclient.set_cookie_manager(
         @browser.webclient.get_cookie_manager
       ) # hirobumi: we do want cookies as well.
-      
+
       rescue_status_code_exception { browser.update_page(@object.click) }
 
       browser
     end
-    
-    # 
+
+    #
     # Click the element and just return the content as IO. Current page stays unchanged.
-    # 
+    #
     # @return [IO]
-    # 
-    
+    #
+
     def download
       assert_exists_and_enabled
       @object.click.getWebResponse.getContentAsStream.to_io

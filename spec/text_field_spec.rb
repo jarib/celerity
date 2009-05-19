@@ -293,7 +293,7 @@ describe "TextField" do
       @browser.text_field(:name , 'new_user_password').set('secret')
       @browser.text_field(:name , 'new_user_password').value.should == 'secret'
     end
-    
+
     it "sets the value when accessed through the enclosing Form" do
       @browser.form(:id, 'new_user').text_field(:name , 'new_user_password').set('secret')
     end

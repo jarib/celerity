@@ -51,7 +51,7 @@ module Celerity
   class Dts < ElementCollection
     def element_class; Dt; end
   end
-  
+
   class Ems < ElementCollection
     def element_class; Em; end
   end
@@ -113,7 +113,7 @@ module Celerity
   class Spans < ElementCollection
     def element_class; Span; end
   end
-  
+
   class Strongs < ElementCollection
     def element_class; Strong; end
   end

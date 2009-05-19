@@ -138,7 +138,7 @@ describe "Option" do
       @browser.select_list(:name, "new_user_country").option(:text , 'Sweden').class_name.should == "scandinavia"
     end
   end
-  
+
   describe "#respond_to?" do
     it "returns true for all attribute methods" do
       @browser.option(:index, 1).should respond_to(:class_name)

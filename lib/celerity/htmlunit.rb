@@ -1,7 +1,7 @@
 module Celerity
   Jars = Dir[File.dirname(__FILE__) + '/htmlunit/*.jar']
   Jars.each { |jar| require(jar) }
-  
+
   include_class org.apache.commons.httpclient.Cookie
 end
 
@@ -11,7 +11,7 @@ module HtmlUnit
   module Html
     include_package 'com.gargoylesoftware.htmlunit.html'
   end
-  
+
   module Util
     include_package 'com.gargoylesoftware.htmlunit.util'
   end

@@ -22,7 +22,7 @@ describe "ClickableElement" do
   describe "#download" do
     it 'returns a click-opened page as io' do
       expected = File.read "#{HTML_DIR}/forms_with_input_elements.html".sub("file://", '')
-      
+
       @browser.link(:name, /bad_attribute/).download.read.should == expected
       @browser.link(:name, /bad_attribute/).should exist
     end

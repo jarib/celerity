@@ -1,6 +1,6 @@
 module Celerity
   module Exception
-    
+
     #
     # Superclass for all Celerity exceptions.
     #
@@ -12,7 +12,7 @@ module Celerity
     #
 
     class UnknownObjectException < CelerityException; end
-    
+
     #
     # This exception is thrown if an attempt is made to access an object that is in a disabled state
     #
@@ -54,7 +54,7 @@ module Celerity
     #
 
     class UnknownRowException < CelerityException; end
-    
+
     #
     # This exception is raised if an attempt is made to access a table cell that doesn't exist
     #
@@ -66,12 +66,12 @@ module Celerity
     #
 
     class NavigationException < CelerityException; end
-    
+
     #
     # This exception is thrown if an unexpected content type is returned by the server.
     #
 
     class UnexpectedPageException < CelerityException; end
-    
+
   end # Exception
 end # Celerity

@@ -261,12 +261,12 @@ describe "SelectList" do
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").select(/ish/)
       @browser.select_list(:xpath, "//select[@name='new_user_languages']").selected_options.should == ["Danish", "English", "Swedish"]
     end
-    
+
     it "selects empty options" do
       @browser.select_list(:id, "delete_user_username").select("")
       @browser.select_list(:id, "delete_user_username").selected_options.should == [""]
     end
-    
+
     it "returns the value selected" do
       @browser.select_list(:name, "new_user_languages").select("Danish").should == "Danish"
     end

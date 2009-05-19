@@ -8,7 +8,7 @@ def create_browser
   else
     require 'watir'
     browser = Watir::IE.new
-  end  
-  
+  end
+
   browser
 end

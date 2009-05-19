@@ -84,7 +84,7 @@ describe "Div" do
       lambda {@browser.div(:title, "no_such_id").id }.should raise_error(UnknownObjectException)
       lambda {@browser.div(:index, 1337).id }.should raise_error(UnknownObjectException)
     end
-    
+
     it "should take all conditions into account when locating by id" do
       @browser.goto HTML_DIR + "/multiple_ids.html"
       @browser.div(:id => "multiple", :class => "bar").class_name.should == "bar"
@@ -182,7 +182,7 @@ describe "Div" do
       lambda { @browser.div(:xpath, "//div[@id='no_such_id']").click }.should raise_error(UnknownObjectException)
     end
   end
-  
+
   describe "#double_click" do
     it "fires the ondblclick event" do
       double_clicked = false
@@ -191,7 +191,7 @@ describe "Div" do
       double_clicked.should be_true
     end
   end
-  
+
   describe "#right_click" do
     it "fires the oncontextmenu event" do
       right_clicked = false

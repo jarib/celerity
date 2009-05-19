@@ -109,7 +109,7 @@ describe "FileField" do
   describe "#set" do
     it "is able to set a file path in the field and click the upload button and fire the onchange event" do
       @browser.goto(TEST_HOST + "/forms_with_input_elements.html")
-      
+
       alerts = []
       @browser.add_listener(:alert) { |_, msg| alerts << msg }
       @browser.file_field(:name, "new_user_portrait").set(__FILE__)

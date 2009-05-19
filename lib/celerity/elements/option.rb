@@ -1,5 +1,5 @@
 module Celerity
-  
+
   #
   # Represents an option in a select list.
   #
@@ -14,15 +14,15 @@ module Celerity
 
     alias_method :select, :click
 
-    # 
+    #
     # Is this option selected?
-    # 
-    
+    #
+
     def selected?
       assert_exists
       @object.isSelected
     end
-    
+
     def label
       # overrides Container#label
       assert_exists

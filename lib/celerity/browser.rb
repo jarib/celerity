@@ -60,7 +60,7 @@ module Celerity
       unless (render_types = [:html, :xml, nil]).include?(opts[:render])
         raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
       end
-      
+
       @options = opts.dup # for ClickableElement#click_and_attach
 
       @render_type   = opts.delete(:render)    || :html
@@ -423,7 +423,7 @@ module Celerity
     end
 
     #
-    # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController 
+    # Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController
     # to resynchronize ajax calls.
     #
     #   @browser.resynchronized do |b|
@@ -442,7 +442,7 @@ module Celerity
     end
 
     #
-    # Allows you to temporarliy switch to HtmlUnit's default AjaxController, so 
+    # Allows you to temporarliy switch to HtmlUnit's default AjaxController, so
     # ajax calls are performed asynchronously. This is useful if you have created
     # the Browser with :resynchronize => true, but want to switch it off temporarily.
     #
@@ -711,7 +711,7 @@ module Celerity
 
       if ua = opts.delete(:user_agent)
         browser_version.setUserAgent(ua)
-      end 
+      end
 
 
       if proxy = opts.delete(:proxy)

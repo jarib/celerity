@@ -57,7 +57,7 @@ module Celerity
     # HtmlUnit will recognize most common file types, but custom ones can be added here.
     # Used for FileField uploads.
     #
-    
+
     ContentTypes = {
       ".bmp" => "image/x-ms-bmp",
       ".doc" => "application/msword",

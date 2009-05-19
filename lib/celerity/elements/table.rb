@@ -21,33 +21,33 @@ module Celerity
           end
         end
       end
-      
+
       @object
     end
-    
+
     #
     # @return [Celerity::TableRows]
     #
-    
+
     def rows
       assert_exists
       TableRows.new(self, :object, @rows)
     end
-    
+
     #
     # @return [Celerity::TableCells]
     #
-    
+
     def cells
       assert_exists
       TableCells.new(self, :object, @cells)
     end
-    
+
     #
     # Iterates through each row in the table.
     # @yieldparam [Celerity::TableRow] row A row.
     #
-    
+
     def each
       assert_exists
       @rows.each { |row| yield TableRow.new(self, :object, row)  }
@@ -63,7 +63,7 @@ module Celerity
     # @raise [Celerity::Exception::UnknownRowException]
     # @return [Celerity::TableRow]
     #
-    
+
     def child_row(index)
       assert_exists
 
@@ -84,13 +84,14 @@ module Celerity
     # @raise [Celerity::Exception::UnknownCellException]
     # @return [Celerity::TableCell]
     #
-    
+
     def child_cell(index)
       assert_exists
 
       if (index - INDEX_OFFSET) >= @cells.length
         raise UnknownCellException, "Unable to locate a cell at index #{index}"
       end
+
       TableCell.new(self, :object, @cells[index - INDEX_OFFSET])
     end
 
@@ -98,19 +99,19 @@ module Celerity
     # The number of rows in the table
     # @return [Fixnum]
     #
-    
+
     def row_count
       assert_exists
       @object.getRowCount
     end
-    
+
     #
     # Returns the number of columns on the row at the given index. (1-indexed)
     # Default is the number of columns on the first row
     # @param [Fixnum] index An index, 1-indexed (optional).
     # @return [Fixnum]
     #
-    
+
     def column_count(index = INDEX_OFFSET)
       assert_exists
       @object.getRow(index - INDEX_OFFSET).getCells.length
@@ -120,7 +121,7 @@ module Celerity
     # Returns the text of each cell in the the table as a two-dimensional array.
     # @return [Array<Array<String>>]
     #
-    
+
     def to_a
       assert_exists
       # @object.getRows.map do |table_row|

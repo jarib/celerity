@@ -2,8 +2,8 @@ module Celerity
 
   #
   # Used internally to locate elements on the page.
-  # 
-  
+  #
+
   class ElementLocator
     include Celerity::Exception
     attr_accessor :idents

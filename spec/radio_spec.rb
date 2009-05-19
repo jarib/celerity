@@ -235,12 +235,12 @@ describe "Radio" do
     it "fires the onclick event" do
       alerts = []
       @browser.add_listener(:alert) { |_, msg| alerts << msg }
-      
+
       @browser.radio(:id, "new_user_newsletter_no").set
       @browser.radio(:id, "new_user_newsletter_yes").set
       alerts.should == ["clicked: new_user_newsletter_no", "clicked: new_user_newsletter_yes"]
     end
-    
+
     it "fires the onchange event" do
       alerts = []
       @browser.add_listener(:alert) { |_, msg| alerts << msg }
@@ -250,9 +250,9 @@ describe "Radio" do
 
       @browser.radio(:value, 'certainly').set
       alerts.should == ["changed: new_user_newsletter"] # no event fired here - didn't change
-      
+
       @browser.radio(:value, 'certainly').clear
-      alerts.should == ["changed: new_user_newsletter", "changed: new_user_newsletter"] 
+      alerts.should == ["changed: new_user_newsletter", "changed: new_user_newsletter"]
     end
 
     it "raises UnknownObjectException if the radio button doesn't exist" do

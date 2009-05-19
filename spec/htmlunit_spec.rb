@@ -18,7 +18,7 @@ describe "HtmlUnit bugs" do
      @browser.text_field(:index, 1).id.should == "org_id"
    end
   end
-  
+
 # disabled for CI - need fix from HtmlUnit
   # describe "HtmlUnit bug XXXXXX" do
   #   it "returns strings as UTF-8 when there's a charset mismatch between HTTP response header and <meta> tag" do
@@ -32,7 +32,7 @@ describe "HtmlUnit bugs" do
     @browser.link(:class, 'editLink').click
     @browser.div(:id, 'content').text.should == "typeof update: function"
   end
-  
+
   it "doesn't return the TinyMCE DOM when executing javascript functions" do
     @browser.goto(HTML_DIR + "/tiny_mce.html")
     @browser.text.should include("Beskrivelse")

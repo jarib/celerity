@@ -1,13 +1,13 @@
 module Celerity
-  
+
   #
   # This class is the superclass for the iterator classes (Buttons, Links, Spans etc.)
   # It would normally only be accessed by the iterator methods (Browser#spans, Browser#links, ...).
-  # 
-  
+  #
+
   class ElementCollection
     include Enumerable
-    
+
     #
     # @api private
     #
@@ -17,10 +17,10 @@ module Celerity
       @object = (how == :object ? what : nil)
       @length = length
     end
-    
+
     #
     # @return [Fixnum] The number of elements in this collection.
-    # 
+    #
 
     def length
       if @object
@@ -45,7 +45,7 @@ module Celerity
 
       @length
     end
-    
+
     #
     # Get the element at the given index.
     # This is 1-indexed to keep compatibility with Watir - subject to change.
@@ -54,7 +54,7 @@ module Celerity
     #
     # @param [Fixnum] n Index of wanted element, 1-indexed.
     # @return [Celerity::Element] Returns a subclass of Celerity::Element
-    # 
+    #
 
     def [](n)
       if @elements && @elements[n - INDEX_OFFSET]
@@ -68,8 +68,8 @@ module Celerity
     # Get the first element in this collection. (Celerity-specific)
     #
     # @return [Celerity::Element] Returns a subclass of Celerity::Element
-    # 
-    
+    #
+
     def first
       self[INDEX_OFFSET]
     end
@@ -78,8 +78,8 @@ module Celerity
     # Get the last element in this collection. (Celerity-specific)
     #
     # @return [Celerity::Element] Returns a subclass of Celerity::Element
-    # 
-    
+    #
+
     def last
       self[INDEX_OFFSET - 1]
     end
@@ -90,8 +90,8 @@ module Celerity
     #   puts browser.text_fields
     #
     # @return [String] A string representation of all elements in this collection.
-    # 
-    
+    #
+
     def to_s
       map { |e| e.to_s }.join("\n")
     end

@@ -16,7 +16,7 @@ if RUBY_PLATFORM =~ /java/
     $:.unshift File.expand_path("#{File.dirname(__FILE__)}/../lib")
     require 'celerity'
   end
-  
+
   include Celerity
   include Celerity::Exception
   java.lang.System.setProperty("java.awt.headless", "true")

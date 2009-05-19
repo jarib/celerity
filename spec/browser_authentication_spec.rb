@@ -10,9 +10,9 @@ describe "Browser" do
     it "sets the basic authentication credentials" do
       @browser.goto(TEST_HOST + "/authentication/")
       @browser.text.should_not include("Index of /authentication/")
-      
+
       @browser.credentials = "foo:bar"
-      
+
       @browser.goto(TEST_HOST + "/authentication/")
       @browser.text.should include("Index of /authentication/")
     end

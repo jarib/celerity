@@ -69,7 +69,7 @@ module Celerity
   AUTH_CALLBACK = lambda do |req, res|
     WEBrick::HTTPAuth.basic_auth(req, res, '') { |u, p| u == "foo" && p == "bar" }
   end
-  
+
   class SpecServer
     attr_reader :host, :thread, :log_file
 

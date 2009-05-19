@@ -1,5 +1,5 @@
 module Celerity
-  
+
   #
   # For fields that accept file uploads
   #
@@ -10,7 +10,7 @@ module Celerity
 
     #
     # Set the file field to the given path
-    # 
+    #
 
     def set(path)
       assert_exists
@@ -20,6 +20,6 @@ module Celerity
         @object.setContentType(Celerity::Util.content_type_for(path))
       end
     end
-    
+
   end # FileField
 end # Celerity

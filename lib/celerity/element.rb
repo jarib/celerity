@@ -1,9 +1,9 @@
 module Celerity
-  
+
   #
   # Superclass for all HTML elements.
-  # 
-  
+  #
+
   class Element
     include Exception
     include Container
@@ -57,7 +57,7 @@ module Celerity
     #
     # Get the parent element
     # @return [Celerity::Element, nil] subclass of Celerity::Element, or nil if no parent was found
-    # 
+    #
 
     def parent
       assert_exists
@@ -73,13 +73,13 @@ module Celerity
 
     #
     # Sets the focus to this element.
-    # 
+    #
 
     def focus
       assert_exists
       @object.focus
     end
-    
+
     #
     # Fires the given event for this element
     #
@@ -92,12 +92,12 @@ module Celerity
     #
     # Used internally. Find the element on the page.
     # @api private
-    # 
+    #
 
     def locate
       @object = ElementLocator.new(@container, self.class).find_by_conditions(@conditions)
     end
-    
+
     def object
       @object || locate
     end
@@ -114,7 +114,7 @@ module Celerity
     #
     # @param [String, #to_s] The attribute.
     # @return [String] The value of the given attribute.
-    # 
+    #
 
     def attribute_value(attribute)
       assert_exists
@@ -127,7 +127,7 @@ module Celerity
     # its parents) into account - styles from applied CSS is not considered.
     #
     # @return [boolean]
-    # 
+    #
 
     def visible?
       assert_exists
@@ -139,7 +139,7 @@ module Celerity
     #
     # @raise [Celerity::Exception::UnknownObjectException] if the element can't be found.
     # @api private
-    # 
+    #
 
     def assert_exists
       locate
@@ -147,11 +147,11 @@ module Celerity
         raise UnknownObjectException, "Unable to locate #{self.class.name[/::(.*)$/, 1]}, using #{identifier_string}"
       end
     end
-    
+
     #
     # Checks if the element exists.
     # @return [true, false]
-    # 
+    #
 
     def exists?
       assert_exists
@@ -160,13 +160,13 @@ module Celerity
       false
     end
     alias_method :exist?, :exists?
-    
+
     #
     # Return a text representation of the element as it would appear in a browser.
     #
     # @see inner_text
     # @return [String]
-    # 
+    #
 
     def text
       assert_exists
@@ -180,7 +180,7 @@ module Celerity
     #
     # @see text
     # @return [String]
-    # 
+    #
 
     def inner_text
       assert_exists
@@ -189,7 +189,7 @@ module Celerity
 
     #
     # @return [String] The normative XML representation of the element (including children).
-    # 
+    #
 
     def to_xml
       assert_exists
@@ -201,7 +201,7 @@ module Celerity
 
     #
     # @return [String] A string representation of the element's attributes.
-    # 
+    #
 
     def attribute_string
       assert_exists
@@ -216,7 +216,7 @@ module Celerity
 
     #
     # return the canonical xpath for this element (Celerity-specific)
-    # 
+    #
 
     def xpath
       assert_exists
@@ -230,7 +230,7 @@ module Celerity
     #
     # @return [String] The resulting attribute.
     # @raise  [NoMethodError] if the element doesn't support this attribute.
-    # 
+    #
 
     def method_missing(meth, *args, &blk)
       assert_exists
@@ -243,9 +243,9 @@ module Celerity
       Log.warn "Element\#method_missing calling super with #{meth.inspect}"
       super
     end
-    
+
     def methods(*args)
-      ms = super 
+      ms = super
       ms += self.class::ATTRIBUTES.map { |e| e.to_s }
       ms.sort
     end

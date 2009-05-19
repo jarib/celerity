@@ -10,7 +10,7 @@ module Celerity
     #
     # Override the default locate to handle frame and inline frames.
     # @api private
-    # 
+    #
 
     def locate
       super
@@ -22,7 +22,7 @@ module Celerity
         end
       end
     end
-    
+
     #
     # Override assert_exists to raise UnknownFrameException (for Watir compatibility)
     # @api private
