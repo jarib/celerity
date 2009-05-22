@@ -761,7 +761,9 @@ module Celerity
     #
 
     def find_viewer
-      DRb.start_service # needed to avoid DRb raising and rescuing lots exceptions
+      # needed to avoid DRb raising and rescuing lots exceptions
+      DRb.start_service unless DRb.primary_server
+      
       viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
       if viewer.respond_to?(:render_html)
         @viewer = viewer
