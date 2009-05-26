@@ -43,7 +43,7 @@ module Celerity
     # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
     # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
     # @option opts :render [:html, :xml] (:html) What DOM representation to send to connected viewers.
-    # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use by default.
+    # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use for requests, and those where texts are getting gibberished, like Browser#html.
     # @option opts :proxy [String] (nil) Proxy server to use, in address:port format.
     # @option opts :user_agent [String] Override the User-Agent set by the :browser option
     #
@@ -144,7 +144,7 @@ module Celerity
     #
 
     def html
-      @page ? @page.getWebResponse.getContentAsString : ''
+      @page ? @page.getWebResponse.getContentAsString(@charset) : ''
     end
 
     #
