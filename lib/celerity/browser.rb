@@ -489,6 +489,16 @@ module Celerity
     #   :incorrectness    => IncorrectnessListener
     #   :confirm          => ConfirmHandler ( window.confirm() )
     #   :prompt           => PromptHandler ( window.prompt() )
+    # 
+    # Examples:
+    # 
+    #   browser.add_listener(:status) { |page, message| ... }
+    #   browser.add_listener(:alert) { |page, message| ... }
+    #   browser.add_listener(:web_window_event) { |web_window_event| ... }
+    #   browser.add_listener(:html_parser) { |message, url, line, column, key| ... }
+    #   browser.add_listener(:incorrectness) { |message, origin| ... }
+    #   browser.add_listener(:confirm) { |page, message| ...; true }
+    #   browser.add_listener(:prompt) { |page, message| ... }
     #
     #
     # @param [Symbol] type One of the above symbols.
@@ -563,10 +573,10 @@ module Celerity
     def log_level=(level)
       log_level = java.util.logging.Level.const_get(level.to_s.upcase)
 
-      [ logger_for('com.gargoylesoftware.htmlunit'),
-        logger_for("com.gargoylesoftware.htmlunit.html"),
-        logger_for("org.apache.commons.httpclient")
-      ].each { |logger| logger.level = log_level }
+      [ 'com.gargoylesoftware.htmlunit',
+        'com.gargoylesoftware.htmlunit.html',
+        'org.apache.commons.httpclient'
+      ].each { |package| logger_for(package).level = log_level }
 
       level
     end
@@ -712,7 +722,6 @@ module Celerity
       if ua = opts.delete(:user_agent)
         browser_version.setUserAgent(ua)
       end
-
 
       if proxy = opts.delete(:proxy)
         phost, pport = proxy.split(":")

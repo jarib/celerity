@@ -97,6 +97,10 @@ module Celerity
     def locate
       @object = ElementLocator.new(@container, self.class).find_by_conditions(@conditions)
     end
+    
+    # 
+    # Returns the HtmlUnit object backing this element
+    # 
 
     def object
       @object || locate
