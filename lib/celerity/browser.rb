@@ -166,8 +166,10 @@ module Celerity
 
       if @page.respond_to?("getContent")
         string = @page.getContent.strip
-      else
+      elsif @page.documentElement
         string = @page.documentElement.asText.strip
+      else
+        string = ''
       end
 
       # Celerity::Util.normalize_text(string)
