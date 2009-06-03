@@ -44,7 +44,8 @@ end
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new(GEM_NAME, VERS) do |p|
+$hoe = Hoe.spec(GEM_NAME) do |p|
+  p.version = VERS
   p.author = AUTHORS
   p.email = EMAIL
   p.description = DESCRIPTION
@@ -70,8 +71,7 @@ namespace :gem do
   desc "create a gemspec file"
   task :make_spec do
     file = "#{GEM_NAME.downcase}.gemspec"
-    File.unlink file if File.exists?(file)
-    File.open(file, "w+") do |file|
+    File.open(file, "w") do |file|
       file.puts $hoe.spec.to_ruby
     end
   end
