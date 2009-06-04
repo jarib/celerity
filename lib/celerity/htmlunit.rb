@@ -48,3 +48,14 @@ class Java::ComGargoylesoftwareHtmlunitHtml::HtmlElement
     '#<%s:0x%s>' % [self.class.name.split("::").last, self.hash.to_s(16)]
   end
 end
+
+class Java::ComGargoylesoftwareHtmlunitJavascriptHostHtml::HTMLElement
+  def method_missing(meth, *args, &blk)
+    m = ["jsxGet_#{meth}", "jsx_get_#{meth}"].find { |m| respond_to?(m) }
+    if m
+      __send__ m
+    else
+      super
+    end
+  end
+end

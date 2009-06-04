@@ -57,6 +57,7 @@ describe "Element" do
       obj = @browser.div(:id, "onfocus_test").javascript_object
       obj.should be_kind_of(com.gargoylesoftware.htmlunit.javascript.host.html.HTMLElement)
       obj.should be_instance_of(com.gargoylesoftware.htmlunit.javascript.host.html.HTMLDivElement)
+      obj.client_width.should be_kind_of(Integer)
     end
   end
 
