@@ -105,6 +105,17 @@ module Celerity
     def object
       @object || locate
     end
+    
+    #
+    # Returns a JavaScript object representing the receiver
+    # 
+    # @api internal - subject to change
+    # 
+    
+    def javascript_object
+      assert_exists
+      @object.getScriptObject
+    end
 
     #
     # @return [String] A string representation of the element.

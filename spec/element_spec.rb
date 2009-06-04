@@ -51,6 +51,14 @@ describe "Element" do
       @browser.div(:id, "onfocus_test").text.should == "changed by onfocus event"
     end
   end
+  
+  describe "#javascript_object" do
+    it "should return the JavaScript object representing the receiver" do
+      obj = @browser.div(:id, "onfocus_test").javascript_object
+      obj.should be_kind_of(com.gargoylesoftware.htmlunit.javascript.host.html.HTMLElement)
+      obj.should be_instance_of(com.gargoylesoftware.htmlunit.javascript.host.html.HTMLDivElement)
+    end
+  end
 
   describe "#parent" do
     it "gets the parent of this element" do
