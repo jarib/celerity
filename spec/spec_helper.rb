@@ -31,12 +31,12 @@ end
 # = Debugger =
 # ============
 
-if ENV['DEBUGGER'] || $DEBUG
-  require "ruby-debug"
-  Debugger.start
-  Debugger.settings[:autoeval] = true
-  Debugger.settings[:autolist] = 1
-end
+# if ENV['DEBUGGER'] || $DEBUG
+#   require "ruby-debug"
+#   Debugger.start
+#   Debugger.settings[:autoeval] = true
+#   Debugger.settings[:autolist] = 1
+# end
 
 # ===========
 # = WEBrick =
