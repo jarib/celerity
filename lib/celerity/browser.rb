@@ -577,6 +577,7 @@ module Celerity
 
       [ 'com.gargoylesoftware.htmlunit',
         'com.gargoylesoftware.htmlunit.html',
+        'com.gargoylesoftware.htmlunit.javascript'
         'org.apache.commons.httpclient'
       ].each { |package| logger_for(package).level = log_level }
 
