@@ -29,8 +29,6 @@ lib/celerity/elements/table_elements.rb
 lib/celerity/elements/table_row.rb
 lib/celerity/elements/text_field.rb
 lib/celerity/exception.rb
-lib/celerity/extra
-lib/celerity/extra/method_generator.rb
 lib/celerity/htmlunit
 lib/celerity/htmlunit/commons-codec-1.3.jar
 lib/celerity/htmlunit/commons-collections-3.2.1.jar
