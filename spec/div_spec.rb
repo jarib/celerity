@@ -131,6 +131,10 @@ describe "Div" do
     it "returns an empty string if the element exists but contains no text" do
       @browser.div(:index, 1).text.strip.should == ""
     end
+    
+    it "returns an empty string if the div is hidden" do
+      @browser.div(:id, 'hidden').text.should == ""
+    end
 
     it "raises UnknownObjectException if the element does not exist" do
       lambda { @browser.div(:id, "no_such_id").text }.should raise_error(UnknownObjectException)
