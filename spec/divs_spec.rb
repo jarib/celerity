@@ -11,7 +11,7 @@ describe "Divs" do
 
   describe "#length" do
     it "returns the number of divs" do
-      @browser.divs.length.should == 8
+      @browser.divs.length.should == 9
     end
   end
 
