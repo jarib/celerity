@@ -11,11 +11,23 @@ describe "ClickableElement" do
   end
 
   describe "#click_and_attach" do
-    it 'opens a page in a browser with the same options and cookies' do
+    it 'opens a page in a new browser with the same options' do
       browser = @browser.link(:name, /bad_attribute/).click_and_attach
       browser.text.include?("User administration").should be_true # to make sure it is open.
       browser.options.should == @browser.options
       browser.cookies.should == @browser.cookies
+    end
+
+    it "opens the page in a new browser with the same cookies" do
+      @browser.add_cookie("localhost", "foo", "bar")
+      old_cookies = @browser.cookies
+      old_cookies.should_not be_empty
+
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
+      browser = @browser.link(:name, /bad_attribute/).click_and_attach
+
+      browser.should_not == @browser
+      browser.cookies.should == old_cookies
     end
   end
 
