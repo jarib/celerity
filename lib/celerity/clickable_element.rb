@@ -49,6 +49,7 @@ module Celerity
 
     #
     # Click the element and just return the content as IO. Current page stays unchanged.
+    # This can be used to download content that normally isn't rendered in a browser.
     #
     # @return [IO]
     #
