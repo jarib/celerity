@@ -47,6 +47,17 @@ module Celerity
       browser
     end
 
+    #
+    # Click the element and just return the content as IO. Current page stays unchanged.
+    #
+    # @return [IO]
+    #
+
+    def download
+      assert_exists_and_enabled
+      @object.click.getWebResponse.getContentAsStream.to_io
+    end
+
     private
 
     def assert_exists_and_enabled
