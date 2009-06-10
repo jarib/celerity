@@ -722,8 +722,10 @@ module Celerity
       browser = (opts.delete(:browser) || :firefox).to_sym
 
       case browser
-      when :firefox, :ff
+      when :firefox, :ff, :ff2
         browser_version = ::HtmlUnit::BrowserVersion::FIREFOX_2
+      when :firefox3, :ff3
+        browser_version = ::HtmlUnit::BrowserVersion::FIREFOX_3
       when :internet_explorer, :ie
         browser_version = ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7
       else
