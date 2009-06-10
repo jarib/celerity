@@ -83,5 +83,9 @@ module Celerity
              strip
     end
 
+    def logger_for(package_string)
+      java.util.logging.Logger.getLogger(package_string)
+    end
+
   end
 end

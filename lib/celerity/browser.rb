@@ -579,7 +579,7 @@ module Celerity
         'com.gargoylesoftware.htmlunit.html',
         'com.gargoylesoftware.htmlunit.javascript',
         'org.apache.commons.httpclient'
-      ].each { |package| logger_for(package).level = log_level }
+      ].each { |package| Celerity::Util.logger_for(package).level = log_level }
 
       level
     end
@@ -793,10 +793,6 @@ module Celerity
     def element_from_dom_node(obj)
       element_class = Celerity::Util.htmlunit2celerity(obj.class) || Element
       element_class.new(self, :object, obj)
-    end
-
-    def logger_for(class_string)
-      java.util.logging.Logger.getLogger(class_string)
     end
 
     def listener
