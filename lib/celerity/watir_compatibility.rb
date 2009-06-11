@@ -25,8 +25,6 @@ module Celerity
     def bring_to_front; true; end
     # Added for Watir compatibility - not in use by Celerity
     def speed=(s); s end
-    # Added for Watir compatibility - not in use by Celerity
-    def status; '' end
   end
 
 

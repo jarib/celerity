@@ -83,6 +83,14 @@ describe "Browser" do
     end
   end
 
+  describe "#status" do
+    it "returns the current value of window.status" do
+      @browser.goto(HTML_DIR + "/non_control_elements.html")
+      @browser.execute_script "window.status = 'All done!';"
+      @browser.status.should == "All done!"
+    end
+  end
+
   describe "#text" do
     it "returns the text of the page" do
       @browser.goto(HTML_DIR + "/non_control_elements.html")

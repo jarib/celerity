@@ -26,10 +26,6 @@ module Celerity
       raise NotImplementedError, "use ClickableElement#click_and_attach instead"
     end
 
-    def inspect
-      short_inspect :exclude => %w[@webclient @browser @object @options]
-    end
-
     #
     # Creates a browser object.
     #
@@ -75,6 +71,10 @@ module Celerity
 
       raise ArgumentError, "unknown option #{opts.inspect}" unless opts.empty?
       find_viewer
+    end
+
+    def inspect
+      short_inspect :exclude => %w[@webclient @browser @object @options]
     end
 
     #
@@ -137,6 +137,14 @@ module Celerity
 
     def title
       @page ? @page.getTitleText : ''
+    end
+
+    #
+    # @return [String] the value of window.status
+    #
+
+    def status
+      execute_script "window.status" # avoid the listener overhead
     end
 
     #
@@ -491,9 +499,9 @@ module Celerity
     #   :incorrectness    => IncorrectnessListener
     #   :confirm          => ConfirmHandler ( window.confirm() )
     #   :prompt           => PromptHandler ( window.prompt() )
-    # 
+    #
     # Examples:
-    # 
+    #
     #   browser.add_listener(:status) { |page, message| ... }
     #   browser.add_listener(:alert) { |page, message| ... }
     #   browser.add_listener(:web_window_event) { |web_window_event| ... }
@@ -775,7 +783,7 @@ module Celerity
     def find_viewer
       # needed to avoid DRb raising and rescuing lots exceptions
       DRb.start_service unless DRb.primary_server
-      
+
       viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
       if viewer.respond_to?(:render_html)
         @viewer = viewer
