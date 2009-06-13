@@ -61,7 +61,7 @@ module Celerity
     #
 
     def inspect
-      short_inspect :exclude => %w[@browser @container]
+      short_inspect :include => %w[@conditions @object]
     end
 
     #

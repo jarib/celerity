@@ -571,7 +571,7 @@ module Celerity
     #
 
     def log_level
-      logger_for('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
+      Celerity::Util.logger_for('com.gargoylesoftware.htmlunit').level.to_s.downcase.to_sym
     end
 
     #

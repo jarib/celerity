@@ -97,21 +97,21 @@ module Celerity
     def locate
       @object = ElementLocator.new(@container, self.class).find_by_conditions(@conditions)
     end
-    
-    # 
+
+    #
     # Returns the HtmlUnit object backing this element
-    # 
+    #
 
     def object
       @object || locate
     end
-    
+
     #
     # Returns a JavaScript object representing the receiver
-    # 
+    #
     # @api internal - subject to change
-    # 
-    
+    #
+
     def javascript_object
       assert_exists
       @object.getScriptObject
@@ -157,7 +157,7 @@ module Celerity
     #
 
     def assert_exists
-      locate
+      locate unless @object
       unless @object
         raise UnknownObjectException, "Unable to locate #{self.class.name[/::(.*)$/, 1]}, using #{identifier_string}"
       end

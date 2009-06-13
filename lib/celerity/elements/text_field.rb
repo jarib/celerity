@@ -78,7 +78,7 @@ module Celerity
     def append(value)
       assert_enabled
       assert_not_readonly
-      type_string(value)
+      type_string value
     end
 
 
