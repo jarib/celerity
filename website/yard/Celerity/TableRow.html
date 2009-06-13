@@ -312,11 +312,11 @@ Get the child cell at the given index
 <span class='def def kw'>def</span> <span class='child_cell identifier id'>child_cell</span><span class='lparen token'>(</span><span class='index identifier id'>index</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
 
-  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='index identifier id'>index</span> <span class='minus op'>-</span> <span class='INDEX_OFFSET constant id'>INDEX_OFFSET</span><span class='rparen token'>)</span> <span class='geq op'>&gt;=</span> <span class='@cells ivar id'>@cells</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
+  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='index identifier id'>index</span> <span class='minus op'>-</span> <span class='Celerity.index_offset constant id'>Celerity.index_offset</span><span class='rparen token'>)</span> <span class='geq op'>&gt;=</span> <span class='@cells ivar id'>@cells</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
     <span class='raise identifier id'>raise</span> <span class='UnknownCellException constant id'>UnknownCellException</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Unable to locate a cell at index #{index}&quot;</span>
   <span class='end end kw'>end</span>
 
-  <span class='TableCell constant id'>TableCell</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='symbol val'>:object</span><span class='comma token'>,</span> <span class='@cells ivar id'>@cells</span><span class='lbrack token'>[</span><span class='index identifier id'>index</span> <span class='minus op'>-</span> <span class='INDEX_OFFSET constant id'>INDEX_OFFSET</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='TableCell constant id'>TableCell</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='symbol val'>:object</span><span class='comma token'>,</span> <span class='@cells ivar id'>@cells</span><span class='lbrack token'>[</span><span class='index identifier id'>index</span> <span class='minus op'>-</span> <span class='Celerity.index_offset constant id'>Celerity.index_offset</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>

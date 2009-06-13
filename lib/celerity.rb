@@ -16,7 +16,11 @@ module Celerity
   Log = Logger.new($DEBUG ? $stderr : nil)
   Log.level = Logger::DEBUG
 
-  INDEX_OFFSET = 1
+  @index_offset = 1
+  class << self
+    attr_accessor :index_offset
+  end
+  
   DIR = File.expand_path(File.dirname(__FILE__) + "/celerity")
 end
 
