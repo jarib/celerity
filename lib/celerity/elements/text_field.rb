@@ -37,6 +37,8 @@ module Celerity
       assert_not_readonly
       clear
       type_string(value.to_s)
+
+      value
     end
 
     #
