@@ -5,10 +5,6 @@ task :snapshot do
   files.each do |url|
     basename = File.basename(url)
     shortname = basename[/(.+?)\.zip/, 1].sub("-with-dependencies", '')
-    puts ":"*(6+url.size)
-    puts ":: #{url} ::"
-    puts ":"*(6+url.size)
-    
     sh "curl -O #{url}"
     sh "rm -rf lib/celerity/htmlunit/*.jar"
     sh "unzip -tq #{basename}"
@@ -16,9 +12,9 @@ task :snapshot do
     
     puts "Fixing paths..."
     sh "cp -R lib/celerity/htmlunit/#{shortname}/lib/*.jar lib/celerity/htmlunit/"
-    sh "rm -r lib/celerity/htmlunit/#{shortname}/"
     
     puts "Cleaning..."
+    rm_r "lib/celerity/htmlunit/#{shortname}/"
     rm basename
     
     puts "...done!"

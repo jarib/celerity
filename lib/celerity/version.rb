@@ -3,7 +3,7 @@ module Celerity #:nodoc:
     MAJOR = 0
     MINOR = 0
     TINY  = 6
-    PATCH = 8 # Set to nil for official release
+    PATCH = 9 # Set to nil for official release
 
     STRING = [MAJOR, MINOR, TINY, PATCH].compact.join('.')
   end
