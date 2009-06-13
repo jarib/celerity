@@ -18,9 +18,18 @@ module Celerity
 
   @index_offset = 1
   class << self
-    attr_accessor :index_offset
+
+    #
+    # This index_offset attribute controls the indexing used when locating
+    # elements by :index or fetching from Celerity::ElementCollections.
+    #
+    # By default it is set to 1 for Watir compatibility, but users who use
+    # Celerity exlusively may want it set to 0 to make Celerity more consistent with Ruby.
+    #
+    def index_offset=(n) @index_offset = n end
+    def index_offset() @index_offset end
   end
-  
+
   DIR = File.expand_path(File.dirname(__FILE__) + "/celerity")
 end
 
