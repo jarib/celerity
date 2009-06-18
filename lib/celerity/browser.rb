@@ -479,21 +479,18 @@ module Celerity
     # Start or stop HtmlUnit's DebuggingWebConnection. (Celerity only)
     # The output will go to /tmp/«name»
     #
-    # @param [Boolean] bool start or stop
-    # @param [String]  name required if bool is true
+    # @param [String]  name directory name
+    # @param [block]   blk block to execute
     #
 
-    def debug_web_connection(bool, name = nil)
-      if bool
-        raise "no name given" unless name
-        @old_webconnection = @webclient.getWebConnection
-        dwc = HtmlUnit::Util::DebuggingWebConnection.new(@old_webconnection, name)
-        @webclient.setWebConnection(dwc)
-        $stderr.puts "debug-webconnection on"
-      else
-        @webclient.setWebConnection(@old_webconnection) if @old_webconnection
-        $stderr.puts "debug-webconnection off"
-      end
+    def debug_web_connection(name, &blk)
+      old_wc = @webclient.getWebConnection
+
+      @webclient.setWebConnection HtmlUnit::Util::DebuggingWebConnection.new(old_wc, name)
+      res = yield
+      @webclient.setWebConnection old_wc
+
+      res
     end
 
     #
