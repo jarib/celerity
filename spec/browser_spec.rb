@@ -322,6 +322,10 @@ describe "Browser" do
       @browser.wait_while { @browser.contains_text("Trigger change") }
       @browser.div(:id, "change").text.should == "all done"
     end
+
+    it "returns the value returned from the block" do
+      @browser.wait_while { false }.should == false
+    end
   end
 
   describe "#wait_until" do
@@ -330,6 +334,11 @@ describe "Browser" do
       @browser.div(:id, "change").click
       @browser.wait_until { @browser.contains_text("all done") }
     end
+
+    it "returns the value returned from the block" do
+      @browser.wait_until { true }.should == true
+    end
+
   end
 
   # Other

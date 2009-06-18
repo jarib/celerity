@@ -407,12 +407,16 @@ module Celerity
     #
 
     def wait_until(timeout = 30, &block)
+      returned = nil
+
       Timeout.timeout(timeout) do
-        until yield(self)
+        until returned = yield(self)
           refresh_page_from_window
           sleep 0.1
         end
       end
+
+      returned
     end
 
     #
@@ -424,12 +428,16 @@ module Celerity
     #
 
     def wait_while(timeout = 30, &block)
+      returned = nil
+
       Timeout.timeout(timeout) do
-        while yield(self)
+        while returned = yield(self)
           refresh_page_from_window
           sleep 0.1
         end
       end
+
+      returned
     end
 
     #
