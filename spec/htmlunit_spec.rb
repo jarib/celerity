@@ -39,6 +39,12 @@ describe "HtmlUnit bugs" do
     @browser.checkbox(:id, "exemption").set
     @browser.text.should include("Beskrivelse")
   end
+  
+  it "correctly prevents default on <form>#submit()" do
+    @browser.goto(HTML_DIR + "/prevent_form_submit.html")
+    @browser.button(:id, "next").click
+    @browser.title.should == "preventDefault() on form submission"
+  end
 
   after :all do
     @browser.close
