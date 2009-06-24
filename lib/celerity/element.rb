@@ -52,6 +52,7 @@ module Celerity
       end
 
       @conditions.freeze
+      @object = nil
     end
 
     #
