@@ -48,7 +48,8 @@ if RUBY_PLATFORM =~ /java/ || ENV['WATIR_SPEC']
     s = Celerity::SpecServer.new
     begin
       s.run
-    rescue Errno::EADDRINUSE
+    rescue Errno::EADDRINUSE => e
+      p :error => e
     end
     TEST_HOST = s.host
   end
@@ -60,7 +61,9 @@ end
 HTML_DIR = "file://#{File.expand_path(File.dirname(__FILE__))}/html"
 BROWSER_OPTIONS = {
   :log_level => $DEBUG ? :all : :off,
-  # :browser   => :firefox3
+  :browser   => :internet_explorer
 }
+
+BROWSER_OPTIONS.freeze
 
 Thread.abort_on_exception = true

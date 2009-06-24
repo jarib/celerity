@@ -56,8 +56,9 @@ module Celerity
       unless (render_types = [:html, :xml, nil]).include?(opts[:render])
         raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
       end
-
-      @options = opts.dup # for ClickableElement#click_and_attach
+      
+      opts     = opts.dup # we'll delete from opts, so dup to avoid side effects
+      @options = opts.dup # keep the unmodified version around as well
 
       @render_type   = opts.delete(:render)    || :html
       @charset       = opts.delete(:charset)   || "UTF-8"
