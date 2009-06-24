@@ -33,7 +33,7 @@ describe "Browser" do
       s = WEBrick::HTTPProxyServer.new(:Port => 2001, :ProxyContentHandler => blk)
       Thread.new { s.start }
 
-      b = Browser.new(:proxy => "localhost:2001")
+      b = Browser.new(BROWSER_OPTIONS.merge(:proxy => "localhost:2001"))
       b.goto(TEST_HOST)
       s.shutdown
 
@@ -69,7 +69,7 @@ describe "Browser" do
 
     %w(shift_jis iso-2022-jp euc-jp).each do |charset|
       it "returns decoded #{charset.upcase} when :charset specified" do
-        browser = Browser.new(:charset => charset.upcase)
+        browser = Browser.new(BROWSER_OPTIONS.merge(:charset => charset.upcase))
         browser.goto(HTML_DIR + "/#{charset}_text.html")
         browser.html.should =~ /本日は晴天なり。/ # Browser#text is automagically transcoded into the right charset, but Browser#html isn't.
       end

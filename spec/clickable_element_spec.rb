@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "ClickableElement" do
 
   before :all do
-    @browser = Browser.new(BROWSER_OPTIONS.merge(:log_level => :off))
+    @browser = Browser.new(BROWSER_OPTIONS)
   end
 
   before :each do

@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "Celerity.index_offset" do
 
   before :all do
-    @browser = Celerity::Browser.new(BROWSER_OPTIONS)
+    @browser = Browser.new(BROWSER_OPTIONS)
     @browser.goto(HTML_DIR + "/non_control_elements.html")
     
     Celerity.index_offset = 0

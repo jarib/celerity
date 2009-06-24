@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "Browser" do
 
   before :all do
-    @browser = Browser.new(:log_level => :off)
+    @browser = Browser.new(BROWSER_OPTIONS)
   end
 
   describe "#credentials=" do
