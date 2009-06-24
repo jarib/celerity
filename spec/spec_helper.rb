@@ -27,16 +27,14 @@ else
   include Watir::Exception
 end
 
-# ============
-# = Debugger =
-# ============
+Thread.abort_on_exception = true
+HTML_DIR = "file://#{File.expand_path(File.dirname(__FILE__))}/html"
+BROWSER_OPTIONS = {
+  :log_level => $DEBUG ? :all : :off,
+  # :browser   => :internet_explorer
+}
 
-# if ENV['DEBUGGER'] || $DEBUG
-#   require "ruby-debug"
-#   Debugger.start
-#   Debugger.settings[:autoeval] = true
-#   Debugger.settings[:autolist] = 1
-# end
+BROWSER_OPTIONS.freeze
 
 # ===========
 # = WEBrick =
@@ -58,12 +56,3 @@ else
   TEST_HOST = "http://localhost:2000"
 end
 
-HTML_DIR = "file://#{File.expand_path(File.dirname(__FILE__))}/html"
-BROWSER_OPTIONS = {
-  :log_level => $DEBUG ? :all : :off,
-  :browser   => :internet_explorer
-}
-
-BROWSER_OPTIONS.freeze
-
-Thread.abort_on_exception = true
