@@ -40,13 +40,13 @@ describe "HtmlUnit bugs" do
     @browser.text.should include("Beskrivelse")
   end
   
-  # describe "HtmlUnit bug 2811607: https://sourceforge.net/tracker/?func=detail&aid=2811607&group_id=47038&atid=448266" do
-  #   it "correctly prevents default on <form>#submit()" do
-  #     @browser.goto(HTML_DIR + "/prevent_form_submit.html")
-  #     @browser.button(:id, "next").click
-  #     @browser.title.should == "preventDefault() on form submission"
-  #   end
-  # end
+  describe "HtmlUnit bug 2811607: https://sourceforge.net/tracker/?func=detail&aid=2811607&group_id=47038&atid=448266" do
+    it "correctly prevents default on <form>#submit()" do
+      @browser.goto(HTML_DIR + "/prevent_form_submit.html")
+      @browser.button(:id, "next").click
+      @browser.title.should == "preventDefault() on form submission"
+    end
+  end
 
   after :all do
     @browser.close
