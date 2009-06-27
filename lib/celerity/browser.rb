@@ -32,7 +32,7 @@ module Celerity
     # @see Celerity::Container for an introduction to the main API.
     #
     # @option opts :log_level [Symbol] (:warning) @see log_level=
-    # @option opts :browser [:firefox, :internet_explorer] (:internet_explorer) Set the BrowserVersion used by HtmlUnit. Defaults to Internet Explorer.
+    # @option opts :browser [:internet_explorer, :firefox, :firefox3] (:firefox) Set the BrowserVersion used by HtmlUnit. Defaults to Firefox 2.
     # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
     # @option opts :secure_ssl [Boolean] (true)  Disable secure SSL. Enabled by default.
     # @option opts :resynchronize [Boolean] (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
