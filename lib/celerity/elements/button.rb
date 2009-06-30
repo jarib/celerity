@@ -3,7 +3,9 @@ module Celerity
   #
   # Input: Button
   #
-  # Class representing button elements
+  # Class representing button elements.
+  #
+  # This class covers both <button> and <input type="submit|reset|image|button" /> elements.
   #
 
   class Button < InputElement

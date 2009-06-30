@@ -42,11 +42,11 @@ describe "Image" do
     end
 
     it "raises TypeError when 'what' argument is invalid" do
-      lambda { @browser.button(:id, 3.14).exists? }.should raise_error(TypeError)
+      lambda { @browser.image(:id, 3.14).exists? }.should raise_error(TypeError)
     end
 
     it "raises MissingWayOfFindingObjectException when 'how' argument is invalid" do
-      lambda { @browser.button(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
+      lambda { @browser.image(:no_such_how, 'some_value').exists? }.should raise_error(MissingWayOfFindingObjectException)
     end
   end
 
