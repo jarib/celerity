@@ -141,6 +141,10 @@ module Celerity
 
     def elements_by_tag_names(tags = @tags)
       with_nullpointer_retry do
+        unless @object
+          raise %{internal error in #{self.class}: @object=#{@object.inspect} @container=#{@container.inspect} @element_class=#{@element_class.inspect}
+            Please report this failure and the code/HTML that caused it at http://github.com/jarib/celerity/issues}
+        end
         # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct
         # order (making :index fail), so we're using getAllHtmlChildElements instead.
         @object.getAllHtmlChildElements.select do |elem|
