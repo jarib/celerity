@@ -288,7 +288,7 @@ describe "Browser" do
     end
 
     it "raises an error if no such cookie exists" do
-      lambda { @browser.remove_cookie("bogus.com", "bar") }.should raise_error
+      lambda { @browser.remove_cookie("bogus.com", "bar") }.should raise_error(CookieNotFoundError)
     end
   end
 

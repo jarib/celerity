@@ -73,5 +73,11 @@ module Celerity
 
     class UnexpectedPageException < CelerityException; end
 
+    #
+    # This exception is thrown if an unexpected content type is returned by the server.
+    #
+
+    class CookieNotFoundError < CelerityException; end
+
   end # Exception
 end # Celerity

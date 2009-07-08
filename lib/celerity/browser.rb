@@ -349,7 +349,7 @@ module Celerity
       max_age = opts.delete(:max_age) || (Time.now + 60*60*24) # not sure if this is correct
       secure  = opts.delete(:secure) || false
 
-      raise "unknown option: #{opts.inspect}" unless opts.empty?
+      raise(ArgumentError, "unknown option: #{opts.inspect}") unless opts.empty?
 
       cookie = Cookie.new(domain, name, value, path, max_age, secure)
       @webclient.getCookieManager.addCookie(cookie)
@@ -360,6 +360,8 @@ module Celerity
     #
     # @param [String] domain
     # @param [String] name
+    # 
+    # @raise [CookieNotFoundError] if the cookie doesn't exist
     #
 
     def remove_cookie(domain, name)
@@ -367,7 +369,7 @@ module Celerity
       cookie = cm.getCookies.find { |c| c.getDomain == domain && c.getName == name }
 
       if cookie.nil?
-        raise "no cookie with domain #{domain.inspect} and name #{name.inspect}"
+        raise CookieNotFoundError, "no cookie with domain #{domain.inspect} and name #{name.inspect}"
       end
 
       cm.removeCookie(cookie)
@@ -690,7 +692,7 @@ module Celerity
     #
     # Check that we have a @page object.
     #
-    # @raise [Celerity::Exception::UnknownObjectException] if no page is loaded.
+    # @raise [UnknownObjectException] if no page is loaded.
     # @api private
     #
 

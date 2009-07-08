@@ -296,6 +296,7 @@ describe "TextField" do
 
     it "sets the value when accessed through the enclosing Form" do
       @browser.form(:id, 'new_user').text_field(:name , 'new_user_password').set('secret')
+      @browser.form(:id, 'new_user').text_field(:name , 'new_user_password').value.should == 'secret'
     end
 
     it "is able to set multi-byte characters" do
