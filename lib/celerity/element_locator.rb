@@ -118,7 +118,7 @@ module Celerity
 
     def get_by_idents(meth, idents)
       with_nullpointer_retry do
-        @object.getAllHtmlChildElements.send(meth) do |e|
+        all_elements.send(meth) do |e|
           next unless @tags.include?(e.getTagName)
           idents.any? { |id| element_matches_ident?(e, id) }
         end
@@ -141,16 +141,21 @@ module Celerity
 
     def elements_by_tag_names(tags = @tags)
       with_nullpointer_retry do
-        unless @object
-          raise %{internal error in #{self.class}: @object=#{@object.inspect} @container=#{@container.inspect} @element_class=#{@element_class.inspect}
-            Please report this failure and the code/HTML that caused it at http://github.com/jarib/celerity/issues}
-        end
         # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct
-        # order (making :index fail), so we're using getAllHtmlChildElements instead.
-        @object.getAllHtmlChildElements.select do |elem|
+        # order (making :index fail), so we're looping through all elements instead.
+        all_elements.select do |elem|
           tags.include?(elem.getTagName)
         end
       end
+    end
+
+    def all_elements
+      unless @object
+        raise %{internal error in #{self.class}: @object=#{@object.inspect} @container=#{@container.inspect} @element_class=#{@element_class.inspect}
+          Please report this failure and the code/HTML that caused it at http://github.com/jarib/celerity/issues}
+      end
+
+      @object.getAllHtmlChildElements
     end
 
     # HtmlUnit throws NPEs sometimes when we're locating elements
