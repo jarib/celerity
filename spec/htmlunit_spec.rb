@@ -19,6 +19,12 @@ describe "HtmlUnit bugs" do
    end
   end
 
+  # describe "NekoHtml parser bug" do
+  #   it "does not run out of java heap space" do
+  #     lambda { @browser.goto(HTML_DIR + "/parser_bug_001.html") }.should_not raise_error
+  #   end
+  # end
+  
 # disabled for CI - need fix from HtmlUnit
   # describe "HtmlUnit bug XXXXXX" do
   #   it "returns strings as UTF-8 when there's a charset mismatch between HTTP response header and <meta> tag" do
