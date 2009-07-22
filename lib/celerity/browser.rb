@@ -42,6 +42,7 @@ module Celerity
     # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use for requests, and those where texts are getting gibberished, like Browser#html.
     # @option opts :proxy [String] (nil) Proxy server to use, in address:port format.
     # @option opts :user_agent [String] Override the User-Agent set by the :browser option
+    # @option opts :ignore_pattern [Regexp] See Browser#ignore_pattern=
     #
     # @return [Celerity::Browser]     An instance of the browser.
     #
@@ -56,7 +57,7 @@ module Celerity
       unless (render_types = [:html, :xml, nil]).include?(opts[:render])
         raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
       end
-      
+
       opts     = opts.dup # we'll delete from opts, so dup to avoid side effects
       @options = opts.dup # keep the unmodified version around as well
 
@@ -360,7 +361,7 @@ module Celerity
     #
     # @param [String] domain
     # @param [String] name
-    # 
+    #
     # @raise [CookieNotFoundError] if the cookie doesn't exist
     #
 
@@ -601,6 +602,21 @@ module Celerity
     end
 
     #
+    # If a request is made to an URL that matches the pattern set here, Celerity
+    # will ignore the request and return an empty page with content type "text/html" instead.
+    #
+    # This is useful to block unwanted requests (like ads/banners).
+    #
+
+    def ignore_pattern=(regexp)
+      unless regexp.kind_of?(Regexp)
+        raise TypeError, "expected Regexp, got #{regexp.inspect}:#{regexp.class}"
+      end
+
+      Celerity::IgnoringWebConnection.new(@webclient, regexp)
+    end
+
+    #
     # Checks if we have a page currently loaded.
     # @return [true, false]
     #
@@ -755,6 +771,7 @@ module Celerity
       self.status_code_exceptions = false unless opts.delete(:status_code_exceptions)
       self.css                    = false unless opts.delete(:css)
       self.secure_ssl             = opts.delete(:secure_ssl) == false
+      self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts.delete(:resynchronize)
     end
 

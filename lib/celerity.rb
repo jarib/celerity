@@ -66,6 +66,7 @@ require "celerity/elements/text_field.rb"
 require "celerity/util"
 require "celerity/default_viewer"
 require "celerity/listener"
+require "celerity/ignoring_web_connection"
 require "celerity/browser"
 require "celerity/watir_compatibility"
 
