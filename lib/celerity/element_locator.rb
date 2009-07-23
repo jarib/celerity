@@ -143,15 +143,13 @@ module Celerity
       with_nullpointer_retry do
         # HtmlUnit's getHtmlElementsByTagNames won't get elements in the correct
         # order (making :index fail), so we're looping through all elements instead.
-        all_elements.select do |elem|
-          tags.include?(elem.getTagName)
-        end
+        all_elements.select { |elem| tags.include?(elem.getTagName) }
       end
     end
 
     def all_elements
       unless @object
-        raise %{internal error in #{self.class}: @object=#{@object.inspect} @container=#{@container.inspect} @element_class=#{@element_class.inspect}
+        raise %{internal error in #{self.class}: @container=#{@container.inspect} @element_class=#{@element_class.inspect}
           Please report this failure and the code/HTML that caused it at http://github.com/jarib/celerity/issues}
       end
 

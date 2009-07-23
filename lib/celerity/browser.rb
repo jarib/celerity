@@ -694,7 +694,7 @@ module Celerity
       @page = value
 
       if @page.respond_to?("getDocumentElement")
-        @object = @page.getDocumentElement
+        @object = @page.getDocumentElement || @object
       elsif @page.is_a? HtmlUnit::UnexpectedPage
         raise UnexpectedPageException, @page.getWebResponse.getContentType
       end
