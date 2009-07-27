@@ -65,7 +65,7 @@ module Celerity
       @charset       = opts.delete(:charset)   || "UTF-8"
       self.log_level = opts.delete(:log_level) || :warning
 
-      @last_url, @page = nil
+      @page = nil
       @error_checkers  = []
       @browser         = self # for Container#browser
 
@@ -704,7 +704,6 @@ module Celerity
     #
 
     def page=(value)
-      @last_url = url() if exist?
       @page = value
 
       if @page.respond_to?("getDocumentElement")
