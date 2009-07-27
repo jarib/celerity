@@ -292,15 +292,44 @@ describe "Browser" do
     end
   end
 
-  describe "#back" do
+  describe "#back and #forward" do
     it "goes to the previous page" do
-      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      @browser.goto("#{TEST_HOST}/non_control_elements.html")
       orig_url = @browser.url
-      @browser.goto(TEST_HOST + "/tables.html")
+      @browser.goto("#{TEST_HOST}/tables.html")
       new_url = @browser.url
       orig_url.should_not == new_url
       @browser.back
       orig_url.should == @browser.url
+    end
+
+    it "goes to the next page" do
+      urls = []
+      @browser.goto(TEST_HOST + "/non_control_elements.html")
+      urls << @browser.url
+      @browser.goto(TEST_HOST + "/tables.html")
+      urls << @browser.url
+
+      @browser.back
+      @browser.url.should == urls.first
+      @browser.forward
+      @browser.url.should == urls.last
+    end
+
+    it "navigates between several history items" do
+      urls = [ "#{TEST_HOST}/non_control_elements.html",
+               "#{TEST_HOST}/tables.html",
+               "#{TEST_HOST}/forms_with_input_elements.html",
+               "#{TEST_HOST}/definition_lists.html"
+      ].map do |page|
+          @browser.goto page
+          @browser.url
+        end
+
+      3.times { @browser.back }
+      @browser.url.should == urls.first
+      2.times { @browser.forward }
+      @browser.url.should == urls[2]
     end
   end
 

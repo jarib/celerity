@@ -273,13 +273,27 @@ module Celerity
     end
 
     #
-    # Goto the last url - HtmlUnit doesn't have a 'back' functionality, so we only have 1 history item :)
-    # @return [String, nil] The url of the resulting page, or nil if none was stored.
+    # Goto back one history item
+    # @return [String] The url of the resulting page.
     #
 
     def back
-      # TODO: this is naive, need capability from HtmlUnit
-      goto(@last_url) if @last_url
+      @webclient.getCurrentWindow.getHistory.back
+      refresh_page_from_window
+
+      url
+    end
+
+    #
+    # Go forward one history item
+    # @return [String] The url of the resulting page.
+    #
+
+    def forward
+      @webclient.getCurrentWindow.getHistory.forward
+      refresh_page_from_window
+
+      url
     end
 
     #
