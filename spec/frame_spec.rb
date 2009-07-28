@@ -146,7 +146,7 @@ describe "Frame" do
     end
 
     it "returns an empty Array if there are no matching elements" do
-      objects = @browser.elements_by_xpath("//*[@type='foobar']")
+      objects = @browser.frame(:index, 1).elements_by_xpath("//*[@type='foobar']")
       objects.size.should == 0
     end
   end
