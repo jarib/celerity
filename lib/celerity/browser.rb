@@ -758,33 +758,34 @@ module Celerity
     def setup_webclient(opts)
       browser = (opts.delete(:browser) || :firefox).to_sym
 
-      case browser
-      when :firefox, :ff, :ff2
-        browser_version = ::HtmlUnit::BrowserVersion::FIREFOX_2
-      when :firefox3, :ff3
-        browser_version = ::HtmlUnit::BrowserVersion::FIREFOX_3
-      when :internet_explorer, :ie
-        browser_version = ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7
-      else
-        raise ArgumentError, "unknown browser: #{browser.inspect}"
-      end
+      browser_version = case browser
+                        when :firefox, :ff, :ff2
+                          ::HtmlUnit::BrowserVersion::FIREFOX_2
+                        when :firefox3, :ff3
+                          ::HtmlUnit::BrowserVersion::FIREFOX_3
+                        when :internet_explorer, :ie
+                          ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7
+                        else
+                          raise ArgumentError, "unknown browser: #{browser.inspect}"
+                        end
 
       if ua = opts.delete(:user_agent)
         browser_version.setUserAgent(ua)
       end
 
-      if proxy = opts.delete(:proxy)
-        phost, pport = proxy.split(":")
-        @webclient = ::HtmlUnit::WebClient.new(browser_version, phost, pport.to_i)
-      else
-        @webclient = ::HtmlUnit::WebClient.new(browser_version)
-      end
+      @webclient = if proxy = opts.delete(:proxy)
+                     phost, pport = proxy.split(":")
+                     ::HtmlUnit::WebClient.new(browser_version, phost, pport.to_i)
+                   else
+                     ::HtmlUnit::WebClient.new(browser_version)
+                   end
 
       self.javascript_exceptions  = false unless opts.delete(:javascript_exceptions)
       self.status_code_exceptions = false unless opts.delete(:status_code_exceptions)
       self.css                    = false unless opts.delete(:css)
       self.secure_ssl             = opts.delete(:secure_ssl) == false
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
+
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts.delete(:resynchronize)
     end
 
