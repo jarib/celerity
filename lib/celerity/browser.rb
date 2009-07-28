@@ -34,7 +34,8 @@ module Celerity
     # @option opts :log_level [Symbol] (:warning) @see log_level=
     # @option opts :browser [:internet_explorer, :firefox, :firefox3] (:firefox) Set the BrowserVersion used by HtmlUnit. Defaults to Firefox 2.
     # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
-    # @option opts :secure_ssl [Boolean] (true)  Disable secure SSL. Enabled by default.
+    # @option opts :secure_ssl [Boolean] (true)  Enable/disable secure SSL. Enabled by default.
+    # @option opts :javascript_enabled [Boolean] (true)  Enable/disable JavaScript evaluation. Enabled by default.
     # @option opts :resynchronize [Boolean] (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
     # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
     # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
@@ -697,6 +698,20 @@ module Celerity
     end
 
     #
+    # Turn on/off JavaScript execution
+    #
+    # @param [Bool]
+    #
+
+    def javascript_enabled=(bool)
+      @webclient.setJavaScriptEnabled(bool)
+    end
+
+    def javascript_enabled
+      @webclient.isJavaScriptEnabled
+    end
+
+    #
     # Sets the current page object for the browser
     #
     # @param [HtmlUnit::HtmlPage] value The page to set.
@@ -783,6 +798,7 @@ module Celerity
       self.javascript_exceptions  = false unless opts.delete(:javascript_exceptions)
       self.status_code_exceptions = false unless opts.delete(:status_code_exceptions)
       self.css                    = false unless opts.delete(:css)
+      self.javascript_enabled     = opts.delete(:javascript_enabled) != false
       self.secure_ssl             = opts.delete(:secure_ssl) == false
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
 
