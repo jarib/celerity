@@ -135,5 +135,21 @@ describe "Frame" do
     end
   end
 
+  describe "#elements_by_xpath" do
+    before :each do
+      @browser.goto(HTML_DIR + "/iframes.html")
+    end
+
+    it "returns an Array of matching elements" do
+      objects = @browser.frame(:index, 1).elements_by_xpath("/html")
+      objects.size.should == 1
+    end
+
+    it "returns an empty Array if there are no matching elements" do
+      objects = @browser.elements_by_xpath("//*[@type='foobar']")
+      objects.size.should == 0
+    end
+  end
+
 end
 

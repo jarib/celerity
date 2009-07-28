@@ -1,6 +1,6 @@
 module Celerity
   class Browser
-    include Container
+    include XpathContainer
 
     attr_accessor :page, :object, :charset
     attr_reader :webclient, :viewer, :options
@@ -236,33 +236,6 @@ module Celerity
     def contains_text(expected_text)
       return nil unless exist?
       super
-    end
-
-    #
-    # Get the first element found matching the given XPath.
-    #
-    # @param [String] xpath
-    # @return [Celerity::Element] An element subclass (or Element if none is found)
-    #
-
-    def element_by_xpath(xpath)
-      assert_exists
-      obj = @page.getFirstByXPath(xpath)
-      element_from_dom_node(obj)
-    end
-
-    #
-    # Get all the elements matching the given XPath.
-    #
-    # @param [String] xpath
-    # @return [Array<Celerity::Element>] array of elements
-    #
-
-    def elements_by_xpath(xpath)
-      assert_exists
-      objects = @page.getByXPath(xpath)
-      # should use an ElementCollection here?
-      objects.map { |o| element_from_dom_node(o) }.compact
     end
 
     #
@@ -851,14 +824,6 @@ module Celerity
       @viewer = DefaultViewer
     end
 
-    #
-    # Convert the given HtmlUnit object to a Celerity object
-    #
-
-    def element_from_dom_node(obj)
-      element_class = Celerity::Util.htmlunit2celerity(obj.class) || Element
-      element_class.new(self, :object, obj)
-    end
 
     def listener
       @listener ||= Celerity::Listener.new(@webclient)
