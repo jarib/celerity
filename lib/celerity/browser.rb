@@ -1,6 +1,7 @@
 module Celerity
   class Browser
-    include XpathContainer
+    include Container
+    include XpathSupport
 
     attr_accessor :page, :object, :charset
     attr_reader :webclient, :viewer, :options

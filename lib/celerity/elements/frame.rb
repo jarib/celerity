@@ -1,6 +1,8 @@
 module Celerity
   class Frame < Element
-    include XpathContainer
+    include Container
+    include XpathSupport
+
     attr_accessor :page
 
     TAGS = [Identifier.new('frame'), Identifier.new('iframe')]

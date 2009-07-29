@@ -1,11 +1,11 @@
 module Celerity
 
   #
-  # Module to allow both Browser and Frame to search by xpath
+  # Module to search by xpath
   #
-  module XpathContainer
-    include Container
-    
+
+  module XpathSupport
+
     #
     # Get the first element found matching the given XPath.
     #
@@ -34,13 +34,15 @@ module Celerity
     end
 
     #
-    # Convert the given HtmlUnit object to a Celerity object
+    # Convert the given HtmlUnit DomNode to a Celerity object
     #
 
     def element_from_dom_node(obj)
-      element_class = Celerity::Util.htmlunit2celerity(obj.class) || Element
+      element_class = Util.htmlunit2celerity(obj.class) || Element
       element_class.new(self, :object, obj)
     end
+
+
   end
 
 end

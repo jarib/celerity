@@ -36,7 +36,7 @@ lib/celerity/short_inspect.rb
 lib/celerity/util.rb
 lib/celerity/version.rb
 lib/celerity/watir_compatibility.rb
-lib/celerity/xpath_container.rb
+lib/celerity/xpath_support.rb
 lib/celerity.rb
 lib/celerity/htmlunit/commons-codec-1.3.jar
 lib/celerity/htmlunit/commons-collections-3.2.1.jar
