@@ -27,6 +27,8 @@ describe "Button" do
       @browser.button(:class, /image/).should exist
       @browser.button(:index, 1).should exist
       @browser.button(:xpath, "//input[@id='new_user_submit']").should exist
+      @browser.button(:alt, "Create a new user").should exist
+      @browser.button(:alt, /Create a/).should exist
     end
 
     it "returns true if the button exists (how = :caption)" do
