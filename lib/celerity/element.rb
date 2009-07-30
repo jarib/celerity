@@ -21,7 +21,7 @@ module Celerity
       :i18n        => [:dir, :lang],
       :event       => [:onclick, :ondblclick, :onmousedown, :onmouseup, :onmouseover,
                        :onmousemove, :onmouseout, :onkeypress, :onkeydown, :onkeyup],
-      :sloppy      => [:name, :value, :alt]
+      :sloppy      => [:name, :value]
     }
 
     CELLHALIGN_ATTRIBUTES = HTML_401_TRANSITIONAL[:cell_halign]

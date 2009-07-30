@@ -14,7 +14,7 @@ module Celerity
 
     # Attribute list is a little weird due to this class covering both <button>
     # and <input type="submit|reset|image|button" />
-    ATTRIBUTES = BASE_ATTRIBUTES | [:type, :disabled, :tabindex, :accesskey, :onfocus, :onblur] | [:src, :usemap, :ismap]
+    ATTRIBUTES = ATTRIBUTES | [:type, :disabled, :tabindex, :accesskey, :onfocus, :onblur] | [:src, :usemap, :ismap]
     DEFAULT_HOW = :value
 
     #
