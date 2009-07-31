@@ -15,10 +15,14 @@ module Celerity
     def set(path)
       assert_exists
       path = path.to_s
-      @container.update_page @object.setValueAttribute(path)
+
+      @object.setValueAttribute path
+
       unless @object.getContentType
         @object.setContentType(Celerity::Util.content_type_for(path))
       end
+
+      path
     end
 
   end # FileField

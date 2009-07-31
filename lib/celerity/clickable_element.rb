@@ -7,7 +7,7 @@ module Celerity
 
     def click
       assert_exists_and_enabled
-      rescue_status_code_exception { @container.update_page(@object.click) }
+      rescue_status_code_exception { @object.click }
     end
 
     #
@@ -16,7 +16,7 @@ module Celerity
 
     def double_click
       assert_exists_and_enabled
-      rescue_status_code_exception { @container.update_page(@object.dblClick) }
+      rescue_status_code_exception { @object.dblClick }
     end
 
     #
@@ -25,7 +25,7 @@ module Celerity
 
     def right_click
       assert_exists_and_enabled
-      rescue_status_code_exception { @container.update_page(@object.rightClick) }
+      rescue_status_code_exception { @object.rightClick }
     end
 
     #
@@ -43,7 +43,7 @@ module Celerity
       ) # hirobumi: we do want cookies as well.
 
       @browser.disable_event_listener do
-        rescue_status_code_exception { browser.update_page(@object.click) }
+        rescue_status_code_exception { browser.page = @object.click }
       end
 
       browser

@@ -71,7 +71,7 @@ module Celerity
     def set(value = true)
       assert_exists
       assert_enabled
-      @container.update_page(value ? @object.click : @object.setChecked(value))
+      value ? @object.click : @object.setChecked(value)
     end
 
   end
@@ -107,7 +107,7 @@ module Celerity
 
       if (value && !set?) || (!value && set?)
         Log.debug(@object.inspect)
-        @container.update_page(@object.click)
+        @object.click
       end
     end
   end

@@ -286,7 +286,7 @@ module Celerity
 
     def refresh
       assert_exists
-      self.page = @page.refresh
+      @page.refresh
     end
 
     #

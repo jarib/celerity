@@ -16,7 +16,7 @@ module Celerity
 
     def submit
       assert_exists
-      @container.update_page @object.submit(nil)
+      @object.submit(nil)
     end
 
   end # Form

@@ -75,15 +75,6 @@ module Celerity
       container
     end
 
-    #
-    # Used internally to update the page object.
-    # @api private
-    #
-
-    def update_page(page)
-      @browser.page = page 
-    end
-
     #--
     # below methods sorted alphabetically
     #++

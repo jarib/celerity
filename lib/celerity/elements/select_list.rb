@@ -52,7 +52,7 @@ module Celerity
         next unless matches_option?(option, value)
 
         selected ||= option.asText
-        @container.update_page option.click
+        option.click
       end
 
       selected
