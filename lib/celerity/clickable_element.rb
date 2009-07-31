@@ -42,7 +42,9 @@ module Celerity
         @browser.webclient.get_cookie_manager
       ) # hirobumi: we do want cookies as well.
 
-      rescue_status_code_exception { browser.update_page(@object.click) }
+      @browser.disable_event_listener do
+        rescue_status_code_exception { browser.update_page(@object.click) }
+      end
 
       browser
     end
@@ -56,7 +58,9 @@ module Celerity
 
     def download
       assert_exists_and_enabled
-      @object.click.getWebResponse.getContentAsStream.to_io
+      @browser.disable_event_listener do
+        @object.click.getWebResponse.getContentAsStream.to_io
+      end
     end
 
     private

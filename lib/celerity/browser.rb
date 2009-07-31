@@ -693,6 +693,7 @@ module Celerity
     #
 
     def page=(value)
+      return if @page == value
       @page = value
 
       if @page.respond_to?("getDocumentElement")
@@ -724,6 +725,37 @@ module Celerity
 
     def focused_element
       element_from_dom_node(page.getFocusedElement())
+    end
+
+    #
+    # Enable Celerity's internal WebWindowEventListener
+    #
+    # @api private
+    #
+
+    def enable_event_listener
+      @event_listener ||= lambda do |event|
+        self.page = event.getNewPage
+      end
+
+      listener.add_listener(:web_window_event, &@event_listener)
+    end
+
+    #
+    # Disable Celerity's internal WebWindowEventListener
+    #
+    # @api private
+    #
+
+    def disable_event_listener
+      listener.remove_listener(:web_window_event, @event_listener)
+
+      if block_given?
+        result = yield
+        enable_event_listener
+
+        result
+      end
     end
 
     private
@@ -777,6 +809,7 @@ module Celerity
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
 
       @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts.delete(:resynchronize)
+      enable_event_listener
     end
 
     #
@@ -824,7 +857,6 @@ module Celerity
     rescue DRb::DRbConnError, Errno::ECONNREFUSED
       @viewer = DefaultViewer
     end
-
 
     def listener
       @listener ||= Celerity::Listener.new(@webclient)

@@ -81,7 +81,7 @@ module Celerity
     #
 
     def update_page(page)
-      @browser.page = page
+      @browser.page = page 
     end
 
     #--

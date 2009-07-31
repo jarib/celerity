@@ -216,6 +216,12 @@ describe "Browser" do
     it "raises UnexpectedPageException if the content type is not understood" do
       lambda { @browser.goto(TEST_HOST + "/octet_stream") }.should raise_error(UnexpectedPageException)
     end
+
+    it "updates the page when location is changed with setTimeout + window.location" do
+      @browser.goto(HTML_DIR + "/timeout_window_location.html")
+      sleep 1
+      @browser.url.should include("non_control_elements.html")
+    end
   end
 
   describe "#refresh" do
