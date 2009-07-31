@@ -735,7 +735,7 @@ module Celerity
 
     def enable_event_listener
       @event_listener ||= lambda do |event|
-        self.page = event.getNewPage
+        self.page = @page ? @page.getEnclosingWindow.getEnclosedPage : event.getNewPage
       end
 
       listener.add_listener(:web_window_event, &@event_listener)
