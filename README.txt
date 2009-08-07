@@ -44,7 +44,8 @@ web applications. Celerity aims at being API compatible with Watir.
   
 == SOURCE
 
-The source code is available at http://github.com/jarib/celerity/tree/master 
+The source code is available at http://github.com/jarib/celerity/tree/master.
+Most of Celerity's spec suite is available as a separate project, at http://github.com/jarib/watirspec/tree/master.
 
 == WIKI:
 
