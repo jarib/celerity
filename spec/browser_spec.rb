@@ -19,7 +19,7 @@ describe "Browser" do
     end
 
     it "should hold the init options" do
-      browser.options.should == WatirSpec.browser_options.first
+      browser.options.should == WatirSpec.browser_args.first
     end
 
     it "should use the specified proxy" do
@@ -31,7 +31,7 @@ describe "Browser" do
       s = WEBrick::HTTPProxyServer.new(:Port => 2001, :ProxyContentHandler => blk)
       Thread.new { s.start }
 
-      b = Browser.new(WatirSpec.browser_options.first.merge(:proxy => "localhost:2001"))
+      b = Browser.new(WatirSpec.browser_args.first.merge(:proxy => "localhost:2001"))
       b.goto(WatirSpec.host)
       s.shutdown
 
@@ -39,7 +39,7 @@ describe "Browser" do
     end
 
     it "should use the specified user agent" do
-      b = Browser.new(WatirSpec.browser_options.first.merge(:user_agent => "Celerity"))
+      b = Browser.new(WatirSpec.browser_args.first.merge(:user_agent => "Celerity"))
       b.goto(WatirSpec.host + "/header_echo")
       b.text.should include('"HTTP_USER_AGENT"=>"Celerity"')
       b.close
@@ -49,7 +49,7 @@ describe "Browser" do
   describe "#html" do
     %w(shift_jis iso-2022-jp euc-jp).each do |charset|
       it "returns decoded #{charset.upcase} when :charset specified" do
-        browser = Browser.new(WatirSpec.browser_options.first.merge(:charset => charset.upcase))
+        browser = Browser.new(WatirSpec.browser_args.first.merge(:charset => charset.upcase))
         browser.goto(WatirSpec.files + "/#{charset}_text.html")
         # Browser#text is automagically transcoded into the right charset, but Browser#html isn't.
         browser.html.should =~ /本日は晴天なり。/ 
