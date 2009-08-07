@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/watirspec/spec/spec_helper'
+require File.dirname(__FILE__) + '/watirspec/spec_helper'
 
 describe "Listener" do
   before(:each) do
