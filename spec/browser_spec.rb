@@ -25,7 +25,7 @@ describe "Browser" do
     it "should use the specified proxy" do
       # TODO: find a better way to test this with rack
       require 'webrick/httpproxy'
-      
+
       received = false
       blk      = lambda { received = true }
       s = WEBrick::HTTPProxyServer.new(:Port => 2001, :ProxyContentHandler => blk)
@@ -45,19 +45,19 @@ describe "Browser" do
       b.close
     end
   end
-  
+
   describe "#html" do
     %w(shift_jis iso-2022-jp euc-jp).each do |charset|
       it "returns decoded #{charset.upcase} when :charset specified" do
         browser = Browser.new(WatirSpec.browser_args.first.merge(:charset => charset.upcase))
         browser.goto(WatirSpec.files + "/#{charset}_text.html")
         # Browser#text is automagically transcoded into the right charset, but Browser#html isn't.
-        browser.html.should =~ /本日は晴天なり。/ 
+        browser.html.should =~ /本日は晴天なり。/
         browser.close
       end
     end
   end
-  
+
   describe "#response_headers" do
     it "returns the response headers (as a hash)" do
       browser.goto(WatirSpec.host + "/non_control_elements.html")
@@ -81,13 +81,13 @@ describe "Browser" do
       browser.io.read.should == File.read("#{WatirSpec.html}/non_control_elements.html")
     end
   end
-  
+
   describe "#goto" do
     it "raises UnexpectedPageException if the content type is not understood" do
       lambda { browser.goto(WatirSpec.host + "/octet_stream") }.should raise_error(UnexpectedPageException)
     end
   end
-  
+
   describe "#cookies" do
     it "returns set cookies as a Ruby hash" do
       cookies = browser.cookies
@@ -178,17 +178,17 @@ describe "Browser" do
       browser.wait_until { true }.should == true
     end
   end
-  
+
   describe "#element_by_xpath" do
     it "returns usable elements even though they're not supported" do
       browser.goto(WatirSpec.files + "/forms_with_input_elements.html")
-      
+
       el = browser.element_by_xpath("//link")
       el.should be_instance_of(Celerity::Element)
       el.rel.should == "stylesheet"
     end
   end
-  
+
   describe "#focused_element" do
     it "returns the element that currently has the focus" do
       browser.goto(WatirSpec.files + "/forms_with_input_elements.html")
@@ -233,6 +233,20 @@ describe "Browser" do
     end
   end
 
+  describe "#add_checker" do
+
+    # watir only supports a lambda instance as argument, celerity supports both
+    it "runs the given block on each page load" do
+      output = ''
+
+      browser.add_checker { |browser| output << browser.text }
+      browser.goto(WatirSpec.files + "/non_control_elements.html")
+
+      output.should include('Dubito, ergo cogito, ergo sum')
+    end
+  end
+
+
   describe "#confirm" do
     it "clicks 'OK' for a confirm() call" do
       browser.goto(WatirSpec.files + "/forms_with_input_elements.html")
@@ -250,5 +264,5 @@ describe "Browser" do
       end
     end
   end
-  
+
 end
