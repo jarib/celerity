@@ -19,7 +19,7 @@ describe "HtmlUnit bugs" do
   #     lambda { browser.goto(WatirSpec.files + "/parser_bug_001.html") }.should_not raise_error
   #   end
   # end
-  
+
 # disabled for CI - need fix from HtmlUnit
   # describe "HtmlUnit bug XXXXXX" do
   #   it "returns strings as UTF-8 when there's a charset mismatch between HTTP response header and <meta> tag" do
@@ -35,12 +35,16 @@ describe "HtmlUnit bugs" do
   end
 
   it "doesn't return the TinyMCE DOM when executing javascript functions" do
-    browser.goto(WatirSpec.files + "/tiny_mce.html")
-    browser.text.should include("Beskrivelse")
-    browser.checkbox(:id, "exemption").set
-    browser.text.should include("Beskrivelse")
+    b = WatirSpec.new_browser
+
+    b.goto(WatirSpec.files + "/tiny_mce.html")
+    b.text.should include("Beskrivelse")
+    b.checkbox(:id, "exemption").set
+    b.text.should include("Beskrivelse")
+
+    b.close
   end
-  
+
   describe "HtmlUnit bug 2811607: https://sourceforge.net/tracker/?func=detail&aid=2811607&group_id=47038&atid=448266" do
     it "correctly prevents default on <form>#submit()" do
       browser.goto(WatirSpec.files + "/prevent_form_submit.html")
