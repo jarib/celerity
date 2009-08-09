@@ -42,7 +42,10 @@ describe "Element" do
     end
   end
 
+  describe "#locate" do
+    it "raises ArgumentError when used with :object and the object given isn't an HtmlElement subclass" do
+      lambda { Link.new(browser, :object, "foo").locate }.should raise_error(ArgumentError)
+    end
+  end
 
-
-  
 end
