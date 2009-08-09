@@ -104,11 +104,15 @@ describe "Browser" do
 
   describe "#clear_cookies" do
     it "clears all cookies" do
-      browser.cookies.should be_empty
-      browser.goto(WatirSpec.host + "/set_cookie")
-      browser.cookies.size.should == 1
-      browser.clear_cookies
-      browser.cookies.should be_empty
+      b = WatirSpec.new_browser
+      b.cookies.should be_empty
+
+      b.goto(WatirSpec.host + "/set_cookie")
+      b.cookies.size.should == 1
+      b.clear_cookies
+      b.cookies.should be_empty
+
+      b.close
     end
   end
 
@@ -133,9 +137,13 @@ describe "Browser" do
 
   describe "remove_cookie" do
     it "removes the cookie for the given domain and name" do
-      browser.goto(WatirSpec.host + "/set_cookie")
-      browser.remove_cookie(WatirSpec::Server.host, "monster")
-      browser.cookies.should be_empty
+      b = WatirSpec.new_browser
+      b.goto(WatirSpec.host + "/set_cookie")
+
+      b.remove_cookie(WatirSpec::Server.host, "monster")
+      b.cookies.should be_empty
+
+      b.close
     end
 
     it "raises an error if no such cookie exists" do
@@ -191,8 +199,11 @@ describe "Browser" do
 
   describe "#focused_element" do
     it "returns the element that currently has the focus" do
-      browser.goto(WatirSpec.files + "/forms_with_input_elements.html")
-      browser.focused_element.id.should == "new_user_first_name"
+      b = WatirSpec.new_browser
+      b.goto(WatirSpec.files + "/forms_with_input_elements.html")
+      b.focused_element.id.should == "new_user_first_name"
+
+      b.close
     end
   end
 
