@@ -15,6 +15,17 @@ EOS
   exit(0)
 end
 
+
+load "spec/watirspec/watirspec.rake" if File.directory?("spec/watirspec")
+
+namespace :watirspec do
+  desc 'Initialize and fetch the watirspec submodule'
+  task :init do
+    sh "git submodule init"
+    sh "git submodule update"
+  end
+end
+
 desc "Run the specs under spec/"
 Spec::Rake::SpecTask.new do |t|
   t.spec_files = FileList['spec/**/*_spec.rb']
