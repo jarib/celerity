@@ -16,7 +16,9 @@ EOS
 end
 
 
-load "spec/watirspec/watirspec.rake" if File.directory?("spec/watirspec")
+if File.exist?(path = "spec/watirspec/watirspec.rake")
+  load path
+end
 
 namespace :watirspec do
   desc 'Initialize and fetch the watirspec submodule'
