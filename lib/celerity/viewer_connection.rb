@@ -12,7 +12,7 @@ module Celerity
     end
 
     def render_html(html, url)
-      send_data({'method' => 'render_html', 'html' => html, 'url' => url}.to_json)
+      send_data({'method' => 'page_changed', 'html' => html, 'url' => url}.to_json)
     end
 
     def save(path = nil)
