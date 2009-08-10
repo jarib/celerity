@@ -46,10 +46,24 @@ describe "Browser" do
     end
 
     it "should not try to find a viewer if created with :viewer => false" do
-      # would have been better to do set the expectation mocha's Browser.any_instance here, but oh well
-      DRbObject.should_not_receive(:new_with_uri)
+      ViewerConnection.should_not_receive(:create)
+
       b = Browser.new(:viewer => false)
       b.close
+    end
+
+    it "tries to find a viewer on the specified host/port with :viewer => String" do
+      ViewerConnection.should_receive(:create).with("localhost", 1234)
+
+      b = Browser.new(:viewer => "localhost:1234")
+      b.close
+    end
+
+    it "raises an error only if the :viewer host was specified by the user" do
+      ViewerConnection.should_receive(:create).and_raise(Errno::ECONNREFUSED)
+      lambda { b = Browser.new; b.close }.should_not raise_error
+
+      lambda { b = Browser.new(:viewer => "127.0.0.1:6429") }.should raise_error(Errno::ECONNREFUSED)
     end
   end
 

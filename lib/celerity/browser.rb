@@ -68,14 +68,13 @@ module Celerity
       @charset       = opts.delete(:charset)   || "UTF-8"
       self.log_level = opts.delete(:log_level) || :warning
 
-      @page = nil
-      @viewer = DefaultViewer
-      @error_checkers  = []
-      @browser         = self # for Container#browser
+      @page           = nil
+      @error_checkers = []
+      @browser        = self # for Container#browser
 
-      setup_webclient(opts)
+      setup_webclient opts
+      setup_viewer opts.delete(:viewer)
 
-      find_viewer unless opts.delete(:viewer) == false
       raise ArgumentError, "unknown option #{opts.inspect}" unless opts.empty?
     end
 
@@ -815,6 +814,22 @@ module Celerity
       enable_event_listener
     end
 
+    def setup_viewer(option)
+      @viewer = DefaultViewer
+      return unless option
+
+      begin
+        host_string = option.kind_of?(String) ? option : "127.0.0.1:6429"
+        host, port  = host_string.split(":")
+
+        if viewer = ViewerConnection.create(host, port.to_i)
+          @viewer = viewer
+        end
+      rescue Errno::ECONNREFUSED => e
+        raise e if option.kind_of?(String)
+      end
+    end
+
     #
     # This *should* be unneccessary, but sometimes the page we get from the
     # window is different (ie. a different object) from our current @page
@@ -839,25 +854,6 @@ module Celerity
     def render
       @viewer.render_html(self.send(@render_type), url)
     rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EPIPE
-      @viewer = DefaultViewer
-    end
-
-    #
-    # Check if we have a viewer available on druby://127.0.0.1:6429
-    # @api private
-    #
-
-    def find_viewer
-      # # needed to avoid DRb raising and rescuing lots exceptions
-      # DRb.start_service unless DRb.primary_server
-      #
-      # viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
-      if viewer = ViewerConnection.create('127.0.0.1', 6429)
-        @viewer = viewer
-      else
-        @viewer = DefaultViewer
-      end
-    rescue Errno::ECONNREFUSED
       @viewer = DefaultViewer
     end
 
