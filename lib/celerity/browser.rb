@@ -80,7 +80,7 @@ module Celerity
     end
 
     def inspect
-      short_inspect :exclude => %w[@webclient @browser @object @options]
+      short_inspect :exclude => %w[@webclient @browser @object @options @listener @event_listener]
     end
 
     #
@@ -838,7 +838,7 @@ module Celerity
 
     def render
       @viewer.render_html(self.send(@render_type), url)
-    rescue DRb::DRbConnError, Errno::ECONNREFUSED => e
+    rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EPIPE
       @viewer = DefaultViewer
     end
 
@@ -848,16 +848,16 @@ module Celerity
     #
 
     def find_viewer
-      # needed to avoid DRb raising and rescuing lots exceptions
-      DRb.start_service unless DRb.primary_server
-
-      viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
-      if viewer.respond_to?(:render_html)
+      # # needed to avoid DRb raising and rescuing lots exceptions
+      # DRb.start_service unless DRb.primary_server
+      #
+      # viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
+      if viewer = ViewerConnection.create
         @viewer = viewer
       else
         @viewer = DefaultViewer
       end
-    rescue DRb::DRbConnError, Errno::ECONNREFUSED
+    rescue Errno::ECONNREFUSED
       @viewer = DefaultViewer
     end
 
