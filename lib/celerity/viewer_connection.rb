@@ -19,6 +19,10 @@ module Celerity
       send_data({'method' => 'save', 'path' => path}.to_json)
     end
 
+    def close
+      @socket.close
+    end
+
     private
 
     def send_data(data)
