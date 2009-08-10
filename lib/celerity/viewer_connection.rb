@@ -12,10 +12,7 @@ module Celerity
     
     def render_html(html, url)
       data = {'html' => html, 'url' => url}.to_json
-      @socket.write "Content-Length: "
-      @socket.write data.size.to_s
-      @socket.write "\n\n"
-      @socket.write data
+      @socket.write ["Content-Length: #{data.size}", data].join("\n\n")
     end
   end
 end
