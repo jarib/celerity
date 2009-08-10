@@ -852,7 +852,7 @@ module Celerity
       # DRb.start_service unless DRb.primary_server
       #
       # viewer = DRbObject.new_with_uri("druby://127.0.0.1:6429")
-      if viewer = ViewerConnection.create
+      if viewer = ViewerConnection.create('127.0.0.1', 6429)
         @viewer = viewer
       else
         @viewer = DefaultViewer
