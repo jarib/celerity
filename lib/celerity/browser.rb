@@ -40,11 +40,12 @@ module Celerity
     # @option opts :resynchronize [Boolean] (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
     # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
     # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
-    # @option opts :render [:html, :xml] (:html) What DOM representation to send to connected viewers.
     # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use for requests, and those where texts are getting gibberished, like Browser#html.
     # @option opts :proxy [String] (nil) Proxy server to use, in address:port format.
     # @option opts :user_agent [String] Override the User-Agent set by the :browser option
     # @option opts :ignore_pattern [Regexp] See Browser#ignore_pattern=
+    # @option opts :viewer [Boolean] (true) Connect to a CelerityViewer on port 6429 if available.
+    # @option opts :render [:html, :xml] (:html) What DOM representation to send to connected viewers.
     #
     # @return [Celerity::Browser]     An instance of the browser.
     #
@@ -68,13 +69,14 @@ module Celerity
       self.log_level = opts.delete(:log_level) || :warning
 
       @page = nil
+      @viewer = DefaultViewer
       @error_checkers  = []
       @browser         = self # for Container#browser
 
       setup_webclient(opts)
 
+      find_viewer unless opts.delete(:viewer) == false
       raise ArgumentError, "unknown option #{opts.inspect}" unless opts.empty?
-      find_viewer
     end
 
     def inspect
@@ -124,6 +126,7 @@ module Celerity
     def close
       @page = nil
       @webclient.closeAllWindows
+      @viewer.close
     end
 
     #
@@ -829,7 +832,7 @@ module Celerity
     end
 
     #
-    # Render the current page on the viewer.
+    # Render the current page on the connected viewer.
     # @api private
     #
 

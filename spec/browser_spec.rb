@@ -44,6 +44,13 @@ describe "Browser" do
       b.text.should include('"HTTP_USER_AGENT"=>"Celerity"')
       b.close
     end
+
+    it "should not try to find a viewer if created with :viewer => false" do
+      # would have been better to do set the expectation mocha's Browser.any_instance here, but oh well
+      DRbObject.should_not_receive(:new_with_uri)
+      b = Browser.new(:viewer => false)
+      b.close
+    end
   end
 
   describe "#html" do
