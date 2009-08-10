@@ -26,8 +26,7 @@ module Celerity
     # By default it is set to 1 for Watir compatibility, but users who use
     # Celerity exlusively may want it set to 0 to make Celerity more consistent with Ruby.
     #
-    def index_offset=(n) @index_offset = n end
-    def index_offset() @index_offset end
+    attr_accessor :index_offset
   end
 
   DIR = File.expand_path(File.dirname(__FILE__) + "/celerity")
