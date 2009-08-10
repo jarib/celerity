@@ -816,7 +816,7 @@ module Celerity
 
     def setup_viewer(option)
       @viewer = DefaultViewer
-      return unless option
+      return if option == false
 
       begin
         host_string = option.kind_of?(String) ? option : "127.0.0.1:6429"

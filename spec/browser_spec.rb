@@ -45,10 +45,17 @@ describe "Browser" do
       b.close
     end
 
-    it "should not try to find a viewer if created with :viewer => false" do
+    it "does not try to find a viewer if created with :viewer => false" do
       ViewerConnection.should_not_receive(:create)
 
       b = Browser.new(:viewer => false)
+      b.close
+    end
+
+    it "tries to find a viewer if created with :viewer => nil" do
+      ViewerConnection.should_receive(:create).with("127.0.0.1", 6429)
+
+      b = Browser.new(:viewer => nil)
       b.close
     end
 
@@ -60,9 +67,9 @@ describe "Browser" do
     end
 
     it "raises an error only if the :viewer host was specified by the user" do
-      ViewerConnection.should_receive(:create).and_raise(Errno::ECONNREFUSED)
-      lambda { b = Browser.new; b.close }.should_not raise_error
+      ViewerConnection.should_receive(:create).twice.and_raise(Errno::ECONNREFUSED)
 
+      lambda { b = Browser.new; b.close }.should_not raise_error
       lambda { b = Browser.new(:viewer => "127.0.0.1:6429") }.should raise_error(Errno::ECONNREFUSED)
     end
   end
