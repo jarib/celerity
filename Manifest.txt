@@ -35,6 +35,7 @@ lib/celerity/listener.rb
 lib/celerity/short_inspect.rb
 lib/celerity/util.rb
 lib/celerity/version.rb
+lib/celerity/viewer_connection.rb
 lib/celerity/watir_compatibility.rb
 lib/celerity/xpath_support.rb
 lib/celerity.rb
