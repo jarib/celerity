@@ -20,13 +20,15 @@ module Celerity
     end
 
     def close
-      @socket.close
+      @socket.close rescue nil
     end
 
     private
 
-    def send_data(data)
-      @socket.write ["Content-Length: #{data.size}", data].join("\n\n")
+    def send_data(json)
+      data = "Content-Length: #{json.size}\n\n#{json}"
+      @socket.write data
+      @socket.flush
     end
 
   end
