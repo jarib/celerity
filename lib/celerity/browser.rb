@@ -46,6 +46,7 @@ module Celerity
     # @option opts :ignore_pattern [Regexp] See Browser#ignore_pattern=
     # @option opts :viewer [Boolean] (true) Connect to a CelerityViewer on port 6429 if available.
     # @option opts :render [:html, :xml] (:html) What DOM representation to send to connected viewers.
+    # @option opts :refresh_handler [:immediat, :waiting, :threaded] (:immediate) Set HtmlUnit's refresh handler.
     #
     # @return [Celerity::Browser]     An instance of the browser.
     #
@@ -659,6 +660,21 @@ module Celerity
       @webclient.cssEnabled
     end
 
+    def refresh_handler=(symbol)
+      handler = case symbol
+                when :waiting
+                  HtmlUnit::WaitingRefreshHandler.new
+                when :threaded
+                  HtmlUnit::ThreadedRefreshHandler.new
+                when :immediate
+                  HtmlUnit::ImmediateRefreshHandler.new
+                else
+                  raise ArgumentError, "expected :waiting, :threaded or :immediate"
+                end
+
+      @webclient.setRefreshHandler handler
+    end
+
     #
     # Turn on/off secure SSL
     #
@@ -809,8 +825,13 @@ module Celerity
       self.javascript_enabled     = opts.delete(:javascript_enabled) != false
       self.secure_ssl             = opts.delete(:secure_ssl) == false
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
+      self.refresh_handler        = opts.delete(:refresh_handler) if opts[:refresh_handler]
 
-      @webclient.setAjaxController(::HtmlUnit::NicelyResynchronizingAjaxController.new) if opts.delete(:resynchronize)
+      if opts.delete(:resynchronize)
+        controller = ::HtmlUnit::NicelyResynchronizingAjaxController.new
+        @webclient.setAjaxController controller
+      end
+
       enable_event_listener
     end
 
