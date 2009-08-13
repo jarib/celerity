@@ -65,13 +65,6 @@ describe "Browser" do
       b = Browser.new(:viewer => "localhost:1234")
       b.close
     end
-
-    it "raises an error only if the :viewer host was specified by the user" do
-      ViewerConnection.should_receive(:create).twice.and_raise(Errno::ECONNREFUSED)
-
-      lambda { b = Browser.new; b.close }.should_not raise_error
-      lambda { b = Browser.new(:viewer => "127.0.0.1:6429") }.should raise_error(Errno::ECONNREFUSED)
-    end
   end
 
   describe "#html" do

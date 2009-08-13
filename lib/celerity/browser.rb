@@ -839,16 +839,14 @@ module Celerity
       @viewer = DefaultViewer
       return if option == false
 
-      begin
-        host_string = option.kind_of?(String) ? option : "127.0.0.1:6429"
-        host, port  = host_string.split(":")
+      host_string = option.kind_of?(String) ? option : "127.0.0.1:6429"
+      host, port  = host_string.split(":")
 
-        if viewer = ViewerConnection.create(host, port.to_i)
-          @viewer = viewer
-        end
-      rescue Errno::ECONNREFUSED => e
-        raise e if option.kind_of?(String)
+      if viewer = ViewerConnection.create(host, port.to_i)
+        @viewer = viewer
       end
+    rescue Errno::ECONNREFUSED => e
+      nil
     end
 
     #
