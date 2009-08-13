@@ -64,7 +64,7 @@ Related projects
 ----------------
 
 * [WatirSpec](http://github.com/jarib/watirspec/tree/master)
-* [Viewers](http://github.com/jarib/celerity-viewers)
+* [Celerity Viewers](http://github.com/jarib/celerity-viewers)
 
 License
 -------
