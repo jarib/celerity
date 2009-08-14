@@ -57,7 +57,7 @@ lib/celerity/htmlunit/xml-apis-1.3.04.jar
 lib/celerity/resources/no_viewer.png
 License.txt
 Rakefile
-README.txt
+README.markdown
 tasks
 tasks/jar.rake
 tasks/rdoc.rake
