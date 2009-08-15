@@ -52,6 +52,7 @@ $hoe = Hoe.spec(GEM_NAME) do |p|
   p.summary = SUMMARY
   p.url = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
+  p.readme_file = "README.markdown"
   p.test_globs = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'classes']  #An array of file patterns to delete on clean.
 
