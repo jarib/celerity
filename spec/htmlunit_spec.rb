@@ -14,11 +14,11 @@ describe "HtmlUnit bugs" do
    end
   end
 
-  # describe "NekoHtml parser bug: https://sourceforge.net/tracker/?func=detail&aid=2824922&group_id=47038&atid=448266" do
-  #   it "does not run out of java heap space" do
-  #     lambda { browser.goto(WatirSpec.files + "/parser_bug_001.html") }.should_not raise_error
-  #   end
-  # end
+  describe "NekoHtml parser bug: https://sourceforge.net/tracker/?func=detail&aid=2824922&group_id=47038&atid=448266" do
+    it "does not run out of java heap space" do
+      lambda { browser.goto(WatirSpec.files + "/parser_bug_001.html") }.should_not raise_error
+    end
+  end
 
 # disabled for CI - need fix from HtmlUnit
   # describe "HtmlUnit bug XXXXXX" do
