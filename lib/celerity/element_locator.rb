@@ -165,7 +165,7 @@ module Celerity
       raise e if tries >= max_retries
 
       tries += 1
-      $stderr.puts "warning: celerity caught #{e} - retry ##{tries}"
+      warn "warning: celerity caught #{e} - retry ##{tries}"
       retry
     end
 
