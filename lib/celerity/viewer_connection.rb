@@ -21,7 +21,7 @@ module Celerity
     #
 
     def render_html(html, url)
-      send_data({'method' => 'page_changed', 'html' => html, 'url' => url}.to_json)
+      send_data('method' => 'page_changed', 'html' => html, 'url' => url)
     end
 
     #
@@ -30,16 +30,28 @@ module Celerity
     #
 
     def save(path)
-      send_data({'method' => 'save', 'path' => path}.to_json)
+      send_data('method' => 'save', 'path' => path)
     end
+
 
     #
     # Tells the viewer to dump the render tree to the given path.
-    # Only available on the Qt viewer.
+    # Only available in the Qt viewer.
     #
 
     def save_render_tree(path)
-      send_data({'method' => 'save_render_tree', 'path' => path}.to_json)
+      send_data('method' => 'save_render_tree', 'path' => path)
+    end
+
+    #
+    # Get the currently rendered page as a Base64-encoded PNG image.
+    # Only available in the Qt viewer.
+    #
+
+    def image_data
+      send_data('method' => 'image_data')
+      data = read_data
+      data['image'] || data['error']
     end
 
     #
@@ -52,12 +64,25 @@ module Celerity
 
     private
 
-    def send_data(json)
+    def send_data(msg)
+      json = msg.to_json
       data = "Content-Length: #{json.size}\n\n#{json}"
       @socket.write data
       @socket.flush
 
       nil
+    end
+
+    def read_data
+      buf = ''
+      until buf =~ /\n\n\z/ || @socket.eof? || @socket.closed?
+        buf << @socket.read(1).to_s
+      end
+
+      return if buf.empty?
+
+      length = buf[/Content-Length: (\d+)/, 1].to_i
+      JSON.parse @socket.read(length)
     end
 
   end
