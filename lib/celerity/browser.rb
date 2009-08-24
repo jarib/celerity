@@ -58,7 +58,7 @@ module Celerity
         raise TypeError, "wrong argument type #{opts.class}, expected Hash"
       end
 
-      unless (render_types = [:html, :xml, nil]).include?(opts[:render])
+      unless (render_types = [:html, :xml, nil, 'html', 'xml']).include?(opts[:render])
         raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
       end
 
