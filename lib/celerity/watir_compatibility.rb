@@ -68,7 +68,6 @@ module Celerity
     alias_method :getAllContents,   :options
     alias_method :clearSelection,   :clear
     alias_method :clear_selection,  :clear
-    alias_method :select_value,     :select
     alias_method :includes?,        :include?
   end
 

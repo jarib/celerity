@@ -34,30 +34,51 @@ module Celerity
     end
 
     #
-    # Select the option(s) matching the given value.
+    # Select the option(s) whose text or label matches the given string.
     # If several options match the value given, all will be selected.
     #
     # @param [String, Regexp] value A value.
     # @raise [Celerity::Exception::NoValueFoundException] if the value does not exist.
-    # @return [String, nil] The option selected. If multiple options match, returns the first match
+    # @return [String] The option selected. If multiple options match, returns the first match
     #
     #
 
     def select(value)
       assert_exists
-      raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}" unless include?(value)
 
       selected = nil
-      matching = @object.getOptions.select do |option|
+      @object.getOptions.select do |option|
         next unless matches_option?(option, value)
 
         selected ||= option.asText
         option.click
       end
 
+      unless selected
+        raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}"
+      end
+
       selected
     end
     alias_method :set, :select
+
+    #
+    # Selects the option(s) whose value attribute matches the given string.
+    # @param [String, Regexp] value A value.
+    # @raise [Celerity::Exception::NoValueFoundException] if the value does not exist.
+    # @return [String] The option selected. If multiple options match, returns the first match
+    #
+
+    def select_value(value)
+      assert_exists
+      selected = @object.getOptions.map { |e| e.click if matches?(e.getValueAttribute, value) }.compact.first
+
+      unless selected
+        raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}"
+      end
+
+      selected.asText
+    end
 
     #
     # Returns true if the select list has one or more options matching the given value.
