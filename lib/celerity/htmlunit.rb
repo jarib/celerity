@@ -3,6 +3,13 @@ module Celerity
   Jars.each { |jar| require(jar) }
 
   include_class org.apache.commons.httpclient.Cookie
+  
+  module JsxHelper
+    def method_missing(meth, *args, &blk)
+      m = ["jsxGet_#{meth}", "jsx_get_#{meth}"].find { |m| respond_to?(m) }
+      m ? __send__(m) : super
+    end
+  end
 end
 
 module HtmlUnit
@@ -50,12 +57,9 @@ class Java::ComGargoylesoftwareHtmlunitHtml::HtmlElement
 end
 
 class Java::ComGargoylesoftwareHtmlunitJavascriptHostHtml::HTMLElement
-  def method_missing(meth, *args, &blk)
-    m = ["jsxGet_#{meth}", "jsx_get_#{meth}"].find { |m| respond_to?(m) }
-    if m
-      __send__ m
-    else
-      super
-    end
-  end
+  include Celerity::JsxHelper
+end
+
+class Java::ComGargoylesoftwareHtmlunitJavascriptHostCss::CSSStyleDeclaration
+  include Celerity::JsxHelper
 end
