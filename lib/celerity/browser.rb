@@ -32,21 +32,21 @@ module Celerity
     #
     # @see Celerity::Container for an introduction to the main API.
     #
-    # @option opts :log_level [Symbol] (:warning) @see log_level=
     # @option opts :browser [:internet_explorer, :firefox, :firefox3] (:firefox) Set the BrowserVersion used by HtmlUnit. Defaults to Firefox 2.
-    # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
-    # @option opts :secure_ssl [Boolean] (true)  Enable/disable secure SSL. Enabled by default.
-    # @option opts :javascript_enabled [Boolean] (true)  Enable/disable JavaScript evaluation. Enabled by default.
-    # @option opts :resynchronize [Boolean] (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
-    # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
-    # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
     # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use for requests, and those where texts are getting gibberished, like Browser#html.
-    # @option opts :proxy [String] (nil) Proxy server to use, in address:port format.
-    # @option opts :user_agent [String] Override the User-Agent set by the :browser option
+    # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
     # @option opts :ignore_pattern [Regexp] See Browser#ignore_pattern=
-    # @option opts :viewer [Boolean] (true) Connect to a CelerityViewer on port 6429 if available.
+    # @option opts :javascript_enabled [Boolean] (true)  Enable/disable JavaScript evaluation. Enabled by default.
+    # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
+    # @option opts :log_level [Symbol] (:warning) @see log_level=
+    # @option opts :proxy [String] (nil) Proxy server to use, in address:port format.
+    # @option opts :refresh_handler [:immediate, :waiting, :threaded] (:immediate) Set HtmlUnit's refresh handler.
     # @option opts :render [:html, :xml] (:html) What DOM representation to send to connected viewers.
-    # @option opts :refresh_handler [:immediat, :waiting, :threaded] (:immediate) Set HtmlUnit's refresh handler.
+    # @option opts :resynchronize [Boolean] (false) Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
+    # @option opts :secure_ssl [Boolean] (true)  Enable/disable secure SSL. Enabled by default.
+    # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
+    # @option opts :user_agent [String] Override the User-Agent set by the :browser option
+    # @option opts :viewer [Boolean] (true) Connect to a CelerityViewer on port 6429 if available.
     #
     # @return [Celerity::Browser]     An instance of the browser.
     #
@@ -67,7 +67,7 @@ module Celerity
 
       @render_type   = opts.delete(:render)    || :html
       @charset       = opts.delete(:charset)   || "UTF-8"
-      self.log_level = opts.delete(:log_level) || :warning
+      self.log_level = opts.delete(:log_level) || :off
 
       @page           = nil
       @error_checkers = []
