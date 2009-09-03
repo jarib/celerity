@@ -1,11 +1,9 @@
-require 'celerity/version'
-
 namespace :jar do
   target_dir = "classes"
 
-  desc "Compile and create celerity-complete-#{Celerity::VERSION::STRING}.jar (includes HtmlUnit)"
+  desc "Compile and create celerity-complete-#{Celerity::VERSION}.jar (includes HtmlUnit)"
   task :fat do
-    file_name = "pkg/celerity-complete-#{Celerity::VERSION::STRING}.jar"
+    file_name = "pkg/celerity-complete-#{Celerity::VERSION}.jar"
 
     ruby_files = Dir['lib/**/*.rb']
     jar_files  = Dir['lib/**/*.jar']
@@ -34,9 +32,9 @@ namespace :jar do
     sh "jar", "cvf", file_name, '-C', target_dir, '.'
   end
 
-  desc "Compile and create celerity-#{Celerity::VERSION::STRING}.jar"
+  desc "Compile and create celerity-#{Celerity::VERSION}.jar"
   task :tiny do
-    file_name = "pkg/celerity-#{Celerity::VERSION::STRING}.jar"
+    file_name = "pkg/celerity-#{Celerity::VERSION}.jar"
 
     ruby_files = Dir['lib/**/*.rb']
     resources  = Dir['lib/celerity/resources/*']
