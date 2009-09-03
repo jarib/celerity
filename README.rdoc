@@ -1,17 +1,16 @@
-Celerity
-========
+= Celerity
 
-* [http://celerity.rubyforge.org/](http://celerity.rubyforge.org/)
+* http://celerity.rubyforge.org/
 
-Description
-------------
+== Description
 
-Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with 
+Celerity is a JRuby library for easy and fast functional test automation for web applications.
+
+It is a JRuby wrapper around HtmlUnit – a headless Java browser with 
 JavaScript support. It provides a simple API for programmatic navigation through
 web applications. Celerity aims at being API compatible with Watir.
 
-Features
---------
+== Features
 
 * *Fast*: No time-consuming GUI rendering or unessential downloads
 * *Scalable*: Java threads lets you run tests in parallel
@@ -19,24 +18,21 @@ Features
 * *Portable*: Cross-platform thanks to the JVM
 * *Unintrusive*: No browser window interrupting your workflow (runs in background)
 	
-Requirements
-------------
+== Requirements
 
 * JRuby 1.2.0 or higher
 * Java 6
 
-Install
--------
+== Install
 
-    `jruby -S gem install celerity`
+    jruby -S gem install celerity
   
-  or from GitHub (updated frequently)
+or from GitHub (updated frequently)
   
-    `jruby -S gem install jarib-celerity`
+    jruby -S gem install jarib-celerity
   
   
-Example
--------
+== Example
 
     require "rubygems"
     require "celerity" 
@@ -48,26 +44,22 @@ Example
 
     puts "yay" if browser.text.include? 'celerity.rubyforge.org'
   
-Source
-------
+== Source
 
 The source code is available on [GitHub](http://github.com/jarib/celerity/tree/master).
 
 
-Wiki & Bug Tracker
--------------------
+== Wiki & Bug Tracker
 
 * [Wiki](http://github.com/jarib/celerity/wikis)
 * [Bug Tracker](http://github.com/jarib/celerity/issues)
 
-Related projects
-----------------
+== Related projects
 
 * [WatirSpec](http://github.com/jarib/watirspec/tree/master)
 * [Celerity Viewers](http://github.com/jarib/celerity-viewers)
 
-License
--------
+== License
 
 Celerity - JRuby wrapper for HtmlUnit
 Copyright (c) 2008 FINN.no AS

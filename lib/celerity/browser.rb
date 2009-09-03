@@ -520,6 +520,10 @@ module Celerity
       listener.add_listener(type, &block)
     end
 
+    def remove_listener(type, &block)
+      listener.remove_listener(type, &block)
+    end
+
     #
     # Specify a boolean value to click either 'OK' or 'Cancel' in any confirm
     # dialogs that might show up during the duration of the given block.

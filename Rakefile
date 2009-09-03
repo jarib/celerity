@@ -1,12 +1,25 @@
-$:.unshift("#{File.dirname(__FILE__)}/lib")
+require 'rubygems'
+gem 'hoe', '>= 2.3.0'
+require 'hoe'
+%w[fileutils rubigen].each { |f| require f }
+require "./lib/celerity"
 
-if File.exist?('config') # are we in a git clone
-  require 'config/requirements'
-  require 'config/hoe' # setup Hoe + all gem configuration
-  Dir['tasks/**/*.rake'].each { |rake| load rake }
-else # in gem dir
-  load 'tasks/jar.rake'
-  load 'tasks/rdoc.rake'
+Hoe.plugin :newgem # newgem 1.5.2+
+Hoe.plugin :website
+
+# Generate all the Rake tasks
+# Run 'rake -T' to see list of generated tasks (from gem root directory)
+Hoe.spec 'celerity' do
+  author         << "Jari Bakken" << "T. Alexander Lystad" << "Knut Johannes Dahle"
+  email          << "jari.bakken@finn.no"
+  extra_dev_deps << ['sinatra', '>= 0.9.4']
 end
 
-
+Dir['tasks/**/*.rake'].each do |rake|
+  begin
+    load rake
+  rescue LoadError
+  end
+end
+# load 'tasks/jar.rake'
+# load 'tasks/rdoc.rake'
