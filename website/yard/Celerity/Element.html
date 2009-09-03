@@ -139,7 +139,8 @@ Returns the value of attribute <tt>container</tt>.
 52
 53
 54
-55</pre>
+55
+56</pre>
         </td>
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 36</span>
@@ -163,6 +164,7 @@ Returns the value of attribute <tt>container</tt>.
   <span class='end end kw'>end</span>
 
   <span class='@conditions ivar id'>@conditions</span><span class='dot token'>.</span><span class='freeze identifier id'>freeze</span>
+  <span class='@object ivar id'>@object</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -184,7 +186,7 @@ Returns the value of attribute <tt>container</tt>.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='return_types'><tt>String</tt></span>
     <span class='name'>method_missing</span><span class='args'>(meth, *args, &amp;blk)</span>
     <span class='block'></span>
   </tt>
@@ -208,7 +210,7 @@ Dynamically get element attributes.
   
     <dt>
       
-        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+        <span class='type'>[<tt>String</tt>]</span>
       
       
         <span class='name'></span>
@@ -265,20 +267,20 @@ if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245</pre>
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 235</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 251</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -331,7 +333,7 @@ Used internally to ensure the element actually exists.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a title="String" href="../String.html">String</a></tt>
+                 <tt>String</tt>
               </span>
           </p>
         
@@ -350,7 +352,7 @@ Used internally to ensure the element actually exists.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a title="String" href="../String.html">String</a></tt>
+                 <tt>String</tt>
               </span>
           </p>
         
@@ -415,6 +417,21 @@ Sets the focus to this element.
   
     <tr>
       <th class="signature">
+        <span class='name'><a title="#javascript_object" href="#javascript_object-instance_method">#javascript_object</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Returns a JavaScript object representing the receiver.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
         <span class='name'><a title="#locate" href="#locate-instance_method">#locate</a></span><span class='args'></span>
         <span class='block'></span>
         
@@ -447,7 +464,10 @@ Used internally.
         
       </th>
       <td class="docstring">
-        
+        <p>
+Returns the HtmlUnit object backing this element.
+</p>
+
         
       </td>
     </tr>
@@ -506,7 +526,7 @@ browser.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a title="String" href="../String.html">String</a></tt>
+                 <tt>String</tt>
               </span>
           </p>
         
@@ -525,7 +545,7 @@ browser.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a title="String" href="../String.html">String</a></tt>
+                 <tt>String</tt>
               </span>
           </p>
         
@@ -537,11 +557,11 @@ browser.
         <span class='name'><a title="#to_xml" href="#to_xml-instance_method">#to_xml</a></span><span class='args'></span>
         <span class='block'></span>
         
-          <span class='alias'>#html</span>
+          <span class='alias'>#as_xml</span>
         
           <span class='alias'>#asXml</span>
         
-          <span class='alias'>#as_xml</span>
+          <span class='alias'>#html</span>
         
       </th>
       <td class="docstring">
@@ -550,7 +570,7 @@ browser.
           <p class='returns'>
             Returns: 
               <span class='return_types'>
-                 <tt><a title="String" href="../String.html">String</a></tt>
+                 <tt>String</tt>
               </span>
           </p>
         
@@ -598,7 +618,7 @@ return the canonical xpath for this element (Celerity-specific).
   
   <div>
     <h1>Public Instance Methods Included from <a title="Celerity::Container" href="Element/Container.html">Celerity::Container</a></h1>
-    <p><span class='name'><a title="area" href="Container.html#area-instance_method">area</a></span>, <span class='name'><a title="areas" href="Container.html#areas-instance_method">areas</a></span>, <span class='name'><a title="button" href="Container.html#button-instance_method">button</a></span>, <span class='name'><a title="buttons" href="Container.html#buttons-instance_method">buttons</a></span>, <span class='name'><a title="cell" href="Container.html#cell-instance_method">cell</a></span>, <span class='name'><a title="cells" href="Container.html#cells-instance_method">cells</a></span>, <span class='name'><a title="check_box" href="Container.html#check_box-instance_method">check_box</a></span>, <span class='name'><a title="checkboxes" href="Container.html#checkboxes-instance_method">checkboxes</a></span>, <span class='name'><a title="contains_text" href="Container.html#contains_text-instance_method">contains_text</a></span>, <span class='name'><a title="dd" href="Container.html#dd-instance_method">dd</a></span>, <span class='name'><a title="dds" href="Container.html#dds-instance_method">dds</a></span>, <span class='name'><a title="div" href="Container.html#div-instance_method">div</a></span>, <span class='name'><a title="divs" href="Container.html#divs-instance_method">divs</a></span>, <span class='name'><a title="dl" href="Container.html#dl-instance_method">dl</a></span>, <span class='name'><a title="dls" href="Container.html#dls-instance_method">dls</a></span>, <span class='name'><a title="dt" href="Container.html#dt-instance_method">dt</a></span>, <span class='name'><a title="dts" href="Container.html#dts-instance_method">dts</a></span>, <span class='name'><a title="em" href="Container.html#em-instance_method">em</a></span>, <span class='name'><a title="ems" href="Container.html#ems-instance_method">ems</a></span>, <span class='name'><a title="file_field" href="Container.html#file_field-instance_method">file_field</a></span>, <span class='name'><a title="file_fields" href="Container.html#file_fields-instance_method">file_fields</a></span>, <span class='name'><a title="form" href="Container.html#form-instance_method">form</a></span>, <span class='name'><a title="forms" href="Container.html#forms-instance_method">forms</a></span>, <span class='name'><a title="frame" href="Container.html#frame-instance_method">frame</a></span>, <span class='name'><a title="frames" href="Container.html#frames-instance_method">frames</a></span>, <span class='name'><a title="h1" href="Container.html#h1-instance_method">h1</a></span>, <span class='name'><a title="h1s" href="Container.html#h1s-instance_method">h1s</a></span>, <span class='name'><a title="h2" href="Container.html#h2-instance_method">h2</a></span>, <span class='name'><a title="h2s" href="Container.html#h2s-instance_method">h2s</a></span>, <span class='name'><a title="h3" href="Container.html#h3-instance_method">h3</a></span>, <span class='name'><a title="h3s" href="Container.html#h3s-instance_method">h3s</a></span>, <span class='name'><a title="h4" href="Container.html#h4-instance_method">h4</a></span>, <span class='name'><a title="h4s" href="Container.html#h4s-instance_method">h4s</a></span>, <span class='name'><a title="h5" href="Container.html#h5-instance_method">h5</a></span>, <span class='name'><a title="h5s" href="Container.html#h5s-instance_method">h5s</a></span>, <span class='name'><a title="h6" href="Container.html#h6-instance_method">h6</a></span>, <span class='name'><a title="h6s" href="Container.html#h6s-instance_method">h6s</a></span>, <span class='name'><a title="hidden" href="Container.html#hidden-instance_method">hidden</a></span>, <span class='name'><a title="hiddens" href="Container.html#hiddens-instance_method">hiddens</a></span>, <span class='name'><a title="image" href="Container.html#image-instance_method">image</a></span>, <span class='name'><a title="images" href="Container.html#images-instance_method">images</a></span>, <span class='name'><a title="inspect" href="Container.html#inspect-instance_method">inspect</a></span>, <span class='name'><a title="label" href="Container.html#label-instance_method">label</a></span>, <span class='name'><a title="labels" href="Container.html#labels-instance_method">labels</a></span>, <span class='name'><a title="li" href="Container.html#li-instance_method">li</a></span>, <span class='name'><a title="link" href="Container.html#link-instance_method">link</a></span>, <span class='name'><a title="links" href="Container.html#links-instance_method">links</a></span>, <span class='name'><a title="lis" href="Container.html#lis-instance_method">lis</a></span>, <span class='name'><a title="map" href="Container.html#map-instance_method">map</a></span>, <span class='name'><a title="maps" href="Container.html#maps-instance_method">maps</a></span>, <span class='name'><a title="meta" href="Container.html#meta-instance_method">meta</a></span>, <span class='name'><a title="metas" href="Container.html#metas-instance_method">metas</a></span>, <span class='name'><a title="ol" href="Container.html#ol-instance_method">ol</a></span>, <span class='name'><a title="ols" href="Container.html#ols-instance_method">ols</a></span>, <span class='name'><a title="option" href="Container.html#option-instance_method">option</a></span>, <span class='name'><a title="p" href="Container.html#p-instance_method">p</a></span>, <span class='name'><a title="pre" href="Container.html#pre-instance_method">pre</a></span>, <span class='name'><a title="pres" href="Container.html#pres-instance_method">pres</a></span>, <span class='name'><a title="ps" href="Container.html#ps-instance_method">ps</a></span>, <span class='name'><a title="radio" href="Container.html#radio-instance_method">radio</a></span>, <span class='name'><a title="radios" href="Container.html#radios-instance_method">radios</a></span>, <span class='name'><a title="row" href="Container.html#row-instance_method">row</a></span>, <span class='name'><a title="rows" href="Container.html#rows-instance_method">rows</a></span>, <span class='name'><a title="select_list" href="Container.html#select_list-instance_method">select_list</a></span>, <span class='name'><a title="select_lists" href="Container.html#select_lists-instance_method">select_lists</a></span>, <span class='name'><a title="span" href="Container.html#span-instance_method">span</a></span>, <span class='name'><a title="spans" href="Container.html#spans-instance_method">spans</a></span>, <span class='name'><a title="strong" href="Container.html#strong-instance_method">strong</a></span>, <span class='name'><a title="strongs" href="Container.html#strongs-instance_method">strongs</a></span>, <span class='name'><a title="table" href="Container.html#table-instance_method">table</a></span>, <span class='name'><a title="tables" href="Container.html#tables-instance_method">tables</a></span>, <span class='name'><a title="tbodies" href="Container.html#tbodies-instance_method">tbodies</a></span>, <span class='name'><a title="tbody" href="Container.html#tbody-instance_method">tbody</a></span>, <span class='name'><a title="text_field" href="Container.html#text_field-instance_method">text_field</a></span>, <span class='name'><a title="text_fields" href="Container.html#text_fields-instance_method">text_fields</a></span>, <span class='name'><a title="tfoot" href="Container.html#tfoot-instance_method">tfoot</a></span>, <span class='name'><a title="tfoots" href="Container.html#tfoots-instance_method">tfoots</a></span>, <span class='name'><a title="th" href="Container.html#th-instance_method">th</a></span>, <span class='name'><a title="thead" href="Container.html#thead-instance_method">thead</a></span>, <span class='name'><a title="theads" href="Container.html#theads-instance_method">theads</a></span>, <span class='name'><a title="ths" href="Container.html#ths-instance_method">ths</a></span>, <span class='name'><a title="ul" href="Container.html#ul-instance_method">ul</a></span>, <span class='name'><a title="uls" href="Container.html#uls-instance_method">uls</a></span>, <span class='name'><a title="update_page" href="Container.html#update_page-instance_method">update_page</a></span></p>
+    <p><span class='name'><a title="area" href="Container.html#area-instance_method">area</a></span>, <span class='name'><a title="areas" href="Container.html#areas-instance_method">areas</a></span>, <span class='name'><a title="button" href="Container.html#button-instance_method">button</a></span>, <span class='name'><a title="buttons" href="Container.html#buttons-instance_method">buttons</a></span>, <span class='name'><a title="cell" href="Container.html#cell-instance_method">cell</a></span>, <span class='name'><a title="cells" href="Container.html#cells-instance_method">cells</a></span>, <span class='name'><a title="check_box" href="Container.html#check_box-instance_method">check_box</a></span>, <span class='name'><a title="checkboxes" href="Container.html#checkboxes-instance_method">checkboxes</a></span>, <span class='name'><a title="contains_text" href="Container.html#contains_text-instance_method">contains_text</a></span>, <span class='name'><a title="dd" href="Container.html#dd-instance_method">dd</a></span>, <span class='name'><a title="dds" href="Container.html#dds-instance_method">dds</a></span>, <span class='name'><a title="div" href="Container.html#div-instance_method">div</a></span>, <span class='name'><a title="divs" href="Container.html#divs-instance_method">divs</a></span>, <span class='name'><a title="dl" href="Container.html#dl-instance_method">dl</a></span>, <span class='name'><a title="dls" href="Container.html#dls-instance_method">dls</a></span>, <span class='name'><a title="dt" href="Container.html#dt-instance_method">dt</a></span>, <span class='name'><a title="dts" href="Container.html#dts-instance_method">dts</a></span>, <span class='name'><a title="em" href="Container.html#em-instance_method">em</a></span>, <span class='name'><a title="ems" href="Container.html#ems-instance_method">ems</a></span>, <span class='name'><a title="file_field" href="Container.html#file_field-instance_method">file_field</a></span>, <span class='name'><a title="file_fields" href="Container.html#file_fields-instance_method">file_fields</a></span>, <span class='name'><a title="form" href="Container.html#form-instance_method">form</a></span>, <span class='name'><a title="forms" href="Container.html#forms-instance_method">forms</a></span>, <span class='name'><a title="frame" href="Container.html#frame-instance_method">frame</a></span>, <span class='name'><a title="frames" href="Container.html#frames-instance_method">frames</a></span>, <span class='name'><a title="h1" href="Container.html#h1-instance_method">h1</a></span>, <span class='name'><a title="h1s" href="Container.html#h1s-instance_method">h1s</a></span>, <span class='name'><a title="h2" href="Container.html#h2-instance_method">h2</a></span>, <span class='name'><a title="h2s" href="Container.html#h2s-instance_method">h2s</a></span>, <span class='name'><a title="h3" href="Container.html#h3-instance_method">h3</a></span>, <span class='name'><a title="h3s" href="Container.html#h3s-instance_method">h3s</a></span>, <span class='name'><a title="h4" href="Container.html#h4-instance_method">h4</a></span>, <span class='name'><a title="h4s" href="Container.html#h4s-instance_method">h4s</a></span>, <span class='name'><a title="h5" href="Container.html#h5-instance_method">h5</a></span>, <span class='name'><a title="h5s" href="Container.html#h5s-instance_method">h5s</a></span>, <span class='name'><a title="h6" href="Container.html#h6-instance_method">h6</a></span>, <span class='name'><a title="h6s" href="Container.html#h6s-instance_method">h6s</a></span>, <span class='name'><a title="hidden" href="Container.html#hidden-instance_method">hidden</a></span>, <span class='name'><a title="hiddens" href="Container.html#hiddens-instance_method">hiddens</a></span>, <span class='name'><a title="image" href="Container.html#image-instance_method">image</a></span>, <span class='name'><a title="images" href="Container.html#images-instance_method">images</a></span>, <span class='name'><a title="inspect" href="Container.html#inspect-instance_method">inspect</a></span>, <span class='name'><a title="label" href="Container.html#label-instance_method">label</a></span>, <span class='name'><a title="labels" href="Container.html#labels-instance_method">labels</a></span>, <span class='name'><a title="li" href="Container.html#li-instance_method">li</a></span>, <span class='name'><a title="link" href="Container.html#link-instance_method">link</a></span>, <span class='name'><a title="links" href="Container.html#links-instance_method">links</a></span>, <span class='name'><a title="lis" href="Container.html#lis-instance_method">lis</a></span>, <span class='name'><a title="map" href="Container.html#map-instance_method">map</a></span>, <span class='name'><a title="maps" href="Container.html#maps-instance_method">maps</a></span>, <span class='name'><a title="meta" href="Container.html#meta-instance_method">meta</a></span>, <span class='name'><a title="metas" href="Container.html#metas-instance_method">metas</a></span>, <span class='name'><a title="ol" href="Container.html#ol-instance_method">ol</a></span>, <span class='name'><a title="ols" href="Container.html#ols-instance_method">ols</a></span>, <span class='name'><a title="option" href="Container.html#option-instance_method">option</a></span>, <span class='name'><a title="p" href="Container.html#p-instance_method">p</a></span>, <span class='name'><a title="pre" href="Container.html#pre-instance_method">pre</a></span>, <span class='name'><a title="pres" href="Container.html#pres-instance_method">pres</a></span>, <span class='name'><a title="ps" href="Container.html#ps-instance_method">ps</a></span>, <span class='name'><a title="radio" href="Container.html#radio-instance_method">radio</a></span>, <span class='name'><a title="radios" href="Container.html#radios-instance_method">radios</a></span>, <span class='name'><a title="row" href="Container.html#row-instance_method">row</a></span>, <span class='name'><a title="rows" href="Container.html#rows-instance_method">rows</a></span>, <span class='name'><a title="select_list" href="Container.html#select_list-instance_method">select_list</a></span>, <span class='name'><a title="select_lists" href="Container.html#select_lists-instance_method">select_lists</a></span>, <span class='name'><a title="span" href="Container.html#span-instance_method">span</a></span>, <span class='name'><a title="spans" href="Container.html#spans-instance_method">spans</a></span>, <span class='name'><a title="strong" href="Container.html#strong-instance_method">strong</a></span>, <span class='name'><a title="strongs" href="Container.html#strongs-instance_method">strongs</a></span>, <span class='name'><a title="table" href="Container.html#table-instance_method">table</a></span>, <span class='name'><a title="tables" href="Container.html#tables-instance_method">tables</a></span>, <span class='name'><a title="tbodies" href="Container.html#tbodies-instance_method">tbodies</a></span>, <span class='name'><a title="tbody" href="Container.html#tbody-instance_method">tbody</a></span>, <span class='name'><a title="text_field" href="Container.html#text_field-instance_method">text_field</a></span>, <span class='name'><a title="text_fields" href="Container.html#text_fields-instance_method">text_fields</a></span>, <span class='name'><a title="tfoot" href="Container.html#tfoot-instance_method">tfoot</a></span>, <span class='name'><a title="tfoots" href="Container.html#tfoots-instance_method">tfoots</a></span>, <span class='name'><a title="th" href="Container.html#th-instance_method">th</a></span>, <span class='name'><a title="thead" href="Container.html#thead-instance_method">thead</a></span>, <span class='name'><a title="theads" href="Container.html#theads-instance_method">theads</a></span>, <span class='name'><a title="ths" href="Container.html#ths-instance_method">ths</a></span>, <span class='name'><a title="ul" href="Container.html#ul-instance_method">ul</a></span>, <span class='name'><a title="uls" href="Container.html#uls-instance_method">uls</a></span></p>
   </div>
   
 </div>
@@ -663,18 +683,18 @@ if the element can&#8217;t be found.
           <pre class="lines">
 
 
-144
-145
-146
-147
-148
-149</pre>
+160
+161
+162
+163
+164
+165</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 144</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 160</span>
 
 <span class='def def kw'>def</span> <span class='assert_exists identifier id'>assert_exists</span>
-  <span class='locate identifier id'>locate</span>
+  <span class='locate identifier id'>locate</span> <span class='unless unless_mod kw'>unless</span> <span class='@object ivar id'>@object</span>
   <span class='unless unless kw'>unless</span> <span class='@object ivar id'>@object</span>
     <span class='raise identifier id'>raise</span> <span class='UnknownObjectException constant id'>UnknownObjectException</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Unable to locate #{self.class.name[/::(.*)$/, 1]}, using #{identifier_string}&quot;</span>
   <span class='end end kw'>end</span>
@@ -696,7 +716,7 @@ if the element can&#8217;t be found.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='return_types'><tt>String</tt></span>
     <span class='name'>attribute_string</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -715,7 +735,7 @@ if the element can&#8217;t be found.
   
     <dt>
       
-        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+        <span class='type'>[<tt>String</tt>]</span>
       
       
         <span class='name'></span>
@@ -741,19 +761,19 @@ A string representation of the element&#8217;s attributes.
           <pre class="lines">
 
 
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215</pre>
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 206</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 222</span>
 
 <span class='def def kw'>def</span> <span class='attribute_string identifier id'>attribute_string</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -782,7 +802,7 @@ A string representation of the element&#8217;s attributes.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='return_types'><tt>String</tt></span>
     <span class='name'>attribute_value</span><span class='args'>(attribute)</span>
     <span class='block'></span>
   </tt>
@@ -801,7 +821,7 @@ A string representation of the element&#8217;s attributes.
   
     <dt>
       
-        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+        <span class='type'>[<tt>String</tt>]</span>
       
       
         <span class='name'></span>
@@ -827,13 +847,13 @@ The value of the given attribute.
           <pre class="lines">
 
 
-119
-120
-121
-122</pre>
+135
+136
+137
+138</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 119</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 135</span>
 
 <span class='def def kw'>def</span> <span class='attribute_value identifier id'>attribute_value</span><span class='lparen token'>(</span><span class='attribute identifier id'>attribute</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -910,15 +930,15 @@ Checks if the element exists.
           <pre class="lines">
 
 
-156
-157
-158
-159
-160
-161</pre>
+172
+173
+174
+175
+176
+177</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 156</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 172</span>
 
 <span class='def def kw'>def</span> <span class='exists? fid id'>exists?</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -963,13 +983,13 @@ Fires the given event for this element
           <pre class="lines">
 
 
-87
 88
 89
-90</pre>
+90
+91</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 87</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 88</span>
 
 <span class='def def kw'>def</span> <span class='fire_event identifier id'>fire_event</span><span class='lparen token'>(</span><span class='event_name identifier id'>event_name</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -1012,17 +1032,74 @@ Sets the focus to this element.
           <pre class="lines">
 
 
-78
 79
 80
-81</pre>
+81
+82</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 78</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 79</span>
 
 <span class='def def kw'>def</span> <span class='focus identifier id'>focus</span>
   <span class='assert_exists identifier id'>assert_exists</span>
   <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='focus identifier id'>focus</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>javascript_object</h3>
+</div><div id="javascript_object-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>javascript_object</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Returns a JavaScript object representing the receiver
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+  </dl>
+</div>
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+116
+117
+118
+119</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 116</span>
+
+<span class='def def kw'>def</span> <span class='javascript_object identifier id'>javascript_object</span>
+  <span class='assert_exists identifier id'>assert_exists</span>
+  <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getScriptObject identifier id'>getScriptObject</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -1069,12 +1146,12 @@ Used internally. Find the element on the page.
           <pre class="lines">
 
 
-97
 98
-99</pre>
+99
+100</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 97</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 98</span>
 
 <span class='def def kw'>def</span> <span class='locate identifier id'>locate</span>
   <span class='@object ivar id'>@object</span> <span class='assign token'>=</span> <span class='ElementLocator constant id'>ElementLocator</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='find_by_conditions identifier id'>find_by_conditions</span><span class='lparen token'>(</span><span class='@conditions ivar id'>@conditions</span><span class='rparen token'>)</span>
@@ -1111,17 +1188,17 @@ Used internally. Find the element on the page.
           <pre class="lines">
 
 
-247
-248
-249
-250
-251</pre>
+263
+264
+265
+266
+267</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 247</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 263</span>
 
 <span class='def def kw'>def</span> <span class='methods identifier id'>methods</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='super super kw'>super</span> 
+  <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='super super kw'>super</span>
   <span class='ms identifier id'>ms</span> <span class='opasgn op'>+=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='colon2 op'>::</span><span class='ATTRIBUTES constant id'>ATTRIBUTES</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='e identifier id'>e</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='rbrace token'>}</span>
   <span class='ms identifier id'>ms</span><span class='dot token'>.</span><span class='sort identifier id'>sort</span>
 <span class='end end kw'>end</span>
@@ -1148,6 +1225,11 @@ Used internally. Find the element on the page.
   </tt>
 </div>
 
+</div><div class="section docstring">
+  <p>
+Returns the HtmlUnit object backing this element
+</p>
+
 </div><div class="section source">
   <span>[<a class="source_link" href="#">View source</a>]</span>
   <div class="source_code">
@@ -1157,12 +1239,12 @@ Used internally. Find the element on the page.
           <pre class="lines">
 
 
-101
-102
-103</pre>
+106
+107
+108</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 101</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 106</span>
 
 <span class='def def kw'>def</span> <span class='object identifier id'>object</span>
   <span class='@object ivar id'>@object</span> <span class='orop op'>||</span> <span class='locate identifier id'>locate</span>
@@ -1234,7 +1316,6 @@ subclass of Celerity::Element, or nil if no parent was found
           <pre class="lines">
 
 
-62
 63
 64
 65
@@ -1244,10 +1325,11 @@ subclass of Celerity::Element, or nil if no parent was found
 69
 70
 71
-72</pre>
+72
+73</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 62</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 63</span>
 
 <span class='def def kw'>def</span> <span class='parent identifier id'>parent</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -1292,14 +1374,14 @@ subclass of Celerity::Element, or nil if no parent was found
           <pre class="lines">
 
 
-253
-254
-255
-256
-257</pre>
+269
+270
+271
+272
+273</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 253</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 269</span>
 
 <span class='def def kw'>def</span> <span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='include_private identifier id'>include_private</span> <span class='assign token'>=</span> <span class='false false kw'>false</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
@@ -1323,7 +1405,7 @@ subclass of Celerity::Element, or nil if no parent was found
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='return_types'><tt>String</tt></span>
     <span class='name'>text</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -1355,7 +1437,7 @@ browser.
   
     <dt>
       
-        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+        <span class='type'>[<tt>String</tt>]</span>
       
       
         <span class='name'></span>
@@ -1389,13 +1471,13 @@ browser.
           <pre class="lines">
 
 
-171
-172
-173
-174</pre>
+187
+188
+189
+190</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 171</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 187</span>
 
 <span class='def def kw'>def</span> <span class='text identifier id'>text</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -1418,7 +1500,7 @@ browser.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='return_types'><tt>String</tt></span>
     <span class='name'>to_s</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -1437,7 +1519,7 @@ browser.
   
     <dt>
       
-        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+        <span class='type'>[<tt>String</tt>]</span>
       
       
         <span class='name'></span>
@@ -1463,13 +1545,13 @@ A string representation of the element.
           <pre class="lines">
 
 
-109
-110
-111
-112</pre>
+125
+126
+127
+128</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 109</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 125</span>
 
 <span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -1492,7 +1574,7 @@ A string representation of the element.
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='return_types'><tt>String</tt></span>
     <span class='name'>to_xml</span><span class='args'></span>
     <span class='block'></span>
   </tt>
@@ -1500,11 +1582,11 @@ A string representation of the element.
 <p class="aliases">
   <span class="aka">Also known as:</span>
   
-    <tt id="html-instance_method">html</tt>
+    <tt id="as_xml-instance_method">as_xml</tt>
   
     <tt id="asXml-instance_method">asXml</tt>
   
-    <tt id="as_xml-instance_method">as_xml</tt>
+    <tt id="html-instance_method">html</tt>
   
 </p>
 </div><div class="section tags">
@@ -1520,7 +1602,7 @@ A string representation of the element.
   
     <dt>
       
-        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+        <span class='type'>[<tt>String</tt>]</span>
       
       
         <span class='name'></span>
@@ -1546,13 +1628,13 @@ The normative XML representation of the element (including children).
           <pre class="lines">
 
 
-194
-195
-196
-197</pre>
+210
+211
+212
+213</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 194</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 210</span>
 
 <span class='def def kw'>def</span> <span class='to_xml identifier id'>to_xml</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -1624,13 +1706,13 @@ styles from applied CSS is not considered.
           <pre class="lines">
 
 
-132
-133
-134
-135</pre>
+148
+149
+150
+151</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 132</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 148</span>
 
 <span class='def def kw'>def</span> <span class='visible? fid id'>visible?</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -1673,13 +1755,13 @@ return the canonical xpath for this element (Celerity-specific)
           <pre class="lines">
 
 
-221
-222
-223
-224</pre>
+237
+238
+239
+240</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 221</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 237</span>
 
 <span class='def def kw'>def</span> <span class='xpath identifier id'>xpath</span>
   <span class='assert_exists identifier id'>assert_exists</span>

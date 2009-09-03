@@ -8,16 +8,13 @@
 
     <script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../app.js" type="text/javascript" charset="utf-8"></script>
-    <title>Module: Java::JavaLang::Iterable</title>
+    <title>Class: Java::ComGargoylesoftwareHtmlunitHtml::HtmlElement</title>
   </head>
   <body>
     <div id="content">
-      <div class="section module Java_JavaLang_Iterable">
-  <h1 class="title">Module: Java::JavaLang::Iterable</h1>
-  <div class="section mixins">
-  <h1>Included Modules</h1>
-  <p>Enumerable</p>
-</div><div class="section constants">
+      <div class="section class Java_ComGargoylesoftwareHtmlunitHtml_HtmlElement">
+  <h1 class="title">Class: Java::ComGargoylesoftwareHtmlunitHtml::HtmlElement</h1>
+  <div class="section constants">
   
 </div>  <div class="section visibilitygroup public">
     <h1>Public Visibility</h1>
@@ -27,7 +24,7 @@
   
     <tr>
       <th class="signature">
-        <span class='name'><a title="#each" href="#each-instance_method">#each</a></span><span class='args'></span>
+        <span class='name'><a title="#inspect" href="#inspect-instance_method">#inspect</a></span><span class='args'></span>
         <span class='block'></span>
         
       </th>
@@ -44,26 +41,18 @@
   
     <div class="method">
       <div class="method_header">
-  <h3>each</h3>
-</div><div id="each-instance_method" class="section method">
+  <h3>inspect</h3>
+</div><div id="inspect-instance_method" class="section method">
   <div class="details_title">
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
     <span class='return_types'></span>
-    <span class='name'>each</span><span class='args'></span>
+    <span class='name'>inspect</span><span class='args'></span>
     <span class='block'></span>
   </tt>
 </div>
 
-</div><div class="section tags">
-  <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-  </dl>
-</div>
 </div><div class="section source">
   <span>[<a class="source_link" href="#">View source</a>]</span>
   <div class="source_code">
@@ -73,17 +62,15 @@
           <pre class="lines">
 
 
-40
-41
-42
-43</pre>
+54
+55
+56</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/htmlunit.rb', line 40</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/htmlunit.rb', line 54</span>
 
-<span class='def def kw'>def</span> <span class='each identifier id'>each</span>
-  <span class='it identifier id'>it</span> <span class='assign token'>=</span> <span class='iterator identifier id'>iterator</span>
-  <span class='yield yield kw'>yield</span> <span class='it identifier id'>it</span><span class='dot token'>.</span><span class='next identifier id'>next</span> <span class='while while_mod kw'>while</span> <span class='it identifier id'>it</span><span class='dot token'>.</span><span class='hasNext identifier id'>hasNext</span>
+<span class='def def kw'>def</span> <span class='inspect identifier id'>inspect</span>
+  <span class='string val'>'#&lt;%s:0x%s&gt;'</span> <span class='mod op'>%</span> <span class='lbrack token'>[</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;::&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='last identifier id'>last</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='hash identifier id'>hash</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='lparen token'>(</span><span class='integer val'>16</span><span class='rparen token'>)</span><span class='rbrack token'>]</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>

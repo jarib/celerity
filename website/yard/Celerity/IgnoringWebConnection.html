@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Celerity::IgnoringWebConnection</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Celerity_IgnoringWebConnection">
+  <h1 class="title">Class: Celerity::IgnoringWebConnection</h1>
+  <div class="section inheritance">
+  <ul>
+  <li>HtmlUnit::Util::FalsifyingWebConnection</li><ul><li>Celerity::IgnoringWebConnection</li>
+  </ul></ul>
+</div><div class="section constants">
+  
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <div id="initialize-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>initialize</span><span class='args'>(web_client, pattern)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+4
+5
+6
+7</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/ignoring_web_connection.rb', line 4</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='web_client identifier id'>web_client</span><span class='comma token'>,</span> <span class='pattern identifier id'>pattern</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='web_client identifier id'>web_client</span><span class='rparen token'>)</span>
+  <span class='@pattern ivar id'>@pattern</span> <span class='assign token'>=</span> <span class='pattern identifier id'>pattern</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#getResponse" href="#getResponse-instance_method">#getResponse</a></span><span class='args'>(request_settings)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>getResponse</h3>
+</div><div id="getResponse-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>getResponse</span><span class='args'>(request_settings)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+9
+10
+11
+12</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/ignoring_web_connection.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='getResponse identifier id'>getResponse</span><span class='lparen token'>(</span><span class='request_settings identifier id'>request_settings</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='super super kw'>super</span> <span class='unless unless_mod kw'>unless</span> <span class='request_settings identifier id'>request_settings</span><span class='dot token'>.</span><span class='getUrl identifier id'>getUrl</span><span class='dot token'>.</span><span class='toString identifier id'>toString</span> <span class='match op'>=~</span> <span class='@pattern ivar id'>@pattern</span>
+  <span class='createWebResponse identifier id'>createWebResponse</span><span class='lparen token'>(</span><span class='request_settings identifier id'>request_settings</span><span class='comma token'>,</span> <span class='string val'>&quot;&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;text/html&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+  </body>
+</html>

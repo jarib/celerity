@@ -162,7 +162,7 @@ click the element
 
 <span class='def def kw'>def</span> <span class='click identifier id'>click</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
-  <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -239,7 +239,9 @@ page. This is useful for elements that trigger popups when clicked.
 45
 46
 47
-48</pre>
+48
+49
+50</pre>
         </td>
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 38</span>
@@ -250,8 +252,10 @@ page. This is useful for elements that trigger popups when clicked.
   <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='webclient identifier id'>webclient</span><span class='dot token'>.</span><span class='set_cookie_manager identifier id'>set_cookie_manager</span><span class='lparen token'>(</span>
     <span class='@browser ivar id'>@browser</span><span class='dot token'>.</span><span class='webclient identifier id'>webclient</span><span class='dot token'>.</span><span class='get_cookie_manager identifier id'>get_cookie_manager</span>
   <span class='rparen token'>)</span> <span class='comment val'># hirobumi: we do want cookies as well.</span>
-  
-  <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+
+  <span class='@browser ivar id'>@browser</span><span class='dot token'>.</span><span class='disable_event_listener identifier id'>disable_event_listener</span> <span class='do do kw'>do</span>
+    <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
 
   <span class='browser identifier id'>browser</span>
 <span class='end end kw'>end</span>
@@ -302,7 +306,7 @@ double click the element (Celerity only)
 
 <span class='def def kw'>def</span> <span class='double_click identifier id'>double_click</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
-  <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='dblClick identifier id'>dblClick</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='dblClick identifier id'>dblClick</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -330,7 +334,8 @@ double click the element (Celerity only)
 </div><div class="section docstring">
   <p>
 Click the element and just return the content as IO. Current page stays
-unchanged.
+unchanged. This can be used to download content that normally isn&#8217;t
+rendered in a browser.
 </p>
 
 </div><div class="section tags">
@@ -369,17 +374,21 @@ unchanged.
           <pre class="lines">
 
 
-56
-57
-58
-59</pre>
+59
+60
+61
+62
+63
+64</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 56</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 59</span>
 
 <span class='def def kw'>def</span> <span class='download identifier id'>download</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
-  <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getContentAsStream identifier id'>getContentAsStream</span><span class='dot token'>.</span><span class='to_io identifier id'>to_io</span>
+  <span class='@browser ivar id'>@browser</span><span class='dot token'>.</span><span class='disable_event_listener identifier id'>disable_event_listener</span> <span class='do do kw'>do</span>
+    <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getContentAsStream identifier id'>getContentAsStream</span><span class='dot token'>.</span><span class='to_io identifier id'>to_io</span>
+  <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -428,7 +437,7 @@ right click the element (Celerity only)
 
 <span class='def def kw'>def</span> <span class='right_click identifier id'>right_click</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
-  <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@container ivar id'>@container</span><span class='dot token'>.</span><span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='rightClick identifier id'>rightClick</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='rightClick identifier id'>rightClick</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>

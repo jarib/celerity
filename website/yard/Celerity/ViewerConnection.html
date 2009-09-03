@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Celerity::ViewerConnection</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Celerity_ViewerConnection">
+  <h1 class="title">Class: Celerity::ViewerConnection</h1>
+  <div class="section constants">
+  
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <div id="initialize-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>initialize</span><span class='args'>(socket)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+15
+16
+17</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/viewer_connection.rb', line 15</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='socket identifier id'>socket</span><span class='rparen token'>)</span>
+  <span class='@socket ivar id'>@socket</span> <span class='assign token'>=</span> <span class='socket identifier id'>socket</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary class public">
+    <h1>Public Class Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="create" href="#create-class_method">create</a></span><span class='args'>(host, port)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Create a new connection to the given host/port.
+</p>
+
+        
+      </td>
+    </tr>
+  
+</table>
+  </div>
+  <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#close" href="#close-instance_method">#close</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Close the connection.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#image_data" href="#image_data-instance_method">#image_data</a></span><span class='args'></span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Get the currently rendered page as a Base64-encoded PNG image.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#render_html" href="#render_html-instance_method">#render_html</a></span><span class='args'>(html, url)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Tells the viewer to render the given HTML, with the given URL as base url.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#save" href="#save-instance_method">#save</a></span><span class='args'>(path)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Tells the viewer to save a screenshot of the current page to the given
+path.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a title="#save_render_tree" href="#save_render_tree-instance_method">#save_render_tree</a></span><span class='args'>(path)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        <p>
+Tells the viewer to dump the render tree to the given path.
+</p>
+
+        
+      </td>
+    </tr>
+  
+</table>
+  </div>
+<div class="section methoddetails class public">
+  <h1>Public Class Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>create</h3>
+</div><div id="create-class_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>create</span><span class='args'>(host, port)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Create a new connection to the given host/port
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+8
+9
+10
+11
+12
+13</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/viewer_connection.rb', line 8</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='create identifier id'>create</span><span class='lparen token'>(</span><span class='host identifier id'>host</span><span class='comma token'>,</span> <span class='port identifier id'>port</span><span class='rparen token'>)</span>
+  <span class='comment val'># if the connection fails, we won't spend time loading json</span>
+  <span class='socket identifier id'>socket</span> <span class='assign token'>=</span> <span class='TCPSocket constant id'>TCPSocket</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='host identifier id'>host</span><span class='comma token'>,</span> <span class='port identifier id'>port</span><span class='rparen token'>)</span>
+  <span class='require identifier id'>require</span> <span class='string val'>&quot;json&quot;</span>
+  <span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='socket identifier id'>socket</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div><div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>close</h3>
+</div><div id="close-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>close</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Close the connection.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+61
+62
+63</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/viewer_connection.rb', line 61</span>
+
+<span class='def def kw'>def</span> <span class='close identifier id'>close</span>
+  <span class='@socket ivar id'>@socket</span><span class='dot token'>.</span><span class='close identifier id'>close</span> <span class='rescue rescue kw'>rescue</span> <span class='nil nil kw'>nil</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>image_data</h3>
+</div><div id="image_data-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>image_data</span><span class='args'></span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Get the currently rendered page as a Base64-encoded PNG image. Only
+available in the Qt viewer.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+51
+52
+53
+54
+55</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/viewer_connection.rb', line 51</span>
+
+<span class='def def kw'>def</span> <span class='image_data identifier id'>image_data</span>
+  <span class='send_data identifier id'>send_data</span><span class='lparen token'>(</span><span class='string val'>'method'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'image_data'</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='read_data identifier id'>read_data</span>
+  <span class='data identifier id'>data</span><span class='lbrack token'>[</span><span class='string val'>'image'</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='data identifier id'>data</span><span class='lbrack token'>[</span><span class='string val'>'error'</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>render_html</h3>
+</div><div id="render_html-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>render_html</span><span class='args'>(html, url)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Tells the viewer to render the given HTML, with the given URL as base url.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+23
+24
+25</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/viewer_connection.rb', line 23</span>
+
+<span class='def def kw'>def</span> <span class='render_html identifier id'>render_html</span><span class='lparen token'>(</span><span class='html identifier id'>html</span><span class='comma token'>,</span> <span class='url identifier id'>url</span><span class='rparen token'>)</span>
+  <span class='send_data identifier id'>send_data</span><span class='lparen token'>(</span><span class='string val'>'method'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'page_changed'</span><span class='comma token'>,</span> <span class='string val'>'html'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='html identifier id'>html</span><span class='comma token'>,</span> <span class='string val'>'url'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='url identifier id'>url</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>save</h3>
+</div><div id="save-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>save</span><span class='args'>(path)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Tells the viewer to save a screenshot of the current page to the given
+path. May not be available on all viewers.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+32
+33
+34</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/viewer_connection.rb', line 32</span>
+
+<span class='def def kw'>def</span> <span class='save identifier id'>save</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+  <span class='send_data identifier id'>send_data</span><span class='lparen token'>(</span><span class='string val'>'method'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'save'</span><span class='comma token'>,</span> <span class='string val'>'path'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='path identifier id'>path</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>save_render_tree</h3>
+</div><div id="save_render_tree-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>save_render_tree</span><span class='args'>(path)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section docstring">
+  <p>
+Tells the viewer to dump the render tree to the given path. Only available
+in the Qt viewer.
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+42
+43
+44</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/viewer_connection.rb', line 42</span>
+
+<span class='def def kw'>def</span> <span class='save_render_tree identifier id'>save_render_tree</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+  <span class='send_data identifier id'>send_data</span><span class='lparen token'>(</span><span class='string val'>'method'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'save_render_tree'</span><span class='comma token'>,</span> <span class='string val'>'path'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='path identifier id'>path</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+  </body>
+</html>

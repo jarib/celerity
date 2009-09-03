@@ -102,6 +102,18 @@
   
     <tr>
       <th class="signature">
+        <span class='name'><a title="#logger_for" href="#logger_for-instance_method">#logger_for</a></span><span class='args'>(package_string)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
         <span class='name'><a title="#normalize_text" href="#normalize_text-instance_method">#normalize_text</a></span><span class='args'>(string)</span>
         <span class='block'></span>
         
@@ -199,6 +211,48 @@
 
 <span class='def def kw'>def</span> <span class='htmlunit2celerity identifier id'>htmlunit2celerity</span><span class='lparen token'>(</span><span class='klass identifier id'>klass</span><span class='rparen token'>)</span>
   <span class='HtmlUnit2CelerityElement constant id'>HtmlUnit2CelerityElement</span><span class='lbrack token'>[</span><span class='klass identifier id'>klass</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>logger_for</h3>
+</div><div id="logger_for-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>logger_for</span><span class='args'>(package_string)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+86
+87
+88</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/util.rb', line 86</span>
+
+<span class='def def kw'>def</span> <span class='logger_for identifier id'>logger_for</span><span class='lparen token'>(</span><span class='package_string identifier id'>package_string</span><span class='rparen token'>)</span>
+  <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='logging identifier id'>logging</span><span class='dot token'>.</span><span class='Logger constant id'>Logger</span><span class='dot token'>.</span><span class='getLogger identifier id'>getLogger</span><span class='lparen token'>(</span><span class='package_string identifier id'>package_string</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>

@@ -78,7 +78,7 @@ method
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='return_types'><tt>String</tt></span>
     <span class='name'>method_missing</span><span class='args'>(meth, *args, &amp;blk)</span>
     <span class='block'></span>
   </tt>
@@ -102,7 +102,7 @@ Dynamically get element attributes.
   
     <dt>
       
-        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+        <span class='type'>[<tt>String</tt>]</span>
       
       
         <span class='name'></span>
@@ -159,20 +159,20 @@ if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245</pre>
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 235</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 251</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -305,9 +305,9 @@ Set the text field to the given value.
         <span class='name'><a title="#value" href="#value-instance_method">#value</a></span><span class='args'></span>
         <span class='block'></span>
         
-          <span class='alias'>#getContents</span>
-        
           <span class='alias'>#get_contents</span>
+        
+          <span class='alias'>#getContents</span>
         
       </th>
       <td class="docstring">
@@ -362,7 +362,7 @@ A boolean version of TextField#contains_text.
   
   <div>
     <h1>Public Instance Methods Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
-    <p><span class='name'><a title="assert_exists" href="Element.html#assert_exists-instance_method">assert_exists</a></span>, <span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="fire_event" href="Element.html#fire_event-instance_method">fire_event</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="locate" href="Element.html#locate-instance_method">locate</a></span>, <span class='name'><a title="methods" href="Element.html#methods-instance_method">methods</a></span>, <span class='name'><a title="object" href="Element.html#object-instance_method">object</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_s" href="Element.html#to_s-instance_method">to_s</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="xpath" href="Element.html#xpath-instance_method">xpath</a></span></p>
+    <p><span class='name'><a title="assert_exists" href="Element.html#assert_exists-instance_method">assert_exists</a></span>, <span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="fire_event" href="Element.html#fire_event-instance_method">fire_event</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="javascript_object" href="Element.html#javascript_object-instance_method">javascript_object</a></span>, <span class='name'><a title="locate" href="Element.html#locate-instance_method">locate</a></span>, <span class='name'><a title="methods" href="Element.html#methods-instance_method">methods</a></span>, <span class='name'><a title="object" href="Element.html#object-instance_method">object</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_s" href="Element.html#to_s-instance_method">to_s</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="xpath" href="Element.html#xpath-instance_method">xpath</a></span></p>
   </div>
   
 </div>
@@ -399,19 +399,19 @@ Append the given value to the text in the text field.
           <pre class="lines">
 
 
-76
-77
 78
 79
-80</pre>
+80
+81
+82</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 76</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 78</span>
 
 <span class='def def kw'>def</span> <span class='append identifier id'>append</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
   <span class='assert_enabled identifier id'>assert_enabled</span>
   <span class='assert_not_readonly identifier id'>assert_not_readonly</span>
-  <span class='type_string identifier id'>type_string</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='type_string identifier id'>type_string</span> <span class='value identifier id'>value</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -499,6 +499,8 @@ Check if the given text fields contains the given String or Regexp.
           <pre class="lines">
 
 
+108
+109
 110
 111
 112
@@ -508,12 +510,10 @@ Check if the given text fields contains the given String or Regexp.
 116
 117
 118
-119
-120
-121</pre>
+119</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 110</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 108</span>
 
 <span class='def def kw'>def</span> <span class='contains_text identifier id'>contains_text</span><span class='lparen token'>(</span><span class='expected_text identifier id'>expected_text</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -570,15 +570,15 @@ TextField#append TODO: check if HtmlUnit supports some kind of dragging.
           <pre class="lines">
 
 
+97
+98
 99
 100
 101
-102
-103
-104</pre>
+102</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 99</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 97</span>
 
 <span class='def def kw'>def</span> <span class='drag_contents_to identifier id'>drag_contents_to</span><span class='lparen token'>(</span><span class='how identifier id'>how</span><span class='comma token'>,</span> <span class='what identifier id'>what</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span> <span class='comment val'># assert_enabled?</span>
@@ -618,10 +618,10 @@ TextField#append TODO: check if HtmlUnit supports some kind of dragging.
           <pre class="lines">
 
 
-82</pre>
+79</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/watir_compatibility.rb', line 82</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/watir_compatibility.rb', line 79</span>
 
 <span class='def def kw'>def</span> <span class='requires_typing identifier id'>requires_typing</span><span class='semicolon token'>;</span> <span class='end end kw'>end</span>
 </pre>
@@ -667,7 +667,9 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
 37
 38
 39
-40</pre>
+40
+41
+42</pre>
         </td>
         <td>
           <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 35</span>
@@ -677,6 +679,8 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
   <span class='assert_not_readonly identifier id'>assert_not_readonly</span>
   <span class='clear identifier id'>clear</span>
   <span class='type_string identifier id'>type_string</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
+
+  <span class='value identifier id'>value</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -710,29 +714,21 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
           <pre class="lines">
 
 
-83
-84
 85
 86
 87
 88
 89
-90
-91
-92</pre>
+90</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 83</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 85</span>
 
 <span class='def def kw'>def</span> <span class='type identifier id'>type</span>
   <span class='assert_exists identifier id'>assert_exists</span>
   <span class='type identifier id'>type</span> <span class='assign token'>=</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='getAttribute identifier id'>getAttribute</span> <span class='string val'>'type'</span>
 
-  <span class='if if kw'>if</span> <span class='NON_TEXT_TYPES constant id'>NON_TEXT_TYPES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='rparen token'>)</span>
-    <span class='type identifier id'>type</span>
-  <span class='else else kw'>else</span>
-    <span class='string val'>'text'</span>
-  <span class='end end kw'>end</span>
+  <span class='NON_TEXT_TYPES constant id'>NON_TEXT_TYPES</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='type identifier id'>type</span> <span class='colon op'>:</span> <span class='string val'>'text'</span>
 <span class='end end kw'>end</span>
 </pre>
         </td>
@@ -759,9 +755,9 @@ events (onkeypress etc.), but is slower than <tt>value=</tt>
 <p class="aliases">
   <span class="aka">Also known as:</span>
   
-    <tt id="getContents-instance_method">getContents</tt>
-  
     <tt id="get_contents-instance_method">get_contents</tt>
+  
+    <tt id="getContents-instance_method">getContents</tt>
   
 </p>
 </div><div class="section docstring">
@@ -778,18 +774,18 @@ Returns the text in the text field.
           <pre class="lines">
 
 
-47
-48
 49
 50
 51
 52
 53
 54
-55</pre>
+55
+56
+57</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 47</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 49</span>
 
 <span class='def def kw'>def</span> <span class='value identifier id'>value</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -864,13 +860,13 @@ A boolean version of TextField#contains_text
           <pre class="lines">
 
 
+128
 129
 130
-131
-132</pre>
+131</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 129</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/text_field.rb', line 128</span>
 
 <span class='def def kw'>def</span> <span class='verify_contains identifier id'>verify_contains</span><span class='lparen token'>(</span><span class='expected identifier id'>expected</span><span class='rparen token'>)</span>
   <span class='comment val'># assert_exists called by contains_text</span>

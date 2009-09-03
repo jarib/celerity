@@ -20,7 +20,7 @@
   </ul></ul>
 </div><div class="section mixins">
   <h1>Included Modules</h1>
-  <p><a title="Celerity::Container" href="Frame/Container.html">Celerity::Container</a></p>
+  <p><a title="Celerity::Container" href="Frame/Container.html">Celerity::Container</a>, <a title="Celerity::XpathSupport" href="Frame/XpathSupport.html">Celerity::XpathSupport</a></p>
 </div><div class="section attributes">
   <h1>Attributes</h1>
 
@@ -107,8 +107,6 @@ Sets the attribute <tt>page</tt>.
           <pre class="lines">
 
 
-63
-64
 65
 66
 67
@@ -116,10 +114,12 @@ Sets the attribute <tt>page</tt>.
 69
 70
 71
-72</pre>
+72
+73
+74</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 63</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 65</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='meth identifier id'>meth</span> <span class='assign token'>=</span> <span class='selector_to_attribute identifier id'>selector_to_attribute</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
@@ -221,7 +221,7 @@ Updates the brwoser page with the page from this frame&#8217;s top window.
   
   <div>
     <h1>Public Instance Methods Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
-    <p><span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="fire_event" href="Element.html#fire_event-instance_method">fire_event</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="methods" href="Element.html#methods-instance_method">methods</a></span>, <span class='name'><a title="object" href="Element.html#object-instance_method">object</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="visible?" href="Element.html#visible%3F-instance_method">visible?</a></span>, <span class='name'><a title="xpath" href="Element.html#xpath-instance_method">xpath</a></span></p>
+    <p><span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="fire_event" href="Element.html#fire_event-instance_method">fire_event</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="javascript_object" href="Element.html#javascript_object-instance_method">javascript_object</a></span>, <span class='name'><a title="methods" href="Element.html#methods-instance_method">methods</a></span>, <span class='name'><a title="object" href="Element.html#object-instance_method">object</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="visible?" href="Element.html#visible%3F-instance_method">visible?</a></span>, <span class='name'><a title="xpath" href="Element.html#xpath-instance_method">xpath</a></span></p>
   </div>
   
 </div>
@@ -230,6 +230,11 @@ Updates the brwoser page with the page from this frame&#8217;s top window.
   <div>
     <h1>Public Instance Methods Included from <a title="Celerity::Container" href="Frame/Container.html">Celerity::Container</a></h1>
     <p><span class='name'><a title="area" href="Container.html#area-instance_method">area</a></span>, <span class='name'><a title="areas" href="Container.html#areas-instance_method">areas</a></span>, <span class='name'><a title="button" href="Container.html#button-instance_method">button</a></span>, <span class='name'><a title="buttons" href="Container.html#buttons-instance_method">buttons</a></span>, <span class='name'><a title="cell" href="Container.html#cell-instance_method">cell</a></span>, <span class='name'><a title="cells" href="Container.html#cells-instance_method">cells</a></span>, <span class='name'><a title="check_box" href="Container.html#check_box-instance_method">check_box</a></span>, <span class='name'><a title="checkboxes" href="Container.html#checkboxes-instance_method">checkboxes</a></span>, <span class='name'><a title="container" href="Container.html#container-instance_method">container</a></span>, <span class='name'><a title="contains_text" href="Container.html#contains_text-instance_method">contains_text</a></span>, <span class='name'><a title="dd" href="Container.html#dd-instance_method">dd</a></span>, <span class='name'><a title="dds" href="Container.html#dds-instance_method">dds</a></span>, <span class='name'><a title="div" href="Container.html#div-instance_method">div</a></span>, <span class='name'><a title="divs" href="Container.html#divs-instance_method">divs</a></span>, <span class='name'><a title="dl" href="Container.html#dl-instance_method">dl</a></span>, <span class='name'><a title="dls" href="Container.html#dls-instance_method">dls</a></span>, <span class='name'><a title="dt" href="Container.html#dt-instance_method">dt</a></span>, <span class='name'><a title="dts" href="Container.html#dts-instance_method">dts</a></span>, <span class='name'><a title="em" href="Container.html#em-instance_method">em</a></span>, <span class='name'><a title="ems" href="Container.html#ems-instance_method">ems</a></span>, <span class='name'><a title="file_field" href="Container.html#file_field-instance_method">file_field</a></span>, <span class='name'><a title="file_fields" href="Container.html#file_fields-instance_method">file_fields</a></span>, <span class='name'><a title="form" href="Container.html#form-instance_method">form</a></span>, <span class='name'><a title="forms" href="Container.html#forms-instance_method">forms</a></span>, <span class='name'><a title="frame" href="Container.html#frame-instance_method">frame</a></span>, <span class='name'><a title="frames" href="Container.html#frames-instance_method">frames</a></span>, <span class='name'><a title="h1" href="Container.html#h1-instance_method">h1</a></span>, <span class='name'><a title="h1s" href="Container.html#h1s-instance_method">h1s</a></span>, <span class='name'><a title="h2" href="Container.html#h2-instance_method">h2</a></span>, <span class='name'><a title="h2s" href="Container.html#h2s-instance_method">h2s</a></span>, <span class='name'><a title="h3" href="Container.html#h3-instance_method">h3</a></span>, <span class='name'><a title="h3s" href="Container.html#h3s-instance_method">h3s</a></span>, <span class='name'><a title="h4" href="Container.html#h4-instance_method">h4</a></span>, <span class='name'><a title="h4s" href="Container.html#h4s-instance_method">h4s</a></span>, <span class='name'><a title="h5" href="Container.html#h5-instance_method">h5</a></span>, <span class='name'><a title="h5s" href="Container.html#h5s-instance_method">h5s</a></span>, <span class='name'><a title="h6" href="Container.html#h6-instance_method">h6</a></span>, <span class='name'><a title="h6s" href="Container.html#h6s-instance_method">h6s</a></span>, <span class='name'><a title="hidden" href="Container.html#hidden-instance_method">hidden</a></span>, <span class='name'><a title="hiddens" href="Container.html#hiddens-instance_method">hiddens</a></span>, <span class='name'><a title="image" href="Container.html#image-instance_method">image</a></span>, <span class='name'><a title="images" href="Container.html#images-instance_method">images</a></span>, <span class='name'><a title="inspect" href="Container.html#inspect-instance_method">inspect</a></span>, <span class='name'><a title="label" href="Container.html#label-instance_method">label</a></span>, <span class='name'><a title="labels" href="Container.html#labels-instance_method">labels</a></span>, <span class='name'><a title="li" href="Container.html#li-instance_method">li</a></span>, <span class='name'><a title="link" href="Container.html#link-instance_method">link</a></span>, <span class='name'><a title="links" href="Container.html#links-instance_method">links</a></span>, <span class='name'><a title="lis" href="Container.html#lis-instance_method">lis</a></span>, <span class='name'><a title="map" href="Container.html#map-instance_method">map</a></span>, <span class='name'><a title="maps" href="Container.html#maps-instance_method">maps</a></span>, <span class='name'><a title="meta" href="Container.html#meta-instance_method">meta</a></span>, <span class='name'><a title="metas" href="Container.html#metas-instance_method">metas</a></span>, <span class='name'><a title="ol" href="Container.html#ol-instance_method">ol</a></span>, <span class='name'><a title="ols" href="Container.html#ols-instance_method">ols</a></span>, <span class='name'><a title="option" href="Container.html#option-instance_method">option</a></span>, <span class='name'><a title="p" href="Container.html#p-instance_method">p</a></span>, <span class='name'><a title="pre" href="Container.html#pre-instance_method">pre</a></span>, <span class='name'><a title="pres" href="Container.html#pres-instance_method">pres</a></span>, <span class='name'><a title="ps" href="Container.html#ps-instance_method">ps</a></span>, <span class='name'><a title="radio" href="Container.html#radio-instance_method">radio</a></span>, <span class='name'><a title="radios" href="Container.html#radios-instance_method">radios</a></span>, <span class='name'><a title="row" href="Container.html#row-instance_method">row</a></span>, <span class='name'><a title="rows" href="Container.html#rows-instance_method">rows</a></span>, <span class='name'><a title="select_list" href="Container.html#select_list-instance_method">select_list</a></span>, <span class='name'><a title="select_lists" href="Container.html#select_lists-instance_method">select_lists</a></span>, <span class='name'><a title="span" href="Container.html#span-instance_method">span</a></span>, <span class='name'><a title="spans" href="Container.html#spans-instance_method">spans</a></span>, <span class='name'><a title="strong" href="Container.html#strong-instance_method">strong</a></span>, <span class='name'><a title="strongs" href="Container.html#strongs-instance_method">strongs</a></span>, <span class='name'><a title="table" href="Container.html#table-instance_method">table</a></span>, <span class='name'><a title="tables" href="Container.html#tables-instance_method">tables</a></span>, <span class='name'><a title="tbodies" href="Container.html#tbodies-instance_method">tbodies</a></span>, <span class='name'><a title="tbody" href="Container.html#tbody-instance_method">tbody</a></span>, <span class='name'><a title="text_field" href="Container.html#text_field-instance_method">text_field</a></span>, <span class='name'><a title="text_fields" href="Container.html#text_fields-instance_method">text_fields</a></span>, <span class='name'><a title="tfoot" href="Container.html#tfoot-instance_method">tfoot</a></span>, <span class='name'><a title="tfoots" href="Container.html#tfoots-instance_method">tfoots</a></span>, <span class='name'><a title="th" href="Container.html#th-instance_method">th</a></span>, <span class='name'><a title="thead" href="Container.html#thead-instance_method">thead</a></span>, <span class='name'><a title="theads" href="Container.html#theads-instance_method">theads</a></span>, <span class='name'><a title="ths" href="Container.html#ths-instance_method">ths</a></span>, <span class='name'><a title="ul" href="Container.html#ul-instance_method">ul</a></span>, <span class='name'><a title="uls" href="Container.html#uls-instance_method">uls</a></span></p>
+  </div>
+  
+  <div>
+    <h1>Public Instance Methods Included from <a title="Celerity::XpathSupport" href="Frame/XpathSupport.html">Celerity::XpathSupport</a></h1>
+    <p><span class='name'><a title="element_by_xpath" href="XpathSupport.html#element_by_xpath-instance_method">element_by_xpath</a></span>, <span class='name'><a title="element_from_dom_node" href="XpathSupport.html#element_from_dom_node-instance_method">element_from_dom_node</a></span>, <span class='name'><a title="elements_by_xpath" href="XpathSupport.html#elements_by_xpath-instance_method">elements_by_xpath</a></span></p>
   </div>
   
 </div>
@@ -275,15 +280,15 @@ compatibility)
           <pre class="lines">
 
 
-31
-32
 33
 34
 35
-36</pre>
+36
+37
+38</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 31</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 33</span>
 
 <span class='def def kw'>def</span> <span class='assert_exists identifier id'>assert_exists</span>
   <span class='locate identifier id'>locate</span>
@@ -328,13 +333,13 @@ Executes the given JavaScript string in this frame. (Celerity only)
           <pre class="lines">
 
 
-42
-43
 44
-45</pre>
+45
+46
+47</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 42</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 44</span>
 
 <span class='def def kw'>def</span> <span class='execute_script identifier id'>execute_script</span><span class='lparen token'>(</span><span class='source identifier id'>source</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -385,8 +390,6 @@ Override the default locate to handle frame and inline frames.
           <pre class="lines">
 
 
-15
-16
 17
 18
 19
@@ -394,10 +397,12 @@ Override the default locate to handle frame and inline frames.
 21
 22
 23
-24</pre>
+24
+25
+26</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 15</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 17</span>
 
 <span class='def def kw'>def</span> <span class='locate identifier id'>locate</span>
   <span class='super super kw'>super</span>
@@ -441,13 +446,13 @@ Override the default locate to handle frame and inline frames.
           <pre class="lines">
 
 
-58
-59
 60
-61</pre>
+61
+62
+63</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 58</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 60</span>
 
 <span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -499,12 +504,12 @@ Used internally.
           <pre class="lines">
 
 
-54
-55
-56</pre>
+56
+57
+58</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 54</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/frame.rb', line 56</span>
 
 <span class='def def kw'>def</span> <span class='update_page identifier id'>update_page</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
   <span class='@browser ivar id'>@browser</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='getEnclosingWindow identifier id'>getEnclosingWindow</span><span class='dot token'>.</span><span class='getTopWindow identifier id'>getTopWindow</span><span class='dot token'>.</span><span class='getEnclosedPage identifier id'>getEnclosedPage</span>

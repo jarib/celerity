@@ -23,7 +23,11 @@
 Input: Button
 </p>
 <p>
-Class representing button elements
+Class representing button elements.
+</p>
+<p>
+This class covers both &lt;button&gt; and &lt;input
+type=&quot;submit|reset|image|button&quot; /&gt; elements.
 </p>
 
 </div><div class="section constants">
@@ -32,7 +36,7 @@ Class representing button elements
   <dl>
     
       <dt id="ATTRIBUTES-constant">ATTRIBUTES</dt>
-      <dd>BASE_ATTRIBUTES | [:type, :disabled, :tabindex, :accesskey, :onfocus, :onblur] | [:src, :usemap, :ismap]</dd>
+      <dd>ATTRIBUTES | [:type, :disabled, :tabindex, :accesskey, :onfocus, :onblur] | [:src, :usemap, :ismap]</dd>
     
       <dt id="DEFAULT_HOW-constant">DEFAULT_HOW</dt>
       <dd>:value</dd>
@@ -71,7 +75,7 @@ Class representing button elements
   <div class='section methodsignature'>
   <tt class='def'>
     <span class='visibility'>public</span>
-    <span class='return_types'><tt><a title="String" href="../String.html">String</a></tt></span>
+    <span class='return_types'><tt>String</tt></span>
     <span class='name'>method_missing</span><span class='args'>(meth, *args, &amp;blk)</span>
     <span class='block'></span>
   </tt>
@@ -95,7 +99,7 @@ Dynamically get element attributes.
   
     <dt>
       
-        <span class='type'>[<tt><a title="String" href="../String.html">String</a></tt>]</span>
+        <span class='type'>[<tt>String</tt>]</span>
       
       
         <span class='name'></span>
@@ -152,20 +156,20 @@ if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245</pre>
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 235</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/element.rb', line 251</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -212,7 +216,7 @@ if the element doesn&#8217;t support this attribute.
   
   <div>
     <h1>Public Instance Methods Inherited from <a title="Celerity::Element" href="Element.html">Celerity::Element</a></h1>
-    <p><span class='name'><a title="assert_exists" href="Element.html#assert_exists-instance_method">assert_exists</a></span>, <span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="fire_event" href="Element.html#fire_event-instance_method">fire_event</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="methods" href="Element.html#methods-instance_method">methods</a></span>, <span class='name'><a title="object" href="Element.html#object-instance_method">object</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_s" href="Element.html#to_s-instance_method">to_s</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="visible?" href="Element.html#visible%3F-instance_method">visible?</a></span>, <span class='name'><a title="xpath" href="Element.html#xpath-instance_method">xpath</a></span></p>
+    <p><span class='name'><a title="assert_exists" href="Element.html#assert_exists-instance_method">assert_exists</a></span>, <span class='name'><a title="attribute_string" href="Element.html#attribute_string-instance_method">attribute_string</a></span>, <span class='name'><a title="attribute_value" href="Element.html#attribute_value-instance_method">attribute_value</a></span>, <span class='name'><a title="exists?" href="Element.html#exists%3F-instance_method">exists?</a></span>, <span class='name'><a title="fire_event" href="Element.html#fire_event-instance_method">fire_event</a></span>, <span class='name'><a title="focus" href="Element.html#focus-instance_method">focus</a></span>, <span class='name'><a title="javascript_object" href="Element.html#javascript_object-instance_method">javascript_object</a></span>, <span class='name'><a title="methods" href="Element.html#methods-instance_method">methods</a></span>, <span class='name'><a title="object" href="Element.html#object-instance_method">object</a></span>, <span class='name'><a title="parent" href="Element.html#parent-instance_method">parent</a></span>, <span class='name'><a title="respond_to?" href="Element.html#respond_to%3F-instance_method">respond_to?</a></span>, <span class='name'><a title="text" href="Element.html#text-instance_method">text</a></span>, <span class='name'><a title="to_s" href="Element.html#to_s-instance_method">to_s</a></span>, <span class='name'><a title="to_xml" href="Element.html#to_xml-instance_method">to_xml</a></span>, <span class='name'><a title="visible?" href="Element.html#visible%3F-instance_method">visible?</a></span>, <span class='name'><a title="xpath" href="Element.html#xpath-instance_method">xpath</a></span></p>
   </div>
   
 </div>
@@ -252,8 +256,6 @@ if the element doesn&#8217;t support this attribute.
           <pre class="lines">
 
 
-22
-23
 24
 25
 26
@@ -270,23 +272,25 @@ if the element doesn&#8217;t support this attribute.
 37
 38
 39
-40</pre>
+40
+41
+42</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/elements/button.rb', line 22</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/elements/button.rb', line 24</span>
 
 <span class='def def kw'>def</span> <span class='locate identifier id'>locate</span>
-  <span class='comment val'># We want the :value attribute to point to the inner HTML for &lt;button&gt; elements, </span>
-  <span class='comment val'># and to the value attribute for &lt;input type=&quot;button&quot;&gt; elements. </span>
-  
+  <span class='comment val'># We want the :value attribute to point to the inner HTML for &lt;button&gt; elements,</span>
+  <span class='comment val'># and to the value attribute for &lt;input type=&quot;button&quot;&gt; elements.</span>
+
   <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='@conditions ivar id'>@conditions</span><span class='lbrack token'>[</span><span class='colon op'>:</span><span class='value identifier id'>value</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
     <span class='button_ident identifier id'>button_ident</span>      <span class='assign token'>=</span> <span class='Identifier constant id'>Identifier</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'button'</span><span class='rparen token'>)</span>
     <span class='button_ident identifier id'>button_ident</span><span class='dot token'>.</span><span class='text identifier id'>text</span> <span class='assign token'>=</span> <span class='val identifier id'>val</span>
     <span class='input_ident identifier id'>input_ident</span>       <span class='assign token'>=</span> <span class='Identifier constant id'>Identifier</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'input'</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='dstring node'>%w[submit reset image button]</span><span class='comma token'>,</span> <span class='symbol val'>:value</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='val identifier id'>val</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-    
+
     <span class='locator identifier id'>locator</span>        <span class='assign token'>=</span> <span class='ElementLocator constant id'>ElementLocator</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@container ivar id'>@container</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='rparen token'>)</span>
     <span class='locator identifier id'>locator</span><span class='dot token'>.</span><span class='idents identifier id'>idents</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='button_ident identifier id'>button_ident</span><span class='comma token'>,</span> <span class='input_ident identifier id'>input_ident</span><span class='rbrack token'>]</span>
-    
+
     <span class='conditions identifier id'>conditions</span> <span class='assign token'>=</span> <span class='@conditions ivar id'>@conditions</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
     <span class='conditions identifier id'>conditions</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:value</span><span class='rparen token'>)</span>
     <span class='@object ivar id'>@object</span> <span class='assign token'>=</span> <span class='locator identifier id'>locator</span><span class='dot token'>.</span><span class='find_by_conditions identifier id'>find_by_conditions</span><span class='lparen token'>(</span><span class='conditions identifier id'>conditions</span><span class='rparen token'>)</span>
