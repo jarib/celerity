@@ -244,20 +244,6 @@ Creates a browser object.
       </tr>
       
         <tr>
-          <td class="name">:log_level</td>
-          <td class="default">
-            
-              <tt>:warning</tt>
-            
-          </td>
-          <td class="type">[<tt>Symbol</tt>]</td>
-          <td class="desc"><p>
-@see log_level=
-</p>
-</td>
-        </tr>
-      
-        <tr>
           <td class="name">:browser</td>
           <td class="default">
             
@@ -267,91 +253,6 @@ Creates a browser object.
           <td class="type">[<tt>:internet_explorer</tt>, <tt>:firefox</tt>, <tt>:firefox3</tt>]</td>
           <td class="desc"><p>
 Set the BrowserVersion used by HtmlUnit. Defaults to Firefox 2.
-</p>
-</td>
-        </tr>
-      
-        <tr>
-          <td class="name">:css</td>
-          <td class="default">
-            
-              <tt>false</tt>
-            
-          </td>
-          <td class="type">[<tt>Boolean</tt>]</td>
-          <td class="desc"><p>
-Enable CSS. Disabled by default.
-</p>
-</td>
-        </tr>
-      
-        <tr>
-          <td class="name">:secure_ssl</td>
-          <td class="default">
-            
-              <tt>true</tt>
-            
-          </td>
-          <td class="type">[<tt>Boolean</tt>]</td>
-          <td class="desc"><p>
-Enable/disable secure SSL. Enabled by default.
-</p>
-</td>
-        </tr>
-      
-        <tr>
-          <td class="name">:javascript_enabled</td>
-          <td class="default">
-            
-              <tt>true</tt>
-            
-          </td>
-          <td class="type">[<tt>Boolean</tt>]</td>
-          <td class="desc"><p>
-Enable/disable JavaScript evaluation. Enabled by default.
-</p>
-</td>
-        </tr>
-      
-        <tr>
-          <td class="name">:resynchronize</td>
-          <td class="default">
-            
-              <tt>false</tt>
-            
-          </td>
-          <td class="type">[<tt>Boolean</tt>]</td>
-          <td class="desc"><p>
-Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax
-calls.
-</p>
-</td>
-        </tr>
-      
-        <tr>
-          <td class="name">:javascript_exceptions</td>
-          <td class="default">
-            
-              <tt>false</tt>
-            
-          </td>
-          <td class="type">[<tt>Boolean</tt>]</td>
-          <td class="desc"><p>
-Raise exceptions on script errors. Disabled by default.
-</p>
-</td>
-        </tr>
-      
-        <tr>
-          <td class="name">:status_code_exceptions</td>
-          <td class="default">
-            
-              <tt>false</tt>
-            
-          </td>
-          <td class="type">[<tt>Boolean</tt>]</td>
-          <td class="desc"><p>
-Raise exceptions on failing status codes (404 etc.). Disabled by default.
 </p>
 </td>
         </tr>
@@ -372,29 +273,15 @@ texts are getting gibberished, like Browser#html.
         </tr>
       
         <tr>
-          <td class="name">:proxy</td>
+          <td class="name">:css</td>
           <td class="default">
             
-              <tt>nil</tt>
+              <tt>false</tt>
             
           </td>
-          <td class="type">[<tt>String</tt>]</td>
+          <td class="type">[<tt>Boolean</tt>]</td>
           <td class="desc"><p>
-Proxy server to use, in address:port format.
-</p>
-</td>
-        </tr>
-      
-        <tr>
-          <td class="name">:user_agent</td>
-          <td class="default">
-            
-              <span class="na">N/A</span>
-            
-          </td>
-          <td class="type">[<tt>String</tt>]</td>
-          <td class="desc"><p>
-Override the User-Agent set by the :browser option
+Enable CSS. Disabled by default.
 </p>
 </td>
         </tr>
@@ -414,7 +301,7 @@ See Browser#ignore_pattern=
         </tr>
       
         <tr>
-          <td class="name">:viewer</td>
+          <td class="name">:javascript_enabled</td>
           <td class="default">
             
               <tt>true</tt>
@@ -422,7 +309,63 @@ See Browser#ignore_pattern=
           </td>
           <td class="type">[<tt>Boolean</tt>]</td>
           <td class="desc"><p>
-Connect to a CelerityViewer on port 6429 if available.
+Enable/disable JavaScript evaluation. Enabled by default.
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:javascript_exceptions</td>
+          <td class="default">
+            
+              <tt>false</tt>
+            
+          </td>
+          <td class="type">[<tt>Boolean</tt>]</td>
+          <td class="desc"><p>
+Raise exceptions on script errors. Disabled by default.
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:log_level</td>
+          <td class="default">
+            
+              <tt>:warning</tt>
+            
+          </td>
+          <td class="type">[<tt>Symbol</tt>]</td>
+          <td class="desc"><p>
+@see log_level=
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:proxy</td>
+          <td class="default">
+            
+              <tt>nil</tt>
+            
+          </td>
+          <td class="type">[<tt>String</tt>]</td>
+          <td class="desc"><p>
+Proxy server to use, in address:port format.
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:refresh_handler</td>
+          <td class="default">
+            
+              <tt>:immediate</tt>
+            
+          </td>
+          <td class="type">[<tt>:immediate</tt>, <tt>:waiting</tt>, <tt>:threaded</tt>]</td>
+          <td class="desc"><p>
+Set HtmlUnit&#8217;s refresh handler.
 </p>
 </td>
         </tr>
@@ -442,15 +385,72 @@ What DOM representation to send to connected viewers.
         </tr>
       
         <tr>
-          <td class="name">:refresh_handler</td>
+          <td class="name">:resynchronize</td>
           <td class="default">
             
-              <tt>:immediate</tt>
+              <tt>false</tt>
             
           </td>
-          <td class="type">[<tt>:immediat</tt>, <tt>:waiting</tt>, <tt>:threaded</tt>]</td>
+          <td class="type">[<tt>Boolean</tt>]</td>
           <td class="desc"><p>
-Set HtmlUnit&#8217;s refresh handler.
+Use HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax
+calls.
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:secure_ssl</td>
+          <td class="default">
+            
+              <tt>true</tt>
+            
+          </td>
+          <td class="type">[<tt>Boolean</tt>]</td>
+          <td class="desc"><p>
+Enable/disable secure SSL. Enabled by default.
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:status_code_exceptions</td>
+          <td class="default">
+            
+              <tt>false</tt>
+            
+          </td>
+          <td class="type">[<tt>Boolean</tt>]</td>
+          <td class="desc"><p>
+Raise exceptions on failing status codes (404 etc.). Disabled by default.
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:user_agent</td>
+          <td class="default">
+            
+              <span class="na">N/A</span>
+            
+          </td>
+          <td class="type">[<tt>String</tt>]</td>
+          <td class="desc"><p>
+Override the User-Agent set by the :browser option
+</p>
+</td>
+        </tr>
+      
+        <tr>
+          <td class="name">:viewer</td>
+          <td class="default">
+            
+              <tt>true</tt>
+            
+          </td>
+          <td class="type">[<tt>Boolean</tt>]</td>
+          <td class="desc"><p>
+Connect to a CelerityViewer on port 6429 if available.
 </p>
 </td>
         </tr>
@@ -548,7 +548,7 @@ An instance of the browser.
 
   <span class='@render_type ivar id'>@render_type</span>   <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:render</span><span class='rparen token'>)</span>    <span class='orop op'>||</span> <span class='symbol val'>:html</span>
   <span class='@charset ivar id'>@charset</span>       <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:charset</span><span class='rparen token'>)</span>   <span class='orop op'>||</span> <span class='string val'>&quot;UTF-8&quot;</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='log_level identifier id'>log_level</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:log_level</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='symbol val'>:warning</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='log_level identifier id'>log_level</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:log_level</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='symbol val'>:off</span>
 
   <span class='@page ivar id'>@page</span>           <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
   <span class='@error_checkers ivar id'>@error_checkers</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
