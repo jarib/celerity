@@ -13,8 +13,6 @@ require "fileutils"
 require "thread"
 
 module Celerity
-  VERSION = "0.0.6.17"
-  
   Log = Logger.new($DEBUG ? $stderr : nil)
   Log.level = Logger::DEBUG
 
@@ -34,6 +32,7 @@ module Celerity
   DIR = File.expand_path(File.dirname(__FILE__) + "/celerity")
 end
 
+require "celerity/version"
 require "celerity/htmlunit"
 require "celerity/exception"
 require "celerity/clickable_element"
