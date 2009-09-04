@@ -11,12 +11,14 @@ Hoe.plugin :website
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 Hoe.spec 'celerity' do
-  developer         "Jari Bakken", "jari.bakken@finn.no"
+  developer   "Jari Bakken", "jari.bakken@finn.no"
+  version     = Celerity::VERSION
+  clean_globs = %w[classes/**/* pkg/**/* doc/**/*]
+
   author         << "Jari Bakken" << "T. Alexander Lystad" << "Knut Johannes Dahle"
   email          << "jari.bakken@finn.no"
   extra_dev_deps << ['sinatra', '>= 0.9.4']
-  version         = Celerity::VERSION
-  
+
   # hack to avoid the extra file
   @website_config = {'host' => 'jarib@rubyforge.org', 'remote_dir' => "/var/www/gforge-projects/celerity"}
 end
