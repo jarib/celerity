@@ -76,7 +76,6 @@ tasks/fix.rake
 tasks/jar.rake
 tasks/rdoc.rake
 tasks/rspec.rake
-tasks/simple_ci.rake
 tasks/snapshot.rake
 tasks/website.rake
 tasks/yard.rake
