@@ -11,6 +11,7 @@ Hoe.plugin :website
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 Hoe.spec 'celerity' do
+  developer         "Jari Bakken", "jari.bakken@finn.no"
   author         << "Jari Bakken" << "T. Alexander Lystad" << "Knut Johannes Dahle"
   email          << "jari.bakken@finn.no"
   extra_dev_deps << ['sinatra', '>= 0.9.4']
