@@ -15,6 +15,9 @@ Hoe.spec 'celerity' do
   email          << "jari.bakken@finn.no"
   extra_dev_deps << ['sinatra', '>= 0.9.4']
   version         = Celerity::VERSION
+  
+  # hack to avoid the extra file
+  @website_config = {'host' => 'jarib@rubyforge.org', 'remote_dir' => "/var/www/gforge-projects/celerity"}
 end
 
 Dir['tasks/**/*.rake'].each do |rake|
