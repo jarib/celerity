@@ -6,9 +6,9 @@
 
 Celerity is a JRuby library for easy and fast functional test automation for web applications.
 
-It is a JRuby wrapper around HtmlUnit – a headless Java browser with 
+Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with 
 JavaScript support. It provides a simple API for programmatic navigation through
-web applications. Celerity aims at being API compatible with Watir.
+web applications. Celerity provides a superset of Watir's API.
 
 == Features
 

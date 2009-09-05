@@ -1,7 +1,7 @@
 History.txt
 License.txt
 Manifest.txt
-README.rdoc
+README.txt
 Rakefile
 celerity.gemspec
 lib/celerity.rb
