@@ -13,7 +13,7 @@ Hoe.plugin :website
 Hoe.spec 'celerity' do
   developer   "Jari Bakken", "jari.bakken@finn.no"
   version     = Celerity::VERSION
-  clean_globs = %w[classes/**/* pkg/**/* doc/**/*]
+  clean_globs = %w[classes/* pkg/ doc/*]
 
   author         << "Jari Bakken" << "T. Alexander Lystad" << "Knut Johannes Dahle"
   email          << "jari.bakken@finn.no"
