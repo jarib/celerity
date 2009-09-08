@@ -489,6 +489,12 @@ module Celerity
       res
     end
 
+    def trace_javascript(debugger_klass = Celerity::JavascriptDebugger, &blk)
+      @webclient.getJavaScriptEngine.getContextFactory.setDebugger debugger_klass.new
+      yield
+      @webclient.getJavaScriptEngine.getContextFactory.setDebugger nil
+    end
+
     #
     # Add a listener block for one of the available types. (Celerity only)
     # Types map to HtmlUnit interfaces like this:

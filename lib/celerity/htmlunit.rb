@@ -3,7 +3,7 @@ module Celerity
   Jars.each { |jar| require(jar) }
 
   include_class org.apache.commons.httpclient.Cookie
-  
+
   module JsxHelper
     def method_missing(meth, *args, &blk)
       m = ["jsxGet_#{meth}", "jsx_get_#{meth}"].find { |m| respond_to?(m) }
@@ -22,6 +22,7 @@ module HtmlUnit
   module Util
     include_package 'com.gargoylesoftware.htmlunit.util'
   end
+
 end
 
 module Java::OrgW3cDom::NamedNodeMap
