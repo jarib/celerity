@@ -32,7 +32,7 @@ module Celerity
     #
     # @see Celerity::Container for an introduction to the main API.
     #
-    # @option opts :browser [:internet_explorer, :firefox, :firefox3] (:firefox) Set the BrowserVersion used by HtmlUnit. Defaults to Firefox 2.
+    # @option opts :browser [:internet_explorer, :firefox, :firefox3] (:firefox3) Set the BrowserVersion used by HtmlUnit. Defaults to Firefox 3.
     # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use for requests, and those where texts are getting gibberished, like Browser#html.
     # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
     # @option opts :ignore_pattern [Regexp] See Browser#ignore_pattern=
@@ -805,7 +805,7 @@ module Celerity
     #
 
     def setup_webclient(opts)
-      browser = (opts.delete(:browser) || :firefox).to_sym
+      browser = (opts.delete(:browser) || :firefox3).to_sym
 
       browser_version = case browser
                         when :firefox, :ff, :ff2
