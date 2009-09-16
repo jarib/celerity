@@ -833,7 +833,7 @@ module Celerity
       self.status_code_exceptions = false unless opts.delete(:status_code_exceptions)
       self.css                    = false unless opts.delete(:css)
       self.javascript_enabled     = opts.delete(:javascript_enabled) != false
-      self.secure_ssl             = opts.delete(:secure_ssl) == false
+      self.secure_ssl             = opts.delete(:secure_ssl) != false
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
       self.refresh_handler        = opts.delete(:refresh_handler) if opts[:refresh_handler]
 
