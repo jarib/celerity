@@ -2,8 +2,6 @@ module Celerity
   Jars = Dir[File.dirname(__FILE__) + '/htmlunit/*.jar']
   Jars.each { |jar| require(jar) }
 
-  include_class org.apache.commons.httpclient.Cookie
-
   module JsxHelper
     def method_missing(meth, *args, &blk)
       m = ["jsxGet_#{meth}", "jsx_get_#{meth}"].find { |m| respond_to?(m) }

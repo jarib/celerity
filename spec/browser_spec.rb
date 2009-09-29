@@ -149,7 +149,7 @@ describe "Browser" do
     end
 
     it "adds a cookie with the specified options" do
-      browser.add_cookie("example.com", "foo", "bar", :path => "/foobar", :max_age => 1000)
+      browser.add_cookie("example.com", "foo", "bar", :path => "/foobar", :expires => Time.now + 100000)
       cookies = browser.cookies
       cookies.should be_instance_of(Hash)
       cookies['example.com']['foo'].should == 'bar'

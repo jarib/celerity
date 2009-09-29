@@ -333,19 +333,21 @@ module Celerity
     # @param [String] value
     #
     # @option opts :path    [String]  ("/") A path
-    # @option opts :max_age [Fixnum]  (??) A max age
+    # @option opts :expires [Time]  (1 day from now) An expiration date
     # @option opts :secure  [Boolean] (false)
     #
 
     def add_cookie(domain, name, value, opts = {})
       path    = opts.delete(:path) || "/"
-      max_age = opts.delete(:max_age) || (Time.now + 60*60*24) # not sure if this is correct
+      expires = opts.delete(:expires) || (Time.now + 60*60*24) # not sure if this is correct
       secure  = opts.delete(:secure) || false
 
       raise(ArgumentError, "unknown option: #{opts.inspect}") unless opts.empty?
 
-      cookie = Cookie.new(domain, name, value, path, max_age, secure)
-      @webclient.getCookieManager.addCookie(cookie)
+      cookie = HtmlUnit::Util::Cookie.new(name, value, domain, path, expires, secure)
+      @webclient.getCookieManager.addCookie cookie
+      
+      cookie
     end
 
     #
