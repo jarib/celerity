@@ -119,6 +119,14 @@ module Celerity
     end
 
     #
+    # Returns true if the select list supports multiple selections
+    #
+
+    def multiple?
+      type == "select-multiple"
+    end
+
+    #
     # Returns the value of the first selected option in the select list.
     # Returns nil if no option is selected.
     #
