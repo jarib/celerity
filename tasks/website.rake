@@ -1,6 +1,4 @@
-
-
-namespace :website
+namespace :website do
   desc 'Upload website files to rubyforge'
   task :upload do
     host       = "#{rubyforge_username}@rubyforge.org"
