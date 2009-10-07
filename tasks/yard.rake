@@ -1,7 +1,8 @@
 begin
   require 'yard'
   YARD::Rake::YardocTask.new
-  
+
+  desc 'Generate docs to website/yard'
   namespace :yardoc do
     YARD::Rake::YardocTask.new(:website) do |t|
       t.options += ["-o", "website/yard"]

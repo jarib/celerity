@@ -16,7 +16,7 @@
   <h1 class="title">Class: Java::ComGargoylesoftwareHtmlunitJavascriptHostHtml::HTMLElement</h1>
   <div class="section mixins">
   <h1>Included Modules</h1>
-  <p><a title="Celerity::JsxHelper" href="../../Celerity/JsxHelper.html">Celerity::JsxHelper</a></p>
+  <p><a href="../../Celerity/JsxHelper.html" title="Celerity::JsxHelper">Celerity::JsxHelper</a></p>
 </div><div class="section constants">
   
 </div><div class="section methodmissing">
@@ -25,7 +25,7 @@
   <p class="note">
     This class handles dynamic methods through the <tt>method_missing</tt> method
     
-      in the class <a title="Celerity::JsxHelper" href="../../Celerity/JsxHelper.html">Celerity::JsxHelper</a>
+      in the class <a href="../../Celerity/JsxHelper.html" title="Celerity::JsxHelper">Celerity::JsxHelper</a>
     
   </p>
 
@@ -49,13 +49,13 @@
           <pre class="lines">
 
 
+6
+7
 8
-9
-10
-11</pre>
+9</pre>
         </td>
         <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/htmlunit.rb', line 8</span>
+          <pre class="code"><span class="info file"># File 'lib/celerity/htmlunit.rb', line 6</span>
 
 <span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
   <span class='m identifier id'>m</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='dstring node'>&quot;jsxGet_#{meth}&quot;</span><span class='comma token'>,</span> <span class='dstring node'>&quot;jsx_get_#{meth}&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='m identifier id'>m</span><span class='bitor op'>|</span> <span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='m identifier id'>m</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>

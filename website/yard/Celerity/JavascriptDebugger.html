@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Celerity::JavascriptDebugger</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Celerity_JavascriptDebugger">
+  <h1 class="title">Class: Celerity::JavascriptDebugger</h1>
+  <div class="section mixins">
+  <h1>Included Modules</h1>
+  <p>Java</p>
+</div><div class="section constants">
+  
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href="#getFrame-instance_method" title="#getFrame">#getFrame</a></span><span class='args'>(ctx, script)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        <span class='name'><a href="#handleCompilationDone-instance_method" title="#handleCompilationDone">#handleCompilationDone</a></span><span class='args'>(ctx, script, source)</span>
+        <span class='block'></span>
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>getFrame</h3>
+</div><div id="getFrame-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>getFrame</span><span class='args'>(ctx, script)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+9
+10
+11</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/javascript_debugger.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='getFrame identifier id'>getFrame</span><span class='lparen token'>(</span><span class='ctx identifier id'>ctx</span><span class='comma token'>,</span> <span class='script identifier id'>script</span><span class='rparen token'>)</span>
+  <span class='p identifier id'>p</span> <span class='debug_info_for identifier id'>debug_info_for</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>handleCompilationDone</h3>
+</div><div id="handleCompilationDone-instance_method" class="section method">
+  <div class="details_title">
+  <div class='section methodsignature'>
+  <tt class='def'>
+    <span class='visibility'>public</span>
+    <span class='return_types'></span>
+    <span class='name'>handleCompilationDone</span><span class='args'>(ctx, script, source)</span>
+    <span class='block'></span>
+  </tt>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+5
+6
+7</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/celerity/javascript_debugger.rb', line 5</span>
+
+<span class='def def kw'>def</span> <span class='handleCompilationDone identifier id'>handleCompilationDone</span><span class='lparen token'>(</span><span class='ctx identifier id'>ctx</span><span class='comma token'>,</span> <span class='script identifier id'>script</span><span class='comma token'>,</span> <span class='source identifier id'>source</span><span class='rparen token'>)</span>
+  <span class='p identifier id'>p</span> <span class='debug_info_for identifier id'>debug_info_for</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='symbol val'>:source_code</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='source identifier id'>source</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+  </body>
+</html>
