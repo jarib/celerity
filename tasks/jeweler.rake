@@ -11,7 +11,7 @@ begin
     gem.rubyforge_project = "celerity"
     gem.test_files        = [] # the gem is big enough as it is
     
-    gem.files.reject! { |f| f =~ /^(website|doc|benchmark|log|spec)/}
+    gem.files.reject! { |f| f =~ /^(website|doc|benchmark|log|spec|\.)/}
     
     gem.add_development_dependency "rspec"
     gem.add_development_dependency "yard"
