@@ -27,9 +27,11 @@ web applications. Celerity provides a superset of Watir's API.
 
     jruby -S gem install celerity
   
-or from GitHub (updated frequently)
+To always get the latest version, you should use Gemcutter as your primary gem source:
   
-    jruby -S gem install jarib-celerity
+    jruby -S gem install gemcutter
+    jruby -S gem tumble
+    jruby -S gem install celerity
   
   
 == Example
