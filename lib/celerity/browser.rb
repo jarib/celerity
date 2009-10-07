@@ -33,7 +33,7 @@ module Celerity
     # @see Celerity::Container for an introduction to the main API.
     #
     # @option opts :browser [:internet_explorer, :firefox, :firefox3] (:firefox3) Set the BrowserVersion used by HtmlUnit. Defaults to Firefox 3.
-    # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use for requests, and those where texts are getting gibberished, like Browser#html.
+    # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use for requests.
     # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
     # @option opts :ignore_pattern [Regexp] See Browser#ignore_pattern=
     # @option opts :javascript_enabled [Boolean] (true)  Enable/disable JavaScript evaluation. Enabled by default.
@@ -62,8 +62,8 @@ module Celerity
         raise ArgumentError, "expected one of #{render_types.inspect} for key :render"
       end
 
-      opts     = opts.dup # we'll delete from opts, so dup to avoid side effects
       @options = opts.dup # keep the unmodified version around as well
+      opts     = opts.dup # we'll delete from opts, so dup to avoid side effects
 
       @render_type   = opts.delete(:render)    || :html
       @charset       = opts.delete(:charset)   || "UTF-8"
