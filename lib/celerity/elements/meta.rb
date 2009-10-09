@@ -1,6 +1,13 @@
 module Celerity
   class Meta < Element
-    ATTRIBUTES  = [:name, :id, :'http-equiv', :content, :scheme] | HTML_401_TRANSITIONAL[:i18n]
+    ATTRIBUTES  = HTML_401_TRANSITIONAL[:i18n] | [
+                                                    :'http-equiv',
+                                                    :content,
+                                                    :id,
+                                                    :name,
+                                                    :scheme,
+                                                   ]
+
     DEFAULT_HOW = :id
     TAGS = [ Identifier.new('meta') ]
   end

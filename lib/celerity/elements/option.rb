@@ -9,7 +9,13 @@ module Celerity
     include DisabledElement
 
     TAGS = [ Identifier.new('option') ]
-    ATTRIBUTES = BASE_ATTRIBUTES | [:selected, :disabled, :label, :value]
+    ATTRIBUTES = BASE_ATTRIBUTES | [
+                                      :disabled,
+                                      :label,
+                                      :selected,
+                                      :value,
+                                    ]
+
     DEFAULT_HOW = :text
 
     alias_method :select, :click

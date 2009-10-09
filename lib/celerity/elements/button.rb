@@ -14,7 +14,17 @@ module Celerity
 
     # Attribute list is a little weird due to this class covering both <button>
     # and <input type="submit|reset|image|button" />
-    ATTRIBUTES = ATTRIBUTES | [:type, :disabled, :tabindex, :accesskey, :onfocus, :onblur] | [:src, :usemap, :ismap]
+    ATTRIBUTES = ATTRIBUTES | [
+                                :accesskey,
+                                :disabled,
+                                :ismap,
+                                :onblur,
+                                :onfocus,
+                                :src,
+                                :tabindex,
+                                :type,
+                                :usemap,
+                              ]
     DEFAULT_HOW = :value
 
     #
@@ -22,9 +32,8 @@ module Celerity
     #
 
     def locate
-      # We want the :value attribute to point to the inner HTML for <button> elements,
+      # We want the :value attribute to point to the inner text for <button> elements,
       # and to the value attribute for <input type="button"> elements.
-
       if (val = @conditions[:value])
         button_ident      = Identifier.new('button')
         button_ident.text = val

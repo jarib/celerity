@@ -5,7 +5,17 @@ module Celerity
     TAGS = [Identifier.new('form')]
 
     # HTML 4.01 Transitional DTD
-    ATTRIBUTES = BASE_ATTRIBUTES | [:action, :method, :enctype, :accept, :name, :onsubmit, :onreset, :target, :'accept-charset']
+    ATTRIBUTES = BASE_ATTRIBUTES | [
+                                      :'accept-charset',
+                                      :accept,
+                                      :action,
+                                      :enctype,
+                                      :method,
+                                      :name,
+                                      :onreset,
+                                      :onsubmit,
+                                      :target,
+                                    ]
     DEFAULT_HOW = :name
 
     #

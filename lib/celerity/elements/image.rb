@@ -5,7 +5,20 @@ module Celerity
 
     TAGS = [ Identifier.new('img') ]
 
-    ATTRIBUTES = BASE_ATTRIBUTES | [:src, :alt, :longdesc, :name, :height, :width, :usemap, :ismap, :align, :border, :hspace, :vspace]
+    ATTRIBUTES = BASE_ATTRIBUTES | [
+                                      :align,
+                                      :alt,
+                                      :border,
+                                      :height,
+                                      :hspace,
+                                      :ismap,
+                                      :longdesc,
+                                      :name,
+                                      :src,
+                                      :usemap,
+                                      :vspace,
+                                      :width,
+                                    ]
     DEFAULT_HOW = :src
 
     #

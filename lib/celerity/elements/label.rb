@@ -4,7 +4,12 @@ module Celerity
     include ClickableElement
 
     TAGS = [ Identifier.new('label') ]
-    ATTRIBUTES = BASE_ATTRIBUTES | [:for, :accesskey, :onfocus, :onblur]
+    ATTRIBUTES = BASE_ATTRIBUTES | [
+                                      :accesskey,
+                                      :for,
+                                      :onblur,
+                                      :onfocus,
+                                    ]
     DEFAULT_HOW = :text
   end
 

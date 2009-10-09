@@ -3,9 +3,22 @@ module Celerity
     include ClickableElement
 
     TAGS = [ Identifier.new('a') ]
-    ATTRIBUTES = BASE_ATTRIBUTES | [:charset, :type, :name, :href, :hreflang,
-                                    :target, :rel, :rev, :accesskey, :shape,
-                                    :coords, :tabindex, :onfocus, :onblur]
+    ATTRIBUTES = BASE_ATTRIBUTES | [
+                                      :accesskey,
+                                      :charset,
+                                      :coords,
+                                      :href,
+                                      :hreflang,
+                                      :name,
+                                      :onblur,
+                                      :onfocus,
+                                      :rel,
+                                      :rev,
+                                      :shape,
+                                      :tabindex,
+                                      :target,
+                                      :type,
+                                    ]
     DEFAULT_HOW = :href
 
     #

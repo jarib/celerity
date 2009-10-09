@@ -19,7 +19,17 @@ module Celerity
   #
 
   class Area < NonControlElement
-    ATTRIBUTES = ATTRIBUTES | [:shape, :coords, :href, :nohref, :alt, :tabindex, :accesskey, :onfocus, :onblur]
+    ATTRIBUTES = ATTRIBUTES | [
+                                :accesskey,
+                                :alt,
+                                :coords,
+                                :href,
+                                :nohref,
+                                :onblur,
+                                :onfocus,
+                                :shape,
+                                :tabindex,
+                              ]
     TAGS = [ Identifier.new('area') ]
   end
 
