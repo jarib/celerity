@@ -106,7 +106,6 @@ module Celerity
       assert_enabled
 
       if (value && !set?) || (!value && set?)
-        Log.debug(@object.inspect)
         @object.click
       end
     end

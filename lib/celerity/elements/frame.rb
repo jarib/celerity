@@ -68,7 +68,7 @@ module Celerity
 
     def to_s
       assert_exists
-      create_string(@inline_frame_object)
+      Celerity::Util.create_string @inline_frame_object
     end
 
     def method_missing(meth, *args, &blk)

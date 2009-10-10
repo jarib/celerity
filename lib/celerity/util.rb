@@ -87,5 +87,40 @@ module Celerity
       java.util.logging.Logger.getLogger(package_string)
     end
 
+    # number of spaces that separate the property from the value in the create_string method
+    TO_S_SIZE = 14
+
+    def create_string(element)
+      ret = []
+
+      unless (tag = element.getTagName).empty?
+        ret << "tag:".ljust(TO_S_SIZE) + tag
+      end
+
+      element.getAttributes.each do |attribute|
+        ret << "  #{attribute.getName}:".ljust(TO_S_SIZE + 2) + attribute.getValue.to_s
+      end
+
+      unless (text = element.asText).empty?
+        ret << "  text:".ljust(TO_S_SIZE + 2) + element.asText
+      end
+
+      ret.join("\n")
+    end
+
+    #
+    # Used internally.
+    #
+    # @param [String] string The string to match against.
+    # @param [Regexp, String, #to_s] what The match we're looking for.
+    # @return [Fixnum, true, false, nil]
+    #
+    # @api private
+    #
+
+    def matches?(string, what)
+      Regexp === what ? string.strip =~ what : string == what.to_s
+    end
+
   end
 end

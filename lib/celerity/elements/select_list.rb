@@ -9,9 +9,7 @@ module Celerity
 
     def options
       assert_exists
-      @object.getOptions.map do |e|
-        e.asText.empty? ? e.getLabelAttribute : e.asText
-      end
+      @object.getOptions.map { |e| e.asText.empty? ? e.getLabelAttribute : e.asText }
     end
 
     #
@@ -29,7 +27,6 @@ module Celerity
 
     def clear
       # assert_exists called by SelectList#type here
-      # TODO: should update page for each option changed?
       @object.getSelectedOptions.each { |e| e.setSelected(false) } unless type() == 'select-one'
     end
 
@@ -71,7 +68,7 @@ module Celerity
 
     def select_value(value)
       assert_exists
-      selected = @object.getOptions.map { |e| e.click if matches?(e.getValueAttribute, value) }.compact.first
+      selected = @object.getOptions.map { |e| e.click if Util.matches?(e.getValueAttribute, value) }.compact.first
 
       unless selected
         raise NoValueFoundException, "unknown option with value #{value.inspect} for select_list #{@conditions.inspect}"
@@ -143,7 +140,7 @@ module Celerity
     private
 
     def matches_option?(option, value)
-      matches?(option.asText, value) || (option.hasAttribute("label") && matches?(option.getLabelAttribute, value))
+      Util.matches?(option.asText, value) || (option.hasAttribute("label") && Util.matches?(option.getLabelAttribute, value))
     end
 
   end # SelectList

@@ -181,8 +181,8 @@ module Celerity
 
       if @page.respond_to?("getContent")
         string = @page.getContent.strip
-      elsif @page.documentElement
-        string = @page.documentElement.asText.strip
+      elsif doc = @page.documentElement
+        string = doc.asText.strip
       else
         string = ''
       end
@@ -346,7 +346,7 @@ module Celerity
 
       cookie = HtmlUnit::Util::Cookie.new(domain, name, value, path, max_age, secure)
       @webclient.getCookieManager.addCookie cookie
-      
+
       cookie
     end
 
@@ -492,9 +492,10 @@ module Celerity
     end
 
     def trace_javascript(debugger_klass = Celerity::JavascriptDebugger, &blk)
-      @webclient.getJavaScriptEngine.getContextFactory.setDebugger debugger_klass.new
+      context_factory = @webclient.getJavaScriptEngine.getContextFactory
+      context_factory.setDebugger debugger_klass.new
       yield
-      @webclient.getJavaScriptEngine.getContextFactory.setDebugger nil
+      context_factory.setDebugger nil
     end
 
     #

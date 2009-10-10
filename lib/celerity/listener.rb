@@ -54,11 +54,13 @@ module Celerity
         raise ArgumentError, "unknown listener type #{type.inspect}"
       end
 
+      procs = @procs[type]
+
       case proc_or_index
       when Fixnum
-        @procs[type].delete_at proc_or_index
+        procs.delete_at proc_or_index
       when Proc
-        @procs[type].delete proc_or_index
+        procs.delete proc_or_index
       else
         raise TypeError, "must give proc or index"
       end
@@ -69,7 +71,7 @@ module Celerity
     #
 
     def statusMessageChanged(page, message)
-      @procs[:status].each { |h| h.call(page, message) }
+      @procs[:status].each { |handler| handler.call(page, message) }
     end
 
     #
@@ -77,7 +79,7 @@ module Celerity
     #
 
     def handleAlert(page, message)
-      @procs[:alert].each { |h| h.call(page, message) }
+      @procs[:alert].each { |handler| handler.call(page, message) }
     end
 
     #
@@ -90,7 +92,7 @@ module Celerity
     #
 
     def handleConfirm(page, message)
-      val = @procs[:confirm].map { |h| h.call(page, message) }.last
+      val = @procs[:confirm].map { |handler| handler.call(page, message) }.last
       val.nil? || !!val
     end
 
@@ -99,7 +101,7 @@ module Celerity
     #
 
     def handleAttachment(page)
-      @procs[:attachment].each { |h| h.call(page) }
+      @procs[:attachment].each { |handler| handler.call(page) }
     end
 
     #
@@ -107,7 +109,7 @@ module Celerity
     #
 
     def handlePrompt(page, message)
-      @procs[:prompt].each { |h| h.call(page, message) }
+      @procs[:prompt].each { |handler| handler.call(page, message) }
     end
 
     #
@@ -115,7 +117,7 @@ module Celerity
     #
 
     def webWindowClosed(web_window_event)
-      @procs[:web_window_event].each { |h| h.call(web_window_event) }
+      @procs[:web_window_event].each { |handler| handler.call(web_window_event) }
     end
     alias_method :webWindowOpened, :webWindowClosed
     alias_method :webWindowContentChanged, :webWindowClosed
@@ -125,7 +127,7 @@ module Celerity
     #
 
     def error(message, url, line, column, key)
-      @procs[:html_parser].each { |h| h.call(message, url, line, column, key) }
+      @procs[:html_parser].each { |handler| handler.call(message, url, line, column, key) }
     end
     alias_method :warning, :error
 
@@ -134,7 +136,7 @@ module Celerity
     #
 
     def notify(message, origin)
-      @procs[:incorrectness].each { |h| h.call(message, origin) }
+      @procs[:incorrectness].each { |handler| handler.call(message, origin) }
     end
 
   end # Listener

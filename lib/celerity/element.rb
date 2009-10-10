@@ -10,9 +10,6 @@ module Celerity
 
     attr_reader :container
 
-    # number of spaces that separate the property from the value in the create_string method
-    TO_S_SIZE = 14
-
     # HTML 4.01 Transitional DTD
     HTML_401_TRANSITIONAL = {
       :core        => [:class, :id, :style, :title],
@@ -124,7 +121,7 @@ module Celerity
 
     def to_s
       assert_exists
-      create_string(@object)
+      Celerity::Util.create_string @object
     end
 
     #
@@ -134,7 +131,7 @@ module Celerity
 
     def attribute_value(attribute)
       assert_exists
-      @object.getAttribute(attribute.to_s)
+      @object.getAttribute attribute.to_s
     end
 
     #
@@ -273,24 +270,6 @@ module Celerity
     end
 
     private
-
-    def create_string(element)
-      ret = []
-
-      unless (tag = element.getTagName).empty?
-        ret << "tag:".ljust(TO_S_SIZE) + tag
-      end
-
-      element.getAttributes.each do |attribute|
-        ret << "  #{attribute.getName}:".ljust(TO_S_SIZE+2) + attribute.getValue.to_s
-      end
-
-      unless (text = element.asText).empty?
-        ret << "  text:".ljust(TO_S_SIZE+2) + element.asText
-      end
-
-      ret.join("\n")
-    end
 
     def identifier_string
       if @conditions.size == 1

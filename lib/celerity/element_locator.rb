@@ -98,7 +98,7 @@ module Celerity
     end
 
     def find_by_label(what)
-      obj = elements_by_tag_names(%w[label]).find { |e| matches?(e.asText, what) }
+      obj = elements_by_tag_names(%w[label]).find { |e| Util.matches?(e.asText, what) }
 
       return nil unless obj && (ref = obj.getReferencedElement)
       return ref if @tags.include?(ref.getTagName)
@@ -118,24 +118,10 @@ module Celerity
 
     def get_by_idents(meth, idents)
       with_nullpointer_retry do
-        all_elements.send(meth) do |e|
-          next unless @tags.include?(e.getTagName)
-          idents.any? { |id| element_matches_ident?(e, id) }
+        all_elements.send(meth) do |element|
+          next unless @tags.include?(element.getTagName)
+          idents.any? { |id| id.match?(element) }
         end
-      end
-    end
-
-    def element_matches_ident?(element, ident)
-      return false unless ident.tag == element.getTagName
-
-      attr_result = ident.attributes.all? do |key, values|
-        values.any? { |val| matches?(element.getAttribute(key.to_s), val) }
-      end
-
-      if ident.text
-        attr_result && matches?(element.asText.strip, ident.text)
-      else
-        attr_result
       end
     end
 
@@ -167,10 +153,6 @@ module Celerity
       tries += 1
       warn "warning: celerity caught #{e} - retry ##{tries}"
       retry
-    end
-
-    def matches?(string, what)
-      Regexp === what ? string.strip =~ what : string == what.to_s
     end
 
   end # ElementLocator
