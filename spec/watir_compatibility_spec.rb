@@ -7,11 +7,9 @@ describe "Button" do
   end
 
   describe "#click_no_wait" do
-    deviates_on :celerity do
-      it "behaves like #click" do
-        browser.button(:id, 'new_user_submit').click_no_wait
-        browser.text.should include("You posted the following content:")
-      end
+    it "behaves like #click" do
+      browser.button(:id, 'new_user_submit').click_no_wait
+      browser.text.should include("You posted the following content:")
     end
   end
 
