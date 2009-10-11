@@ -69,7 +69,6 @@ module Celerity
         @object.getValueAttribute
       end
     end
-    alias_method :get_contents, :value
 
     #
     # Append the given value to the text in the text field.
