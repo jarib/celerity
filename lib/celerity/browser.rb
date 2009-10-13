@@ -698,10 +698,6 @@ module Celerity
       @webclient.useInsecureSSL = !bool
     end
 
-    def secure_ssl
-      !@webclient.useInsecureSSL
-    end
-
     #
     # Turn on/off JavaScript execution
     #
