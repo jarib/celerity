@@ -265,6 +265,24 @@ describe "Browser" do
     end
   end
 
+  describe "#remove_listener" do
+    it "should remove the given listener Proc" do
+      browser.goto(WatirSpec.files + "/forms_with_input_elements.html")
+
+      called   = false
+      listener = lambda { called = true }
+
+      browser.add_listener(:alert, &listener)
+      browser.execute_script("alert('foo')")
+      called.should be_true
+
+      called = false
+      browser.remove_listener(:alert, listener)
+      browser.execute_script("alert('foo')")
+      called.should be_false
+    end
+  end
+
   describe "#add_checker" do
 
     # watir only supports a lambda instance as argument, celerity supports both
