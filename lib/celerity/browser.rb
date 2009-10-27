@@ -46,7 +46,7 @@ module Celerity
     # @option opts :secure_ssl [Boolean] (true)  Enable/disable secure SSL. Enabled by default.
     # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
     # @option opts :user_agent [String] Override the User-Agent set by the :browser option
-    # @option opts :viewer [Boolean] (true) Connect to a CelerityViewer on port 6429 if available.
+    # @option opts :viewer [String, false] ("127.0.0.1:6429") Connect to a CelerityViewer if available.
     #
     # @return [Celerity::Browser]     An instance of the browser.
     #
@@ -854,7 +854,7 @@ module Celerity
       if viewer = ViewerConnection.create(host, port.to_i)
         @viewer = viewer
       end
-    rescue Errno::ECONNREFUSED => e
+    rescue Errno::ECONNREFUSED, SocketError => e
       nil
     end
 
