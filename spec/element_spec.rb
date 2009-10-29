@@ -48,4 +48,14 @@ describe "Element" do
     end
   end
 
+  describe "#==" do
+    it "returns true if passed the same element" do
+      browser.label(:id, 'first_label').should == browser.labels.first
+    end
+
+    it "returns false if passed a different element" do
+      browser.label(:id, 'first_label').should_not == browser.labels.last
+    end
+  end
+
 end
