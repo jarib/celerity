@@ -22,7 +22,7 @@ res = Benchmark.bmbm do |results|
         browser.link(:text, 'Next').click unless src_pool.empty?
         table_cells = browser.cells.select { |cell| cell.id =~ /tDataImage\d+/ }
         table_cells.each do |cell|
-          src_pool << cell.image(:index, 1).src if cell.image(:index, 1).exists?
+          src_pool << cell.images.first.src if cell.images.first.exists?
         end
       end
       #puts "Looked at #{pages} pages of image search results. Got #{src_pool.size} images."

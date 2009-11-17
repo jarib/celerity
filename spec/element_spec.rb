@@ -19,11 +19,11 @@ describe "Element" do
 
   describe "#method_missing" do
     it "magically returns the requested attribute if the attribute is defined in the attribute list" do
-      browser.form(:index, 1).action.should == 'post_to_me'
+      browser.form(:index, Celerity.index_offset).action.should == 'post_to_me'
     end
 
     it "raises NoMethodError if the requested method isn't among the attributes" do
-      lambda { browser.button(:index, 1).no_such_attribute_or_method }.should raise_error(NoMethodError)
+      lambda { browser.button(:index, Celerity.index_offset).no_such_attribute_or_method }.should raise_error(NoMethodError)
     end
   end
 

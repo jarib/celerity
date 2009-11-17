@@ -10,7 +10,7 @@ describe "HtmlUnit bugs" do
   describe "HtmlUnit bug 1968708: https://sourceforge.net/tracker/index.php?func=detail&aid=1968708&group_id=47038&atid=448266" do
    it "only considers the first attribute if there are duplicate attributes" do
      browser.goto(WatirSpec.files + "/bug_duplicate_attributes.html")
-     browser.text_field(:index, 1).id.should == "org_id"
+     browser.text_field(:index, Celerity.index_offset).id.should == "org_id"
    end
   end
 

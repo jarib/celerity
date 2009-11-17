@@ -142,11 +142,11 @@ module Celerity
     end
 
     def column_values(column_number)
-      (1..row_count).map { |index| self[index][column_number].text }
+      (0..row_count-1).map { |index| self[index + Celerity.index_offset][column_number].text }
     end
 
     def row_values(row_number)
-      (1..column_count(row_number)).map { |index| self[row_number][index].text }
+      (0..column_count(row_number)-1).map { |index| self[row_number][index + Celerity.index_offset].text }
     end
 
   end # Table

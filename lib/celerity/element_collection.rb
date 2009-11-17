@@ -100,7 +100,7 @@ module Celerity
     private
 
     def iterator_object(i)
-      element_class.new(@container, :index, i+1)
+      element_class.new(@container, :index, i + Celerity.index_offset)
     end
 
   end # ElementCollection
