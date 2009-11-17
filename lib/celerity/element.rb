@@ -52,6 +52,11 @@ module Celerity
       @object = nil
     end
 
+    def ==(other)
+      return false unless other.kind_of? Element
+      xpath == other.xpath
+    end
+
     #
     # Get the parent element
     # @return [Celerity::Element, nil] subclass of Celerity::Element, or nil if no parent was found

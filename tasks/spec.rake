@@ -8,7 +8,7 @@ Spec::Rake::SpecTask.new(:rcov) do |spec|
   spec.libs << 'lib' << 'spec'
   spec.pattern   = 'spec/**/*_spec.rb'
   spec.rcov      = true
-  spec.rcov_opts = %w[--exclude spec,fcntl,path_helper,yaml --no-rcovrt]
+  spec.rcov_opts = %w[--exclude spec,fcntl,path_helper,yaml,rack,jruby --include lib/celerity --no-rcovrt]
 end
 
 if File.exist?(path = "spec/watirspec/watirspec.rake")

@@ -118,6 +118,7 @@ module Celerity
     def cell(*args)
       TableCell.new(self, *args)
     end
+    alias_method :td, :cell
 
     #
     # @return [Celerity::TableCells]
@@ -126,6 +127,7 @@ module Celerity
     def cells
       TableCells.new(self)
     end
+    alias_method :tds, :cells
 
     #
     # Since finding checkboxes by value is very common, you can use this shorthand:
