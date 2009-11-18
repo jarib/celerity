@@ -1,232 +1,251 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
-<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Module: Celerity::ClickableElement</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
-    <title>Module: Celerity::ClickableElement</title>
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
   </head>
   <body>
-    <div id="content">
-      <div class="section module Celerity_ClickableElement">
-  <h1 class="title">Module: Celerity::ClickableElement</h1>
-  <div class="section constants">
+    <div id="header">
+      <div id="menu">
   
-</div>  <div class="section visibilitygroup public">
-    <h1>Public Visibility</h1>
-      <div class="section methodsummary instance public">
-    <h1>Public Instance Method Summary</h1>
-<table class="summary">
+    <a href="../_index.html">Index (C)</a> &raquo; 
+    <a title="Celerity" href="../Celerity.html">Celerity</a>
+     &raquo; 
+    <span class="title">ClickableElement</span>
   
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#click-instance_method" title="#click">#click</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-          <span class='alias'>#click_no_wait</span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-click the element.
-</p>
+</div>
 
-        
-      </td>
-    </tr>
+      <div id="search">
+  <a id="class_list_link" href="#">Namespace List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Celerity::ClickableElement 
   
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#click_and_attach-instance_method" title="#click_and_attach">#click_and_attach</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/celerity/clickable_element.rb<span class="defines">,<br />
+  lib/celerity/watir_compatibility.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  <h2>Method Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#click (instance method)" href="#click-instance_method">- (Object) <strong>click</strong> </a>
+  
+    (also: #click_no_wait)
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+click the element.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#click_and_attach (instance method)" href="#click_and_attach-instance_method">- (Celerity::Browser) <strong>click_and_attach</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
 Click the element and return a new Browser instance with the resulting
 page.
-</p>
 
-        
-          <p class='returns'>
-            Returns: 
-              <span class='return_types'>
-                 <tt><a href="Browser.html" title="Celerity::Browser">Celerity::Browser</a></tt>
-              </span>
-          </p>
-        
-      </td>
-    </tr>
+</span>
   
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#double_click-instance_method" title="#double_click">#double_click</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#double_click (instance method)" href="#double_click-instance_method">- (Object) <strong>double_click</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
 double click the element (Celerity only).
-</p>
 
-        
-      </td>
-    </tr>
+</span>
   
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#download-instance_method" title="#download">#download</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#download (instance method)" href="#download-instance_method">- (IO) <strong>download</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
 Click the element and just return the content as IO.
-</p>
 
-        
-          <p class='returns'>
-            Returns: 
-              <span class='return_types'>
-                 <tt>IO</tt>
-              </span>
-          </p>
-        
-      </td>
-    </tr>
+</span>
   
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#right_click-instance_method" title="#right_click">#right_click</a></span><span class='args'></span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#right_click (instance method)" href="#right_click-instance_method">- (Object) <strong>right_click</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
 right click the element (Celerity only).
-</p>
 
-        
-      </td>
-    </tr>
+</span>
   
-</table>
-  </div>
-<div class="section methoddetails instance public">
-  <h1>Public Instance Method Details</h1>
+</li>
+
+    
+  </ul>
+
+
+
+  <div id="method_details">
+    <h2>Method Details</h2>
+    
+      <div class="method_details first">
+  <p class="signature first" id="click-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>click</h3>
-</div><div id="click-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>click</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
-<p class="aliases">
-  <span class="aka">Also known as:</span>
+    - (<tt>Object</tt>) <strong>click</strong> 
   
-    <tt id="click_no_wait-instance_method">click_no_wait</tt>
+
   
-</p>
-</div><div class="section docstring">
-  <p>
+    <span class="aliases">Also known as:
+    <span class="names">click_no_wait</span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 click the element
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 8
 9
 10
 11</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 8</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 8</span>
 
 <span class='def def kw'>def</span> <span class='click identifier id'>click</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
   <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='click identifier id'>click</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="click_and_attach-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>click_and_attach</h3>
-</div><div id="click_and_attach-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="Browser.html" title="Celerity::Browser">Celerity::Browser</a></tt></span>
-    <span class='name'>click_and_attach</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt><a title="Celerity::Browser" href="Browser.html">Celerity::Browser</a></tt>) <strong>click_and_attach</strong> 
+  
 
-</div><div class="section docstring">
-  <p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 Click the element and return a new Browser instance with the resulting
 page. This is useful for elements that trigger popups when clicked.
 </p>
 
-</div><div class="section tags">
-  <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-  </dl>
-</div><div class="return">
-  <h3>Returns:</h3>
-  <dl>
-  
-    <dt>
-      
-        <span class='type'>[<tt><a href="Browser.html" title="Celerity::Browser">Celerity::Browser</a></tt>]</span>
-      
-      
-        <span class='name'></span>
-      
-      
-    </dt>
-    <dd>
-      <span class='desc'></span>
-    </dd>
-  
-  </dl>
-</div>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="Celerity::Browser" href="Browser.html">Celerity::Browser</a></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 38
@@ -242,9 +261,9 @@ page. This is useful for elements that trigger popups when clicked.
 48
 49
 50</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 38</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 38</span>
 
 <span class='def def kw'>def</span> <span class='click_and_attach identifier id'>click_and_attach</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
@@ -260,118 +279,90 @@ page. This is useful for elements that trigger popups when clicked.
   <span class='browser identifier id'>browser</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="double_click-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>double_click</h3>
-</div><div id="double_click-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>double_click</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt>Object</tt>) <strong>double_click</strong> 
+  
 
-</div><div class="section docstring">
-  <p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 double click the element (Celerity only)
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 17
 18
 19
 20</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 17</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 17</span>
 
 <span class='def def kw'>def</span> <span class='double_click identifier id'>double_click</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
   <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='dblClick identifier id'>dblClick</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="download-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>download</h3>
-</div><div id="download-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'><tt>IO</tt></span>
-    <span class='name'>download</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt>IO</tt>) <strong>download</strong> 
+  
 
-</div><div class="section docstring">
-  <p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 Click the element and just return the content as IO. Current page stays
 unchanged. This can be used to download content that normally isn&#8217;t
 rendered in a browser.
 </p>
 
-</div><div class="section tags">
-  <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-  </dl>
-</div><div class="return">
-  <h3>Returns:</h3>
-  <dl>
-  
-    <dt>
-      
-        <span class='type'>[<tt>IO</tt>]</span>
-      
-      
-        <span class='name'></span>
-      
-      
-    </dt>
-    <dd>
-      <span class='desc'></span>
-    </dd>
-  
-  </dl>
-</div>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>IO</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 59
@@ -380,9 +371,9 @@ rendered in a browser.
 62
 63
 64</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 59</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 59</span>
 
 <span class='def def kw'>def</span> <span class='download identifier id'>download</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
@@ -391,67 +382,62 @@ rendered in a browser.
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="right_click-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>right_click</h3>
-</div><div id="right_click-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>right_click</span><span class='args'></span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt>Object</tt>) <strong>right_click</strong> 
+  
 
-</div><div class="section docstring">
-  <p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 right click the element (Celerity only)
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 26
 27
 28
 29</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 26</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/clickable_element.rb', line 26</span>
 
 <span class='def def kw'>def</span> <span class='right_click identifier id'>right_click</span>
   <span class='assert_exists_and_enabled identifier id'>assert_exists_and_enabled</span>
   <span class='rescue_status_code_exception identifier id'>rescue_status_code_exception</span> <span class='lbrace token'>{</span> <span class='@object ivar id'>@object</span><span class='dot token'>.</span><span class='rightClick identifier id'>rightClick</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
-  
-</div>
+    
   </div>
 
 </div>
-    </div>
+    
+    <div id="footer">
+  Generated on Wed Nov 18 02:11:30 2009 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.4.0 (ruby-1.8.7).
+</div>
+
   </body>
 </html>

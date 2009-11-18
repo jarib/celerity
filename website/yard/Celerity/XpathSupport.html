@@ -1,163 +1,195 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
-<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Module: Celerity::XpathSupport</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
-    <title>Module: Celerity::XpathSupport</title>
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
   </head>
   <body>
-    <div id="content">
-      <div class="section module Celerity_XpathSupport">
-  <h1 class="title">Module: Celerity::XpathSupport</h1>
-  <div class="section docstring">
-  <p>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (X)</a> &raquo; 
+    <a title="Celerity" href="../Celerity.html">Celerity</a>
+     &raquo; 
+    <span class="title">XpathSupport</span>
+  
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Namespace List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Celerity::XpathSupport 
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/celerity/xpath_support.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
 Module to search by xpath
 </p>
 
-</div><div class="section constants">
-  
-</div>  <div class="section visibilitygroup public">
-    <h1>Public Visibility</h1>
-      <div class="section methodsummary instance public">
-    <h1>Public Instance Method Summary</h1>
-<table class="summary">
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#element_by_xpath-instance_method" title="#element_by_xpath">#element_by_xpath</a></span><span class='args'>(xpath)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-Get the first element found matching the given XPath.
-</p>
 
-        
-          <p class='returns'>
-            Returns: 
-              <span class='return_types'>
-                 <tt><a href="Element.html" title="Celerity::Element">Celerity::Element</a></tt>
-              </span>
-          </p>
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#element_from_dom_node-instance_method" title="#element_from_dom_node">#element_from_dom_node</a></span><span class='args'>(obj)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-Convert the given HtmlUnit DomNode to a Celerity object.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#elements_by_xpath-instance_method" title="#elements_by_xpath">#elements_by_xpath</a></span><span class='args'>(xpath)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-Get all the elements matching the given XPath.
-</p>
-
-        
-          <p class='returns'>
-            Returns: 
-              <span class='return_types'>
-                 <tt>Array&lt;<a href="Element.html" title="Celerity::Element">Celerity::Element</a>></tt>
-              </span>
-          </p>
-        
-      </td>
-    </tr>
-  
-</table>
   </div>
-<div class="section methoddetails instance public">
-  <h1>Public Instance Method Details</h1>
+</div>
+<div class="tags">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>element_by_xpath</h3>
-</div><div id="element_by_xpath-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'><tt><a href="Element.html" title="Celerity::Element">Celerity::Element</a></tt></span>
-    <span class='name'>element_by_xpath</span><span class='args'>(xpath)</span>
-    <span class='block'></span>
-  </tt>
 </div>
 
-</div><div class="section docstring">
-  <p>
+
+  <h2>Method Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#element_by_xpath (instance method)" href="#element_by_xpath-instance_method">- (Celerity::Element) <strong>element_by_xpath</strong>(xpath) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Get the first element found matching the given XPath.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#element_from_dom_node (instance method)" href="#element_from_dom_node-instance_method">- (Object) <strong>element_from_dom_node</strong>(obj) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Convert the given HtmlUnit DomNode to a Celerity object.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#elements_by_xpath (instance method)" href="#elements_by_xpath-instance_method">- (Array&lt;Celerity::Element&gt;) <strong>elements_by_xpath</strong>(xpath) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Get all the elements matching the given XPath.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  <div id="method_details">
+    <h2>Method Details</h2>
+    
+      <div class="method_details first">
+  <p class="signature first" id="element_by_xpath-instance_method">
+  
+    - (<tt><a title="Celerity::Element" href="Element.html">Celerity::Element</a></tt>) <strong>element_by_xpath</strong>(xpath) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 Get the first element found matching the given XPath.
 </p>
 
-</div><div class="section tags">
-  <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-    
-      <dt>
-        <span class='type'>[<tt>String</tt>]</span>
-        <span class='name'>xpath</span>
-        
-      </dt>
-      <dd>
-        <span class='desc'></span>
-      </dd>
-    
-  
-  </dl>
-</div><div class="return">
-  <h3>Returns:</h3>
-  <dl>
-  
-    <dt>
-      
-        <span class='type'>[<tt><a href="Element.html" title="Celerity::Element">Celerity::Element</a></tt>]</span>
-      
-      
-        <span class='name'></span>
-      
-      
-    </dt>
-    <dd>
-      <span class='desc'><p>
-An element subclass (or Element if none is found)
-</p>
-</span>
-    </dd>
-  
-  </dl>
-</div>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>xpath</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="Celerity::Element" href="Element.html">Celerity::Element</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+An element subclass (or Element if none is found)
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 16
@@ -165,9 +197,9 @@ An element subclass (or Element if none is found)
 18
 19
 20</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/xpath_support.rb', line 16</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/xpath_support.rb', line 16</span>
 
 <span class='def def kw'>def</span> <span class='element_by_xpath identifier id'>element_by_xpath</span><span class='lparen token'>(</span><span class='xpath identifier id'>xpath</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -175,130 +207,109 @@ An element subclass (or Element if none is found)
   <span class='element_from_dom_node identifier id'>element_from_dom_node</span><span class='lparen token'>(</span><span class='obj identifier id'>obj</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="element_from_dom_node-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>element_from_dom_node</h3>
-</div><div id="element_from_dom_node-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>element_from_dom_node</span><span class='args'>(obj)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt>Object</tt>) <strong>element_from_dom_node</strong>(obj) 
+  
 
-</div><div class="section docstring">
-  <p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 Convert the given HtmlUnit DomNode to a Celerity object
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 40
 41
 42
 43</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/xpath_support.rb', line 40</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/xpath_support.rb', line 40</span>
 
 <span class='def def kw'>def</span> <span class='element_from_dom_node identifier id'>element_from_dom_node</span><span class='lparen token'>(</span><span class='obj identifier id'>obj</span><span class='rparen token'>)</span>
   <span class='element_class identifier id'>element_class</span> <span class='assign token'>=</span> <span class='Util constant id'>Util</span><span class='dot token'>.</span><span class='htmlunit2celerity identifier id'>htmlunit2celerity</span><span class='lparen token'>(</span><span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='Element constant id'>Element</span>
   <span class='element_class identifier id'>element_class</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='symbol val'>:object</span><span class='comma token'>,</span> <span class='obj identifier id'>obj</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="elements_by_xpath-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>elements_by_xpath</h3>
-</div><div id="elements_by_xpath-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'><tt>Array&lt;<a href="Element.html" title="Celerity::Element">Celerity::Element</a>></tt></span>
-    <span class='name'>elements_by_xpath</span><span class='args'>(xpath)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt>Array&lt;<a title="Celerity::Element" href="Element.html">Celerity::Element</a>&gt;</tt>) <strong>elements_by_xpath</strong>(xpath) 
+  
 
-</div><div class="section docstring">
-  <p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 Get all the elements matching the given XPath.
 </p>
 
-</div><div class="section tags">
-  <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-    
-      <dt>
-        <span class='type'>[<tt>String</tt>]</span>
-        <span class='name'>xpath</span>
-        
-      </dt>
-      <dd>
-        <span class='desc'></span>
-      </dd>
-    
-  
-  </dl>
-</div><div class="return">
-  <h3>Returns:</h3>
-  <dl>
-  
-    <dt>
-      
-        <span class='type'>[<tt>Array&lt;<a href="Element.html" title="Celerity::Element">Celerity::Element</a>></tt>]</span>
-      
-      
-        <span class='name'></span>
-      
-      
-    </dt>
-    <dd>
-      <span class='desc'><p>
-array of elements
-</p>
-</span>
-    </dd>
-  
-  </dl>
-</div>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>xpath</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<a title="Celerity::Element" href="Element.html">Celerity::Element</a>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+array of elements
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 29
@@ -307,9 +318,9 @@ array of elements
 32
 33
 34</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/xpath_support.rb', line 29</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/xpath_support.rb', line 29</span>
 
 <span class='def def kw'>def</span> <span class='elements_by_xpath identifier id'>elements_by_xpath</span><span class='lparen token'>(</span><span class='xpath identifier id'>xpath</span><span class='rparen token'>)</span>
   <span class='assert_exists identifier id'>assert_exists</span>
@@ -318,18 +329,20 @@ array of elements
   <span class='objects identifier id'>objects</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='o identifier id'>o</span><span class='bitor op'>|</span> <span class='element_from_dom_node identifier id'>element_from_dom_node</span><span class='lparen token'>(</span><span class='o identifier id'>o</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='compact identifier id'>compact</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
-  
-</div>
+    
   </div>
 
 </div>
-    </div>
+    
+    <div id="footer">
+  Generated on Wed Nov 18 02:11:46 2009 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.4.0 (ruby-1.8.7).
+</div>
+
   </body>
 </html>

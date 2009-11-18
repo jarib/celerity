@@ -1,147 +1,184 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
-<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: Celerity::JavascriptDebugger</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
-    <title>Class: Celerity::JavascriptDebugger</title>
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
   </head>
   <body>
-    <div id="content">
-      <div class="section class Celerity_JavascriptDebugger">
-  <h1 class="title">Class: Celerity::JavascriptDebugger</h1>
-  <div class="section mixins">
-  <h1>Included Modules</h1>
-  <p>Java</p>
-</div><div class="section constants">
+    <div id="header">
+      <div id="menu">
   
-</div>  <div class="section visibilitygroup public">
-    <h1>Public Visibility</h1>
-      <div class="section methodsummary instance public">
-    <h1>Public Instance Method Summary</h1>
-<table class="summary">
+    <a href="../_index.html">Index (J)</a> &raquo; 
+    <a title="Celerity" href="../Celerity.html">Celerity</a>
+     &raquo; 
+    <span class="title">JavascriptDebugger</span>
   
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#getFrame-instance_method" title="#getFrame">#getFrame</a></span><span class='args'>(ctx, script)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#handleCompilationDone-instance_method" title="#handleCompilationDone">#handleCompilationDone</a></span><span class='args'>(ctx, script, source)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-</table>
-  </div>
-<div class="section methoddetails instance public">
-  <h1>Public Instance Method Details</h1>
-  
-    <div class="method">
-      <div class="method_header">
-  <h3>getFrame</h3>
-</div><div id="getFrame-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>getFrame</span><span class='args'>(ctx, script)</span>
-    <span class='block'></span>
-  </tt>
 </div>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+      <div id="search">
+  <a id="class_list_link" href="#">Namespace List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Celerity::JavascriptDebugger 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Java</dd>
+      
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/celerity/javascript_debugger.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  <h2>Method Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#getFrame (instance method)" href="#getFrame-instance_method">- (Object) <strong>getFrame</strong>(ctx, script) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#handleCompilationDone (instance method)" href="#handleCompilationDone-instance_method">- (Object) <strong>handleCompilationDone</strong>(ctx, script, source) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+
+  <div id="method_details">
+    <h2>Method Details</h2>
+    
+      <div class="method_details first">
+  <p class="signature first" id="getFrame-instance_method">
+  
+    - (<tt>Object</tt>) <strong>getFrame</strong>(ctx, script) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 9
 10
 11</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/javascript_debugger.rb', line 9</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/javascript_debugger.rb', line 9</span>
 
 <span class='def def kw'>def</span> <span class='getFrame identifier id'>getFrame</span><span class='lparen token'>(</span><span class='ctx identifier id'>ctx</span><span class='comma token'>,</span> <span class='script identifier id'>script</span><span class='rparen token'>)</span>
   <span class='p identifier id'>p</span> <span class='debug_info_for identifier id'>debug_info_for</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handleCompilationDone-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>handleCompilationDone</h3>
-</div><div id="handleCompilationDone-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>handleCompilationDone</span><span class='args'>(ctx, script, source)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt>Object</tt>) <strong>handleCompilationDone</strong>(ctx, script, source) 
+  
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 5
 6
 7</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/javascript_debugger.rb', line 5</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/javascript_debugger.rb', line 5</span>
 
 <span class='def def kw'>def</span> <span class='handleCompilationDone identifier id'>handleCompilationDone</span><span class='lparen token'>(</span><span class='ctx identifier id'>ctx</span><span class='comma token'>,</span> <span class='script identifier id'>script</span><span class='comma token'>,</span> <span class='source identifier id'>source</span><span class='rparen token'>)</span>
   <span class='p identifier id'>p</span> <span class='debug_info_for identifier id'>debug_info_for</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='symbol val'>:source_code</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='source identifier id'>source</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
-  
-</div>
+    
   </div>
 
 </div>
-    </div>
+    
+    <div id="footer">
+  Generated on Wed Nov 18 02:11:42 2009 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.4.0 (ruby-1.8.7).
+</div>
+
   </body>
 </html>

@@ -1,277 +1,386 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
-<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: Celerity::Listener</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
-    <title>Class: Celerity::Listener</title>
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
   </head>
   <body>
-    <div id="content">
-      <div class="section class Celerity_Listener">
-  <h1 class="title">Class: Celerity::Listener</h1>
-  <div class="section docstring">
-  <p>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (L)</a> &raquo; 
+    <a title="Celerity" href="../Celerity.html">Celerity</a>
+     &raquo; 
+    <span class="title">Listener</span>
+  
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Namespace List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Celerity::Listener 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/celerity/listener.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
 This class is used to wrap some of the listeners available from
 HtmlUnit&#8217;s WebClient.
 </p>
 
-</div><div class="section constants">
+
+  </div>
+</div>
+<div class="tags">
   
-</div><div class="section constructor">
-<h1>Constructor Summary</h1>
-  <div id="initialize-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>initialize</span><span class='args'>(webclient)</span>
-    <span class='block'></span>
-  </tt>
 </div>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+
+  <h2>Method Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#add_listener (instance method)" href="#add_listener-instance_method">- (Object) <strong>add_listener</strong>(type, &amp;block) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Add a listener block for one of the available types.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#error (instance method)" href="#error-instance_method">- (Object) <strong>error</strong>(message, url, line, column, key) </a>
+  
+    (also: #warning)
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+interface HTMLParserListener.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#handleAlert (instance method)" href="#handleAlert-instance_method">- (Object) <strong>handleAlert</strong>(page, message) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+interface AlertHandler.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#handleAttachment (instance method)" href="#handleAttachment-instance_method">- (Object) <strong>handleAttachment</strong>(page) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+interface AttachmentHandler.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#handleConfirm (instance method)" href="#handleConfirm-instance_method">- (Object) <strong>handleConfirm</strong>(page, message) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+interface ConfirmHandler.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#handlePrompt (instance method)" href="#handlePrompt-instance_method">- (Object) <strong>handlePrompt</strong>(page, message) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+interface PromptHandler.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#initialize (instance method)" href="#initialize-instance_method">- (Listener) <strong>initialize</strong>(webclient) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+A new instance of <tt>Listener</tt>.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#notify (instance method)" href="#notify-instance_method">- (Object) <strong>notify</strong>(message, origin) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+interface IncorrectnessListener.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#remove_listener (instance method)" href="#remove_listener-instance_method">- (Object) <strong>remove_listener</strong>(type, proc_or_index) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#statusMessageChanged (instance method)" href="#statusMessageChanged-instance_method">- (Object) <strong>statusMessageChanged</strong>(page, message) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+interface StatusHandler.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#webWindowClosed (instance method)" href="#webWindowClosed-instance_method">- (Object) <strong>webWindowClosed</strong>(web_window_event) </a>
+  
+    (also: #webWindowOpened, #webWindowContentChanged)
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+interface WebWindowListener.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+<div id="constructor_details">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><a title="Listener" href="">Listener</a></tt>) <strong>initialize</strong>(webclient) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of <tt>Listener</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="Listener" href="">Listener</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+a new instance of <tt>Listener</tt>
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 17
 18
 19
 20</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 17</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 17</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='webclient identifier id'>webclient</span><span class='rparen token'>)</span>
   <span class='@webclient ivar id'>@webclient</span> <span class='assign token'>=</span> <span class='webclient identifier id'>webclient</span>
   <span class='@procs ivar id'>@procs</span> <span class='assign token'>=</span> <span class='Hash constant id'>Hash</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='comma token'>,</span> <span class='k identifier id'>k</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-</div>
-</div>  <div class="section visibilitygroup public">
-    <h1>Public Visibility</h1>
-      <div class="section methodsummary instance public">
-    <h1>Public Instance Method Summary</h1>
-<table class="summary">
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#add_listener-instance_method" title="#add_listener">#add_listener</a></span><span class='args'>(type, &amp;block)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-Add a listener block for one of the available types.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#error-instance_method" title="#error">#error</a></span><span class='args'>(message, url, line, column, key)</span>
-        <span class='block'></span>
-        
-          <span class='alias'>#warning</span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-interface HTMLParserListener.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#handleAlert-instance_method" title="#handleAlert">#handleAlert</a></span><span class='args'>(page, message)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-interface AlertHandler.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#handleAttachment-instance_method" title="#handleAttachment">#handleAttachment</a></span><span class='args'>(page)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-interface AttachmentHandler.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#handleConfirm-instance_method" title="#handleConfirm">#handleConfirm</a></span><span class='args'>(page, message)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-interface ConfirmHandler.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#handlePrompt-instance_method" title="#handlePrompt">#handlePrompt</a></span><span class='args'>(page, message)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-interface PromptHandler.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#notify-instance_method" title="#notify">#notify</a></span><span class='args'>(message, origin)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-interface IncorrectnessListener.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#remove_listener-instance_method" title="#remove_listener">#remove_listener</a></span><span class='args'>(type, proc_or_index)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#statusMessageChanged-instance_method" title="#statusMessageChanged">#statusMessageChanged</a></span><span class='args'>(page, message)</span>
-        <span class='block'></span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-interface StatusHandler.
-</p>
-
-        
-      </td>
-    </tr>
-  
-    <tr>
-      <th class="signature">
-        <span class='name'><a href="#webWindowClosed-instance_method" title="#webWindowClosed">#webWindowClosed</a></span><span class='args'>(web_window_event)</span>
-        <span class='block'></span>
-        
-          <span class='alias'>#webWindowContentChanged</span>
-        
-          <span class='alias'>#webWindowOpened</span>
-        
-      </th>
-      <td class="docstring">
-        <p>
-interface WebWindowListener.
-</p>
-
-        
-      </td>
-    </tr>
-  
+    </td>
+  </tr>
 </table>
-  </div>
-<div class="section methoddetails instance public">
-  <h1>Public Instance Method Details</h1>
+</div>
   
-    <div class="method">
-      <div class="method_header">
-  <h3>add_listener</h3>
-</div><div id="add_listener-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>add_listener</span><span class='args'>(type, &amp;block)</span>
-    <span class='block'></span>
-  </tt>
 </div>
 
-</div><div class="section docstring">
-  <p>
+
+  <div id="method_details">
+    <h2>Method Details</h2>
+    
+      <div class="method_details first">
+  <p class="signature first" id="add_listener-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_listener</strong>(type, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 Add a listener block for one of the available types.
 </p>
 
-</div><div class="section tags">
-  <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-  </dl>
-</div><div class="see">
-  <h3>See Also:</h3>
-  <dl>
-    <dt></dt>
-    <dd>
-      <span class='desc'>
-        <tt><a href="Browser.html#add_listener-instance_method" title="Celerity::Browser#add_listener">Celerity::Browser#add_listener</a></tt>
-      </span>
-    </dd>
-  </dl>
-</div>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+  </div>
+</div>
+<div class="tags">
+  
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="Celerity::Browser#add_listener" href="Browser.html#add_listener-instance_method">Celerity::Browser#add_listener</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 27
@@ -298,9 +407,9 @@ Add a listener block for one of the available types.
 48
 49
 50</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 27</span>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 27</span>
 
 <span class='def def kw'>def</span> <span class='add_listener identifier id'>add_listener</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='case case kw'>case</span> <span class='type identifier id'>type</span>
@@ -327,176 +436,145 @@ Add a listener block for one of the available types.
   <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='type identifier id'>type</span><span class='rbrack token'>]</span> <span class='lshft op'>&lt;&lt;</span> <span class='block identifier id'>block</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="error-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>error</h3>
-</div><div id="error-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>error</span><span class='args'>(message, url, line, column, key)</span>
-    <span class='block'></span>
-  </tt>
-</div>
-<p class="aliases">
-  <span class="aka">Also known as:</span>
+    - (<tt>Object</tt>) <strong>error</strong>(message, url, line, column, key) 
   
-    <tt id="warning-instance_method">warning</tt>
+
   
-</p>
-</div><div class="section docstring">
-  <p>
+    <span class="aliases">Also known as:
+    <span class="names">warning</span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 interface HTMLParserListener
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
 
-
-127
-128
-129</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 127</span>
-
-<span class='def def kw'>def</span> <span class='error identifier id'>error</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='url identifier id'>url</span><span class='comma token'>,</span> <span class='line identifier id'>line</span><span class='comma token'>,</span> <span class='column identifier id'>column</span><span class='comma token'>,</span> <span class='key identifier id'>key</span><span class='rparen token'>)</span>
-  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:html_parser</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='url identifier id'>url</span><span class='comma token'>,</span> <span class='line identifier id'>line</span><span class='comma token'>,</span> <span class='column identifier id'>column</span><span class='comma token'>,</span> <span class='key identifier id'>key</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
   </div>
 </div>
-</div>
-    </div>
+<div class="tags">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>handleAlert</h3>
-</div><div id="handleAlert-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>handleAlert</span><span class='args'>(page, message)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-</div><div class="section docstring">
-  <p>
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 129</span>
+
+<span class='def def kw'>def</span> <span class='error identifier id'>error</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='url identifier id'>url</span><span class='comma token'>,</span> <span class='line identifier id'>line</span><span class='comma token'>,</span> <span class='column identifier id'>column</span><span class='comma token'>,</span> <span class='key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:html_parser</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='bitor op'>|</span> <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='url identifier id'>url</span><span class='comma token'>,</span> <span class='line identifier id'>line</span><span class='comma token'>,</span> <span class='column identifier id'>column</span><span class='comma token'>,</span> <span class='key identifier id'>key</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handleAlert-instance_method">
+  
+    - (<tt>Object</tt>) <strong>handleAlert</strong>(page, message) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 interface AlertHandler
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
 
-
-79
-80
-81</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 79</span>
-
-<span class='def def kw'>def</span> <span class='handleAlert identifier id'>handleAlert</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:alert</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
   </div>
 </div>
-</div>
-    </div>
+<div class="tags">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>handleAttachment</h3>
-</div><div id="handleAttachment-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>handleAttachment</span><span class='args'>(page)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-</div><div class="section docstring">
-  <p>
+
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 81</span>
+
+<span class='def def kw'>def</span> <span class='handleAlert identifier id'>handleAlert</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
+  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:alert</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='bitor op'>|</span> <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handleAttachment-instance_method">
+  
+    - (<tt>Object</tt>) <strong>handleAttachment</strong>(page) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 interface AttachmentHandler
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
 
-
-101
-102
-103</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 101</span>
-
-<span class='def def kw'>def</span> <span class='handleAttachment identifier id'>handleAttachment</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
-  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:attachment</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
   </div>
 </div>
-</div>
-    </div>
+<div class="tags">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>handleConfirm</h3>
-</div><div id="handleConfirm-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>handleConfirm</span><span class='args'>(page, message)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-</div><div class="section docstring">
-  <p>
+
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 103</span>
+
+<span class='def def kw'>def</span> <span class='handleAttachment identifier id'>handleAttachment</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
+  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:attachment</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='bitor op'>|</span> <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handleConfirm-instance_method">
+  
+    - (<tt>Object</tt>) <strong>handleConfirm</strong>(page, message) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 interface ConfirmHandler
 </p>
 <p>
@@ -504,170 +582,133 @@ The returned value is determined by the last registered :confirm listener
 proc. If it is nil, return true, otherwise return that value as a boolean.
 </p>
 
-</div><div class="section tags">
-  <h2>Meta Tags</h2>
-  <div class="param">
-  <h3>Parameters:</h3>
-  <dl>
-  
-  </dl>
-</div><div class="see">
-  <h3>See Also:</h3>
-  <dl>
-    <dt></dt>
-    <dd>
-      <span class='desc'>
-        <tt><a href="Browser.html#confirm-instance_method" title="Browser#confirm">Browser#confirm</a></tt>
-      </span>
-    </dd>
-  </dl>
+
+  </div>
 </div>
+<div class="tags">
+  
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="Browser#confirm" href="Browser.html#confirm-instance_method">Browser#confirm</a></li>
+    
+  </ul>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
-92
-93
 94
-95</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 92</span>
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 94</span>
 
 <span class='def def kw'>def</span> <span class='handleConfirm identifier id'>handleConfirm</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:confirm</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='last identifier id'>last</span>
+  <span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:confirm</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='bitor op'>|</span> <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='last identifier id'>last</span>
   <span class='val identifier id'>val</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='orop op'>||</span> <span class='notop op'>!</span><span class='notop op'>!</span><span class='val identifier id'>val</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handlePrompt-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>handlePrompt</h3>
-</div><div id="handlePrompt-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>handlePrompt</span><span class='args'>(page, message)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt>Object</tt>) <strong>handlePrompt</strong>(page, message) 
+  
 
-</div><div class="section docstring">
-  <p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 interface PromptHandler
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
 
-
-109
-110
-111</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 109</span>
-
-<span class='def def kw'>def</span> <span class='handlePrompt identifier id'>handlePrompt</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:prompt</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
   </div>
 </div>
-</div>
-    </div>
+<div class="tags">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>notify</h3>
-</div><div id="notify-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>notify</span><span class='args'>(message, origin)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-</div><div class="section docstring">
-  <p>
+
+111
+112
+113</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 111</span>
+
+<span class='def def kw'>def</span> <span class='handlePrompt identifier id'>handlePrompt</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
+  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:prompt</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='bitor op'>|</span> <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="notify-instance_method">
+  
+    - (<tt>Object</tt>) <strong>notify</strong>(message, origin) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 interface IncorrectnessListener
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
 
-
-136
-137
-138</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 136</span>
-
-<span class='def def kw'>def</span> <span class='notify identifier id'>notify</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='origin identifier id'>origin</span><span class='rparen token'>)</span>
-  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:incorrectness</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='origin identifier id'>origin</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
   </div>
 </div>
-</div>
-    </div>
+<div class="tags">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>remove_listener</h3>
-</div><div id="remove_listener-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>remove_listener</span><span class='args'>(type, proc_or_index)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 138</span>
+
+<span class='def def kw'>def</span> <span class='notify identifier id'>notify</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='origin identifier id'>origin</span><span class='rparen token'>)</span>
+  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:incorrectness</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='bitor op'>|</span> <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='origin identifier id'>origin</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_listener-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_listener</strong>(type, proc_or_index) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
 52
@@ -683,139 +724,128 @@ interface IncorrectnessListener
 62
 63
 64
-65</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 52</span>
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 52</span>
 
 <span class='def def kw'>def</span> <span class='remove_listener identifier id'>remove_listener</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='proc_or_index identifier id'>proc_or_index</span><span class='rparen token'>)</span>
   <span class='unless unless kw'>unless</span> <span class='@procs ivar id'>@procs</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='rparen token'>)</span>
     <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;unknown listener type #{type.inspect}&quot;</span>
   <span class='end end kw'>end</span>
 
+  <span class='procs identifier id'>procs</span> <span class='assign token'>=</span> <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='type identifier id'>type</span><span class='rbrack token'>]</span>
+
   <span class='case case kw'>case</span> <span class='proc_or_index identifier id'>proc_or_index</span>
   <span class='when when kw'>when</span> <span class='Fixnum constant id'>Fixnum</span>
-    <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='type identifier id'>type</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='delete_at identifier id'>delete_at</span> <span class='proc_or_index identifier id'>proc_or_index</span>
+    <span class='procs identifier id'>procs</span><span class='dot token'>.</span><span class='delete_at identifier id'>delete_at</span> <span class='proc_or_index identifier id'>proc_or_index</span>
   <span class='when when kw'>when</span> <span class='Proc constant id'>Proc</span>
-    <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='type identifier id'>type</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='proc_or_index identifier id'>proc_or_index</span>
+    <span class='procs identifier id'>procs</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='proc_or_index identifier id'>proc_or_index</span>
   <span class='else else kw'>else</span>
     <span class='raise identifier id'>raise</span> <span class='TypeError constant id'>TypeError</span><span class='comma token'>,</span> <span class='string val'>&quot;must give proc or index&quot;</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="statusMessageChanged-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>statusMessageChanged</h3>
-</div><div id="statusMessageChanged-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>statusMessageChanged</span><span class='args'>(page, message)</span>
-    <span class='block'></span>
-  </tt>
-</div>
+    - (<tt>Object</tt>) <strong>statusMessageChanged</strong>(page, message) 
+  
 
-</div><div class="section docstring">
-  <p>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 interface StatusHandler
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
 
-
-71
-72
-73</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 71</span>
-
-<span class='def def kw'>def</span> <span class='statusMessageChanged identifier id'>statusMessageChanged</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:status</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-        </td>
-      </tr>
-    </table>
   </div>
 </div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 73</span>
+
+<span class='def def kw'>def</span> <span class='statusMessageChanged identifier id'>statusMessageChanged</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span>
+  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:status</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='bitor op'>|</span> <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
 </div>
-    </div>
+    
+      <div class="method_details ">
+  <p class="signature " id="webWindowClosed-instance_method">
   
-    <div class="method">
-      <div class="method_header">
-  <h3>webWindowClosed</h3>
-</div><div id="webWindowClosed-instance_method" class="section method">
-  <div class="details_title">
-  <div class='section methodsignature'>
-  <tt class='def'>
-    <span class='visibility'>public</span>
-    <span class='return_types'></span>
-    <span class='name'>webWindowClosed</span><span class='args'>(web_window_event)</span>
-    <span class='block'></span>
-  </tt>
-</div>
-<p class="aliases">
-  <span class="aka">Also known as:</span>
+    - (<tt>Object</tt>) <strong>webWindowClosed</strong>(web_window_event) 
   
-    <tt id="webWindowContentChanged-instance_method">webWindowContentChanged</tt>
+
   
-    <tt id="webWindowOpened-instance_method">webWindowOpened</tt>
+    <span class="aliases">Also known as:
+    <span class="names">webWindowOpened, webWindowContentChanged</span>
+    </span>
   
-</p>
-</div><div class="section docstring">
-  <p>
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
 interface WebWindowListener
 </p>
 
-</div><div class="section source">
-  <span>[<a class="source_link" href="#">View source</a>]</span>
-  <div class="source_code">
-    <table>
-      <tr>
-        <td>
-          <pre class="lines">
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
-117
-118
-119</pre>
-        </td>
-        <td>
-          <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 117</span>
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celerity/listener.rb', line 119</span>
 
 <span class='def def kw'>def</span> <span class='webWindowClosed identifier id'>webWindowClosed</span><span class='lparen token'>(</span><span class='web_window_event identifier id'>web_window_event</span><span class='rparen token'>)</span>
-  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:web_window_event</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='web_window_event identifier id'>web_window_event</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='@procs ivar id'>@procs</span><span class='lbrack token'>[</span><span class='symbol val'>:web_window_event</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='bitor op'>|</span> <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='web_window_event identifier id'>web_window_event</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
-        </td>
-      </tr>
-    </table>
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
-</div>
-    </div>
-  
-</div>
+    
   </div>
 
 </div>
-    </div>
+    
+    <div id="footer">
+  Generated on Wed Nov 18 02:11:41 2009 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.4.0 (ruby-1.8.7).
+</div>
+
   </body>
 </html>
