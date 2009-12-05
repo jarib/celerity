@@ -9,6 +9,7 @@ module Celerity
     def locate
       super
       @cells = @object.getCells if @object
+      @object
     end
 
     #
