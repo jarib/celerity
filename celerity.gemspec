@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{celerity}
-  s.version = "0.7.6"
+  s.version = "0.7.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
-  s.date = %q{2009-12-10}
+  s.date = %q{2010-01-08}
   s.description = %q{Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with JavaScript support. It provides a simple API for programmatic navigation through web applications. Celerity provides a superset of Watir's API.}
   s.email = %q{jari.bakken@gmail.com}
   s.extra_rdoc_files = [
@@ -61,7 +61,7 @@ Gem::Specification.new do |s|
      "lib/celerity/htmlunit/cssparser-0.9.5.jar",
      "lib/celerity/htmlunit/htmlunit-2.7-SNAPSHOT.jar",
      "lib/celerity/htmlunit/htmlunit-core-js-2.7-SNAPSHOT.jar",
-     "lib/celerity/htmlunit/nekohtml-1.9.14-20091130.152932-3.jar",
+     "lib/celerity/htmlunit/nekohtml-1.9.14-20091214.212542-7.jar",
      "lib/celerity/htmlunit/sac-1.3.jar",
      "lib/celerity/htmlunit/serializer-2.7.1.jar",
      "lib/celerity/htmlunit/xalan-2.7.1.jar",
