@@ -214,6 +214,7 @@ describe "Browser" do
 
       el = browser.element_by_xpath("//link")
       el.should be_instance_of(Celerity::Element)
+      el.should be_kind_of(Celerity::ClickableElement)
       el.rel.should == "stylesheet"
     end
   end
