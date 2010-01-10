@@ -227,6 +227,11 @@ describe "Browser" do
 
       b.close
     end
+
+    it "raises UnknownObjectException if no element has focus" do
+      browser.goto(WatirSpec.files + "/multiple_ids.html")
+      lambda { browser.focused_element }.should raise_error(UnknownObjectException)
+    end
   end
 
   describe "#status_code" do

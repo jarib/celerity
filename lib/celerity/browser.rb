@@ -751,7 +751,10 @@ module Celerity
     #
 
     def focused_element
-      element_from_dom_node(page.getFocusedElement())
+      node = page.getFocusedElement
+      raise UnknownObjectException, "no element has focus" unless node
+
+      element_from_dom_node node
     end
 
     #
