@@ -84,6 +84,17 @@ module Celerity
     end
 
     #
+    # Returns true if this element is the currently focused element
+    #
+    # Celerity-specific.
+    #
+
+    def focused?
+      assert_exists
+      @object == browser.page.getFocusedElement
+    end
+
+    #
     # Fires the given event for this element
     #
 

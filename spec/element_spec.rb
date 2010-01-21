@@ -48,6 +48,17 @@ describe "Element" do
     end
   end
 
+  describe "#focused?" do
+    it "returns true if the element has focus" do
+      tf = browser.text_field(:id, "delete_user_comment")
+      tf.should_not be_focused
+
+      tf.focus
+      tf.should be_focused
+    end
+
+  end
+
   describe "#==" do
     it "returns true if passed the same element" do
       browser.label(:id, 'first_label').should == browser.labels.first
