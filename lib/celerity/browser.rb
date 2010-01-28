@@ -67,14 +67,14 @@ module Celerity
 
       @render_type   = opts.delete(:render)    || :html
       @charset       = opts.delete(:charset)   || "UTF-8"
-      self.log_level = opts.delete(:log_level) || :off
-
       @page           = nil
       @error_checkers = []
       @browser        = self # for Container#browser
 
       setup_webclient opts
       setup_viewer opts.delete(:viewer)
+
+      self.log_level = opts.delete(:log_level) || :off
 
       raise ArgumentError, "unknown option #{opts.inspect}" unless opts.empty?
     end
