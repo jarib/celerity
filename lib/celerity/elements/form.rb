@@ -18,16 +18,5 @@ module Celerity
                                     ]
     DEFAULT_HOW = :name
 
-    #
-    # Submits the form.
-    #
-    # This method should be avoided - invoke the user interface element that triggers the submit instead.
-    #
-
-    def submit
-      assert_exists
-      @object.submit(nil)
-    end
-
   end # Form
 end # Celerity
