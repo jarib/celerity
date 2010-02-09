@@ -713,6 +713,14 @@ module Celerity
     end
 
     #
+    # Open the JavaScript debugger GUI
+    #
+
+    def visual_debugger
+      HtmlUnit::Util::WebClientUtils.attachVisualDebugger @webclient
+    end
+
+    #
     # Sets the current page object for the browser
     #
     # @param [HtmlUnit::HtmlPage] value The page to set.
