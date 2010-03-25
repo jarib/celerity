@@ -119,7 +119,7 @@ describe "Browser" do
 
       cookies = browser.cookies
       cookies.size.should == 1
-      cookies[WatirSpec::Server.host]['monster'].should == "/"
+      cookies[WatirSpec::Server.bind]['monster'].should == "/"
     end
   end
 
@@ -161,7 +161,7 @@ describe "Browser" do
       b = WatirSpec.new_browser
       b.goto(WatirSpec.host + "/set_cookie")
 
-      b.remove_cookie(WatirSpec::Server.host, "monster")
+      b.remove_cookie(WatirSpec::Server.bind, "monster")
       b.cookies.should be_empty
 
       b.close
