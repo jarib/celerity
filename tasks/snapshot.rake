@@ -1,6 +1,6 @@
 desc 'Download and unpack the latest HtmlUnit assembly'
 task :snapshot do
-  files = %w[ http://build.canoo.com/htmlunit/artifacts/htmlunit-2.7-SNAPSHOT-with-dependencies.zip ]
+  files = %w[ http://build.canoo.com/htmlunit/artifacts/htmlunit-2.8-SNAPSHOT-with-dependencies.zip ]
   
   files.each do |url|
     basename = File.basename(url)
