@@ -21,7 +21,12 @@ module Celerity
 
     def locate
       super
-      if @object # cant call assert_exists here, as an exists? method call will fail
+      if @object
+
+        unless @object.kind_of?(HtmlUnit::Html::HtmlTable)
+          raise TypeError, "expected HtmlTable, got #{@object.class}"
+        end
+
         @rows = @object.getRows
         @cells = []
         @rows.each do |row|
