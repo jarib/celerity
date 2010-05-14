@@ -77,6 +77,18 @@ describe "Browser" do
         browser.close
       end
     end
+
+    it "does not fail for huge pages" do
+      browser.goto WatirSpec.host + "/big"
+      lambda { browser.html }.should_not raise_error
+    end
+  end
+
+  describe "#text" do
+    it "does not fail for huge pages" do
+      browser.goto WatirSpec.host + "/big"
+      lambda { browser.text }.should_not raise_error
+    end
   end
 
   describe "#response_headers" do
