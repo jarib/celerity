@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
