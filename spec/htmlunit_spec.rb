@@ -53,4 +53,11 @@ describe "HtmlUnit bugs" do
     end
   end
 
+  describe "HtmlUnit bug 2974355: https://sourceforge.net/tracker/index.php?func=detail&aid=2974355&group_id=47038&atid=448266" do
+    it "accesses pages with characters in URI that need encoding" do
+      browser.goto(WatirSpec.host + '/encodable_%3Cstuff%3E')
+      browser.text.should include('page with characters in URI that need encoding')
+    end
+  end
+
 end
