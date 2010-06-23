@@ -125,60 +125,74 @@ describe "Browser" do
 
   describe "#cookies" do
     it "returns set cookies as a Ruby hash" do
-      cookies = browser.cookies
-      cookies.should be_instance_of(Hash)
-      cookies.should be_empty
+      browser = WatirSpec.new_browser
+      begin
+        browser.cookies.should == {}
 
-      browser.goto(WatirSpec.host + "/set_cookie")
+        browser.goto(WatirSpec.host + "/set_cookie")
 
-      cookies = browser.cookies
-      cookies.size.should == 1
-      cookies[WatirSpec::Server.bind]['monster'].should == "/"
+        cookies = browser.cookies
+        cookies.size.should == 1
+        cookies[WatirSpec::Server.bind]['monster'].should == "/"
+      ensure
+        browser.close
+      end
     end
   end
 
   describe "#clear_cookies" do
     it "clears all cookies" do
       b = WatirSpec.new_browser
-      b.cookies.should be_empty
 
-      b.goto(WatirSpec.host + "/set_cookie")
-      b.cookies.size.should == 1
-      b.clear_cookies
-      b.cookies.should be_empty
+      begin
+        b.cookies.should be_empty
 
-      b.close
+        b.goto(WatirSpec.host + "/set_cookie")
+        b.cookies.size.should == 1
+        b.clear_cookies
+        b.cookies.should be_empty
+      ensure
+        b.close
+      end
     end
   end
 
   describe "add_cookie" do
     it "adds a cookie with the given domain, name and value" do
-      browser.add_cookie("example.com", "foo", "bar")
-      cookies = browser.cookies
-      cookies.should be_instance_of(Hash)
-      cookies.should have_key('example.com')
-      cookies['example.com']['foo'].should == 'bar'
-
-      browser.clear_cookies
+      begin
+        browser.add_cookie("example.com", "foo", "bar")
+        cookies = browser.cookies
+        cookies.should be_instance_of(Hash)
+        cookies.should have_key('example.com')
+        cookies['example.com']['foo'].should == 'bar'
+      ensure
+        browser.clear_cookies
+      end
     end
 
     it "adds a cookie with the specified options" do
-      browser.add_cookie("example.com", "foo", "bar", :path => "/foobar", :expires => Time.now + 100000)
-      cookies = browser.cookies
-      cookies.should be_instance_of(Hash)
-      cookies['example.com']['foo'].should == 'bar'
+      begin
+        browser.add_cookie("example.com", "foo", "bar", :path => "/foobar", :expires => Time.now + 100000)
+        cookies = browser.cookies
+        cookies.should be_instance_of(Hash)
+        cookies['example.com']['foo'].should == 'bar'
+      ensure
+        browser.clear_cookies
+      end
     end
   end
 
   describe "remove_cookie" do
     it "removes the cookie for the given domain and name" do
       b = WatirSpec.new_browser
-      b.goto(WatirSpec.host + "/set_cookie")
+      begin
+        b.goto(WatirSpec.host + "/set_cookie")
 
-      b.remove_cookie(WatirSpec::Server.bind, "monster")
-      b.cookies.should be_empty
-
-      b.close
+        b.remove_cookie(WatirSpec::Server.bind, "monster")
+        b.cookies.should be_empty
+      ensure
+        b.close
+      end
     end
 
     it "raises an error if no such cookie exists" do
