@@ -159,13 +159,15 @@ module Celerity
     #
 
     def html
-      case @page
-      when HtmlUnit::BigContentPage
-        @page.getWebResponse.getContentAsStream.to_io.read
-      when nil
-        ''
+      return '' unless @page
+
+      web_response = @page.getWebResponse
+
+      if web_response.isBigContent
+        warn "Browser#html called on big content page"
+        web_response.getContentAsStream.to_io.read
       else
-        @page.getWebResponse.getContentAsString(@charset)
+        web_response.getContentAsString @charset
       end
     end
 
@@ -184,8 +186,6 @@ module Celerity
     #
 
     def text
-      return '' unless @page
-
       if @page.respond_to?(:getContent)
         @page.getContent.strip
       elsif @page.respond_to?(:getDocumentElement) && doc = @page.getDocumentElement
@@ -852,6 +852,8 @@ module Celerity
         controller = ::HtmlUnit::NicelyResynchronizingAjaxController.new
         @webclient.setAjaxController controller
       end
+
+      @webclient.setPageCreator Celerity::PageCreator.new
 
       enable_event_listener
     end
