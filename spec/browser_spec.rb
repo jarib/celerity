@@ -80,14 +80,14 @@ describe "Browser" do
 
     it "does not fail for huge pages" do
       browser.goto WatirSpec.host + "/big"
-      lambda { browser.html }.should_not raise_error
+      browser.html.should include("hello</body>")
     end
   end
 
   describe "#text" do
     it "does not fail for huge pages" do
       browser.goto WatirSpec.host + "/big"
-      lambda { browser.text }.should_not raise_error
+      browser.text.should include("hello")
     end
   end
 

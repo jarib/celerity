@@ -159,7 +159,14 @@ module Celerity
     #
 
     def html
-      @page ? @page.getWebResponse.getContentAsString(@charset) : ''
+      case @page
+      when HtmlUnit::BigContentPage
+        @page.getWebResponse.getContentAsStream.to_io.read
+      when nil
+        ''
+      else
+        @page.getWebResponse.getContentAsString(@charset)
+      end
     end
 
     #
@@ -179,16 +186,13 @@ module Celerity
     def text
       return '' unless @page
 
-      if @page.respond_to?("getContent")
-        string = @page.getContent.strip
-      elsif doc = @page.documentElement
-        string = doc.asText.strip
+      if @page.respond_to?(:getContent)
+        @page.getContent.strip
+      elsif @page.respond_to?(:getDocumentElement) && doc = @page.getDocumentElement
+        doc.asText.strip
       else
-        string = ''
+        ''
       end
-
-      # Celerity::Util.normalize_text(string)
-      string
     end
 
     #
