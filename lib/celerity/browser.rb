@@ -159,14 +159,9 @@ module Celerity
     #
 
     def html
-      case @page
-      when HtmlUnit::BigContentPage
-        @page.getWebResponse.getContentAsStream.to_io.read
-      when nil
-        ''
-      else
-        @page.getWebResponse.getContentAsString(@charset)
-      end
+      return '' unless @page
+
+      @page.getWebResponse.getContentAsString(@charset)
     end
 
     #

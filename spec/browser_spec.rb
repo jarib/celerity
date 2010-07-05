@@ -78,11 +78,9 @@ describe "Browser" do
       end
     end
 
-    bug "https://sourceforge.net/tracker/?func=detail&aid=3020186&group_id=47038&atid=448269", :celerity do
-      it "does not fail for huge pages" do
-        browser.goto WatirSpec.host + "/big"
-        browser.html.should include("hello</body>")
-      end
+    it "does not fail for huge pages" do
+      browser.goto WatirSpec.host + "/big"
+      browser.html.should include("hello</body>")
     end
   end
 
