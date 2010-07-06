@@ -22,7 +22,6 @@ begin
   end
 
   Jeweler::GemcutterTasks.new
-  Jeweler::RubyforgeTasks.new { |rf| rf.doc_task = "yardoc" }
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
   task :spec    => :check_dependencies
