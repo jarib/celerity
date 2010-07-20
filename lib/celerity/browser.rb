@@ -34,7 +34,7 @@ module Celerity
     #
     # @option opts :browser [:internet_explorer, :firefox, :firefox3] (:firefox3) Set the BrowserVersion used by HtmlUnit. Defaults to Firefox 3.
     # @option opts :charset [String] ("UTF-8") Specify the charset that webclient will use for requests.
-    # @option opts :css [Boolean] (false) Enable CSS.  Disabled by default.
+    # @option opts :css [Boolean] (true) Enable/disable CSS.  Enabled by default.
     # @option opts :ignore_pattern [Regexp] See Browser#ignore_pattern=
     # @option opts :javascript_enabled [Boolean] (true)  Enable/disable JavaScript evaluation. Enabled by default.
     # @option opts :javascript_exceptions [Boolean] (false) Raise exceptions on script errors. Disabled by default.
