@@ -394,7 +394,7 @@ module Celerity
     end
 
     #
-    # @return [Celerity::Image]
+    # @return [Celerity::Ins]
     #
 
     def ins(*args)
@@ -402,7 +402,7 @@ module Celerity
     end
 
     #
-    # @return [Celerity::Image]
+    # @return [Celerity::Inss]
     #
 
     def inss(*args)
