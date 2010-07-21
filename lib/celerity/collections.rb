@@ -152,5 +152,9 @@ module Celerity
   class H6s < ElementCollection
     def element_class; H6; end
   end
+  
+  class Inss < ElementCollection
+    def element_class; Ins; end
+  end
 
 end

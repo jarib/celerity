@@ -46,7 +46,8 @@ module Celerity
       HtmlUnit::Html::HtmlTableRow              => Celerity::TableRow,
       HtmlUnit::Html::HtmlTextArea              => Celerity::TextField,
       HtmlUnit::Html::HtmlTextInput             => Celerity::TextField,
-      HtmlUnit::Html::HtmlUnorderedList         => Celerity::Ul
+      HtmlUnit::Html::HtmlUnorderedList         => Celerity::Ul,
+      HtmlUnit::Html::HtmlInsertedText          => Celerity::Ins
     }
 
     def htmlunit2celerity(klass)

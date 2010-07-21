@@ -105,6 +105,10 @@ module Celerity
     TAGS = [ Identifier.new('strong') ]
   end
 
+  class Ins < NonControlElement
+    TAGS = [ Identifier.new('ins') ]
+  end
+
   # class Title < NonControlElement
   #   TAGS = [ Identifier.new('title') ]
   # end

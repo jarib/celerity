@@ -397,6 +397,23 @@ module Celerity
     # @return [Celerity::Image]
     #
 
+    def ins(*args)
+      Ins.new(self, *args)
+    end
+
+    #
+    # @return [Celerity::Image]
+    #
+
+    def inss(*args)
+      Inss.new(self, *args)
+    end
+
+
+    #
+    # @return [Celerity::Image]
+    #
+
     def image(*args)
       Image.new(self, *args)
     end
