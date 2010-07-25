@@ -41,6 +41,7 @@ module Celerity
       HtmlUnit::Html::HtmlTable                 => Celerity::Table,
       HtmlUnit::Html::HtmlTableBody             => Celerity::TableBody,
       HtmlUnit::Html::HtmlTableCell             => Celerity::TableCell,
+      HtmlUnit::Html::HtmlTableDataCell         => Celerity::TableCell,
       HtmlUnit::Html::HtmlTableFooter           => Celerity::TableFooter,
       HtmlUnit::Html::HtmlTableHeader           => Celerity::TableHeader,
       HtmlUnit::Html::HtmlTableRow              => Celerity::TableRow,
