@@ -153,7 +153,7 @@ module Celerity
     def element_class; H6; end
   end
   
-  class Inss < ElementCollection
+  class Inses < ElementCollection
     def element_class; Ins; end
   end
 
