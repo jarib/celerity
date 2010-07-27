@@ -405,8 +405,8 @@ module Celerity
     # @return [Celerity::Inss]
     #
 
-    def inss(*args)
-      Inss.new(self, *args)
+    def inses(*args)
+      Inses.new(self, *args)
     end
 
 
