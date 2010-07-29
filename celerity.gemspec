@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{celerity}
-  s.version = "0.8.0.beta.3"
+  s.version = "0.8.0.beta.4"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
-  s.date = %q{2010-07-26}
+  s.date = %q{2010-07-29}
   s.description = %q{Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with JavaScript support. It provides a simple API for programmatic navigation through web applications. Celerity provides a superset of Watir's API.}
   s.email = %q{jari.bakken@gmail.com}
   s.extra_rdoc_files = [
@@ -98,14 +98,14 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{celerity}
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Celerity is a JRuby library for easy and fast functional test automation for web applications.}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<sinatra>, [">= 1.0"])
