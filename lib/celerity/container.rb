@@ -170,6 +170,22 @@ module Celerity
     end
 
     #
+    # @return [Celerity::Del]
+    #
+
+    def del(*args)
+      Del.new(self, *args)
+    end
+
+    #
+    # @return [Celerity::Dels]
+    #
+
+    def dels
+      Dels.new(self)
+    end
+
+    #
     # @return [Celerity::Div]
     #
 
@@ -392,6 +408,23 @@ module Celerity
     def hiddens
       Hiddens.new(self)
     end
+
+    #
+    # @return [Celerity::Ins]
+    #
+
+    def ins(*args)
+      Ins.new(self, *args)
+    end
+
+    #
+    # @return [Celerity::Inses]
+    #
+
+    def inses(*args)
+      Inses.new(self, *args)
+    end
+
 
     #
     # @return [Celerity::Image]

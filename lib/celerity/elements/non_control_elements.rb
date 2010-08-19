@@ -37,6 +37,10 @@ module Celerity
     TAGS = [ Identifier.new('dd')]
   end
 
+  class Del < NonControlElement
+    TAGS = [ Identifier.new('del')]
+  end
+
   class Div < NonControlElement
     TAGS = [ Identifier.new('div')]
   end
@@ -75,6 +79,10 @@ module Celerity
 
   class H6 < NonControlElement
     TAGS = [ Identifier.new('h6') ]
+  end
+  
+  class Ins < NonControlElement
+    TAGS = [ Identifier.new('ins') ]
   end
 
   class Li < NonControlElement

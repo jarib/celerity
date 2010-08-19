@@ -15,6 +15,7 @@ module Celerity
       HtmlUnit::Html::HtmlDefinitionDescription => Celerity::Dd,
       HtmlUnit::Html::HtmlDefinitionList        => Celerity::Dl,
       HtmlUnit::Html::HtmlDefinitionTerm        => Celerity::Dt,
+      HtmlUnit::Html::HtmlDeletedText           => Celerity::Del,
       HtmlUnit::Html::HtmlDivision              => Celerity::Div,
       HtmlUnit::Html::HtmlFileInput             => Celerity::FileField,
       HtmlUnit::Html::HtmlForm                  => Celerity::Form,
@@ -47,7 +48,8 @@ module Celerity
       HtmlUnit::Html::HtmlTableRow              => Celerity::TableRow,
       HtmlUnit::Html::HtmlTextArea              => Celerity::TextField,
       HtmlUnit::Html::HtmlTextInput             => Celerity::TextField,
-      HtmlUnit::Html::HtmlUnorderedList         => Celerity::Ul
+      HtmlUnit::Html::HtmlUnorderedList         => Celerity::Ul,
+      HtmlUnit::Html::HtmlInsertedText          => Celerity::Ins
     }
 
     def htmlunit2celerity(klass)
