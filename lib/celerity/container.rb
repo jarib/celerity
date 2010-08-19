@@ -170,6 +170,22 @@ module Celerity
     end
 
     #
+    # @return [Celerity::Del]
+    #
+
+    def del
+      Del.new(self)
+    end
+
+    #
+    # @return [Celerity::Dels]
+    #
+
+    def dels
+      Dels.new(self)
+    end
+
+    #
     # @return [Celerity::Div]
     #
 
@@ -402,7 +418,7 @@ module Celerity
     end
 
     #
-    # @return [Celerity::Inss]
+    # @return [Celerity::Inses]
     #
 
     def inses(*args)
