@@ -173,8 +173,8 @@ module Celerity
     # @return [Celerity::Del]
     #
 
-    def del
-      Del.new(self)
+    def del(*args)
+      Del.new(self, *args)
     end
 
     #
