@@ -15,6 +15,7 @@ module Celerity
       HtmlUnit::Html::HtmlDefinitionDescription => Celerity::Dd,
       HtmlUnit::Html::HtmlDefinitionList        => Celerity::Dl,
       HtmlUnit::Html::HtmlDefinitionTerm        => Celerity::Dt,
+      HtmlUnit::Html::HtmlDeletedText           => Celerity::Del,
       HtmlUnit::Html::HtmlDivision              => Celerity::Div,
       HtmlUnit::Html::HtmlFileInput             => Celerity::FileField,
       HtmlUnit::Html::HtmlForm                  => Celerity::Form,
