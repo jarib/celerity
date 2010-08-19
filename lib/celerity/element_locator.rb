@@ -139,7 +139,7 @@ module Celerity
           Please report this failure and the code/HTML that caused it at http://github.com/jarib/celerity/issues}
       end
 
-      @object.getAllHtmlChildElements
+      @object.getHtmlElementDescendants
     end
 
     # HtmlUnit throws NPEs sometimes when we're locating elements

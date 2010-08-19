@@ -135,7 +135,7 @@ module Celerity
 
     def url
       assert_exists
-      @page.getWebResponse.getRequestUrl.toString
+      @page.getWebResponse.getWebRequest.getUrl.toString
     end
 
     #
