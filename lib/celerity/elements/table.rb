@@ -22,11 +22,6 @@ module Celerity
     def locate
       super
       if @object
-
-        unless @object.kind_of?(HtmlUnit::Html::HtmlTable)
-          raise TypeError, "expected HtmlTable, got #{@object.class}"
-        end
-
         @rows = @object.getRows
         @cells = []
         @rows.each do |row|

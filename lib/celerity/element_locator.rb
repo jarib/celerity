@@ -94,7 +94,12 @@ module Celerity
 
     def find_by_xpath(what)
       what = ".#{what}" if what[0].chr == "/"
-      @object.getByXPath(what).to_a.first
+      object = @object.getByXPath(what).to_a.first || return
+      
+      return unless @idents.any? { |id| id.match?(object) }
+      
+      
+      object
     end
 
     def find_by_label(what)
