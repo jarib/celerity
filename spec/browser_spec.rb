@@ -19,7 +19,7 @@ describe "Browser" do
     end
 
     it "should hold the init options" do
-      browser.options.should == WatirSpec.browser_args.first
+      browser.options.should == WatirSpec.implementation.browser_args.first
     end
 
     it "should use the specified proxy" do
@@ -30,51 +30,66 @@ describe "Browser" do
       blk      = lambda { received = true }
       s = WEBrick::HTTPProxyServer.new(:Port => 2001, :ProxyContentHandler => blk)
       Thread.new { s.start }
-
-      b = Browser.new(WatirSpec.browser_args.first.merge(:proxy => "localhost:2001"))
-      b.goto(WatirSpec.host)
-      s.shutdown
+      
+      opts = WatirSpec.implementation.browser_args.first.merge(:proxy => "localhost:2001")
+      
+      
+      begin
+        b = Browser.new(opts)
+        b.goto(WatirSpec.host)
+      ensure
+        s.shutdown
+        b.close if b
+      end
 
       received.should be_true
     end
 
     it "should use the specified user agent" do
-      b = Browser.new(WatirSpec.browser_args.first.merge(:user_agent => "Celerity"))
-      b.goto(WatirSpec.host + "/header_echo")
-      b.text.should include('"HTTP_USER_AGENT"=>"Celerity"')
-      b.close
+      opts = WatirSpec.implementation.browser_args.first.merge(:user_agent => "Celerity")
+      
+      b = Browser.new(opts)
+      
+      begin
+        b.goto(WatirSpec.host + "/header_echo")
+        b.text.should include('"HTTP_USER_AGENT"=>"Celerity"')
+      ensure
+        b.close
+      end
     end
 
     it "does not try to find a viewer if created with :viewer => false" do
       ViewerConnection.should_not_receive(:create)
 
-      b = Browser.new(:viewer => false)
-      b.close
+      Browser.new(:viewer => false).close
     end
 
     it "tries to find a viewer if created with :viewer => nil" do
       ViewerConnection.should_receive(:create).with("127.0.0.1", 6429)
 
-      b = Browser.new(:viewer => nil)
-      b.close
+      Browser.new(:viewer => nil).close
     end
 
     it "tries to find a viewer on the specified host/port with :viewer => String" do
       ViewerConnection.should_receive(:create).with("localhost", 1234)
 
-      b = Browser.new(:viewer => "localhost:1234")
-      b.close
+      Browser.new(:viewer => "localhost:1234").close
     end
   end
 
   describe "#html" do
     %w(shift_jis iso-2022-jp euc-jp).each do |charset|
       it "returns decoded #{charset.upcase} when :charset specified" do
-        browser = Browser.new(WatirSpec.browser_args.first.merge(:charset => charset.upcase))
-        browser.goto(WatirSpec.files + "/#{charset}_text.html")
-        # Browser#text is automagically transcoded into the right charset, but Browser#html isn't.
-        browser.html.should =~ /本日は晴天なり。/
-        browser.close
+        opts = WatirSpec.implementation.browser_args.first.merge(:charset => charset.upcase)
+        browser = Browser.new(opts)
+
+        begin
+          browser.goto(WatirSpec.files + "/#{charset}_text.html")
+          # Browser#text is automagically transcoded into the right charset, but Browser#html isn't.
+          browser.html.should =~ /本日は晴天なり。/
+        ensure
+          browser.close
+        end
       end
     end
 
