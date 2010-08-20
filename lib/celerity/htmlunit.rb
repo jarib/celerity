@@ -45,7 +45,7 @@ end unless Java::JavaLang::Iterable < Enumerable # depends on JRuby version
 
 class Java::ComGargoylesoftwareHtmlunitHtml::HtmlPage
   def inspect
-    '#<HtmlPage:0x%s(%s)>' % [self.hash.to_s(16), getWebResponse.getRequestUrl.toString]
+    '#<HtmlPage:0x%s(%s)>' % [self.hash.to_s(16), getWebResponse.getWebRequest.getUrl.toString]
   end
 end
 
