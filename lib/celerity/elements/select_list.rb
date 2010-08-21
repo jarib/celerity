@@ -26,8 +26,7 @@ module Celerity
     #
 
     def clear
-      # assert_exists called by SelectList#type here
-      @object.getSelectedOptions.each { |e| e.setSelected(false) } unless type() == 'select-one'
+      @object.getSelectedOptions.each { |e| e.setSelected(false) } if multiple?
     end
 
     #
