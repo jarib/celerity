@@ -306,6 +306,18 @@ module Celerity
     def clear_cache
       @webclient.cache.clear
     end
+    
+    #
+    # Set the maximum number of files to cache.
+    #
+    
+    def cache_limit=(size)
+      @webclient.cache.setMaxSize(size)
+    end
+    
+    def cache_limit
+      @webclient.cache.getMaxSize
+    end
 
     #
     # Get the cookies for this session. (Celerity only)
@@ -842,6 +854,7 @@ module Celerity
       self.secure_ssl             = opts.delete(:secure_ssl) != false
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
       self.refresh_handler        = opts.delete(:refresh_handler) if opts[:refresh_handler]
+      self.cache_limit            = opts.delete(:cache_limit) if opts[:cache_limit]
 
       if opts.delete(:resynchronize)
         controller = ::HtmlUnit::NicelyResynchronizingAjaxController.new
