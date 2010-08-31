@@ -1,5 +1,5 @@
 # encoding: utf-8
-require File.dirname(__FILE__) + '/watirspec/spec_helper'
+require File.expand_path("../watirspec/spec_helper", __FILE__)
 
 describe "Element" do
 

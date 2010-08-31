@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/watirspec/spec_helper"
+require File.expand_path("../watirspec/spec_helper", __FILE__)
 
 describe "Button" do
 

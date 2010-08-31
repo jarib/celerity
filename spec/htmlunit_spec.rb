@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/watirspec/spec_helper'
+require File.expand_path("../watirspec/spec_helper", __FILE__)
 
 describe "HtmlUnit bugs" do
   describe "HtmlUnit bug 1968686: https://sourceforge.net/tracker/index.php?func=detail&aid=1968686&group_id=47038&atid=448266" do
