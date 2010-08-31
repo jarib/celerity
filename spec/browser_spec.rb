@@ -77,17 +77,14 @@ describe "Browser" do
     end
   
     it "should use the specified cache limit" do
-      # this doesn't work for me, but it's used in other places, is that expected?
-      # opts = WatirSpec.implementation.browser_args.first.merge(:cache_limit => 100)
-      
-      b = Browser.new(:cache_limit => 100)
+      opts = WatirSpec.implementation.browser_args.first.merge(:cache_limit => 100)
+      b = Browser.new(opts)
       
       begin
         b.cache_limit.should == 100
       ensure
         b.close
       end
-      
     end
   end
 
