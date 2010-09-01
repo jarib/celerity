@@ -14,7 +14,7 @@ module Celerity
     #
 
     def set(path)
-      raise Errno::ENOENT, file unless File.exist?(path.to_s)
+      raise Errno::ENOENT, path unless File.exist?(path.to_s)
       self.value = path
     end
 
