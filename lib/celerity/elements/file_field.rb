@@ -8,11 +8,21 @@ module Celerity
     TAGS = [ Identifier.new('input', :type => %w[file]) ]
     DEFAULT_HOW = :name
 
+
+    #
+    # Same as value=, but also verifies that the file exists.
+    #
+
+    def set(path)
+      raise Errno::ENOENT, file unless File.exist?(path.to_s)
+      self.value = path
+    end
+
     #
     # Set the file field to the given path
     #
 
-    def set(path)
+    def value=(path)
       assert_exists
       path = path.to_s
 
