@@ -76,11 +76,11 @@ module Celerity
     def child_row(index)
       assert_exists
 
-      if index >= @rows.length
+      if (index - Celerity.index_offset) >= @rows.length
         raise UnknownRowException, "Unable to locate a row at index #{index}"
       end
 
-      TableRow.new(self, :object, @rows[index])
+      TableRow.new(self, :object, @rows[index - Celerity.index_offset])
     end
     alias_method :[], :child_row
 
@@ -95,11 +95,11 @@ module Celerity
     def child_cell(index)
       assert_exists
 
-      if index >= @cells.length
+      if (index - Celerity.index_offset) >= @cells.length
         raise UnknownCellException, "Unable to locate a cell at index #{index}"
       end
 
-      TableCell.new(self, :object, @cells[index])
+      TableCell.new(self, :object, @cells[index - Celerity.index_offset])
     end
 
     #
@@ -115,13 +115,13 @@ module Celerity
     #
     # Returns the number of columns on the row at the given index.
     # Default is the number of columns on the first row
-    # @param [Fixnum] index An index.
+    # @param [Fixnum] index An index (optional)
     # @return [Fixnum]
     #
 
-    def column_count(index = 0)
+    def column_count(index = Celerity.index_offset)
       assert_exists
-      @object.getRow(index).getCells.length
+      @object.getRow(index - Celerity.index_offset).getCells.length
     end
 
     #
@@ -140,11 +140,11 @@ module Celerity
     end
 
     def column_values(column_number)
-      (0..row_count-1).map { |index| self[index][column_number].text }
+      (0..row_count-1).map { |index| self[index + Celerity.index_offset][column_number].text }
     end
 
     def row_values(row_number)
-      (0..column_count(row_number)-1).map { |index| self[row_number][index].text }
+      (0..column_count(row_number)-1).map { |index| self[row_number][index + Celerity.index_offset].text }
     end
 
   end # Table

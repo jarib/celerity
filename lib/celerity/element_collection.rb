@@ -57,10 +57,10 @@ module Celerity
     #
 
     def [](n)
-      if @elements && @elements[n]
-        element_class.new(@container, :object, @elements[n])
+      if @elements && @elements[n - Celerity.index_offset]
+        element_class.new(@container, :object, @elements[n - Celerity.index_offset])
       else
-        iterator_object(n)
+        iterator_object(n - Celerity.index_offset)
       end
     end
 
@@ -71,7 +71,7 @@ module Celerity
     #
 
     def first
-      self[0]
+      self[Celerity.index_offset]
     end
 
     #
@@ -81,7 +81,7 @@ module Celerity
     #
 
     def last
-      self[-1]
+      self[Celerity.index_offset - 1]
     end
 
     #
@@ -99,7 +99,7 @@ module Celerity
     private
 
     def iterator_object(i)
-      element_class.new(@container, :index, i)
+      element_class.new(@container, :index, i + Celerity.index_offset)
     end
 
   end # ElementCollection

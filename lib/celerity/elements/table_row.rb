@@ -28,11 +28,11 @@ module Celerity
     def child_cell(index)
       assert_exists
 
-      if (index) >= @cells.length
+      if (index - Celerity.index_offset) >= @cells.length
         raise UnknownCellException, "Unable to locate a cell at index #{index}"
       end
 
-      TableCell.new(self, :object, @cells[index])
+      TableCell.new(self, :object, @cells[index - Celerity.index_offset])
     end
     alias_method :[], :child_cell
 

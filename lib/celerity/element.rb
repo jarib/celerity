@@ -45,7 +45,7 @@ module Celerity
           raise ArgumentError, "wrong number of arguments (1 for 2)"
         end
       when 0
-        @conditions = { :index => 0 }
+        @conditions = { :index => Celerity.index_offset }
       else
         raise ArgumentError, "wrong number of arguments (#{args.size} for 2)"
       end
