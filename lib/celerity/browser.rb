@@ -826,11 +826,15 @@ module Celerity
       browser = (opts.delete(:browser) || :firefox3).to_sym
 
       browser_version = case browser
-                        when :firefox, :ff, :ff2
-                          ::HtmlUnit::BrowserVersion::FIREFOX_2
-                        when :firefox3, :ff3
+                        when :firefox, :ff, :firefox3, :ff3 # default :firefox
                           ::HtmlUnit::BrowserVersion::FIREFOX_3
-                        when :internet_explorer, :ie
+                        when :firefox_3_6, :ff36
+                          ::HtmlUnit::BrowserVersion::FIREFOX_3
+                        when :internet_explorer_6, :ie6
+                          ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_6
+                        when :internet_explorer, :ie, :internet_explorer7, :ie7  # default :ie
+                          ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7
+                        when :internet_explorer_8, :ie8
                           ::HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7
                         else
                           raise ArgumentError, "unknown browser: #{browser.inspect}"
