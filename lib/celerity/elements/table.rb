@@ -63,12 +63,12 @@ module Celerity
     end
 
     #
-    # Returns the TableRow at the given index (1-indexed).
+    # Returns the TableRow at the given index.
     #
-    #   browser.table(:foo, 'bar')[1] # => #<TableRow...>
-    #   browser.table(:foo, 'bar').child_row[1] # => #<TableRow...>
+    #   browser.table(:foo, 'bar')[0] # => #<TableRow...>
+    #   browser.table(:foo, 'bar').child_row[0] # => #<TableRow...>
     #
-    # @param [Fixnum] index The index of the wanted row, 1-indexed.
+    # @param [Fixnum] index The index of the wanted row.
     # @raise [Celerity::Exception::UnknownRowException]
     # @return [Celerity::TableRow]
     #
@@ -85,11 +85,9 @@ module Celerity
     alias_method :[], :child_row
 
     #
-    # Returns the TableCell at the given index (1-indexed).
+    # Returns the TableCell at the given index.
     #
-    # In a 10-column row, table.child_cell[11] will return the first cell on the second row.
-    #
-    # @param [Fixnum] index The index of the wanted cell, 1-indexed.
+    # @param [Fixnum] index The index of the wanted cell.
     # @raise [Celerity::Exception::UnknownCellException]
     # @return [Celerity::TableCell]
     #
