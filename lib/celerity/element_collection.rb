@@ -48,20 +48,19 @@ module Celerity
 
     #
     # Get the element at the given index.
-    # By default, this is 1-indexed to keep compatibility with Watir.
     #
     # Also note that because of Watir's lazy loading, this will return an Element
     # instance even if the index is out of bounds.
     #
-    # @param [Fixnum] n Index of wanted element, 1-indexed unless Celerity.index_offset is changed.
+    # @param [Fixnum] n Index of wanted element.
     # @return [Celerity::Element] Returns a subclass of Celerity::Element
     #
 
     def [](n)
-      if @elements && @elements[n - Celerity.index_offset]
-        element_class.new(@container, :object, @elements[n - Celerity.index_offset])
+      if @elements && @elements[n]
+        element_class.new(@container, :object, @elements[n])
       else
-        iterator_object(n - Celerity.index_offset)
+        iterator_object(n)
       end
     end
 
@@ -72,7 +71,7 @@ module Celerity
     #
 
     def first
-      self[Celerity.index_offset]
+      self[0]
     end
 
     #
@@ -82,7 +81,7 @@ module Celerity
     #
 
     def last
-      self[Celerity.index_offset - 1]
+      self[-1]
     end
 
     #
@@ -100,7 +99,7 @@ module Celerity
     private
 
     def iterator_object(i)
-      element_class.new(@container, :index, i + Celerity.index_offset)
+      element_class.new(@container, :index, i)
     end
 
   end # ElementCollection

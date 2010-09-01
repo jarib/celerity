@@ -52,7 +52,7 @@ module Celerity
         elsif @attributes.include?(how = how.to_sym)
           attributes[how] << what
         elsif how == :index
-          index = what.to_i - Celerity.index_offset
+          index = what.to_i
         elsif how == :text
           text = what
         else
