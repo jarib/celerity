@@ -57,7 +57,6 @@ require "celerity/ignoring_web_connection"
 require "celerity/javascript_debugger"
 require "celerity/viewer_connection"
 require "celerity/browser"
-require "celerity/watir_compatibility"
 
 # undefine deprecated methods to use them for Element attributes
 Object.send :undef_method, :id   if Object.method_defined? "id"
