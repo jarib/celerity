@@ -56,8 +56,10 @@ module Celerity
 
     def ==(other)
       return false unless other.kind_of? Element
-      xpath == other.xpath
+      assert_exists
+      @object == other.object
     end
+    alias_method :eql?, :==
 
     #
     # Get the parent element
