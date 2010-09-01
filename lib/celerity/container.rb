@@ -21,7 +21,7 @@ module Celerity
   #
   # Checkboxes and radio buttons support a special three-argument syntax:
   #
-  #   browser.check_box(:name, 'a_name', '1234').set
+  #   browser.checkbox(:name, 'a_name', '1234').set
   #
   # You can also get all the elements of a certain type by using the plural form (@see Celerity::ElementCollection):
   #
@@ -132,16 +132,16 @@ module Celerity
     #
     # Since finding checkboxes by value is very common, you can use this shorthand:
     #
-    #   browser.check_box(:name, 'a_name', '1234').set
+    #   browser.checkbox(:name, 'a_name', '1234').set
     #
     # or
     #
-    #   browser.check_box(:name => 'a_name', :value => '1234').set
+    #   browser.checkbox(:name => 'a_name', :value => '1234').set
     #
     # @return [Celerity::CheckBox]
     #
 
-    def check_box(*args)
+    def checkbox(*args)
       CheckBox.new(self, *args)
     end
 
