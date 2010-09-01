@@ -45,6 +45,8 @@ module Celerity
           how = :href
         when :caption
           how = :text
+        when :http_equiv
+          how = :'http-equiv'
         end
 
         if how == :id && conditions.size == 1
