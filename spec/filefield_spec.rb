@@ -7,9 +7,9 @@ describe "FileField" do
     browser.goto(WatirSpec.files + "/forms_with_input_elements.html")
   end
 
-  describe "#set" do
+  describe "#value=" do
     it "sends content as correct content type for common file types" do
-      browser.file_field(:name, "new_user_portrait").set("foo.doc")
+      browser.file_field(:name, "new_user_portrait").value = "foo.doc"
       obj = browser.file_field(:name, "new_user_portrait").locate
       obj.getContentType.should == "application/msword"
     end
