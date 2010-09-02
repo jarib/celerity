@@ -2,6 +2,7 @@ module Celerity
   class Browser
     include Container
     include XpathSupport
+    include WindowSwitching
 
     attr_accessor :page, :object, :charset
     attr_reader :webclient, :viewer, :options
@@ -306,15 +307,15 @@ module Celerity
     def clear_cache
       @webclient.cache.clear
     end
-    
+
     #
     # Set the maximum number of files to cache.
     #
-    
+
     def cache_limit=(size)
       @webclient.cache.setMaxSize(size)
     end
-    
+
     def cache_limit
       @webclient.cache.getMaxSize
     end
