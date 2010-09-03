@@ -17,23 +17,23 @@ module Celerity
 
     def each
       assert_exists
-      @cells.each { |cell| yield TableCell.new(self, :object, cell) }
+      @cells.each { |cell| yield TableCell.new(self, :object => cell) }
     end
 
     #
     # Get the child cell at the given index
     #
 
-    def child_cell(index)
+    def [](index)
       assert_exists
 
       if (index - Celerity.index_offset) >= @cells.length
         raise UnknownCellException, "Unable to locate a cell at index #{index}"
       end
 
-      TableCell.new(self, :object, @cells[index - Celerity.index_offset])
+      TableCell.new(self, :object => @cells[index - Celerity.index_offset])
     end
-    alias_method :[], :child_cell
+    alias_method :child_cell, :[]
 
     #
     # Number of cells in this row.

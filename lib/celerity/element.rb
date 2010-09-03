@@ -30,6 +30,11 @@ module Celerity
     # @api private
     def initialize(container, selector)
       self.container = container
+      
+      unless selector.kind_of? Hash
+        raise ArgumentError, "invalid argument: #{selector.inspect}"
+      end
+      
       @conditions = selector.freeze
       @object = nil
     end
@@ -55,7 +60,7 @@ module Celerity
         obj = obj.parentNode
       end
 
-      element_class.new(@container, :object, obj)
+      element_class.new(@container, :object => obj)
     end
 
     #

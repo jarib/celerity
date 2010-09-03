@@ -12,7 +12,7 @@ module Celerity
 
     def [](index)
       assert_exists
-      TableRow.new(self, :object, @rows[index - Celerity.index_offset])
+      TableRow.new(self, :object => @rows[index - Celerity.index_offset])
     end
 
     def length
@@ -22,7 +22,7 @@ module Celerity
 
     def each
       assert_exists
-      @rows.each { |row| yield TableRow.new(self, :object, row) }
+      @rows.each { |row| yield TableRow.new(self, :object => row) }
     end
   end
 

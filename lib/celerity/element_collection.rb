@@ -40,7 +40,7 @@ module Celerity
 
     def each
       if @elements
-        @elements.each { |e| yield(element_class.new(@container, :object, e)) }
+        @elements.each { |e| yield(element_class.new(@container, :object => e)) }
       else
         0.upto(@length - 1) { |i| yield iterator_object(i) }
       end
@@ -60,7 +60,7 @@ module Celerity
 
     def [](n)
       if @elements && @elements[n - Celerity.index_offset]
-        element_class.new(@container, :object, @elements[n - Celerity.index_offset])
+        element_class.new(@container, :object => @elements[n - Celerity.index_offset])
       else
         iterator_object(n - Celerity.index_offset)
       end
@@ -101,7 +101,7 @@ module Celerity
     private
 
     def iterator_object(i)
-      element_class.new(@container, :index, i + Celerity.index_offset)
+      element_class.new(@container, :index => i + Celerity.index_offset)
     end
 
   end # ElementCollection

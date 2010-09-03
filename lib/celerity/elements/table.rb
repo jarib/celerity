@@ -39,7 +39,7 @@ module Celerity
 
     def rows
       assert_exists
-      TableRows.new(self, :object, @rows)
+      TableRows.new(self, :object => @rows)
     end
 
     #
@@ -48,7 +48,7 @@ module Celerity
 
     def cells
       assert_exists
-      TableCells.new(self, :object, @cells)
+      TableCells.new(self, :object => @cells)
     end
 
     #
@@ -58,7 +58,7 @@ module Celerity
 
     def each
       assert_exists
-      @rows.each { |row| yield TableRow.new(self, :object, row)  }
+      @rows.each { |row| yield TableRow.new(self, :object => row)  }
     end
 
     #
@@ -79,7 +79,7 @@ module Celerity
         raise UnknownRowException, "Unable to locate a row at index #{index}"
       end
 
-      TableRow.new(self, :object, @rows[index - Celerity.index_offset])
+      TableRow.new(self, :object => @rows[index - Celerity.index_offset])
     end
     alias_method :[], :child_row
 
@@ -98,7 +98,7 @@ module Celerity
         raise UnknownCellException, "Unable to locate a cell at index #{index}"
       end
 
-      TableCell.new(self, :object, @cells[index - Celerity.index_offset])
+      TableCell.new(self, :object => @cells[index - Celerity.index_offset])
     end
 
     #

@@ -39,7 +39,7 @@ module Celerity
 
     def element_from_dom_node(obj)
       element_class = Util.htmlunit2celerity(obj.class) || Element
-      element = element_class.new(self, :object, obj)
+      element = element_class.new(self, :object => obj)
 
       element.extend(ClickableElement) unless element.is_a?(ClickableElement)
 
