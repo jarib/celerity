@@ -696,9 +696,10 @@ module Celerity
     # @return [Celerity::TableBodies]
     #
 
-    def tbodies(*args)
+    def tbodys(*args)
       TableBodies.new(self, extract_selector(args))
     end
+    alias_method :tbodies, :tbodys
 
     #
     # @return [Celerity::TextField]
