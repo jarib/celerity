@@ -1,6 +1,5 @@
 module Celerity
   module WindowSwitching
-
     def windows(*args)
       all = all_windows
 
@@ -43,7 +42,6 @@ module Celerity
         sel.all? { |key, value| value === win.send(key) }
       end
     end
-
   end # WindowSwitching
 
   class Window
@@ -57,12 +55,11 @@ module Celerity
     end
 
     def current?
-      @browser.webclient.getCurrentWindow == @window
+      @browser.page.getEnclosingWindow == @window
     end
 
     def close
       @window.close
-      set_window first_non_closed_window
     end
 
     def title
