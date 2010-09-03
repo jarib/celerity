@@ -91,8 +91,8 @@ module Celerity
     # @return [Celerity::Areas]
     #
 
-    def areas
-      Areas.new(self)
+    def areas(*args)
+      Areas.new(self, extract_selector(args))
     end
 
     #
@@ -107,8 +107,8 @@ module Celerity
     # @return [Celerity::Buttons]
     #
 
-    def buttons
-      Buttons.new(self)
+    def buttons(*args)
+      Buttons.new(self, extract_selector(args))
     end
 
     #
@@ -124,8 +124,8 @@ module Celerity
     # @return [Celerity::TableCells]
     #
 
-    def cells
-      TableCells.new(self)
+    def cells(*args)
+      TableCells.new(self, extract_selector(args))
     end
     alias_method :tds, :cells
 
@@ -149,8 +149,8 @@ module Celerity
     # @return [Celerity::CheckBoxes]
     #
 
-    def checkboxes
-      CheckBoxes.new(self)
+    def checkboxes(*args)
+      CheckBoxes.new(self, extract_selector(args))
     end
 
     #
@@ -165,8 +165,8 @@ module Celerity
     # @return [Celerity::Dds]
     #
 
-    def dds
-      Dds.new(self)
+    def dds(*args)
+      Dds.new(self, extract_selector(args))
     end
 
     #
@@ -181,8 +181,8 @@ module Celerity
     # @return [Celerity::Dels]
     #
 
-    def dels
-      Dels.new(self)
+    def dels(*args)
+      Dels.new(self, extract_selector(args))
     end
 
     #
@@ -197,8 +197,8 @@ module Celerity
     # @return [Celerity::Divs]
     #
 
-    def divs
-      Divs.new(self)
+    def divs(*args)
+      Divs.new(self, extract_selector(args))
     end
 
     #
@@ -213,8 +213,8 @@ module Celerity
     # @return [Celerity::Dls]
     #
 
-    def dls
-      Dls.new(self)
+    def dls(*args)
+      Dls.new(self, extract_selector(args))
     end
 
     #
@@ -229,8 +229,8 @@ module Celerity
     # @return [Celerity::Dts]
     #
 
-    def dts
-      Dts.new(self)
+    def dts(*args)
+      Dts.new(self, extract_selector(args))
     end
 
     #
@@ -245,8 +245,8 @@ module Celerity
     # @return [Celerity::Ems]
     #
 
-    def ems
-      Ems.new(self)
+    def ems(*args)
+      Ems.new(self, extract_selector(args))
     end
 
     #
@@ -261,8 +261,8 @@ module Celerity
     # @return [Celerity::FileFields]
     #
 
-    def file_fields
-      FileFields.new(self)
+    def file_fields(*args)
+      FileFields.new(self, extract_selector(args))
     end
 
     #
@@ -277,8 +277,8 @@ module Celerity
     # @return [Celerity::Forms]
     #
 
-    def forms
-      Forms.new(self)
+    def forms(*args)
+      Forms.new(self, extract_selector(args))
     end
 
     #
@@ -293,8 +293,8 @@ module Celerity
     # @return [Celerity::Frames]
     #
 
-    def frames
-      Frames.new(self)
+    def frames(*args)
+      Frames.new(self, extract_selector(args))
     end
 
     #
@@ -309,8 +309,8 @@ module Celerity
     # @return [Celerity::H1s]
     #
 
-    def h1s
-      H1s.new(self)
+    def h1s(*args)
+      H1s.new(self, extract_selector(args))
     end
 
     #
@@ -325,8 +325,8 @@ module Celerity
     # @return [Celerity::H2s]
     #
 
-    def h2s
-      H2s.new(self)
+    def h2s(*args)
+      H2s.new(self, extract_selector(args))
     end
 
     #
@@ -341,8 +341,8 @@ module Celerity
     # @return [Celerity::H3s]
     #
 
-    def h3s
-      H3s.new(self)
+    def h3s(*args)
+      H3s.new(self, extract_selector(args))
     end
 
     #
@@ -357,8 +357,8 @@ module Celerity
     # @return [Celerity::H4s]
     #
 
-    def h4s
-      H4s.new(self)
+    def h4s(*args)
+      H4s.new(self, extract_selector(args))
     end
 
     #
@@ -373,8 +373,8 @@ module Celerity
     # @return [Celerity::H5s]
     #
 
-    def h5s
-      H5s.new(self)
+    def h5s(*args)
+      H5s.new(self, extract_selector(args))
     end
 
     #
@@ -389,8 +389,8 @@ module Celerity
     # @return [Celerity::H6s]
     #
 
-    def h6s
-      H6s.new(self)
+    def h6s(*args)
+      H6s.new(self, extract_selector(args))
     end
 
     #
@@ -405,8 +405,8 @@ module Celerity
     # @return [Celerity::Hiddens]
     #
 
-    def hiddens
-      Hiddens.new(self)
+    def hiddens(*args)
+      Hiddens.new(self, extract_selector(args))
     end
 
     #
@@ -438,8 +438,8 @@ module Celerity
     # @return [Celerity::Images]
     #
 
-    def images
-      Images.new(self)
+    def images(*args)
+      Images.new(self, extract_selector(args))
     end
 
     #
@@ -454,8 +454,8 @@ module Celerity
     # @return [Celerity::Labels]
     #
 
-    def labels
-      Labels.new(self)
+    def labels(*args)
+      Labels.new(self, extract_selector(args))
     end
 
     #
@@ -470,8 +470,8 @@ module Celerity
     # @return [Celerity::Lis]
     #
 
-    def lis
-      Lis.new(self)
+    def lis(*args)
+      Lis.new(self, extract_selector(args))
     end
 
     #
@@ -487,8 +487,8 @@ module Celerity
     # @return [Celerity::Links]
     #
 
-    def links
-      Links.new(self)
+    def links(*args)
+      Links.new(self, extract_selector(args))
     end
     alias_method :as, :links
 
@@ -504,8 +504,8 @@ module Celerity
     # @return [Celerity::Maps]
     #
 
-    def maps
-      Maps.new(self)
+    def maps(*args)
+      Maps.new(self, extract_selector(args))
     end
 
     #
@@ -536,8 +536,8 @@ module Celerity
     # @return [Celerity::Ols]
     #
 
-    def ols
-      Ols.new(self)
+    def ols(*args)
+      Ols.new(self, extract_selector(args))
     end
 
     #
@@ -560,8 +560,8 @@ module Celerity
     # @return [Celerity::Ps]
     #
 
-    def ps
-      Ps.new(self)
+    def ps(*args)
+      Ps.new(self, extract_selector(args))
     end
 
     #
@@ -576,8 +576,8 @@ module Celerity
     # @return [Celerity::Pres]
     #
 
-    def pres
-      Pres.new(self)
+    def pres(*args)
+      Pres.new(self, extract_selector(args))
     end
 
     #
@@ -600,8 +600,8 @@ module Celerity
     # @return [Celerity::Radios]
     #
 
-    def radios
-      Radios.new(self)
+    def radios(*args)
+      Radios.new(self, extract_selector(args))
     end
 
     #
@@ -616,8 +616,8 @@ module Celerity
     # @return [Celerity::TableRows]
     #
 
-    def rows
-      TableRows.new(self)
+    def rows(*args)
+      TableRows.new(self, extract_selector(args))
     end
 
     #
@@ -632,8 +632,8 @@ module Celerity
     # @return [Celerity::SelectLists]
     #
 
-    def select_lists
-      SelectLists.new(self)
+    def select_lists(*args)
+      SelectLists.new(self, extract_selector(args))
     end
 
     #
@@ -648,8 +648,8 @@ module Celerity
     # @return [Celerity::Spans]
     #
 
-    def spans
-      Spans.new(self)
+    def spans(*args)
+      Spans.new(self, extract_selector(args))
     end
 
     #
@@ -664,8 +664,8 @@ module Celerity
     # @return [Celerity::Strongs]
     #
 
-    def strongs
-      Strongs.new(self)
+    def strongs(*args)
+      Strongs.new(self, extract_selector(args))
     end
 
     #
@@ -680,8 +680,8 @@ module Celerity
     # @return [Celerity::Tables]
     #
 
-    def tables
-      Tables.new(self)
+    def tables(*args)
+      Tables.new(self, extract_selector(args))
     end
 
     #
@@ -696,8 +696,8 @@ module Celerity
     # @return [Celerity::TableBodies]
     #
 
-    def tbodies
-      TableBodies.new(self)
+    def tbodies(*args)
+      TableBodies.new(self, extract_selector(args))
     end
 
     #
@@ -712,8 +712,8 @@ module Celerity
     # @return [Celerity::TextFields]
     #
 
-    def text_fields
-      TextFields.new(self)
+    def text_fields(*args)
+      TextFields.new(self, extract_selector(args))
     end
 
     #
@@ -728,8 +728,8 @@ module Celerity
     # @return [Celerity::TableFooters]
     #
 
-    def tfoots
-      TableFooters.new(self)
+    def tfoots(*args)
+      TableFooters.new(self, extract_selector(args))
     end
     alias_method :tfeet, :tfoots # :-)
 
@@ -765,8 +765,8 @@ module Celerity
     # @return [Celerity::TableHeaders]
     #
 
-    def theads
-      TableHeaders.new(self)
+    def theads(*args)
+      TableHeaders.new(self, extract_selector(args))
     end
 
     #
@@ -781,8 +781,8 @@ module Celerity
     # @return [Celerity::Uls]
     #
 
-    def uls
-      Uls.new(self)
+    def uls(*args)
+      Uls.new(self, extract_selector(args))
     end
 
     private
@@ -797,7 +797,7 @@ module Celerity
     rescue HtmlUnit::FailingHttpStatusCodeException => e
       raise NavigationException, e.message, caller
     end
-    
+
     def extract_selector(args)
       case args.size
       when 2

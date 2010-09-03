@@ -12,9 +12,11 @@ module Celerity
     # @api private
     #
 
-    def initialize(container, how = nil, what = nil)
+    def initialize(container, selector)
       @container = container
-      @object = (how == :object ? what : nil)
+      @selector = selector # not used - yet
+      @object = selector.delete(:object)
+
       @length = length
     end
 
