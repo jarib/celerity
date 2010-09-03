@@ -25,7 +25,8 @@ module Celerity
     #
 
     def clear
-      @object.getSelectedOptions.each { |e| e.setSelected(false) } if multiple?
+      raise CelerityException, "you can only clear multi-selects" unless multiple?
+      @object.getSelectedOptions.each { |e| e.setSelected(false) }
     end
 
     #
