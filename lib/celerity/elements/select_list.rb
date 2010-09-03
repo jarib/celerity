@@ -139,6 +139,10 @@ module Celerity
     private
 
     def matches_option?(option, value)
+      unless String == value || Regexp === value
+        raise TypeError, "expected String or Regexp, got #{value.inspect}:#{value.class}"
+      end
+
       Util.matches?(option.asText, value) || (option.hasAttribute("label") && Util.matches?(option.getLabelAttribute, value))
     end
 
