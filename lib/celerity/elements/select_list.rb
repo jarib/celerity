@@ -139,7 +139,7 @@ module Celerity
     private
 
     def matches_option?(option, value)
-      unless String == value || Regexp === value
+      unless String === value || Regexp === value
         raise TypeError, "expected String or Regexp, got #{value.inspect}:#{value.class}"
       end
 
