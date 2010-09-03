@@ -74,7 +74,10 @@ module Celerity
     end
 
     def use(&blk)
-      return if current?
+      if current?
+        yield if block_given?
+        return
+      end
 
       if block_given?
         old_window = current_window
