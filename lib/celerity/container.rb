@@ -490,6 +490,7 @@ module Celerity
     def links
       Links.new(self)
     end
+    alias_method :as, :links
 
     #
     # @return [Celerity::Map]
