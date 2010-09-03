@@ -27,30 +27,10 @@ module Celerity
     ATTRIBUTES            = BASE_ATTRIBUTES
     TAGS                  = []
 
-    DEFAULT_HOW = nil
-
     # @api private
-    def initialize(container, *args)
+    def initialize(container, selector)
       self.container = container
-
-      case args.size
-      when 2
-        @conditions = { args[0] => args[1] }
-      when 1
-        if args.first.is_a? Hash
-          @conditions = args.first
-        elsif (how = self.class::DEFAULT_HOW)
-          @conditions = { how => args.first }
-        else
-          raise ArgumentError, "wrong number of arguments (1 for 2)"
-        end
-      when 0
-        @conditions = { :index => Celerity.index_offset }
-      else
-        raise ArgumentError, "wrong number of arguments (#{args.size} for 2)"
-      end
-
-      @conditions.freeze
+      @conditions = selector.freeze
       @object = nil
     end
 

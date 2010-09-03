@@ -19,7 +19,6 @@ module Celerity
                                       :vspace,
                                       :width,
                                     ]
-    DEFAULT_HOW = :src
 
     #
     # returns the file created date of the image

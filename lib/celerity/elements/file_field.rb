@@ -6,7 +6,6 @@ module Celerity
 
   class FileField < InputElement
     TAGS = [ Identifier.new('input', :type => %w[file]) ]
-    DEFAULT_HOW = :name
 
 
     #

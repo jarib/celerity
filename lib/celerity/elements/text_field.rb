@@ -11,7 +11,6 @@ module Celerity
     NON_TEXT_TYPES = %w[file radio checkbox submit reset image button hidden]
     TAGS = [ Identifier.new('textarea'),
              Identifier.new('input', :type => ["text", "password", /^(?!(#{ Regexp.union(*NON_TEXT_TYPES) })$)/])  ]
-    DEFAULT_HOW = :name
 
     def visible?
       assert_exists
@@ -157,7 +156,6 @@ module Celerity
 
   class Hidden < TextField
     TAGS = [ Identifier.new('input', :type => %w[hidden]) ]
-    DEFAULT_HOW = :name
 
     def visible?
       assert_exists

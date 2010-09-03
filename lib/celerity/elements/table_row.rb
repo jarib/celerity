@@ -4,7 +4,6 @@ module Celerity
     include ClickableElement
 
     TAGS = [ Identifier.new('tr') ]
-    DEFAULT_HOW = :id
 
     def locate
       super

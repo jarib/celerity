@@ -16,7 +16,6 @@ module Celerity
                    :scope,
                  ]
 
-    DEFAULT_HOW = :id
 
     alias_method :to_s, :text # why?
 

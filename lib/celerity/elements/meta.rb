@@ -8,7 +8,6 @@ module Celerity
                                                     :scheme,
                                                    ]
 
-    DEFAULT_HOW = :id
     TAGS = [ Identifier.new('meta') ]
   end
 end

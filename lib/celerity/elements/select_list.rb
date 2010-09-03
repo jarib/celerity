@@ -1,7 +1,6 @@
 module Celerity
   class SelectList < InputElement
     TAGS = [ Identifier.new('select') ]
-    DEFAULT_HOW = :name
 
     #
     # @return [Array<String>] An array of strings representing the text value of the select list's options.

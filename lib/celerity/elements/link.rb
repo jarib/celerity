@@ -19,7 +19,6 @@ module Celerity
                                       :target,
                                       :type,
                                     ]
-    DEFAULT_HOW = :href
 
     #
     # Returns the absolute URL for this link (Celerity-specific)

@@ -16,7 +16,6 @@ module Celerity
                                       :onsubmit,
                                       :target,
                                     ]
-    DEFAULT_HOW = :name
 
   end # Form
 end # Celerity

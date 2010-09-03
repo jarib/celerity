@@ -17,7 +17,6 @@ module Celerity
                                       :summary,
                                       :width,
                                     ]
-    DEFAULT_HOW = :id
 
     def locate
       super

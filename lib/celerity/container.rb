@@ -84,7 +84,7 @@ module Celerity
     #
 
     def area(*args)
-      Area.new(self, *args)
+      Area.new(self, extract_selector(args))
     end
 
     #
@@ -100,7 +100,7 @@ module Celerity
     #
 
     def button(*args)
-      Button.new(self, *args)
+      Button.new(self, extract_selector(args))
     end
 
     #
@@ -116,7 +116,7 @@ module Celerity
     #
 
     def cell(*args)
-      TableCell.new(self, *args)
+      TableCell.new(self, extract_selector(args))
     end
     alias_method :td, :cell
 
@@ -142,7 +142,7 @@ module Celerity
     #
 
     def checkbox(*args)
-      CheckBox.new(self, *args)
+      CheckBox.new(self, extract_selector(args))
     end
 
     #
@@ -158,7 +158,7 @@ module Celerity
     #
 
     def dd(*args)
-      Dd.new(self, *args)
+      Dd.new(self, extract_selector(args))
     end
 
     #
@@ -174,7 +174,7 @@ module Celerity
     #
 
     def del(*args)
-      Del.new(self, *args)
+      Del.new(self, extract_selector(args))
     end
 
     #
@@ -190,7 +190,7 @@ module Celerity
     #
 
     def div(*args)
-      Div.new(self, *args)
+      Div.new(self, extract_selector(args))
     end
 
     #
@@ -206,7 +206,7 @@ module Celerity
     #
 
     def dl(*args)
-      Dl.new(self, *args)
+      Dl.new(self, extract_selector(args))
     end
 
     #
@@ -222,7 +222,7 @@ module Celerity
     #
 
     def dt(*args)
-      Dt.new(self, *args)
+      Dt.new(self, extract_selector(args))
     end
 
     #
@@ -238,7 +238,7 @@ module Celerity
     #
 
     def em(*args)
-      Em.new(self, *args)
+      Em.new(self, extract_selector(args))
     end
 
     #
@@ -254,7 +254,7 @@ module Celerity
     #
 
     def file_field(*args)
-      FileField.new(self, *args)
+      FileField.new(self, extract_selector(args))
     end
 
     #
@@ -270,7 +270,7 @@ module Celerity
     #
 
     def form(*args)
-      Form.new(self, *args)
+      Form.new(self, extract_selector(args))
     end
 
     #
@@ -286,7 +286,7 @@ module Celerity
     #
 
     def frame(*args)
-      Frame.new(self, *args)
+      Frame.new(self, extract_selector(args))
     end
 
     #
@@ -302,7 +302,7 @@ module Celerity
     #
 
     def h1(*args)
-      H1.new(self, *args)
+      H1.new(self, extract_selector(args))
     end
 
     #
@@ -318,7 +318,7 @@ module Celerity
     #
 
     def h2(*args)
-      H2.new(self, *args)
+      H2.new(self, extract_selector(args))
     end
 
     #
@@ -334,7 +334,7 @@ module Celerity
     #
 
     def h3(*args)
-      H3.new(self, *args)
+      H3.new(self, extract_selector(args))
     end
 
     #
@@ -350,7 +350,7 @@ module Celerity
     #
 
     def h4(*args)
-      H4.new(self, *args)
+      H4.new(self, extract_selector(args))
     end
 
     #
@@ -366,7 +366,7 @@ module Celerity
     #
 
     def h5(*args)
-      H5.new(self, *args)
+      H5.new(self, extract_selector(args))
     end
 
     #
@@ -382,7 +382,7 @@ module Celerity
     #
 
     def h6(*args)
-      H6.new(self, *args)
+      H6.new(self, extract_selector(args))
     end
 
     #
@@ -398,7 +398,7 @@ module Celerity
     #
 
     def hidden(*args)
-      Hidden.new(self, *args)
+      Hidden.new(self, extract_selector(args))
     end
 
     #
@@ -414,7 +414,7 @@ module Celerity
     #
 
     def ins(*args)
-      Ins.new(self, *args)
+      Ins.new(self, extract_selector(args))
     end
 
     #
@@ -422,7 +422,7 @@ module Celerity
     #
 
     def inses(*args)
-      Inses.new(self, *args)
+      Inses.new(self, extract_selector(args))
     end
 
 
@@ -431,7 +431,7 @@ module Celerity
     #
 
     def image(*args)
-      Image.new(self, *args)
+      Image.new(self, extract_selector(args))
     end
 
     #
@@ -447,7 +447,7 @@ module Celerity
     #
 
     def label(*args)
-      Label.new(self, *args)
+      Label.new(self, extract_selector(args))
     end
 
     #
@@ -463,7 +463,7 @@ module Celerity
     #
 
     def li(*args)
-      Li.new(self, *args)
+      Li.new(self, extract_selector(args))
     end
 
     #
@@ -479,7 +479,7 @@ module Celerity
     #
 
     def link(*args)
-      Link.new(self, *args)
+      Link.new(self, extract_selector(args))
     end
     alias_method :a, :link
 
@@ -496,7 +496,7 @@ module Celerity
     #
 
     def map(*args)
-      Map.new(self, *args)
+      Map.new(self, extract_selector(args))
     end
 
     #
@@ -512,7 +512,7 @@ module Celerity
     #
 
     def meta(*args)
-      Meta.new(self, *args)
+      Meta.new(self, extract_selector(args))
     end
 
     #
@@ -520,7 +520,7 @@ module Celerity
     #
 
     def metas(*args)
-      Metas.new(self, *args)
+      Metas.new(self, extract_selector(args))
     end
 
     #
@@ -528,7 +528,7 @@ module Celerity
     #
 
     def ol(*args)
-      Ol.new(self, *args)
+      Ol.new(self, extract_selector(args))
     end
 
     #
@@ -544,7 +544,7 @@ module Celerity
     #
 
     def option(*args)
-      Option.new(self, *args)
+      Option.new(self, extract_selector(args))
     end
 
     #
@@ -552,7 +552,7 @@ module Celerity
     #
 
     def p(*args)
-      P.new(self, *args)
+      P.new(self, extract_selector(args))
     end
 
     #
@@ -568,7 +568,7 @@ module Celerity
     #
 
     def pre(*args)
-      Pre.new(self, *args)
+      Pre.new(self, extract_selector(args))
     end
 
     #
@@ -592,7 +592,7 @@ module Celerity
     #
 
     def radio(*args)
-      Radio.new(self, *args)
+      Radio.new(self, extract_selector(args))
     end
 
     #
@@ -608,7 +608,7 @@ module Celerity
     #
 
     def row(*args)
-      TableRow.new(self, *args)
+      TableRow.new(self, extract_selector(args))
     end
 
     #
@@ -624,7 +624,7 @@ module Celerity
     #
 
     def select_list(*args)
-      SelectList.new(self, *args)
+      SelectList.new(self, extract_selector(args))
     end
 
     #
@@ -640,7 +640,7 @@ module Celerity
     #
 
     def span(*args)
-      Span.new(self, *args)
+      Span.new(self, extract_selector(args))
     end
 
     #
@@ -656,7 +656,7 @@ module Celerity
     #
 
     def strong(*args)
-      Strong.new(self, *args)
+      Strong.new(self, extract_selector(args))
     end
 
     #
@@ -672,7 +672,7 @@ module Celerity
     #
 
     def table(*args)
-      Table.new(self, *args)
+      Table.new(self, extract_selector(args))
     end
 
     #
@@ -688,7 +688,7 @@ module Celerity
     #
 
     def tbody(*args)
-      TableBody.new(self, *args)
+      TableBody.new(self, extract_selector(args))
     end
 
     #
@@ -704,7 +704,7 @@ module Celerity
     #
 
     def text_field(*args)
-      TextField.new(self, *args)
+      TextField.new(self, extract_selector(args))
     end
 
     #
@@ -720,7 +720,7 @@ module Celerity
     #
 
     def tfoot(*args)
-      TableFooter.new(self, *args)
+      TableFooter.new(self, extract_selector(args))
     end
 
     #
@@ -740,7 +740,7 @@ module Celerity
     #
 
     def th(*args)
-      Th.new(self, *args)
+      Th.new(self, extract_selector(args))
     end
 
     #
@@ -757,7 +757,7 @@ module Celerity
     #
 
     def thead(*args)
-      TableHeader.new(self, *args)
+      TableHeader.new(self, extract_selector(args))
     end
 
     #
@@ -773,7 +773,7 @@ module Celerity
     #
 
     def ul(*args)
-      Ul.new(self, *args)
+      Ul.new(self, extract_selector(args))
     end
 
     #
@@ -795,6 +795,23 @@ module Celerity
       yield
     rescue HtmlUnit::FailingHttpStatusCodeException => e
       raise NavigationException, e.message, caller
+    end
+    
+    def extract_selector(args)
+      case args.size
+      when 2
+        { args[0] => args[1] }
+      when 1
+        if args.first.is_a? Hash
+          args.first
+        else
+          raise ArgumentError, "wrong number of arguments (1 for 2)"
+        end
+      when 0
+        { :index => Celerity.index_offset }
+      else
+        raise ArgumentError, "wrong number of arguments (#{args.size} for 2)"
+      end
     end
 
   end # Container

@@ -16,7 +16,6 @@ module Celerity
                                       :value,
                                     ]
 
-    DEFAULT_HOW = :text
 
     alias_method :select, :click
 

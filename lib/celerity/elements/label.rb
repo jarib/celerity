@@ -10,7 +10,6 @@ module Celerity
                                       :onblur,
                                       :onfocus,
                                     ]
-    DEFAULT_HOW = :text
   end
 
 end

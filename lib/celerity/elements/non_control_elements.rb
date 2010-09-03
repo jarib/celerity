@@ -9,7 +9,6 @@ module Celerity
     include ClickableElement
 
     ATTRIBUTES = BASE_ATTRIBUTES
-    DEFAULT_HOW = :id
   end
 
   #

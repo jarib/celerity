@@ -5,7 +5,6 @@ module Celerity
   #
 
   class RadioCheckCommon < InputElement
-    DEFAULT_HOW = :name
 
     #
     # Can optionally take a value parameter as a third arg, so we override initialize

@@ -16,7 +16,6 @@ module Celerity
                                       :scrolling,
                                       :src,
                                     ]
-    DEFAULT_HOW = :name
 
     #
     # Override the default locate to handle frame and inline frames.

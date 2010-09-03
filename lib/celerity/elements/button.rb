@@ -25,7 +25,6 @@ module Celerity
                                 :type,
                                 :usemap,
                               ]
-    DEFAULT_HOW = :value
 
     #
     # @api private
