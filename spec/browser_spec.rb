@@ -28,12 +28,14 @@ describe "Browser" do
 
       received = false
       blk      = lambda { received = true }
-      s = WEBrick::HTTPProxyServer.new(:Port => 2001, :ProxyContentHandler => blk)
+      port     = WatirSpec::Server.find_free_port_above(2001)
+
+      s = WEBrick::HTTPProxyServer.new(:Port => port,
+                                       :ProxyContentHandler => blk)
       Thread.new { s.start }
-      
-      opts = WatirSpec.implementation.browser_args.first.merge(:proxy => "localhost:2001")
-      
-      
+
+      opts = WatirSpec.implementation.browser_args.first.merge(:proxy => "localhost:#{port}")
+
       begin
         b = Browser.new(opts)
         b.goto(WatirSpec.host)
@@ -47,9 +49,9 @@ describe "Browser" do
 
     it "should use the specified user agent" do
       opts = WatirSpec.implementation.browser_args.first.merge(:user_agent => "Celerity")
-      
+
       b = Browser.new(opts)
-      
+
       begin
         b.goto(WatirSpec.host + "/header_echo")
         b.text.should include('"HTTP_USER_AGENT"=>"Celerity"')
@@ -75,11 +77,11 @@ describe "Browser" do
 
       Browser.new(:viewer => "localhost:1234").close
     end
-  
+
     it "should use the specified cache limit" do
       opts = WatirSpec.implementation.browser_args.first.merge(:cache_limit => 100)
       b = Browser.new(opts)
-      
+
       begin
         b.cache_limit.should == 100
       ensure
