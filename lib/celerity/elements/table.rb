@@ -128,7 +128,7 @@ module Celerity
     # @return [Array<Array<String>>]
     #
 
-    def to_a
+    def strings
       assert_exists
       # @object.getRows.map do |table_row|
       #   table_row.getCells.map { |td| td.asText.strip }
@@ -137,14 +137,7 @@ module Celerity
         table_row.map { |td| td.text }
       end
     end
-
-    def column_values(column_number)
-      (0..row_count-1).map { |index| self[index + Celerity.index_offset][column_number].text }
-    end
-
-    def row_values(row_number)
-      (0..column_count(row_number)-1).map { |index| self[row_number][index + Celerity.index_offset].text }
-    end
+    alias_method :to_a, :strings
 
   end # Table
 end # Celerity
