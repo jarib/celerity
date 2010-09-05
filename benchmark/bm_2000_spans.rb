@@ -36,7 +36,7 @@ res = Benchmark.bmbm do |results|
 
   results.report("Last span by id (Regexp)") do
     TESTS.times do
-      browser.span(:id, "/2000/").exists?
+      browser.span(:id, /2000/).exists?
     end
   end
 

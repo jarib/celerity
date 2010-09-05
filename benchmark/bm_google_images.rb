@@ -1,14 +1,14 @@
 require File.dirname(__FILE__) + "/loader"
 
 TESTS = 5
+
+browser = create_browser
+
 res = Benchmark.bmbm do |results|
   results.report("Google image search results") do
     TESTS.times do
-      # Create browser object
-      browser = create_browser
-
       # Goto images.google.com
-      browser.goto('http://images.google.com/ncr')
+      browser.goto('http://images.google.com/')
 
       # Search for Watir
       browser.text_field(:name, 'q').set('Watir')
@@ -29,6 +29,8 @@ res = Benchmark.bmbm do |results|
     end
   end
 end
+
+browser.close
 
 puts
 total = res.inject(0.0) { |mem, bm| mem + bm.real }
