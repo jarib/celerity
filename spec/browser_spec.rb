@@ -88,6 +88,29 @@ describe "Browser" do
         b.close
       end
     end
+    
+    it "should use the Firefox 3 browser version when specified" do
+      Browser.new(:browser => :firefox).webclient.browser_version.nickname.should == "FF3"
+      Browser.new(:browser => :firefox3).webclient.browser_version.nickname.should == "FF3"
+    end
+    
+    it "should use the Firefox 3.6 browser version when specified" do
+      Browser.new(:browser => :firefox_3_6).webclient.browser_version.nickname.should == "FF3.6"
+      Browser.new(:browser => :ff36).webclient.browser_version.nickname.should == "FF3.6"
+    end
+
+    it "should use the Internet Explorer 7 browser version when specified" do
+      Browser.new(:browser => :internet_explorer).webclient.browser_version.nickname.should == "IE7"
+      Browser.new(:browser => :internet_explorer7).webclient.browser_version.nickname.should == "IE7"
+      Browser.new(:browser => :internet_explorer_7).webclient.browser_version.nickname.should == "IE7"
+      Browser.new(:browser => :ie).webclient.browser_version.nickname.should == "IE7"
+    end
+    
+    it "should use the Internet Explorer 8 browser version when specified" do
+      Browser.new(:browser => :internet_explorer_8).webclient.browser_version.nickname.should == "IE8"
+      Browser.new(:browser => :ie8).webclient.browser_version.nickname.should == "IE8"
+    end
+    
   end
 
   describe "#html" do
@@ -369,5 +392,7 @@ describe "Browser" do
       end
     end
   end
+  
+
 
 end
