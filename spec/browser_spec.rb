@@ -28,12 +28,14 @@ describe "Browser" do
 
       received = false
       blk      = lambda { received = true }
-      s = WEBrick::HTTPProxyServer.new(:Port => 2001, :ProxyContentHandler => blk)
+      port     = WatirSpec::Server.find_free_port_above(2001)
+
+      s = WEBrick::HTTPProxyServer.new(:Port => port,
+                                       :ProxyContentHandler => blk)
       Thread.new { s.start }
-      
-      opts = WatirSpec.implementation.browser_args.first.merge(:proxy => "localhost:2001")
-      
-      
+
+      opts = WatirSpec.implementation.browser_args.first.merge(:proxy => "localhost:#{port}")
+
       begin
         b = Browser.new(opts)
         b.goto(WatirSpec.host)
@@ -47,9 +49,9 @@ describe "Browser" do
 
     it "should use the specified user agent" do
       opts = WatirSpec.implementation.browser_args.first.merge(:user_agent => "Celerity")
-      
+
       b = Browser.new(opts)
-      
+
       begin
         b.goto(WatirSpec.host + "/header_echo")
         b.text.should include('"HTTP_USER_AGENT"=>"Celerity"')
@@ -75,17 +77,40 @@ describe "Browser" do
 
       Browser.new(:viewer => "localhost:1234").close
     end
-  
+
     it "should use the specified cache limit" do
       opts = WatirSpec.implementation.browser_args.first.merge(:cache_limit => 100)
       b = Browser.new(opts)
-      
+
       begin
         b.cache_limit.should == 100
       ensure
         b.close
       end
     end
+    
+    it "should use the Firefox 3 browser version when specified" do
+      Browser.new(:browser => :firefox).webclient.browser_version.nickname.should == "FF3"
+      Browser.new(:browser => :firefox3).webclient.browser_version.nickname.should == "FF3"
+    end
+    
+    it "should use the Firefox 3.6 browser version when specified" do
+      Browser.new(:browser => :firefox_3_6).webclient.browser_version.nickname.should == "FF3.6"
+      Browser.new(:browser => :ff36).webclient.browser_version.nickname.should == "FF3.6"
+    end
+
+    it "should use the Internet Explorer 7 browser version when specified" do
+      Browser.new(:browser => :internet_explorer).webclient.browser_version.nickname.should == "IE7"
+      Browser.new(:browser => :internet_explorer7).webclient.browser_version.nickname.should == "IE7"
+      Browser.new(:browser => :internet_explorer_7).webclient.browser_version.nickname.should == "IE7"
+      Browser.new(:browser => :ie).webclient.browser_version.nickname.should == "IE7"
+    end
+    
+    it "should use the Internet Explorer 8 browser version when specified" do
+      Browser.new(:browser => :internet_explorer_8).webclient.browser_version.nickname.should == "IE8"
+      Browser.new(:browser => :ie8).webclient.browser_version.nickname.should == "IE8"
+    end
+    
   end
 
   describe "#html" do
@@ -367,5 +392,7 @@ describe "Browser" do
       end
     end
   end
+  
+
 
 end
