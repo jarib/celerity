@@ -1,11 +1,12 @@
-require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new(:spec) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.ruby_opts = "-I lib:spec"
+  spec.pattern   = 'spec/**/*_spec.rb'
 end
 
-Spec::Rake::SpecTask.new(:rcov) do |spec|
-  spec.libs << 'lib' << 'spec'
+RSpec::Core::RakeTask.new(:rcov) do |spec|
+  spec.ruby_opts = "-I lib:spec"
   spec.pattern   = 'spec/**/*_spec.rb'
   spec.rcov      = true
   spec.rcov_opts = %w[--exclude spec,fcntl,path_helper,yaml,rack,jruby --include lib/celerity --no-rcovrt]

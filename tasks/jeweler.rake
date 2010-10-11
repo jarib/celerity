@@ -15,7 +15,7 @@ begin
 
     gem.files.reject! { |f| f =~ /^(website|doc|benchmark|log|spec|\.)/}
 
-    gem.add_development_dependency 'rspec'
+    gem.add_development_dependency 'rspec', "~> 2.0.0"
     gem.add_development_dependency 'yard'
     gem.add_development_dependency 'sinatra', '>= 1.0'
     gem.add_development_dependency 'mongrel'

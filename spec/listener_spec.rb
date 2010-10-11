@@ -2,7 +2,7 @@ require File.expand_path("../spec_helper", __FILE__)
 
 describe "Listener" do
   before(:each) do
-    @web_client = mock("WebClient", :null_object => true)
+    @web_client = mock("WebClient").as_null_object
     @listener = Celerity::Listener.new(@web_client)
   end
 
