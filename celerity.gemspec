@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{celerity}
-  s.version = "0.8.2"
+  s.version = "0.8.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jari Bakken", "T. Alexander Lystad", "Knut Johannes Dahle"]
-  s.date = %q{2010-09-17}
+  s.date = %q{2010-11-12}
   s.description = %q{Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with JavaScript support. It provides a simple API for programmatic navigation through web applications. Celerity provides a superset of Watir's API.}
   s.email = %q{jari.bakken@gmail.com}
   s.extra_rdoc_files = [
@@ -55,16 +55,11 @@ Gem::Specification.new do |s|
      "lib/celerity/htmlunit/apache-mime4j-0.6.jar",
      "lib/celerity/htmlunit/commons-codec-1.4.jar",
      "lib/celerity/htmlunit/commons-collections-3.2.1.jar",
-     "lib/celerity/htmlunit/commons-io-1.4.jar",
      "lib/celerity/htmlunit/commons-lang-2.5.jar",
      "lib/celerity/htmlunit/commons-logging-1.1.1.jar",
      "lib/celerity/htmlunit/cssparser-0.9.5.jar",
      "lib/celerity/htmlunit/htmlunit-2.9-SNAPSHOT.jar",
-     "lib/celerity/htmlunit/htmlunit-core-js-2.8.jar",
-     "lib/celerity/htmlunit/httpclient-4.0.1.jar",
      "lib/celerity/htmlunit/httpcore-4.0.1.jar",
-     "lib/celerity/htmlunit/httpmime-4.0.1.jar",
-     "lib/celerity/htmlunit/nekohtml-1.9.14.jar",
      "lib/celerity/htmlunit/sac-1.3.jar",
      "lib/celerity/htmlunit/serializer-2.7.1.jar",
      "lib/celerity/htmlunit/xalan-2.7.1.jar",
@@ -106,18 +101,18 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.0.0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<sinatra>, [">= 1.0"])
       s.add_development_dependency(%q<mongrel>, [">= 0"])
     else
-      s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<rspec>, ["~> 2.0.0"])
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<sinatra>, [">= 1.0"])
       s.add_dependency(%q<mongrel>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<rspec>, ["~> 2.0.0"])
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<sinatra>, [">= 1.0"])
     s.add_dependency(%q<mongrel>, [">= 0"])
