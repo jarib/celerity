@@ -306,15 +306,15 @@ module Celerity
     def clear_cache
       @webclient.cache.clear
     end
-    
+
     #
     # Set the maximum number of files to cache.
     #
-    
+
     def cache_limit=(size)
       @webclient.cache.setMaxSize(size)
     end
-    
+
     def cache_limit
       @webclient.cache.getMaxSize
     end
@@ -853,7 +853,7 @@ module Celerity
 
       self.javascript_exceptions  = false unless opts.delete(:javascript_exceptions)
       self.status_code_exceptions = false unless opts.delete(:status_code_exceptions)
-      self.css                    = opts.delete(:css) if opts[:css]
+      self.css                    = !!opts.delete(:css) if opts.has_key?(:css)
       self.javascript_enabled     = opts.delete(:javascript_enabled) != false
       self.secure_ssl             = opts.delete(:secure_ssl) != false
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
