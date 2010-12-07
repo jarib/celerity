@@ -481,6 +481,7 @@ module Celerity
     def link(*args)
       Link.new(self, *args)
     end
+    alias_method :a, :link
 
     #
     # @return [Celerity::Links]
@@ -489,6 +490,7 @@ module Celerity
     def links
       Links.new(self)
     end
+    alias_method :as, :links
 
     #
     # @return [Celerity::Map]
