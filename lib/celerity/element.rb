@@ -9,8 +9,8 @@ module Celerity
     include Container
 
     attr_reader :container
-    attr_writer :locator_identifier
-    
+    attr_writer :identifier_string
+
     # HTML 4.01 Transitional DTD
     HTML_401_TRANSITIONAL = {
       :core        => [:class, :id, :style, :title],
@@ -291,14 +291,14 @@ module Celerity
     private
 
     def identifier_string
-      if @locator_identifier
-        @locator_identifier
-      elsif @conditions.size == 1
-        how, what = @conditions.to_a.first
-        "#{how.inspect} and #{what.inspect}"
-      else
-        @conditions.inspect
-      end
+      @identifier_string ||= (
+        if @conditions.size == 1
+          how, what = @conditions.to_a.first
+          "#{how.inspect} and #{what.inspect}"
+        else
+          @conditions.inspect
+        end
+      )
     end
 
     def selector_to_attribute(meth)

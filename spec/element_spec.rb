@@ -11,16 +11,14 @@ describe "Element" do
     it "doesn't make the next locate find the wrong element" do
       elem = browser.div(:id, 'hidden_parent')
       elem.should exist
-      def elem.public_identifier_string; identifier_string end # method is private
-      elem.public_identifier_string
+      elem.__send__(:identifier_string)
       elem.id.should == 'hidden_parent'
     end
-    
-    it "uses the user specified locator_identifier if one is present" do
+
+    it "uses the user specified identifier_string if one is present" do
       elem = browser.div(:id, 'hidden_parent')
-      elem.locator_identifier = "this is it"
-      def elem.public_identifier_string; identifier_string end # method is private
-      elem.public_identifier_string.should == "this is it"
+      elem.identifier_string = "this is it"
+      elem.__send__(:identifier_string).should == "this is it"
     end
   end
 
