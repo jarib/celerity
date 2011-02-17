@@ -51,6 +51,7 @@ module Celerity
       assert_exists
       TableCells.new(self, :object, @cells)
     end
+    alias_method :tds, :cells
 
     #
     # Iterates through each row in the table.

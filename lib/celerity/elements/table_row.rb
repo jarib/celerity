@@ -21,6 +21,11 @@ module Celerity
       @cells.each { |cell| yield TableCell.new(self, :object, cell) }
     end
 
+    def cells
+      to_a
+    end
+    alias_method :tds, :cells
+
     #
     # Get the child cell at the given index
     #

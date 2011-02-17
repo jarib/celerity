@@ -1,3 +1,3 @@
 module Celerity
-  VERSION = "0.8.3dev"
+  VERSION = "0.8.8"
 end

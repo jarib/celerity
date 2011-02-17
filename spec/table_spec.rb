@@ -17,5 +17,25 @@ describe "Table" do
     browser.span(:id => "cell-child").parent.should be_kind_of(Celerity::TableCell)
   end
 
+  describe "#cells" do
+    it "doesn't find cells in nested tables" do
+      browser.table(:id => "outer").cells.length.should == 6
+    end
+
+    it "doesn't find cells in nested tables (for rows)" do
+      browser.table(:id => "outer").row(:id => "outer_second").cells.length.should == 2
+    end
+  end
+
+  describe "#tds" do
+    it "doesn't find cells in nested tables" do
+      browser.table(:id => "outer").tds.length.should == 6
+    end
+
+    it "doesn't find cells in nested tables (for rows)" do
+      browser.table(:id => "outer").row(:id => "outer_second").tds.length.should == 2
+    end
+  end
+
 end
 
