@@ -277,9 +277,9 @@ module Celerity
     # Wait for javascript jobs to finish
     #
 
-    def wait
+    def wait(sec=10000)
       assert_exists
-      @webclient.waitForBackgroundJavaScript(10000);
+      @webclient.waitForBackgroundJavaScript(sec);
     end
 
     #
