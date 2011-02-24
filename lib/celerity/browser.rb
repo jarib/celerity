@@ -3,7 +3,7 @@ module Celerity
     include Container
     include XpathSupport
 
-    attr_accessor :page, :object, :charset, :wait_milisec
+    attr_accessor :page, :object, :charset
     attr_reader :webclient, :viewer, :options
 
     #
@@ -276,11 +276,10 @@ module Celerity
     #
     # Wait for javascript jobs to finish
     #
-
     def wait(sec=nil)
-      sec ||= wait_milisec
+      sec ||= @default_wait_sec
       assert_exists
-      @webclient.waitForBackgroundJavaScript(sec);
+      @webclient.waitForBackgroundJavaScript(sec * 1000);
     end
 
     #
@@ -860,7 +859,7 @@ module Celerity
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
       self.refresh_handler        = opts.delete(:refresh_handler) if opts[:refresh_handler]
       self.cache_limit            = opts.delete(:cache_limit) if opts[:cache_limit]
-      self.wait_milisec           = opts.delete(:wait_milisec) || 10000
+      @default_wait_sec           = opts.delete(:default_wait_sec) || 10
 
       if opts.delete(:resynchronize)
         controller = ::HtmlUnit::NicelyResynchronizingAjaxController.new
