@@ -263,6 +263,15 @@ describe "Browser" do
       browser.wait.should be_true
       alerts.should == 1
     end
+    
+    it "should pass the correct args to webclient" do
+      browser.webclient.should_receive(:waitForBackgroundJavaScript).with(10000)
+      browser.wait
+      
+      browser.webclient.should_receive(:waitForBackgroundJavaScript).with(3000)
+      browser.wait(3)      
+    end
+    
   end
 
   describe "#wait_while" do
