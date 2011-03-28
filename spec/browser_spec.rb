@@ -176,15 +176,10 @@ describe "Browser" do
       lambda { browser.goto(WatirSpec.host + "/octet_stream") }.should raise_error(UnexpectedPageException)
     end
 
-    it "takes a 2nd argument of headers", :only_this => true do
+    it "takes a 2nd argument of headers" do
       browser.goto(WatirSpec.host + "/header_echo", {'Accept-Language'=>'fr','Accept'=>'application/json'})
       browser.text.should include('"HTTP_ACCEPT"=>"application/json"')
       browser.text.should include('"HTTP_ACCEPT_LANGUAGE"=>"fr"')
-    end
-
-    it "the header arguments defaults to 'text/html' if not set", :only_this => true do
-      browser.goto(WatirSpec.host + "/header_echo")
-      browser.text.should include('"HTTP_ACCEPT"=>"text/html"')
     end
   end
 

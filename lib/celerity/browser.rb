@@ -88,15 +88,16 @@ module Celerity
     # Goto the given URL
     #
     # @param [String] uri The url.
+    # @param [Hash] (optional) a Hash of HTTP headers to use for the request.
+    #
     # @return [String] The url.
     #
 
-    def goto(uri, headers={})
+    def goto(uri, headers = nil)
       uri = "http://#{uri}" unless uri =~ %r{://}
 
-      headers['Accept'] ||= 'text/html'
       request = HtmlUnit::WebRequestSettings.new(::Java::JavaNet::URL.new(uri))
-      request.set_additional_headers(headers)
+      request.set_additional_headers(headers) if headers
       request.setCharset(@charset)
 
       rescue_status_code_exception do
