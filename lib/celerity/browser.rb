@@ -46,6 +46,7 @@ module Celerity
     # @option opts :secure_ssl [Boolean] (true)  Enable/disable secure SSL. Enabled by default.
     # @option opts :status_code_exceptions [Boolean] (false) Raise exceptions on failing status codes (404 etc.). Disabled by default.
     # @option opts :user_agent [String] Override the User-Agent set by the :browser option
+    # @option opts :default_wait [Integer] The default number of seconds to wait when Browser#wait is called.
     # @option opts :viewer [String, false] ("127.0.0.1:6429") Connect to a CelerityViewer if available.
     #
     # @return [Celerity::Browser]     An instance of the browser.
@@ -276,8 +277,7 @@ module Celerity
     #
     # Wait for javascript jobs to finish
     #
-    def wait(sec=nil)
-      sec ||= @default_wait_sec
+    def wait(sec = @default_wait)
       assert_exists
       @webclient.waitForBackgroundJavaScript(sec * 1000);
     end
@@ -859,7 +859,8 @@ module Celerity
       self.ignore_pattern         = opts.delete(:ignore_pattern) if opts[:ignore_pattern]
       self.refresh_handler        = opts.delete(:refresh_handler) if opts[:refresh_handler]
       self.cache_limit            = opts.delete(:cache_limit) if opts[:cache_limit]
-      @default_wait_sec           = opts.delete(:default_wait_sec) || 10
+
+      @default_wait               = Integer(opts.delete(:default_wait) || 10)
 
       if opts.delete(:resynchronize)
         controller = ::HtmlUnit::NicelyResynchronizingAjaxController.new
