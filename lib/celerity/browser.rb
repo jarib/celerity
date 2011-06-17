@@ -129,6 +129,7 @@ module Celerity
 
     def close
       @page = nil
+      @object = nil
       @webclient.closeAllWindows
       @viewer.close
     end
