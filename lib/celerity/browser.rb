@@ -96,8 +96,9 @@ module Celerity
     def goto(uri, headers = nil)
       uri = "http://#{uri}" unless uri =~ %r{://}
 
-      request = HtmlUnit::WebRequestSettings.new(::Java::JavaNet::URL.new(uri))
-      request.set_additional_headers(headers) if headers
+      request = HtmlUnit::WebRequest.new(::Java::JavaNet::URL.new(uri))
+
+      request.setAdditionalHeaders(headers) if headers
       request.setCharset(@charset)
 
       rescue_status_code_exception do

@@ -38,7 +38,7 @@ module Celerity
     def file_size
       assert_exists
       web_response = @object.getWebResponse(true)
-      web_response.getContentAsBytes.length
+      web_response.getContentAsString.bytesize
     end
 
     #
