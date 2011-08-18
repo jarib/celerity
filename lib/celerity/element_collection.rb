@@ -33,6 +33,14 @@ module Celerity
     alias_method :size, :length
 
     #
+    # Returns true if the collection is empty.
+    #
+
+    def empty?
+      length == 0
+    end
+
+    #
     # @yieldparam [Celerity::Element] element Iterate through the elements in this collection.
     #
 
