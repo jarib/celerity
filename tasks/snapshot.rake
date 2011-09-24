@@ -4,7 +4,7 @@ task :snapshot, :file do |t, args|
     sh "cp #{args.file} ./"
     basename = File.basename(args.file)
   else
-    url = "http://build.canoo.com/htmlunit/artifacts//htmlunit-2.9-with-dependencies.zip"
+    url = "http://build.canoo.com/htmlunit/artifacts//htmlunit-2.10-SNAPSHOT-with-dependencies.zip"
     sh "curl -O #{url}"
     basename = File.basename(url)
   end

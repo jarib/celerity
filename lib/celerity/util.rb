@@ -100,7 +100,7 @@ module Celerity
         ret << "tag:".ljust(TO_S_SIZE) + tag
       end
 
-      element.getAttributes.each do |_, attribute|
+      element.getAttributes.each do |attribute|
         ret << "  #{attribute.getName}:".ljust(TO_S_SIZE + 2) + attribute.getValue.to_s
       end
 
