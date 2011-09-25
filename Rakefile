@@ -1,8 +1,10 @@
 require 'rubygems'
 require 'rake'
-require File.expand_path("lib/celerity/version", File.dirname(__FILE__))
 
 include Rake::DSL
+
+require 'bundler'
+Bundler::GemHelper.install_tasks
 
 Dir['tasks/**/*.rake'].each do |rake|
   begin

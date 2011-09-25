@@ -1,5 +1,3 @@
-$:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
-
 raise "Celerity only works on JRuby at the moment." unless RUBY_PLATFORM =~ /java/
 
 require "java"
@@ -29,7 +27,7 @@ module Celerity
     attr_accessor :index_offset
   end
 
-  DIR = File.expand_path(File.dirname(__FILE__) + "/celerity")
+  DIR = File.expand_path("../celerity", __FILE__)
 end
 
 require "celerity/version"
