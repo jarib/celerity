@@ -2,6 +2,9 @@
 
 * http://celerity.rubyforge.org/
 
+{<img src="http://travis-ci.org/jarib/celerity.png" />}[http://travis-ci.org/jarib/celerity]
+
+
 == Description
 
 Celerity is a JRuby library for easy and fast functional test automation for web applications.
