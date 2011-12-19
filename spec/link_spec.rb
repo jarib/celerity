@@ -12,5 +12,5 @@ describe "Link" do
       browser.link(:index, Celerity.index_offset + 1).absolute_url.should include("#{WatirSpec.files}/non_control_elements.html".gsub("file://", ''))
     end
   end
-  
+
 end
