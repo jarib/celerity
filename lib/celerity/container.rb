@@ -61,12 +61,7 @@ module Celerity
     #
 
     def inspect
-      additional = [:@conditions, :@object]
-      ver = RUBY_VERSION.split(".")
-      if (ver[0] == "1" && ver[1] <= "8")
-        additional.map! { |sym| sym.to_s }
-      end
-      short_inspect :include => additional
+      short_inspect :include => %w[@conditions @object]
     end
 
     #

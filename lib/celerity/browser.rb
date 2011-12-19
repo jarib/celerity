@@ -81,12 +81,7 @@ module Celerity
     end
 
     def inspect
-      exclude = [:@webclient, :@browser, :@object, :@options, :@listener, :@event_listener]
-      ver = RUBY_VERSION.split(".")
-      if (ver[0] == "1" && ver[1] <= "8")
-        exclude.map! { |sym| sym.to_s }
-      end
-      short_inspect :exclude => exclude
+      short_inspect :exclude => %w[@webclient @browser @object @options @listener @event_listener]
     end
 
     #
