@@ -61,7 +61,11 @@ module Celerity
     #
 
     def inspect
-      short_inspect :include => %w[@conditions @object]
+      exclude = %w[@conditions @object]
+      if RUBY_VERSION.split(".")[0] == "8"
+        exclude.map! { |v| v.to_sym }
+      end
+      short_inspect :include => exclude
     end
 
     #

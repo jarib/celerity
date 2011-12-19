@@ -81,7 +81,12 @@ module Celerity
     end
 
     def inspect
-      short_inspect :exclude => %w[@webclient @browser @object @options @listener @event_listener]
+      exclude = %w[@webclient @browser @object @options @listener @event_listener]
+      if RUBY_VERSION.split(".")[0] != "8"
+        # in 1.9 mode (and probably beyond), ivars are Symbols, not Strings
+        exclude.map! { |v| v.to_sym }
+      end
+      short_inspect :exclude => exclude
     end
 
     #
