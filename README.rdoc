@@ -9,7 +9,7 @@
 
 Celerity is a JRuby library for easy and fast functional test automation for web applications.
 
-Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with 
+Celerity is a JRuby wrapper around HtmlUnit – a headless Java browser with
 JavaScript support. It provides a simple API for programmatic navigation through
 web applications. Celerity provides a superset of Watir's API.
 
@@ -20,7 +20,7 @@ web applications. Celerity provides a superset of Watir's API.
 * *Easy to use*: Simple API
 * *Portable*: Cross-platform thanks to the JVM
 * *Unintrusive*: No browser window interrupting your workflow (runs in background)
-	
+
 == Requirements
 
 * JRuby 1.2.0 or higher
@@ -29,18 +29,18 @@ web applications. Celerity provides a superset of Watir's API.
 == Install
 
     jruby -S gem install celerity
-  
+
 To always get the latest version, you should use Gemcutter as your primary gem source:
-  
+
     jruby -S gem install gemcutter
     jruby -S gem tumble
     jruby -S gem install celerity
-  
-  
+
+
 == Example
 
     require "rubygems"
-    require "celerity" 
+    require "celerity"
 
     browser = Celerity::Browser.new
     browser.goto('http://www.google.com')
@@ -48,7 +48,7 @@ To always get the latest version, you should use Gemcutter as your primary gem s
     browser.button(:name, 'btnG').click
 
     puts "yay" if browser.text.include? 'celerity.rubyforge.org'
-  
+
 == Source
 
 The source code is available on [GitHub](http://github.com/jarib/celerity/tree/master).

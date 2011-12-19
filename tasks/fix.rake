@@ -9,7 +9,7 @@ namespace :fix do
       s.gsub!(/\r?\n/, "\n")
       File.open(f, "w") { |io| io.write(s) }
     end
-  end  
+  end
 
   desc 'Remove trailing whitespace from all ruby files'
   task :trailing_whitespace do
@@ -21,5 +21,5 @@ namespace :fix do
       File.open(f, "w") { |io| io.write(s) }
     end
   end
-  
+
 end

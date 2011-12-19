@@ -8,11 +8,11 @@ namespace :jar do
     ruby_files = Dir['lib/**/*.rb']
     jar_files  = Dir['lib/**/*.jar']
     resources  = Dir['lib/celerity/resources/*']
-    
+
     rm_rf   target_dir if File.exist? target_dir
     mkdir   target_dir
     mkdir_p resource_dir = "#{target_dir}/celerity/resources"
-    
+
     sh "jrubyc", "-d", "lib", "-t", target_dir, *ruby_files
     resources.each { |extra| cp extra, resource_dir }
 
@@ -42,7 +42,7 @@ namespace :jar do
     rm_rf   target_dir if File.exist? target_dir
     mkdir   target_dir
     mkdir_p resource_dir = "#{target_dir}/celerity/resources"
-    
+
     sh "jrubyc", "-d", "lib", "-t", target_dir, *ruby_files
     resources.each { |extra| cp extra, resource_dir }
 
