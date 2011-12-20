@@ -349,9 +349,14 @@ describe "Browser" do
   describe "#status_code_exceptions" do
     it "raises status code exceptions if set to true" do
       browser.status_code_exceptions = true
-      lambda do
-        browser.goto(WatirSpec.host + "/doesnt_exist")
-      end.should raise_error(NavigationException)
+
+      begin
+        lambda {
+          browser.goto(WatirSpec.host + "/doesnt_exist")
+        }.should raise_error(NavigationException)
+      ensure
+        browser.status_code_exceptions = false
+      end
     end
   end
 
@@ -359,9 +364,11 @@ describe "Browser" do
     it "raises javascript exceptions if set to true" do
       browser.goto(WatirSpec.files + "/forms_with_input_elements.html")
       browser.javascript_exceptions = true
-      lambda do
-        browser.execute_script("no_such_function()")
-      end.should raise_error
+      begin
+        lambda { browser.execute_script("no_such_function()") }.should raise_error
+      ensure
+        browser.javascript_exceptions = false
+      end
     end
   end
 
