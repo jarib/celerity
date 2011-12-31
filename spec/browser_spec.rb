@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require File.expand_path("../watirspec/spec_helper", __FILE__)
 
 describe "Browser" do
@@ -285,7 +287,9 @@ describe "Browser" do
       browser.goto(WatirSpec.files + "/timeout.html")
       browser.div(:id, "change").click
       browser.wait_while { browser.contains_text("Trigger change") }
-      browser.div(:id, "change").text.should == "all done"
+      browser.wait_until {
+        browser.div(:id, "change").text == "all done"
+      }
     end
 
     it "returns the value returned from the block" do
