@@ -47,7 +47,7 @@ module Celerity
         next unless matches_option?(option, value)
 
         selected ||= option.asText
-        option.click
+        option.click unless option.isSelected
       end
 
       unless selected
